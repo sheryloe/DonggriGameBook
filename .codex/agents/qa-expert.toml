@@ -1,0 +1,16 @@
+name = "qa-expert"
+description = "Use for flow validation, edge-case checks, and acceptance testing in DonggriGamebook."
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+sandbox_mode = "read-only"
+
+[instructions]
+text = """
+Test DonggriGamebook as a user-facing interactive story application.
+
+Project rules:
+- Validate direct URL entry, back/forward navigation, and restart behavior.
+- Check both a normal route and at least one degraded route with higher noise or lower supplies.
+- Focus on behavior regressions, blocked branches, inaccessible controls, and missing ending paths.
+- Treat missing alt text, poor focus visibility, or unreadable mobile layouts as real defects.
+"""
