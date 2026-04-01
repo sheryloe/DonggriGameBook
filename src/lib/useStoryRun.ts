@@ -1,71 +1,97 @@
-import { useEffect, useState } from "react";
-import {
-  advanceStory,
-  createInitialMemory,
-  requirementsMet,
-  resolveSnapshot,
-  StoryRunMemory,
-} from "./storyEngine";
-import {
-  readStoryRunMemory,
-  writeStoryRunMemory,
-} from "./storyStorage";
-import { StoryChoice, StoryDefinition, StorySnapshot } from "../types/story";
+﻿import { useCallback, useEffect, useMemo, useState } from "react";
+import { getStoryDefinition } from "../data/stories";
+import { StoryChoice, StoryDefinition, StoryNode, StoryState } from "../types/story";
+import { applyChoice, listAvailableChoices, resolveNode, sanitizeState } from "./storyEngine";
+import { clearStoryProgress, loadStoryProgress, saveStoryProgress } from "./storyStorage";
 
-export function useStoryRun(story: StoryDefinition, nodeId: string) {
-  const [snapshot, setSnapshot] = useState<StorySnapshot>(() =>
-    resolveSnapshot(story, nodeId, readStoryRunMemory(story.id)),
-  );
+interface UseStoryRunResult {
+  definition: StoryDefinition | null;
+  currentNode: StoryNode | null;
+  state: StoryState;
+  choices: StoryChoice[];
+  choose: (choiceId: string) => string | null;
+  reset: () => void;
+  ready: boolean;
+}
+
+export function useStoryRun(storyId?: string, routeNodeId?: string): UseStoryRunResult {
+  const definition = useMemo(() => getStoryDefinition(storyId), [storyId]);
+  const [state, setState] = useState<StoryState>(sanitizeState());
+  const [currentNodeId, setCurrentNodeId] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const existing = readStoryRunMemory(story.id) ?? createInitialMemory(story);
-    const resolved = resolveSnapshot(story, nodeId, existing);
-    const nextMemory = {
-      ...existing,
-      version: story.version,
-      currentNodeId: nodeId,
-      snapshots: {
-        ...existing.snapshots,
-        [nodeId]: resolved,
-      },
-    };
-
-    writeStoryRunMemory(story.id, nextMemory);
-    setSnapshot(resolved);
-  }, [nodeId, story]);
-
-  const selectChoice = (choice: StoryChoice) => {
-    if (!requirementsMet(snapshot.state, choice.requirements)) {
-      return null;
+    if (!definition) {
+      setReady(true);
+      setCurrentNodeId(null);
+      setState(sanitizeState());
+      return;
     }
 
-    const nextSnapshot = advanceStory(story, snapshot, nodeId, choice);
-    const existing = readStoryRunMemory(story.id) ?? createInitialMemory(story);
-    const nextMemory: StoryRunMemory = {
-      version: story.version,
-      currentNodeId: nextSnapshot.nodeId,
-      snapshots: {
-        ...existing.snapshots,
-        [nodeId]: snapshot,
-        [nextSnapshot.nodeId]: nextSnapshot,
-      },
-    };
+    const persisted = loadStoryProgress(definition.id);
+    const hasRouteNode = Boolean(routeNodeId && definition.nodes[routeNodeId]);
+    const persistedNodeId = persisted?.nodeId ?? definition.startNodeId;
+    const candidateNodeId = hasRouteNode ? routeNodeId! : persistedNodeId;
+    const safeNodeId = definition.nodes[candidateNodeId] ? candidateNodeId : definition.startNodeId;
+    const nextState = hasRouteNode
+      ? sanitizeState(definition.initialState)
+      : sanitizeState(persisted?.state ?? definition.initialState);
 
-    writeStoryRunMemory(story.id, nextMemory);
-    setSnapshot(nextSnapshot);
-    return nextSnapshot.nodeId;
-  };
+    setCurrentNodeId(safeNodeId);
+    setState(nextState);
+    saveStoryProgress(definition.id, safeNodeId, nextState);
+    setReady(true);
+  }, [definition, routeNodeId]);
 
-  const restart = () => {
-    const initial = createInitialMemory(story);
-    writeStoryRunMemory(story.id, initial);
-    setSnapshot(initial.snapshots[story.startNodeId]);
-    return story.startNodeId;
-  };
+  const currentNode = useMemo(() => {
+    if (!definition || !currentNodeId) {
+      return null;
+    }
+    return resolveNode(definition, currentNodeId);
+  }, [definition, currentNodeId]);
+
+  const choices = useMemo(() => {
+    if (!currentNode) {
+      return [];
+    }
+    return listAvailableChoices(currentNode, state);
+  }, [currentNode, state]);
+
+  const choose = useCallback(
+    (choiceId: string) => {
+      if (!definition || !currentNodeId) {
+        return null;
+      }
+
+      const result = applyChoice(definition, currentNodeId, state, choiceId);
+      setCurrentNodeId(result.nextNode.id);
+      setState(result.nextState);
+      saveStoryProgress(definition.id, result.nextNode.id, result.nextState);
+      return result.nextNode.id;
+    },
+    [definition, currentNodeId, state]
+  );
+
+  const reset = useCallback(() => {
+    if (!definition) {
+      return;
+    }
+
+    const fallbackNodeId = definition.startNodeId;
+    const fallbackState = sanitizeState(definition.initialState);
+    setCurrentNodeId(fallbackNodeId);
+    setState(fallbackState);
+    clearStoryProgress(definition.id);
+    saveStoryProgress(definition.id, fallbackNodeId, fallbackState);
+  }, [definition]);
 
   return {
-    snapshot,
-    selectChoice,
-    restart,
+    definition,
+    currentNode,
+    state,
+    choices,
+    choose,
+    reset,
+    ready
   };
 }

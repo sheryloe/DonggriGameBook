@@ -1,41 +1,56 @@
-import { StoryRunMemory } from "./storyEngine";
+﻿import { StoryProgress, StoryState } from "../types/story";
 
-export const storyRunStorageKey = (storyId: string) => `donggri:${storyId}:run`;
+const KEY_PREFIX = "donggrolgamebook:story:";
 
-export function readStoryRunMemory(storyId: string): StoryRunMemory | null {
-  if (typeof window === "undefined") {
-    return null;
-  }
+function makeKey(storyId: string): string {
+  return `${KEY_PREFIX}${storyId}`;
+}
 
-  const raw = window.sessionStorage.getItem(storyRunStorageKey(storyId));
+function hasStorage(): boolean {
+  return typeof window !== "undefined" && typeof window.localStorage !== "undefined";
+}
 
-  if (!raw) {
+export function loadStoryProgress(storyId: string): StoryProgress | null {
+  if (!hasStorage()) {
     return null;
   }
 
   try {
-    return JSON.parse(raw) as StoryRunMemory;
+    const raw = window.localStorage.getItem(makeKey(storyId));
+    if (!raw) {
+      return null;
+    }
+
+    const parsed = JSON.parse(raw) as StoryProgress;
+    if (!parsed?.nodeId || !parsed?.state) {
+      return null;
+    }
+
+    return parsed;
   } catch {
     return null;
   }
 }
 
-export function writeStoryRunMemory(storyId: string, memory: StoryRunMemory) {
-  if (typeof window === "undefined") {
+export function saveStoryProgress(storyId: string, nodeId: string, state: StoryState): void {
+  if (!hasStorage()) {
     return;
   }
 
-  window.sessionStorage.setItem(storyRunStorageKey(storyId), JSON.stringify(memory));
+  const payload: StoryProgress = {
+    storyId,
+    nodeId,
+    state,
+    updatedAt: new Date().toISOString()
+  };
+
+  window.localStorage.setItem(makeKey(storyId), JSON.stringify(payload));
 }
 
-export function clearStoryRunMemory(storyId: string) {
-  if (typeof window === "undefined") {
+export function clearStoryProgress(storyId: string): void {
+  if (!hasStorage()) {
     return;
   }
 
-  window.sessionStorage.removeItem(storyRunStorageKey(storyId));
-}
-
-export function getResumeNodeId(storyId: string, fallback: string) {
-  return readStoryRunMemory(storyId)?.currentNodeId ?? fallback;
+  window.localStorage.removeItem(makeKey(storyId));
 }

@@ -1,30 +1,15 @@
-import { validateStoryDefinition } from "../lib/storyEngine";
-import { StoryDefinition } from "../types/story";
-import { story1 } from "./story1";
+﻿import { story1 } from "./story1";
 import { story2 } from "./story2";
+import { StoryDefinition } from "../types/story";
 
-export const stories: StoryDefinition[] = [story1, story2];
+export const stories: Record<string, StoryDefinition> = {
+  "1": story1,
+  "2": story2
+};
 
-stories.forEach(validateStoryDefinition);
-
-export const storiesByRouteId: Record<string, StoryDefinition> = Object.fromEntries(
-  stories.map((story) => [story.routeId, story]),
-);
-
-export function getStoryByRouteId(routeId?: string) {
-  return routeId ? storiesByRouteId[routeId] : undefined;
-}
-
-export function getNextStory(routeId?: string) {
-  if (!routeId) {
-    return undefined;
+export function getStoryDefinition(storyId?: string | null): StoryDefinition | null {
+  if (!storyId) {
+    return null;
   }
-
-  const currentIndex = stories.findIndex((story) => story.routeId === routeId);
-
-  if (currentIndex < 0) {
-    return undefined;
-  }
-
-  return stories[currentIndex + 1];
+  return stories[storyId] ?? null;
 }
