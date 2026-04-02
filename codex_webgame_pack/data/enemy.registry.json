@@ -1,0 +1,324 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "enemies": [
+    {
+      "enemy_id": "erosion_basic",
+      "name_ko": "침식자",
+      "archetype": "basic",
+      "introduced_in": "CH01",
+      "tags": [
+        "humid",
+        "melee",
+        "swarm"
+      ],
+      "base_stats": {
+        "hp": 36,
+        "attack": 8,
+        "speed": 1,
+        "noise_response": 5,
+        "contamination_hit": 2
+      },
+      "behavior": "느리지만 수가 많고 방벽을 계속 두드린다.",
+      "weak_points": [
+        "무릎",
+        "균형 붕괴"
+      ],
+      "drops": [
+        "itm_metro_token_old",
+        "itm_bandage"
+      ]
+    },
+    {
+      "enemy_id": "runner",
+      "name_ko": "질주체",
+      "archetype": "fast",
+      "introduced_in": "CH02",
+      "tags": [
+        "charge",
+        "corridor",
+        "noise_sensitive"
+      ],
+      "base_stats": {
+        "hp": 28,
+        "attack": 11,
+        "speed": 3,
+        "noise_response": 9,
+        "contamination_hit": 2
+      },
+      "behavior": "심박과 진동에 민감하며 병목을 파고든다.",
+      "weak_points": [
+        "장애물 유도",
+        "스태거"
+      ],
+      "drops": [
+        "itm_ration_bar"
+      ]
+    },
+    {
+      "enemy_id": "floater",
+      "name_ko": "부유자",
+      "archetype": "water",
+      "introduced_in": "CH02",
+      "tags": [
+        "flood",
+        "grab",
+        "ambush"
+      ],
+      "base_stats": {
+        "hp": 32,
+        "attack": 9,
+        "speed": 1,
+        "noise_response": 4,
+        "contamination_hit": 4
+      },
+      "behavior": "물 아래 숨어 있다가 다리를 잡아 끈다.",
+      "weak_points": [
+        "투척 조명",
+        "원거리"
+      ],
+      "drops": [
+        "itm_pump_gasket"
+      ]
+    },
+    {
+      "enemy_id": "spore_sac_small",
+      "name_ko": "소형 포낭체",
+      "archetype": "spore",
+      "introduced_in": "CH01",
+      "tags": [
+        "aoe",
+        "contamination",
+        "slow"
+      ],
+      "base_stats": {
+        "hp": 22,
+        "attack": 5,
+        "speed": 0,
+        "noise_response": 2,
+        "contamination_hit": 8
+      },
+      "behavior": "피격 시 회무를 터뜨려 오염도를 올린다.",
+      "weak_points": [
+        "원거리 파괴",
+        "화력 집중"
+      ],
+      "drops": [
+        "itm_filter_pad"
+      ]
+    },
+    {
+      "enemy_id": "windowling",
+      "name_ko": "창가체",
+      "archetype": "vertical",
+      "introduced_in": "CH03",
+      "tags": [
+        "glass",
+        "fall",
+        "hook"
+      ],
+      "base_stats": {
+        "hp": 30,
+        "attack": 10,
+        "speed": 2,
+        "noise_response": 6,
+        "contamination_hit": 3
+      },
+      "behavior": "유리면과 외벽을 타고 측면에서 습격한다.",
+      "weak_points": [
+        "광원",
+        "브리지 병목"
+      ],
+      "drops": [
+        "itm_climbing_hook"
+      ]
+    },
+    {
+      "enemy_id": "sorter",
+      "name_ko": "분류체",
+      "archetype": "logistics",
+      "introduced_in": "CH04",
+      "tags": [
+        "conveyor",
+        "industrial",
+        "swarm"
+      ],
+      "base_stats": {
+        "hp": 34,
+        "attack": 9,
+        "speed": 2,
+        "noise_response": 7,
+        "contamination_hit": 2
+      },
+      "behavior": "컨베이어 라인을 따라 이동하며 라인 가동 상태에 따라 패턴이 바뀐다.",
+      "weak_points": [
+        "라인 정지",
+        "고저차"
+      ],
+      "drops": [
+        "itm_container_seal",
+        "itm_box_label_roll"
+      ]
+    },
+    {
+      "enemy_id": "echoer",
+      "name_ko": "메아리체",
+      "archetype": "signal",
+      "introduced_in": "CH05",
+      "tags": [
+        "alarm",
+        "signal",
+        "server"
+      ],
+      "base_stats": {
+        "hp": 38,
+        "attack": 12,
+        "speed": 2,
+        "noise_response": 10,
+        "contamination_hit": 3
+      },
+      "behavior": "사이렌, 스피커, 냉각팬 진동에 군집 반응한다.",
+      "weak_points": [
+        "장치 파괴",
+        "소음 억제"
+      ],
+      "drops": [
+        "itm_thermal_paste",
+        "itm_battery_pack"
+      ]
+    },
+    {
+      "enemy_id": "editing_aberration",
+      "name_ko": "편집괴",
+      "archetype": "boss",
+      "introduced_in": "CH01",
+      "tags": [
+        "boss",
+        "studio",
+        "sound_trap"
+      ],
+      "base_stats": {
+        "hp": 220,
+        "attack": 18,
+        "speed": 1,
+        "noise_response": 12,
+        "contamination_hit": 6
+      },
+      "behavior": "카메라 레일과 스튜디오 조명을 이용해 돌진과 광역 회무를 반복한다.",
+      "weak_points": [
+        "오디오 제어판",
+        "측면 패널"
+      ],
+      "drops": [
+        "itm_broadcast_log"
+      ]
+    },
+    {
+      "enemy_id": "sluice_sac_cheongeum",
+      "name_ko": "수문 포낭체 청음",
+      "archetype": "boss",
+      "introduced_in": "CH02",
+      "tags": [
+        "boss",
+        "flood",
+        "gate"
+      ],
+      "base_stats": {
+        "hp": 260,
+        "attack": 16,
+        "speed": 1,
+        "noise_response": 11,
+        "contamination_hit": 10
+      },
+      "behavior": "수문 진동과 수위 변화에 맞춰 회무를 분출한다.",
+      "weak_points": [
+        "압력 밸브",
+        "수문 개폐 타이밍"
+      ],
+      "drops": [
+        "itm_waterway_map"
+      ]
+    },
+    {
+      "enemy_id": "vista_amalgam_glassgarden",
+      "name_ko": "전망 접합체 유리정원",
+      "archetype": "boss",
+      "introduced_in": "CH03",
+      "tags": [
+        "boss",
+        "glass",
+        "vertical"
+      ],
+      "base_stats": {
+        "hp": 290,
+        "attack": 19,
+        "speed": 2,
+        "noise_response": 9,
+        "contamination_hit": 7
+      },
+      "behavior": "유리 벽과 브리지를 타고 이동하며 낙하 위협을 만든다.",
+      "weak_points": [
+        "난간 고정점",
+        "강풍 회피"
+      ],
+      "drops": [
+        "itm_relay_lens",
+        "itm_data_key_fragment"
+      ]
+    },
+    {
+      "enemy_id": "picker_prime",
+      "name_ko": "자동분류 접합체 피커",
+      "archetype": "boss",
+      "introduced_in": "CH04",
+      "tags": [
+        "boss",
+        "industrial",
+        "conveyor"
+      ],
+      "base_stats": {
+        "hp": 320,
+        "attack": 20,
+        "speed": 1,
+        "noise_response": 8,
+        "contamination_hit": 5
+      },
+      "behavior": "기계 팔과 컨베이어를 이용해 플레이어를 밀어내고 압박한다.",
+      "weak_points": [
+        "서보 관절",
+        "라인 정지 레버"
+      ],
+      "drops": [
+        "itm_delivery_badge",
+        "itm_security_badge"
+      ]
+    },
+    {
+      "enemy_id": "mirror_core_lines",
+      "name_ko": "미러코어 접합체 회선",
+      "archetype": "boss",
+      "introduced_in": "CH05",
+      "tags": [
+        "boss",
+        "server",
+        "signal"
+      ],
+      "base_stats": {
+        "hp": 360,
+        "attack": 22,
+        "speed": 2,
+        "noise_response": 14,
+        "contamination_hit": 8
+      },
+      "behavior": "냉각팬, 알람, 저주파 장치를 연동해 패턴을 바꾼다.",
+      "weak_points": [
+        "냉각 밸브",
+        "감쇠 장치"
+      ],
+      "drops": [
+        "itm_southern_corridor_data",
+        "itm_dokdo_signal_auth"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "title": "Dokdo Arc Webgame Pack (CH01~CH05)",
+  "schemas": {
+    "chapter": "schemas/chapter_event.schema.json",
+    "item": "schemas/inventory_item.schema.json",
+    "ui_flow": "schemas/ui_flow.schema.json"
+  },
+  "data": {
+    "stats": "data/stats.registry.json",
+    "npcs": "data/npc.registry.json",
+    "enemies": "data/enemy.registry.json",
+    "items": "data/inventory.items.json",
+    "loot_tables": "data/loot_tables.json",
+    "encounter_tables": "data/encounter_tables.json",
+    "chapters_index": "data/chapters.index.json"
+  },
+  "ui": {
+    "overview": "ui/UI_FLOW_OVERVIEW.md",
+    "chapters": [
+      "ui/ch01.ui_flow.json",
+      "ui/ch02.ui_flow.json",
+      "ui/ch03.ui_flow.json",
+      "ui/ch04.ui_flow.json",
+      "ui/ch05.ui_flow.json"
+    ]
+  }
+}

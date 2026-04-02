@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.game/schemas/chapter_event.schema.json",
+  "title": "Chapter Event Package Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "game_id",
+    "chapter_id",
+    "title",
+    "role",
+    "entry_node_id",
+    "exit_node_ids",
+    "recommended_level",
+    "ui_profile",
+    "objectives",
+    "nodes",
+    "events"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "game_id": {
+      "type": "string"
+    },
+    "chapter_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "entry_node_id": {
+      "type": "string"
+    },
+    "exit_node_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommended_level": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "ui_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "theme",
+        "special_widgets"
+      ],
+      "properties": {
+        "theme": {
+          "type": "string"
+        },
+        "special_widgets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/objective"
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/event"
+      }
+    },
+    "boss_event_id": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective_id",
+        "text",
+        "required",
+        "complete_when"
+      ],
+      "properties": {
+        "objective_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "complete_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        }
+      }
+    },
+    "connectionCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "time",
+        "noise",
+        "contamination"
+      ],
+      "properties": {
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "noise": {
+          "type": "number"
+        },
+        "contamination": {
+          "type": "number"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "to",
+        "travel_type",
+        "requires",
+        "cost"
+      ],
+      "properties": {
+        "to": {
+          "type": "string"
+        },
+        "travel_type": {
+          "type": "string"
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cost": {
+          "$ref": "#/$defs/connectionCost"
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "name",
+        "node_type",
+        "description",
+        "coordinates",
+        "connections",
+        "event_ids",
+        "revisit_rule"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node_type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "coordinates": {
+          "$ref": "#/$defs/coordinates"
+        },
+        "encounter_table_id": {
+          "type": "string"
+        },
+        "loot_table_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "npc_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/connection"
+          }
+        },
+        "event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "revisit_rule": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layout",
+        "art_key",
+        "music_key",
+        "widget_overrides"
+      ],
+      "properties": {
+        "layout": {
+          "type": "string"
+        },
+        "art_key": {
+          "type": "string"
+        },
+        "music_key": {
+          "type": "string"
+        },
+        "widget_overrides": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "textBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "body"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "target"
+      ],
+      "properties": {
+        "op": {
+          "type": "string",
+          "enum": [
+            "set_flag",
+            "clear_flag",
+            "add_stat",
+            "sub_stat",
+            "grant_item",
+            "remove_item",
+            "unlock_node",
+            "unlock_route",
+            "set_route",
+            "add_trust",
+            "add_reputation",
+            "grant_loot_table",
+            "set_value"
+          ]
+        },
+        "target": {
+          "type": "string"
+        },
+        "value": {},
+        "meta": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "choice_id",
+        "label",
+        "conditions",
+        "effects",
+        "next_event_id"
+      ],
+      "properties": {
+        "choice_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preview": {
+          "type": "string"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        },
+        "next_event_id": {
+          "type": "string"
+        }
+      }
+    },
+    "combatDef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encounter_table_id",
+        "victory_effects",
+        "defeat_effects"
+      ],
+      "properties": {
+        "encounter_table_id": {
+          "type": "string"
+        },
+        "boss_id": {
+          "type": "string"
+        },
+        "arena_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "victory_effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        },
+        "defeat_effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "event_type",
+        "node_id",
+        "title",
+        "repeatable",
+        "once_per_run",
+        "priority",
+        "conditions",
+        "presentation",
+        "text",
+        "choices",
+        "on_enter_effects",
+        "on_complete_effects"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "repeatable": {
+          "type": "boolean"
+        },
+        "once_per_run": {
+          "type": "boolean"
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "presentation": {
+          "$ref": "#/$defs/presentation"
+        },
+        "text": {
+          "$ref": "#/$defs/textBlock"
+        },
+        "npc_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "loot_table_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "combat": {
+          "$ref": "#/$defs/combatDef"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/choice"
+          }
+        },
+        "on_enter_effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        },
+        "on_complete_effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        },
+        "next_event_id": {
+          "type": "string"
+        },
+        "fail_event_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

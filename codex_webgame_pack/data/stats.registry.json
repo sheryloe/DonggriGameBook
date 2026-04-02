@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "stats": [
+    {
+      "key": "hp",
+      "type": "number",
+      "default": 100
+    },
+    {
+      "key": "max_hp",
+      "type": "number",
+      "default": 100
+    },
+    {
+      "key": "contamination",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "noise",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "filter_integrity",
+      "type": "number",
+      "default": 100
+    },
+    {
+      "key": "battery_charge",
+      "type": "number",
+      "default": 100
+    },
+    {
+      "key": "carry_weight",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "carry_limit",
+      "type": "number",
+      "default": 12
+    },
+    {
+      "key": "reputation.record_bureau",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "reputation.under_market",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "reputation.jamsil_upper",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "reputation.jamsil_lower",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "reputation.munjeong_logistics",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "reputation.pangyo_survivors",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_yoon_haein",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_jung_noah",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_seo_jinseo",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_ahn_bogyeong",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_ryu_seon",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_han_somyeong",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "trust.npc_kim_ara",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "route.current",
+      "type": "string",
+      "default": "none"
+    },
+    {
+      "key": "chapter.current",
+      "type": "string",
+      "default": "CH01"
+    }
+  ]
+}

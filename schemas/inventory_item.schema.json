@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.game/schemas/inventory_item.schema.json",
+  "title": "Inventory Item Database Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "game_id",
+    "categories",
+    "items"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "game_id": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_id",
+        "name_ko",
+        "category",
+        "rarity",
+        "stackable",
+        "max_stack",
+        "weight",
+        "value",
+        "introduced_in",
+        "description"
+      ],
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "name_ko": {
+          "type": "string"
+        },
+        "name_en": {
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "weapon",
+            "ammo",
+            "gear",
+            "consumable",
+            "crafting",
+            "utility",
+            "quest",
+            "barter"
+          ]
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "rarity": {
+          "enum": [
+            "common",
+            "uncommon",
+            "rare",
+            "epic",
+            "legendary"
+          ]
+        },
+        "stackable": {
+          "type": "boolean"
+        },
+        "max_stack": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "introduced_in": {
+          "type": "string"
+        },
+        "equip_slot": {
+          "type": "string"
+        },
+        "durability": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "max": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "current": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "stats": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "effect_type",
+              "value"
+            ],
+            "properties": {
+              "effect_type": {
+                "type": "string"
+              },
+              "value": {}
+            }
+          }
+        },
+        "recipe": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "station": {
+              "type": "string"
+            },
+            "inputs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "item_id",
+                  "qty"
+                ],
+                "properties": {
+                  "item_id": {
+                    "type": "string"
+                  },
+                  "qty": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

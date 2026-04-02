@@ -1,0 +1,156 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "encounter_tables": [
+    {
+      "encounter_table_id": "enc_ch01_street_low",
+      "threat_level": "low",
+      "units": [
+        {
+          "enemy_id": "erosion_basic",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch01_archive_medium",
+      "threat_level": "medium",
+      "units": [
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        },
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch01_boss_broadcast",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "editing_aberration",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch02_water_market",
+      "threat_level": "medium",
+      "units": [
+        {
+          "enemy_id": "floater",
+          "count": 2
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch02_boss_gate",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "sluice_sac_cheongeum",
+          "count": 1
+        },
+        {
+          "enemy_id": "floater",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch03_tower_mid",
+      "threat_level": "medium",
+      "units": [
+        {
+          "enemy_id": "windowling",
+          "count": 2
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch03_boss_garden",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "vista_amalgam_glassgarden",
+          "count": 1
+        },
+        {
+          "enemy_id": "windowling",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch04_logistics_floor",
+      "threat_level": "medium",
+      "units": [
+        {
+          "enemy_id": "sorter",
+          "count": 3
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch04_boss_picker",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "picker_prime",
+          "count": 1
+        },
+        {
+          "enemy_id": "sorter",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch05_cooling",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "echoer",
+          "count": 3
+        },
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch05_boss_lines",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "mirror_core_lines",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}
