@@ -103,3 +103,43 @@
 - Any new scene should be added to the story data and asset manifest together.
 - Any deployment change should be reflected in the Cloudflare Pages PRN and the architecture doc.
 
+## 8. CH01~CH05 Canon Operations
+
+### Canon and delivery boundary
+
+- Canon source of truth is Airtable.
+- Delivery execution tracking is Linear.
+- Runtime must not directly depend on Airtable or Linear APIs.
+
+### Canonical ID contract
+
+- Arc: `^ARC-\d{2}-\d{2}$`
+- Chapter: `^ARC\d{2}-CH\d{2}$`
+- Node: `^ARC\d{2}-CH\d{2}-ND-[A-Z0-9-]+$`
+- NPC: `^NPC-[A-Z0-9-]+$`
+- Foreshadow: `^FS-\d{2}-\d{3}$`
+
+### Workflow gates
+
+- `Approved` before Linear issue creation is mandatory.
+- `Continuity Review` completion is mandatory before chapter closure.
+- Any change after `Locked` must be submitted through `Change Requests`.
+
+Reference:
+- `docs/ops/canon-airtable-linear-operating-model.md`
+- `docs/ops/canonical-id-spine.md`
+- `docs/ops/csv-gate-sync-contract.md`
+
+## 9. Deployment Decision Gate
+
+- Blogger is optional and must pass all checks:
+  - SPA deep-link routing stability
+  - Git-based deployment feasibility
+  - custom domain/SSL operational stability
+  - dynamic API extension readiness
+- If any Blogger check fails, final target is Cloudflare Pages.
+- Dynamic endpoints are expanded only through Pages Functions or Workers.
+
+Reference:
+- `docs/ops/deployment-gate-blogger-vs-cloudflare.md`
+

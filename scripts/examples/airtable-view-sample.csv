@@ -1,0 +1,4 @@
+canonical_id,title,status,owner,chapter_ref,links_echo,source_doc,prev_status,continuity_review
+ARC01-CH01,CH01 Gray Opening,Approved,alice,ARC01-CH01,https://linear.app/dummy-link,docs/concept_arc_01_05_md/CHAPTER_01_잿빛_개장.md,Draft,
+NPC-HAN-SEOJUN,Ledger-09 alignment,In Production,bob,ARC01-CH01,https://linear.app/dummy-link,docs/world/main-npc-cast.md,Approved,
+FS-01-001,Yeouido permit seed,Locked,charlie,ARC01-CH01,https://linear.app/dummy-link,docs/concept_arc_01_05_md/MASTER_PACK_01_05.md,In Production,pass
