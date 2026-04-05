@@ -66,6 +66,38 @@
       "complete_when": [
         "flag:ch01_patrol_cleared"
       ]
+    },
+    {
+      "objective_id": "obj_ch01_side_writer",
+      "text": "편집실 잔류자의 결정을 확인한다.",
+      "required": false,
+      "complete_when": [
+        "flag:rescued_writer|flag:left_writer"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_side_security",
+      "text": "편집실 복도의 매복을 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_security_cleared"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_side_cache",
+      "text": "침수 캐시를 조사해 장비를 확보한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_cache_cleared|flag:ch01_cache_skipped"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_side_relay",
+      "text": "옥상 송신기 릴레이를 복구한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_relay_repaired|flag:ch01_relay_bypass"
+      ]
     }
   ],
   "nodes": [
@@ -595,9 +627,14 @@
               "op": "add_stat",
               "target": "contamination",
               "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_route_archive",
+              "value": true
             }
           ],
-          "next_event_id": "EV_CH01_SECURITY_OFFICE"
+          "next_event_id": "EV_CH01_SECURITY_CLEAR"
         },
         {
           "choice_id": "ch01_lobby_corridor",
@@ -609,9 +646,14 @@
               "op": "set_flag",
               "target": "flag:ch01_archive_skipped_initial",
               "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_route_writer",
+              "value": true
             }
           ],
-          "next_event_id": "EV_CH01_SECURITY_OFFICE"
+          "next_event_id": "EV_CH01_SECURITY_CLEAR"
         }
       ],
       "on_enter_effects": [],
@@ -674,7 +716,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_ARCHIVE_VAULT"
+          "next_event_id": "EV_CH01_CACHE_SEARCH"
         },
         {
           "choice_id": "ch01_archive_skip",
@@ -693,7 +735,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_ARCHIVE_VAULT"
+          "next_event_id": "EV_CH01_CACHE_SEARCH"
         }
       ],
       "on_enter_effects": [],
@@ -753,7 +795,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_POWER_RESET"
+          "next_event_id": "EV_CH01_CACHE_SEARCH"
         },
         {
           "choice_id": "ch01_writer_leave",
@@ -772,7 +814,7 @@
               "value": -1
             }
           ],
-          "next_event_id": "EV_CH01_POWER_RESET"
+          "next_event_id": "EV_CH01_CACHE_SEARCH"
         }
       ],
       "on_enter_effects": [],
@@ -786,7 +828,9 @@
       "repeatable": false,
       "once_per_run": true,
       "priority": 50,
-      "conditions": [],
+      "conditions": [
+        "flag:ch01_relay_repaired|flag:ch01_relay_bypass"
+      ],
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_rooftop_signal",
@@ -1687,7 +1731,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+          "next_event_id": "EV_CH01_PATROL_AMBUSH"
         },
         {
           "choice_id": "ch01_tunnel_rush",
@@ -1706,7 +1750,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+          "next_event_id": "EV_CH01_PATROL_AMBUSH"
         }
       ],
       "on_enter_effects": [],
@@ -1885,7 +1929,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION"
+          "next_event_id": "EV_CH01_EXIT_CHECK"
         },
         {
           "choice_id": "ch01_extract_immediate",
@@ -1899,7 +1943,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION"
+          "next_event_id": "EV_CH01_EXIT_CHECK"
         }
       ],
       "on_enter_effects": [],
@@ -2359,6 +2403,278 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_EXIT_CHECK",
+      "event_type": "scene",
+      "node_id": "YD-08",
+      "title": "철수 점검",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_emergency_stairs",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "철수 직전 장비 상태를 다시 확인한다.",
+        "body": [
+          "정비하면 안전하지만 시간이 늦어진다.",
+          "즉시 이동하면 속도는 빠르지만 불안이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_exit_check",
+          "label": "장비 정비",
+          "conditions": [],
+          "preview": "정비 후 탈출한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION"
+        },
+        {
+          "choice_id": "ch01_exit_skip",
+          "label": "즉시 탈출",
+          "conditions": [],
+          "preview": "곧바로 탈출한다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_SECURITY_CLEAR",
+      "event_type": "combat",
+      "node_id": "YD-04",
+      "title": "편집실 복도 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_broadcast_lobby",
+        "music_key": "tension_mid"
+      },
+      "text": {
+        "summary": "편집실 복도에서 잔당이 길을 막아선다.",
+        "body": [
+          "젖은 전선이 스파크를 튀기고, 복도 끝에서 금속 긁는 소리가 가까워진다.",
+          "지금 정리하지 않으면 자료실과 옥상 모두 접근이 막힐 것이다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "combat": {
+        "encounter_table_id": "enc_ch01_archive_medium",
+        "arena_tags": [
+          "corridor",
+          "lowlight"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch01_security_cleared",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 10
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 20
+          }
+        ]
+      },
+      "choices": [
+        {
+          "choice_id": "ch01_security_to_archive",
+          "label": "자료실로 밀어붙인다",
+          "conditions": [
+            "flag:ch01_route_archive"
+          ],
+          "preview": "침수 자료실을 먼저 확보한다.",
+          "effects": [],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        },
+        {
+          "choice_id": "ch01_security_to_writer",
+          "label": "편집실로 우회한다",
+          "conditions": [
+            "flag:ch01_route_writer"
+          ],
+          "preview": "잔류자를 먼저 확인한다.",
+          "effects": [],
+          "next_event_id": "EV_CH01_WRITER_RESCUE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_CACHE_SEARCH",
+      "event_type": "exploration",
+      "node_id": "YD-05",
+      "title": "침수 캐시 조사",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_archive_flooded",
+        "music_key": "water_dread"
+      },
+      "text": {
+        "summary": "물에 잠긴 캐비닛에서 남은 장비를 찾는다.",
+        "body": [
+          "방수 포장된 상자들이 물때 속에서 반짝인다.",
+          "지금 챙기면 도움이 되지만, 시간과 소음이 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_cache_open",
+          "label": "캐비닛을 연다",
+          "conditions": [],
+          "preview": "장비를 확보하지만 위험이 늘어난다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_cache_cleared",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch01_archive",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_POWER_RELAY"
+        },
+        {
+          "choice_id": "ch01_cache_skip",
+          "label": "시간을 아낀다",
+          "conditions": [],
+          "preview": "바로 옥상으로 향한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_cache_skipped",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_POWER_RELAY"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_POWER_RELAY",
+      "event_type": "choice",
+      "node_id": "YD-07",
+      "title": "송신기 릴레이 복구",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_rooftop_signal",
+        "music_key": "signal_hiss"
+      },
+      "text": {
+        "summary": "송신기 릴레이가 녹과 습기에 잠겨 있다.",
+        "body": [
+          "정상 수리를 하면 안정적이지만 시간이 더 든다.",
+          "바이패스는 빠르지만 소음과 위험이 따른다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_relay_repair",
+          "label": "정상 수리",
+          "conditions": [],
+          "preview": "시간은 들지만 안정적이다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_relay_repaired",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        },
+        {
+          "choice_id": "ch01_relay_bypass",
+          "label": "임시 바이패스",
+          "conditions": [],
+          "preview": "빠르지만 소음이 커진다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_relay_bypass",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
     }
   ],
   "boss_event_id": "EV_CH01_BOSS_BROADCAST",
@@ -2367,7 +2683,7 @@
       "quest_track_id": "qt_ch01_main",
       "kind": "main",
       "title": "방송동 증폭기 회수",
-      "summary": "폐방송동에서 단파 증폭기와 송출 로그를 확보하고 편집괴를 버티며 귀환한다.",
+      "summary": "침수된 방송동에서 장비를 확보하고 귀환한다.",
       "entry_event_id": "EV_CH01_BRIEFING",
       "completion_event_id": "EV_CH01_EXTRACTION",
       "objective_ids": [
@@ -2405,6 +2721,48 @@
         "flag:ch01_broadcast_kept|flag:ch01_broadcast_cut"
       ],
       "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch01_writer",
+      "kind": "side",
+      "title": "편집실 잔류자",
+      "summary": "편집실 복도에서 발견된 잔류자의 선택을 정리한다.",
+      "entry_event_id": "EV_CH01_LOBBY_SEARCH",
+      "completion_event_id": "EV_CH01_WRITER_RESCUE",
+      "objective_ids": [
+        "obj_ch01_side_writer"
+      ],
+      "unlock_when": [
+        "flag:ch01_briefing_done"
+      ]
+    },
+    {
+      "quest_track_id": "qt_ch01_cache",
+      "kind": "side",
+      "title": "침수 캐시",
+      "summary": "기록국이 요구한 장비 캐시를 찾아낸다.",
+      "entry_event_id": "EV_CH01_ARCHIVE_DECISION",
+      "completion_event_id": "EV_CH01_CACHE_SEARCH",
+      "objective_ids": [
+        "obj_ch01_side_cache"
+      ],
+      "unlock_when": [
+        "flag:ch01_archive_opened|flag:ch01_archive_skipped"
+      ]
+    },
+    {
+      "quest_track_id": "qt_ch01_relay",
+      "kind": "side",
+      "title": "옥상 릴레이 복구",
+      "summary": "송신기 릴레이를 복구해 안정적인 송출을 보장한다.",
+      "entry_event_id": "EV_CH01_POWER_RELAY",
+      "completion_event_id": "EV_CH01_ROOFTOP_SIGNAL",
+      "objective_ids": [
+        "obj_ch01_side_relay"
+      ],
+      "unlock_when": [
+        "flag:ch01_security_cleared"
+      ]
     }
   ]
 }

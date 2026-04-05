@@ -67,6 +67,38 @@
       "complete_when": [
         "flag:ch04_vendor_bartered"
       ]
+    },
+    {
+      "objective_id": "obj_ch04_side_vendor",
+      "text": "현장 상인의 거래를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_vendor_trade|flag:ch04_vendor_skip"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_side_jam",
+      "text": "철도 인계장의 장애를 제거한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_rail_jam_cleared"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_side_repair",
+      "text": "라인 전원을 안정화한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_line_repair_on|flag:ch04_line_repair_bypass"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_side_cache",
+      "text": "배송 터널 캐시를 확인한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_tunnel_cache|flag:ch04_tunnel_skip"
+      ]
     }
   ],
   "nodes": [
@@ -484,7 +516,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH04_LOBBY_MEET"
+          "next_event_id": "EV_CH04_COLD_AUDIT"
         },
         {
           "choice_id": "ch04_cold_locals",
@@ -508,7 +540,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH04_LOBBY_MEET"
+          "next_event_id": "EV_CH04_COLD_AUDIT"
         }
       ],
       "on_enter_effects": [],
@@ -561,7 +593,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_LOADING_AMBUSH"
+          "next_event_id": "EV_CH04_VENDOR_BARTER"
         },
         {
           "choice_id": "ch04_lobby_solo",
@@ -575,7 +607,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_LOADING_AMBUSH"
+          "next_event_id": "EV_CH04_VENDOR_BARTER"
         }
       ],
       "on_enter_effects": [],
@@ -711,7 +743,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH04_SECURITY_SWEEP"
+          "next_event_id": "EV_CH04_LINE_REPAIR"
         },
         {
           "choice_id": "ch04_badge_forge",
@@ -740,7 +772,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH04_SECURITY_SWEEP"
+          "next_event_id": "EV_CH04_LINE_REPAIR"
         }
       ],
       "on_enter_effects": [],
@@ -791,7 +823,7 @@
               "value": 8
             }
           ],
-          "next_event_id": "EV_CH04_PRE_BOSS_CHECK"
+          "next_event_id": "EV_CH04_TUNNEL_CACHE"
         },
         {
           "choice_id": "ch04_line_off",
@@ -810,7 +842,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_PRE_BOSS_CHECK"
+          "next_event_id": "EV_CH04_TUNNEL_CACHE"
         }
       ],
       "on_enter_effects": [],
@@ -953,76 +985,67 @@
     },
     {
       "event_id": "EV_CH04_RAIL_JAM",
-      "event_type": "scene",
+      "event_type": "combat",
       "node_id": "MJ-04",
-      "title": "선로 장애",
+      "title": "레일 장애 제거",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 55,
+      "priority": 60,
       "conditions": [],
       "presentation": {
-        "layout": "choice",
+        "layout": "dialogue",
         "art_key": "bg_rail_transfer",
-        "music_key": "tension_low",
-        "widget_overrides": []
+        "music_key": "industrial_tension"
       },
       "text": {
-        "summary": "선로 분기 장치가 얼어붙어 길이 막혀 있다.",
+        "summary": "레일 인계장에 잔해와 적이 얽혀 있다.",
         "body": [
-          "작업등이 깜박이며 냉기가 번진다.",
-          "강제로 열면 소음이 크고, 복구하면 시간이 든다.",
-          "어느 쪽이든 통로를 확보해야 한다."
+          "레일을 복구하려면 먼저 이 구간을 정리해야 한다.",
+          "전투 소음이 전체 라인으로 번질 수 있다."
         ]
       },
       "npc_ids": [],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "combat": {
+        "encounter_table_id": "enc_ch04_logistics_floor",
+        "arena_tags": [
+          "rails",
+          "cargo"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch04_rail_jam_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch04_logistics",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 10
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 22
+          }
+        ]
+      },
       "choices": [
         {
-          "choice_id": "ch04_rail_force",
-          "label": "강제로 개방",
+          "choice_id": "ch04_rail_continue",
+          "label": "보안 사무실로 이동",
           "conditions": [],
-          "preview": "소음을 감수한다.",
-          "effects": [
-            {
-              "op": "add_stat",
-              "target": "noise",
-              "value": 2
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch04_rail_jam_fixed",
-              "value": true
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch04_rail_clear",
-              "value": true
-            }
-          ],
-          "next_event_id": "EV_CH04_SECURITY_BADGES"
-        },
-        {
-          "choice_id": "ch04_rail_repair",
-          "label": "정상 복구",
-          "conditions": [],
-          "preview": "시간이 늘지만 안전하다.",
-          "effects": [
-            {
-              "op": "add_stat",
-              "target": "contamination",
-              "value": 1
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch04_rail_jam_fixed",
-              "value": true
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch04_rail_clear",
-              "value": true
-            }
-          ],
+          "preview": "배지를 확보한다.",
+          "effects": [],
           "next_event_id": "EV_CH04_SECURITY_BADGES"
         }
       ],
@@ -1146,7 +1169,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH04_BOSS_PICKER"
+          "next_event_id": "EV_CH04_LINE_PREP"
         },
         {
           "choice_id": "ch04_prep_hold",
@@ -1165,7 +1188,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_BOSS_PICKER"
+          "next_event_id": "EV_CH04_LINE_PREP"
         }
       ],
       "on_enter_effects": [],
@@ -1235,62 +1258,62 @@
     },
     {
       "event_id": "EV_CH04_VENDOR_BARTER",
-      "event_type": "scene",
-      "node_id": "MJ-06",
-      "title": "정비창 거래",
+      "event_type": "dialogue",
+      "node_id": "MJ-03",
+      "title": "현장 거래",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 55,
+      "priority": 60,
       "conditions": [],
       "presentation": {
-        "layout": "choice",
-        "art_key": "bg_security_office",
-        "music_key": "tension_low",
-        "widget_overrides": []
+        "layout": "dialogue",
+        "art_key": "portrait_han_somyeong",
+        "music_key": "warehouse_safe"
       },
       "text": {
-        "summary": "정비창에서 보급과 정보를 맞교환한다.",
+        "summary": "현장 상인이 장비 교환을 제안한다.",
         "body": [
-          "남은 공구와 배지 조각이 테이블 위에 흩어져 있다.",
-          "교환을 하면 다음 구역 정보가 열린다.",
-          "흥정에 실패하면 소음만 남는다."
+          "남은 물자를 교환하면 정보와 보급을 얻을 수 있다.",
+          "거절하면 시간을 아끼지만 준비가 부족해진다."
         ]
       },
-      "npc_ids": [],
+      "npc_ids": [
+        "npc_han_somyeong"
+      ],
       "loot_table_ids": [],
       "choices": [
         {
           "choice_id": "ch04_vendor_trade",
           "label": "거래한다",
           "conditions": [],
-          "preview": "보급품을 확보한다.",
+          "preview": "보급을 얻고 정보를 확보한다.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch04_vendor_bartered",
+              "target": "flag:ch04_vendor_trade",
               "value": true
             },
             {
               "op": "grant_loot_table",
-              "target": "loot:lt_global_basic_office",
+              "target": "loot:lt_ch04_logistics",
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_LINE_DECISION"
+          "next_event_id": "EV_CH04_ROUTE_SELECTION"
         },
         {
           "choice_id": "ch04_vendor_skip",
-          "label": "건너뛴다",
+          "label": "거절한다",
           "conditions": [],
-          "preview": "시간을 줄인다.",
+          "preview": "시간을 아끼고 바로 이동한다.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch04_vendor_bartered",
+              "target": "flag:ch04_vendor_skip",
               "value": true
             }
           ],
-          "next_event_id": "EV_CH04_LINE_DECISION"
+          "next_event_id": "EV_CH04_ROUTE_SELECTION"
         }
       ],
       "on_enter_effects": [],
@@ -1334,7 +1357,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_EXTRACTION"
+          "next_event_id": "EV_CH04_EXIT_CHECK"
         },
         {
           "choice_id": "ch04_extract_run",
@@ -1348,7 +1371,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_EXTRACTION"
+          "next_event_id": "EV_CH04_EXIT_CHECK"
         }
       ],
       "on_enter_effects": [],
@@ -1477,7 +1500,7 @@
               "value": 4
             }
           ],
-          "next_event_id": "EV_CH04_COLD_ALLOC"
+          "next_event_id": "EV_CH04_LOBBY_MEET"
         },
         {
           "choice_id": "ch04_cold_skip",
@@ -1496,7 +1519,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_COLD_ALLOC"
+          "next_event_id": "EV_CH04_LOBBY_MEET"
         }
       ],
       "on_enter_effects": [],
@@ -1552,6 +1575,192 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_EXIT_CHECK",
+      "event_type": "scene",
+      "node_id": "MJ-07",
+      "title": "철수 점검",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_delivery_tunnel",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "철수 직전 장비 상태를 다시 점검한다.",
+        "body": [
+          "정비하면 안전하지만 시간이 늘어난다.",
+          "즉시 이동하면 빠르지만 리스크가 커진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_exit_check",
+          "label": "장비 정비",
+          "conditions": [],
+          "preview": "정비 후 탈출한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_EXTRACTION"
+        },
+        {
+          "choice_id": "ch04_exit_skip",
+          "label": "즉시 탈출",
+          "conditions": [],
+          "preview": "곧바로 탈출한다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_LINE_REPAIR",
+      "event_type": "choice",
+      "node_id": "MJ-05",
+      "title": "라인 전원 복구",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_sorting_hall",
+        "music_key": "printer_static"
+      },
+      "text": {
+        "summary": "분류 라인을 재가동해 이동로를 확보한다.",
+        "body": [
+          "제어 패널이 불안정해 복구 방식에 따라 리스크가 달라진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_line_repair_on",
+          "label": "전원을 안정화한다",
+          "conditions": [],
+          "preview": "안정적이지만 시간이 든다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_repair_on",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_LINE_DECISION"
+        },
+        {
+          "choice_id": "ch04_line_repair_bypass",
+          "label": "부분 우회한다",
+          "conditions": [],
+          "preview": "빠르지만 흔적이 남는다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_repair_bypass",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH04_LINE_DECISION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_TUNNEL_CACHE",
+      "event_type": "exploration",
+      "node_id": "MJ-07",
+      "title": "배송 터널 캐시",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_delivery_tunnel",
+        "music_key": "industrial_low"
+      },
+      "text": {
+        "summary": "터널 끝에서 비상 보급 캐시를 발견한다.",
+        "body": [
+          "지금 챙기면 보스전에 도움이 되지만 시간은 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch04_cache_open",
+          "label": "캐시를 연다",
+          "conditions": [],
+          "preview": "보급을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_tunnel_cache",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_BOSS_PICKER"
+        },
+        {
+          "choice_id": "ch04_cache_skip",
+          "label": "바로 이동",
+          "conditions": [],
+          "preview": "전투를 우선한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_tunnel_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_BOSS_PICKER"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
     }
   ],
   "boss_event_id": "EV_CH04_BOSS_PICKER",
@@ -1559,15 +1768,14 @@
     {
       "quest_track_id": "qt_ch04_main",
       "kind": "main",
-      "title": "상자들의 도시",
-      "summary": "물류 라인을 확보하고 피커 프라임을 돌파한다.",
+      "title": "상자들의 도시 돌파",
+      "summary": "보안 배지와 진입권을 확보해 판교로 향한다.",
       "entry_event_id": "EV_CH04_ENTRY",
       "completion_event_id": "EV_CH04_EXTRACTION",
       "objective_ids": [
         "obj_ch04_01",
         "obj_ch04_02",
-        "obj_ch04_03",
-        "obj_ch04_06"
+        "obj_ch04_03"
       ],
       "reveal_cap": "confirmation"
     },
@@ -1598,6 +1806,34 @@
         "flag:ch04_rail_cleared"
       ],
       "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch04_vendor",
+      "kind": "side",
+      "title": "현장 거래",
+      "summary": "물자와 정보를 교환해 위험을 낮춘다.",
+      "entry_event_id": "EV_CH04_LOBBY_MEET",
+      "completion_event_id": "EV_CH04_VENDOR_BARTER",
+      "objective_ids": [
+        "obj_ch04_side_vendor"
+      ],
+      "unlock_when": [
+        "flag:ch04_started"
+      ]
+    },
+    {
+      "quest_track_id": "qt_ch04_cache",
+      "kind": "side",
+      "title": "터널 캐시",
+      "summary": "배송 터널의 보급 캐시를 확보한다.",
+      "entry_event_id": "EV_CH04_LINE_DECISION",
+      "completion_event_id": "EV_CH04_TUNNEL_CACHE",
+      "objective_ids": [
+        "obj_ch04_side_cache"
+      ],
+      "unlock_when": [
+        "flag:ch04_line_on|flag:ch04_line_off"
+      ]
     }
   ]
 }

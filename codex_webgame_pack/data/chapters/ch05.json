@@ -82,6 +82,38 @@
       "complete_when": [
         "flag:ch05_cooling_cleared"
       ]
+    },
+    {
+      "objective_id": "obj_ch05_side_scan",
+      "text": "로비 감시망을 스캔한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_hub_scan_done|flag:ch05_hub_scan_skipped"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_side_cooling",
+      "text": "냉각 구간의 폭주를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_cooling_break_cleared"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_side_relay",
+      "text": "ARK-P 릴레이를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_relay_locked|flag:ch05_relay_bypass"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_side_prep",
+      "text": "보스전에 앞서 코어 방호를 준비한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_core_prep_done|flag:ch05_core_prep_rushed"
+      ]
     }
   ],
   "nodes": [
@@ -627,7 +659,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH05_COOLING_AMBUSH"
+          "next_event_id": "EV_CH05_COOLING_BREAK"
         },
         {
           "choice_id": "ch05_cooling_bypass",
@@ -646,7 +678,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH05_COOLING_AMBUSH"
+          "next_event_id": "EV_CH05_COOLING_BREAK"
         }
       ],
       "on_enter_effects": [],
@@ -704,7 +736,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH05_DATA_ACCESS"
+          "next_event_id": "EV_CH05_ARC_RELAY"
         },
         {
           "choice_id": "ch05_ara_wait",
@@ -723,7 +755,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH05_DATA_ACCESS"
+          "next_event_id": "EV_CH05_ARC_RELAY"
         }
       ],
       "on_enter_effects": [],
@@ -780,7 +812,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
+          "next_event_id": "EV_CH05_CORE_PREP"
         },
         {
           "choice_id": "ch05_data_limited",
@@ -809,7 +841,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
+          "next_event_id": "EV_CH05_CORE_PREP"
         },
         {
           "choice_id": "ch05_data_broadcast",
@@ -838,7 +870,7 @@
               "value": 7
             }
           ],
-          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
+          "next_event_id": "EV_CH05_CORE_PREP"
         }
       ],
       "on_enter_effects": [],
@@ -1464,64 +1496,64 @@
     },
     {
       "event_id": "EV_CH05_LOBBY_SCAN",
-      "event_type": "choice",
+      "event_type": "exploration",
       "node_id": "PG-02",
       "title": "로비 스캔",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 55,
+      "priority": 60,
       "conditions": [],
       "presentation": {
-        "layout": "choice",
+        "layout": "dialogue",
         "art_key": "bg_pangyo_lobby",
-        "music_key": "terminal_hum",
-        "widget_overrides": [
-          "objective_panel"
-        ]
+        "music_key": "terminal_hum"
       },
       "text": {
-        "summary": "로비 데이터 포트가 아직 살아 있다.",
+        "summary": "로비 감시망을 스캔해 위협 위치를 파악한다.",
         "body": [
-          "스캔을 진행하면 경로 정보를 확보할 수 있다."
+          "센서가 깜빡이며 경고음을 내고 있다.",
+          "지금 스캔하면 이후 이동이 안전해진다."
         ]
       },
       "npc_ids": [],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch05_lobby_scan",
-          "label": "로비 스캔 실행",
+          "choice_id": "ch05_scan_extend",
+          "label": "스캔을 확장한다",
           "conditions": [],
-          "preview": "경로 정보를 확보하고 이동한다.",
+          "preview": "보급과 정보를 얻는다.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch05_lobby_scanned",
+              "target": "flag:ch05_hub_scan_done",
               "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
             },
             {
               "op": "add_stat",
               "target": "noise",
-              "value": 2
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH05_SKYWALK"
         },
         {
-          "choice_id": "ch05_lobby_skip",
-          "label": "즉시 이동",
+          "choice_id": "ch05_scan_skip",
+          "label": "바로 이동",
           "conditions": [],
-          "preview": "스캔을 생략하고 이동한다.",
+          "preview": "시간을 절약한다.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch05_lobby_scanned",
+              "target": "flag:ch05_hub_scan_skipped",
               "value": true
-            },
-            {
-              "op": "sub_stat",
-              "target": "noise",
-              "value": 1
             }
           ],
           "next_event_id": "EV_CH05_SKYWALK"
@@ -1565,7 +1597,7 @@
           "conditions": [],
           "preview": "통로를 확보하고 전진한다.",
           "effects": [],
-          "next_event_id": "EV_CH05_KIM_ARA"
+          "next_event_id": "EV_CH05_COOLING_BREACH"
         }
       ],
       "on_enter_effects": [],
@@ -1646,7 +1678,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH05_LOBBY_MAPPING"
+          "next_event_id": "EV_CH05_SKYWALK"
         },
         {
           "choice_id": "ch05_lobby_bypass",
@@ -1665,7 +1697,7 @@
               "value": 5
             }
           ],
-          "next_event_id": "EV_CH05_LOBBY_MAPPING"
+          "next_event_id": "EV_CH05_SKYWALK"
         }
       ],
       "on_enter_effects": [],
@@ -1716,7 +1748,7 @@
               "value": 3
             }
           ],
-          "next_event_id": "EV_CH05_COOLING_ROUTE"
+          "next_event_id": "EV_CH05_KIM_ARA"
         }
       ],
       "on_enter_effects": [],
@@ -1780,6 +1812,206 @@
               "value": 3
             }
           ],
+          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_COOLING_BREAK",
+      "event_type": "combat",
+      "node_id": "PG-04",
+      "title": "냉각 구간 폭주",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_cooling_room",
+        "music_key": "cooling_hum"
+      },
+      "text": {
+        "summary": "냉각 설비가 폭주하며 적이 몰려온다.",
+        "body": [
+          "증기와 경보음이 섞여 시야가 흐려진다.",
+          "지금 정리하지 않으면 서버홀 접근이 지연된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "combat": {
+        "encounter_table_id": "enc_ch05_cooling",
+        "arena_tags": [
+          "cooling",
+          "steam"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch05_cooling_break_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch05_server",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 12
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 26
+          }
+        ]
+      },
+      "choices": [
+        {
+          "choice_id": "ch05_cooling_continue",
+          "label": "연구 격리실로 이동",
+          "conditions": [],
+          "preview": "김아라를 찾는다.",
+          "effects": [],
+          "next_event_id": "EV_CH05_KIM_ARA"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_ARC_RELAY",
+      "event_type": "choice",
+      "node_id": "PG-05",
+      "title": "릴레이 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_arkp_serverhall",
+        "music_key": "server_chorus"
+      },
+      "text": {
+        "summary": "ARK-P 릴레이를 잠그거나 우회해야 한다.",
+        "body": [
+          "릴레이 상태에 따라 이후 전투 난이도가 달라진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_relay_lock",
+          "label": "릴레이 봉인",
+          "conditions": [],
+          "preview": "안정성을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_relay_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_DATA_ACCESS"
+        },
+        {
+          "choice_id": "ch05_relay_bypass",
+          "label": "릴레이 우회",
+          "conditions": [],
+          "preview": "속도를 택한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_relay_bypass",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH05_DATA_ACCESS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_CORE_PREP",
+      "event_type": "dialogue",
+      "node_id": "PG-07",
+      "title": "코어 방호 준비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_arkp_exit",
+        "music_key": "lab_tension"
+      },
+      "text": {
+        "summary": "미러 라인스 진입 전 코어를 보호할 준비를 한다.",
+        "body": [
+          "잔해가 흔들리고, 전자음이 귓속을 파고든다.",
+          "지금 준비가 보스전의 생존률을 좌우한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_core_prep",
+          "label": "방호 준비",
+          "conditions": [],
+          "preview": "체력을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_core_prep_done",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "hp",
+              "value": 5
+            }
+          ],
+          "next_event_id": "EV_CH05_BOSS_LINES"
+        },
+        {
+          "choice_id": "ch05_core_rush",
+          "label": "바로 진입",
+          "conditions": [],
+          "preview": "속도를 우선한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_core_prep_rushed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
           "next_event_id": "EV_CH05_BOSS_LINES"
         }
       ],
@@ -1792,16 +2024,14 @@
     {
       "quest_track_id": "qt_ch05_main",
       "kind": "main",
-      "title": "미러센터 접속",
-      "summary": "데이터 접근과 보스 돌파를 마무리해 이탈 루트를 확보한다.",
+      "title": "미러센터 돌파",
+      "summary": "ARK-P 내부를 돌파해 인증값을 확보한다.",
       "entry_event_id": "EV_CH05_ENTRY",
       "completion_event_id": "EV_CH05_EXTRACTION",
       "objective_ids": [
         "obj_ch05_01",
         "obj_ch05_02",
-        "obj_ch05_03",
-        "obj_ch05_07",
-        "obj_ch05_08"
+        "obj_ch05_03"
       ],
       "reveal_cap": "confirmation"
     },
@@ -1832,6 +2062,34 @@
         "flag:ch05_signal_stable"
       ],
       "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch05_scan",
+      "kind": "side",
+      "title": "로비 스캔",
+      "summary": "감시망을 스캔해 위협을 줄인다.",
+      "entry_event_id": "EV_CH05_LOBBY_MAPPING",
+      "completion_event_id": "EV_CH05_LOBBY_SCAN",
+      "objective_ids": [
+        "obj_ch05_side_scan"
+      ],
+      "unlock_when": [
+        "flag:ch05_started"
+      ]
+    },
+    {
+      "quest_track_id": "qt_ch05_relay",
+      "kind": "side",
+      "title": "릴레이 확보",
+      "summary": "서버홀의 릴레이를 정리해 보스전에 대비한다.",
+      "entry_event_id": "EV_CH05_KIM_ARA",
+      "completion_event_id": "EV_CH05_ARC_RELAY",
+      "objective_ids": [
+        "obj_ch05_side_relay"
+      ],
+      "unlock_when": [
+        "flag:ch05_ara_rescued_first|flag:ch05_ara_delayed"
+      ]
     }
   ]
 }
