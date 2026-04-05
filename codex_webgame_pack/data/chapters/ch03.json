@@ -1,1 +1,1844 @@
-{   "version": "1.0.0",   "game_id": "dokdo_arc_webgame",   "chapter_id": "CH03",   "title": "유리정원",   "role": "수직 탐색, 계층 갈등, 고층 공포 도입",   "entry_node_id": "JS-01",   "exit_node_ids": [     "JS-08"   ],   "recommended_level": 3,   "ui_profile": {     "theme": "jamsil_vertical",     "special_widgets": [       "floor_navigator",       "power_router",       "fall_warning",       "faction_compare"     ]   },   "objectives": [     {       "objective_id": "obj_ch03_01",       "text": "고성능 축전지를 확보한다.",       "required": true,       "complete_when": [         "item:itm_highcap_capacitor>=1"       ]     },     {       "objective_id": "obj_ch03_02",       "text": "송신 릴레이 렌즈를 회수한다.",       "required": true,       "complete_when": [         "item:itm_relay_lens>=1"       ]     },     {       "objective_id": "obj_ch03_03",       "text": "잠실권 갈등 결론을 낸다.",       "required": true,       "complete_when": [         "flag:ch03_upper_side|flag:ch03_lower_side|flag:ch03_balanced"       ]     }   ],   "nodes": [     {       "node_id": "JS-01",       "name": "저층 상가 로비",       "node_type": "travel",       "description": "파손된 회전문과 상가 셔터 잔해가 널린 진입부.",       "coordinates": {         "x": 12,         "y": 80       },       "encounter_table_id": "enc_ch03_tower_mid",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "JS-02",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "JS-03",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH03_ENTRY"       ],       "revisit_rule": "always",       "tags": [         "entry"       ]     },     {       "node_id": "JS-02",       "name": "B2 주차장 난민구역",       "node_type": "safehouse",       "description": "안보경이 버티는 하층 거점.",       "coordinates": {         "x": 28,         "y": 72       },       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [         "npc_ahn_bogyeong"       ],       "connections": [         {           "to": "JS-03",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "JS-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH03_BASEMENT_MEET"       ],       "revisit_rule": "always",       "tags": [         "npc",         "safe"       ]     },     {       "node_id": "JS-03",       "name": "서비스 계단실",       "node_type": "danger",       "description": "천장 매복과 정전이 겹친 수직 이동로.",       "coordinates": {         "x": 40,         "y": 56       },       "encounter_table_id": "enc_ch03_tower_mid",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "JS-04",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 2           }         },         {           "to": "JS-06",           "travel_type": "elevator",           "requires": [             "flag:ch03_elevator_powered"           ],           "cost": {             "time": 1,             "noise": 4,             "contamination": 1           }         },         {           "to": "JS-07",           "travel_type": "outer_wall",           "requires": [             "item:itm_climbing_hook>=1"           ],           "cost": {             "time": 3,             "noise": 3,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH03_VERTICAL_ROUTE"       ],       "revisit_rule": "always",       "tags": [         "vertical"       ]     },     {       "node_id": "JS-04",       "name": "중층 쇼룸 존",       "node_type": "exploration",       "description": "모델하우스와 유리 복도가 남은 층.",       "coordinates": {         "x": 56,         "y": 48       },       "encounter_table_id": "enc_ch03_tower_mid",       "loot_table_ids": [         "lt_ch03_upper_luxury"       ],       "npc_ids": [],       "connections": [         {           "to": "JS-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "JS-06",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH03_SHOWROOM_SWEEP"       ],       "revisit_rule": "always",       "tags": [         "loot",         "luxury"       ]     },     {       "node_id": "JS-05",       "name": "발전실",       "node_type": "branch",       "description": "축전지와 전력 분배 패널이 있는 핵심 설비.",       "coordinates": {         "x": 48,         "y": 64       },       "loot_table_ids": [         "lt_ch03_upper_luxury"       ],       "npc_ids": [],       "connections": [         {           "to": "JS-06",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         },         {           "to": "JS-07",           "travel_type": "elevator",           "requires": [             "flag:ch03_elevator_powered"           ],           "cost": {             "time": 1,             "noise": 5,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH03_POWER_ROUTING"       ],       "revisit_rule": "after_clear",       "tags": [         "power",         "main"       ]     },     {       "node_id": "JS-06",       "name": "상층 라운지",       "node_type": "branch",       "description": "류세온이 통제하는 상층 거점.",       "coordinates": {         "x": 68,         "y": 42       },       "loot_table_ids": [         "lt_ch03_upper_luxury"       ],       "npc_ids": [         "npc_ryu_seon"       ],       "connections": [         {           "to": "JS-07",           "travel_type": "skybridge",           "requires": [],           "cost": {             "time": 2,             "noise": 3,             "contamination": 2           }         },         {           "to": "JS-08",           "travel_type": "skybridge",           "requires": [],           "cost": {             "time": 3,             "noise": 4,             "contamination": 3           }         }       ],       "event_ids": [         "EV_CH03_UPPER_NEGOTIATION"       ],       "revisit_rule": "always",       "tags": [         "npc",         "elite"       ]     },     {       "node_id": "JS-07",       "name": "스카이브리지",       "node_type": "danger",       "description": "강풍과 낙하 리스크가 있는 외부 연결통로.",       "coordinates": {         "x": 80,         "y": 34       },       "encounter_table_id": "enc_ch03_tower_mid",       "loot_table_ids": [         "lt_ch03_upper_luxury"       ],       "npc_ids": [],       "connections": [         {           "to": "JS-08",           "travel_type": "skybridge",           "requires": [],           "cost": {             "time": 2,             "noise": 3,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH03_SKYBRIDGE"       ],       "revisit_rule": "locked_after_clear",       "tags": [         "fall",         "bridge"       ]     },     {       "node_id": "JS-08",       "name": "옥상 송신정원",       "node_type": "boss",       "description": "릴레이 렌즈와 보스가 있는 고층 최상부.",       "coordinates": {         "x": 90,         "y": 22       },       "encounter_table_id": "enc_ch03_boss_garden",       "loot_table_ids": [         "lt_ch03_upper_luxury"       ],       "npc_ids": [],       "connections": [],       "event_ids": [         "EV_CH03_BOSS_GARDEN",         "EV_CH03_EXTRACTION"       ],       "revisit_rule": "after_clear",       "tags": [         "boss",         "signal"       ]     }   ],   "events": [     {       "event_id": "EV_CH03_ENTRY",       "event_type": "briefing",       "node_id": "JS-01",       "title": "유리정원 진입",       "repeatable": false,       "once_per_run": true,       "priority": 100,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "bg_jamsil_lobby",         "music_key": "tower_wind",         "widget_overrides": [           "floor_navigator"         ]       },       "text": {         "summary": "잠실 고층권에 남은 축전지와 릴레이 렌즈를 회수해야 한다.",         "body": [           "잠실 캐슬원은 상층과 하층이 분리된 계급 사회로 굳어 있다.",           "누구 편을 들든 누군가는 전기와 물을 잃는다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_start",           "label": "건물 내부로 들어간다",           "conditions": [],           "preview": "하층부터 상황을 파악한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch03_started",               "value": true             }           ],           "next_event_id": "EV_CH03_BASEMENT_MEET"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_BASEMENT_MEET",       "event_type": "dialogue",       "node_id": "JS-02",       "title": "안보경의 지하",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_ahn_bogyeong",         "music_key": "basement_safe",         "widget_overrides": [           "moral_choice"         ]       },       "text": {         "summary": "안보경은 하층 난민들에게 물과 통로가 우선이라고 말한다.",         "body": [           "하층은 전력이 부족하고, 상층은 전기를 독점한다.",           "안보경을 돕으면 급수와 난민 생존이 좋아지지만 상층과 충돌한다."         ]       },       "npc_ids": [         "npc_ahn_bogyeong"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_basement_support",           "label": "하층부터 지원한다",           "conditions": [],           "preview": "급수 펌프와 안전 통로를 살린다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_ahn_bogyeong",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.jamsil_lower",               "value": 2             },             {               "op": "set_flag",               "target": "flag:ch03_lower_support",               "value": true             }           ],           "next_event_id": "EV_CH03_VERTICAL_ROUTE"         },         {           "choice_id": "ch03_basement_neutral",           "label": "중립을 지킨다",           "conditions": [],           "preview": "일단 정보를 수집한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch03_neutral_start",               "value": true             }           ],           "next_event_id": "EV_CH03_VERTICAL_ROUTE"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_VERTICAL_ROUTE",       "event_type": "choice",       "node_id": "JS-03",       "title": "수직 이동 선택",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_service_stair",         "music_key": "stair_creak",         "widget_overrides": [           "floor_navigator",           "route_compare"         ]       },       "text": {         "summary": "계단실은 안전하지만 느리고, 엘리베이터는 소음이 심하다. 외벽 우회는 장비가 필요하다.",         "body": [           "고층 챕터의 핵심은 수직 이동과 낙하 리스크다.",           "여기서 열린 이동 옵션은 후반 재방문 루트를 결정한다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_vertical_stairs",           "label": "계단으로 오른다",           "conditions": [],           "preview": "가장 무난하지만 전투를 피할 수 없다.",           "effects": [             {               "op": "add_stat",               "target": "noise",               "value": 2             }           ],           "next_event_id": "EV_CH03_SHOWROOM_SWEEP"         },         {           "choice_id": "ch03_vertical_elevator",           "label": "비상 엘리베이터를 강제로 연다",           "conditions": [],           "preview": "빠르게 오르지만 적을 끌어들인다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch03_elevator_forced",               "value": true             },             {               "op": "add_stat",               "target": "noise",               "value": 6             }           ],           "next_event_id": "EV_CH03_SHOWROOM_SWEEP"         },         {           "choice_id": "ch03_vertical_outer",           "label": "외벽 보수레일을 탄다",           "conditions": [             "item:itm_climbing_hook>=1"           ],           "preview": "등반 장비가 있으면 가장 빠르다.",           "effects": [             {               "op": "sub_stat",               "target": "noise",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch03_outer_route",               "value": true             }           ],           "next_event_id": "EV_CH03_SHOWROOM_SWEEP"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_SHOWROOM_SWEEP",       "event_type": "exploration",       "node_id": "JS-04",       "title": "모델하우스 잔해",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_jamsil_showroom",         "music_key": "glass_creak",         "widget_overrides": [           "loot_preview",           "floor_navigator"         ]       },       "text": {         "summary": "고급 쇼룸과 비상 의약품 캐비닛, 그리고 계단 키카드가 흩어져 있다.",         "body": [           "고급 자원을 노리면 루팅은 풍부하지만 창가체 습격 확률이 오른다.",           "빠르게 지나가면 전력 분배 결정을 서둘러야 한다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_showroom_loot",           "label": "철저히 수색한다",           "conditions": [],           "preview": "고급 자원과 키 조각을 찾는다.",           "effects": [             {               "op": "grant_loot_table",               "target": "loot:lt_ch03_upper_luxury",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 4             }           ],           "next_event_id": "EV_CH03_POWER_ROUTING"         },         {           "choice_id": "ch03_showroom_rush",           "label": "핵심만 챙긴다",           "conditions": [],           "preview": "보스전 자원을 아낀다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_portable_charger",               "value": 1             }           ],           "next_event_id": "EV_CH03_POWER_ROUTING"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_POWER_ROUTING",       "event_type": "choice",       "node_id": "JS-05",       "title": "전력 분배",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_power_room",         "music_key": "power_hum",         "widget_overrides": [           "power_router",           "noise_meter"         ]       },       "text": {         "summary": "하나의 패널로 엘리베이터, 하층 급수 펌프, 상층 라운지 방호를 선택적으로 살릴 수 있다.",         "body": [           "엘리베이터를 살리면 이동은 쉬워지지만 소음이 크게 늘어난다.",           "하층 급수를 선택하면 안보경 호감이 오르고, 상층 방호를 선택하면 류세온 편이 선다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_power_elevator",           "label": "엘리베이터 우선",           "conditions": [],           "preview": "고층 이동성을 확보한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch03_elevator_powered",               "value": true             },             {               "op": "add_stat",               "target": "noise",               "value": 7             }           ],           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"         },         {           "choice_id": "ch03_power_lower",           "label": "하층 급수 펌프 우선",           "conditions": [],           "preview": "하층 생존을 살린다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_ahn_bogyeong",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.jamsil_lower",               "value": 2             },             {               "op": "set_flag",               "target": "flag:ch03_water_to_lower",               "value": true             }           ],           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"         },         {           "choice_id": "ch03_power_upper",           "label": "상층 방호 우선",           "conditions": [],           "preview": "상층 협력을 얻는다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_ryu_seon",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.jamsil_upper",               "value": 2             },             {               "op": "set_flag",               "target": "flag:ch03_power_to_upper",               "value": true             }           ],           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_UPPER_NEGOTIATION",       "event_type": "dialogue",       "node_id": "JS-06",       "title": "류세온의 상층",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_ryu_seon",         "music_key": "elite_tension",         "widget_overrides": [           "reputation_change",           "faction_compare"         ]       },       "text": {         "summary": "류세온은 모두를 살리려 들면 건물 전체가 무너진다고 주장한다.",         "body": [           "상층 협력을 택하면 고급 장비와 축전지 위치를 더 빨리 알 수 있다.",           "하지만 하층 생존자들은 그 선택을 오래 기억한다."         ]       },       "npc_ids": [         "npc_ryu_seon"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_upper_side",           "label": "류세온과 협력한다",           "conditions": [],           "preview": "상층 자원과 송신정원 접근 허가를 받는다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_ryu_seon",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.jamsil_upper",               "value": 2             },             {               "op": "grant_item",               "target": "item:itm_highcap_capacitor",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch03_upper_side",               "value": true             }           ],           "next_event_id": "EV_CH03_SKYBRIDGE"         },         {           "choice_id": "ch03_lower_side",           "label": "안보경 쪽을 든다",           "conditions": [],           "preview": "하층 민간인을 먼저 대피시킨다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_ahn_bogyeong",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.jamsil_lower",               "value": 2             },             {               "op": "grant_item",               "target": "item:itm_highcap_capacitor",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch03_lower_side",               "value": true             }           ],           "next_event_id": "EV_CH03_SKYBRIDGE"         },         {           "choice_id": "ch03_negotiate_both",           "label": "둘 다 설득한다",           "conditions": [],           "preview": "절충안을 택하지만 모두를 만족시키진 못한다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_ahn_bogyeong",               "value": 1             },             {               "op": "add_trust",               "target": "trust.npc_ryu_seon",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_highcap_capacitor",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch03_balanced",               "value": true             }           ],           "next_event_id": "EV_CH03_SKYBRIDGE"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_SKYBRIDGE",       "event_type": "danger",       "node_id": "JS-07",       "title": "유리 위를 걷다",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_skybridge",         "music_key": "wind_howl",         "widget_overrides": [           "fall_warning",           "stamina_hint"         ]       },       "text": {         "summary": "강풍과 외벽을 타는 창가체가 플레이어의 이동 동선을 끊는다.",         "body": [           "구조 신호를 보내면 숨겨진 생존자를 구할 수 있지만 적도 함께 몰려온다.",           "조용히 건너면 전투는 줄지만 생존자 구조 기회를 잃는다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_bridge_signal",           "label": "구조 신호탄을 쏜다",           "conditions": [],           "preview": "숨겨진 구조 이벤트를 연다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_signal_flare",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 8             },             {               "op": "set_flag",               "target": "flag:ch03_rescue_signal",               "value": true             }           ],           "next_event_id": "EV_CH03_BOSS_GARDEN"         },         {           "choice_id": "ch03_bridge_silent",           "label": "조용히 건넌다",           "conditions": [],           "preview": "낙하 리스크만 관리하며 이동한다.",           "effects": [             {               "op": "sub_stat",               "target": "noise",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch03_silent_bridge",               "value": true             }           ],           "next_event_id": "EV_CH03_BOSS_GARDEN"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH03_BOSS_GARDEN",       "event_type": "boss",       "node_id": "JS-08",       "title": "유리정원",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "boss",         "art_key": "boss_glassgarden",         "music_key": "boss_glassgarden",         "widget_overrides": [           "boss_hp",           "fall_warning",           "noise_meter"         ]       },       "text": {         "summary": "전망 접합체가 정원의 붕괴한 유리 구조물을 휘감으며 각성한다.",         "body": [           "유리 바닥이 깨지며 안전 구역이 계속 바뀐다.",           "강풍, 낙하, 창가체 증원이 동시에 겹치는 수직형 보스전이다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_boss_clear",           "label": "릴레이 렌즈를 확보하고 빠져나간다",           "conditions": [],           "preview": "보스전 승리 후 귀환 절차로 넘어간다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_03_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH03_EXTRACTION"         }       ],       "on_enter_effects": [],       "on_complete_effects": [],       "combat": {         "encounter_table_id": "enc_ch03_boss_garden",         "boss_id": "vista_amalgam_glassgarden",         "arena_tags": [           "glass",           "vertical",           "wind"         ],         "victory_effects": [           {             "op": "grant_item",             "target": "item:itm_relay_lens",             "value": 1           },           {             "op": "grant_item",             "target": "item:itm_data_key_fragment",             "value": 1           },           {             "op": "set_flag",             "target": "flag:ch03_boss_down",             "value": true           }         ],         "defeat_effects": [           {             "op": "sub_stat",             "target": "hp",             "value": 30           },           {             "op": "add_stat",             "target": "contamination",             "value": 12           }         ]       }     },     {       "event_id": "EV_CH03_EXTRACTION",       "event_type": "extraction",       "node_id": "JS-08",       "title": "잠실권 이탈",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [         "flag:chapter_03_escape_ready"       ],       "presentation": {         "layout": "results",         "art_key": "bg_rooftop_escape",         "music_key": "safe_bunker",         "widget_overrides": [           "chapter_result",           "faction_summary"         ]       },       "text": {         "summary": "축전지와 릴레이 렌즈, 그리고 판교로 이어지는 데이터 키 조각을 챙긴다.",         "body": [           "누구 편을 들었는지에 따라 잠실권의 후일담과 장비 교환 테이블이 달라진다.",           "이 장의 결과는 Chapter 4의 배지 확보 난이도에 반영된다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch03_finish",           "label": "챕터를 종료한다",           "conditions": [],           "preview": "다음 장 브리핑으로 이동한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_03_completed",               "value": true             },             {               "op": "set_value",               "target": "chapter.current",               "value": "CH04"             }           ],           "next_event_id": "END_CH03"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     }   ],   "boss_event_id": "EV_CH03_BOSS_GARDEN" }
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH03",
+  "title": "유리정원",
+  "role": "수직 탐색, 계층 갈등, 고층 공포 도입",
+  "entry_node_id": "JS-01",
+  "exit_node_ids": [
+    "JS-08"
+  ],
+  "recommended_level": 3,
+  "ui_profile": {
+    "theme": "jamsil_vertical",
+    "special_widgets": [
+      "floor_navigator",
+      "power_router",
+      "fall_warning",
+      "faction_compare"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch03_01",
+      "text": "고성능 축전지를 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_highcap_capacitor>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch03_02",
+      "text": "송신 릴레이 렌즈를 회수한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_relay_lens>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch03_03",
+      "text": "잠실권 갈등 결론을 낸다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch03_upper_side|flag:ch03_lower_side|flag:ch03_balanced"
+      ]
+    },
+    {
+      "objective_id": "obj_ch03_04",
+      "text": "서비스 계단 매복을 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch03_service_clear"
+      ]
+    },
+    {
+      "objective_id": "obj_ch03_05",
+      "text": "정전 복구를 완료한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch03_blackout_repair"
+      ]
+    },
+    {
+      "objective_id": "obj_ch03_06",
+      "text": "구조 신호를 확인한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch03_rescue_detour_done"
+      ]
+    },
+    {
+      "objective_id": "obj_ch03_07",
+      "text": "쇼룸 매복을 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch03_showroom_cleared"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "JS-01",
+      "name": "저층 상가 로비",
+      "node_type": "travel",
+      "description": "파손된 회전문과 상가 셔터 잔해가 널린 진입부.",
+      "coordinates": {
+        "x": 12,
+        "y": 80
+      },
+      "encounter_table_id": "enc_ch03_tower_mid",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "JS-02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "JS-03",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_ENTRY"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "entry"
+      ]
+    },
+    {
+      "node_id": "JS-02",
+      "name": "B2 주차장 난민구역",
+      "node_type": "safehouse",
+      "description": "안보경이 버티는 하층 거점.",
+      "coordinates": {
+        "x": 28,
+        "y": 72
+      },
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [
+        "npc_ahn_bogyeong"
+      ],
+      "connections": [
+        {
+          "to": "JS-03",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "JS-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_BASEMENT_CACHE",
+        "EV_CH03_BASEMENT_MEET"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "npc",
+        "safe"
+      ]
+    },
+    {
+      "node_id": "JS-03",
+      "name": "서비스 계단실",
+      "node_type": "danger",
+      "description": "천장 매복과 정전이 겹친 수직 이동로.",
+      "coordinates": {
+        "x": 40,
+        "y": 56
+      },
+      "encounter_table_id": "enc_ch03_tower_mid",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "JS-04",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 2
+          }
+        },
+        {
+          "to": "JS-06",
+          "travel_type": "elevator",
+          "requires": [
+            "flag:ch03_elevator_powered"
+          ],
+          "cost": {
+            "time": 1,
+            "noise": 4,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "JS-07",
+          "travel_type": "outer_wall",
+          "requires": [
+            "item:itm_climbing_hook>=1"
+          ],
+          "cost": {
+            "time": 3,
+            "noise": 3,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_STAIR_AMBUSH",
+        "EV_CH03_VERTICAL_ROUTE"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "vertical"
+      ]
+    },
+    {
+      "node_id": "JS-04",
+      "name": "중층 쇼룸 존",
+      "node_type": "exploration",
+      "description": "모델하우스와 유리 복도가 남은 층.",
+      "coordinates": {
+        "x": 56,
+        "y": 48
+      },
+      "encounter_table_id": "enc_ch03_tower_mid",
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "JS-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "JS-06",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_SHOWROOM_SWEEP"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "loot",
+        "luxury"
+      ]
+    },
+    {
+      "node_id": "JS-05",
+      "name": "발전실",
+      "node_type": "branch",
+      "description": "축전지와 전력 분배 패널이 있는 핵심 설비.",
+      "coordinates": {
+        "x": 48,
+        "y": 64
+      },
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "JS-06",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "JS-07",
+          "travel_type": "elevator",
+          "requires": [
+            "flag:ch03_elevator_powered"
+          ],
+          "cost": {
+            "time": 1,
+            "noise": 5,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_BLACKOUT_REPAIR",
+        "EV_CH03_POWER_ROUTING"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "power",
+        "main"
+      ]
+    },
+    {
+      "node_id": "JS-06",
+      "name": "상층 라운지",
+      "node_type": "branch",
+      "description": "류세온이 통제하는 상층 거점.",
+      "coordinates": {
+        "x": 68,
+        "y": 42
+      },
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "npc_ids": [
+        "npc_ryu_seon"
+      ],
+      "connections": [
+        {
+          "to": "JS-07",
+          "travel_type": "skybridge",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 2
+          }
+        },
+        {
+          "to": "JS-08",
+          "travel_type": "skybridge",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 4,
+            "contamination": 3
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_UPPER_NEGOTIATION"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "npc",
+        "elite"
+      ]
+    },
+    {
+      "node_id": "JS-07",
+      "name": "스카이브리지",
+      "node_type": "danger",
+      "description": "강풍과 낙하 리스크가 있는 외부 연결통로.",
+      "coordinates": {
+        "x": 80,
+        "y": 34
+      },
+      "encounter_table_id": "enc_ch03_tower_mid",
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "JS-08",
+          "travel_type": "skybridge",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH03_RESCUE_DETOUR",
+        "EV_CH03_SKYBRIDGE"
+      ],
+      "revisit_rule": "locked_after_clear",
+      "tags": [
+        "fall",
+        "bridge"
+      ]
+    },
+    {
+      "node_id": "JS-08",
+      "name": "옥상 송신정원",
+      "node_type": "boss",
+      "description": "릴레이 렌즈와 보스가 있는 고층 최상부.",
+      "coordinates": {
+        "x": 90,
+        "y": 22
+      },
+      "encounter_table_id": "enc_ch03_boss_garden",
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "npc_ids": [],
+      "connections": [],
+      "event_ids": [
+        "EV_CH03_BOSS_GARDEN",
+        "EV_CH03_EXTRACTION"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "boss",
+        "signal"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH03_ENTRY",
+      "event_type": "briefing",
+      "node_id": "JS-01",
+      "title": "유리정원 진입",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_jamsil_lobby",
+        "music_key": "tower_wind",
+        "widget_overrides": [
+          "floor_navigator"
+        ]
+      },
+      "text": {
+        "summary": "잠실 고층권에 남은 축전지와 릴레이 렌즈를 회수해야 한다.",
+        "body": [
+          "잠실 캐슬원은 상층과 하층이 분리된 계급 사회로 굳어 있다.",
+          "누구 편을 들든 누군가는 전기와 물을 잃는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_start",
+          "label": "건물 내부로 들어간다",
+          "conditions": [],
+          "preview": "하층부터 상황을 파악한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_started",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_BASEMENT_MEET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_BASEMENT_MEET",
+      "event_type": "dialogue",
+      "node_id": "JS-02",
+      "title": "안보경의 지하",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_ahn_bogyeong",
+        "music_key": "basement_safe",
+        "widget_overrides": [
+          "moral_choice"
+        ]
+      },
+      "text": {
+        "summary": "안보경은 하층 난민들에게 물과 통로가 우선이라고 말한다.",
+        "body": [
+          "하층은 전력이 부족하고, 상층은 전기를 독점한다.",
+          "안보경을 돕으면 급수와 난민 생존이 좋아지지만 상층과 충돌한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_ahn_bogyeong"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_basement_support",
+          "label": "하층부터 지원한다",
+          "conditions": [],
+          "preview": "급수 펌프와 안전 통로를 살린다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ahn_bogyeong",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.jamsil_lower",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_lower_support",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_SERVICE_AMBUSH"
+        },
+        {
+          "choice_id": "ch03_basement_neutral",
+          "label": "중립을 지킨다",
+          "conditions": [],
+          "preview": "일단 정보를 수집한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_neutral_start",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_SERVICE_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_VERTICAL_ROUTE",
+      "event_type": "choice",
+      "node_id": "JS-03",
+      "title": "수직 이동 선택",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_service_stair",
+        "music_key": "stair_creak",
+        "widget_overrides": [
+          "floor_navigator",
+          "route_compare"
+        ]
+      },
+      "text": {
+        "summary": "계단실은 안전하지만 느리고, 엘리베이터는 소음이 심하다. 외벽 우회는 장비가 필요하다.",
+        "body": [
+          "고층 챕터의 핵심은 수직 이동과 낙하 리스크다.",
+          "여기서 열린 이동 옵션은 후반 재방문 루트를 결정한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_vertical_stairs",
+          "label": "계단으로 오른다",
+          "conditions": [],
+          "preview": "가장 무난하지만 전투를 피할 수 없다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH03_STAIR_AMBUSH"
+        },
+        {
+          "choice_id": "ch03_vertical_elevator",
+          "label": "비상 엘리베이터를 강제로 연다",
+          "conditions": [],
+          "preview": "빠르게 오르지만 적을 끌어들인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_elevator_forced",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 6
+            }
+          ],
+          "next_event_id": "EV_CH03_STAIR_AMBUSH"
+        },
+        {
+          "choice_id": "ch03_vertical_outer",
+          "label": "외벽 보수레일을 탄다",
+          "conditions": [
+            "item:itm_climbing_hook>=1"
+          ],
+          "preview": "등반 장비가 있으면 가장 빠르다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_outer_route",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_STAIR_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_SWEEP",
+      "event_type": "exploration",
+      "node_id": "JS-04",
+      "title": "모델하우스 잔해",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_jamsil_showroom",
+        "music_key": "glass_creak",
+        "widget_overrides": [
+          "loot_preview",
+          "floor_navigator"
+        ]
+      },
+      "text": {
+        "summary": "고급 쇼룸과 비상 의약품 캐비닛, 그리고 계단 키카드가 흩어져 있다.",
+        "body": [
+          "고급 자원을 노리면 루팅은 풍부하지만 창가체 습격 확률이 오른다.",
+          "빠르게 지나가면 전력 분배 결정을 서둘러야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_showroom_loot",
+          "label": "철저히 수색한다",
+          "conditions": [],
+          "preview": "고급 자원과 키 조각을 찾는다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch03_upper_luxury",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH03_SHOWROOM_CACHE"
+        },
+        {
+          "choice_id": "ch03_showroom_rush",
+          "label": "핵심만 챙긴다",
+          "conditions": [],
+          "preview": "보스전 자원을 아낀다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_portable_charger",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_SHOWROOM_CACHE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_POWER_ROUTING",
+      "event_type": "choice",
+      "node_id": "JS-05",
+      "title": "전력 분배",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_power_room",
+        "music_key": "power_hum",
+        "widget_overrides": [
+          "power_router",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "하나의 패널로 엘리베이터, 하층 급수 펌프, 상층 라운지 방호를 선택적으로 살릴 수 있다.",
+        "body": [
+          "엘리베이터를 살리면 이동은 쉬워지지만 소음이 크게 늘어난다.",
+          "하층 급수를 선택하면 안보경 호감이 오르고, 상층 방호를 선택하면 류세온 편이 선다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_power_elevator",
+          "label": "엘리베이터 우선",
+          "conditions": [],
+          "preview": "고층 이동성을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_elevator_powered",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 7
+            }
+          ],
+          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+        },
+        {
+          "choice_id": "ch03_power_lower",
+          "label": "하층 급수 펌프 우선",
+          "conditions": [],
+          "preview": "하층 생존을 살린다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ahn_bogyeong",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.jamsil_lower",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_water_to_lower",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+        },
+        {
+          "choice_id": "ch03_power_upper",
+          "label": "상층 방호 우선",
+          "conditions": [],
+          "preview": "상층 협력을 얻는다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ryu_seon",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.jamsil_upper",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_power_to_upper",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_UPPER_NEGOTIATION",
+      "event_type": "dialogue",
+      "node_id": "JS-06",
+      "title": "류세온의 상층",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_ryu_seon",
+        "music_key": "elite_tension",
+        "widget_overrides": [
+          "reputation_change",
+          "faction_compare"
+        ]
+      },
+      "text": {
+        "summary": "류세온은 모두를 살리려 들면 건물 전체가 무너진다고 주장한다.",
+        "body": [
+          "상층 협력을 택하면 고급 장비와 축전지 위치를 더 빨리 알 수 있다.",
+          "하지만 하층 생존자들은 그 선택을 오래 기억한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_upper_side",
+          "label": "류세온과 협력한다",
+          "conditions": [],
+          "preview": "상층 자원과 송신정원 접근 허가를 받는다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ryu_seon",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.jamsil_upper",
+              "value": 2
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_highcap_capacitor",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_upper_side",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+        },
+        {
+          "choice_id": "ch03_lower_side",
+          "label": "안보경 쪽을 든다",
+          "conditions": [],
+          "preview": "하층 민간인을 먼저 대피시킨다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ahn_bogyeong",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.jamsil_lower",
+              "value": 2
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_highcap_capacitor",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_lower_side",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+        },
+        {
+          "choice_id": "ch03_negotiate_both",
+          "label": "둘 다 설득한다",
+          "conditions": [],
+          "preview": "절충안을 택하지만 모두를 만족시키진 못한다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ahn_bogyeong",
+              "value": 1
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_ryu_seon",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_highcap_capacitor",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_balanced",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_SKYBRIDGE",
+      "event_type": "danger",
+      "node_id": "JS-07",
+      "title": "유리 위를 걷다",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_skybridge",
+        "music_key": "wind_howl",
+        "widget_overrides": [
+          "fall_warning",
+          "stamina_hint"
+        ]
+      },
+      "text": {
+        "summary": "강풍과 외벽을 타는 창가체가 플레이어의 이동 동선을 끊는다.",
+        "body": [
+          "구조 신호를 보내면 숨겨진 생존자를 구할 수 있지만 적도 함께 몰려온다.",
+          "조용히 건너면 전투는 줄지만 생존자 구조 기회를 잃는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_bridge_signal",
+          "label": "구조 신호탄을 쏜다",
+          "conditions": [],
+          "preview": "숨겨진 구조 이벤트를 연다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_signal_flare",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 8
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_rescue_signal",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_RESCUE_DETOUR"
+        },
+        {
+          "choice_id": "ch03_bridge_silent",
+          "label": "조용히 건넌다",
+          "conditions": [],
+          "preview": "낙하 리스크만 관리하며 이동한다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_silent_bridge",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_RESCUE_DETOUR"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_BOSS_GARDEN",
+      "event_type": "boss",
+      "node_id": "JS-08",
+      "title": "유리정원",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:ch03_power_stable"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "boss_glassgarden",
+        "music_key": "boss_glassgarden",
+        "widget_overrides": [
+          "boss_hp",
+          "fall_warning",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "전망 접합체가 정원의 붕괴한 유리 구조물을 휘감으며 각성한다.",
+        "body": [
+          "유리 바닥이 깨지며 안전 구역이 계속 바뀐다.",
+          "강풍, 낙하, 창가체 증원이 동시에 겹치는 수직형 보스전이다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_boss_clear",
+          "label": "릴레이 렌즈를 확보하고 빠져나간다",
+          "conditions": [],
+          "preview": "보스전 승리 후 귀환 절차로 넘어간다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_03_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_EXTRACTION_PRESSURE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch03_boss_garden",
+        "boss_id": "vista_amalgam_glassgarden",
+        "arena_tags": [
+          "glass",
+          "vertical",
+          "wind"
+        ],
+        "victory_effects": [
+          {
+            "op": "grant_item",
+            "target": "item:itm_relay_lens",
+            "value": 1
+          },
+          {
+            "op": "grant_item",
+            "target": "item:itm_data_key_fragment",
+            "value": 1
+          },
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_boss_down",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 30
+          },
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 12
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH03_EXTRACTION",
+      "event_type": "extraction",
+      "node_id": "JS-08",
+      "title": "잠실권 이탈",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:chapter_03_escape_ready"
+      ],
+      "presentation": {
+        "layout": "results",
+        "art_key": "bg_rooftop_escape",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "chapter_result",
+          "faction_summary"
+        ]
+      },
+      "text": {
+        "summary": "축전지와 릴레이 렌즈, 그리고 판교로 이어지는 데이터 키 조각을 챙긴다.",
+        "body": [
+          "누구 편을 들었는지에 따라 잠실권의 후일담과 장비 교환 테이블이 달라진다.",
+          "이 장의 결과는 Chapter 4의 배지 확보 난이도에 반영된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_finish",
+          "label": "챕터를 종료한다",
+          "conditions": [],
+          "preview": "다음 장 브리핑으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_03_completed",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "chapter.current",
+              "value": "CH04"
+            }
+          ],
+          "next_event_id": "END_CH03"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_STAIR_AMBUSH",
+      "event_type": "danger",
+      "node_id": "JS-03",
+      "title": "계단 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_service_stair",
+        "music_key": "stair_creak",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "서비스 계단에서 대기하던 감염체가 위아래로 몰려든다.",
+        "body": [
+          "통로가 좁아 회피 타이밍이 중요하다.",
+          "이 구간을 넘기면 상층 쇼룸으로 접근할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_stair_clear",
+          "label": "매복 돌파",
+          "conditions": [],
+          "preview": "계단을 정리하고 쇼룸으로 이동한다.",
+          "effects": [],
+          "next_event_id": "EV_CH03_SHOWROOM_SWEEP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch03_tower_mid",
+        "arena_tags": [
+          "stair",
+          "close"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_stair_ambush_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch03_upper_luxury",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 12
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH03_BLACKOUT_REPAIR",
+      "event_type": "scene",
+      "node_id": "JS-05",
+      "title": "정전 복구",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_power_room",
+        "music_key": "signal_hiss",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "전력 분배를 재조정해 상층 통로를 살린다.",
+        "body": [
+          "제어반은 차단되어 있고, 회로에서 열이 새어 나온다.",
+          "상층 우선은 빠르지만 하층의 안전이 내려간다.",
+          "균형 복구는 느리지만 전체 안전도가 높다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_blackout_upper",
+          "label": "상층 우선",
+          "conditions": [],
+          "preview": "빠르게 이동한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_blackout_repair",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_UPPER_NEGOTIATION"
+        },
+        {
+          "choice_id": "ch03_blackout_balance",
+          "label": "균형 복구",
+          "conditions": [],
+          "preview": "안전을 확보한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_blackout_repair",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_UPPER_NEGOTIATION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_RESCUE_DETOUR",
+      "event_type": "scene",
+      "node_id": "JS-07",
+      "title": "구조 신호",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_skybridge",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "스카이브리지 너머에서 구조 신호가 끊어진다.",
+        "body": [
+          "점멸하는 비상등이 방향을 가리킨다.",
+          "우회하면 보급품을 얻을 수 있지만 전투 위험이 커진다.",
+          "무시하고 통과하면 보스전에 바로 진입할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_rescue_detour",
+          "label": "신호를 확인한다",
+          "conditions": [],
+          "preview": "우회해 보급품을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_rescue_detour_done",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_BOSS_GARDEN"
+        },
+        {
+          "choice_id": "ch03_rescue_skip",
+          "label": "무시하고 통과",
+          "conditions": [],
+          "preview": "위험을 줄인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_rescue_detour_done",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_BOSS_GARDEN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_PREP_GLASS",
+      "event_type": "dialogue",
+      "node_id": "JS-07",
+      "title": "???? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_jamsil_lobby",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "???? ?? ?, ?? ??? ???.",
+        "body": [
+          "??? ???? ????? ?? ??? ???.",
+          "??? ???? ??? ??? ????."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_prep_ready",
+          "label": "??? ???",
+          "conditions": [],
+          "preview": "?? ??? ?????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_boss_prep",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_BOSS_GARDEN"
+        },
+        {
+          "choice_id": "ch03_prep_rush",
+          "label": "??? ??",
+          "conditions": [],
+          "preview": "???? ??? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_boss_prep",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH03_BOSS_GARDEN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE",
+      "event_type": "scene",
+      "node_id": "JS-08",
+      "title": "추출 압박",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_rooftop_escape",
+        "music_key": "tension_mid",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "옥상 이탈 직전 추격 신호가 겹친다.",
+        "body": [
+          "송신선이 흔들리고, 유리 파편이 바람에 실린다.",
+          "연막을 쓰면 노이즈가 줄지만 장비가 소모된다.",
+          "속도로 밀어붙이면 상처가 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_extract_smoke",
+          "label": "연막 투입",
+          "conditions": [],
+          "preview": "소음을 낮춘다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_EXTRACTION"
+        },
+        {
+          "choice_id": "ch03_extract_push",
+          "label": "속도 유지",
+          "conditions": [],
+          "preview": "부상을 감수한다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 5
+            }
+          ],
+          "next_event_id": "EV_CH03_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_SERVICE_AMBUSH",
+      "event_type": "combat",
+      "node_id": "JS-02",
+      "title": "서비스 계단 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_service_stair",
+        "music_key": "tension_mid",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "서비스 계단에서 창유체가 몰려와 퇴로를 끊는다.",
+        "body": [
+          "계단 틈새로 금속 파편이 떨어지고, 유리 부스러기가 흩어진다.",
+          "좁은 공간이라 회피가 어렵다.",
+          "빠르게 끊고 나가야 상층으로 이동할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [],
+      "on_enter_effects": [
+        {
+          "op": "add_stat",
+          "target": "noise",
+          "value": 1
+        }
+      ],
+      "on_complete_effects": [],
+      "next_event_id": "EV_CH03_VERTICAL_ROUTE",
+      "combat": {
+        "encounter_table_id": "enc_ch03_tower_mid",
+        "arena_tags": [
+          "stair",
+          "ambush"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_service_clear",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 5
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_CACHE",
+      "event_type": "scene",
+      "node_id": "JS-04",
+      "title": "쇼룸 보급품",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_jamsil_showroom",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "전시 캐비닛 뒤에 보급품이 숨겨져 있다.",
+        "body": [
+          "유리 전시대가 깨져 있고, 바닥에는 흙물이 고여 있다.",
+          "탐색을 오래 하면 위층 순찰에 들킬 수 있다.",
+          "지금 확보할 것과 지나갈 것을 정해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_showroom_search",
+          "label": "깊게 수색",
+          "conditions": [],
+          "preview": "시간을 쓰고 보급품을 확보한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_POWER_ROUTING"
+        },
+        {
+          "choice_id": "ch03_showroom_pass",
+          "label": "흔적만 확인",
+          "conditions": [],
+          "preview": "빠르게 통과한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 0
+            }
+          ],
+          "next_event_id": "EV_CH03_POWER_ROUTING"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_AMBUSH",
+      "event_type": "danger",
+      "node_id": "JS-04",
+      "title": "쇼룸 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_jamsil_showroom",
+        "music_key": "glass_creak",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "쇼룸 중앙에서 잔존 감염체가 마지막 저항을 시도한다.",
+        "body": [
+          "유리 파편이 흩어져 있어 이동이 느려진다.",
+          "정리하지 않으면 전력실 접근이 지연된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_showroom_clear",
+          "label": "쇼룸 정리",
+          "conditions": [],
+          "preview": "전력실로 진입할 경로를 확보한다.",
+          "effects": [],
+          "next_event_id": "EV_CH03_POWER_ROUTING"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch03_tower_mid",
+        "arena_tags": [
+          "showroom",
+          "glass"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_showroom_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch03_upper_luxury",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 12
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH03_SKYBRIDGE_ACCESS",
+      "event_type": "choice",
+      "node_id": "JS-06",
+      "title": "스카이브릿지 접근",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_skybridge",
+        "music_key": "wind_howl",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "상층 협상을 마친 뒤, 스카이브릿지 접근 루트를 결정해야 한다.",
+        "body": [
+          "정면 접근은 빠르지만 소음이 크고, 우회는 안전하지만 시간이 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_bridge_direct",
+          "label": "정면 접근",
+          "conditions": [],
+          "preview": "빠르게 접근하지만 소음이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE"
+        },
+        {
+          "choice_id": "ch03_bridge_detour",
+          "label": "우회 접근",
+          "conditions": [],
+          "preview": "안전하게 접근하지만 시간이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_BASEMENT_CACHE",
+      "event_type": "exploration",
+      "node_id": "JS-02",
+      "title": "지하 캐시",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_basement_cache",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter",
+          "loot_preview"
+        ]
+      },
+      "text": {
+        "summary": "난민 구역 뒤편에 임시 캐시가 숨겨져 있다.",
+        "body": [
+          "잠긴 보관함에는 축전지 보호 케이스가 있다.",
+          "열어보면 소음이 커져 상층 감시가 깨어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_cache_open",
+          "label": "보관함을 연다",
+          "conditions": [],
+          "preview": "루팅을 확보하지만 소음이 오른다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_basement_cache",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH03_BASEMENT_MEET"
+        },
+        {
+          "choice_id": "ch03_cache_skip",
+          "label": "무시하고 지나친다",
+          "conditions": [],
+          "preview": "소음을 줄이고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_basement_cache",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_BASEMENT_MEET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH03_BOSS_GARDEN",
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch03_main",
+      "kind": "main",
+      "title": "유리정원 돌파",
+      "summary": "축전지와 릴레이 렌즈를 확보해 잠실권을 통과한다.",
+      "entry_event_id": "EV_CH03_ENTRY",
+      "completion_event_id": "EV_CH03_EXTRACTION",
+      "objective_ids": [
+        "obj_ch03_01",
+        "obj_ch03_02",
+        "obj_ch03_03"
+      ],
+      "unlock_when": [],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch03_blackout",
+      "kind": "side",
+      "title": "정전 복구",
+      "summary": "상층 전력을 복구해 안전한 통로를 만든다.",
+      "entry_event_id": "EV_CH03_BLACKOUT_REPAIR",
+      "completion_event_id": "EV_CH03_BLACKOUT_REPAIR",
+      "objective_ids": [
+        "obj_ch03_05"
+      ],
+      "unlock_when": [
+        "flag:ch03_started"
+      ],
+      "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch03_rescue",
+      "kind": "side",
+      "title": "구조 신호",
+      "summary": "신호의 근원을 확인해 추가 보급을 확보한다.",
+      "entry_event_id": "EV_CH03_RESCUE_DETOUR",
+      "completion_event_id": "EV_CH03_RESCUE_DETOUR",
+      "objective_ids": [
+        "obj_ch03_06"
+      ],
+      "unlock_when": [
+        "flag:ch03_rescue_signal"
+      ],
+      "reveal_cap": "ambient"
+    }
+  ]
+}

@@ -1,1 +1,1838 @@
-{   "version": "1.0.0",   "game_id": "dokdo_arc_webgame",   "chapter_id": "CH05",   "title": "미러센터",   "role": "초반 아크 클라이맥스, 독도 신호 인증, 김아라 첫 합류",   "entry_node_id": "PG-01",   "exit_node_ids": [     "PG-07"   ],   "recommended_level": 5,   "ui_profile": {     "theme": "pangyo_server",     "special_widgets": [       "heat_meter",       "card_auth_state",       "data_branch",       "signal_summary"     ]   },   "objectives": [     {       "objective_id": "obj_ch05_01",       "text": "ARK-P 접근 키를 확보한다.",       "required": true,       "complete_when": [         "item:itm_arkp_access_key>=1|flag:ch05_ara_delayed"       ]     },     {       "objective_id": "obj_ch05_02",       "text": "남부 회랑 데이터를 확보한다.",       "required": true,       "complete_when": [         "item:itm_southern_corridor_data>=1"       ]     },     {       "objective_id": "obj_ch05_03",       "text": "독도 신호 인증값을 확보한다.",       "required": true,       "complete_when": [         "item:itm_dokdo_signal_auth>=1"       ]     }   ],   "nodes": [     {       "node_id": "PG-01",       "name": "판교 외곽 인터체인지",       "node_type": "travel",       "description": "버스와 자율주행 셔틀 잔해가 쌓인 외곽.",       "coordinates": {         "x": 10,         "y": 78       },       "encounter_table_id": "enc_ch05_cooling",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "PG-02",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH05_ENTRY"       ],       "revisit_rule": "always",       "tags": [         "entry"       ]     },     {       "node_id": "PG-02",       "name": "캠퍼스 로비동",       "node_type": "exploration",       "description": "보안게이트와 안내 키오스크가 남은 로비.",       "coordinates": {         "x": 26,         "y": 66       },       "encounter_table_id": "enc_ch05_cooling",       "loot_table_ids": [         "lt_ch05_server"       ],       "npc_ids": [],       "connections": [         {           "to": "PG-03",           "travel_type": "skywalk",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         },         {           "to": "PG-04",           "travel_type": "service_shaft",           "requires": [],           "cost": {             "time": 3,             "noise": 1,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH05_LOBBY_MAPPING"       ],       "revisit_rule": "always",       "tags": [         "security",         "map"       ]     },     {       "node_id": "PG-03",       "name": "스카이워크 가든",       "node_type": "danger",       "description": "건물 사이 공중 연결정원.",       "coordinates": {         "x": 42,         "y": 52       },       "encounter_table_id": "enc_ch05_cooling",       "loot_table_ids": [         "lt_ch05_server"       ],       "npc_ids": [],       "connections": [         {           "to": "PG-05",           "travel_type": "skywalk",           "requires": [],           "cost": {             "time": 2,             "noise": 3,             "contamination": 1           }         },         {           "to": "PG-06",           "travel_type": "lab_bridge",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH05_SKYWALK"       ],       "revisit_rule": "always",       "tags": [         "signal",         "vertical"       ]     },     {       "node_id": "PG-04",       "name": "냉각설비실",       "node_type": "branch",       "description": "서버 냉각을 제어하는 하부 공간.",       "coordinates": {         "x": 44,         "y": 74       },       "encounter_table_id": "enc_ch05_cooling",       "loot_table_ids": [         "lt_ch05_server"       ],       "npc_ids": [],       "connections": [         {           "to": "PG-05",           "travel_type": "maintenance_hall",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         },         {           "to": "PG-06",           "travel_type": "pipe_route",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH05_COOLING_ROUTE"       ],       "revisit_rule": "after_clear",       "tags": [         "heat",         "server"       ]     },     {       "node_id": "PG-05",       "name": "ARK-P 서버홀",       "node_type": "branch",       "description": "재난 미러센터 핵심 공간.",       "coordinates": {         "x": 64,         "y": 56       },       "encounter_table_id": "enc_ch05_cooling",       "loot_table_ids": [         "lt_ch05_server"       ],       "npc_ids": [],       "connections": [         {           "to": "PG-06",           "travel_type": "secure_corridor",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         },         {           "to": "PG-07",           "travel_type": "service_lift",           "requires": [             "item:itm_arkp_access_key>=1"           ],           "cost": {             "time": 2,             "noise": 3,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH05_DATA_ACCESS"       ],       "revisit_rule": "always",       "tags": [         "data",         "main"       ]     },     {       "node_id": "PG-06",       "name": "연구 격리실",       "node_type": "safehouse",       "description": "김아라가 고립된 격리 연구실.",       "coordinates": {         "x": 76,         "y": 42       },       "encounter_table_id": "enc_ch05_cooling",       "loot_table_ids": [         "lt_ch05_server"       ],       "npc_ids": [         "npc_kim_ara"       ],       "connections": [         {           "to": "PG-05",           "travel_type": "secure_corridor",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "PG-07",           "travel_type": "emergency_hall",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH05_KIM_ARA"       ],       "revisit_rule": "always",       "tags": [         "npc",         "story"       ]     },     {       "node_id": "PG-07",       "name": "하부 비상벙커",       "node_type": "boss",       "description": "비상 경보와 저주파 제어실이 있는 최종 구획.",       "coordinates": {         "x": 90,         "y": 30       },       "encounter_table_id": "enc_ch05_boss_lines",       "loot_table_ids": [         "lt_ch05_server"       ],       "npc_ids": [],       "connections": [],       "event_ids": [         "EV_CH05_BOSS_LINES",         "EV_CH05_EXTRACTION"       ],       "revisit_rule": "after_clear",       "tags": [         "boss",         "signal",         "end_arc"       ]     }   ],   "events": [     {       "event_id": "EV_CH05_ENTRY",       "event_type": "briefing",       "node_id": "PG-01",       "title": "미러센터 접근",       "repeatable": false,       "once_per_run": true,       "priority": 100,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "bg_pangyo_interchange",         "music_key": "city_dead",         "widget_overrides": [           "objective_panel",           "card_auth_state"         ]       },       "text": {         "summary": "문정에서 확보한 배지와 진입권으로 판교 외곽 봉쇄를 뚫는다.",         "body": [           "판교는 멀쩡해 보이지만, 자동봉쇄와 실패한 대피 시스템 때문에 오히려 더 치명적이다.",           "이번 장은 서버 열, 소음, 인증 키 세 축이 핵심이다."         ]       },       "npc_ids": [         "npc_yoon_haein"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_start",           "label": "판교로 진입한다",           "conditions": [             "item:itm_delivery_badge>=1",             "item:itm_security_badge>=1",             "item:itm_route_clearance_pangyo>=1"           ],           "preview": "인터체인지를 가로질러 로비동으로 향한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_started",               "value": true             }           ],           "next_event_id": "EV_CH05_LOBBY_MAPPING"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH05_LOBBY_MAPPING",       "event_type": "exploration",       "node_id": "PG-02",       "title": "죽은 캠퍼스 로비",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_pangyo_lobby",         "music_key": "terminal_hum",         "widget_overrides": [           "map_overlay",           "card_auth_state"         ]       },       "text": {         "summary": "로비 키오스크에 일부 내부지도가 남아 있고, 보안 게이트 뒤에 접근 로그가 잠겨 있다.",         "body": [           "먼저 지도를 뽑으면 길찾기가 쉬워진다.",           "보안 로그를 털면 더 깊은 정보와 함께 알람이 오른다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_lobby_map",           "label": "내부지도를 확보한다",           "conditions": [],           "preview": "안전한 동선을 우선한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_map_obtained",               "value": true             },             {               "op": "sub_stat",               "target": "noise",               "value": 1             }           ],           "next_event_id": "EV_CH05_SKYWALK"         },         {           "choice_id": "ch05_lobby_logs",           "label": "보안 로그까지 긁어온다",           "conditions": [],           "preview": "더 많은 단서를 얻지만 알람이 오른다.",           "effects": [             {               "op": "grant_loot_table",               "target": "loot:lt_ch05_server",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 4             },             {               "op": "set_flag",               "target": "flag:ch05_logs_stolen",               "value": true             }           ],           "next_event_id": "EV_CH05_SKYWALK"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH05_SKYWALK",       "event_type": "danger",       "node_id": "PG-03",       "title": "스카이워크 가든",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_pangyo_skywalk",         "music_key": "echo_garden",         "widget_overrides": [           "noise_meter",           "heat_meter"         ]       },       "text": {         "summary": "유리 통로와 식재 구획 사이로 메아리체가 알람 잔향에 반응한다.",         "body": [           "상부 스카이워크는 빠르지만 소리에 취약하다.",           "하부 냉각 배관을 타면 느리지만 서버 열 관리를 먼저 할 수 있다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_skywalk_fast",           "label": "상부로 강행한다",           "conditions": [],           "preview": "빠르게 김아라에게 접근한다.",           "effects": [             {               "op": "add_stat",               "target": "noise",               "value": 5             },             {               "op": "set_flag",               "target": "flag:ch05_upper_route",               "value": true             }           ],           "next_event_id": "EV_CH05_KIM_ARA"         },         {           "choice_id": "ch05_skywalk_down",           "label": "하부 냉각 라인부터 돈다",           "conditions": [],           "preview": "열 관리를 먼저 잡는다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_cooling_first",               "value": true             }           ],           "next_event_id": "EV_CH05_COOLING_ROUTE"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH05_COOLING_ROUTE",       "event_type": "choice",       "node_id": "PG-04",       "title": "냉각 루프 제어",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_cooling_room",         "music_key": "cooling_hum",         "widget_overrides": [           "heat_meter",           "pressure_gauge"         ]       },       "text": {         "summary": "냉각 루프를 손보면 서버 과열을 늦출 수 있지만 배관 소음이 커질 수 있다.",         "body": [           "냉각을 안정화하면 데이터 다운로드와 보스전이 쉬워진다.",           "무리하게 우회하면 빠르지만 과열 위험이 커진다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_cooling_stable",           "label": "냉각 루프를 안정화한다",           "conditions": [],           "preview": "서버 열을 낮춰 이후 난이도를 줄인다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_cooling_gel",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch05_cooling_stable",               "value": true             }           ],           "next_event_id": "EV_CH05_KIM_ARA"         },         {           "choice_id": "ch05_cooling_bypass",           "label": "배관을 우회만 한다",           "conditions": [],           "preview": "시간을 벌지만 과열 위험을 남긴다.",           "effects": [             {               "op": "add_stat",               "target": "noise",               "value": 3             },             {               "op": "set_flag",               "target": "flag:ch05_cooling_bypass",               "value": true             }           ],           "next_event_id": "EV_CH05_KIM_ARA"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH05_KIM_ARA",       "event_type": "dialogue",       "node_id": "PG-06",       "title": "김아라",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_kim_ara",         "music_key": "lab_tension",         "widget_overrides": [           "moral_choice",           "heat_meter"         ]       },       "text": {         "summary": "연구 격리실 안에서 김아라가 손상된 콘솔과 함께 살아 있다.",         "body": [           "그녀를 먼저 구하면 해석 지원을 얻지만 서버실 알람 시간이 흐른다.",           "서버를 먼저 열면 데이터는 쉬워지나, 아라의 상태와 신뢰가 악화된다."         ]       },       "npc_ids": [         "npc_kim_ara"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_ara_first",           "label": "김아라를 먼저 구조한다",           "conditions": [],           "preview": "아라의 도움을 받아 서버홀로 향한다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_kim_ara",               "value": 2             },             {               "op": "grant_item",               "target": "item:itm_arkp_access_key",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch05_ara_rescued_first",               "value": true             }           ],           "next_event_id": "EV_CH05_DATA_ACCESS"         },         {           "choice_id": "ch05_ara_wait",           "label": "서버를 먼저 열고 돌아온다",           "conditions": [],           "preview": "시간은 아끼지만 관계가 흔들린다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_kim_ara",               "value": -1             },             {               "op": "set_flag",               "target": "flag:ch05_ara_delayed",               "value": true             }           ],           "next_event_id": "EV_CH05_DATA_ACCESS"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH05_DATA_ACCESS",       "event_type": "choice",       "node_id": "PG-05",       "title": "ARK-P 접속",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_arkp_serverhall",         "music_key": "server_chorus",         "widget_overrides": [           "data_branch",           "heat_meter",           "signal_decoder"         ]       },       "text": {         "summary": "백업 서버는 살아 있다. 남부 회랑과 독도 신호 인증값 일부가 여기 묻혀 있다.",         "body": [           "데이터를 독점할지, 제한 공개할지, 즉시 방송에 태울지의 결정은 후속 정치에 큰 영향을 준다.",           "또한 서버 코어를 살릴지 일부 파기할지도 결정해야 한다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_data_record",           "label": "기록국 독점으로 보관한다",           "conditions": [],           "preview": "정보 통제를 우선한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_data_record_only",               "value": true             },             {               "op": "grant_item",               "target": "item:itm_southern_corridor_data",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_dokdo_signal_auth",               "value": 1             }           ],           "next_event_id": "EV_CH05_BOSS_LINES"         },         {           "choice_id": "ch05_data_limited",           "label": "제한 공개용 패키지로 만든다",           "conditions": [],           "preview": "복수 허브에 공유 가능한 형태로 저장한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_data_limited",               "value": true             },             {               "op": "grant_item",               "target": "item:itm_southern_corridor_data",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_dokdo_signal_auth",               "value": 1             },             {               "op": "add_reputation",               "target": "reputation.pangyo_survivors",               "value": 1             }           ],           "next_event_id": "EV_CH05_BOSS_LINES"         },         {           "choice_id": "ch05_data_broadcast",           "label": "즉시 방송 송출 큐에 올린다",           "conditions": [],           "preview": "희망과 혼란을 동시에 퍼뜨린다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_data_broadcasted",               "value": true             },             {               "op": "grant_item",               "target": "item:itm_southern_corridor_data",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_dokdo_signal_auth",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 7             }           ],           "next_event_id": "EV_CH05_BOSS_LINES"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH05_BOSS_LINES",       "event_type": "boss",       "node_id": "PG-07",       "title": "회선",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "boss",         "art_key": "boss_mirror_lines",         "music_key": "boss_lines",         "widget_overrides": [           "boss_hp",           "heat_meter",           "signal_noise_overlay"         ]       },       "text": {         "summary": "비상 경보와 냉각팬, 저주파 장치가 뒤엉키며 미러코어 접합체가 각성한다.",         "body": [           "코어를 완전히 파괴하면 추적은 줄지만 데이터와 재방문 가치도 잃는다.",           "살려 두면 후속 로그를 얻을 수 있으나 적 세력에 단서를 남긴다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_core_preserve",           "label": "코어를 살리고 탈출한다",           "conditions": [],           "preview": "데이터와 시설을 최대한 보존한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_core_preserved",               "value": true             },             {               "op": "set_flag",               "target": "flag:chapter_05_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH05_EXTRACTION"         },         {           "choice_id": "ch05_core_break",           "label": "코어 일부를 파기하고 탈출한다",           "conditions": [],           "preview": "추적을 어렵게 만든다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch05_core_damaged",               "value": true             },             {               "op": "set_flag",               "target": "flag:chapter_05_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH05_EXTRACTION"         }       ],       "on_enter_effects": [],       "on_complete_effects": [],       "combat": {         "encounter_table_id": "enc_ch05_boss_lines",         "boss_id": "mirror_core_lines",         "arena_tags": [           "server",           "alarm",           "signal"         ],         "victory_effects": [           {             "op": "set_flag",             "target": "flag:ch05_boss_down",             "value": true           }         ],         "defeat_effects": [           {             "op": "sub_stat",             "target": "hp",             "value": 35           },           {             "op": "add_stat",             "target": "contamination",             "value": 15           }         ]       }     },     {       "event_id": "EV_CH05_EXTRACTION",       "event_type": "extraction",       "node_id": "PG-07",       "title": "초반 아크 종결",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [         "flag:chapter_05_escape_ready"       ],       "presentation": {         "layout": "results",         "art_key": "bg_arkp_exit",         "music_key": "safe_bunker",         "widget_overrides": [           "chapter_result",           "signal_summary",           "party_summary"         ]       },       "text": {         "summary": "독도 신호는 가짜가 아니라는 것이 확인된다. 동시에 그 안전지대가 선별 체계일 가능성도 드러난다.",         "body": [           "김아라의 생존 여부와 신뢰, 데이터 공개 수준, 코어 보존 여부는 이후 전체 아크의 윤리 축을 만든다.",           "이 장을 끝내면 본격적인 남하 서사가 열린다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch05_finish",           "label": "아크 1을 종료한다",           "conditions": [],           "preview": "결과 정산과 후속 챕터 설계로 넘어간다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_05_completed",               "value": true             },             {               "op": "set_value",               "target": "chapter.current",               "value": "CH06"             }           ],           "next_event_id": "END_CH05"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     }   ],   "boss_event_id": "EV_CH05_BOSS_LINES" }
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH05",
+  "title": "미러센터",
+  "role": "초반 아크 클라이맥스, 독도 신호 인증, 김아라 첫 합류",
+  "entry_node_id": "PG-01",
+  "exit_node_ids": [
+    "PG-07"
+  ],
+  "recommended_level": 5,
+  "ui_profile": {
+    "theme": "pangyo_server",
+    "special_widgets": [
+      "heat_meter",
+      "card_auth_state",
+      "data_branch",
+      "signal_summary"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch05_01",
+      "text": "ARK-P 접근 키를 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_arkp_access_key>=1|flag:ch05_ara_delayed"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_02",
+      "text": "남부 회랑 데이터를 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_southern_corridor_data>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_03",
+      "text": "독도 신호 인증값을 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_dokdo_signal_auth>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_04",
+      "text": "진입 램프를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_ramp_cleared"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_05",
+      "text": "보안 콘솔을 활성화한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_security_console"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_06",
+      "text": "서버 흔적을 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_server_purged"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_07",
+      "text": "로비 스캔을 완료한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_lobby_scanned"
+      ]
+    },
+    {
+      "objective_id": "obj_ch05_08",
+      "text": "냉각실 통로를 확보한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch05_cooling_cleared"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "PG-01",
+      "name": "판교 외곽 인터체인지",
+      "node_type": "travel",
+      "description": "버스와 자율주행 셔틀 잔해가 쌓인 외곽.",
+      "coordinates": {
+        "x": 10,
+        "y": 78
+      },
+      "encounter_table_id": "enc_ch05_cooling",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "PG-02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH05_ENTRY"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "entry"
+      ]
+    },
+    {
+      "node_id": "PG-02",
+      "name": "캠퍼스 로비동",
+      "node_type": "exploration",
+      "description": "보안게이트와 안내 키오스크가 남은 로비.",
+      "coordinates": {
+        "x": 26,
+        "y": 66
+      },
+      "encounter_table_id": "enc_ch05_cooling",
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "PG-03",
+          "travel_type": "skywalk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "PG-04",
+          "travel_type": "service_shaft",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH05_LOBBY_CHECKPOINT",
+        "EV_CH05_LOBBY_MAPPING"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "security",
+        "map"
+      ]
+    },
+    {
+      "node_id": "PG-03",
+      "name": "스카이워크 가든",
+      "node_type": "danger",
+      "description": "건물 사이 공중 연결정원.",
+      "coordinates": {
+        "x": 42,
+        "y": 52
+      },
+      "encounter_table_id": "enc_ch05_cooling",
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "PG-05",
+          "travel_type": "skywalk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "PG-06",
+          "travel_type": "lab_bridge",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH05_SIGNAL_RELAY",
+        "EV_CH05_SKYWALK"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "signal",
+        "vertical"
+      ]
+    },
+    {
+      "node_id": "PG-04",
+      "name": "냉각설비실",
+      "node_type": "branch",
+      "description": "서버 냉각을 제어하는 하부 공간.",
+      "coordinates": {
+        "x": 44,
+        "y": 74
+      },
+      "encounter_table_id": "enc_ch05_cooling",
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "PG-05",
+          "travel_type": "maintenance_hall",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "PG-06",
+          "travel_type": "pipe_route",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH05_COOLING_BREACH",
+        "EV_CH05_COOLING_ROUTE"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "heat",
+        "server"
+      ]
+    },
+    {
+      "node_id": "PG-05",
+      "name": "ARK-P 서버홀",
+      "node_type": "branch",
+      "description": "재난 미러센터 핵심 공간.",
+      "coordinates": {
+        "x": 64,
+        "y": 56
+      },
+      "encounter_table_id": "enc_ch05_cooling",
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "PG-06",
+          "travel_type": "secure_corridor",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "PG-07",
+          "travel_type": "service_lift",
+          "requires": [
+            "item:itm_arkp_access_key>=1"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH05_DATA_SANITIZE",
+        "EV_CH05_DATA_ACCESS"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "data",
+        "main"
+      ]
+    },
+    {
+      "node_id": "PG-06",
+      "name": "연구 격리실",
+      "node_type": "safehouse",
+      "description": "김아라가 고립된 격리 연구실.",
+      "coordinates": {
+        "x": 76,
+        "y": 42
+      },
+      "encounter_table_id": "enc_ch05_cooling",
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "npc_ids": [
+        "npc_kim_ara"
+      ],
+      "connections": [
+        {
+          "to": "PG-05",
+          "travel_type": "secure_corridor",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "PG-07",
+          "travel_type": "emergency_hall",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH05_KIM_ARA"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "npc",
+        "story"
+      ]
+    },
+    {
+      "node_id": "PG-07",
+      "name": "하부 비상벙커",
+      "node_type": "boss",
+      "description": "비상 경보와 저주파 제어실이 있는 최종 구획.",
+      "coordinates": {
+        "x": 90,
+        "y": 30
+      },
+      "encounter_table_id": "enc_ch05_boss_lines",
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "npc_ids": [],
+      "connections": [],
+      "event_ids": [
+        "EV_CH05_BOSS_LINES",
+        "EV_CH05_EXTRACTION"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "boss",
+        "signal",
+        "end_arc"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH05_ENTRY",
+      "event_type": "briefing",
+      "node_id": "PG-01",
+      "title": "미러센터 접근",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_pangyo_interchange",
+        "music_key": "city_dead",
+        "widget_overrides": [
+          "objective_panel",
+          "card_auth_state"
+        ]
+      },
+      "text": {
+        "summary": "문정에서 확보한 배지와 진입권으로 판교 외곽 봉쇄를 뚫는다.",
+        "body": [
+          "판교는 멀쩡해 보이지만, 자동봉쇄와 실패한 대피 시스템 때문에 오히려 더 치명적이다.",
+          "이번 장은 서버 열, 소음, 인증 키 세 축이 핵심이다."
+        ]
+      },
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_start",
+          "label": "판교로 진입한다",
+          "conditions": [
+            "item:itm_delivery_badge>=1",
+            "item:itm_security_badge>=1",
+            "item:itm_route_clearance_pangyo>=1"
+          ],
+          "preview": "인터체인지를 가로질러 로비동으로 향한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_started",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_RAMP_SWARM"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_LOBBY_MAPPING",
+      "event_type": "exploration",
+      "node_id": "PG-02",
+      "title": "죽은 캠퍼스 로비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_pangyo_lobby",
+        "music_key": "terminal_hum",
+        "widget_overrides": [
+          "map_overlay",
+          "card_auth_state"
+        ]
+      },
+      "text": {
+        "summary": "로비 키오스크에 일부 내부지도가 남아 있고, 보안 게이트 뒤에 접근 로그가 잠겨 있다.",
+        "body": [
+          "먼저 지도를 뽑으면 길찾기가 쉬워진다.",
+          "보안 로그를 털면 더 깊은 정보와 함께 알람이 오른다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_lobby_map",
+          "label": "내부지도를 확보한다",
+          "conditions": [],
+          "preview": "안전한 동선을 우선한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_map_obtained",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_SECURITY_CONSOLE"
+        },
+        {
+          "choice_id": "ch05_lobby_logs",
+          "label": "보안 로그까지 긁어온다",
+          "conditions": [],
+          "preview": "더 많은 단서를 얻지만 알람이 오른다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_logs_stolen",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_SECURITY_CONSOLE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_SKYWALK",
+      "event_type": "danger",
+      "node_id": "PG-03",
+      "title": "스카이워크 가든",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_pangyo_skywalk",
+        "music_key": "echo_garden",
+        "widget_overrides": [
+          "noise_meter",
+          "heat_meter"
+        ]
+      },
+      "text": {
+        "summary": "유리 통로와 식재 구획 사이로 메아리체가 알람 잔향에 반응한다.",
+        "body": [
+          "상부 스카이워크는 빠르지만 소리에 취약하다.",
+          "하부 냉각 배관을 타면 느리지만 서버 열 관리를 먼저 할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_skywalk_fast",
+          "label": "상부로 강행한다",
+          "conditions": [],
+          "preview": "빠르게 김아라에게 접근한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 5
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_upper_route",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_route_upper",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_SIGNAL_RELAY"
+        },
+        {
+          "choice_id": "ch05_skywalk_down",
+          "label": "하부 냉각 라인부터 돈다",
+          "conditions": [],
+          "preview": "열 관리를 먼저 잡는다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_cooling_first",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_route_lower",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_SIGNAL_RELAY"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_COOLING_ROUTE",
+      "event_type": "choice",
+      "node_id": "PG-04",
+      "title": "냉각 루프 제어",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_cooling_room",
+        "music_key": "cooling_hum",
+        "widget_overrides": [
+          "heat_meter",
+          "pressure_gauge"
+        ]
+      },
+      "text": {
+        "summary": "냉각 루프를 손보면 서버 과열을 늦출 수 있지만 배관 소음이 커질 수 있다.",
+        "body": [
+          "냉각을 안정화하면 데이터 다운로드와 보스전이 쉬워진다.",
+          "무리하게 우회하면 빠르지만 과열 위험이 커진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_cooling_stable",
+          "label": "냉각 루프를 안정화한다",
+          "conditions": [],
+          "preview": "서버 열을 낮춰 이후 난이도를 줄인다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_cooling_gel",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_cooling_stable",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_COOLING_AMBUSH"
+        },
+        {
+          "choice_id": "ch05_cooling_bypass",
+          "label": "배관을 우회만 한다",
+          "conditions": [],
+          "preview": "시간을 벌지만 과열 위험을 남긴다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_cooling_bypass",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_COOLING_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_KIM_ARA",
+      "event_type": "dialogue",
+      "node_id": "PG-06",
+      "title": "김아라",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_kim_ara",
+        "music_key": "lab_tension",
+        "widget_overrides": [
+          "moral_choice",
+          "heat_meter"
+        ]
+      },
+      "text": {
+        "summary": "연구 격리실 안에서 김아라가 손상된 콘솔과 함께 살아 있다.",
+        "body": [
+          "그녀를 먼저 구하면 해석 지원을 얻지만 서버실 알람 시간이 흐른다.",
+          "서버를 먼저 열면 데이터는 쉬워지나, 아라의 상태와 신뢰가 악화된다."
+        ]
+      },
+      "npc_ids": [
+        "npc_kim_ara"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_ara_first",
+          "label": "김아라를 먼저 구조한다",
+          "conditions": [],
+          "preview": "아라의 도움을 받아 서버홀로 향한다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_kim_ara",
+              "value": 2
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_arkp_access_key",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_ara_rescued_first",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_DATA_ACCESS"
+        },
+        {
+          "choice_id": "ch05_ara_wait",
+          "label": "서버를 먼저 열고 돌아온다",
+          "conditions": [],
+          "preview": "시간은 아끼지만 관계가 흔들린다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_kim_ara",
+              "value": -1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_ara_delayed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_DATA_ACCESS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_DATA_ACCESS",
+      "event_type": "choice",
+      "node_id": "PG-05",
+      "title": "ARK-P 접속",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_arkp_serverhall",
+        "music_key": "server_chorus",
+        "widget_overrides": [
+          "data_branch",
+          "heat_meter",
+          "signal_decoder"
+        ]
+      },
+      "text": {
+        "summary": "백업 서버는 살아 있다. 남부 회랑과 독도 신호 인증값 일부가 여기 묻혀 있다.",
+        "body": [
+          "데이터를 독점할지, 제한 공개할지, 즉시 방송에 태울지의 결정은 후속 정치에 큰 영향을 준다.",
+          "또한 서버 코어를 살릴지 일부 파기할지도 결정해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_data_record",
+          "label": "기록국 독점으로 보관한다",
+          "conditions": [],
+          "preview": "정보 통제를 우선한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_data_record_only",
+              "value": true
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_southern_corridor_data",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_dokdo_signal_auth",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_SERVER_PURGE"
+        },
+        {
+          "choice_id": "ch05_data_limited",
+          "label": "제한 공개용 패키지로 만든다",
+          "conditions": [],
+          "preview": "복수 허브에 공유 가능한 형태로 저장한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_data_limited",
+              "value": true
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_southern_corridor_data",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_dokdo_signal_auth",
+              "value": 1
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.pangyo_survivors",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_SERVER_PURGE"
+        },
+        {
+          "choice_id": "ch05_data_broadcast",
+          "label": "즉시 방송 송출 큐에 올린다",
+          "conditions": [],
+          "preview": "희망과 혼란을 동시에 퍼뜨린다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_data_broadcasted",
+              "value": true
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_southern_corridor_data",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_dokdo_signal_auth",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 7
+            }
+          ],
+          "next_event_id": "EV_CH05_SERVER_PURGE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_BOSS_LINES",
+      "event_type": "boss",
+      "node_id": "PG-07",
+      "title": "회선",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:ch05_final_ready"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "boss_mirror_lines",
+        "music_key": "boss_lines",
+        "widget_overrides": [
+          "boss_hp",
+          "heat_meter",
+          "signal_noise_overlay"
+        ]
+      },
+      "text": {
+        "summary": "비상 경보와 냉각팬, 저주파 장치가 뒤엉키며 미러코어 접합체가 각성한다.",
+        "body": [
+          "코어를 완전히 파괴하면 추적은 줄지만 데이터와 재방문 가치도 잃는다.",
+          "살려 두면 후속 로그를 얻을 수 있으나 적 세력에 단서를 남긴다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_core_preserve",
+          "label": "코어를 살리고 탈출한다",
+          "conditions": [],
+          "preview": "데이터와 시설을 최대한 보존한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_core_preserved",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_05_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_EXIT_PRESSURE"
+        },
+        {
+          "choice_id": "ch05_core_break",
+          "label": "코어 일부를 파기하고 탈출한다",
+          "conditions": [],
+          "preview": "추적을 어렵게 만든다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_core_damaged",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_05_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_EXIT_PRESSURE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch05_boss_lines",
+        "boss_id": "mirror_core_lines",
+        "arena_tags": [
+          "server",
+          "alarm",
+          "signal"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch05_boss_down",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 35
+          },
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 15
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH05_EXTRACTION",
+      "event_type": "extraction",
+      "node_id": "PG-07",
+      "title": "초반 아크 종결",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:chapter_05_escape_ready"
+      ],
+      "presentation": {
+        "layout": "results",
+        "art_key": "bg_arkp_exit",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "chapter_result",
+          "signal_summary",
+          "party_summary"
+        ]
+      },
+      "text": {
+        "summary": "독도 신호는 가짜가 아니라는 것이 확인된다. 동시에 그 안전지대가 선별 체계일 가능성도 드러난다.",
+        "body": [
+          "김아라의 생존 여부와 신뢰, 데이터 공개 수준, 코어 보존 여부는 이후 전체 아크의 윤리 축을 만든다.",
+          "이 장을 끝내면 본격적인 남하 서사가 열린다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_finish",
+          "label": "아크 1을 종료한다",
+          "conditions": [],
+          "preview": "결과 정산과 후속 챕터 설계로 넘어간다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_05_completed",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "chapter.current",
+              "value": "CH06"
+            }
+          ],
+          "next_event_id": "END_CH05"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_SIGNAL_RELAY",
+      "event_type": "choice",
+      "node_id": "PG-03",
+      "title": "중계 신호 안정화",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_pangyo_skywalk",
+        "music_key": "echo_garden",
+        "widget_overrides": [
+          "noise_meter",
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "스카이워크 위 중계 장치가 간섭에 흔들린다.",
+        "body": [
+          "신호를 안정화하면 추적을 피하면서 이동할 수 있다.",
+          "간섭 차단은 빠르지만 소음이 커질 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_signal_boost",
+          "label": "신호 증폭",
+          "conditions": [],
+          "preview": "장치를 보정해 안정화한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_signal_stable",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH05_COOLING_ROUTE"
+        },
+        {
+          "choice_id": "ch05_signal_cut",
+          "label": "간섭 차단",
+          "conditions": [],
+          "preview": "노이즈를 줄이고 빠르게 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_signal_stable",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_COOLING_ROUTE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_CONTAINMENT_BREACH",
+      "event_type": "danger",
+      "node_id": "PG-05",
+      "title": "격리 구역 파손",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_arkp_serverhall",
+        "music_key": "lab_tension",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "서버홀 격리 구역이 파손되며 내부 감염체가 쏟아진다.",
+        "body": [
+          "여기서 밀리면 자료 접근이 늦어진다.",
+          "빠르게 봉쇄하면 장비 손실을 줄일 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch05_breach_clear",
+          "label": "격리 구역 정리",
+          "conditions": [],
+          "preview": "감염체를 제압하고 정리한다.",
+          "effects": [],
+          "next_event_id": "EV_CH05_PREP_FINAL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch05_cooling",
+        "arena_tags": [
+          "server",
+          "containment"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch05_containment_secured",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch05_server",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 16
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH05_PREP_FINAL",
+      "event_type": "dialogue",
+      "node_id": "PG-07",
+      "title": "최종 준비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_arkp_serverhall",
+        "music_key": "server_chorus",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "최종 구역 진입 전, 장비를 정리할 시간은 단 한 번뿐이다.",
+        "body": [
+          "재정비하면 전투가 길어질 수 있지만 생존 확률이 오른다.",
+          "서둘러 진입하면 소음이 줄지만 준비가 부족하다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_prep_ready",
+          "label": "장비 재정비",
+          "conditions": [],
+          "preview": "준비를 마치고 보스 구역으로 들어간다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_final_ready",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH05_BOSS_LINES"
+        },
+        {
+          "choice_id": "ch05_prep_rush",
+          "label": "즉시 돌입",
+          "conditions": [],
+          "preview": "속도를 우선해 곧바로 진입한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_final_ready",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_BOSS_LINES"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_RAMP_SWARM",
+      "event_type": "combat",
+      "node_id": "PG-01",
+      "title": "램프 난전",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_pangyo_interchange",
+        "music_key": "tension_mid",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "진입 램프에서 에코어가 몰려와 발을 붙잡는다.",
+        "body": [
+          "교차로 표지판이 흔들리고, 잔해가 미끄러진다.",
+          "짧게 끊고 나가야 로비로 접근할 수 있다.",
+          "교전이 길어질수록 오염이 쌓인다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [],
+      "on_enter_effects": [
+        {
+          "op": "add_stat",
+          "target": "contamination",
+          "value": 2
+        }
+      ],
+      "on_complete_effects": [],
+      "next_event_id": "EV_CH05_LOBBY_MAPPING",
+      "combat": {
+        "encounter_table_id": "enc_ch05_cooling",
+        "arena_tags": [
+          "ramp",
+          "interchange"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch05_ramp_cleared",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH05_SECURITY_CONSOLE",
+      "event_type": "scene",
+      "node_id": "PG-02",
+      "title": "보안 콘솔",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_pangyo_lobby",
+        "music_key": "signal_hiss",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "로비 보안 콘솔을 조작해 통로를 연다.",
+        "body": [
+          "가동 로그가 남아 있어 추적 위험이 있다.",
+          "수동 조작은 느리지만 흔적이 적다.",
+          "자동 재가동은 빠르지만 소음이 커진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_console_manual",
+          "label": "수동 조작",
+          "conditions": [],
+          "preview": "조용하지만 시간이 든다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_security_console",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_SKYWALK"
+        },
+        {
+          "choice_id": "ch05_console_auto",
+          "label": "자동 재가동",
+          "conditions": [],
+          "preview": "빠르지만 흔적이 남는다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_security_console",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_SKYWALK"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_SERVER_PURGE",
+      "event_type": "scene",
+      "node_id": "PG-05",
+      "title": "서버 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_arkp_serverhall",
+        "music_key": "tension_mid",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "서버홀에서 흔적 삭제 또는 데이터 확보를 선택한다.",
+        "body": [
+          "쿨링 팬이 멈추며 열기가 밀려온다.",
+          "흔적을 지우면 추적이 줄지만 보상도 줄어든다.",
+          "데이터를 더 확보하면 위험이 커진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_server_purge",
+          "label": "흔적 삭제",
+          "conditions": [],
+          "preview": "추적을 줄인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_server_purged",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH05_BOSS_LINES"
+        },
+        {
+          "choice_id": "ch05_server_grab",
+          "label": "데이터 추가 확보",
+          "conditions": [],
+          "preview": "보상을 노린다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_server_purged",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_BOSS_LINES"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_EXIT_PRESSURE",
+      "event_type": "scene",
+      "node_id": "PG-07",
+      "title": "출구 압박",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_arkp_exit",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "출구 방호막이 흔들리고 추격 신호가 번진다.",
+        "body": [
+          "방호막이 깨지기 전에 통로를 확보해야 한다.",
+          "연막을 쓰면 소음을 줄일 수 있다.",
+          "서두르면 체력이 소모된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_exit_smoke",
+          "label": "연막 투입",
+          "conditions": [],
+          "preview": "소음을 낮춘다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_EXTRACTION"
+        },
+        {
+          "choice_id": "ch05_exit_push",
+          "label": "속도 유지",
+          "conditions": [],
+          "preview": "체력을 소모한다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 5
+            }
+          ],
+          "next_event_id": "EV_CH05_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_LOBBY_SCAN",
+      "event_type": "choice",
+      "node_id": "PG-02",
+      "title": "로비 스캔",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_pangyo_lobby",
+        "music_key": "terminal_hum",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "로비 데이터 포트가 아직 살아 있다.",
+        "body": [
+          "스캔을 진행하면 경로 정보를 확보할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_lobby_scan",
+          "label": "로비 스캔 실행",
+          "conditions": [],
+          "preview": "경로 정보를 확보하고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_lobby_scanned",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH05_SKYWALK"
+        },
+        {
+          "choice_id": "ch05_lobby_skip",
+          "label": "즉시 이동",
+          "conditions": [],
+          "preview": "스캔을 생략하고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_lobby_scanned",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_SKYWALK"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_COOLING_AMBUSH",
+      "event_type": "danger",
+      "node_id": "PG-04",
+      "title": "냉각실 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_cooling_room",
+        "music_key": "cooling_hum",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "냉각실 통로에서 감염체가 길을 막는다.",
+        "body": [
+          "여길 정리해야 김아라와의 접촉이 가능하다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch05_cooling_clear",
+          "label": "통로 정리",
+          "conditions": [],
+          "preview": "통로를 확보하고 전진한다.",
+          "effects": [],
+          "next_event_id": "EV_CH05_KIM_ARA"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch05_cooling",
+        "arena_tags": [
+          "cooling",
+          "tight"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch05_cooling_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch05_server",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 16
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT",
+      "event_type": "exploration",
+      "node_id": "PG-02",
+      "title": "로비 검문",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_pangyo_lobby",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "캠퍼스 로비에 임시 검문이 걸려 있다.",
+        "body": [
+          "출입 기록을 위조하거나 경로를 우회해야 한다.",
+          "늦어질수록 냉각 라인의 압력이 오른다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_lobby_forge",
+          "label": "기록을 위조한다",
+          "conditions": [],
+          "preview": "조용히 통과한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_lobby_access",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH05_LOBBY_MAPPING"
+        },
+        {
+          "choice_id": "ch05_lobby_bypass",
+          "label": "우회로를 찾는다",
+          "conditions": [],
+          "preview": "소음을 감수하고 통과한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_lobby_access",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 5
+            }
+          ],
+          "next_event_id": "EV_CH05_LOBBY_MAPPING"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH05_COOLING_BREACH",
+      "event_type": "combat",
+      "node_id": "PG-04",
+      "title": "냉각설비 과열",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "combat",
+        "art_key": "bg_cooling_room",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "noise_meter",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "냉각설비실에서 과열 감염체가 폭주한다.",
+        "body": [
+          "열기가 심해 방어구 내구도가 빨리 닳는다.",
+          "여기서 정리하지 않으면 서버홀이 과열된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_cooling_break",
+          "label": "과열체를 제거한다",
+          "conditions": [],
+          "preview": "냉각 루트로 진입한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_cooling_breach",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH05_COOLING_ROUTE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch05_cooling",
+        "arena_tags": [
+          "cooling",
+          "heat"
+        ],
+        "victory_effects": [],
+        "defeat_effects": []
+      }
+    },
+    {
+      "event_id": "EV_CH05_DATA_SANITIZE",
+      "event_type": "dialogue",
+      "node_id": "PG-05",
+      "title": "데이터 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_server_hall",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "서버홀 데이터 패킷을 정리해 안전한 보관 상태로 만든다.",
+        "body": [
+          "정리 시간이 길어지지만 신뢰도가 오른다.",
+          "정리하지 않으면 다음 장에서 오류가 누적된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch05_data_sanitize",
+          "label": "정리를 완료한다",
+          "conditions": [],
+          "preview": "안전한 보관 상태로 만든다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_data_sanitized",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH05_BOSS_LINES"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH05_BOSS_LINES",
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch05_main",
+      "kind": "main",
+      "title": "미러센터 돌파",
+      "summary": "접근 키와 인증값을 확보해 최종 신호를 완성한다.",
+      "entry_event_id": "EV_CH05_ENTRY",
+      "completion_event_id": "EV_CH05_EXTRACTION",
+      "objective_ids": [
+        "obj_ch05_01",
+        "obj_ch05_02",
+        "obj_ch05_03"
+      ],
+      "unlock_when": [],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch05_ramp",
+      "kind": "side",
+      "title": "진입 램프 확보",
+      "summary": "초입 램프를 정리해 후퇴 경로를 확보한다.",
+      "entry_event_id": "EV_CH05_RAMP_SWARM",
+      "completion_event_id": "EV_CH05_RAMP_SWARM",
+      "objective_ids": [
+        "obj_ch05_04"
+      ],
+      "unlock_when": [
+        "flag:ch05_started"
+      ],
+      "reveal_cap": "ambient"
+    },
+    {
+      "quest_track_id": "qt_ch05_server",
+      "kind": "side",
+      "title": "서버 정리",
+      "summary": "서버홀 흔적을 정리해 추적을 차단한다.",
+      "entry_event_id": "EV_CH05_SERVER_PURGE",
+      "completion_event_id": "EV_CH05_SERVER_PURGE",
+      "objective_ids": [
+        "obj_ch05_06"
+      ],
+      "unlock_when": [
+        "flag:ch05_map_obtained"
+      ],
+      "reveal_cap": "evidence"
+    }
+  ]
+}

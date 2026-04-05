@@ -1,1 +1,1595 @@
-{   "version": "1.0.0",   "game_id": "dokdo_arc_webgame",   "chapter_id": "CH04",   "title": "상자들의 도시",   "role": "물류 복원, 이동 인프라 체감, 인간-시스템 갈등 심화",   "entry_node_id": "MJ-01",   "exit_node_ids": [     "MJ-07"   ],   "recommended_level": 4,   "ui_profile": {     "theme": "munjeong_logistics",     "special_widgets": [       "line_status",       "route_compare",       "card_auth_state",       "hazard_overlay"     ]   },   "objectives": [     {       "objective_id": "obj_ch04_01",       "text": "배송 배지와 보안 배지를 확보한다.",       "required": true,       "complete_when": [         "item:itm_delivery_badge>=1",         "item:itm_security_badge>=1"       ]     },     {       "objective_id": "obj_ch04_02",       "text": "판교 진입권을 획득한다.",       "required": true,       "complete_when": [         "item:itm_route_clearance_pangyo>=1"       ]     },     {       "objective_id": "obj_ch04_03",       "text": "철도선 또는 배송터널 중 하나를 연다.",       "required": true,       "complete_when": [         "flag:ch04_rail_route|flag:ch04_delivery_route"       ]     }   ],   "nodes": [     {       "node_id": "MJ-01",       "name": "탄천 둑길",       "node_type": "travel",       "description": "폐차량과 비닐이 바람에 걸리는 외곽 접근로.",       "coordinates": {         "x": 10,         "y": 78       },       "encounter_table_id": "enc_ch04_logistics_floor",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "MJ-02",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 1,             "contamination": 1           }         },         {           "to": "MJ-03",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 4,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH04_ENTRY"       ],       "revisit_rule": "always",       "tags": [         "entry",         "outdoor"       ]     },     {       "node_id": "MJ-02",       "name": "가락 냉장창고",       "node_type": "branch",       "description": "냉장 약품과 보급품이 남아 있는 저온 창고.",       "coordinates": {         "x": 24,         "y": 66       },       "encounter_table_id": "enc_ch04_logistics_floor",       "loot_table_ids": [         "lt_ch04_logistics"       ],       "npc_ids": [],       "connections": [         {           "to": "MJ-03",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "MJ-04",           "travel_type": "service_road",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH04_COLD_ALLOC"       ],       "revisit_rule": "always",       "tags": [         "medicine",         "loot"       ]     },     {       "node_id": "MJ-03",       "name": "자동분류센터 로비",       "node_type": "safehouse",       "description": "한소명이 버티는 로비와 내부 지도 콘솔.",       "coordinates": {         "x": 38,         "y": 56       },       "loot_table_ids": [         "lt_ch04_logistics"       ],       "npc_ids": [         "npc_han_somyeong"       ],       "connections": [         {           "to": "MJ-04",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         },         {           "to": "MJ-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 3,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH04_LOBBY_MEET"       ],       "revisit_rule": "always",       "tags": [         "npc",         "hub"       ]     },     {       "node_id": "MJ-04",       "name": "철도 인계장",       "node_type": "branch",       "description": "수서 연결선과 물류 팔레트가 겹치는 하역 구역.",       "coordinates": {         "x": 52,         "y": 44       },       "encounter_table_id": "enc_ch04_logistics_floor",       "loot_table_ids": [         "lt_ch04_logistics"       ],       "npc_ids": [],       "connections": [         {           "to": "MJ-05",           "travel_type": "service_rail",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 1           }         },         {           "to": "MJ-07",           "travel_type": "rail_tunnel",           "requires": [             "flag:ch04_rail_route"           ],           "cost": {             "time": 3,             "noise": 3,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH04_ROUTE_SELECTION"       ],       "revisit_rule": "after_clear",       "tags": [         "route",         "rail"       ]     },     {       "node_id": "MJ-05",       "name": "패키지 분류 메인홀",       "node_type": "danger",       "description": "컨베이어가 뒤엉킨 메인 분류 라인.",       "coordinates": {         "x": 66,         "y": 48       },       "encounter_table_id": "enc_ch04_boss_picker",       "loot_table_ids": [         "lt_ch04_logistics"       ],       "npc_ids": [],       "connections": [         {           "to": "MJ-06",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 3,             "contamination": 1           }         },         {           "to": "MJ-07",           "travel_type": "delivery_tunnel",           "requires": [             "flag:ch04_delivery_route"           ],           "cost": {             "time": 2,             "noise": 2,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH04_LINE_DECISION",         "EV_CH04_BOSS_PICKER"       ],       "revisit_rule": "locked_after_clear",       "tags": [         "boss",         "logistics"       ]     },     {       "node_id": "MJ-06",       "name": "보안 사무실",       "node_type": "exploration",       "description": "배송/보안 배지와 출입 프로토콜이 남은 실내 구획.",       "coordinates": {         "x": 80,         "y": 40       },       "encounter_table_id": "enc_ch04_logistics_floor",       "loot_table_ids": [         "lt_ch04_logistics"       ],       "npc_ids": [],       "connections": [         {           "to": "MJ-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "MJ-07",           "travel_type": "service_hall",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH04_SECURITY_BADGES"       ],       "revisit_rule": "always",       "tags": [         "keycard",         "main"       ]     },     {       "node_id": "MJ-07",       "name": "배송 터널",       "node_type": "exit",       "description": "판교 방향으로 이어지는 하부 통로.",       "coordinates": {         "x": 92,         "y": 30       },       "loot_table_ids": [],       "npc_ids": [],       "connections": [         {           "to": "MJ-01",           "travel_type": "walk",           "requires": [             "flag:chapter_04_completed"           ],           "cost": {             "time": 3,             "noise": 0,             "contamination": 0           }         }       ],       "event_ids": [         "EV_CH04_EXTRACTION"       ],       "revisit_rule": "after_clear",       "tags": [         "exit",         "pangyo"       ]     }   ],   "events": [     {       "event_id": "EV_CH04_ENTRY",       "event_type": "briefing",       "node_id": "MJ-01",       "title": "상자들의 도시",       "repeatable": false,       "once_per_run": true,       "priority": 100,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "bg_tancheon_embankment",         "music_key": "industrial_low",         "widget_overrides": [           "route_compare",           "objective_panel"         ]       },       "text": {         "summary": "판교 외곽 자동봉쇄를 풀려면 문정 물류벨트에서 배송/보안 배지를 확보해야 한다.",         "body": [           "이 챕터는 전투보다 동선과 시스템 선택이 더 중요하다.",           "라인을 다시 돌릴지, 아예 죽여 둘지가 이후 파밍 구조를 바꾼다."         ]       },       "npc_ids": [         "npc_yoon_haein"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_start",           "label": "물류벨트로 진입한다",           "conditions": [],           "preview": "탄천 둑길을 따라 접근한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch04_started",               "value": true             }           ],           "next_event_id": "EV_CH04_COLD_ALLOC"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH04_COLD_ALLOC",       "event_type": "choice",       "node_id": "MJ-02",       "title": "냉장 약품의 향방",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_cold_warehouse",         "music_key": "cold_hum",         "widget_overrides": [           "resource_compare",           "reputation_change"         ]       },       "text": {         "summary": "냉장창고엔 아직 쓸 만한 항생제와 응급 의료품이 남아 있다.",         "body": [           "기록국으로 빼돌리면 여의도 허브가 강해진다.",           "현지 난민에게 배분하면 문정 평판은 오르지만 다음 장 시작 물자가 줄어든다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_cold_record",           "label": "기록국용으로 확보",           "conditions": [],           "preview": "원정 안정성을 높인다.",           "effects": [             {               "op": "grant_loot_table",               "target": "loot:lt_ch04_logistics",               "value": 1             },             {               "op": "add_reputation",               "target": "reputation.record_bureau",               "value": 2             },             {               "op": "set_flag",               "target": "flag:ch04_med_to_record",               "value": true             }           ],           "next_event_id": "EV_CH04_LOBBY_MEET"         },         {           "choice_id": "ch04_cold_locals",           "label": "현지 난민에게 배분",           "conditions": [],           "preview": "현장 신뢰를 산다.",           "effects": [             {               "op": "add_reputation",               "target": "reputation.munjeong_logistics",               "value": 2             },             {               "op": "add_trust",               "target": "trust.npc_han_somyeong",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch04_med_to_locals",               "value": true             }           ],           "next_event_id": "EV_CH04_LOBBY_MEET"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH04_LOBBY_MEET",       "event_type": "dialogue",       "node_id": "MJ-03",       "title": "한소명의 안내",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_han_somyeong",         "music_key": "warehouse_safe",         "widget_overrides": [           "line_status",           "map_overlay"         ]       },       "text": {         "summary": "한소명은 물류센터가 아직 길을 만들 수 있지만, 그 길이 사람보다 적을 더 빨리 움직일 수도 있다고 경고한다.",         "body": [           "로비 콘솔에서 내부 지도와 분류 라인 상태를 확인할 수 있다.",           "이 챕터부터는 단순 진행보다 허브형 재방문 파밍 가치가 커진다."         ]       },       "npc_ids": [         "npc_han_somyeong"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_lobby_help",           "label": "한소명의 안내를 받는다",           "conditions": [],           "preview": "내부 보안과 터널 구조를 배운다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_han_somyeong",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.munjeong_logistics",               "value": 1             }           ],           "next_event_id": "EV_CH04_ROUTE_SELECTION"         },         {           "choice_id": "ch04_lobby_solo",           "label": "혼자 밀어붙인다",           "conditions": [],           "preview": "시간은 절약하지만 내부 정보가 부족하다.",           "effects": [             {               "op": "sub_stat",               "target": "noise",               "value": 1             }           ],           "next_event_id": "EV_CH04_ROUTE_SELECTION"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH04_ROUTE_SELECTION",       "event_type": "choice",       "node_id": "MJ-04",       "title": "수서선인가, 배송터널인가",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_rail_transfer",         "music_key": "metal_clank",         "widget_overrides": [           "route_compare",           "inventory_quickview"         ]       },       "text": {         "summary": "철도 인계장은 भारी 적재에 유리하고, 배송터널은 은밀하지만 오염 구간이 길다.",         "body": [           "수서 철도선을 열면 무거운 장비 운송과 후속 복귀 파밍이 편해진다.",           "배송터널을 열면 판교 하부 접근이 쉬워지지만 컨베이어형 적이 많다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_route_rail",           "label": "수서 철도선을 복구한다",           "conditions": [],           "preview": "장비 운송을 우선한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch04_rail_route",               "value": true             },             {               "op": "set_route",               "target": "route.current",               "value": "suseo_rail"             }           ],           "next_event_id": "EV_CH04_SECURITY_BADGES"         },         {           "choice_id": "ch04_route_delivery",           "label": "배송터널을 우선 개방한다",           "conditions": [],           "preview": "은밀하게 판교 하부로 붙는다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch04_delivery_route",               "value": true             },             {               "op": "set_route",               "target": "route.current",               "value": "pangyo_delivery_tunnel"             },             {               "op": "add_stat",               "target": "contamination",               "value": 4             }           ],           "next_event_id": "EV_CH04_SECURITY_BADGES"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH04_SECURITY_BADGES",       "event_type": "exploration",       "node_id": "MJ-06",       "title": "보안 사무실 탈취",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_security_office",         "music_key": "printer_static",         "widget_overrides": [           "card_auth_state",           "loot_preview"         ]       },       "text": {         "summary": "낡은 카드 프린터와 출입 통제가 아직 살아 있어 배지를 위조하거나 원본을 회수할 수 있다.",         "body": [           "원본 배지는 신뢰성이 높지만 탐색 리스크가 크다.",           "위조 배지는 빠르지만 후반 보안 판정에서 불리할 수 있다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_badge_original",           "label": "원본 배지를 회수한다",           "conditions": [],           "preview": "시간이 걸리지만 안정적이다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_delivery_badge",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_security_badge",               "value": 1             },             {               "op": "grant_loot_table",               "target": "loot:lt_ch04_logistics",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch04_badges_original",               "value": true             }           ],           "next_event_id": "EV_CH04_LINE_DECISION"         },         {           "choice_id": "ch04_badge_forge",           "label": "위조 배지를 찍어낸다",           "conditions": [],           "preview": "빠르지만 신뢰성이 낮다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_delivery_badge",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_security_badge",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 3             },             {               "op": "set_flag",               "target": "flag:ch04_badges_forged",               "value": true             }           ],           "next_event_id": "EV_CH04_LINE_DECISION"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH04_LINE_DECISION",       "event_type": "choice",       "node_id": "MJ-05",       "title": "라인을 살릴 것인가",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_sorting_hall",         "music_key": "industrial_tension",         "widget_overrides": [           "line_status",           "boss_hint"         ]       },       "text": {         "summary": "컨베이어와 자동분류 팔을 다시 돌리면 메인홀이 살아난다.",         "body": [           "라인을 살리면 이후 재방문 파밍과 이동이 쉬워진다.",           "그러나 보스전에서 피커가 훨씬 빠르고 넓게 움직인다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_line_on",           "label": "라인을 재가동한다",           "conditions": [],           "preview": "길을 열기 위해 소음을 감수한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch04_line_on",               "value": true             },             {               "op": "add_stat",               "target": "noise",               "value": 8             }           ],           "next_event_id": "EV_CH04_BOSS_PICKER"         },         {           "choice_id": "ch04_line_off",           "label": "라인을 죽여 둔다",           "conditions": [],           "preview": "전투를 쉽게 만들고 희귀 루팅을 포기한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch04_line_off",               "value": true             },             {               "op": "sub_stat",               "target": "noise",               "value": 1             }           ],           "next_event_id": "EV_CH04_BOSS_PICKER"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH04_BOSS_PICKER",       "event_type": "boss",       "node_id": "MJ-05",       "title": "피커",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "boss",         "art_key": "boss_picker_prime",         "music_key": "boss_picker",         "widget_overrides": [           "boss_hp",           "line_status",           "hazard_overlay"         ]       },       "text": {         "summary": "자동분류 접합체가 기계 팔과 롤러 라인을 이용해 메인홀 전체를 사냥터로 바꾼다.",         "body": [           "라인이 켜져 있으면 이동 속도와 휩쓸기 패턴이 강화된다.",           "보스전 승리 후 판교 진입권이 열린다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_boss_clear",           "label": "분류홀을 장악한다",           "conditions": [],           "preview": "터널을 열고 빠져나간다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_04_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH04_EXTRACTION"         }       ],       "on_enter_effects": [],       "on_complete_effects": [],       "combat": {         "encounter_table_id": "enc_ch04_boss_picker",         "boss_id": "picker_prime",         "arena_tags": [           "industrial",           "conveyor",           "crush"         ],         "victory_effects": [           {             "op": "set_flag",             "target": "flag:ch04_boss_down",             "value": true           },           {             "op": "grant_item",             "target": "item:itm_route_clearance_pangyo",             "value": 1           }         ],         "defeat_effects": [           {             "op": "sub_stat",             "target": "hp",             "value": 28           },           {             "op": "add_stat",             "target": "contamination",             "value": 8           }         ]       }     },     {       "event_id": "EV_CH04_EXTRACTION",       "event_type": "extraction",       "node_id": "MJ-07",       "title": "판교 진입권",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [         "flag:chapter_04_escape_ready"       ],       "presentation": {         "layout": "results",         "art_key": "bg_delivery_tunnel",         "music_key": "safe_bunker",         "widget_overrides": [           "chapter_result",           "route_summary"         ]       },       "text": {         "summary": "배지와 진입권, 그리고 열어 둔 노선을 가지고 판교 외곽으로 향한다.",         "body": [           "선택한 루트와 라인 상태에 따라 Chapter 5 시작 스폰 포인트와 난이도가 달라진다.",           "문정 물류벨트는 이후 반복 파밍 허브로 재사용 가능하다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch04_finish",           "label": "챕터를 종료한다",           "conditions": [],           "preview": "판교 브리핑으로 이동한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_04_completed",               "value": true             },             {               "op": "set_value",               "target": "chapter.current",               "value": "CH05"             }           ],           "next_event_id": "END_CH04"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     }   ],   "boss_event_id": "EV_CH04_BOSS_PICKER" }
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH04",
+  "title": "상자들의 도시",
+  "role": "물류 복원, 이동 인프라 체감, 인간-시스템 갈등 심화",
+  "entry_node_id": "MJ-01",
+  "exit_node_ids": [
+    "MJ-07"
+  ],
+  "recommended_level": 4,
+  "ui_profile": {
+    "theme": "munjeong_logistics",
+    "special_widgets": [
+      "line_status",
+      "route_compare",
+      "card_auth_state",
+      "hazard_overlay"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch04_01",
+      "text": "배송 배지와 보안 배지를 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_delivery_badge>=1",
+        "item:itm_security_badge>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_02",
+      "text": "판교 진입권을 획득한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_route_clearance_pangyo>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_03",
+      "text": "철도선 또는 배송터널 중 하나를 연다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch04_rail_route|flag:ch04_delivery_route"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_04",
+      "text": "터널 매복을 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_tunnel_clear"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_05",
+      "text": "선로 장애를 제거한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_rail_jam_fixed"
+      ]
+    },
+    {
+      "objective_id": "obj_ch04_06",
+      "text": "정비창 거래를 마친다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch04_vendor_bartered"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "MJ-01",
+      "name": "탄천 둑길",
+      "node_type": "travel",
+      "description": "폐차량과 비닐이 바람에 걸리는 외곽 접근로.",
+      "coordinates": {
+        "x": 10,
+        "y": 78
+      },
+      "encounter_table_id": "enc_ch04_logistics_floor",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "MJ-02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "MJ-03",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 4,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_ENTRY"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "entry",
+        "outdoor"
+      ]
+    },
+    {
+      "node_id": "MJ-02",
+      "name": "가락 냉장창고",
+      "node_type": "branch",
+      "description": "냉장 약품과 보급품이 남아 있는 저온 창고.",
+      "coordinates": {
+        "x": 24,
+        "y": 66
+      },
+      "encounter_table_id": "enc_ch04_logistics_floor",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "MJ-03",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "MJ-04",
+          "travel_type": "service_road",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_COLD_AUDIT",
+        "EV_CH04_COLD_ALLOC"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "medicine",
+        "loot"
+      ]
+    },
+    {
+      "node_id": "MJ-03",
+      "name": "자동분류센터 로비",
+      "node_type": "safehouse",
+      "description": "한소명이 버티는 로비와 내부 지도 콘솔.",
+      "coordinates": {
+        "x": 38,
+        "y": 56
+      },
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [
+        "npc_han_somyeong"
+      ],
+      "connections": [
+        {
+          "to": "MJ-04",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "MJ-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 3,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_LOBBY_MEET"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "npc",
+        "hub"
+      ]
+    },
+    {
+      "node_id": "MJ-04",
+      "name": "철도 인계장",
+      "node_type": "branch",
+      "description": "수서 연결선과 물류 팔레트가 겹치는 하역 구역.",
+      "coordinates": {
+        "x": 52,
+        "y": 44
+      },
+      "encounter_table_id": "enc_ch04_logistics_floor",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "MJ-05",
+          "travel_type": "service_rail",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "MJ-07",
+          "travel_type": "rail_tunnel",
+          "requires": [
+            "flag:ch04_rail_route"
+          ],
+          "cost": {
+            "time": 3,
+            "noise": 3,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_RAIL_JAM",
+        "EV_CH04_ROUTE_SELECTION"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "route",
+        "rail"
+      ]
+    },
+    {
+      "node_id": "MJ-05",
+      "name": "패키지 분류 메인홀",
+      "node_type": "danger",
+      "description": "컨베이어가 뒤엉킨 메인 분류 라인.",
+      "coordinates": {
+        "x": 66,
+        "y": 48
+      },
+      "encounter_table_id": "enc_ch04_boss_picker",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "MJ-06",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "MJ-07",
+          "travel_type": "delivery_tunnel",
+          "requires": [
+            "flag:ch04_delivery_route"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_LINE_PREP",
+        "EV_CH04_LINE_DECISION",
+        "EV_CH04_BOSS_PICKER"
+      ],
+      "revisit_rule": "locked_after_clear",
+      "tags": [
+        "boss",
+        "logistics"
+      ]
+    },
+    {
+      "node_id": "MJ-06",
+      "name": "보안 사무실",
+      "node_type": "exploration",
+      "description": "배송/보안 배지와 출입 프로토콜이 남은 실내 구획.",
+      "coordinates": {
+        "x": 80,
+        "y": 40
+      },
+      "encounter_table_id": "enc_ch04_logistics_floor",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "MJ-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "MJ-07",
+          "travel_type": "service_hall",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_SECURITY_SWEEP",
+        "EV_CH04_SECURITY_BADGES"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "keycard",
+        "main"
+      ]
+    },
+    {
+      "node_id": "MJ-07",
+      "name": "배송 터널",
+      "node_type": "exit",
+      "description": "판교 방향으로 이어지는 하부 통로.",
+      "coordinates": {
+        "x": 92,
+        "y": 30
+      },
+      "loot_table_ids": [],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "MJ-01",
+          "travel_type": "walk",
+          "requires": [
+            "flag:chapter_04_completed"
+          ],
+          "cost": {
+            "time": 3,
+            "noise": 0,
+            "contamination": 0
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH04_EXTRACTION"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "exit",
+        "pangyo"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH04_ENTRY",
+      "event_type": "briefing",
+      "node_id": "MJ-01",
+      "title": "상자들의 도시",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_tancheon_embankment",
+        "music_key": "industrial_low",
+        "widget_overrides": [
+          "route_compare",
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "판교 외곽 자동봉쇄를 풀려면 문정 물류벨트에서 배송/보안 배지를 확보해야 한다.",
+        "body": [
+          "이 챕터는 전투보다 동선과 시스템 선택이 더 중요하다.",
+          "라인을 다시 돌릴지, 아예 죽여 둘지가 이후 파밍 구조를 바꾼다."
+        ]
+      },
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_start",
+          "label": "물류벨트로 진입한다",
+          "conditions": [],
+          "preview": "탄천 둑길을 따라 접근한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_started",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_TUNNEL_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_COLD_ALLOC",
+      "event_type": "choice",
+      "node_id": "MJ-02",
+      "title": "냉장 약품의 향방",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_cold_warehouse",
+        "music_key": "cold_hum",
+        "widget_overrides": [
+          "resource_compare",
+          "reputation_change"
+        ]
+      },
+      "text": {
+        "summary": "냉장창고엔 아직 쓸 만한 항생제와 응급 의료품이 남아 있다.",
+        "body": [
+          "기록국으로 빼돌리면 여의도 허브가 강해진다.",
+          "현지 난민에게 배분하면 문정 평판은 오르지만 다음 장 시작 물자가 줄어든다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_cold_record",
+          "label": "기록국용으로 확보",
+          "conditions": [],
+          "preview": "원정 안정성을 높인다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.record_bureau",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_med_to_record",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_LOBBY_MEET"
+        },
+        {
+          "choice_id": "ch04_cold_locals",
+          "label": "현지 난민에게 배분",
+          "conditions": [],
+          "preview": "현장 신뢰를 산다.",
+          "effects": [
+            {
+              "op": "add_reputation",
+              "target": "reputation.munjeong_logistics",
+              "value": 2
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_han_somyeong",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_med_to_locals",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_LOBBY_MEET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_LOBBY_MEET",
+      "event_type": "dialogue",
+      "node_id": "MJ-03",
+      "title": "한소명의 안내",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_han_somyeong",
+        "music_key": "warehouse_safe",
+        "widget_overrides": [
+          "line_status",
+          "map_overlay"
+        ]
+      },
+      "text": {
+        "summary": "한소명은 물류센터가 아직 길을 만들 수 있지만, 그 길이 사람보다 적을 더 빨리 움직일 수도 있다고 경고한다.",
+        "body": [
+          "로비 콘솔에서 내부 지도와 분류 라인 상태를 확인할 수 있다.",
+          "이 챕터부터는 단순 진행보다 허브형 재방문 파밍 가치가 커진다."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_lobby_help",
+          "label": "한소명의 안내를 받는다",
+          "conditions": [],
+          "preview": "내부 보안과 터널 구조를 배운다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_han_somyeong",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.munjeong_logistics",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_LOADING_AMBUSH"
+        },
+        {
+          "choice_id": "ch04_lobby_solo",
+          "label": "혼자 밀어붙인다",
+          "conditions": [],
+          "preview": "시간은 절약하지만 내부 정보가 부족하다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_LOADING_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_ROUTE_SELECTION",
+      "event_type": "choice",
+      "node_id": "MJ-04",
+      "title": "수서선인가, 배송터널인가",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_rail_transfer",
+        "music_key": "metal_clank",
+        "widget_overrides": [
+          "route_compare",
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "철도 인계장은 भारी 적재에 유리하고, 배송터널은 은밀하지만 오염 구간이 길다.",
+        "body": [
+          "수서 철도선을 열면 무거운 장비 운송과 후속 복귀 파밍이 편해진다.",
+          "배송터널을 열면 판교 하부 접근이 쉬워지지만 컨베이어형 적이 많다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_route_rail",
+          "label": "수서 철도선을 복구한다",
+          "conditions": [],
+          "preview": "장비 운송을 우선한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_rail_route",
+              "value": true
+            },
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "suseo_rail"
+            }
+          ],
+          "next_event_id": "EV_CH04_RAIL_JAM"
+        },
+        {
+          "choice_id": "ch04_route_delivery",
+          "label": "배송터널을 우선 개방한다",
+          "conditions": [],
+          "preview": "은밀하게 판교 하부로 붙는다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_delivery_route",
+              "value": true
+            },
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "pangyo_delivery_tunnel"
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH04_RAIL_JAM"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_SECURITY_BADGES",
+      "event_type": "exploration",
+      "node_id": "MJ-06",
+      "title": "보안 사무실 탈취",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_security_office",
+        "music_key": "printer_static",
+        "widget_overrides": [
+          "card_auth_state",
+          "loot_preview"
+        ]
+      },
+      "text": {
+        "summary": "낡은 카드 프린터와 출입 통제가 아직 살아 있어 배지를 위조하거나 원본을 회수할 수 있다.",
+        "body": [
+          "원본 배지는 신뢰성이 높지만 탐색 리스크가 크다.",
+          "위조 배지는 빠르지만 후반 보안 판정에서 불리할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_badge_original",
+          "label": "원본 배지를 회수한다",
+          "conditions": [],
+          "preview": "시간이 걸리지만 안정적이다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_delivery_badge",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_security_badge",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_badges_original",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_VENDOR_BARTER"
+        },
+        {
+          "choice_id": "ch04_badge_forge",
+          "label": "위조 배지를 찍어낸다",
+          "conditions": [],
+          "preview": "빠르지만 신뢰성이 낮다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_delivery_badge",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_security_badge",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_badges_forged",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_VENDOR_BARTER"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_LINE_DECISION",
+      "event_type": "choice",
+      "node_id": "MJ-05",
+      "title": "라인을 살릴 것인가",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_sorting_hall",
+        "music_key": "industrial_tension",
+        "widget_overrides": [
+          "line_status",
+          "boss_hint"
+        ]
+      },
+      "text": {
+        "summary": "컨베이어와 자동분류 팔을 다시 돌리면 메인홀이 살아난다.",
+        "body": [
+          "라인을 살리면 이후 재방문 파밍과 이동이 쉬워진다.",
+          "그러나 보스전에서 피커가 훨씬 빠르고 넓게 움직인다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_line_on",
+          "label": "라인을 재가동한다",
+          "conditions": [],
+          "preview": "길을 열기 위해 소음을 감수한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_on",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 8
+            }
+          ],
+          "next_event_id": "EV_CH04_PRE_BOSS_CHECK"
+        },
+        {
+          "choice_id": "ch04_line_off",
+          "label": "라인을 죽여 둔다",
+          "conditions": [],
+          "preview": "전투를 쉽게 만들고 희귀 루팅을 포기한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_off",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_PRE_BOSS_CHECK"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_BOSS_PICKER",
+      "event_type": "boss",
+      "node_id": "MJ-05",
+      "title": "피커",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:ch04_security_cleared"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "boss_picker_prime",
+        "music_key": "boss_picker",
+        "widget_overrides": [
+          "boss_hp",
+          "line_status",
+          "hazard_overlay"
+        ]
+      },
+      "text": {
+        "summary": "자동분류 접합체가 기계 팔과 롤러 라인을 이용해 메인홀 전체를 사냥터로 바꾼다.",
+        "body": [
+          "라인이 켜져 있으면 이동 속도와 휩쓸기 패턴이 강화된다.",
+          "보스전 승리 후 판교 진입권이 열린다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_boss_clear",
+          "label": "분류홀을 장악한다",
+          "conditions": [],
+          "preview": "터널을 열고 빠져나간다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_04_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_EXTRACTION_PREP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch04_boss_picker",
+        "boss_id": "picker_prime",
+        "arena_tags": [
+          "industrial",
+          "conveyor",
+          "crush"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch04_boss_down",
+            "value": true
+          },
+          {
+            "op": "grant_item",
+            "target": "item:itm_route_clearance_pangyo",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 28
+          },
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH04_EXTRACTION",
+      "event_type": "extraction",
+      "node_id": "MJ-07",
+      "title": "판교 진입권",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:chapter_04_escape_ready"
+      ],
+      "presentation": {
+        "layout": "results",
+        "art_key": "bg_delivery_tunnel",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "chapter_result",
+          "route_summary"
+        ]
+      },
+      "text": {
+        "summary": "배지와 진입권, 그리고 열어 둔 노선을 가지고 판교 외곽으로 향한다.",
+        "body": [
+          "선택한 루트와 라인 상태에 따라 Chapter 5 시작 스폰 포인트와 난이도가 달라진다.",
+          "문정 물류벨트는 이후 반복 파밍 허브로 재사용 가능하다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_finish",
+          "label": "챕터를 종료한다",
+          "conditions": [],
+          "preview": "판교 브리핑으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_04_completed",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "chapter.current",
+              "value": "CH05"
+            }
+          ],
+          "next_event_id": "END_CH04"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_RAIL_JAM",
+      "event_type": "scene",
+      "node_id": "MJ-04",
+      "title": "선로 장애",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_rail_transfer",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "선로 분기 장치가 얼어붙어 길이 막혀 있다.",
+        "body": [
+          "작업등이 깜박이며 냉기가 번진다.",
+          "강제로 열면 소음이 크고, 복구하면 시간이 든다.",
+          "어느 쪽이든 통로를 확보해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_rail_force",
+          "label": "강제로 개방",
+          "conditions": [],
+          "preview": "소음을 감수한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_rail_jam_fixed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_SECURITY_BADGES"
+        },
+        {
+          "choice_id": "ch04_rail_repair",
+          "label": "정상 복구",
+          "conditions": [],
+          "preview": "시간이 늘지만 안전하다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_rail_jam_fixed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_SECURITY_BADGES"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_SECURITY_SWEEP",
+      "event_type": "danger",
+      "node_id": "MJ-06",
+      "title": "보안 구역 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_security_office",
+        "music_key": "industrial_tension",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "보안 구역에서 살아남은 자동 시스템이 반응한다.",
+        "body": [
+          "진입하면 즉시 정리해야 다음 라인이 열린다.",
+          "빠르게 처리하면 물자 손실을 줄일 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch04_security_clear",
+          "label": "구역 정리",
+          "conditions": [],
+          "preview": "보안 시스템을 무력화한다.",
+          "effects": [],
+          "next_event_id": "EV_CH04_LINE_DECISION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch04_logistics_floor",
+        "arena_tags": [
+          "warehouse",
+          "security"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch04_security_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch04_logistics",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 7
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 14
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH04_PRE_BOSS_CHECK",
+      "event_type": "dialogue",
+      "node_id": "MJ-05",
+      "title": "라인 재가동 점검",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_sorting_hall",
+        "music_key": "industrial_low",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "라인을 재가동하기 전, 최종 점검이 필요하다.",
+        "body": [
+          "전력을 올리면 보스가 반응하지만 회수 루트가 열린다.",
+          "임시 차단은 안전하지만 다음 구간이 험해진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_prep_on",
+          "label": "전력 재가동",
+          "conditions": [],
+          "preview": "보스를 각성시키고 라인을 돌린다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_restarted",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH04_BOSS_PICKER"
+        },
+        {
+          "choice_id": "ch04_prep_hold",
+          "label": "임시 차단 유지",
+          "conditions": [],
+          "preview": "안전을 택하지만 다음 구간이 길어진다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_restarted",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_BOSS_PICKER"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_TUNNEL_AMBUSH",
+      "event_type": "combat",
+      "node_id": "MJ-01",
+      "title": "물류 터널 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_delivery_tunnel",
+        "music_key": "tension_mid",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "물류 터널에서 분류체가 몰려와 진입을 막는다.",
+        "body": [
+          "컨베이어가 멈추며 쇳소리가 울린다.",
+          "공간이 좁아 회피가 어렵다.",
+          "빠르게 정리하지 않으면 뒤가 막힌다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [],
+      "on_enter_effects": [
+        {
+          "op": "add_stat",
+          "target": "noise",
+          "value": 1
+        }
+      ],
+      "on_complete_effects": [],
+      "next_event_id": "EV_CH04_COLD_ALLOC",
+      "combat": {
+        "encounter_table_id": "enc_ch04_logistics_floor",
+        "arena_tags": [
+          "tunnel",
+          "logistics"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch04_tunnel_clear",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 4
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH04_VENDOR_BARTER",
+      "event_type": "scene",
+      "node_id": "MJ-06",
+      "title": "정비창 거래",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_security_office",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "정비창에서 보급과 정보를 맞교환한다.",
+        "body": [
+          "남은 공구와 배지 조각이 테이블 위에 흩어져 있다.",
+          "교환을 하면 다음 구역 정보가 열린다.",
+          "흥정에 실패하면 소음만 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_vendor_trade",
+          "label": "거래한다",
+          "conditions": [],
+          "preview": "보급품을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_vendor_bartered",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_LINE_DECISION"
+        },
+        {
+          "choice_id": "ch04_vendor_skip",
+          "label": "건너뛴다",
+          "conditions": [],
+          "preview": "시간을 줄인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_vendor_bartered",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH04_LINE_DECISION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_EXTRACTION_PREP",
+      "event_type": "scene",
+      "node_id": "MJ-07",
+      "title": "추출 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_delivery_tunnel",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "추출 직전 장비와 경로를 다시 정리한다.",
+        "body": [
+          "분류기가 멈춘 틈에 적막이 흐른다.",
+          "지금 챙길 보급이 이후 루프에 영향을 준다.",
+          "서두르면 흔적이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_extract_sort",
+          "label": "정리 후 이동",
+          "conditions": [],
+          "preview": "보급품을 챙긴다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_EXTRACTION"
+        },
+        {
+          "choice_id": "ch04_extract_run",
+          "label": "즉시 이탈",
+          "conditions": [],
+          "preview": "속도를 우선한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_LOADING_AMBUSH",
+      "event_type": "danger",
+      "node_id": "MJ-03",
+      "title": "로딩 구역 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_cold_warehouse",
+        "music_key": "industrial_tension",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "로딩 구역에서 감염체들이 갑자기 쏟아진다.",
+        "body": [
+          "여기서 막히면 라인 접근이 늦어진다.",
+          "빠르게 정리하면 다음 구간으로 넘어갈 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch04_loading_clear",
+          "label": "로딩 구역 정리",
+          "conditions": [],
+          "preview": "매복을 정리하고 라인으로 이동한다.",
+          "effects": [],
+          "next_event_id": "EV_CH04_ROUTE_SELECTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch04_logistics_floor",
+        "arena_tags": [
+          "loading",
+          "warehouse"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch04_loading_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch04_logistics",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 7
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 14
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH04_COLD_AUDIT",
+      "event_type": "exploration",
+      "node_id": "MJ-02",
+      "title": "냉장창고 점검",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_cold_storage",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter",
+          "loot_preview"
+        ]
+      },
+      "text": {
+        "summary": "냉장창고 내부 점검 기록이 누락되어 있다.",
+        "body": [
+          "재고를 확인하면 루팅 효율이 오르지만 소음이 커진다.",
+          "빠르게 지나치면 보안 경보가 약해진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_cold_audit",
+          "label": "점검을 진행한다",
+          "conditions": [],
+          "preview": "루팅 효율을 높인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_cold_audit",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH04_COLD_ALLOC"
+        },
+        {
+          "choice_id": "ch04_cold_skip",
+          "label": "빠르게 통과한다",
+          "conditions": [],
+          "preview": "소음을 줄이고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_cold_audit",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_COLD_ALLOC"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH04_LINE_PREP",
+      "event_type": "dialogue",
+      "node_id": "MJ-05",
+      "title": "라인 준비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_logistics_main",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "라인 재가동 전에 마지막 안전 점검을 수행한다.",
+        "body": [
+          "전원 분배와 안전장치를 잡아야 한다.",
+          "준비가 끝나야 픽커가 반응한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch04_line_ready",
+          "label": "안전 점검을 완료한다",
+          "conditions": [],
+          "preview": "보스를 유도할 준비를 마친다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_line_ready",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH04_BOSS_PICKER"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH04_BOSS_PICKER",
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch04_main",
+      "kind": "main",
+      "title": "상자들의 도시",
+      "summary": "배지와 진입권을 확보해 판교 구역을 통과한다.",
+      "entry_event_id": "EV_CH04_ENTRY",
+      "completion_event_id": "EV_CH04_EXTRACTION",
+      "objective_ids": [
+        "obj_ch04_01",
+        "obj_ch04_02",
+        "obj_ch04_03"
+      ],
+      "unlock_when": [],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch04_rail",
+      "kind": "side",
+      "title": "선로 복구",
+      "summary": "선로 장애를 제거해 화물 이동을 안정화한다.",
+      "entry_event_id": "EV_CH04_RAIL_JAM",
+      "completion_event_id": "EV_CH04_RAIL_JAM",
+      "objective_ids": [
+        "obj_ch04_05"
+      ],
+      "unlock_when": [
+        "flag:ch04_started"
+      ],
+      "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch04_vendor",
+      "kind": "side",
+      "title": "정비창 거래",
+      "summary": "정비창에서 필요한 보급과 정보를 확보한다.",
+      "entry_event_id": "EV_CH04_VENDOR_BARTER",
+      "completion_event_id": "EV_CH04_VENDOR_BARTER",
+      "objective_ids": [
+        "obj_ch04_06"
+      ],
+      "unlock_when": [
+        "flag:ch04_started"
+      ],
+      "reveal_cap": "ambient"
+    }
+  ]
+}

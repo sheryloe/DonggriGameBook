@@ -1,1 +1,2190 @@
-{   "version": "1.0.0",   "game_id": "dokdo_arc_webgame",   "chapter_id": "CH02",   "title": "검은 수로",   "role": "첫 실전 원정, 수몰 지형, 블랙마켓과 배수문 선택",   "entry_node_id": "NR-01",   "exit_node_ids": [     "NR-07"   ],   "recommended_level": 2,   "ui_profile": {     "theme": "flooded_market",     "special_widgets": [       "water_depth",       "route_compare",       "reputation_change",       "chapter_result"     ]   },   "objectives": [     {       "objective_id": "obj_ch02_01",       "text": "강변 중계배터리를 확보한다.",       "required": true,       "complete_when": [         "item:itm_river_relay_battery>=1"       ]     },     {       "objective_id": "obj_ch02_02",       "text": "수로 지도를 회수한다.",       "required": true,       "complete_when": [         "item:itm_waterway_map>=1"       ]     },     {       "objective_id": "obj_ch02_03",       "text": "배수문 제어 선택을 마친다.",       "required": true,       "complete_when": [         "flag:ch02_gate_opened|flag:ch02_gate_closed"       ]     }   ],   "nodes": [     {       "node_id": "NR-01",       "name": "샛강 둔치 진입로",       "node_type": "travel",       "description": "젖은 제방과 버려진 텐트가 남은 접근부.",       "coordinates": {         "x": 10,         "y": 76       },       "encounter_table_id": "enc_ch02_water_market",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "NR-02",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 1,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH02_ENTRY"       ],       "revisit_rule": "always",       "tags": [         "flood"       ]     },     {       "node_id": "NR-02",       "name": "수몰시장 입구",       "node_type": "exploration",       "description": "절반 잠긴 간판 골목과 휘어진 수산 상가.",       "coordinates": {         "x": 24,         "y": 66       },       "encounter_table_id": "enc_ch02_water_market",       "loot_table_ids": [         "lt_ch02_market_water"       ],       "npc_ids": [],       "connections": [         {           "to": "NR-03",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 3           }         },         {           "to": "NR-04",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH02_MARKET_SWEEP"       ],       "revisit_rule": "always",       "tags": [         "loot",         "water"       ]     },     {       "node_id": "NR-03",       "name": "냉동창고",       "node_type": "danger",       "description": "중계배터리 후보가 있는 저온 물류 창고.",       "coordinates": {         "x": 38,         "y": 54       },       "encounter_table_id": "enc_ch02_water_market",       "loot_table_ids": [         "lt_ch02_market_water"       ],       "npc_ids": [],       "connections": [         {           "to": "NR-04",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 2,             "contamination": 2           }         },         {           "to": "NR-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 3           }         }       ],       "event_ids": [         "EV_CH02_COLD_STORAGE"       ],       "revisit_rule": "after_clear",       "tags": [         "main",         "battery"       ]     },     {       "node_id": "NR-04",       "name": "암시장 천막촌",       "node_type": "branch",       "description": "정노아가 드나드는 물 위의 거래 구역.",       "coordinates": {         "x": 44,         "y": 70       },       "loot_table_ids": [         "lt_ch02_market_water"       ],       "npc_ids": [         "npc_jung_noah"       ],       "connections": [         {           "to": "NR-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "NR-06",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 3           }         }       ],       "event_ids": [         "EV_CH02_BLACKMARKET"       ],       "revisit_rule": "always",       "tags": [         "npc",         "trade"       ]     },     {       "node_id": "NR-05",       "name": "폐선착장",       "node_type": "safehouse",       "description": "서진서가 점거한 선착장과 선외기 보관 창고.",       "coordinates": {         "x": 60,         "y": 58       },       "encounter_table_id": "enc_ch02_water_market",       "loot_table_ids": [         "lt_ch02_market_water"       ],       "npc_ids": [         "npc_seo_jinseo"       ],       "connections": [         {           "to": "NR-06",           "travel_type": "boat",           "requires": [],           "cost": {             "time": 2,             "noise": 3,             "contamination": 1           }         },         {           "to": "NR-07",           "travel_type": "boat",           "requires": [             "flag:ch02_boat_route"           ],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH02_PIER_BARGAIN"       ],       "revisit_rule": "always",       "tags": [         "route",         "npc"       ]     },     {       "node_id": "NR-06",       "name": "샛강 배수문 통제실",       "node_type": "boss",       "description": "배수문 제어권과 대형 포낭 개체가 있는 핵심 구역.",       "coordinates": {         "x": 74,         "y": 44       },       "encounter_table_id": "enc_ch02_boss_gate",       "loot_table_ids": [         "lt_ch02_market_water"       ],       "npc_ids": [],       "connections": [         {           "to": "NR-07",           "travel_type": "crawlspace",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH02_SLUICE_BOSS"       ],       "revisit_rule": "locked_after_clear",       "tags": [         "boss",         "gate"       ]     },     {       "node_id": "NR-07",       "name": "동작 접근 암거",       "node_type": "exit",       "description": "다음 권역으로 이어지는 은신용 수로.",       "coordinates": {         "x": 88,         "y": 40       },       "loot_table_ids": [],       "npc_ids": [],       "connections": [         {           "to": "NR-01",           "travel_type": "walk",           "requires": [             "flag:chapter_02_completed"           ],           "cost": {             "time": 2,             "noise": 0,             "contamination": 0           }         }       ],       "event_ids": [         "EV_CH02_EXTRACTION"       ],       "revisit_rule": "after_clear",       "tags": [         "exit"       ]     }   ],   "events": [     {       "event_id": "EV_CH02_ENTRY",       "event_type": "briefing",       "node_id": "NR-01",       "title": "검은 수로 진입",       "repeatable": false,       "once_per_run": true,       "priority": 100,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "bg_saetgang_entry",         "music_key": "water_dread",         "widget_overrides": [           "water_depth",           "filter_meter"         ]       },       "text": {         "summary": "노량진 수몰권에서 강변 중계배터리를 확보해야 여의도 교신이 안정된다.",         "body": [           "샛강 주변은 수면 아래 위협과 미끄러운 지형이 핵심이다.",           "필터와 소독제가 부족하면 짧은 전투도 치명적일 수 있다."         ]       },       "npc_ids": [         "npc_yoon_haein"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_entry_go",           "label": "수몰시장으로 들어간다",           "conditions": [],           "preview": "젖은 둔치를 따라 천천히 전진한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch02_started",               "value": true             },             {               "op": "add_stat",               "target": "contamination",               "value": 2             }           ],           "next_event_id": "EV_CH02_MARKET_SWEEP"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH02_MARKET_SWEEP",       "event_type": "exploration",       "node_id": "NR-02",       "title": "썩은 시장",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_noryangjin_market",         "music_key": "market_dread",         "widget_overrides": [           "water_depth",           "loot_preview"         ]       },       "text": {         "summary": "물 위에 떠 있는 시체와 뒤집힌 얼음상자 사이로 길을 만들어야 한다.",         "body": [           "시장 깊숙이 들어가면 보급은 풍부하지만 물속 끌잡힘 이벤트가 잦아진다.",           "암시장 천막촌 쪽으로 틀면 빠르게 사람과 거래에 접근할 수 있다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_market_storage",           "label": "냉동창고를 먼저 턴다",           "conditions": [],           "preview": "배터리 후보와 장비를 우선 확보한다.",           "effects": [             {               "op": "grant_loot_table",               "target": "loot:lt_ch02_market_water",               "value": 1             },             {               "op": "add_stat",               "target": "contamination",               "value": 4             }           ],           "next_event_id": "EV_CH02_COLD_STORAGE"         },         {           "choice_id": "ch02_market_tents",           "label": "암시장 천막촌으로 간다",           "conditions": [],           "preview": "정노아와 빠르게 접촉한다.",           "effects": [             {               "op": "add_reputation",               "target": "reputation.under_market",               "value": 1             }           ],           "next_event_id": "EV_CH02_BLACKMARKET"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH02_COLD_STORAGE",       "event_type": "exploration",       "node_id": "NR-03",       "title": "차갑게 남은 창고",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_cold_storage",         "music_key": "tension_mid",         "widget_overrides": [           "battery_meter",           "noise_meter"         ]       },       "text": {         "summary": "중계배터리 하나가 아직 살아 있지만 냉각기를 건드리면 소음이 커진다.",         "body": [           "전원을 살리면 추가 루팅과 배터리 회수가 가능하다.",           "전원을 끄고 조용히 가져가면 더 적은 소모로 빠져나갈 수 있다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_cold_on",           "label": "냉각기를 잠시 켠다",           "conditions": [],           "preview": "추가 루팅을 노린다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_river_relay_battery",               "value": 1             },             {               "op": "grant_loot_table",               "target": "loot:lt_ch02_market_water",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 6             }           ],           "next_event_id": "EV_CH02_BLACKMARKET"         },         {           "choice_id": "ch02_cold_off",           "label": "배터리만 빼고 나온다",           "conditions": [],           "preview": "전투를 줄인다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_river_relay_battery",               "value": 1             },             {               "op": "sub_stat",               "target": "noise",               "value": 1             }           ],           "next_event_id": "EV_CH02_BLACKMARKET"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH02_BLACKMARKET",       "event_type": "dialogue",       "node_id": "NR-04",       "title": "물 위의 거래",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_jung_noah",         "music_key": "under_market",         "widget_overrides": [           "reputation_change"         ]       },       "text": {         "summary": "정노아가 천막촌에서 검역 완장과 가짜 서류가 오가는 흐름을 설명한다.",         "body": [           "천막촌을 약탈하면 당장은 자원을 얻지만 이후 거래 루트가 죽는다.",           "거래를 선택하면 위조 검역 패스의 근원을 추적할 실마리가 열린다."         ]       },       "npc_ids": [         "npc_jung_noah"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_market_trade",           "label": "거래한다",           "conditions": [],           "preview": "정노아를 살려두고 정보를 산다.",           "effects": [             {               "op": "add_trust",               "target": "trust.npc_jung_noah",               "value": 2             },             {               "op": "add_reputation",               "target": "reputation.under_market",               "value": 2             },             {               "op": "grant_item",               "target": "item:itm_counterfeit_quarantine_pass",               "value": 1             }           ],           "next_event_id": "EV_CH02_PIER_BARGAIN"         },         {           "choice_id": "ch02_market_rob",           "label": "천막촌을 턴다",           "conditions": [],           "preview": "즉시 자원을 챙기지만 적을 만든다.",           "effects": [             {               "op": "grant_loot_table",               "target": "loot:lt_ch02_market_water",               "value": 1             },             {               "op": "add_trust",               "target": "trust.npc_jung_noah",               "value": -2             },             {               "op": "add_reputation",               "target": "reputation.under_market",               "value": -2             },             {               "op": "add_stat",               "target": "noise",               "value": 5             }           ],           "next_event_id": "EV_CH02_PIER_BARGAIN"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH02_PIER_BARGAIN",       "event_type": "dialogue",       "node_id": "NR-05",       "title": "선착장의 거래",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_seo_jinseo",         "music_key": "pier_tension",         "widget_overrides": [           "route_compare"         ]       },       "text": {         "summary": "서진서는 보트와 수로 지도를 대가 없이 내주지 않는다.",         "body": [           "보트를 쓰면 수몰 지역 희귀 루트를 열 수 있지만 연료가 필요하다.",           "육로를 고집하면 느리지만 물 위 끌잡힘 이벤트는 줄어든다."         ]       },       "npc_ids": [         "npc_seo_jinseo"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_pier_boat",           "label": "보트를 빌린다",           "conditions": [             "item:itm_boat_fuel_can>=1"           ],           "preview": "연료를 내고 빠른 수로로 간다.",           "effects": [             {               "op": "remove_item",               "target": "item:itm_boat_fuel_can",               "value": 1             },             {               "op": "add_trust",               "target": "trust.npc_seo_jinseo",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch02_boat_route",               "value": true             },             {               "op": "grant_item",               "target": "item:itm_waterway_map",               "value": 1             }           ],           "next_event_id": "EV_CH02_SLUICE_BOSS"         },         {           "choice_id": "ch02_pier_land",           "label": "육로를 강행한다",           "conditions": [],           "preview": "느리지만 자원을 아낀다.",           "effects": [             {               "op": "add_stat",               "target": "contamination",               "value": 5             },             {               "op": "grant_item",               "target": "item:itm_waterway_map",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch02_land_route",               "value": true             }           ],           "next_event_id": "EV_CH02_SLUICE_BOSS"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH02_SLUICE_BOSS",       "event_type": "boss",       "node_id": "NR-06",       "title": "청음",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "boss",         "art_key": "boss_cheongeum",         "music_key": "boss_sluice",         "widget_overrides": [           "boss_hp",           "water_level",           "contamination_meter"         ]       },       "text": {         "summary": "배수문 벽을 뒤덮은 대형 포낭 개체가 수문 진동에 맞춰 회무를 뿜어낸다.",         "body": [           "수문을 열면 다음 지역 접근은 쉬워지지만 오염이 퍼진다.",           "닫아 두면 길은 험해지지만 수몰 확산은 줄어든다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_sluice_open",           "label": "수문을 연다",           "conditions": [],           "preview": "물길을 만들어 동작 접근선을 연다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch02_gate_opened",               "value": true             },             {               "op": "set_route",               "target": "route.current",               "value": "dongjak_fast"             },             {               "op": "set_flag",               "target": "flag:chapter_02_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH02_EXTRACTION"         },         {           "choice_id": "ch02_sluice_close",           "label": "수문을 닫아 둔다",           "conditions": [],           "preview": "감염 확산을 줄이지만 우회가 필요하다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch02_gate_closed",               "value": true             },             {               "op": "set_route",               "target": "route.current",               "value": "dongjak_safe"             },             {               "op": "set_flag",               "target": "flag:chapter_02_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH02_EXTRACTION"         }       ],       "on_enter_effects": [],       "on_complete_effects": [],       "combat": {         "encounter_table_id": "enc_ch02_boss_gate",         "boss_id": "sluice_sac_cheongeum",         "arena_tags": [           "flood",           "gate"         ],         "victory_effects": [           {             "op": "set_flag",             "target": "flag:ch02_boss_down",             "value": true           }         ],         "defeat_effects": [           {             "op": "add_stat",             "target": "contamination",             "value": 20           },           {             "op": "sub_stat",             "target": "hp",             "value": 25           }         ]       }     },     {       "event_id": "EV_CH02_EXTRACTION",       "event_type": "extraction",       "node_id": "NR-07",       "title": "동작 접근선 확보",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [         "flag:chapter_02_escape_ready"       ],       "presentation": {         "layout": "results",         "art_key": "bg_dongjak_culvert",         "music_key": "safe_bunker",         "widget_overrides": [           "chapter_result",           "route_summary"         ]       },       "text": {         "summary": "수로 지도와 중계배터리를 가지고 빠져나오며, 여의도와 잠실을 잇는 다음 목표가 열린다.",         "body": [           "정노아와 서진서에 대한 태도는 이후 장비 가격과 수로 지원에 반영된다.",           "위조 검역 패스는 낙원회 추적의 첫 증거다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch02_finish",           "label": "챕터를 종료한다",           "conditions": [],           "preview": "정산과 다음 장 브리핑으로 이동한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_02_completed",               "value": true             },             {               "op": "set_value",               "target": "chapter.current",               "value": "CH03"             },             {               "op": "grant_item",               "target": "item:itm_backpack_salvage_10",               "value": 1,               "meta": {                 "if": "trust.npc_jung_noah>=1"               }             }           ],           "next_event_id": "END_CH02"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     }   ],   "boss_event_id": "EV_CH02_SLUICE_BOSS" }
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH02",
+  "title": "검은 수로",
+  "role": "첫 실전 원정, 수몰 지형, 블랙마켓과 배수문 선택",
+  "entry_node_id": "NR-01",
+  "exit_node_ids": [
+    "NR-07"
+  ],
+  "recommended_level": 2,
+  "ui_profile": {
+    "theme": "flooded_market",
+    "special_widgets": [
+      "water_depth",
+      "route_compare",
+      "reputation_change",
+      "chapter_result"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch02_01",
+      "text": "강변 중계배터리를 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_river_relay_battery>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch02_02",
+      "text": "수로 지도를 회수한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_waterway_map>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch02_03",
+      "text": "배수문 제어 선택을 마친다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch02_gate_opened|flag:ch02_gate_closed"
+      ]
+    },
+    {
+      "objective_id": "obj_ch02_04",
+      "text": "침수 순찰대를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch02_flood_patrol_clear"
+      ]
+    },
+    {
+      "objective_id": "obj_ch02_05",
+      "text": "배수 제어를 안정화한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch02_drainage_stable"
+      ]
+    },
+    {
+      "objective_id": "obj_ch02_06",
+      "text": "바지선 수리를 완료한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch02_barge_repair"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "NR-01",
+      "name": "샛강 둔치 진입로",
+      "node_type": "travel",
+      "description": "젖은 제방과 버려진 텐트가 남은 접근부.",
+      "coordinates": {
+        "x": 10,
+        "y": 76
+      },
+      "encounter_table_id": "enc_ch02_water_market",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "NR-02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_ENTRY"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "flood"
+      ]
+    },
+    {
+      "node_id": "NR-02",
+      "name": "수몰시장 입구",
+      "node_type": "exploration",
+      "description": "절반 잠긴 간판 골목과 휘어진 수산 상가.",
+      "coordinates": {
+        "x": 24,
+        "y": 66
+      },
+      "encounter_table_id": "enc_ch02_water_market",
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "NR-03",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 3
+          }
+        },
+        {
+          "to": "NR-04",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_MARKET_LOCKDOWN",
+        "EV_CH02_MARKET_SWEEP"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "loot",
+        "water"
+      ]
+    },
+    {
+      "node_id": "NR-03",
+      "name": "냉동창고",
+      "node_type": "danger",
+      "description": "중계배터리 후보가 있는 저온 물류 창고.",
+      "coordinates": {
+        "x": 38,
+        "y": 54
+      },
+      "encounter_table_id": "enc_ch02_water_market",
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "NR-04",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 2
+          }
+        },
+        {
+          "to": "NR-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 3
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_COLD_SEAL",
+        "EV_CH02_COLD_STORAGE"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "main",
+        "battery"
+      ]
+    },
+    {
+      "node_id": "NR-04",
+      "name": "암시장 천막촌",
+      "node_type": "branch",
+      "description": "정노아가 드나드는 물 위의 거래 구역.",
+      "coordinates": {
+        "x": 44,
+        "y": 70
+      },
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "npc_ids": [
+        "npc_jung_noah"
+      ],
+      "connections": [
+        {
+          "to": "NR-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "NR-06",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 3
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_BLACKMARKET"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "npc",
+        "trade"
+      ]
+    },
+    {
+      "node_id": "NR-05",
+      "name": "폐선착장",
+      "node_type": "safehouse",
+      "description": "서진서가 점거한 선착장과 선외기 보관 창고.",
+      "coordinates": {
+        "x": 60,
+        "y": 58
+      },
+      "encounter_table_id": "enc_ch02_water_market",
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "npc_ids": [
+        "npc_seo_jinseo"
+      ],
+      "connections": [
+        {
+          "to": "NR-06",
+          "travel_type": "boat",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "NR-07",
+          "travel_type": "boat",
+          "requires": [
+            "flag:ch02_boat_route"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_PIER_AMBUSH",
+        "EV_CH02_PIER_BARGAIN"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "route",
+        "npc"
+      ]
+    },
+    {
+      "node_id": "NR-06",
+      "name": "샛강 배수문 통제실",
+      "node_type": "boss",
+      "description": "배수문 제어권과 대형 포낭 개체가 있는 핵심 구역.",
+      "coordinates": {
+        "x": 74,
+        "y": 44
+      },
+      "encounter_table_id": "enc_ch02_boss_gate",
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "NR-07",
+          "travel_type": "crawlspace",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_SLUICE_OVERRIDE",
+        "EV_CH02_SLUICE_BOSS"
+      ],
+      "revisit_rule": "locked_after_clear",
+      "tags": [
+        "boss",
+        "gate"
+      ]
+    },
+    {
+      "node_id": "NR-07",
+      "name": "동작 접근 암거",
+      "node_type": "exit",
+      "description": "다음 권역으로 이어지는 은신용 수로.",
+      "coordinates": {
+        "x": 88,
+        "y": 40
+      },
+      "loot_table_ids": [],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "NR-01",
+          "travel_type": "walk",
+          "requires": [
+            "flag:chapter_02_completed"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 0,
+            "contamination": 0
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH02_EXTRACTION"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "exit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH02_ENTRY",
+      "event_type": "briefing",
+      "node_id": "NR-01",
+      "title": "검은 수로 진입",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_saetgang_entry",
+        "music_key": "water_dread",
+        "widget_overrides": [
+          "water_depth",
+          "filter_meter"
+        ]
+      },
+      "text": {
+        "summary": "노량진 수몰권에서 강변 중계배터리를 확보해야 여의도 교신이 안정된다.",
+        "body": [
+          "샛강 주변은 수면 아래 위협과 미끄러운 지형이 핵심이다.",
+          "필터와 소독제가 부족하면 짧은 전투도 치명적일 수 있다."
+        ]
+      },
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_entry_go",
+          "label": "수몰시장으로 들어간다",
+          "conditions": [],
+          "preview": "젖은 둔치를 따라 천천히 전진한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_started",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH02_FLOOD_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_MARKET_SWEEP",
+      "event_type": "exploration",
+      "node_id": "NR-02",
+      "title": "썩은 시장",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "market_dread",
+        "widget_overrides": [
+          "water_depth",
+          "loot_preview"
+        ]
+      },
+      "text": {
+        "summary": "물 위에 떠 있는 시체와 뒤집힌 얼음상자 사이로 길을 만들어야 한다.",
+        "body": [
+          "시장 깊숙이 들어가면 보급은 풍부하지만 물속 끌잡힘 이벤트가 잦아진다.",
+          "암시장 천막촌 쪽으로 틀면 빠르게 사람과 거래에 접근할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_market_storage",
+          "label": "냉동창고를 먼저 턴다",
+          "conditions": [],
+          "preview": "배터리 후보와 장비를 우선 확보한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH02_ALLEY_SCOUT"
+        },
+        {
+          "choice_id": "ch02_market_tents",
+          "label": "암시장 천막촌으로 간다",
+          "conditions": [],
+          "preview": "정노아와 빠르게 접촉한다.",
+          "effects": [
+            {
+              "op": "add_reputation",
+              "target": "reputation.under_market",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_ALLEY_SCOUT"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_COLD_STORAGE",
+      "event_type": "exploration",
+      "node_id": "NR-03",
+      "title": "차갑게 남은 창고",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_cold_storage",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "battery_meter",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "중계배터리 하나가 아직 살아 있지만 냉각기를 건드리면 소음이 커진다.",
+        "body": [
+          "전원을 살리면 추가 루팅과 배터리 회수가 가능하다.",
+          "전원을 끄고 조용히 가져가면 더 적은 소모로 빠져나갈 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_cold_on",
+          "label": "냉각기를 잠시 켠다",
+          "conditions": [],
+          "preview": "추가 루팅을 노린다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_river_relay_battery",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 6
+            }
+          ],
+          "next_event_id": "EV_CH02_DRAINAGE_CTRL"
+        },
+        {
+          "choice_id": "ch02_cold_off",
+          "label": "배터리만 빼고 나온다",
+          "conditions": [],
+          "preview": "전투를 줄인다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_river_relay_battery",
+              "value": 1
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_DRAINAGE_CTRL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_BLACKMARKET",
+      "event_type": "dialogue",
+      "node_id": "NR-04",
+      "title": "물 위의 거래",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_jung_noah",
+        "music_key": "under_market",
+        "widget_overrides": [
+          "reputation_change"
+        ]
+      },
+      "text": {
+        "summary": "정노아가 천막촌에서 검역 완장과 가짜 서류가 오가는 흐름을 설명한다.",
+        "body": [
+          "천막촌을 약탈하면 당장은 자원을 얻지만 이후 거래 루트가 죽는다.",
+          "거래를 선택하면 위조 검역 패스의 근원을 추적할 실마리가 열린다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_market_trade",
+          "label": "거래한다",
+          "conditions": [],
+          "preview": "정노아를 살려두고 정보를 산다.",
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_jung_noah",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.under_market",
+              "value": 2
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_counterfeit_quarantine_pass",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_DRAINAGE_CTRL"
+        },
+        {
+          "choice_id": "ch02_market_rob",
+          "label": "천막촌을 턴다",
+          "conditions": [],
+          "preview": "즉시 자원을 챙기지만 적을 만든다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_jung_noah",
+              "value": -2
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.under_market",
+              "value": -2
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 5
+            }
+          ],
+          "next_event_id": "EV_CH02_DRAINAGE_CTRL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_PIER_BARGAIN",
+      "event_type": "dialogue",
+      "node_id": "NR-05",
+      "title": "선착장의 거래",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_seo_jinseo",
+        "music_key": "pier_tension",
+        "widget_overrides": [
+          "route_compare"
+        ]
+      },
+      "text": {
+        "summary": "서진서는 보트와 수로 지도를 대가 없이 내주지 않는다.",
+        "body": [
+          "보트를 쓰면 수몰 지역 희귀 루트를 열 수 있지만 연료가 필요하다.",
+          "육로를 고집하면 느리지만 물 위 끌잡힘 이벤트는 줄어든다."
+        ]
+      },
+      "npc_ids": [
+        "npc_seo_jinseo"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_pier_boat",
+          "label": "보트를 빌린다",
+          "conditions": [
+            "item:itm_boat_fuel_can>=1"
+          ],
+          "preview": "연료를 내고 빠른 수로로 간다.",
+          "effects": [
+            {
+              "op": "remove_item",
+              "target": "item:itm_boat_fuel_can",
+              "value": 1
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_seo_jinseo",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_boat_route",
+              "value": true
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_waterway_map",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_BARGE_REPAIR"
+        },
+        {
+          "choice_id": "ch02_pier_land",
+          "label": "육로를 강행한다",
+          "conditions": [],
+          "preview": "느리지만 자원을 아낀다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 5
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_waterway_map",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_land_route",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_BARGE_REPAIR"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_SLUICE_BOSS",
+      "event_type": "boss",
+      "node_id": "NR-06",
+      "title": "청음",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:ch02_sluice_diagnosed",
+        "flag:ch02_gate_secured"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "boss_cheongeum",
+        "music_key": "boss_sluice",
+        "widget_overrides": [
+          "boss_hp",
+          "water_level",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "배수문 벽을 뒤덮은 대형 포낭 개체가 수문 진동에 맞춰 회무를 뿜어낸다.",
+        "body": [
+          "수문을 열면 다음 지역 접근은 쉬워지지만 오염이 퍼진다.",
+          "닫아 두면 길은 험해지지만 수몰 확산은 줄어든다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_sluice_open",
+          "label": "수문을 연다",
+          "conditions": [],
+          "preview": "물길을 만들어 동작 접근선을 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_gate_opened",
+              "value": true
+            },
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "dongjak_fast"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_02_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_EXTRACTION_PREP"
+        },
+        {
+          "choice_id": "ch02_sluice_close",
+          "label": "수문을 닫아 둔다",
+          "conditions": [],
+          "preview": "감염 확산을 줄이지만 우회가 필요하다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_gate_closed",
+              "value": true
+            },
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "dongjak_safe"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_02_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_EXTRACTION_PREP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch02_boss_gate",
+        "boss_id": "sluice_sac_cheongeum",
+        "arena_tags": [
+          "flood",
+          "gate"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch02_boss_down",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 20
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 25
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH02_EXTRACTION",
+      "event_type": "extraction",
+      "node_id": "NR-07",
+      "title": "동작 접근선 확보",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:chapter_02_escape_ready"
+      ],
+      "presentation": {
+        "layout": "results",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "chapter_result",
+          "route_summary"
+        ]
+      },
+      "text": {
+        "summary": "수로 지도와 중계배터리를 가지고 빠져나오며, 여의도와 잠실을 잇는 다음 목표가 열린다.",
+        "body": [
+          "정노아와 서진서에 대한 태도는 이후 장비 가격과 수로 지원에 반영된다.",
+          "위조 검역 패스는 낙원회 추적의 첫 증거다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_finish",
+          "label": "챕터를 종료한다",
+          "conditions": [],
+          "preview": "정산과 다음 장 브리핑으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_02_completed",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "chapter.current",
+              "value": "CH03"
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_backpack_salvage_10",
+              "value": 1,
+              "meta": {
+                "if": "trust.npc_jung_noah>=1"
+              }
+            }
+          ],
+          "next_event_id": "END_CH02"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_ALLEY_SCOUT",
+      "event_type": "choice",
+      "node_id": "NR-02",
+      "title": "수로 정찰",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "market_dread",
+        "widget_overrides": [
+          "objective_panel",
+          "water_depth"
+        ]
+      },
+      "text": {
+        "summary": "수로 입구 주변이 잠겨 있고 얕은 물길이 두 갈래로 나뉜다.",
+        "body": [
+          "정찰을 하면 안전한 이동 경로를 확보할 수 있다.",
+          "우회로는 빠르지만 소음과 수면 오염이 늘어날 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_alley_cold",
+          "label": "창고 방향으로 정찰",
+          "conditions": [],
+          "preview": "수로 깊이를 확인하고 안전한 길을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_route_scouted",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_WATERWAY_CHECK"
+        },
+        {
+          "choice_id": "ch02_alley_market",
+          "label": "시장 골목으로 우회",
+          "conditions": [],
+          "preview": "소음을 줄이고 빠르게 장터로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_route_scouted",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_WATERWAY_CHECK"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_WATERLOGGED_AMBUSH",
+      "event_type": "danger",
+      "node_id": "NR-04",
+      "title": "수몰 골목 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "under_market",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "검은 장터 골목에 숨어 있던 감염자들이 물살을 타고 몰려온다.",
+        "body": [
+          "얕은 물길에서 싸우면 움직임이 느려진다.",
+          "빠르게 제압하면 교신 장비 손실을 막을 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_ambush_clear",
+          "label": "매복 돌파",
+          "conditions": [],
+          "preview": "골목을 정리하고 부두로 향한다.",
+          "effects": [],
+          "next_event_id": "EV_CH02_PIER_BARGAIN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch02_water_market",
+        "arena_tags": [
+          "flood",
+          "alley"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch02_ambush_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch02_market_water",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 12
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH02_SLUICE_DIAGNOSTIC",
+      "event_type": "choice",
+      "node_id": "NR-06",
+      "title": "수문 진단",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "pier_tension",
+        "widget_overrides": [
+          "water_depth",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "수문 제어판이 습기에 먹혀 있고 전원이 불안정하다.",
+        "body": [
+          "진단을 마치면 게이트 개폐 방식이 확정된다.",
+          "응급 조치로 시간을 아끼는 대신 소음이 커질 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_sluice_quick",
+          "label": "응급 진단",
+          "conditions": [],
+          "preview": "급하게 조정해 바로 수문으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_sluice_diagnosed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH02_GATE_ASSAULT"
+        },
+        {
+          "choice_id": "ch02_sluice_precise",
+          "label": "정밀 진단",
+          "conditions": [],
+          "preview": "시간을 들여 안정화하고 추가 물자를 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_sluice_diagnosed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_GATE_ASSAULT"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_WATERLOCK",
+      "event_type": "choice",
+      "node_id": "NR-02",
+      "title": "?? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "?? ??? ??? ??? ??? ????.",
+        "body": [
+          "??? ?? ??, ?? ?? ?? ????.",
+          "?? ?? ?? ?????? ?? ??? ????."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_waterlock_storage",
+          "label": "?? ???? ??",
+          "conditions": [],
+          "preview": "???? ?? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_opened",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_COLD_STORAGE"
+        },
+        {
+          "choice_id": "ch02_waterlock_tents",
+          "label": "?? ???? ??",
+          "conditions": [],
+          "preview": "??? ??? ?? ???.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_opened",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_BLACKMARKET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_CHANNEL_CLEAR",
+      "event_type": "exploration",
+      "node_id": "NR-03",
+      "title": "?? ?? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 52,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "?? ??? ?? ??? ??? ???.",
+        "body": [
+          "??? ??? ?? ??? ??? ??? ????.",
+          "???? ???? ??? ???."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_channel_clear",
+          "label": "??? ??? ?? ??",
+          "conditions": [],
+          "preview": "??? ???? ??? ??? ???.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_channel_cleared",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_BLACKMARKET"
+        },
+        {
+          "choice_id": "ch02_channel_bypass",
+          "label": "???? ??",
+          "conditions": [],
+          "preview": "??? ???? ??? ????.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_channel_bypassed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_BLACKMARKET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_SUBMERGED_AMBUSH",
+      "event_type": "danger",
+      "node_id": "NR-04",
+      "title": "?? ?? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 52,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "combat_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "??? ???? ?? ???? ?????.",
+        "body": [
+          "?? ?? ??? ??, ?? ??? ???? ??? ???.",
+          "?? ??? ??? ??? ??? ??? ???."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "combat": {
+        "encounter_table_id": "enc_ch02_water_market",
+        "arena_tags": [
+          "flood",
+          "alley"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch02_blackmarket_lead",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "lt_ch02_market_water",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 12
+          }
+        ]
+      },
+      "choices": [
+        {
+          "choice_id": "ch02_ambush_fight",
+          "label": "?? ??? ????",
+          "conditions": [],
+          "preview": "??? ??? ??? ????.",
+          "effects": [],
+          "next_event_id": "EV_CH02_PIER_BARGAIN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_PIER_SIGNAL",
+      "event_type": "dialogue",
+      "node_id": "NR-05",
+      "title": "?? ?? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_saetgang_entry",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "?? ??? ?? ??? ?? ???? ??? ???.",
+        "body": [
+          "??? ???? ?? ??? ?????.",
+          "???? ???? ?? ??? ??????."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_pier_signal_fix",
+          "label": "?? ??? ????",
+          "conditions": [],
+          "preview": "?? ??? ?????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_pier_signal",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        },
+        {
+          "choice_id": "ch02_pier_signal_skip",
+          "label": "??? ????",
+          "conditions": [],
+          "preview": "??? ????? ??? ???.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_SLICE_ESCAPE",
+      "event_type": "danger",
+      "node_id": "NR-07",
+      "title": "??? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "???? ??? ??? ??? ????.",
+        "body": [
+          "??? ?? ??? ??, ??? ??? ????.",
+          "????? ??? ??? ???? ??."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_escape_boat",
+          "label": "?? ??? ????",
+          "conditions": [],
+          "preview": "??? ?? ??? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_escape_ready",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH02_EXTRACTION"
+        },
+        {
+          "choice_id": "ch02_escape_land",
+          "label": "??? ?? ???",
+          "conditions": [],
+          "preview": "????? ??? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_escape_ready",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_FLOOD_AMBUSH",
+      "event_type": "combat",
+      "node_id": "NR-01",
+      "title": "침수 순찰",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_saetgang_entry",
+        "music_key": "water_dread",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "흙탕물 속에서 수면 감염체가 몰려와 길을 막는다.",
+        "body": [
+          "가판대 잔해가 떠다니며 발을 잡아끈다.",
+          "총성을 내면 더 많은 개체가 몰려들 수 있다.",
+          "짧게 끊고 지나가야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [],
+      "on_enter_effects": [
+        {
+          "op": "add_stat",
+          "target": "contamination",
+          "value": 2
+        }
+      ],
+      "on_complete_effects": [],
+      "next_event_id": "EV_CH02_MARKET_SWEEP",
+      "combat": {
+        "encounter_table_id": "enc_ch02_water_market",
+        "arena_tags": [
+          "flood",
+          "market"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch02_flood_patrol_clear",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 8
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH02_DRAINAGE_CTRL",
+      "event_type": "scene",
+      "node_id": "NR-04",
+      "title": "배수 제어",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "water_dread",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "배수 제어판을 조작해야 수로가 안정된다.",
+        "body": [
+          "패널은 물에 잠겨 있고, 스위치가 미끄럽다.",
+          "개방은 이동을 빠르게 만들지만 침전물이 떠오른다.",
+          "봉쇄는 안전하지만 우회 시간이 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_drainage_open",
+          "label": "수문 개방",
+          "conditions": [],
+          "preview": "속도를 확보하지만 오염이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_drainage_stable",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_PIER_BARGAIN"
+        },
+        {
+          "choice_id": "ch02_drainage_lock",
+          "label": "수문 봉쇄",
+          "conditions": [],
+          "preview": "안전을 택하지만 소음이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_drainage_stable",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_PIER_BARGAIN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_BARGE_REPAIR",
+      "event_type": "scene",
+      "node_id": "NR-05",
+      "title": "바지선 응급수리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "바지선 엔진을 임시 수리해 통로를 확보한다.",
+        "body": [
+          "냉각수 라인이 끊어져 있고, 예비 부품이 부족하다.",
+          "간단히 묶어 두면 위험하지만 당장은 움직일 수 있다.",
+          "시간을 들여 보강하면 이동이 안정된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_barge_patch",
+          "label": "임시 보강",
+          "conditions": [],
+          "preview": "빠르게 움직이지만 소음이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_barge_repair",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        },
+        {
+          "choice_id": "ch02_barge_rebuild",
+          "label": "정밀 수리",
+          "conditions": [],
+          "preview": "시간을 쓰지만 안정성이 높다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_barge_repair",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_EXTRACTION_PREP",
+      "event_type": "scene",
+      "node_id": "NR-07",
+      "title": "수로 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "탈출 전에 장비와 동선을 마지막으로 정리한다.",
+        "body": [
+          "수면 위에 불꽃이 번지기 시작한다.",
+          "지금 챙기는 물건이 후속 장면을 좌우한다.",
+          "서둘러야 하지만 버릴 것은 버려야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_extract_sort",
+          "label": "정리 후 이동",
+          "conditions": [],
+          "preview": "보급품을 챙기지만 시간이 든다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_EXTRACTION"
+        },
+        {
+          "choice_id": "ch02_extract_run",
+          "label": "즉시 이탈",
+          "conditions": [],
+          "preview": "속도를 우선한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_WATERWAY_CHECK",
+      "event_type": "choice",
+      "node_id": "NR-02",
+      "title": "수로 점검",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_noryangjin_market",
+        "music_key": "market_dread",
+        "widget_overrides": [
+          "objective_panel",
+          "water_depth"
+        ]
+      },
+      "text": {
+        "summary": "정찰 결과, 수로의 깊이와 유속이 예상보다 불규칙하다.",
+        "body": [
+          "안전한 길을 택하면 시간이 늘어나고, 빠른 길은 위험을 감수해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_waterway_cold",
+          "label": "창고 경유",
+          "conditions": [],
+          "preview": "안정적인 길을 택한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_COLD_STORAGE"
+        },
+        {
+          "choice_id": "ch02_waterway_market",
+          "label": "장터 경유",
+          "conditions": [],
+          "preview": "빠른 길을 택한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH02_BLACKMARKET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_GATE_ASSAULT",
+      "event_type": "danger",
+      "node_id": "NR-06",
+      "title": "수문 통제실 돌파",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_dongjak_culvert",
+        "music_key": "pier_tension",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "통제실로 몰려든 감염체들이 수문 앞을 가로막는다.",
+        "body": [
+          "여길 정리해야 본격적인 수문 전투를 준비할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_gate_assault",
+          "label": "통제실 돌파",
+          "conditions": [],
+          "preview": "수문 전투 전, 구역을 정리한다.",
+          "effects": [],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch02_water_market",
+        "arena_tags": [
+          "gate",
+          "flood"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch02_gate_secured",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch02_market_water",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 12
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH02_MARKET_LOCKDOWN",
+      "event_type": "exploration",
+      "node_id": "NR-02",
+      "title": "수몰시장 잔해",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_flooded_market",
+        "music_key": "water_dread",
+        "widget_overrides": [
+          "contamination_meter",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "수몰시장 입구가 잔해로 막혀 있다.",
+        "body": [
+          "잔해를 치우는 동안 물살이 더 거세져 오염도가 상승한다.",
+          "우회로는 안전하지만 소음이 커진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_market_clear",
+          "label": "잔해를 치운다",
+          "conditions": [],
+          "preview": "경로는 열리지만 오염이 오른다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_lockdown",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_clear",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH02_MARKET_SWEEP"
+        },
+        {
+          "choice_id": "ch02_market_bypass",
+          "label": "우회로를 연다",
+          "conditions": [],
+          "preview": "소음을 감수하고 빠르게 통과한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_lockdown",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 5
+            }
+          ],
+          "next_event_id": "EV_CH02_MARKET_SWEEP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_COLD_SEAL",
+      "event_type": "choice",
+      "node_id": "NR-03",
+      "title": "냉동창고 봉인",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_cold_storage",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "냉동창고 보안 셔터가 얼어붙어 있다.",
+        "body": [
+          "급속 해빙을 쓰면 소음이 커지고, 수동 해체는 시간이 든다.",
+          "배터리를 꺼내기 전에 내부 안전을 확보해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_cold_thaw",
+          "label": "급속 해빙을 사용",
+          "conditions": [],
+          "preview": "소음을 감수하고 빠르게 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_battery_secured",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 6
+            }
+          ],
+          "next_event_id": "EV_CH02_COLD_STORAGE"
+        },
+        {
+          "choice_id": "ch02_cold_manual",
+          "label": "수동 해체한다",
+          "conditions": [],
+          "preview": "안전하지만 오염이 오른다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_battery_secured",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH02_COLD_STORAGE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_PIER_AMBUSH",
+      "event_type": "combat",
+      "node_id": "NR-05",
+      "title": "폐선착장 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "combat",
+        "art_key": "bg_flooded_pier",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "noise_meter",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "폐선착장에서 수로 감염체가 떼로 몰려든다.",
+        "body": [
+          "수면 위가 미끄러워 행동이 둔해진다.",
+          "여기서 정리해야 통제실로 안전하게 접근할 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_pier_break",
+          "label": "매복을 돌파한다",
+          "conditions": [],
+          "preview": "통제실로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_pier_cleared",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH02_PIER_BARGAIN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch02_water_market",
+        "arena_tags": [
+          "pier",
+          "water"
+        ],
+        "victory_effects": [],
+        "defeat_effects": []
+      }
+    },
+    {
+      "event_id": "EV_CH02_SLUICE_OVERRIDE",
+      "event_type": "dialogue",
+      "node_id": "NR-06",
+      "title": "배수문 키 재설정",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_sluice_control",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "통제실 인증 키를 재설정해야 배수문이 열린다.",
+        "body": [
+          "수동 재설정은 기록이 남고, 우회하면 안전장치가 불안정해진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_sluice_reset",
+          "label": "수동으로 재설정한다",
+          "conditions": [],
+          "preview": "안정성이 확보된다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_gate_key",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        },
+        {
+          "choice_id": "ch02_sluice_bypass",
+          "label": "우회 절차로 연다",
+          "conditions": [],
+          "preview": "빠르게 열지만 위험이 남는다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_gate_key",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH02_SLUICE_BOSS",
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch02_main",
+      "kind": "main",
+      "title": "검은 수로 확보",
+      "summary": "수로 배터리와 지도를 확보해 출구를 연다.",
+      "entry_event_id": "EV_CH02_ENTRY",
+      "completion_event_id": "EV_CH02_EXTRACTION",
+      "objective_ids": [
+        "obj_ch02_01",
+        "obj_ch02_02",
+        "obj_ch02_03"
+      ],
+      "unlock_when": [],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch02_drainage",
+      "kind": "side",
+      "title": "배수 제어",
+      "summary": "수문을 조정해 시장 수위를 낮춘다.",
+      "entry_event_id": "EV_CH02_DRAINAGE_CTRL",
+      "completion_event_id": "EV_CH02_DRAINAGE_CTRL",
+      "objective_ids": [
+        "obj_ch02_05"
+      ],
+      "unlock_when": [
+        "flag:ch02_started"
+      ],
+      "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch02_barge",
+      "kind": "side",
+      "title": "수송로 복구",
+      "summary": "바지선을 보강해 이동 속도를 확보한다.",
+      "entry_event_id": "EV_CH02_BARGE_REPAIR",
+      "completion_event_id": "EV_CH02_BARGE_REPAIR",
+      "objective_ids": [
+        "obj_ch02_06"
+      ],
+      "unlock_when": [
+        "flag:ch02_started"
+      ],
+      "reveal_cap": "ambient"
+    }
+  ]
+}

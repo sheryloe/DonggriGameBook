@@ -1,1 +1,2413 @@
-{   "version": "1.0.0",   "game_id": "dokdo_arc_webgame",   "chapter_id": "CH01",   "title": "잿빛 개장",   "role": "튜토리얼, 첫 교신, 첫 보스 이벤트",   "entry_node_id": "YD-01",   "exit_node_ids": [     "YD-08"   ],   "recommended_level": 1,   "ui_profile": {     "theme": "yeouido_ash",     "special_widgets": [       "objective_panel",       "noise_meter",       "contamination_meter",       "chapter_result"     ]   },   "objectives": [     {       "objective_id": "obj_ch01_01",       "text": "폐방송동에서 단파 증폭기를 회수한다.",       "required": true,       "complete_when": [         "item:itm_shortwave_amplifier>=1"       ]     },     {       "objective_id": "obj_ch01_02",       "text": "방송국 비상 송출 로그를 확보한다.",       "required": true,       "complete_when": [         "item:itm_broadcast_log>=1"       ]     },     {       "objective_id": "obj_ch01_03",       "text": "편집괴 이벤트에서 생존하고 귀환한다.",       "required": true,       "complete_when": [         "flag:chapter_01_completed"       ]     }   ],   "nodes": [     {       "node_id": "YD-01",       "name": "기록국 지하편성실",       "node_type": "hub",       "description": "브리핑과 장비 준비를 담당하는 챕터 시작 허브.",       "coordinates": {         "x": 8,         "y": 78       },       "loot_table_ids": [],       "npc_ids": [         "npc_yoon_haein"       ],       "connections": [         {           "to": "YD-02",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 0,             "contamination": 0           }         }       ],       "event_ids": [         "EV_CH01_BRIEFING"       ],       "revisit_rule": "always",       "tags": [         "safe",         "hub"       ]     },     {       "node_id": "YD-02",       "name": "국회 앞 잿길",       "node_type": "travel",       "description": "버스 잔해와 천막이 널린 접근로.",       "coordinates": {         "x": 20,         "y": 68       },       "encounter_table_id": "enc_ch01_street_low",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "YD-03",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 1           }         },         {           "to": "YD-01",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 0,             "contamination": 0           }         }       ],       "event_ids": [         "EV_CH01_APPROACH"       ],       "revisit_rule": "after_event_clear",       "tags": [         "tutorial",         "combat"       ]     },     {       "node_id": "YD-03",       "name": "방송동 로비",       "node_type": "exploration",       "description": "보안게이트가 무너진 방송동 입구.",       "coordinates": {         "x": 38,         "y": 63       },       "encounter_table_id": "enc_ch01_street_low",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "YD-04",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         },         {           "to": "YD-05",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 3,             "noise": 1,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH01_LOBBY_SEARCH"       ],       "revisit_rule": "always",       "tags": [         "search"       ]     },     {       "node_id": "YD-04",       "name": "편집실 복도",       "node_type": "danger",       "description": "천장 매복이 많은 좁은 복도.",       "coordinates": {         "x": 52,         "y": 57       },       "encounter_table_id": "enc_ch01_archive_medium",       "loot_table_ids": [         "lt_global_basic_office"       ],       "npc_ids": [],       "connections": [         {           "to": "YD-06",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 3,             "contamination": 2           }         },         {           "to": "YD-07",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 3           }         }       ],       "event_ids": [         "EV_CH01_WRITER_RESCUE"       ],       "revisit_rule": "always",       "tags": [         "stealth",         "ambush"       ]     },     {       "node_id": "YD-05",       "name": "침수 자료실",       "node_type": "exploration",       "description": "카세트, 명부, 부품이 남아 있는 수몰 구획.",       "coordinates": {         "x": 44,         "y": 76       },       "encounter_table_id": "enc_ch01_archive_medium",       "loot_table_ids": [         "lt_ch01_archive"       ],       "npc_ids": [],       "connections": [         {           "to": "YD-04",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 2           }         },         {           "to": "YD-07",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 3,             "noise": 1,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH01_ARCHIVE_DECISION"       ],       "revisit_rule": "always",       "tags": [         "flood",         "lore"       ]     },     {       "node_id": "YD-06",       "name": "메인 스튜디오",       "node_type": "boss",       "description": "자동 송출 시스템이 남아 있는 스튜디오.",       "coordinates": {         "x": 68,         "y": 52       },       "encounter_table_id": "enc_ch01_boss_broadcast",       "loot_table_ids": [         "lt_ch01_archive"       ],       "npc_ids": [],       "connections": [         {           "to": "YD-08",           "travel_type": "walk",           "requires": [],           "cost": {             "time": 2,             "noise": 4,             "contamination": 2           }         }       ],       "event_ids": [         "EV_CH01_BOSS_BROADCAST"       ],       "revisit_rule": "locked_after_clear",       "tags": [         "boss",         "sound"       ]     },     {       "node_id": "YD-07",       "name": "옥상 송신기",       "node_type": "exploration",       "description": "단파 증폭기가 연결된 옥상 시설.",       "coordinates": {         "x": 66,         "y": 34       },       "encounter_table_id": "enc_ch01_street_low",       "loot_table_ids": [],       "npc_ids": [],       "connections": [         {           "to": "YD-06",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 3,             "noise": 2,             "contamination": 2           }         },         {           "to": "YD-08",           "travel_type": "stairs",           "requires": [],           "cost": {             "time": 2,             "noise": 1,             "contamination": 1           }         }       ],       "event_ids": [         "EV_CH01_ROOFTOP_SIGNAL"       ],       "revisit_rule": "after_unlock",       "tags": [         "signal",         "main"       ]     },     {       "node_id": "YD-08",       "name": "샛강 비상계단",       "node_type": "exit",       "description": "귀환용 비상 탈출 통로.",       "coordinates": {         "x": 86,         "y": 48       },       "loot_table_ids": [],       "npc_ids": [],       "connections": [         {           "to": "YD-01",           "travel_type": "walk",           "requires": [             "flag:chapter_01_escape_ready"           ],           "cost": {             "time": 2,             "noise": 0,             "contamination": 0           }         }       ],       "event_ids": [         "EV_CH01_EXTRACTION"       ],       "revisit_rule": "after_clear",       "tags": [         "exit"       ]     }   ],   "events": [     {       "event_id": "EV_CH01_BRIEFING",       "event_type": "briefing",       "node_id": "YD-01",       "title": "죽은 주파수",       "repeatable": false,       "once_per_run": true,       "priority": 100,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "portrait_yoon_haein",         "music_key": "safe_bunker",         "widget_overrides": [           "objective_panel"         ]       },       "text": {         "summary": "윤해인이 폐방송동의 단파 증폭기를 회수해 오라고 지시한다.",         "body": [           "사태 214일째, 기록국은 더 멀리 들리는 신호를 잡아내기 위해 장비가 필요하다.",           "윤해인은 '이번엔 잡아야 한다'며 평소보다도 날카로운 목소리로 준비를 재촉한다."         ]       },       "npc_ids": [         "npc_yoon_haein"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_brief_go",           "label": "출발한다",           "conditions": [],           "preview": "기본 장비를 챙기고 방송동으로 향한다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_pipe_rusted",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_service_pistol",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_ammo_9mm",               "value": 12             },             {               "op": "grant_item",               "target": "item:itm_mask_filter_basic",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_backpack_field_6",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_flashlight",               "value": 1             },             {               "op": "add_trust",               "target": "trust.npc_yoon_haein",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch01_briefing_done",               "value": true             }           ],           "next_event_id": "EV_CH01_APPROACH"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH01_APPROACH",       "event_type": "exploration",       "node_id": "YD-02",       "title": "잿길 위 튜토리얼",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "narration",         "art_key": "bg_yeouido_ashroad",         "music_key": "tension_low",         "widget_overrides": [           "tutorial_movement",           "tutorial_noise"         ]       },       "text": {         "summary": "버스 잔해 사이로 첫 침식자들이 나타난다.",         "body": [           "엄폐, 조준, 회피를 시험하는 첫 실전이다.",           "멀리 방송동 유리벽에 반쯤 꺼진 간판이 흔들리고 있다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_approach_careful",           "label": "조심스럽게 접근",           "conditions": [],           "preview": "소음을 억제해 적은 전투로 지나간다.",           "effects": [             {               "op": "sub_stat",               "target": "noise",               "value": 1             },             {               "op": "grant_loot_table",               "target": "loot:lt_global_basic_office",               "value": 1             }           ],           "next_event_id": "EV_CH01_LOBBY_SEARCH"         },         {           "choice_id": "ch01_approach_force",           "label": "정면 돌파",           "conditions": [],           "preview": "탄약을 쓰고 빠르게 진입한다.",           "effects": [             {               "op": "add_stat",               "target": "noise",               "value": 4             },             {               "op": "remove_item",               "target": "item:itm_ammo_9mm",               "value": 4             }           ],           "next_event_id": "EV_CH01_LOBBY_SEARCH"         }       ],       "on_enter_effects": [         {           "op": "set_flag",           "target": "flag:tutorial_combat_seen",           "value": true         }       ],       "on_complete_effects": []     },     {       "event_id": "EV_CH01_LOBBY_SEARCH",       "event_type": "exploration",       "node_id": "YD-03",       "title": "멈춘 로비",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_broadcast_lobby",         "music_key": "tension_mid",         "widget_overrides": [           "inventory_quickview"         ]       },       "text": {         "summary": "보안문은 죽어 있고, 내부는 카드키 없이는 열리지 않는다.",         "body": [           "안내 데스크 아래와 직원 출입 구역을 뒤지면 자료실과 편집실 접근이 가능하다.",           "얇은 물비린내가 로비 안쪽에서부터 흘러나온다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_lobby_archive",           "label": "침수 자료실부터 조사",           "conditions": [],           "preview": "스토리 단서와 전력 부품을 먼저 찾는다.",           "effects": [             {               "op": "add_stat",               "target": "contamination",               "value": 2             }           ],           "next_event_id": "EV_CH01_ARCHIVE_DECISION"         },         {           "choice_id": "ch01_lobby_corridor",           "label": "편집실 복도로 바로 간다",           "conditions": [],           "preview": "안전을 우선하지만 자료 일부를 놓칠 수 있다.",           "effects": [             {               "op": "set_flag",               "target": "flag:ch01_archive_skipped_initial",               "value": true             }           ],           "next_event_id": "EV_CH01_WRITER_RESCUE"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH01_ARCHIVE_DECISION",       "event_type": "choice",       "node_id": "YD-05",       "title": "침수 자료실",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "choice",         "art_key": "bg_archive_flooded",         "music_key": "water_dread",         "widget_overrides": [           "contamination_meter",           "loot_preview"         ]       },       "text": {         "summary": "잠긴 서랍 속에 명부와 필터 패드, 그리고 오래된 테이프가 남아 있다.",         "body": [           "물을 헤치고 깊이 들어가면 얻는 건 많지만 오염도와 전투 리스크가 오른다.",           "우회하면 안전하지만 윤해인이 해독할 단서가 부족해진다."         ]       },       "npc_ids": [],       "loot_table_ids": [         "lt_ch01_archive"       ],       "choices": [         {           "choice_id": "ch01_archive_open",           "label": "자료실을 연다",           "conditions": [],           "preview": "명부와 테이프를 챙긴다.",           "effects": [             {               "op": "grant_loot_table",               "target": "loot:lt_ch01_archive",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_broadcast_log",               "value": 1             },             {               "op": "add_stat",               "target": "contamination",               "value": 8             },             {               "op": "set_flag",               "target": "flag:ch01_archive_opened",               "value": true             }           ],           "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"         },         {           "choice_id": "ch01_archive_skip",           "label": "자료실을 우회한다",           "conditions": [],           "preview": "오염을 줄이고 시간을 아낀다.",           "effects": [             {               "op": "sub_stat",               "target": "noise",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch01_archive_skipped",               "value": true             }           ],           "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH01_WRITER_RESCUE",       "event_type": "dialogue",       "node_id": "YD-04",       "title": "복도 끝의 생존자",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "npc_support_writer",         "music_key": "tension_low",         "widget_overrides": [           "moral_choice"         ]       },       "text": {         "summary": "보조 작가 한 명이 편집실 안에 숨어 도움을 요청한다.",         "body": [           "지금 구조하면 귀환 시 인벤토리와 이동 속도에 페널티가 생긴다.",           "하지만 기록국은 사람을 버린 선택을 기억할 것이다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_writer_rescue",           "label": "구조한다",           "conditions": [],           "preview": "사람을 데리고 옥상으로 오른다.",           "effects": [             {               "op": "set_flag",               "target": "flag:rescued_writer",               "value": true             },             {               "op": "add_stat",               "target": "carry_weight",               "value": 2             },             {               "op": "add_trust",               "target": "trust.npc_yoon_haein",               "value": 1             },             {               "op": "add_reputation",               "target": "reputation.record_bureau",               "value": 1             }           ],           "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"         },         {           "choice_id": "ch01_writer_leave",           "label": "방치한다",           "conditions": [],           "preview": "장비와 시간을 우선한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:left_writer",               "value": true             },             {               "op": "add_reputation",               "target": "reputation.record_bureau",               "value": -1             }           ],           "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH01_ROOFTOP_SIGNAL",       "event_type": "dialogue",       "node_id": "YD-07",       "title": "옥상 송신기",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "dialogue",         "art_key": "bg_rooftop_signal",         "music_key": "signal_hiss",         "widget_overrides": [           "signal_decoder"         ]       },       "text": {         "summary": "강풍 속 송신기를 열자, 손상된 증폭기와 끊겼다 이어지는 해상 인증 신호가 나온다.",         "body": [           "'울릉 검역망 유지. 독도 관문 정상.'이라는 문장이 반복된다.",           "증폭기를 분리하는 동안 아래 스튜디오에서 자동 송출 전원이 살아난다."         ]       },       "npc_ids": [         "npc_yoon_haein"       ],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_signal_keep_broadcast",           "label": "자동 송출을 미끼로 활용",           "conditions": [],           "preview": "추가 로그를 듣지만 더 많은 적이 몰린다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_shortwave_amplifier",               "value": 1             },             {               "op": "grant_item",               "target": "item:itm_news_opening_tape",               "value": 1             },             {               "op": "add_stat",               "target": "noise",               "value": 8             },             {               "op": "set_flag",               "target": "flag:ch01_broadcast_kept",               "value": true             }           ],           "next_event_id": "EV_CH01_BOSS_BROADCAST"         },         {           "choice_id": "ch01_signal_cut_broadcast",           "label": "즉시 차단하고 내려간다",           "conditions": [],           "preview": "로그 일부는 잃지만 난이도가 낮아진다.",           "effects": [             {               "op": "grant_item",               "target": "item:itm_shortwave_amplifier",               "value": 1             },             {               "op": "set_flag",               "target": "flag:ch01_broadcast_cut",               "value": true             }           ],           "next_event_id": "EV_CH01_BOSS_BROADCAST"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     },     {       "event_id": "EV_CH01_BOSS_BROADCAST",       "event_type": "boss",       "node_id": "YD-06",       "title": "편집괴",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [],       "presentation": {         "layout": "boss",         "art_key": "boss_editing_aberration",         "music_key": "boss_broadcast",         "widget_overrides": [           "boss_hp",           "noise_meter",           "filter_meter"         ]       },       "text": {         "summary": "오래된 오프닝 음악과 함께 편집 장비에 뒤엉긴 접합체가 스튜디오를 휩쓴다.",         "body": [           "빛, 카메라 레일, 붕괴한 세트가 전장을 자른다.",           "자동 송출을 유지했다면 기본 감염자 수가 늘어난다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_boss_fight",           "label": "보스를 돌파한다",           "conditions": [],           "preview": "전투 결과에 따라 귀환이 가능해진다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_01_escape_ready",               "value": true             }           ],           "next_event_id": "EV_CH01_EXTRACTION"         }       ],       "on_enter_effects": [],       "on_complete_effects": [],       "combat": {         "encounter_table_id": "enc_ch01_boss_broadcast",         "boss_id": "editing_aberration",         "arena_tags": [           "studio",           "sound_trap"         ],         "victory_effects": [           {             "op": "set_flag",             "target": "flag:ch01_boss_down",             "value": true           },           {             "op": "grant_item",             "target": "item:itm_broadcast_log",             "value": 1           }         ],         "defeat_effects": [           {             "op": "add_stat",             "target": "contamination",             "value": 15           },           {             "op": "sub_stat",             "target": "hp",             "value": 35           }         ]       }     },     {       "event_id": "EV_CH01_EXTRACTION",       "event_type": "extraction",       "node_id": "YD-08",       "title": "첫 귀환",       "repeatable": false,       "once_per_run": true,       "priority": 50,       "conditions": [         "flag:chapter_01_escape_ready"       ],       "presentation": {         "layout": "results",         "art_key": "bg_emergency_stairs",         "music_key": "safe_bunker",         "widget_overrides": [           "chapter_result",           "trust_summary"         ]       },       "text": {         "summary": "비상계단을 타고 기록국으로 빠져나온다.",         "body": [           "윤해인은 증폭기를 받아들고 신호가 실제 질서의 흔적일 수 있다고 판단한다.",           "첫 챕터의 선택은 이후 기록국 브리핑, 자원, 신뢰도에 반영된다."         ]       },       "npc_ids": [],       "loot_table_ids": [],       "choices": [         {           "choice_id": "ch01_extract_finish",           "label": "챕터를 종료한다",           "conditions": [],           "preview": "결과 정산으로 이동한다.",           "effects": [             {               "op": "set_flag",               "target": "flag:chapter_01_completed",               "value": true             },             {               "op": "set_value",               "target": "chapter.current",               "value": "CH02"             },             {               "op": "grant_item",               "target": "item:itm_ammo_9mm",               "value": 6,               "meta": {                 "reason": "chapter_clear_supply"               }             }           ],           "next_event_id": "END_CH01"         }       ],       "on_enter_effects": [],       "on_complete_effects": []     }   ],   "boss_event_id": "EV_CH01_BOSS_BROADCAST" }
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH01",
+  "title": "잿빛 개장",
+  "role": "튜토리얼, 첫 교신, 첫 보스 이벤트",
+  "entry_node_id": "YD-01",
+  "exit_node_ids": [
+    "YD-08"
+  ],
+  "recommended_level": 1,
+  "ui_profile": {
+    "theme": "yeouido_ash",
+    "special_widgets": [
+      "objective_panel",
+      "noise_meter",
+      "contamination_meter",
+      "chapter_result"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch01_01",
+      "text": "폐방송동에서 단파 증폭기를 회수한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_shortwave_amplifier>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_02",
+      "text": "방송국 비상 송출 로그를 확보한다.",
+      "required": true,
+      "complete_when": [
+        "item:itm_broadcast_log>=1"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_03",
+      "text": "편집괴 이벤트에서 생존하고 귀환한다.",
+      "required": true,
+      "complete_when": [
+        "flag:chapter_01_completed"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_04",
+      "text": "전력 패널을 재가동한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_power_restored"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_05",
+      "text": "송신기 보정을 완료한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_signal_calibrated"
+      ]
+    },
+    {
+      "objective_id": "obj_ch01_06",
+      "text": "순찰 편집체를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_patrol_cleared"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "YD-01",
+      "name": "기록국 지하편성실",
+      "node_type": "hub",
+      "description": "브리핑과 장비 준비를 담당하는 챕터 시작 허브.",
+      "coordinates": {
+        "x": 8,
+        "y": 78
+      },
+      "loot_table_ids": [],
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "connections": [
+        {
+          "to": "YD-02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 0,
+            "contamination": 0
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_BRIEFING"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "safe",
+        "hub"
+      ]
+    },
+    {
+      "node_id": "YD-02",
+      "name": "국회 앞 잿길",
+      "node_type": "travel",
+      "description": "버스 잔해와 천막이 널린 접근로.",
+      "coordinates": {
+        "x": 20,
+        "y": 68
+      },
+      "encounter_table_id": "enc_ch01_street_low",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-03",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "YD-01",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 0,
+            "contamination": 0
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_APPROACH"
+      ],
+      "revisit_rule": "after_event_clear",
+      "tags": [
+        "tutorial",
+        "combat"
+      ]
+    },
+    {
+      "node_id": "YD-03",
+      "name": "방송동 로비",
+      "node_type": "exploration",
+      "description": "보안게이트가 무너진 방송동 입구.",
+      "coordinates": {
+        "x": 38,
+        "y": 63
+      },
+      "encounter_table_id": "enc_ch01_street_low",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-04",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "YD-05",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_LOBBY_LOCKDOWN",
+        "EV_CH01_LOBBY_SEARCH"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "search"
+      ]
+    },
+    {
+      "node_id": "YD-04",
+      "name": "편집실 복도",
+      "node_type": "danger",
+      "description": "천장 매복이 많은 좁은 복도.",
+      "coordinates": {
+        "x": 52,
+        "y": 57
+      },
+      "encounter_table_id": "enc_ch01_archive_medium",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-06",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 2
+          }
+        },
+        {
+          "to": "YD-07",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 3
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_STAIRWELL_AMBUSH",
+        "EV_CH01_WRITER_RESCUE"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "stealth",
+        "ambush"
+      ]
+    },
+    {
+      "node_id": "YD-05",
+      "name": "침수 자료실",
+      "node_type": "exploration",
+      "description": "카세트, 명부, 부품이 남아 있는 수몰 구획.",
+      "coordinates": {
+        "x": 44,
+        "y": 76
+      },
+      "encounter_table_id": "enc_ch01_archive_medium",
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-04",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 2
+          }
+        },
+        {
+          "to": "YD-07",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_ARCHIVE_KEYPAD",
+        "EV_CH01_ARCHIVE_DECISION"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "flood",
+        "lore"
+      ]
+    },
+    {
+      "node_id": "YD-06",
+      "name": "메인 스튜디오",
+      "node_type": "boss",
+      "description": "자동 송출 시스템이 남아 있는 스튜디오.",
+      "coordinates": {
+        "x": 68,
+        "y": 52
+      },
+      "encounter_table_id": "enc_ch01_boss_broadcast",
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-08",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 4,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_BOSS_BROADCAST"
+      ],
+      "revisit_rule": "locked_after_clear",
+      "tags": [
+        "boss",
+        "sound"
+      ]
+    },
+    {
+      "node_id": "YD-07",
+      "name": "옥상 송신기",
+      "node_type": "exploration",
+      "description": "단파 증폭기가 연결된 옥상 시설.",
+      "coordinates": {
+        "x": 66,
+        "y": 34
+      },
+      "encounter_table_id": "enc_ch01_street_low",
+      "loot_table_ids": [],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-06",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 2,
+            "contamination": 2
+          }
+        },
+        {
+          "to": "YD-08",
+          "travel_type": "stairs",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_ROOFTOP_CALIBRATION",
+        "EV_CH01_ROOFTOP_SIGNAL"
+      ],
+      "revisit_rule": "after_unlock",
+      "tags": [
+        "signal",
+        "main"
+      ]
+    },
+    {
+      "node_id": "YD-08",
+      "name": "샛강 비상계단",
+      "node_type": "exit",
+      "description": "귀환용 비상 탈출 통로.",
+      "coordinates": {
+        "x": 86,
+        "y": 48
+      },
+      "loot_table_ids": [],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "YD-01",
+          "travel_type": "walk",
+          "requires": [
+            "flag:chapter_01_escape_ready"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 0,
+            "contamination": 0
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH01_EXTRACTION"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "exit"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH01_BRIEFING",
+      "event_type": "briefing",
+      "node_id": "YD-01",
+      "title": "죽은 주파수",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_yoon_haein",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "윤해인이 폐방송동의 단파 증폭기를 회수해 오라고 지시한다.",
+        "body": [
+          "사태 214일째, 기록국은 더 멀리 들리는 신호를 잡아내기 위해 장비가 필요하다.",
+          "윤해인은 '이번엔 잡아야 한다'며 평소보다도 날카로운 목소리로 준비를 재촉한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_brief_go",
+          "label": "출발한다",
+          "conditions": [],
+          "preview": "기본 장비를 챙기고 방송동으로 향한다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_pipe_rusted",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_service_pistol",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_ammo_9mm",
+              "value": 12
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_mask_filter_basic",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_backpack_field_6",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_flashlight",
+              "value": 1
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_yoon_haein",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_briefing_done",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_APPROACH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_APPROACH",
+      "event_type": "exploration",
+      "node_id": "YD-02",
+      "title": "잿길 위 튜토리얼",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "narration",
+        "art_key": "bg_yeouido_ashroad",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "tutorial_movement",
+          "tutorial_noise"
+        ]
+      },
+      "text": {
+        "summary": "버스 잔해 사이로 첫 침식자들이 나타난다.",
+        "body": [
+          "엄폐, 조준, 회피를 시험하는 첫 실전이다.",
+          "멀리 방송동 유리벽에 반쯤 꺼진 간판이 흔들리고 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_approach_careful",
+          "label": "조심스럽게 접근",
+          "conditions": [],
+          "preview": "소음을 억제해 적은 전투로 지나간다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_SERVICE_TUNNEL"
+        },
+        {
+          "choice_id": "ch01_approach_force",
+          "label": "정면 돌파",
+          "conditions": [],
+          "preview": "탄약을 쓰고 빠르게 진입한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            },
+            {
+              "op": "remove_item",
+              "target": "item:itm_ammo_9mm",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH01_PATROL_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [
+        {
+          "op": "set_flag",
+          "target": "flag:tutorial_combat_seen",
+          "value": true
+        }
+      ],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_LOBBY_SEARCH",
+      "event_type": "exploration",
+      "node_id": "YD-03",
+      "title": "멈춘 로비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_broadcast_lobby",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "보안문은 죽어 있고, 내부는 카드키 없이는 열리지 않는다.",
+        "body": [
+          "안내 데스크 아래와 직원 출입 구역을 뒤지면 자료실과 편집실 접근이 가능하다.",
+          "얇은 물비린내가 로비 안쪽에서부터 흘러나온다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_lobby_archive",
+          "label": "침수 자료실부터 조사",
+          "conditions": [],
+          "preview": "스토리 단서와 전력 부품을 먼저 찾는다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_SECURITY_OFFICE"
+        },
+        {
+          "choice_id": "ch01_lobby_corridor",
+          "label": "편집실 복도로 바로 간다",
+          "conditions": [],
+          "preview": "안전을 우선하지만 자료 일부를 놓칠 수 있다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_skipped_initial",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_SECURITY_OFFICE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ARCHIVE_DECISION",
+      "event_type": "choice",
+      "node_id": "YD-05",
+      "title": "침수 자료실",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_archive_flooded",
+        "music_key": "water_dread",
+        "widget_overrides": [
+          "contamination_meter",
+          "loot_preview"
+        ]
+      },
+      "text": {
+        "summary": "잠긴 서랍 속에 명부와 필터 패드, 그리고 오래된 테이프가 남아 있다.",
+        "body": [
+          "물을 헤치고 깊이 들어가면 얻는 건 많지만 오염도와 전투 리스크가 오른다.",
+          "우회하면 안전하지만 윤해인이 해독할 단서가 부족해진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_archive_open",
+          "label": "자료실을 연다",
+          "conditions": [],
+          "preview": "명부와 테이프를 챙긴다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch01_archive",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_broadcast_log",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 8
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_opened",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_POWER_RESET"
+        },
+        {
+          "choice_id": "ch01_archive_skip",
+          "label": "자료실을 우회한다",
+          "conditions": [],
+          "preview": "오염을 줄이고 시간을 아낀다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_skipped",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_POWER_RESET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_WRITER_RESCUE",
+      "event_type": "dialogue",
+      "node_id": "YD-04",
+      "title": "복도 끝의 생존자",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "npc_support_writer",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "moral_choice"
+        ]
+      },
+      "text": {
+        "summary": "보조 작가 한 명이 편집실 안에 숨어 도움을 요청한다.",
+        "body": [
+          "지금 구조하면 귀환 시 인벤토리와 이동 속도에 페널티가 생긴다.",
+          "하지만 기록국은 사람을 버린 선택을 기억할 것이다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_writer_rescue",
+          "label": "구조한다",
+          "conditions": [],
+          "preview": "사람을 데리고 옥상으로 오른다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:rescued_writer",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "carry_weight",
+              "value": 2
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_yoon_haein",
+              "value": 1
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.record_bureau",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_POWER_RESET"
+        },
+        {
+          "choice_id": "ch01_writer_leave",
+          "label": "방치한다",
+          "conditions": [],
+          "preview": "장비와 시간을 우선한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:left_writer",
+              "value": true
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.record_bureau",
+              "value": -1
+            }
+          ],
+          "next_event_id": "EV_CH01_POWER_RESET"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ROOFTOP_SIGNAL",
+      "event_type": "dialogue",
+      "node_id": "YD-07",
+      "title": "옥상 송신기",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_rooftop_signal",
+        "music_key": "signal_hiss",
+        "widget_overrides": [
+          "signal_decoder"
+        ]
+      },
+      "text": {
+        "summary": "강풍 속 송신기를 열자, 손상된 증폭기와 끊겼다 이어지는 해상 인증 신호가 나온다.",
+        "body": [
+          "'울릉 검역망 유지. 독도 관문 정상.'이라는 문장이 반복된다.",
+          "증폭기를 분리하는 동안 아래 스튜디오에서 자동 송출 전원이 살아난다."
+        ]
+      },
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_signal_keep_broadcast",
+          "label": "자동 송출을 미끼로 활용",
+          "conditions": [],
+          "preview": "추가 로그를 듣지만 더 많은 적이 몰린다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_shortwave_amplifier",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_news_opening_tape",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 8
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_broadcast_kept",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_SIGNAL_CALIBRATION"
+        },
+        {
+          "choice_id": "ch01_signal_cut_broadcast",
+          "label": "즉시 차단하고 내려간다",
+          "conditions": [],
+          "preview": "로그 일부는 잃지만 난이도가 낮아진다.",
+          "effects": [
+            {
+              "op": "grant_item",
+              "target": "item:itm_shortwave_amplifier",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_broadcast_cut",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_SIGNAL_CALIBRATION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [
+        {
+          "op": "set_flag",
+          "target": "flag:ch01_signal_calibrated",
+          "value": true
+        }
+      ]
+    },
+    {
+      "event_id": "EV_CH01_BOSS_BROADCAST",
+      "event_type": "boss",
+      "node_id": "YD-06",
+      "title": "편집괴",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:ch01_signal_relay_defended"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "boss_editing_aberration",
+        "music_key": "boss_broadcast",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter",
+          "filter_meter"
+        ]
+      },
+      "text": {
+        "summary": "오래된 오프닝 음악과 함께 편집 장비에 뒤엉긴 접합체가 스튜디오를 휩쓴다.",
+        "body": [
+          "빛, 카메라 레일, 붕괴한 세트가 전장을 자른다.",
+          "자동 송출을 유지했다면 기본 감염자 수가 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_boss_fight",
+          "label": "보스를 돌파한다",
+          "conditions": [],
+          "preview": "전투 결과에 따라 귀환이 가능해진다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_01_escape_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION_PREP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch01_boss_broadcast",
+        "boss_id": "editing_aberration",
+        "arena_tags": [
+          "studio",
+          "sound_trap"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch01_boss_down",
+            "value": true
+          },
+          {
+            "op": "grant_item",
+            "target": "item:itm_broadcast_log",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 15
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 35
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH01_EXTRACTION",
+      "event_type": "extraction",
+      "node_id": "YD-08",
+      "title": "첫 귀환",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [
+        "flag:chapter_01_escape_ready"
+      ],
+      "presentation": {
+        "layout": "results",
+        "art_key": "bg_emergency_stairs",
+        "music_key": "safe_bunker",
+        "widget_overrides": [
+          "chapter_result",
+          "trust_summary"
+        ]
+      },
+      "text": {
+        "summary": "비상계단을 타고 기록국으로 빠져나온다.",
+        "body": [
+          "윤해인은 증폭기를 받아들고 신호가 실제 질서의 흔적일 수 있다고 판단한다.",
+          "첫 챕터의 선택은 이후 기록국 브리핑, 자원, 신뢰도에 반영된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_extract_finish",
+          "label": "챕터를 종료한다",
+          "conditions": [],
+          "preview": "결과 정산으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_01_completed",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "chapter.current",
+              "value": "CH02"
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_ammo_9mm",
+              "value": 6,
+              "meta": {
+                "reason": "chapter_clear_supply"
+              }
+            }
+          ],
+          "next_event_id": "END_CH01"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_SECURITY_OFFICE",
+      "event_type": "choice",
+      "node_id": "YD-03",
+      "title": "보안실 잔광",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_broadcast_lobby",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "잠긴 보안실에서 오래된 카드키와 편집 로그가 반쯤 젖어 있다.",
+        "body": [
+          "경보등이 꺼진 틈을 타면 접근카드를 얻을 수 있지만 소음이 커진다.",
+          "서랍을 뒤지면 추가 기록과 소모품을 확보할 수 있다.",
+          "복도를 택하면 더 조용하지만 기록 일부를 놓친다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_security_card",
+          "label": "보안실 진입",
+          "conditions": [],
+          "preview": "접근카드를 확보하고 서랍을 뒤진다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_access_card",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_LOCKDOWN"
+        },
+        {
+          "choice_id": "ch01_security_logs",
+          "label": "로그만 훑고 이동",
+          "conditions": [],
+          "preview": "필요한 기록만 챙기고 복도로 빠진다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_access_card",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_LOCKDOWN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_SIGNAL_CALIBRATION",
+      "event_type": "scene",
+      "node_id": "YD-07",
+      "title": "주파수 보정",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_rooftop_signal",
+        "music_key": "signal_hiss",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "주파수 보정이 끝나야 송출 로그를 안전하게 확보할 수 있다.",
+        "body": [
+          "바람이 강하고, 폐쇄된 안테나가 기이하게 떨린다.",
+          "정밀 보정은 시간을 요구하지만 신호 안정성이 높다.",
+          "강제 출력은 빠르지만 후유증이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_signal_precise",
+          "label": "정밀 보정",
+          "conditions": [],
+          "preview": "시간을 들여 안정성을 높인다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_signal_calibrated",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_BOSS_BROADCAST"
+        },
+        {
+          "choice_id": "ch01_signal_force",
+          "label": "강제 출력",
+          "conditions": [],
+          "preview": "빠르게 넘어가지만 위험이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_signal_calibrated",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_BOSS_BROADCAST"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_SIGNAL_RELAY_DEFENSE",
+      "event_type": "danger",
+      "node_id": "YD-07",
+      "title": "중계기 방어",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_rooftop_signal",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "보정 신호에 이끌린 감염체들이 옥상으로 몰려온다.",
+        "body": [
+          "중계기를 지키는 동안 내려오는 계단이 병목이 된다.",
+          "여기서 밀리면 증폭기가 손상되고 귀환이 늦어진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_signal_defense_hold",
+          "label": "옥상 사수",
+          "conditions": [],
+          "preview": "중계기와 증폭기를 지킨다.",
+          "effects": [],
+          "next_event_id": "EV_CH01_BOSS_BROADCAST"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch01_archive_medium",
+        "arena_tags": [
+          "rooftop",
+          "signal"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch01_signal_relay_defended",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_ch01_archive",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 15
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH01_LOCKDOWN",
+      "event_type": "choice",
+      "node_id": "YD-03",
+      "title": "비상 봉쇄",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_broadcast_lobby",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "방송동 내부의 자동 봉쇄가 내려오며 통로가 둘로 갈라진다.",
+        "body": [
+          "보안실에서 확보한 카드로 보관함 구역을 열 수 있다.",
+          "복도로 돌면 함정이 있지만 빠르게 이동할 수 있다.",
+          "결정에 따라 다음 루트가 달라진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_lockdown_archive",
+          "label": "보관함 구역 진입",
+          "conditions": [],
+          "preview": "매복을 감수하고 기록을 확보한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_lockdown_seen",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_AMBUSH"
+        },
+        {
+          "choice_id": "ch01_lockdown_corridor",
+          "label": "복도 우회",
+          "conditions": [],
+          "preview": "함정을 감수하고 빠르게 이동한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_lockdown_seen",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_CORRIDOR_TRAP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ARCHIVE_AMBUSH",
+      "event_type": "danger",
+      "node_id": "YD-05",
+      "title": "기록 보관함 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_archive_flooded",
+        "music_key": "combat_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "보관함 사이에서 매복한 감염체가 튀어나온다.",
+        "body": [
+          "좁은 공간에서의 교전은 소음이 크게 남는다.",
+          "정리하면 보관함 기록을 찾을 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "combat": {
+        "encounter_table_id": "enc_ch01_archive_medium",
+        "arena_tags": [
+          "archive",
+          "flooded"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch01_archive_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "lt_ch01_archive",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 15
+          }
+        ]
+      },
+      "choices": [
+        {
+          "choice_id": "ch01_archive_fight",
+          "label": "매복 돌파",
+          "conditions": [],
+          "preview": "정리하고 기록실로 이동한다.",
+          "effects": [],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_CORRIDOR_TRAP",
+      "event_type": "choice",
+      "node_id": "YD-04",
+      "title": "복도 함정",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_service_stair",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "무너진 복도에 매설된 케이블이 발을 잡아끈다.",
+        "body": [
+          "조심스럽게 끊어내면 소음은 줄지만 시간이 걸린다.",
+          "돌파하면 빠르지만 부상이 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_corridor_cut",
+          "label": "케이블 제거",
+          "conditions": [],
+          "preview": "느리지만 안전하게 통과한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_corridor_cleared",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_WRITER_RESCUE"
+        },
+        {
+          "choice_id": "ch01_corridor_dash",
+          "label": "강행 돌파",
+          "conditions": [],
+          "preview": "빠르게 지나가되 체력이 소모된다.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 8
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_corridor_cleared",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_WRITER_RESCUE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_CONTROL_RESTORE",
+      "event_type": "choice",
+      "node_id": "YD-04",
+      "title": "제어실 복구",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 52,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_security_office",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "지하 제어실의 전원이 불안정하다.",
+        "body": [
+          "복구하면 옥상 송신기 접근이 쉬워진다.",
+          "우회하면 소음은 줄지만 기록 일부를 잃는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_control_repair",
+          "label": "전원 복구",
+          "conditions": [],
+          "preview": "시간을 들여 안정화한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_control_restored",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        },
+        {
+          "choice_id": "ch01_control_bypass",
+          "label": "우회",
+          "conditions": [],
+          "preview": "빠르게 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_control_bypassed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_STUDIO_APPROACH",
+      "event_type": "exploration",
+      "node_id": "YD-06",
+      "title": "???? ??",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_sorting_hall",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "?? ???? ?, ?? ???? ???? ???.",
+        "body": [
+          "???? ???? ???? ???? ???? ??.",
+          "? ?? ??????, ??? ??? ??? ? ??."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_studio_wait",
+          "label": "??? ??? ??",
+          "conditions": [],
+          "preview": "??? ??? ??? ????.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_BOSS_BROADCAST"
+        },
+        {
+          "choice_id": "ch01_studio_push",
+          "label": "?? ??",
+          "conditions": [],
+          "preview": "??? ???? ??? ???.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_BOSS_BROADCAST"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ESCAPE_RUN",
+      "event_type": "danger",
+      "node_id": "YD-08",
+      "title": "?? ???",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 50,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_saetgang_entry",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "inventory_quickview"
+        ]
+      },
+      "text": {
+        "summary": "?? ?????? ???? ??? ?? ????.",
+        "body": [
+          "???? ???? ???? ????.",
+          "?? ?? ?? ???? ????."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_escape_fast",
+          "label": "?? ???? ??",
+          "conditions": [],
+          "preview": "??? ???? ???.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_escape_route_ready",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION"
+        },
+        {
+          "choice_id": "ch01_escape_safe",
+          "label": "????? ??",
+          "conditions": [],
+          "preview": "???? ??? ???.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_escape_route_ready",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_SERVICE_TUNNEL",
+      "event_type": "scene",
+      "node_id": "YD-02",
+      "title": "서비스 터널",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_yeouido_ashroad",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "방송동으로 이어지는 서비스 터널이 좁고 어둡다.",
+        "body": [
+          "환기팬이 멈춘 공간에서 습기와 먼지가 눌어붙는다.",
+          "낡은 안내등이 끊어지며 벽면의 그래피티가 일그러진다.",
+          "소음을 줄일수록 시간이 늘어나고, 급하게 움직이면 흔적이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_tunnel_silent",
+          "label": "무전등을 끄고 통과",
+          "conditions": [],
+          "preview": "소음을 줄이지만 시간이 늘어난다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_tunnel_passed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+        },
+        {
+          "choice_id": "ch01_tunnel_rush",
+          "label": "빠르게 돌파",
+          "conditions": [],
+          "preview": "시간을 벌지만 소음이 커진다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_tunnel_passed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_PATROL_AMBUSH",
+      "event_type": "combat",
+      "node_id": "YD-02",
+      "title": "순찰 감염체",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_yeouido_ashroad",
+        "music_key": "tension_mid",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "잔해 사이에서 순찰 편집체가 튀어나와 통로를 틀어막는다.",
+        "body": [
+          "철제 레일과 카메라 붐이 휘둘리며 접근을 봉쇄한다.",
+          "탄약을 아끼려면 빠르게 제압해야 한다.",
+          "주변이 좁아 소음이 쉽게 퍼진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [],
+      "on_enter_effects": [
+        {
+          "op": "add_stat",
+          "target": "noise",
+          "value": 1
+        }
+      ],
+      "on_complete_effects": [],
+      "next_event_id": "EV_CH01_LOBBY_SEARCH",
+      "combat": {
+        "encounter_table_id": "enc_ch01_street_low",
+        "arena_tags": [
+          "street",
+          "ambush"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch01_patrol_cleared",
+            "value": true
+          },
+          {
+            "op": "add_stat",
+            "target": "noise",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH01_POWER_RESET",
+      "event_type": "scene",
+      "node_id": "YD-05",
+      "title": "전력 리셋",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_archive_flooded",
+        "music_key": "signal_hiss",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "옥상 송신기를 살리려면 지하 전력 패널을 다시 켜야 한다.",
+        "body": [
+          "차단기가 내려가 있고, 케이블은 습기로 눅눅하게 늘어져 있다.",
+          "주 전원을 올리면 소음이 커지고, 예비 회로는 오염을 부른다.",
+          "결정이 늦어지면 송신기 보정 시간이 줄어든다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_power_main",
+          "label": "주 전원을 리셋한다",
+          "conditions": [],
+          "preview": "소음을 감수하고 안정적으로 복구한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_power_restored",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        },
+        {
+          "choice_id": "ch01_power_bypass",
+          "label": "예비 회로로 우회",
+          "conditions": [],
+          "preview": "빠르지만 오염 위험이 커진다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_power_restored",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_EXTRACTION_PREP",
+      "event_type": "scene",
+      "node_id": "YD-08",
+      "title": "철수 준비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_emergency_stairs",
+        "music_key": "tension_low",
+        "widget_overrides": []
+      },
+      "text": {
+        "summary": "탈출 전에 남은 장비를 정리하고 루트를 확인한다.",
+        "body": [
+          "비상계단 아래로 화염 냄새가 번진다.",
+          "지금 챙길 것과 버릴 것을 분리해야 한다.",
+          "정리 시간을 늘리면 추격 위험이 커진다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_extract_salvage",
+          "label": "잔해를 정리한다",
+          "conditions": [],
+          "preview": "추가 보급품을 확보한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION"
+        },
+        {
+          "choice_id": "ch01_extract_immediate",
+          "label": "즉시 철수",
+          "conditions": [],
+          "preview": "추격 전에 빠져나간다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_CONCOURSE_SKIRMISH",
+      "event_type": "danger",
+      "node_id": "YD-02",
+      "title": "회랑 교전",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_yeouido_ashroad",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "방송동 회랑에서 감염체 무리가 몰려든다.",
+        "body": [
+          "첫 교전이 길어지면 뒤쪽 경로가 무너질 수 있다.",
+          "빠르게 돌파해 로비로 진입해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_concourse_break",
+          "label": "회랑 돌파",
+          "conditions": [],
+          "preview": "교전을 정리하고 로비로 진입한다.",
+          "effects": [],
+          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch01_street_low",
+        "arena_tags": [
+          "concourse",
+          "ambush"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch01_concourse_cleared",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_global_basic_office",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 5
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH01_ARCHIVE_VAULT",
+      "event_type": "choice",
+      "node_id": "YD-05",
+      "title": "기록 보관함",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_archive_flooded",
+        "music_key": "water_dread",
+        "widget_overrides": [
+          "objective_panel"
+        ]
+      },
+      "text": {
+        "summary": "기록 보관함 문이 반쯤 열려 있다. 안에는 젖은 테이프가 층층이 쌓여 있다.",
+        "body": [
+          "시간을 들이면 멘트 기록과 잔존 장비를 회수할 수 있다.",
+          "서둘러 이동하면 위험은 줄지만 기록 일부를 놓친다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch01_archive"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_archive_vault_open",
+          "label": "보관함 정리",
+          "conditions": [],
+          "preview": "기록과 물자를 챙긴다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_cache",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch01_archive",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        },
+        {
+          "choice_id": "ch01_archive_vault_skip",
+          "label": "지금은 이동",
+          "conditions": [],
+          "preview": "기록 일부를 포기하고 옥상으로 향한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_cache",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_LOBBY_LOCKDOWN",
+      "event_type": "exploration",
+      "node_id": "YD-03",
+      "title": "로비 락다운",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_yeouido_ashroad",
+        "music_key": "tension_low",
+        "widget_overrides": [
+          "noise_meter",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "방송동 로비의 차단 셔터가 내려와 출입구가 봉쇄되었다.",
+        "body": [
+          "비상 전원에 연결된 제어 패널이 과열되어 있다.",
+          "강행 돌파하면 소음이 커지고 상층 감염체가 몰릴 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_lobby_manual",
+          "label": "수동으로 해체한다",
+          "conditions": [],
+          "preview": "시간을 들여 안전하게 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_lobby_lockdown",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_keycard_obtained",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+        },
+        {
+          "choice_id": "ch01_lobby_force",
+          "label": "강행 돌파한다",
+          "conditions": [],
+          "preview": "빠르게 열지만 소음이 커진다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_lobby_lockdown",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_keycard_obtained",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 6
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ARCHIVE_KEYPAD",
+      "event_type": "choice",
+      "node_id": "YD-05",
+      "title": "침수 자료실 키패드",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_archive_flooded",
+        "music_key": "water_dread",
+        "widget_overrides": [
+          "contamination_meter",
+          "loot_preview"
+        ]
+      },
+      "text": {
+        "summary": "자료실 앞 키패드가 먹통이라 강제 조치가 필요하다.",
+        "body": [
+          "비상 모드를 해제하면 내부 캐시와 테이프가 열린다.",
+          "우회 콘솔을 쓰면 안전하지만 로그 일부가 손실된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_archive_emergency",
+          "label": "긴급 모드 해제",
+          "conditions": [],
+          "preview": "오염은 오르지만 자료를 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_key",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch01_archive",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 4
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        },
+        {
+          "choice_id": "ch01_archive_bypass",
+          "label": "우회 콘솔 사용",
+          "conditions": [],
+          "preview": "안전을 택하지만 손실이 생긴다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_key",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_STAIRWELL_AMBUSH",
+      "event_type": "combat",
+      "node_id": "YD-04",
+      "title": "계단실 매복",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "combat",
+        "art_key": "bg_broadcast_corridor",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "noise_meter",
+          "contamination_meter"
+        ]
+      },
+      "text": {
+        "summary": "복도 끝에서 편집괴 잔존체가 매복한다.",
+        "body": [
+          "좁은 계단실이라 회피가 어렵다.",
+          "지금 정리하지 않으면 송신기 접근 중 다시 습격한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_corridor_break",
+          "label": "매복을 돌파한다",
+          "conditions": [],
+          "preview": "정리 후 생존자 구역으로 진입한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_corridor_cleared",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH01_WRITER_RESCUE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch01_archive_medium",
+        "arena_tags": [
+          "corridor",
+          "ambush"
+        ],
+        "victory_effects": [],
+        "defeat_effects": []
+      }
+    },
+    {
+      "event_id": "EV_CH01_ROOFTOP_CALIBRATION",
+      "event_type": "dialogue",
+      "node_id": "YD-07",
+      "title": "송신기 안정화",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 60,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_rooftop_signal",
+        "music_key": "signal_hiss",
+        "widget_overrides": [
+          "signal_decoder"
+        ]
+      },
+      "text": {
+        "summary": "예비 라인을 연결해 송신기 상태를 안정화한다.",
+        "body": [
+          "임시 보강을 하면 신호가 선명해지지만 열과 소음이 누적된다.",
+          "안정화가 끝나야 스튜디오에 내려갈 수 있다."
+        ]
+      },
+      "npc_ids": [
+        "npc_yoon_haein"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_signal_fast",
+          "label": "즉시 안정화한다",
+          "conditions": [],
+          "preview": "소음을 감수하고 빠르게 진행한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_signal_stable",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        },
+        {
+          "choice_id": "ch01_signal_spare",
+          "label": "예비 라인을 사용한다",
+          "conditions": [],
+          "preview": "안전하지만 오염이 오른다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_signal_stable",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH01_BOSS_BROADCAST",
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch01_main",
+      "kind": "main",
+      "title": "방송동 증폭기 회수",
+      "summary": "폐방송동에서 단파 증폭기와 송출 로그를 확보해 귀환한다.",
+      "entry_event_id": "EV_CH01_BRIEFING",
+      "completion_event_id": "EV_CH01_EXTRACTION",
+      "objective_ids": [
+        "obj_ch01_01",
+        "obj_ch01_02",
+        "obj_ch01_03"
+      ],
+      "unlock_when": [],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch01_signal",
+      "kind": "side",
+      "title": "송신기 복구",
+      "summary": "옥상 송신기를 보정해 임시 방송을 안정화한다.",
+      "entry_event_id": "EV_CH01_POWER_RESET",
+      "completion_event_id": "EV_CH01_SIGNAL_CALIBRATION",
+      "objective_ids": [
+        "obj_ch01_04",
+        "obj_ch01_05"
+      ],
+      "unlock_when": [
+        "flag:ch01_briefing_done"
+      ],
+      "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch01_patrol",
+      "kind": "side",
+      "title": "순찰 차단",
+      "summary": "접근로를 지키는 편집체를 제거해 후퇴로를 확보한다.",
+      "entry_event_id": "EV_CH01_PATROL_AMBUSH",
+      "completion_event_id": "EV_CH01_PATROL_AMBUSH",
+      "objective_ids": [
+        "obj_ch01_06"
+      ],
+      "unlock_when": [
+        "flag:ch01_briefing_done"
+      ],
+      "reveal_cap": "ambient"
+    }
+  ]
+}
