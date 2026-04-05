@@ -477,7 +477,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_SECURITY_CONSOLE"
+          "next_event_id": "EV_CH05_LOBBY_SCAN"
         },
         {
           "choice_id": "ch05_lobby_logs",
@@ -501,7 +501,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH05_SECURITY_CONSOLE"
+          "next_event_id": "EV_CH05_LOBBY_SCAN"
         }
       ],
       "on_enter_effects": [],
@@ -780,7 +780,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_DATA_SANITIZE"
+          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
         },
         {
           "choice_id": "ch05_data_limited",
@@ -809,7 +809,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_DATA_SANITIZE"
+          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
         },
         {
           "choice_id": "ch05_data_broadcast",
@@ -838,7 +838,7 @@
               "value": 7
             }
           ],
-          "next_event_id": "EV_CH05_DATA_SANITIZE"
+          "next_event_id": "EV_CH05_CONTAINMENT_BREACH"
         }
       ],
       "on_enter_effects": [],
@@ -853,9 +853,7 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:ch05_final_ready",
-        "flag:ch05_cooling_stable",
-        "flag:ch05_data_sanitized"
+        "flag:ch05_final_ready"
       ],
       "presentation": {
         "layout": "boss",
@@ -1794,85 +1792,46 @@
     {
       "quest_track_id": "qt_ch05_main",
       "kind": "main",
-      "title": "미러센터 돌파",
-      "summary": "접근 키와 인증값을 확보해 최종 신호를 완성한다.",
+      "title": "미러센터 접속",
+      "summary": "데이터 접근과 보스 돌파를 마무리해 이탈 루트를 확보한다.",
       "entry_event_id": "EV_CH05_ENTRY",
       "completion_event_id": "EV_CH05_EXTRACTION",
       "objective_ids": [
         "obj_ch05_01",
         "obj_ch05_02",
-        "obj_ch05_03"
+        "obj_ch05_03",
+        "obj_ch05_07",
+        "obj_ch05_08"
       ],
-      "unlock_when": [],
       "reveal_cap": "confirmation"
     },
     {
-      "quest_track_id": "qt_ch05_ramp",
+      "quest_track_id": "qt_ch05_side_signal",
       "kind": "side",
-      "title": "진입 램프 확보",
-      "summary": "초입 램프를 정리해 후퇴 경로를 확보한다.",
-      "entry_event_id": "EV_CH05_RAMP_SWARM",
-      "completion_event_id": "EV_CH05_RAMP_SWARM",
+      "title": "중계 신호 안정화",
+      "summary": "스카이워크 신호를 안정화해 추적을 피한다.",
+      "entry_event_id": "EV_CH05_SIGNAL_RELAY",
       "objective_ids": [
         "obj_ch05_04"
       ],
       "unlock_when": [
-        "flag:ch05_started"
-      ],
-      "reveal_cap": "ambient"
-    },
-    {
-      "quest_track_id": "qt_ch05_server",
-      "kind": "side",
-      "title": "서버 정리",
-      "summary": "서버홀 흔적을 정리해 추적을 차단한다.",
-      "entry_event_id": "EV_CH05_SERVER_PURGE",
-      "completion_event_id": "EV_CH05_SERVER_PURGE",
-      "objective_ids": [
-        "obj_ch05_06"
-      ],
-      "unlock_when": [
-        "flag:ch05_map_obtained"
+        "flag:ch05_entry_done"
       ],
       "reveal_cap": "evidence"
     },
     {
-      "quest_track_id": "qt_ch05_main_mirror",
-      "kind": "main",
-      "title": "미러센터 접근",
-      "summary": "냉각 안정화와 데이터 정리를 마친다.",
-      "entry_event_id": "EV_CH05_ENTRY",
-      "completion_event_id": "EV_CH05_EXTRACTION",
+      "quest_track_id": "qt_ch05_side_containment",
+      "kind": "side",
+      "title": "격리 구역 안정화",
+      "summary": "격리 파손을 수습해 자료 회수를 안정화한다.",
+      "entry_event_id": "EV_CH05_CONTAINMENT_BREACH",
       "objective_ids": [
-        "obj_ch05_01",
-        "obj_ch05_03",
         "obj_ch05_05"
       ],
-      "unlock_when": []
-    },
-    {
-      "quest_track_id": "qt_ch05_side_lobby",
-      "kind": "side",
-      "title": "로비 검문 돌파",
-      "summary": "로비 구역을 통과해 내부 접근을 확보한다.",
-      "entry_event_id": "EV_CH05_LOBBY_CHECKPOINT",
-      "completion_event_id": "EV_CH05_LOBBY_MAPPING",
-      "objective_ids": [
-        "obj_ch05_04"
+      "unlock_when": [
+        "flag:ch05_signal_stable"
       ],
-      "unlock_when": []
-    },
-    {
-      "quest_track_id": "qt_ch05_side_relay",
-      "kind": "side",
-      "title": "중계 노드",
-      "summary": "스카이워크 중계 노드를 재기동한다.",
-      "entry_event_id": "EV_CH05_SIGNAL_RELAY",
-      "completion_event_id": "EV_CH05_KIM_ARA",
-      "objective_ids": [
-        "obj_ch05_06"
-      ],
-      "unlock_when": []
+      "reveal_cap": "evidence"
     }
   ]
 }

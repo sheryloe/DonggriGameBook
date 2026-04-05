@@ -527,7 +527,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_SERVICE_TUNNEL"
+          "next_event_id": "EV_CH01_CONCOURSE_SKIRMISH"
         },
         {
           "choice_id": "ch01_approach_force",
@@ -546,7 +546,7 @@
               "value": 4
             }
           ],
-          "next_event_id": "EV_CH01_PATROL_AMBUSH"
+          "next_event_id": "EV_CH01_CONCOURSE_SKIRMISH"
         }
       ],
       "on_enter_effects": [
@@ -674,7 +674,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_POWER_RESET"
+          "next_event_id": "EV_CH01_ARCHIVE_VAULT"
         },
         {
           "choice_id": "ch01_archive_skip",
@@ -693,7 +693,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_POWER_RESET"
+          "next_event_id": "EV_CH01_ARCHIVE_VAULT"
         }
       ],
       "on_enter_effects": [],
@@ -874,10 +874,7 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:ch01_signal_relay_defended",
-        "flag:ch01_archive_key",
-        "flag:ch01_signal_stable",
-        "flag:ch01_corridor_cleared"
+        "flag:ch01_signal_relay_defended"
       ],
       "presentation": {
         "layout": "boss",
@@ -911,7 +908,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION_PREP"
+          "next_event_id": "EV_CH01_ESCAPE_RUN"
         }
       ],
       "on_enter_effects": [],
@@ -1191,7 +1188,7 @@
           "conditions": [],
           "preview": "중계기와 증폭기를 지킨다.",
           "effects": [],
-          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+          "next_event_id": "EV_CH01_STUDIO_APPROACH"
         }
       ],
       "on_enter_effects": [],
@@ -1519,7 +1516,7 @@
       "event_id": "EV_CH01_STUDIO_APPROACH",
       "event_type": "exploration",
       "node_id": "YD-06",
-      "title": "???? ??",
+      "title": "스튜디오 접근",
       "repeatable": false,
       "once_per_run": true,
       "priority": 50,
@@ -1533,10 +1530,10 @@
         ]
       },
       "text": {
-        "summary": "?? ???? ?, ?? ???? ???? ???.",
+        "summary": "스튜디오 입구에 잔존 감염체의 흔적이 남아 있다.",
         "body": [
-          "???? ???? ???? ???? ???? ??.",
-          "? ?? ??????, ??? ??? ??? ? ??."
+          "정면 돌파는 빠르지만 소음이 커질 수 있다.",
+          "우회로는 안전하지만 소모가 늘어난다."
         ]
       },
       "npc_ids": [],
@@ -1544,9 +1541,9 @@
       "choices": [
         {
           "choice_id": "ch01_studio_wait",
-          "label": "??? ??? ??",
+          "label": "상황 관찰",
           "conditions": [],
-          "preview": "??? ??? ??? ????.",
+          "preview": "안전을 우선하며 진입한다.",
           "effects": [
             {
               "op": "sub_stat",
@@ -1558,9 +1555,9 @@
         },
         {
           "choice_id": "ch01_studio_push",
-          "label": "?? ??",
+          "label": "즉시 진입",
           "conditions": [],
-          "preview": "??? ???? ??? ???.",
+          "preview": "빠르게 진입해 보스를 맞이한다.",
           "effects": [
             {
               "op": "add_stat",
@@ -1578,7 +1575,7 @@
       "event_id": "EV_CH01_ESCAPE_RUN",
       "event_type": "danger",
       "node_id": "YD-08",
-      "title": "?? ???",
+      "title": "탈출 돌파",
       "repeatable": false,
       "once_per_run": true,
       "priority": 50,
@@ -1592,10 +1589,10 @@
         ]
       },
       "text": {
-        "summary": "?? ?????? ???? ??? ?? ????.",
+        "summary": "전투 후, 계단과 복도가 불안정하게 흔들린다.",
         "body": [
-          "???? ???? ???? ????.",
-          "?? ?? ?? ???? ????."
+          "안전 루트를 찾으면 시간이 늘어나고, 강행하면 체력이 소모된다.",
+          "탈출 준비 전에 상황을 정리해야 한다."
         ]
       },
       "npc_ids": [],
@@ -1603,9 +1600,9 @@
       "choices": [
         {
           "choice_id": "ch01_escape_fast",
-          "label": "?? ???? ??",
+          "label": "강행 돌파",
           "conditions": [],
-          "preview": "??? ???? ???.",
+          "preview": "빠르게 이탈하지만 체력이 소모된다.",
           "effects": [
             {
               "op": "set_flag",
@@ -1618,13 +1615,13 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION"
+          "next_event_id": "EV_CH01_EXTRACTION_PREP"
         },
         {
           "choice_id": "ch01_escape_safe",
-          "label": "????? ??",
+          "label": "안전 확보",
           "conditions": [],
-          "preview": "???? ??? ???.",
+          "preview": "시간을 들여 안전하게 이동한다.",
           "effects": [
             {
               "op": "set_flag",
@@ -1637,7 +1634,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION"
+          "next_event_id": "EV_CH01_EXTRACTION_PREP"
         }
       ],
       "on_enter_effects": [],
@@ -1659,11 +1656,10 @@
         "widget_overrides": []
       },
       "text": {
-        "summary": "방송동으로 이어지는 서비스 터널이 좁고 어둡다.",
+        "summary": "로비로 향하는 서비스 터널이 어둡게 이어진다.",
         "body": [
-          "환기팬이 멈춘 공간에서 습기와 먼지가 눌어붙는다.",
-          "낡은 안내등이 끊어지며 벽면의 그래피티가 일그러진다.",
-          "소음을 줄일수록 시간이 늘어나고, 급하게 움직이면 흔적이 남는다."
+          "좁은 통로는 소음을 억제하지만 시야가 제한된다.",
+          "신속히 통과하면 로비 진입 시간을 줄일 수 있다."
         ]
       },
       "npc_ids": [],
@@ -1671,9 +1667,9 @@
       "choices": [
         {
           "choice_id": "ch01_tunnel_silent",
-          "label": "무전등을 끄고 통과",
+          "label": "조용히 이동",
           "conditions": [],
-          "preview": "소음을 줄이지만 시간이 늘어난다.",
+          "preview": "소음을 줄이고 로비로 접근한다.",
           "effects": [
             {
               "op": "add_stat",
@@ -1697,7 +1693,7 @@
           "choice_id": "ch01_tunnel_rush",
           "label": "빠르게 돌파",
           "conditions": [],
-          "preview": "시간을 벌지만 소음이 커진다.",
+          "preview": "속도를 우선해 로비로 진입한다.",
           "effects": [
             {
               "op": "add_stat",
@@ -1826,7 +1822,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+          "next_event_id": "EV_CH01_CONTROL_RESTORE"
         },
         {
           "choice_id": "ch01_power_bypass",
@@ -1845,7 +1841,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+          "next_event_id": "EV_CH01_CONTROL_RESTORE"
         }
       ],
       "on_enter_effects": [],
@@ -1945,7 +1941,7 @@
           "conditions": [],
           "preview": "교전을 정리하고 로비로 진입한다.",
           "effects": [],
-          "next_event_id": "EV_CH01_LOBBY_SEARCH"
+          "next_event_id": "EV_CH01_SERVICE_TUNNEL"
         }
       ],
       "on_enter_effects": [],
@@ -2371,7 +2367,7 @@
       "quest_track_id": "qt_ch01_main",
       "kind": "main",
       "title": "방송동 증폭기 회수",
-      "summary": "폐방송동에서 단파 증폭기와 송출 로그를 확보해 귀환한다.",
+      "summary": "폐방송동에서 단파 증폭기와 송출 로그를 확보하고 편집괴를 버티며 귀환한다.",
       "entry_event_id": "EV_CH01_BRIEFING",
       "completion_event_id": "EV_CH01_EXTRACTION",
       "objective_ids": [
@@ -2379,19 +2375,17 @@
         "obj_ch01_02",
         "obj_ch01_03"
       ],
-      "unlock_when": [],
       "reveal_cap": "confirmation"
     },
     {
-      "quest_track_id": "qt_ch01_signal",
+      "quest_track_id": "qt_ch01_side_access",
       "kind": "side",
-      "title": "송신기 복구",
-      "summary": "옥상 송신기를 보정해 임시 방송을 안정화한다.",
-      "entry_event_id": "EV_CH01_POWER_RESET",
-      "completion_event_id": "EV_CH01_SIGNAL_CALIBRATION",
+      "title": "마지막 멘트",
+      "summary": "보안실 기록과 접근카드를 확보해 남겨진 멘트를 추적한다.",
+      "entry_event_id": "EV_CH01_SECURITY_OFFICE",
       "objective_ids": [
         "obj_ch01_04",
-        "obj_ch01_05"
+        "obj_ch01_06"
       ],
       "unlock_when": [
         "flag:ch01_briefing_done"
@@ -2399,61 +2393,18 @@
       "reveal_cap": "evidence"
     },
     {
-      "quest_track_id": "qt_ch01_patrol",
+      "quest_track_id": "qt_ch01_side_signal",
       "kind": "side",
-      "title": "순찰 차단",
-      "summary": "접근로를 지키는 편집체를 제거해 후퇴로를 확보한다.",
-      "entry_event_id": "EV_CH01_PATROL_AMBUSH",
-      "completion_event_id": "EV_CH01_PATROL_AMBUSH",
+      "title": "옥상 송신기 재조정",
+      "summary": "옥상 송신기를 안정화해 증폭기 손상을 막는다.",
+      "entry_event_id": "EV_CH01_SIGNAL_CALIBRATION",
       "objective_ids": [
-        "obj_ch01_06"
-      ],
-      "unlock_when": [
-        "flag:ch01_briefing_done"
-      ],
-      "reveal_cap": "ambient"
-    },
-    {
-      "quest_track_id": "qt_ch01_main_relay",
-      "kind": "main",
-      "title": "방송동 증폭기 회수",
-      "summary": "단파 증폭기와 송출 로그를 확보하고 생존을 유지한다.",
-      "entry_event_id": "EV_CH01_BRIEFING",
-      "completion_event_id": "EV_CH01_EXTRACTION",
-      "objective_ids": [
-        "obj_ch01_01",
-        "obj_ch01_02",
         "obj_ch01_05"
       ],
-      "unlock_when": []
-    },
-    {
-      "quest_track_id": "qt_ch01_side_keycard",
-      "kind": "side",
-      "title": "통제실 백업 키",
-      "summary": "락다운 구역을 열 수 있는 키카드를 확보한다.",
-      "entry_event_id": "EV_CH01_LOBBY_LOCKDOWN",
-      "completion_event_id": "EV_CH01_ARCHIVE_DECISION",
-      "objective_ids": [
-        "obj_ch01_04"
-      ],
       "unlock_when": [
-        "flag:ch01_lobby_lockdown"
-      ]
-    },
-    {
-      "quest_track_id": "qt_ch01_side_writer",
-      "kind": "side",
-      "title": "마지막 멘트",
-      "summary": "편집실 생존자를 구출해 마지막 멘트를 확보한다.",
-      "entry_event_id": "EV_CH01_WRITER_RESCUE",
-      "completion_event_id": "EV_CH01_ROOFTOP_SIGNAL",
-      "objective_ids": [
-        "obj_ch01_06"
+        "flag:ch01_broadcast_kept|flag:ch01_broadcast_cut"
       ],
-      "unlock_when": [
-        "flag:ch01_corridor_cleared"
-      ]
+      "reveal_cap": "evidence"
     }
   ]
 }

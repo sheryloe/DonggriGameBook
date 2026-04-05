@@ -607,7 +607,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH02_DRAINAGE_CTRL"
+          "next_event_id": "EV_CH02_WATERLOGGED_AMBUSH"
         },
         {
           "choice_id": "ch02_market_rob",
@@ -636,7 +636,7 @@
               "value": 5
             }
           ],
-          "next_event_id": "EV_CH02_DRAINAGE_CTRL"
+          "next_event_id": "EV_CH02_WATERLOGGED_AMBUSH"
         }
       ],
       "on_enter_effects": [],
@@ -700,7 +700,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH02_BARGE_REPAIR"
+          "next_event_id": "EV_CH02_SLUICE_DIAGNOSTIC"
         },
         {
           "choice_id": "ch02_pier_land",
@@ -724,7 +724,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH02_BARGE_REPAIR"
+          "next_event_id": "EV_CH02_SLUICE_DIAGNOSTIC"
         }
       ],
       "on_enter_effects": [],
@@ -740,9 +740,7 @@
       "priority": 50,
       "conditions": [
         "flag:ch02_sluice_diagnosed",
-        "flag:ch02_gate_secured",
-        "flag:ch02_battery_secured",
-        "flag:ch02_gate_key"
+        "flag:ch02_gate_secured"
       ],
       "presentation": {
         "layout": "boss",
@@ -2148,7 +2146,7 @@
       "quest_track_id": "qt_ch02_main",
       "kind": "main",
       "title": "검은 수로 확보",
-      "summary": "수로 배터리와 지도를 확보해 출구를 연다.",
+      "summary": "중계배터리와 수로 지도를 회수하고 수문 선택을 마무리한다.",
       "entry_event_id": "EV_CH02_ENTRY",
       "completion_event_id": "EV_CH02_EXTRACTION",
       "objective_ids": [
@@ -2156,80 +2154,36 @@
         "obj_ch02_02",
         "obj_ch02_03"
       ],
-      "unlock_when": [],
       "reveal_cap": "confirmation"
     },
     {
-      "quest_track_id": "qt_ch02_drainage",
+      "quest_track_id": "qt_ch02_side_scout",
       "kind": "side",
-      "title": "배수 제어",
-      "summary": "수문을 조정해 시장 수위를 낮춘다.",
-      "entry_event_id": "EV_CH02_DRAINAGE_CTRL",
-      "completion_event_id": "EV_CH02_DRAINAGE_CTRL",
+      "title": "수로 정찰",
+      "summary": "침수 구간을 정찰해 안전한 이동 경로를 확보한다.",
+      "entry_event_id": "EV_CH02_ALLEY_SCOUT",
       "objective_ids": [
-        "obj_ch02_05"
+        "obj_ch02_04"
       ],
       "unlock_when": [
-        "flag:ch02_started"
+        "flag:ch02_entry_done"
       ],
       "reveal_cap": "evidence"
     },
     {
-      "quest_track_id": "qt_ch02_barge",
+      "quest_track_id": "qt_ch02_side_diagnose",
       "kind": "side",
-      "title": "수송로 복구",
-      "summary": "바지선을 보강해 이동 속도를 확보한다.",
-      "entry_event_id": "EV_CH02_BARGE_REPAIR",
-      "completion_event_id": "EV_CH02_BARGE_REPAIR",
+      "title": "수문 진단",
+      "summary": "수문 제어판을 안정화해 개폐 루트를 확정한다.",
+      "entry_event_id": "EV_CH02_SLUICE_DIAGNOSTIC",
       "objective_ids": [
+        "obj_ch02_05",
         "obj_ch02_06"
       ],
       "unlock_when": [
-        "flag:ch02_started"
+        "flag:ch02_route_scouted"
       ],
-      "reveal_cap": "ambient"
-    },
-    {
-      "quest_track_id": "qt_ch02_main_sluice",
-      "kind": "main",
-      "title": "검은 수로 통제",
-      "summary": "배터리와 수로 지도를 확보해 배수문을 통제한다.",
-      "entry_event_id": "EV_CH02_ENTRY",
-      "completion_event_id": "EV_CH02_EXTRACTION",
-      "objective_ids": [
-        "obj_ch02_01",
-        "obj_ch02_02",
-        "obj_ch02_04"
-      ],
-      "unlock_when": []
-    },
-    {
-      "quest_track_id": "qt_ch02_side_market",
-      "kind": "side",
-      "title": "수몰시장 정찰",
-      "summary": "잔해 구역을 정리하고 루팅 경로를 확보한다.",
-      "entry_event_id": "EV_CH02_MARKET_LOCKDOWN",
-      "completion_event_id": "EV_CH02_MARKET_SWEEP",
-      "objective_ids": [
-        "obj_ch02_05"
-      ],
-      "unlock_when": [
-        "flag:ch02_market_lockdown"
-      ]
-    },
-    {
-      "quest_track_id": "qt_ch02_side_gate",
-      "kind": "side",
-      "title": "배수문 제어키",
-      "summary": "통제실 키를 확보해 배수문 작동을 보장한다.",
-      "entry_event_id": "EV_CH02_SLUICE_OVERRIDE",
-      "completion_event_id": "EV_CH02_SLUICE_BOSS",
-      "objective_ids": [
-        "obj_ch02_04"
-      ],
-      "unlock_when": [
-        "flag:ch02_battery_secured"
-      ]
+      "reveal_cap": "evidence"
     }
   ]
 }
