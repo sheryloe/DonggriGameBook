@@ -780,7 +780,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_SERVER_PURGE"
+          "next_event_id": "EV_CH05_DATA_SANITIZE"
         },
         {
           "choice_id": "ch05_data_limited",
@@ -809,7 +809,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH05_SERVER_PURGE"
+          "next_event_id": "EV_CH05_DATA_SANITIZE"
         },
         {
           "choice_id": "ch05_data_broadcast",
@@ -838,7 +838,7 @@
               "value": 7
             }
           ],
-          "next_event_id": "EV_CH05_SERVER_PURGE"
+          "next_event_id": "EV_CH05_DATA_SANITIZE"
         }
       ],
       "on_enter_effects": [],
@@ -853,7 +853,9 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:ch05_final_ready"
+        "flag:ch05_final_ready",
+        "flag:ch05_cooling_stable",
+        "flag:ch05_data_sanitized"
       ],
       "presentation": {
         "layout": "boss",
@@ -1833,6 +1835,44 @@
         "flag:ch05_map_obtained"
       ],
       "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch05_main_mirror",
+      "kind": "main",
+      "title": "미러센터 접근",
+      "summary": "냉각 안정화와 데이터 정리를 마친다.",
+      "entry_event_id": "EV_CH05_ENTRY",
+      "completion_event_id": "EV_CH05_EXTRACTION",
+      "objective_ids": [
+        "obj_ch05_01",
+        "obj_ch05_03",
+        "obj_ch05_05"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch05_side_lobby",
+      "kind": "side",
+      "title": "로비 검문 돌파",
+      "summary": "로비 구역을 통과해 내부 접근을 확보한다.",
+      "entry_event_id": "EV_CH05_LOBBY_CHECKPOINT",
+      "completion_event_id": "EV_CH05_LOBBY_MAPPING",
+      "objective_ids": [
+        "obj_ch05_04"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch05_side_relay",
+      "kind": "side",
+      "title": "중계 노드",
+      "summary": "스카이워크 중계 노드를 재기동한다.",
+      "entry_event_id": "EV_CH05_SIGNAL_RELAY",
+      "completion_event_id": "EV_CH05_KIM_ARA",
+      "objective_ids": [
+        "obj_ch05_06"
+      ],
+      "unlock_when": []
     }
   ]
 }

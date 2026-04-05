@@ -999,7 +999,8 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:ch03_power_stable"
+        "flag:ch03_power_stable",
+        "flag:ch03_stair_cleared"
       ],
       "presentation": {
         "layout": "boss",
@@ -1187,6 +1188,11 @@
             "op": "grant_loot_table",
             "target": "loot:lt_ch03_upper_luxury",
             "value": 1
+          },
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_stair_cleared",
+            "value": true
           }
         ],
         "defeat_effects": [
@@ -1244,6 +1250,11 @@
               "op": "set_flag",
               "target": "flag:ch03_blackout_repair",
               "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_power_stable",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"
@@ -1262,6 +1273,11 @@
             {
               "op": "set_flag",
               "target": "flag:ch03_blackout_repair",
+              "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_power_stable",
               "value": true
             }
           ],
@@ -1839,6 +1855,46 @@
         "flag:ch03_rescue_signal"
       ],
       "reveal_cap": "ambient"
+    },
+    {
+      "quest_track_id": "qt_ch03_main_glass",
+      "kind": "main",
+      "title": "유리정원 접근",
+      "summary": "축전지와 릴레이 렌즈를 확보하고 전력을 안정화한다.",
+      "entry_event_id": "EV_CH03_ENTRY",
+      "completion_event_id": "EV_CH03_EXTRACTION",
+      "objective_ids": [
+        "obj_ch03_01",
+        "obj_ch03_02",
+        "obj_ch03_05"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch03_side_stairs",
+      "kind": "side",
+      "title": "계단실 매복 정리",
+      "summary": "상층으로 오르기 전 계단실 위협을 제거한다.",
+      "entry_event_id": "EV_CH03_STAIR_AMBUSH",
+      "completion_event_id": "EV_CH03_VERTICAL_ROUTE",
+      "objective_ids": [
+        "obj_ch03_04"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch03_side_rescue",
+      "kind": "side",
+      "title": "구조 신호",
+      "summary": "스카이브리지에서 돌아온 구조 신호를 확인한다.",
+      "entry_event_id": "EV_CH03_RESCUE_DETOUR",
+      "completion_event_id": "EV_CH03_BOSS_GARDEN",
+      "objective_ids": [
+        "obj_ch03_06"
+      ],
+      "unlock_when": [
+        "flag:ch03_rescue_signal"
+      ]
     }
   ]
 }

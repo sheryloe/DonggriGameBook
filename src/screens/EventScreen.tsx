@@ -21,6 +21,7 @@ export default function EventScreen() {
   const route = useGameStore(selectCurrentRoute);
   const applyChoice = useGameStore((state) => state.applyChoice);
   const applyChoices = useGameStore((state) => state.applyChoices);
+  const startBattle = useGameStore((state) => state.startBattle);
   const choices = useMemo(() => {
     if (!content || !event) {
       return [];
@@ -41,13 +42,21 @@ export default function EventScreen() {
     );
   }
 
+  const hasCombat = Boolean(event.combat);
+  const handleStartBattle = () => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("donggri:ui-sfx", { detail: "battle_start" }));
+    }
+    startBattle();
+  };
+
   const npcId = event.npc_ids?.[0] ?? null;
   const npcName = npcId ? resolveNpcDisplayName(content, npcId) : "Field feed";
   const glamourArtKey = npcId ? `${npcId}_fullbody` : null;
   const fallbackPortraitKey = npcId ? `portrait_${npcId.replace(/^npc_/u, "")}` : null;
   const eventArtKey = EVENT_ART_OVERRIDES[event.event_id] ?? `evt_${event.event_id.replace(/^EV_/u, "").toLowerCase()}`;
   const primaryArtKey = event.presentation.art_key ?? fallbackPortraitKey ?? null;
-  const allowMultiSelect = (event.presentation.allow_multi_choice ?? true) && choices.length > 1;
+  const allowMultiSelect = !hasCombat && (event.presentation.allow_multi_choice ?? true) && choices.length > 1;
 
   return (
     <section className="screen-grid event-screen">
@@ -74,12 +83,21 @@ export default function EventScreen() {
             <span>{event.presentation.widget_overrides.length ? event.presentation.widget_overrides.join(", ") : "default"}</span>
           </div>
         </div>
-        <ChoiceList
-          choices={choices}
-          allowMultiSelect={allowMultiSelect}
-          onChoose={(choiceId) => applyChoice(choiceId)}
-          onChooseMultiple={(choiceIds) => applyChoices(choiceIds)}
-        />
+        {hasCombat && event.event_type !== "boss" ? (
+          <div className="choice-stack">
+            <p className="muted-copy">전투 진입 준비가 필요하다.</p>
+            <button className="primary-button" onClick={handleStartBattle}>
+              전투 진입
+            </button>
+          </div>
+        ) : (
+          <ChoiceList
+            choices={choices}
+            allowMultiSelect={allowMultiSelect}
+            onChoose={(choiceId) => applyChoice(choiceId)}
+            onChooseMultiple={(choiceIds) => applyChoices(choiceIds)}
+          />
+        )}
       </article>
 
       <aside className="screen-side-stack">

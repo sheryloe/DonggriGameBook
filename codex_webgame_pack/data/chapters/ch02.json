@@ -318,6 +318,7 @@
         }
       ],
       "event_ids": [
+        "EV_CH02_GATE_ASSAULT",
         "EV_CH02_SLUICE_OVERRIDE",
         "EV_CH02_SLUICE_BOSS"
       ],
@@ -739,7 +740,9 @@
       "priority": 50,
       "conditions": [
         "flag:ch02_sluice_diagnosed",
-        "flag:ch02_gate_secured"
+        "flag:ch02_gate_secured",
+        "flag:ch02_battery_secured",
+        "flag:ch02_gate_key"
       ],
       "presentation": {
         "layout": "boss",
@@ -2113,7 +2116,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH02_SLUICE_BOSS"
+          "next_event_id": "EV_CH02_GATE_ASSAULT"
         },
         {
           "choice_id": "ch02_sluice_bypass",
@@ -2132,7 +2135,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH02_SLUICE_BOSS"
+          "next_event_id": "EV_CH02_GATE_ASSAULT"
         }
       ],
       "on_enter_effects": [],
@@ -2185,6 +2188,48 @@
         "flag:ch02_started"
       ],
       "reveal_cap": "ambient"
+    },
+    {
+      "quest_track_id": "qt_ch02_main_sluice",
+      "kind": "main",
+      "title": "검은 수로 통제",
+      "summary": "배터리와 수로 지도를 확보해 배수문을 통제한다.",
+      "entry_event_id": "EV_CH02_ENTRY",
+      "completion_event_id": "EV_CH02_EXTRACTION",
+      "objective_ids": [
+        "obj_ch02_01",
+        "obj_ch02_02",
+        "obj_ch02_04"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch02_side_market",
+      "kind": "side",
+      "title": "수몰시장 정찰",
+      "summary": "잔해 구역을 정리하고 루팅 경로를 확보한다.",
+      "entry_event_id": "EV_CH02_MARKET_LOCKDOWN",
+      "completion_event_id": "EV_CH02_MARKET_SWEEP",
+      "objective_ids": [
+        "obj_ch02_05"
+      ],
+      "unlock_when": [
+        "flag:ch02_market_lockdown"
+      ]
+    },
+    {
+      "quest_track_id": "qt_ch02_side_gate",
+      "kind": "side",
+      "title": "배수문 제어키",
+      "summary": "통제실 키를 확보해 배수문 작동을 보장한다.",
+      "entry_event_id": "EV_CH02_SLUICE_OVERRIDE",
+      "completion_event_id": "EV_CH02_SLUICE_BOSS",
+      "objective_ids": [
+        "obj_ch02_04"
+      ],
+      "unlock_when": [
+        "flag:ch02_battery_secured"
+      ]
     }
   ]
 }

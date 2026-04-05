@@ -791,7 +791,7 @@
               "value": 8
             }
           ],
-          "next_event_id": "EV_CH04_PRE_BOSS_CHECK"
+          "next_event_id": "EV_CH04_LINE_PREP"
         },
         {
           "choice_id": "ch04_line_off",
@@ -810,7 +810,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH04_PRE_BOSS_CHECK"
+          "next_event_id": "EV_CH04_LINE_PREP"
         }
       ],
       "on_enter_effects": [],
@@ -825,7 +825,9 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:ch04_security_cleared"
+        "flag:ch04_security_cleared",
+        "flag:ch04_rail_clear",
+        "flag:ch04_line_ready"
       ],
       "presentation": {
         "layout": "boss",
@@ -992,9 +994,14 @@
               "op": "set_flag",
               "target": "flag:ch04_rail_jam_fixed",
               "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_rail_clear",
+              "value": true
             }
           ],
-          "next_event_id": "EV_CH04_SECURITY_BADGES"
+          "next_event_id": "EV_CH04_ROUTE_SELECTION"
         },
         {
           "choice_id": "ch04_rail_repair",
@@ -1011,9 +1018,14 @@
               "op": "set_flag",
               "target": "flag:ch04_rail_jam_fixed",
               "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_rail_clear",
+              "value": true
             }
           ],
-          "next_event_id": "EV_CH04_SECURITY_BADGES"
+          "next_event_id": "EV_CH04_ROUTE_SELECTION"
         }
       ],
       "on_enter_effects": [],
@@ -1590,6 +1602,46 @@
         "flag:ch04_started"
       ],
       "reveal_cap": "ambient"
+    },
+    {
+      "quest_track_id": "qt_ch04_main_line",
+      "kind": "main",
+      "title": "상자들의 도시",
+      "summary": "물류 라인을 재가동해 통로를 확보한다.",
+      "entry_event_id": "EV_CH04_ENTRY",
+      "completion_event_id": "EV_CH04_EXTRACTION",
+      "objective_ids": [
+        "obj_ch04_01",
+        "obj_ch04_02",
+        "obj_ch04_05"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch04_side_rail",
+      "kind": "side",
+      "title": "철도 인계장 정리",
+      "summary": "노선 장애를 제거해 운송로를 확보한다.",
+      "entry_event_id": "EV_CH04_RAIL_JAM",
+      "completion_event_id": "EV_CH04_ROUTE_SELECTION",
+      "objective_ids": [
+        "obj_ch04_04"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch04_side_security",
+      "kind": "side",
+      "title": "보안 사무실",
+      "summary": "보안 구역을 정리해 접근 권한을 확보한다.",
+      "entry_event_id": "EV_CH04_SECURITY_SWEEP",
+      "completion_event_id": "EV_CH04_SECURITY_BADGES",
+      "objective_ids": [
+        "obj_ch04_06"
+      ],
+      "unlock_when": [
+        "flag:ch04_rail_clear"
+      ]
     }
   ]
 }

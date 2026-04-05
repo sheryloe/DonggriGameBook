@@ -70,7 +70,7 @@ export default function QuestTrackPanel({ chapterId, title = "Quest Tracks", com
                 <div className="quest-track-head">
                   <strong>{track.title}</strong>
                   <span className={`quest-chip ${track.status}`.trim()}>
-                    {track.status === "locked" ? "?좉툑" : track.status === "completed" ? "?꾨즺" : "吏꾪뻾"}
+                    {track.status === "locked" ? "잠금" : track.status === "completed" ? "완료" : "진행"}
                   </span>
                 </div>
                 <p className="muted-copy">{track.summary}</p>

@@ -355,6 +355,7 @@
         }
       ],
       "event_ids": [
+        "EV_CH01_SIGNAL_RELAY_DEFENSE",
         "EV_CH01_ROOFTOP_CALIBRATION",
         "EV_CH01_ROOFTOP_SIGNAL"
       ],
@@ -873,7 +874,10 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:ch01_signal_relay_defended"
+        "flag:ch01_signal_relay_defended",
+        "flag:ch01_archive_key",
+        "flag:ch01_signal_stable",
+        "flag:ch01_corridor_cleared"
       ],
       "presentation": {
         "layout": "boss",
@@ -1187,7 +1191,7 @@
           "conditions": [],
           "preview": "중계기와 증폭기를 지킨다.",
           "effects": [],
-          "next_event_id": "EV_CH01_BOSS_BROADCAST"
+          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
         }
       ],
       "on_enter_effects": [],
@@ -2335,7 +2339,7 @@
               "value": 4
             }
           ],
-          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+          "next_event_id": "EV_CH01_SIGNAL_RELAY_DEFENSE"
         },
         {
           "choice_id": "ch01_signal_spare",
@@ -2354,7 +2358,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
+          "next_event_id": "EV_CH01_SIGNAL_RELAY_DEFENSE"
         }
       ],
       "on_enter_effects": [],
@@ -2408,6 +2412,48 @@
         "flag:ch01_briefing_done"
       ],
       "reveal_cap": "ambient"
+    },
+    {
+      "quest_track_id": "qt_ch01_main_relay",
+      "kind": "main",
+      "title": "방송동 증폭기 회수",
+      "summary": "단파 증폭기와 송출 로그를 확보하고 생존을 유지한다.",
+      "entry_event_id": "EV_CH01_BRIEFING",
+      "completion_event_id": "EV_CH01_EXTRACTION",
+      "objective_ids": [
+        "obj_ch01_01",
+        "obj_ch01_02",
+        "obj_ch01_05"
+      ],
+      "unlock_when": []
+    },
+    {
+      "quest_track_id": "qt_ch01_side_keycard",
+      "kind": "side",
+      "title": "통제실 백업 키",
+      "summary": "락다운 구역을 열 수 있는 키카드를 확보한다.",
+      "entry_event_id": "EV_CH01_LOBBY_LOCKDOWN",
+      "completion_event_id": "EV_CH01_ARCHIVE_DECISION",
+      "objective_ids": [
+        "obj_ch01_04"
+      ],
+      "unlock_when": [
+        "flag:ch01_lobby_lockdown"
+      ]
+    },
+    {
+      "quest_track_id": "qt_ch01_side_writer",
+      "kind": "side",
+      "title": "마지막 멘트",
+      "summary": "편집실 생존자를 구출해 마지막 멘트를 확보한다.",
+      "entry_event_id": "EV_CH01_WRITER_RESCUE",
+      "completion_event_id": "EV_CH01_ROOFTOP_SIGNAL",
+      "objective_ids": [
+        "obj_ch01_06"
+      ],
+      "unlock_when": [
+        "flag:ch01_corridor_cleared"
+      ]
     }
   ]
 }
