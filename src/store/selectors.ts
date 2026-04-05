@@ -1,4 +1,4 @@
-import type { ChapterDefinition, EventDefinition, MapConnection, RuntimeSnapshot, StatValue } from "../types/game";
+﻿import type { ChapterDefinition, EventDefinition, MapConnection, RuntimeSnapshot, StatValue } from "../types/game";
 import type { GameStoreState } from "./gameStore";
 import { canSelectChoice } from "../engine/requirements";
 
@@ -152,4 +152,75 @@ export function selectUIScreen(state: GameStoreState): Pick<RuntimeSnapshot, "cu
     current_screen_id: state.runtime.current_screen_id,
     ui_screen: state.runtime.ui_screen
   };
+}
+
+export function selectQuestTracksWithStatus(state: GameStoreState, chapterId: string) {
+  const chapter = state.content?.chapters[chapterId];
+  if (!chapter || !chapter.quest_tracks?.length) {
+    return [] as Array<{
+      quest_track_id: string;
+      title: string;
+      summary: string;
+      kind: string;
+      kindLabel: string;
+      status: "locked" | "in_progress" | "completed";
+      progressText: string;
+      quest_item_id?: string;
+    }>;
+  }
+
+  const completion = state.runtime.chapter_progress[chapterId]?.objective_completion ?? {};
+
+  const evaluateCondition = (condition: string): boolean => {
+    const normalized = condition.trim();
+    if (!normalized) {
+      return true;
+    }
+    if (normalized.startsWith("flag:")) {
+      const flagId = normalizeFlagId(normalized);
+      return state.runtime.flags[flagId] === true;
+    }
+    const itemMatch = /^item:([^>]+)>=(\d+)$/u.exec(normalized);
+    if (itemMatch) {
+      const [, itemId, rawQty] = itemMatch;
+      return (state.runtime.inventory.quantities[itemId] ?? 0) >= Number(rawQty);
+    }
+    return false;
+  };
+
+  return chapter.quest_tracks.map((track) => {
+    const total = track.objective_ids?.length ?? 0;
+    const completedCount = track.objective_ids?.filter((id) => completion[id]).length ?? 0;
+    const unlocked = track.unlock_when?.length ? track.unlock_when.every(evaluateCondition) : true;
+    const status: "locked" | "in_progress" | "completed" = !unlocked
+      ? "locked"
+      : total > 0 && completedCount >= total
+      ? "completed"
+      : "in_progress";
+    const kindLabel = track.kind === "main" ? "메인" : "사이드";
+    const progressText = total ? `${completedCount}/${total}` : status === "completed" ? "완료" : "진행";
+
+    const quest_item_id = track.objective_ids
+      ? (track.objective_ids
+          .map((objId) => chapter.objectives.find((obj) => obj.objective_id === objId))
+          .flatMap((obj) => (obj?.complete_when ?? []))
+          .map((cond) => /^item:([^>]+)>=(\d+)$/u.exec(cond))
+          .filter(Boolean)
+          .map((m) => (m ? m[1] : ""))
+          .find(Boolean) ?? undefined)
+      : undefined;
+
+    return {
+      quest_track_id: track.quest_track_id,
+      title: unlocked ? track.title : "잠긴 사이드 퀘스트",
+      summary: unlocked
+        ? track.summary
+        : "메인 진행으로 관련 단서가 열리면 상세 내용이 표시된다.",
+      kind: track.kind,
+      kindLabel,
+      status,
+      progressText,
+      quest_item_id
+    };
+  });
 }

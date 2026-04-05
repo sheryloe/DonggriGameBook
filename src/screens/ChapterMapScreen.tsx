@@ -1,46 +1,46 @@
+import ArtFrame from "../components/ArtFrame";
+import MissionIntelPanel from "../components/MissionIntelPanel";
+import NodeMap from "../components/NodeMap";
+import QuestTrackPanel from "../components/QuestTrackPanel";
+import ObjectivesPanel from "../components/ObjectivesPanel";
 import { useGameStore } from "../store/gameStore";
 import { selectAvailableConnections, selectCurrentChapter } from "../store/selectors";
-import NodeMap from "../components/NodeMap";
 
 export default function ChapterMapScreen() {
   const chapter = useGameStore(selectCurrentChapter);
   const runtime = useGameStore((state) => state.runtime);
+  const connections = useGameStore(selectAvailableConnections);
   const enterNode = useGameStore((state) => state.enterNode);
-  const availableConnections = useGameStore(selectAvailableConnections);
 
   if (!chapter) {
-    return (
-      <section className="screen-card">
-        <p>지도를 불러오는 중이다.</p>
-      </section>
-    );
+    return null;
   }
 
-  return (
-    <section className="screen-card map-screen">
-      <header className="section-head">
-        <div>
-          <span className="eyebrow">World Map</span>
-          <h2>{chapter.title}</h2>
-        </div>
-        <div className="muted-copy">
-          현재 노드: <strong>{runtime.current_node_id ?? chapter.entry_node_id}</strong>
-        </div>
-      </header>
+  const mapArtKey = chapter.ui_profile.theme === "yeouido_ash" ? "bg_yeouido_ashroad" : `bg_${chapter.ui_profile.theme}`;
 
-      <NodeMap
-        chapter={chapter}
-        currentNodeId={runtime.current_node_id}
-        visitedNodes={runtime.visited_nodes[runtime.current_chapter_id] ?? {}}
-        canTravel={(nodeId) =>
-          nodeId === runtime.current_node_id ||
-          availableConnections.some((connection) => connection.to === nodeId) ||
-          nodeId === chapter.entry_node_id
-        }
-        onSelect={(nodeId) => {
-          enterNode(nodeId);
-        }}
-      />
+  return (
+    <section className="screen-grid map-screen">
+      <article className="screen-card map-panel">
+        <p className="eyebrow">Route Map</p>
+        <ArtFrame assetKey={mapArtKey} fallbackAssetKeys={["bg_yeouido_ashroad"]} chapterId={chapter.chapter_id} alt="chapter map" />
+        <NodeMap
+          chapter={chapter}
+          currentNodeId={runtime.current_node_id}
+          visitedNodes={runtime.visited_nodes[chapter.chapter_id] ?? {}}
+          canTravel={(nodeId) => connections.some((entry) => entry.to === nodeId) || chapter.entry_node_id === nodeId}
+          onSelect={(nodeId) => enterNode(nodeId)}
+        />
+      </article>
+
+      <aside className="screen-side-stack">
+        <article className="screen-card">
+          <ObjectivesPanel compact title="Objectives" />
+        </article>
+        <article className="screen-card">
+          <MissionIntelPanel mode="map" title="Mission Intel" />
+        </article>
+        <QuestTrackPanel chapterId={chapter.chapter_id} title="Quest Tracks" compact />
+      </aside>
     </section>
   );
 }
