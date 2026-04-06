@@ -310,7 +310,8 @@
         "EV_CH01_STAIRWELL_AMBUSH",
         "EV_CH01_WRITER_RESCUE",
         "EV_CH01_SECURITY_LOCKER",
-        "EV_CH01_WRITER_SAFEHOUSE"
+        "EV_CH01_WRITER_SAFEHOUSE",
+        "EV_CH01_DARK_ROOM_RUSH"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -473,7 +474,8 @@
       ],
       "event_ids": [
         "EV_CH01_EXTRACTION",
-        "EV_CH01_ESCAPE_BACKTRACK"
+        "EV_CH01_ESCAPE_BACKTRACK",
+        "EV_CH01_ROPE_ESCAPE"
       ],
       "revisit_rule": "after_clear",
       "tags": [
@@ -3334,6 +3336,119 @@
               "op": "modify_stat",
               "target": "noise",
               "value": -5
+            }
+          ],
+          "next_event_id": null
+        }
+      ]
+    },
+    {
+      "event_id": "EV_CH01_ROPE_ESCAPE",
+      "type": "story",
+      "title": "옥상 헬기장 탈출",
+      "description": "헬기장에 도달했다. 계단은 끊어졌지만, 전술 레펠 로프가 있다면 안전하게 지상으로 내려가 베이스캠프로 복귀할 수 있다.",
+      "choices": [
+        {
+          "choice_id": "c_use_rope",
+          "text": "레펠 로프를 사용하여 탈출한다. (챕터 1 목표달성 시 귀환)",
+          "requires": [
+            "item:itm_escape_rope>=1",
+            "item:itm_shortwave_amplifier>=1"
+          ],
+          "effects": [
+            {
+              "op": "remove_item",
+              "target": "item:itm_escape_rope",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_01_completed",
+              "value": true
+            },
+            {
+              "op": "modify_stat",
+              "target": "noise",
+              "value": -100
+            }
+          ],
+          "next_event_id": "EV_CH01_CLEARED"
+        },
+        {
+          "choice_id": "c_no_rope",
+          "text": "로프가 없다. 혹은 퀘스트 템이 없다. 걸어서 돌아가야 한다.",
+          "requires": [],
+          "effects": [],
+          "next_event_id": null
+        }
+      ]
+    },
+    {
+      "event_id": "EV_CH01_DARK_ROOM_RUSH",
+      "type": "story",
+      "title": "침수 자료실 진입",
+      "description": "빛 하나 없는 칠흑의 공간. 손전등이 있다면 은밀하게 목표를 찾을 수 있지만, 없다면 닥치는대로 부수며 찾아야 한다.",
+      "choices": [
+        {
+          "choice_id": "c_stealth_search",
+          "text": "손전등을 켜고 은밀히 수색한다. (단파 증폭기 획득)",
+          "requires": [
+            "item:itm_flashlight>=1"
+          ],
+          "effects": [
+            {
+              "op": "modify_stat",
+              "target": "battery_charge",
+              "value": -20
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_shortwave_amplifier",
+              "value": 1
+            }
+          ],
+          "next_event_id": null
+        },
+        {
+          "choice_id": "c_brute_force",
+          "text": "어둠 속을 더듬으며 강제로 물건을 빼낸다. (소음 폭발, HP 감소, 증폭기 획득)",
+          "requires": [],
+          "effects": [
+            {
+              "op": "modify_stat",
+              "target": "hp",
+              "value": -30
+            },
+            {
+              "op": "modify_stat",
+              "target": "noise",
+              "value": 15
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_shortwave_amplifier",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_ELITE_AMBUSH"
+        }
+      ]
+    },
+    {
+      "event_id": "EV_CH01_CLEARED",
+      "type": "story",
+      "title": "임무 완수: 잿빛 개장",
+      "description": "단파 증폭기를 무사히 회수했다. 이제 다음 구역인 검은 수로(CH02)로 나아갈 수 있다.",
+      "choices": [
+        {
+          "choice_id": "c_extract",
+          "text": "베이스캠프로 무사 귀환",
+          "requires": [],
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:chapter_01_completed",
+              "value": true
             }
           ],
           "next_event_id": null
