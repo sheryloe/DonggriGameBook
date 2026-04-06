@@ -106,6 +106,14 @@
       "complete_when": [
         "flag:ch03_prep_done|flag:ch03_prep_rushed"
       ]
+    },
+    {
+      "objective_id": "obj_ch03_luxury_route",
+      "text": "상층 파밍 루트를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch03_luxury_route_done"
+      ]
     }
   ],
   "nodes": [
@@ -192,7 +200,9 @@
       ],
       "event_ids": [
         "EV_CH03_BASEMENT_CACHE",
-        "EV_CH03_BASEMENT_MEET"
+        "EV_CH03_BASEMENT_MEET",
+        "EV_CH03_BASEMENT_SURVEY",
+        "EV_CH03_SERVICE_SPIRAL"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -296,7 +306,9 @@
         }
       ],
       "event_ids": [
-        "EV_CH03_SHOWROOM_SWEEP"
+        "EV_CH03_SHOWROOM_SWEEP",
+        "EV_CH03_SHOWROOM_STORAGE",
+        "EV_CH03_LUXURY_SCAVENGE"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -343,7 +355,8 @@
       ],
       "event_ids": [
         "EV_CH03_BLACKOUT_REPAIR",
-        "EV_CH03_POWER_ROUTING"
+        "EV_CH03_POWER_ROUTING",
+        "EV_CH03_POWER_OVERRUN"
       ],
       "revisit_rule": "after_clear",
       "tags": [
@@ -389,7 +402,9 @@
         }
       ],
       "event_ids": [
-        "EV_CH03_UPPER_NEGOTIATION"
+        "EV_CH03_UPPER_NEGOTIATION",
+        "EV_CH03_UPPER_SECURITY_SWEEP",
+        "EV_CH03_UPPER_SUPPLY"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -425,7 +440,8 @@
       ],
       "event_ids": [
         "EV_CH03_RESCUE_DETOUR",
-        "EV_CH03_SKYBRIDGE"
+        "EV_CH03_SKYBRIDGE",
+        "EV_CH03_SKYBRIDGE_WIND"
       ],
       "revisit_rule": "locked_after_clear",
       "tags": [
@@ -450,7 +466,9 @@
       "connections": [],
       "event_ids": [
         "EV_CH03_BOSS_GARDEN",
-        "EV_CH03_EXTRACTION"
+        "EV_CH03_EXTRACTION",
+        "EV_CH03_GLASS_ARMORY",
+        "EV_CH03_GARDEN_APPROACH"
       ],
       "revisit_rule": "after_clear",
       "tags": [
@@ -556,7 +574,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_BASEMENT_CACHE"
+          "next_event_id": "EV_CH03_BASEMENT_SURVEY"
         },
         {
           "choice_id": "ch03_basement_neutral",
@@ -570,7 +588,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_BASEMENT_CACHE"
+          "next_event_id": "EV_CH03_BASEMENT_SURVEY"
         }
       ],
       "on_enter_effects": [],
@@ -772,7 +790,7 @@
               "value": 7
             }
           ],
-          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+          "next_event_id": "EV_CH03_POWER_OVERRUN"
         },
         {
           "choice_id": "ch03_power_lower",
@@ -796,7 +814,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+          "next_event_id": "EV_CH03_POWER_OVERRUN"
         },
         {
           "choice_id": "ch03_power_upper",
@@ -820,7 +838,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+          "next_event_id": "EV_CH03_POWER_OVERRUN"
         }
       ],
       "on_enter_effects": [],
@@ -883,7 +901,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+          "next_event_id": "EV_CH03_UPPER_SECURITY_SWEEP"
         },
         {
           "choice_id": "ch03_lower_side",
@@ -912,7 +930,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+          "next_event_id": "EV_CH03_UPPER_SECURITY_SWEEP"
         },
         {
           "choice_id": "ch03_negotiate_both",
@@ -941,7 +959,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+          "next_event_id": "EV_CH03_UPPER_SECURITY_SWEEP"
         }
       ],
       "on_enter_effects": [],
@@ -1655,7 +1673,7 @@
           "conditions": [],
           "preview": "전력실로 진입할 경로를 확보한다.",
           "effects": [],
-          "next_event_id": "EV_CH03_SHOWROOM_CACHE"
+          "next_event_id": "EV_CH03_SHOWROOM_STORAGE"
         }
       ],
       "on_enter_effects": [],
@@ -1730,7 +1748,7 @@
               "value": 3
             }
           ],
-          "next_event_id": "EV_CH03_SKYBRIDGE"
+          "next_event_id": "EV_CH03_SKYBRIDGE_WIND"
         },
         {
           "choice_id": "ch03_bridge_detour",
@@ -1744,7 +1762,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH03_SKYBRIDGE"
+          "next_event_id": "EV_CH03_SKYBRIDGE_WIND"
         }
       ],
       "on_enter_effects": [],
@@ -1800,7 +1818,7 @@
               "value": 4
             }
           ],
-          "next_event_id": "EV_CH03_SERVICE_AMBUSH"
+          "next_event_id": "EV_CH03_SERVICE_SPIRAL"
         },
         {
           "choice_id": "ch03_cache_skip",
@@ -1819,7 +1837,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH03_SERVICE_AMBUSH"
+          "next_event_id": "EV_CH03_SERVICE_SPIRAL"
         }
       ],
       "on_enter_effects": [],
@@ -1866,7 +1884,7 @@
               "value": 5
             }
           ],
-          "next_event_id": "EV_CH03_BOSS_GARDEN"
+          "next_event_id": "EV_CH03_GLASS_ARMORY"
         },
         {
           "choice_id": "ch03_prep_rush",
@@ -1885,6 +1903,595 @@
               "value": 2
             }
           ],
+          "next_event_id": "EV_CH03_GLASS_ARMORY"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_BASEMENT_SURVEY",
+      "event_type": "dialogue",
+      "node_id": "JS-02",
+      "title": "지하 구역 정찰",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_basement_cache",
+        "music_key": "basement_safe"
+      },
+      "text": {
+        "summary": "지하 구역을 훑어보며 이동 경로를 확정한다.",
+        "body": [
+          "물과 전력 라인이 갈라져 있어 선택이 필요하다.",
+          "정찰을 길게 하면 상층 경계가 강화될 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_basement_scout",
+          "label": "정찰을 마친다",
+          "conditions": [],
+          "preview": "캐시 지역으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_basement_scouted",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_BASEMENT_CACHE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_SERVICE_SPIRAL",
+      "event_type": "danger",
+      "node_id": "JS-02",
+      "title": "서비스 계단 교전",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_service_stair",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "서비스 계단에서 감염체가 길을 막아선다.",
+        "body": [
+          "정리하지 않으면 상층 이동이 지연된다.",
+          "소음이 커지면 상층 경계가 강화된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_service_clear",
+          "label": "계단을 정리한다",
+          "conditions": [],
+          "preview": "상층으로 이동한다.",
+          "effects": [],
+          "next_event_id": "EV_CH03_SERVICE_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch03_tower_mid",
+        "arena_tags": [
+          "service",
+          "stairs"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_service_clear",
+            "value": true
+          },
+          {
+            "op": "grant_loot_table",
+            "target": "loot:lt_global_basic_office",
+            "value": 1
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 5
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_STORAGE",
+      "event_type": "exploration",
+      "node_id": "JS-04",
+      "title": "쇼룸 보급 라인",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_jamsil_showroom",
+        "music_key": "glass_creak"
+      },
+      "text": {
+        "summary": "전시장 뒤편의 보급 라인이 열려 있다.",
+        "body": [
+          "고급 자원 라인을 열면 파밍 루프가 가능하다.",
+          "바로 통과하면 전력실로 빠르게 이동한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_showroom_route",
+          "label": "보급 라인 연다",
+          "conditions": [],
+          "preview": "추가 파밍 루트를 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_showroom_route_open",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_LUXURY_SCAVENGE"
+        },
+        {
+          "choice_id": "ch03_showroom_route_skip",
+          "label": "바로 통과",
+          "conditions": [],
+          "preview": "전력실로 이동한다.",
+          "effects": [],
+          "next_event_id": "EV_CH03_SHOWROOM_CACHE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_LUXURY_SCAVENGE",
+      "event_type": "exploration",
+      "node_id": "JS-04",
+      "title": "상층 파밍 루프",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_jamsil_showroom",
+        "music_key": "glass_creak"
+      },
+      "text": {
+        "summary": "고급 전시장과 라운지에서 파밍을 반복할 수 있다.",
+        "body": [
+          "수색을 반복할수록 소음이 누적된다.",
+          "필요한 만큼 확보하고 빠져나가야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_luxury_more",
+          "label": "추가 수색",
+          "conditions": [],
+          "preview": "고급 자원을 확보한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch03_upper_luxury",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_LUXURY_SCAVENGE"
+        },
+        {
+          "choice_id": "ch03_luxury_exit",
+          "label": "철수",
+          "conditions": [],
+          "preview": "전력실로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_luxury_route_done",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_SHOWROOM_CACHE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_POWER_OVERRUN",
+      "event_type": "choice",
+      "node_id": "JS-05",
+      "title": "전력 과부하 조치",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_power_room",
+        "music_key": "power_hum"
+      },
+      "text": {
+        "summary": "분배 직후 과부하 경고가 울린다.",
+        "body": [
+          "안정화하면 소음이 줄지만 시간이 늘어난다.",
+          "우회하면 빠르지만 정전 위험이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_overrun_fix",
+          "label": "안정화",
+          "conditions": [],
+          "preview": "정전을 줄인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_overrun_fixed",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+        },
+        {
+          "choice_id": "ch03_overrun_skip",
+          "label": "우회한다",
+          "conditions": [],
+          "preview": "빠르게 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_overrun_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_BLACKOUT_REPAIR"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_UPPER_SECURITY_SWEEP",
+      "event_type": "combat",
+      "node_id": "JS-06",
+      "title": "상층 경계 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "bg_jamsil_lobby",
+        "music_key": "tension_mid",
+        "widget_overrides": [
+          "boss_hp",
+          "noise_meter"
+        ]
+      },
+      "text": {
+        "summary": "상층 경계조가 스카이브릿지 접근을 막아선다.",
+        "body": [
+          "정리하지 않으면 협상 루트가 막힌다.",
+          "소음이 커지면 상층이 더욱 닫힌다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_upper_clear",
+          "label": "경계를 정리한다",
+          "conditions": [],
+          "preview": "보급 라인으로 이동한다.",
+          "effects": [],
+          "next_event_id": "EV_CH03_UPPER_SUPPLY"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
+      "combat": {
+        "encounter_table_id": "enc_ch03_tower_mid",
+        "arena_tags": [
+          "lobby",
+          "upper"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch03_upper_sweep",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 6
+          },
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 10
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "EV_CH03_UPPER_SUPPLY",
+      "event_type": "exploration",
+      "node_id": "JS-06",
+      "title": "상층 보급 라운지",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_jamsil_lobby",
+        "music_key": "tension_low"
+      },
+      "text": {
+        "summary": "상층 라운지에 비축 물자가 남아 있다.",
+        "body": [
+          "확보하면 보스전 대비가 쉬워진다.",
+          "시간을 늘리면 순찰이 돌아온다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch03_upper_luxury"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_upper_supply_take",
+          "label": "보급품 확보",
+          "conditions": [],
+          "preview": "고급 자원을 얻는다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch03_upper_luxury",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+        },
+        {
+          "choice_id": "ch03_upper_supply_skip",
+          "label": "빠르게 이동",
+          "conditions": [],
+          "preview": "스카이브릿지로 간다.",
+          "effects": [],
+          "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_SKYBRIDGE_WIND",
+      "event_type": "exploration",
+      "node_id": "JS-07",
+      "title": "스카이브릿지 돌풍",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_skybridge",
+        "music_key": "glass_creak"
+      },
+      "text": {
+        "summary": "돌풍이 유리 교각을 뒤흔든다.",
+        "body": [
+          "안전 장치를 설치하면 시간과 소음이 늘어난다.",
+          "강행하면 빠르지만 위험이 크다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_bridge_secure",
+          "label": "안전 장치 설치",
+          "conditions": [],
+          "preview": "안정성을 높인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_bridge_secure",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE"
+        },
+        {
+          "choice_id": "ch03_bridge_rush",
+          "label": "강행",
+          "conditions": [],
+          "preview": "빠르게 통과한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_bridge_rush",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_SKYBRIDGE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_GLASS_ARMORY",
+      "event_type": "exploration",
+      "node_id": "JS-08",
+      "title": "유리정원 전초 정비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_rooftop_escape",
+        "music_key": "tension_low"
+      },
+      "text": {
+        "summary": "보스전에 앞서 장비를 정비할 마지막 기회다.",
+        "body": [
+          "정비하면 안정성이 높아지지만 시간은 늘어난다.",
+          "강행하면 빠르지만 체력 부담이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch03_glass_armory",
+          "label": "정비한다",
+          "conditions": [],
+          "preview": "장비를 보강한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_prep_done",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_GARDEN_APPROACH"
+        },
+        {
+          "choice_id": "ch03_glass_rush",
+          "label": "바로 돌입",
+          "conditions": [],
+          "preview": "시간을 아낀다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_prep_rushed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH03_GARDEN_APPROACH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH03_GARDEN_APPROACH",
+      "event_type": "dialogue",
+      "node_id": "JS-08",
+      "title": "유리정원 접근",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "boss_glassgarden",
+        "music_key": "tension_mid"
+      },
+      "text": {
+        "summary": "유리정원 중심부가 드러난다.",
+        "body": [
+          "중앙으로 접근할수록 상층의 압박이 커진다.",
+          "마지막 결정을 내려야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch03_garden_enter",
+          "label": "정면 돌입",
+          "conditions": [],
+          "preview": "보스전에 진입한다.",
+          "effects": [],
           "next_event_id": "EV_CH03_BOSS_GARDEN"
         }
       ],
@@ -1963,6 +2570,21 @@
       "unlock_when": [
         "flag:ch03_rescue_signal"
       ]
+    },
+    {
+      "quest_track_id": "qt_ch03_scavenge",
+      "kind": "side",
+      "title": "상층 파밍 루트",
+      "summary": "쇼룸과 상층 보급 라인을 수색해 장비를 확보한다.",
+      "entry_event_id": "EV_CH03_SHOWROOM_STORAGE",
+      "completion_event_id": "EV_CH03_LUXURY_SCAVENGE",
+      "objective_ids": [
+        "obj_ch03_luxury_route"
+      ],
+      "unlock_when": [
+        "flag:ch03_showroom_cleared"
+      ],
+      "reveal_cap": "ambient"
     }
   ]
 }

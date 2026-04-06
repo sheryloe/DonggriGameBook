@@ -90,6 +90,14 @@
       "complete_when": [
         "flag:ch02_sluice_access|flag:ch02_sluice_override"
       ]
+    },
+    {
+      "objective_id": "obj_ch02_farm_route",
+      "text": "수몰시장 파밍 루트를 정리한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch02_market_route_done"
+      ]
     }
   ],
   "nodes": [
@@ -165,7 +173,9 @@
       ],
       "event_ids": [
         "EV_CH02_MARKET_LOCKDOWN",
-        "EV_CH02_MARKET_SWEEP"
+        "EV_CH02_MARKET_SWEEP",
+        "EV_CH02_MARKET_BACKALLEY",
+        "EV_CH02_MARKET_BACKALLEY_LOOP"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -211,7 +221,8 @@
       ],
       "event_ids": [
         "EV_CH02_COLD_SEAL",
-        "EV_CH02_COLD_STORAGE"
+        "EV_CH02_COLD_STORAGE",
+        "EV_CH02_COLD_CRAWL"
       ],
       "revisit_rule": "after_clear",
       "tags": [
@@ -257,7 +268,8 @@
         }
       ],
       "event_ids": [
-        "EV_CH02_BLACKMARKET"
+        "EV_CH02_BLACKMARKET",
+        "EV_CH02_BLACKMARKET_LEDGER"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -307,7 +319,8 @@
       ],
       "event_ids": [
         "EV_CH02_PIER_AMBUSH",
-        "EV_CH02_PIER_BARGAIN"
+        "EV_CH02_PIER_BARGAIN",
+        "EV_CH02_PIER_ENGINE"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -344,7 +357,8 @@
       "event_ids": [
         "EV_CH02_GATE_ASSAULT",
         "EV_CH02_SLUICE_OVERRIDE",
-        "EV_CH02_SLUICE_BOSS"
+        "EV_CH02_SLUICE_BOSS",
+        "EV_CH02_SLUICE_PREP"
       ],
       "revisit_rule": "locked_after_clear",
       "tags": [
@@ -490,7 +504,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH02_TIDE_SCAN"
+          "next_event_id": "EV_CH02_MARKET_BACKALLEY"
         },
         {
           "choice_id": "ch02_market_tents",
@@ -509,7 +523,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH02_TIDE_SCAN"
+          "next_event_id": "EV_CH02_MARKET_BACKALLEY"
         }
       ],
       "on_enter_effects": [],
@@ -565,7 +579,7 @@
               "value": 6
             }
           ],
-          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+          "next_event_id": "EV_CH02_COLD_CRAWL"
         },
         {
           "choice_id": "ch02_cold_off",
@@ -584,7 +598,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+          "next_event_id": "EV_CH02_COLD_CRAWL"
         }
       ],
       "on_enter_effects": [],
@@ -641,7 +655,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+          "next_event_id": "EV_CH02_BLACKMARKET_LEDGER"
         },
         {
           "choice_id": "ch02_market_rob",
@@ -670,7 +684,7 @@
               "value": 5
             }
           ],
-          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+          "next_event_id": "EV_CH02_BLACKMARKET_LEDGER"
         }
       ],
       "on_enter_effects": [],
@@ -734,7 +748,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH02_SLUICE_DIAGNOSTIC"
+          "next_event_id": "EV_CH02_PIER_ENGINE"
         },
         {
           "choice_id": "ch02_pier_land",
@@ -758,7 +772,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH02_SLUICE_DIAGNOSTIC"
+          "next_event_id": "EV_CH02_PIER_ENGINE"
         }
       ],
       "on_enter_effects": [],
@@ -1127,7 +1141,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH02_SLUICE_BOSS"
+          "next_event_id": "EV_CH02_SLUICE_PREP"
         },
         {
           "choice_id": "ch02_sluice_bypass",
@@ -1146,7 +1160,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH02_SLUICE_BOSS"
+          "next_event_id": "EV_CH02_SLUICE_PREP"
         }
       ],
       "on_enter_effects": [],
@@ -2308,6 +2322,402 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_MARKET_BACKALLEY",
+      "event_type": "exploration",
+      "node_id": "NR-02",
+      "title": "수몰시장 뒤편",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_flooded_market",
+        "music_key": "market_dread"
+      },
+      "text": {
+        "summary": "뒤편 창고와 얼음 상자에서 보급품을 수색한다.",
+        "body": [
+          "물에 잠긴 통로는 미끄럽고 시야가 낮다.",
+          "더 깊이 들어가면 추가 파밍 루트가 열린다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_backalley_enter",
+          "label": "뒤편으로 들어간다",
+          "conditions": [],
+          "preview": "보급품을 확보한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_backalley",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_MARKET_BACKALLEY_LOOP"
+        },
+        {
+          "choice_id": "ch02_backalley_skip",
+          "label": "바로 빠져나간다",
+          "conditions": [],
+          "preview": "수위 스캔으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_backalley_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_TIDE_SCAN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP",
+      "event_type": "exploration",
+      "node_id": "NR-02",
+      "title": "시장 파밍 루프",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_flooded_market",
+        "music_key": "market_dread"
+      },
+      "text": {
+        "summary": "남은 상자와 파손된 냉동고를 더 뒤질 수 있다.",
+        "body": [
+          "수색을 반복할수록 소음이 누적된다.",
+          "필요한 만큼 챙기고 철수해야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_backalley_more",
+          "label": "추가 수색",
+          "conditions": [],
+          "preview": "보급품을 더 챙긴다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_MARKET_BACKALLEY_LOOP"
+        },
+        {
+          "choice_id": "ch02_backalley_exit",
+          "label": "철수",
+          "conditions": [],
+          "preview": "수위 스캔으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_route_done",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_TIDE_SCAN"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_COLD_CRAWL",
+      "event_type": "exploration",
+      "node_id": "NR-03",
+      "title": "냉각로 탐색",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_cold_storage",
+        "music_key": "tension_mid"
+      },
+      "text": {
+        "summary": "냉각로 안쪽에 보급품과 배선이 남아 있다.",
+        "body": [
+          "깊게 들어갈수록 소음과 오염이 늘어난다.",
+          "필요한 만큼 챙기고 빠져나가야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_cold_crawl_more",
+          "label": "냉각로 깊게 수색",
+          "conditions": [],
+          "preview": "보급품을 더 챙긴다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_COLD_CRAWL"
+        },
+        {
+          "choice_id": "ch02_cold_crawl_exit",
+          "label": "빠져나간다",
+          "conditions": [],
+          "preview": "침수 구간으로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_cold_crawl_done",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_BLACKMARKET_LEDGER",
+      "event_type": "dialogue",
+      "node_id": "NR-04",
+      "title": "암시장 장부",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "portrait_jung_noah",
+        "music_key": "under_market"
+      },
+      "text": {
+        "summary": "천막촌 장부에 검역 패스 거래 루트가 적혀 있다.",
+        "body": [
+          "장부를 확보하면 위험하지만 이후 협상에서 우위를 가진다.",
+          "무시하면 빠르게 다음 구간으로 이동할 수 있다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_ledger_take",
+          "label": "장부를 확보한다",
+          "conditions": [],
+          "preview": "거래 루트를 손에 넣는다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_ledger_taken",
+              "value": true
+            },
+            {
+              "op": "add_reputation",
+              "target": "reputation.under_market",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+        },
+        {
+          "choice_id": "ch02_ledger_skip",
+          "label": "무시하고 이동",
+          "conditions": [],
+          "preview": "시간을 아낀다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_ledger_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_PIER_ENGINE",
+      "event_type": "exploration",
+      "node_id": "NR-05",
+      "title": "부두 엔진 점검",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_flooded_pier",
+        "music_key": "pier_tension"
+      },
+      "text": {
+        "summary": "보트 엔진과 선착장 장비를 점검한다.",
+        "body": [
+          "수리하면 이동 안정성이 높아지지만 소음이 늘어난다.",
+          "무시하면 빠르지만 추가 위험이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_ch02_market_water"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch02_pier_engine_fix",
+          "label": "응급 수리",
+          "conditions": [],
+          "preview": "안정성을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_engine_checked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch02_market_water",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_DIAGNOSTIC"
+        },
+        {
+          "choice_id": "ch02_pier_engine_skip",
+          "label": "빠르게 이동",
+          "conditions": [],
+          "preview": "지체하지 않고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_engine_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_DIAGNOSTIC"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH02_SLUICE_PREP",
+      "event_type": "exploration",
+      "node_id": "NR-06",
+      "title": "배수문 방벽 정비",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_sluice_control",
+        "music_key": "tension_mid"
+      },
+      "text": {
+        "summary": "제어실 주변을 정리해 보스전에 대비한다.",
+        "body": [
+          "정비하면 안정성은 오르지만 시간과 소음이 늘어난다.",
+          "바로 돌입하면 빠르지만 위험이 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch02_sluice_prep",
+          "label": "방벽 정비",
+          "conditions": [],
+          "preview": "안정성을 높인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_sluice_prepared",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        },
+        {
+          "choice_id": "ch02_sluice_rush",
+          "label": "바로 돌입",
+          "conditions": [],
+          "preview": "시간을 아낀다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_sluice_rushed",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_SLUICE_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
     }
   ],
   "boss_event_id": "EV_CH02_SLUICE_BOSS",
@@ -2382,6 +2792,21 @@
       "unlock_when": [
         "flag:ch02_boat_route|flag:ch02_land_route"
       ]
+    },
+    {
+      "quest_track_id": "qt_ch02_scavenge",
+      "kind": "side",
+      "title": "수몰시장 파밍 루트",
+      "summary": "시장 뒤편과 냉각로를 수색해 보급품을 확보한다.",
+      "entry_event_id": "EV_CH02_MARKET_BACKALLEY",
+      "completion_event_id": "EV_CH02_MARKET_BACKALLEY_LOOP",
+      "objective_ids": [
+        "obj_ch02_farm_route"
+      ],
+      "unlock_when": [
+        "flag:ch02_started"
+      ],
+      "reveal_cap": "ambient"
     }
   ]
 }

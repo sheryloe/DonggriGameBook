@@ -98,6 +98,14 @@
       "complete_when": [
         "flag:ch01_relay_repaired|flag:ch01_relay_bypass"
       ]
+    },
+    {
+      "objective_id": "obj_ch01_scavenge_route",
+      "text": "회랑 물자 루트를 확보한다.",
+      "required": false,
+      "complete_when": [
+        "flag:ch01_scavenge_done"
+      ]
     }
   ],
   "nodes": [
@@ -172,7 +180,9 @@
         }
       ],
       "event_ids": [
-        "EV_CH01_APPROACH"
+        "EV_CH01_APPROACH",
+        "EV_CH01_CONCOURSE_SCAVENGE",
+        "EV_CH01_CONCOURSE_CACHE"
       ],
       "revisit_rule": "after_event_clear",
       "tags": [
@@ -263,7 +273,9 @@
       ],
       "event_ids": [
         "EV_CH01_STAIRWELL_AMBUSH",
-        "EV_CH01_WRITER_RESCUE"
+        "EV_CH01_WRITER_RESCUE",
+        "EV_CH01_SECURITY_LOCKER",
+        "EV_CH01_WRITER_SAFEHOUSE"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -309,7 +321,8 @@
       ],
       "event_ids": [
         "EV_CH01_ARCHIVE_KEYPAD",
-        "EV_CH01_ARCHIVE_DECISION"
+        "EV_CH01_ARCHIVE_DECISION",
+        "EV_CH01_ARCHIVE_RUINS"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -389,7 +402,8 @@
       "event_ids": [
         "EV_CH01_SIGNAL_RELAY_DEFENSE",
         "EV_CH01_ROOFTOP_CALIBRATION",
-        "EV_CH01_ROOFTOP_SIGNAL"
+        "EV_CH01_ROOFTOP_SIGNAL",
+        "EV_CH01_ROOFTOP_SWEEP"
       ],
       "revisit_rule": "after_unlock",
       "tags": [
@@ -423,7 +437,8 @@
         }
       ],
       "event_ids": [
-        "EV_CH01_EXTRACTION"
+        "EV_CH01_EXTRACTION",
+        "EV_CH01_ESCAPE_BACKTRACK"
       ],
       "revisit_rule": "after_clear",
       "tags": [
@@ -795,7 +810,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_CACHE_SEARCH"
+          "next_event_id": "EV_CH01_WRITER_SAFEHOUSE"
         },
         {
           "choice_id": "ch01_writer_leave",
@@ -814,7 +829,7 @@
               "value": -1
             }
           ],
-          "next_event_id": "EV_CH01_CACHE_SEARCH"
+          "next_event_id": "EV_CH01_WRITER_SAFEHOUSE"
         }
       ],
       "on_enter_effects": [],
@@ -878,7 +893,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_SIGNAL_CALIBRATION"
+          "next_event_id": "EV_CH01_ROOFTOP_SWEEP"
         },
         {
           "choice_id": "ch01_signal_cut_broadcast",
@@ -897,7 +912,7 @@
               "value": true
             }
           ],
-          "next_event_id": "EV_CH01_SIGNAL_CALIBRATION"
+          "next_event_id": "EV_CH01_ROOFTOP_SWEEP"
         }
       ],
       "on_enter_effects": [],
@@ -1659,7 +1674,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION_PREP"
+          "next_event_id": "EV_CH01_ESCAPE_BACKTRACK"
         },
         {
           "choice_id": "ch01_escape_safe",
@@ -1678,7 +1693,7 @@
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH01_EXTRACTION_PREP"
+          "next_event_id": "EV_CH01_ESCAPE_BACKTRACK"
         }
       ],
       "on_enter_effects": [],
@@ -1986,6 +2001,20 @@
           "preview": "교전을 정리하고 로비로 진입한다.",
           "effects": [],
           "next_event_id": "EV_CH01_SERVICE_TUNNEL"
+        },
+        {
+          "choice_id": "ch01_concourse_scavenge",
+          "label": "잔해 수색",
+          "conditions": [],
+          "preview": "보급품을 챙기고 이동한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_CONCOURSE_SCAVENGE"
         }
       ],
       "on_enter_effects": [],
@@ -2243,7 +2272,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+          "next_event_id": "EV_CH01_ARCHIVE_RUINS"
         },
         {
           "choice_id": "ch01_archive_bypass",
@@ -2267,7 +2296,7 @@
               "value": 2
             }
           ],
-          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+          "next_event_id": "EV_CH01_ARCHIVE_RUINS"
         }
       ],
       "on_enter_effects": [],
@@ -2521,7 +2550,7 @@
           ],
           "preview": "침수 자료실을 먼저 확보한다.",
           "effects": [],
-          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+          "next_event_id": "EV_CH01_SECURITY_LOCKER"
         },
         {
           "choice_id": "ch01_security_to_writer",
@@ -2531,7 +2560,7 @@
           ],
           "preview": "잔류자를 먼저 확인한다.",
           "effects": [],
-          "next_event_id": "EV_CH01_WRITER_RESCUE"
+          "next_event_id": "EV_CH01_SECURITY_LOCKER"
         }
       ],
       "on_enter_effects": [],
@@ -2675,6 +2704,514 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_CONCOURSE_SCAVENGE",
+      "event_type": "exploration",
+      "node_id": "YD-02",
+      "title": "회랑 잔해 수색",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_sorting_hall",
+        "music_key": "tension_low"
+      },
+      "text": {
+        "summary": "무너진 회랑에서 응급 물자를 찾는다.",
+        "body": [
+          "부서진 방송 장비 사이에 비상 상자가 남아 있다.",
+          "더 뒤질수록 소음과 오염이 늘어난다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_scavenge_open",
+          "label": "잔해를 뒤진다",
+          "conditions": [],
+          "preview": "보급품을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_scavenge_started",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_CONCOURSE_CACHE"
+        },
+        {
+          "choice_id": "ch01_scavenge_skip",
+          "label": "시간을 아낀다",
+          "conditions": [],
+          "preview": "서비스 터널로 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_scavenge_skipped",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_SERVICE_TUNNEL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_CONCOURSE_CACHE",
+      "event_type": "exploration",
+      "node_id": "YD-02",
+      "title": "회랑 물자 더미",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_sorting_hall",
+        "music_key": "tension_low"
+      },
+      "text": {
+        "summary": "남은 상자를 추가로 뒤질 수 있다.",
+        "body": [
+          "수색을 반복할수록 소음과 오염이 누적된다.",
+          "필요한 만큼만 챙기고 빠져나가야 한다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_scavenge_more",
+          "label": "추가 수색",
+          "conditions": [],
+          "preview": "보급품을 더 챙긴다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_CONCOURSE_CACHE"
+        },
+        {
+          "choice_id": "ch01_scavenge_exit",
+          "label": "철수",
+          "conditions": [],
+          "preview": "터널로 복귀한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_scavenge_done",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_SERVICE_TUNNEL"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_SECURITY_LOCKER",
+      "event_type": "exploration",
+      "node_id": "YD-04",
+      "title": "보안실 락커",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_security_office",
+        "music_key": "tension_low"
+      },
+      "text": {
+        "summary": "봉인된 락커에 예비 장비가 남아 있다.",
+        "body": [
+          "열면 소음이 늘지만 필요한 장비를 얻을 수 있다.",
+          "경로는 이미 정해졌다. 바로 이동할 수도 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_locker_archive_open",
+          "label": "락커 열고 자료실로 간다",
+          "conditions": [
+            "flag:ch01_route_archive"
+          ],
+          "preview": "보급품을 챙기고 이동한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_security_locker_opened",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        },
+        {
+          "choice_id": "ch01_locker_archive_skip",
+          "label": "시간 아끼고 자료실로 간다",
+          "conditions": [
+            "flag:ch01_route_archive"
+          ],
+          "preview": "소음을 줄이고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_security_locker_skipped",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        },
+        {
+          "choice_id": "ch01_locker_writer_open",
+          "label": "락커 열고 편집실로 간다",
+          "conditions": [
+            "flag:ch01_route_writer"
+          ],
+          "preview": "보급품을 챙기고 이동한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_security_locker_opened",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_WRITER_RESCUE"
+        },
+        {
+          "choice_id": "ch01_locker_writer_skip",
+          "label": "시간 아끼고 편집실로 간다",
+          "conditions": [
+            "flag:ch01_route_writer"
+          ],
+          "preview": "소음을 줄이고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_security_locker_skipped",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_WRITER_RESCUE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ARCHIVE_RUINS",
+      "event_type": "exploration",
+      "node_id": "YD-05",
+      "title": "침수 통로 잔해",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_archive_flooded",
+        "music_key": "water_dread"
+      },
+      "text": {
+        "summary": "자료실 입구가 무너져 길을 내야 한다.",
+        "body": [
+          "잔해를 치우면 소음이 늘고 체력이 소모된다.",
+          "우회하면 시간은 줄지만 진입이 지연된다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_archive_clear",
+          "label": "잔해를 치운다",
+          "conditions": [],
+          "preview": "소음을 감수하고 길을 만든다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        },
+        {
+          "choice_id": "ch01_archive_detour",
+          "label": "좁은 우회로",
+          "conditions": [],
+          "preview": "오염을 감수하고 우회한다.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_ARCHIVE_DECISION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_WRITER_SAFEHOUSE",
+      "event_type": "dialogue",
+      "node_id": "YD-04",
+      "title": "편집실 임시 대피처",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "bg_broadcast_corridor",
+        "music_key": "tension_low"
+      },
+      "text": {
+        "summary": "잔류자를 진정시키고 장비를 점검한다.",
+        "body": [
+          "응급 키트와 예비 필터가 남아 있다.",
+          "머무르면 소음은 늘지만 회복 효과를 얻는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_writer_safe_loot",
+          "label": "장비를 정리한다",
+          "conditions": [],
+          "preview": "보급품을 챙기고 이동한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_writer_safehouse",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_CACHE_SEARCH"
+        },
+        {
+          "choice_id": "ch01_writer_safe_skip",
+          "label": "곧장 이동",
+          "conditions": [],
+          "preview": "시간을 아끼고 이동한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_writer_safehouse_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_CACHE_SEARCH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ROOFTOP_SWEEP",
+      "event_type": "exploration",
+      "node_id": "YD-07",
+      "title": "옥상 주변 정리",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_rooftop_signal",
+        "music_key": "tension_mid"
+      },
+      "text": {
+        "summary": "송신기 주변을 정리해 안정성을 확보할지 결정한다.",
+        "body": [
+          "정리하면 송신 안정성이 오르지만 시간이 든다.",
+          "바로 보정하면 빠르지만 방해가 남는다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch01_rooftop_sweep",
+          "label": "주변 정리",
+          "conditions": [],
+          "preview": "안정성을 높인다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_rooftop_sweep",
+              "value": true
+            },
+            {
+              "op": "sub_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH01_SIGNAL_CALIBRATION"
+        },
+        {
+          "choice_id": "ch01_rooftop_skip",
+          "label": "바로 보정",
+          "conditions": [],
+          "preview": "시간을 아끼고 보정한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_rooftop_skip",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
+          "next_event_id": "EV_CH01_SIGNAL_CALIBRATION"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_ESCAPE_BACKTRACK",
+      "event_type": "exploration",
+      "node_id": "YD-08",
+      "title": "샛강 잔해 회수",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 55,
+      "conditions": [],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "bg_saetgang_entry",
+        "music_key": "tension_mid"
+      },
+      "text": {
+        "summary": "철수 직전에 남은 장비를 회수할지 결정한다.",
+        "body": [
+          "추가 회수는 위험을 늘리지만 생존 자원을 늘린다.",
+          "바로 이동하면 체력 소모를 줄일 수 있다."
+        ]
+      },
+      "npc_ids": [],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch01_escape_loot",
+          "label": "잔해를 회수한다",
+          "conditions": [],
+          "preview": "보급품을 추가 확보한다.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_escape_loot",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION_PREP"
+        },
+        {
+          "choice_id": "ch01_escape_skip",
+          "label": "곧장 철수",
+          "conditions": [],
+          "preview": "빠르게 이탈한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_escape_skip",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_EXTRACTION_PREP"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
     }
   ],
   "boss_event_id": "EV_CH01_BOSS_BROADCAST",
@@ -2763,6 +3300,21 @@
       "unlock_when": [
         "flag:ch01_security_cleared"
       ]
+    },
+    {
+      "quest_track_id": "qt_ch01_scavenge",
+      "kind": "side",
+      "title": "회랑 파밍 루트",
+      "summary": "방송동 회랑 잔해를 수색해 보급품을 확보한다.",
+      "entry_event_id": "EV_CH01_CONCOURSE_SCAVENGE",
+      "completion_event_id": "EV_CH01_CONCOURSE_CACHE",
+      "objective_ids": [
+        "obj_ch01_scavenge_route"
+      ],
+      "unlock_when": [
+        "flag:ch01_briefing_done"
+      ],
+      "reveal_cap": "ambient"
     }
   ]
 }
