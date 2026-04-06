@@ -194,7 +194,7 @@
       "node_id": "YD-03",
       "name": "방송동 로비",
       "node_type": "exploration",
-      "description": "보안게이트가 무너진 방송동 입구.",
+      "description": "보안게이트가 무너진 방송동 입구. (여기서 언제든 거점으로 귀환할 수 있다.)",
       "coordinates": {
         "x": 38,
         "y": 63
@@ -208,7 +208,9 @@
         {
           "to": "YD-04",
           "travel_type": "walk",
-          "requires": [],
+          "requires": [
+            "item:itm_flashlight>=1"
+          ],
           "cost": {
             "time": 2,
             "noise": 1,
@@ -224,11 +226,34 @@
             "noise": 1,
             "contamination": 2
           }
+        },
+        {
+          "to": "YD-01",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 1,
+            "noise": 0,
+            "contamination": 0
+          }
+        },
+        {
+          "to": "YD-99",
+          "travel_type": "breach",
+          "requires": [
+            "item:itm_director_key>=1"
+          ],
+          "cost": {
+            "time": 1,
+            "noise": 3,
+            "contamination": 0
+          }
         }
       ],
       "event_ids": [
         "EV_CH01_LOBBY_LOCKDOWN",
-        "EV_CH01_LOBBY_SEARCH"
+        "EV_CH01_LOBBY_SEARCH",
+        "EV_CH01_LOBBY_SCAVENGE"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -239,7 +264,7 @@
       "node_id": "YD-04",
       "name": "편집실 복도",
       "node_type": "danger",
-      "description": "천장 매복이 많은 좁은 복도.",
+      "description": "[암흑 구역] 빛이 전혀 들지 않는 지하 자료실. 내부를 탐색하려면 강력한 광원이 필요하다.",
       "coordinates": {
         "x": 52,
         "y": 57
@@ -268,6 +293,16 @@
             "time": 3,
             "noise": 2,
             "contamination": 3
+          }
+        },
+        {
+          "to": "YD-03",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 1,
+            "noise": 1,
+            "contamination": 2
           }
         }
       ],
@@ -415,7 +450,7 @@
       "node_id": "YD-08",
       "name": "샛강 비상계단",
       "node_type": "exit",
-      "description": "귀환용 비상 탈출 통로.",
+      "description": "[탈출구] 헬기 착륙장. 이곳을 통해 획득한 아이템을 가지고 안전하게 귀환할 수 있다. 로프가 필요하다.",
       "coordinates": {
         "x": 86,
         "y": 48
@@ -443,6 +478,27 @@
       "revisit_rule": "after_clear",
       "tags": [
         "exit"
+      ]
+    },
+    {
+      "node_id": "YD-99",
+      "name": "국장실 (마크방)",
+      "node_type": "loot",
+      "description": "굳게 잠겨있던 최고위층의 방. 엄청난 가치의 물자(의약품, 금괴)가 보존되어 있다.",
+      "connections": [
+        {
+          "to": "YD-03",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 1,
+            "noise": 0,
+            "contamination": 0
+          }
+        }
+      ],
+      "loot_table_ids": [
+        "loot_high_value_medical"
       ]
     }
   ],
@@ -3206,6 +3262,83 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH01_LOBBY_SCAVENGE",
+      "type": "story",
+      "title": "로비 잡동사니 수색",
+      "description": "운이 좋다면 방송동 로비 구석에서 은축전지나 깨진 전구를 주울 수 있다. 하지만 소리를 내면 감염체가 몰려온다.",
+      "choices": [
+        {
+          "choice_id": "c_scavenge_safe",
+          "text": "조심스럽게 수색한다. (시간 소요, 소음 없음)",
+          "requires": [],
+          "effects": [
+            {
+              "op": "modify_stat",
+              "target": "time",
+              "value": -2
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_silver_battery",
+              "value": 1
+            }
+          ],
+          "next_event_id": null
+        },
+        {
+          "choice_id": "c_scavenge_fast",
+          "text": "주변을 부수며 빠르게 뒤진다. (시간 절약, 소음 크게 증가)",
+          "requires": [],
+          "effects": [
+            {
+              "op": "modify_stat",
+              "target": "noise",
+              "value": 5
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_silver_battery",
+              "value": 2
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_broken_bulb",
+              "value": 3
+            }
+          ],
+          "next_event_id": "EV_CH01_ELITE_AMBUSH"
+        }
+      ]
+    },
+    {
+      "event_id": "EV_CH01_ELITE_AMBUSH",
+      "type": "combat",
+      "title": "소음에 이끌린 엘리트 감염체",
+      "description": "너무 큰 소리를 냈다. '편집괴'의 파편 중 하나가 끔찍한 속도로 다가온다. 싸우는 것은 자살 행위다.",
+      "enemy_id": "enm_ch01_elite_fragment",
+      "combat_type": "boss",
+      "choices": [
+        {
+          "choice_id": "c_run_away",
+          "text": "가진 것을 일부 버리고 필사적으로 도망친다! (체력 피해, 소음 초기화)",
+          "requires": [],
+          "effects": [
+            {
+              "op": "modify_stat",
+              "target": "hp",
+              "value": -30
+            },
+            {
+              "op": "modify_stat",
+              "target": "noise",
+              "value": -5
+            }
+          ],
+          "next_event_id": null
+        }
+      ]
     }
   ],
   "boss_event_id": "EV_CH01_BOSS_BROADCAST",

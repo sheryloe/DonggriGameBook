@@ -1,112 +1,109 @@
-import { startTransition, useEffect, useState } from "react";
-import GameShell from "./components/GameShell";
-import { loadPack } from "./loaders/contentLoader";
-import BossIntroScreen from "./screens/BossIntroScreen";
-import BattleScreen from "./screens/BattleScreen";
-import BriefingScreen from "./screens/BriefingScreen";
-import ChapterMapScreen from "./screens/ChapterMapScreen";
-import EventScreen from "./screens/EventScreen";
-import LootScreen from "./screens/LootScreen";
-import ResultScreen from "./screens/ResultScreen";
-import RouteSelectScreen from "./screens/RouteSelectScreen";
-import SafehouseScreen from "./screens/SafehouseScreen";
-import { useGameStore } from "./store/gameStore";
+import { useGameStore } from './store/gameStore';
 
-function LoadingView() {
+function App() {
+  const store = useGameStore();
+
+  // Very basic routing based on state
+  const renderScreen = () => {
+      if (store.stats.hp <= 0) {
+          return (
+             <div style={{ backgroundColor: '#131313', color: '#8B0000', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace' }}>
+                 <h1 style={{ fontSize: '5rem', margin: 0, textShadow: '2px 2px #ffb4a8' }}>K.I.A</h1>
+                 <p style={{ color: '#e3beb8', fontSize: '1.2rem' }}>YOU LOST ALL UNSECURED ITEMS.</p>
+                 <button
+                    onClick={() => store.dieAndLoseLoot()}
+                    style={{ marginTop: '2rem', padding: '1rem 2rem', backgroundColor: '#353534', border: '1px solid #5a403c', color: '#e5e2e1', cursor: 'pointer', fontFamily: 'monospace' }}
+                 >
+                     WAKE UP AT HUB
+                 </button>
+             </div>
+          )
+      }
+
+      // If at a Hub
+      const isHub = store.currentNodeId.endsWith('-01');
+      if (isHub) {
+          return (
+             <div style={{ backgroundColor: '#131313', color: '#e5e2e1', minHeight: '100vh', padding: '2rem', fontFamily: 'monospace' }}>
+                 <div style={{ borderBottom: '2px solid #353534', paddingBottom: '1rem', marginBottom: '2rem' }}>
+                    <h1 style={{ color: '#ffb4a8', margin: 0 }}>BASECAMP HUB</h1>
+                    <p style={{ color: '#e3beb8', margin: 0 }}>LOCATION: {store.currentNodeId}</p>
+                 </div>
+
+                 <div style={{ display: 'flex', gap: '2rem' }}>
+                     {/* Stats Panel */}
+                     <div style={{ flex: 1, backgroundColor: '#0e0e0e', padding: '1.5rem', border: '1px solid #5a403c' }}>
+                         <h3 style={{ marginTop: 0, color: '#8adb4d' }}>OPERATOR VITALS</h3>
+                         <p>HP: {store.stats.hp} / {store.stats.max_hp}</p>
+                         <p>NOISE: {store.stats.noise}</p>
+                         <p>CONTAMINATION: {store.stats.contamination}</p>
+                         <hr style={{ borderColor: '#353534' }}/>
+                         <h3 style={{ color: '#8adb4d' }}>INVENTORY</h3>
+                         <pre style={{ color: '#e3beb8' }}>{JSON.stringify(store.inventory, null, 2)}</pre>
+                     </div>
+
+                     {/* Actions */}
+                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                         <button style={{ padding: '1.5rem', backgroundColor: '#201f1f', color: '#e5e2e1', border: 'none', textAlign: 'left', cursor: 'pointer' }}>
+                             [1] ORGANIZE STASH
+                         </button>
+                         <button style={{ padding: '1.5rem', backgroundColor: '#201f1f', color: '#e5e2e1', border: 'none', textAlign: 'left', cursor: 'pointer' }}>
+                             [2] BLACK MARKET (MERCHANT)
+                         </button>
+                         <div style={{ flexGrow: 1 }} />
+                         <button
+                            onClick={() => store.moveToNode(store.currentChapterId === 'CH01' ? 'YD-02' : 'BW-03')}
+                            style={{ padding: '2rem', backgroundColor: '#8B0000', color: '#131313', border: 'none', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer' }}
+                         >
+                             \ DEPLOY TO RAID /
+                         </button>
+                     </div>
+                 </div>
+             </div>
+          );
+      }
+
+      // Exploring
+      return (
+          <div style={{ backgroundColor: '#131313', color: '#e5e2e1', minHeight: '100vh', padding: '2rem', fontFamily: 'monospace' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #353534', paddingBottom: '1rem', marginBottom: '2rem' }}>
+                 <div>
+                     <h2 style={{ color: '#ffb4a8', margin: 0 }}>RAID: {store.currentChapterId}</h2>
+                     <p style={{ margin: 0, color: '#e3beb8' }}>NODE: {store.currentNodeId}</p>
+                 </div>
+                 <div style={{ textAlign: 'right' }}>
+                     <p style={{ margin: 0, color: '#8adb4d' }}>HP: {store.stats.hp} | NOISE: {store.stats.noise} | RAD: {store.stats.contamination}</p>
+                 </div>
+              </div>
+
+              <div style={{ backgroundColor: '#0e0e0e', padding: '2rem', border: '1px solid #5a403c', minHeight: '300px' }}>
+                  <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>
+                     [SYSTEM LOG] You have entered a dark, compromised area. The smell of ozone and rust is thick in the air.
+                     <br/><br/>
+                     Choose your next action carefully.
+                  </p>
+              </div>
+
+              <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
+                  <button onClick={() => store.modifyStat('noise', 5)} style={{ flex: 1, padding: '1rem', backgroundColor: '#201f1f', color: '#e5e2e1', border: '1px solid #5a403c', cursor: 'pointer' }}>
+                      SCAVENGE (HIGH NOISE)
+                  </button>
+                  <button onClick={() => store.modifyStat('hp', -10)} style={{ flex: 1, padding: '1rem', backgroundColor: '#201f1f', color: '#e5e2e1', border: '1px solid #5a403c', cursor: 'pointer' }}>
+                      FIGHT IN DARKNESS (HP COST)
+                  </button>
+                  <button onClick={() => store.extractToHub()} style={{ flex: 1, padding: '1rem', backgroundColor: '#313030', color: '#ffb4a8', border: '1px solid #8b0000', cursor: 'pointer' }}>
+                      EXTRACT (RETURN TO HUB)
+                  </button>
+              </div>
+          </div>
+      );
+  };
+
   return (
-    <main className="boot-screen">
-      <section className="boot-card">
-        <p className="eyebrow">Runtime Boot</p>
-        <h1>CH01-CH05 Pack Loading</h1>
-        <p>Loading manifest, schemas, data, UI flow, docs, and fallback assets.</p>
-      </section>
-    </main>
+    <>
+      {renderScreen()}
+    </>
   );
 }
 
-function ErrorView({ message }: { message: string }) {
-  return (
-    <main className="boot-screen">
-      <section className="boot-card is-error">
-        <p className="eyebrow">Runtime Failure</p>
-        <h1>Failed to load content pack</h1>
-        <p>{message}</p>
-      </section>
-    </main>
-  );
-}
-
-function ActiveScreen() {
-  const screenType = useGameStore((state) => state.runtime.ui_screen);
-
-  switch (screenType) {
-    case "chapter_briefing":
-      return <BriefingScreen />;
-    case "world_map":
-      return <ChapterMapScreen />;
-    case "loot_resolution":
-      return <LootScreen />;
-    case "boss_intro":
-      return <BossIntroScreen />;
-    case "combat_arena":
-      return <BattleScreen />;
-    case "result_summary":
-      return <ResultScreen />;
-    case "route_select":
-      return <RouteSelectScreen />;
-    case "safehouse":
-      return <SafehouseScreen />;
-    case "event_dialogue":
-    default:
-      return <EventScreen />;
-  }
-}
-
-export default function App() {
-  const content = useGameStore((state) => state.content);
-  const hydrateContent = useGameStore((state) => state.hydrateContent);
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    let active = true;
-
-    loadPack()
-      .then((pack) => {
-        if (!active) {
-          return;
-        }
-
-        startTransition(() => {
-          hydrateContent(pack);
-          setStatus("ready");
-        });
-      })
-      .catch((error: unknown) => {
-        if (!active) {
-          return;
-        }
-
-        setErrorMessage(error instanceof Error ? error.message : "Unknown runtime load error");
-        setStatus("error");
-      });
-
-    return () => {
-      active = false;
-    };
-  }, [hydrateContent]);
-
-  if (status === "error") {
-    return <ErrorView message={errorMessage} />;
-  }
-
-  if (status === "loading" || !content) {
-    return <LoadingView />;
-  }
-
-  return (
-    <GameShell>
-      <ActiveScreen />
-    </GameShell>
-  );
-}
+export default App;

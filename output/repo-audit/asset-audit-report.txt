@@ -1,0 +1,21 @@
+[asset-audit]
+date: 2026-04-06T14:09:11Z
+root: /app
+threshold_mb: 10
+
+[directory-size]
+71M	/app/img
+4.3M	/app/dist
+12K	/app/output
+4.0K	/app/music
+4.1M	/app/public/audio
+
+[large-files]
+none
+
+[duplicates-by-sha256]
+none
+
+[summary]
+large_file_count=0
+duplicate_exists=0
