@@ -7,10 +7,9 @@ export const runEffect = (effect: { op: string; target: string; value: any }) =>
     switch(op) {
         case 'modify_stat':
             store.modifyStat(target, value);
-            // Check death condition
             if (target === 'hp' && store.stats.hp <= 0) {
                  store.dieAndLoseLoot();
-                 alert("체력이 0이 되어 사망했습니다! 인벤토리의 아이템을 모두 잃고 베이스캠프로 이송됩니다.");
+                 // Custom event handling can go here (e.g. playing death sound)
             }
             break;
         case 'grant_item':
@@ -24,6 +23,9 @@ export const runEffect = (effect: { op: string; target: string; value: any }) =>
         case 'set_flag':
             store.setFlag(target.replace('flag:', ''), value);
             break;
+        case 'set_quest':
+            store.setQuestStatus(target.replace('quest:', ''), value);
+            break;
         default:
             console.warn(`Unknown effect op: ${op}`);
     }
@@ -32,7 +34,6 @@ export const runEffect = (effect: { op: string; target: string; value: any }) =>
 export const checkRequirement = (reqString: string): boolean => {
     const store = useGameStore.getState();
 
-    // Example format: "item:itm_flashlight>=1" or "flag:server_hacked"
     if (reqString.startsWith('item:')) {
         const parts = reqString.replace('item:', '').split('>=');
         const itemId = parts[0];
@@ -48,8 +49,14 @@ export const checkRequirement = (reqString: string): boolean => {
         return !!store.flags[flagId];
     }
 
+    if (reqString.startsWith('quest:')) {
+        const parts = reqString.replace('quest:', '').split('==');
+        const questId = parts[0];
+        const status = parts[1];
+        return store.quests[questId] === status;
+    }
+
     if (reqString.startsWith('stat:')) {
-        // e.g. "stat:noise<=5"
         const clean = reqString.replace('stat:', '');
         if (clean.includes('<=')) {
             const [stat, val] = clean.split('<=');
@@ -57,30 +64,27 @@ export const checkRequirement = (reqString: string): boolean => {
         }
     }
 
-    return true; // Unknown requirement passes by default
+    return true;
 };
 
 export const handleChoice = (choice: any) => {
-    // 1. Check req
     if (choice.requires && choice.requires.length > 0) {
         for (const req of choice.requires) {
             if (!checkRequirement(req)) {
-                return false; // Cannot execute
+                return false;
             }
         }
     }
 
-    // 2. Apply effects
     if (choice.effects) {
         choice.effects.forEach(runEffect);
     }
 
-    // 3. Move to next event or end
     const store = useGameStore.getState();
     if (choice.next_event_id) {
         store.triggerEvent(choice.next_event_id);
     } else {
-        store.triggerEvent(''); // Close event view
+        store.triggerEvent('');
     }
 
     return true;

@@ -11,8 +11,9 @@ export interface GameState {
     filter_integrity: number;
   };
   inventory: Record<string, number>;
-  securePouch: Record<string, number>; // 죽어도 잃지 않는 아이템
+  securePouch: Record<string, number>;
   flags: Record<string, boolean | number | string>;
+  quests: Record<string, 'unassigned' | 'active' | 'completed' | 'failed'>;
   trust: Record<string, number>;
   reputation: Record<string, number>;
 
@@ -25,6 +26,7 @@ export interface GameState {
   grantItem: (itemId: string, amount: number) => void;
   removeItem: (itemId: string, amount: number) => void;
   setFlag: (flagKey: string, value: any) => void;
+  setQuestStatus: (questId: string, status: 'unassigned' | 'active' | 'completed' | 'failed') => void;
   moveToNode: (nodeId: string) => void;
   triggerEvent: (eventId: string) => void;
 
@@ -47,6 +49,10 @@ export const useGameStore = create<GameState>()(
       inventory: {},
       securePouch: {},
       flags: {},
+      quests: {
+          "main_ch01": "active",
+          "merchant_yoon_01": "unassigned"
+      },
       trust: {},
       reputation: {},
 
@@ -58,13 +64,11 @@ export const useGameStore = create<GameState>()(
         const currentVal = (state.stats as any)[statKey] || 0;
         let newVal = currentVal + value;
 
-        // Boundaries
         if (statKey === 'hp' && newVal > state.stats.max_hp) newVal = state.stats.max_hp;
         if (statKey === 'hp' && newVal < 0) newVal = 0;
         if (statKey === 'contamination' && newVal < 0) newVal = 0;
         if (statKey === 'noise' && newVal < 0) newVal = 0;
 
-        // Hardcore rules: high contamination drops max hp
         let newMaxHp = state.stats.max_hp;
         if (statKey === 'contamination' && newVal > 50) {
             newMaxHp -= 10;
@@ -97,6 +101,10 @@ export const useGameStore = create<GameState>()(
 
       setFlag: (flagKey, value) => set((state) => ({
         flags: { ...state.flags, [flagKey]: value }
+      })),
+
+      setQuestStatus: (questId, status) => set((state) => ({
+          quests: { ...state.quests, [questId]: status }
       })),
 
       moveToNode: (nodeId) => set(() => ({

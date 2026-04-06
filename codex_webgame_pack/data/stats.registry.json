@@ -116,6 +116,26 @@
       "key": "chapter.current",
       "type": "string",
       "default": "CH01"
+    },
+    {
+      "key": "quest.main.ch01.status",
+      "type": "string",
+      "default": "unassigned"
+    },
+    {
+      "key": "quest.merchant.yoon.01",
+      "type": "string",
+      "default": "unassigned"
+    },
+    {
+      "key": "villain.butcher.encounter",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "key": "villain.butcher.defeated",
+      "type": "boolean",
+      "default": false
     }
   ]
 }

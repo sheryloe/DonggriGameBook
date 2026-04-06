@@ -1,9 +1,37 @@
+import { useState, useEffect } from 'react';
 import { useGameStore } from './store/gameStore';
+
+// Typewriter Effect Hook
+function useTypewriter(text: string, speed: number = 30) {
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    setDisplayedText('');
+    let i = 0;
+    if (!text) return;
+
+    // Play sound hook point here: Audio.play('typing')
+    const interval = setInterval(() => {
+      setDisplayedText((prev) => prev + text.charAt(i));
+      i++;
+      if (i >= text.length) {
+        clearInterval(interval);
+      }
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, [text, speed]);
+
+  return displayedText;
+}
 
 function App() {
   const store = useGameStore();
 
-  // Very basic routing based on state
+  // Dummy Event Text for Demo
+  const currentEventDesc = "[SYSTEM LOG] 어둠 속에서 거대한 그림자가 일어선다. 무수히 많은 방독면을 목걸이처럼 엮어 건 거구의 사내, 블랙마켓의 변절자 '도살자'다. 그는 당신의 숨통을 조여온다.";
+  const typedText = useTypewriter(currentEventDesc, 40);
+
   const renderScreen = () => {
       if (store.stats.hp <= 0) {
           return (
@@ -20,7 +48,6 @@ function App() {
           )
       }
 
-      // If at a Hub
       const isHub = store.currentNodeId.endsWith('-01');
       if (isHub) {
           return (
@@ -31,15 +58,24 @@ function App() {
                  </div>
 
                  <div style={{ display: 'flex', gap: '2rem' }}>
-                     {/* Stats Panel */}
+                     {/* Stats & Quests Panel */}
                      <div style={{ flex: 1, backgroundColor: '#0e0e0e', padding: '1.5rem', border: '1px solid #5a403c' }}>
                          <h3 style={{ marginTop: 0, color: '#8adb4d' }}>OPERATOR VITALS</h3>
                          <p>HP: {store.stats.hp} / {store.stats.max_hp}</p>
                          <p>NOISE: {store.stats.noise}</p>
                          <p>CONTAMINATION: {store.stats.contamination}</p>
+
+                         <hr style={{ borderColor: '#353534' }}/>
+                         <h3 style={{ color: '#ffb4a8' }}>ACTIVE QUESTS</h3>
+                         {Object.entries(store.quests).filter(([_, status]) => status === 'active').map(([qId]) => (
+                             <div key={qId} style={{ color: '#e3beb8', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                                 &gt; {qId.replace(/_/g, ' ').toUpperCase()}
+                             </div>
+                         ))}
+
                          <hr style={{ borderColor: '#353534' }}/>
                          <h3 style={{ color: '#8adb4d' }}>INVENTORY</h3>
-                         <pre style={{ color: '#e3beb8' }}>{JSON.stringify(store.inventory, null, 2)}</pre>
+                         <pre style={{ color: '#e3beb8', fontSize: '0.8rem' }}>{JSON.stringify(store.inventory, null, 2)}</pre>
                      </div>
 
                      {/* Actions */}
@@ -63,7 +99,7 @@ function App() {
           );
       }
 
-      // Exploring
+      // Exploring Screen with Typewriter Effect
       return (
           <div style={{ backgroundColor: '#131313', color: '#e5e2e1', minHeight: '100vh', padding: '2rem', fontFamily: 'monospace' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #353534', paddingBottom: '1rem', marginBottom: '2rem' }}>
@@ -76,22 +112,25 @@ function App() {
                  </div>
               </div>
 
-              <div style={{ backgroundColor: '#0e0e0e', padding: '2rem', border: '1px solid #5a403c', minHeight: '300px' }}>
-                  <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>
-                     [SYSTEM LOG] You have entered a dark, compromised area. The smell of ozone and rust is thick in the air.
-                     <br/><br/>
-                     Choose your next action carefully.
+              {/* Typewriter Event Text Area */}
+              <div style={{ backgroundColor: '#0e0e0e', padding: '2rem', border: '1px solid #5a403c', minHeight: '200px' }}>
+                  <p style={{ fontSize: '1.2rem', lineHeight: '1.6', color: '#ffb4a8' }}>
+                     {typedText}<span style={{ animation: 'blink 1s step-end infinite' }}>_</span>
                   </p>
               </div>
+              <style dangerouslySetInnerHTML={{__html: `
+                @keyframes blink { 50% { opacity: 0; } }
+              `}} />
 
+              {/* Action Choices */}
               <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
                   <button onClick={() => store.modifyStat('noise', 5)} style={{ flex: 1, padding: '1rem', backgroundColor: '#201f1f', color: '#e5e2e1', border: '1px solid #5a403c', cursor: 'pointer' }}>
                       SCAVENGE (HIGH NOISE)
                   </button>
-                  <button onClick={() => store.modifyStat('hp', -10)} style={{ flex: 1, padding: '1rem', backgroundColor: '#201f1f', color: '#e5e2e1', border: '1px solid #5a403c', cursor: 'pointer' }}>
-                      FIGHT IN DARKNESS (HP COST)
+                  <button onClick={() => store.modifyStat('hp', -20)} style={{ flex: 1, padding: '1rem', backgroundColor: '#313030', color: '#ffb4a8', border: '1px solid #8b0000', cursor: 'pointer' }}>
+                      FIGHT BUTCHER (HP COST)
                   </button>
-                  <button onClick={() => store.extractToHub()} style={{ flex: 1, padding: '1rem', backgroundColor: '#313030', color: '#ffb4a8', border: '1px solid #8b0000', cursor: 'pointer' }}>
+                  <button onClick={() => store.extractToHub()} style={{ flex: 1, padding: '1rem', backgroundColor: '#201f1f', color: '#8adb4d', border: '1px solid #56a315', cursor: 'pointer' }}>
                       EXTRACT (RETURN TO HUB)
                   </button>
               </div>
