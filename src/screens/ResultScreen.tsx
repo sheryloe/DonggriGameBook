@@ -30,7 +30,11 @@ export default function ResultScreen() {
         />
         <article className="narrative-card">
           <p>{outcome.summary}</p>
-          <p>{outcome.campaign_complete ? "CH05까지 완료했다. 다음 데이터가 없으므로 캠페인을 종료한다." : "다음 챕터 브리핑으로 이어진다."}</p>
+          <p>
+            {outcome.campaign_complete
+              ? "CH05까지 완료했다. 다음 챕터가 없으므로 캠페인을 종료한다."
+              : "다음 챕터 브리핑으로 이어진다."}
+          </p>
           {!outcome.campaign_complete ? (
             <button className="primary-button" onClick={() => advanceToNextChapter()}>
               다음 챕터 진입

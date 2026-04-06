@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import ArtFrame from "./ArtFrame";
 import { useGameStore } from "../store/gameStore";
 import { selectQuestTracksWithStatus } from "../store/selectors";
@@ -21,6 +21,7 @@ function questIconPath(itemId: string): string {
 
 export default function QuestTrackPanel({ chapterId, title = "Quest Tracks", compact = false }: QuestTrackPanelProps) {
   const tracks = useGameStore((state) => selectQuestTracksWithStatus(state, chapterId));
+  const [expanded, setExpanded] = useState(false);
 
   const fallbackByChapter = useMemo(
     () => ({
@@ -37,7 +38,22 @@ export default function QuestTrackPanel({ chapterId, title = "Quest Tracks", com
     return null;
   }
 
-  const visibleTracks = compact ? tracks.slice(0, 4) : tracks;
+  const orderedTracks = useMemo(() => {
+    return [...tracks].sort((left, right) => {
+      if (left.kind === right.kind) {
+        return left.title.localeCompare(right.title);
+      }
+      return left.kind === "main" ? -1 : 1;
+    });
+  }, [tracks]);
+
+  const unlockedTracks = orderedTracks.filter((track) => track.status !== "locked");
+  const primaryTracks = [
+    ...unlockedTracks.filter((track) => track.kind === "main").slice(0, 1),
+    ...unlockedTracks.filter((track) => track.kind !== "main").slice(0, 2)
+  ];
+  const visibleTracks = compact && !expanded ? primaryTracks : orderedTracks;
+  const canToggle = compact && orderedTracks.length > visibleTracks.length;
 
   return (
     <section className={`quest-panel ${compact ? "quest-panel-compact" : ""}`.trim()}>
@@ -46,16 +62,21 @@ export default function QuestTrackPanel({ chapterId, title = "Quest Tracks", com
           <span className="eyebrow">{title}</span>
           <h3>Quest Progress</h3>
         </div>
-        <span className="muted-copy">{chapterId}</span>
+        <div className="quest-panel-actions">
+          {canToggle ? (
+            <button type="button" className="ghost-button quest-panel-toggle" onClick={() => setExpanded((prev) => !prev)}>
+              {expanded ? "접기" : "전체 보기"}
+            </button>
+          ) : null}
+          <span className="muted-copy">{chapterId}</span>
+        </div>
       </header>
 
       <div className="quest-track-grid">
         {visibleTracks.map((track) => {
           const fallback = fallbackByChapter[chapterId] ?? FALLBACK_POSTER;
           const artKey = track.quest_item_id ? questArtPath(track.quest_item_id) : fallback;
-          const fallbackKeys = track.quest_item_id
-            ? [questIconPath(track.quest_item_id), fallback]
-            : [fallback];
+          const fallbackKeys = track.quest_item_id ? [questIconPath(track.quest_item_id), fallback] : [fallback];
 
           return (
             <article key={track.quest_track_id} className={`quest-track-card ${track.status}`.trim()}>

@@ -1262,6 +1262,20 @@ button {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
+.quest-panel-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.quest-panel-toggle {
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 0.82rem;
+}
+
 .quest-panel-compact .quest-track-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1283,6 +1297,10 @@ button {
   border: 1px solid rgba(120, 150, 130, 0.25);
 }
 
+.quest-panel-compact .quest-track-card {
+  grid-template-columns: 90px 1fr;
+}
+
 .quest-track-card.locked {
   opacity: 0.8;
 }
@@ -1291,6 +1309,10 @@ button {
   height: 110px;
   border-radius: 12px;
   overflow: hidden;
+}
+
+.quest-panel-compact .quest-track-art {
+  height: 90px;
 }
 
 .quest-track-body {

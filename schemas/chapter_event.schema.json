@@ -72,6 +72,12 @@
         "$ref": "#/$defs/objective"
       }
     },
+    "quest_tracks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/questTrack"
+      }
+    },
     "nodes": {
       "type": "array",
       "items": {
@@ -113,6 +119,55 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "questTrack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quest_track_id",
+        "kind",
+        "title",
+        "summary"
+      ],
+      "properties": {
+        "quest_track_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "main",
+            "side"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "entry_event_id": {
+          "type": "string"
+        },
+        "completion_event_id": {
+          "type": "string"
+        },
+        "objective_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unlock_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reveal_cap": {
+          "type": "string"
         }
       }
     },
@@ -271,6 +326,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "allow_multi_choice": {
+          "type": "boolean"
         }
       }
     },

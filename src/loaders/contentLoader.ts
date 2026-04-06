@@ -205,6 +205,7 @@ function normalizeChapter(raw: RawChapterPackage): ChapterDefinition {
     recommended_level: raw.recommended_level,
     ui_profile: raw.ui_profile,
     objectives: raw.objectives,
+    quest_tracks: raw.quest_tracks ?? [],
     nodes: raw.nodes,
     nodes_by_id: mapById(raw.nodes, "node_id"),
     node_order: raw.nodes.map((node) => node.node_id),

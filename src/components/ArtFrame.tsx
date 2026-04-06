@@ -3,22 +3,37 @@ import { resolveAssetKey } from "../loaders/contentLoader";
 
 interface ArtFrameProps {
   assetKey?: string | null;
+  fallbackAssetKeys?: Array<string | null | undefined>;
   chapterId?: string;
   alt: string;
   className?: string;
   caption?: string;
 }
 
-export default function ArtFrame({ assetKey, chapterId, alt, className, caption }: ArtFrameProps) {
+function dedupe(values: string[]): string[] {
+  return [...new Set(values)];
+}
+
+export default function ArtFrame({ assetKey, fallbackAssetKeys, chapterId, alt, className, caption }: ArtFrameProps) {
   const resolution = resolveAssetKey(assetKey, chapterId);
-  const sources = [resolution.src, ...resolution.fallback_srcs].filter(
-    (source): source is string => Boolean(source)
+  const fallbackSources = (fallbackAssetKeys ?? [])
+    .filter((fallbackKey): fallbackKey is string => Boolean(fallbackKey))
+    .flatMap((fallbackKey) => {
+      const fallbackResolution = resolveAssetKey(fallbackKey, chapterId);
+      return [fallbackResolution.src, ...fallbackResolution.fallback_srcs];
+    })
+    .filter((source): source is string => Boolean(source));
+
+  const sources = dedupe(
+    [resolution.src, ...resolution.fallback_srcs, ...fallbackSources].filter(
+      (value): value is string => Boolean(value)
+    )
   );
   const [sourceIndex, setSourceIndex] = useState(0);
 
   useEffect(() => {
     setSourceIndex(0);
-  }, [assetKey, chapterId]);
+  }, [assetKey, chapterId, fallbackAssetKeys]);
 
   const source = sources[sourceIndex];
 

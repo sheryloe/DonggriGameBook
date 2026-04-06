@@ -22,7 +22,7 @@ export default function LootScreen() {
       <header className="section-head">
         <div>
           <span className="eyebrow">Loot Resolution</span>
-          <h2>획득 가능 자산</h2>
+          <h2>획득 자산</h2>
         </div>
       </header>
       <div className="inventory-grid">
@@ -45,13 +45,13 @@ export default function LootScreen() {
       </div>
       <div className="action-row">
         <button className="primary-button" onClick={() => commitLootSelection(activeSelection)}>
-          선택 아이템 확보
+          선택 아이템 확정
         </button>
         <button className="ghost-button" onClick={() => commitLootSelection()}>
-          전부 확보
+          전체 확정
         </button>
         <button className="ghost-button" onClick={() => closeLootSession()}>
-          폐기 후 복귀
+          가져가지 않음
         </button>
       </div>
     </section>

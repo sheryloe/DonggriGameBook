@@ -1,4 +1,5 @@
-﻿import ArtFrame from "../components/ArtFrame";
+import ArtFrame from "../components/ArtFrame";
+import ObjectivesPanel from "../components/ObjectivesPanel";
 import QuestTrackPanel from "../components/QuestTrackPanel";
 import InventoryPanel from "../components/InventoryPanel";
 import { useGameStore } from "../store/gameStore";
@@ -41,9 +42,6 @@ export default function BriefingScreen() {
   const chapter = useGameStore(selectCurrentChapter);
   const chapterId = useGameStore((state) => state.runtime.current_chapter_id);
   const startMission = useGameStore((state) => state.startMission);
-  const objectiveCompletion = useGameStore(
-    (state) => state.runtime.chapter_progress[state.runtime.current_chapter_id]?.objective_completion ?? {}
-  );
 
   const chapterKeyart = `chapter_keyart_${chapterId.toLowerCase()}`;
   const questItems = QUEST_ITEMS_BY_CHAPTER[chapterId] ?? [];
@@ -68,18 +66,12 @@ export default function BriefingScreen() {
         <article className="narrative-card">
           <p>{chapter?.role ?? "작전 설명을 불러오는 중이다."}</p>
 
-          <QuestTrackPanel chapterId={chapterId} title="Quest Tracks" />
+          <QuestTrackPanel chapterId={chapterId} title="Quest Tracks" compact />
+          <ObjectivesPanel compact title="Objectives" />
 
-          <ul className="objective-list">
-            {chapter?.objectives.map((objective) => (
-              <li key={objective.objective_id} className={objectiveCompletion[objective.objective_id] ? "is-complete" : ""}>
-                <strong>{objective.text}</strong>
-                <span>{objective.required ? "필수" : "선택"}</span>
-              </li>
-            ))}
-          </ul>
-
-          <button className="primary-button" onClick={handleStartMission}>작전 시작</button>
+          <button className="primary-button" onClick={handleStartMission}>
+            작전 시작
+          </button>
         </article>
 
         <aside className="screen-side-stack">
@@ -88,10 +80,7 @@ export default function BriefingScreen() {
             <div className="briefing-visual-grid">
               <ArtFrame
                 assetKey={chapterKeyart}
-                fallbackAssetKeys={[
-                  MAP_PANEL_BY_CHAPTER[chapterId],
-                  "bg_yeouido_ashroad"
-                ]}
+                fallbackAssetKeys={[MAP_PANEL_BY_CHAPTER[chapterId], "bg_yeouido_ashroad"]}
                 chapterId={chapterId}
                 alt={`${chapterId} keyart`}
                 className="briefing-visual-large"

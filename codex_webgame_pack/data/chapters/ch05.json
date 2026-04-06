@@ -1506,7 +1506,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_pangyo_lobby",
-        "music_key": "terminal_hum"
+        "music_key": "terminal_hum",
+        "widget_overrides": []
       },
       "text": {
         "summary": "로비 감시망을 스캔해 위협 위치를 파악한다.",
@@ -1830,7 +1831,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_cooling_room",
-        "music_key": "cooling_hum"
+        "music_key": "cooling_hum",
+        "widget_overrides": []
       },
       "text": {
         "summary": "냉각 설비가 폭주하며 적이 몰려온다.",
@@ -1899,7 +1901,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_arkp_serverhall",
-        "music_key": "server_chorus"
+        "music_key": "server_chorus",
+        "widget_overrides": []
       },
       "text": {
         "summary": "ARK-P 릴레이를 잠그거나 우회해야 한다.",
@@ -1964,7 +1967,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_arkp_exit",
-        "music_key": "lab_tension"
+        "music_key": "lab_tension",
+        "widget_overrides": []
       },
       "text": {
         "summary": "미러 라인스 진입 전 코어를 보호할 준비를 한다.",

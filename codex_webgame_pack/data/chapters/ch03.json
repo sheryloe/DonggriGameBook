@@ -1192,7 +1192,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_service_stair",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "유리 파편이 쏟아지며 매복이 시작된다.",
@@ -1254,7 +1255,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_power_room",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "전력 분기에서 순간 정전이 발생한다.",
@@ -1339,7 +1341,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_skybridge",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "스카이브리지 끝에서 구조 요청이 다시 들린다.",
@@ -1855,7 +1858,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_rooftop_escape",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "유리정원 진입 전 마지막 점검을 한다.",
@@ -1921,7 +1925,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_basement_cache",
-        "music_key": "basement_safe"
+        "music_key": "basement_safe",
+        "widget_overrides": []
       },
       "text": {
         "summary": "지하 구역을 훑어보며 이동 경로를 확정한다.",
@@ -2036,7 +2041,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_jamsil_showroom",
-        "music_key": "glass_creak"
+        "music_key": "glass_creak",
+        "widget_overrides": []
       },
       "text": {
         "summary": "전시장 뒤편의 보급 라인이 열려 있다.",
@@ -2088,7 +2094,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_jamsil_showroom",
-        "music_key": "glass_creak"
+        "music_key": "glass_creak",
+        "widget_overrides": []
       },
       "text": {
         "summary": "고급 전시장과 라운지에서 파밍을 반복할 수 있다.",
@@ -2156,7 +2163,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_power_room",
-        "music_key": "power_hum"
+        "music_key": "power_hum",
+        "widget_overrides": []
       },
       "text": {
         "summary": "분배 직후 과부하 경고가 울린다.",
@@ -2283,7 +2291,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_jamsil_lobby",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "상층 라운지에 비축 물자가 남아 있다.",
@@ -2340,7 +2349,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_skybridge",
-        "music_key": "glass_creak"
+        "music_key": "glass_creak",
+        "widget_overrides": []
       },
       "text": {
         "summary": "돌풍이 유리 교각을 뒤흔든다.",
@@ -2406,7 +2416,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_rooftop_escape",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "보스전에 앞서 장비를 정비할 마지막 기회다.",
@@ -2474,7 +2485,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "boss_glassgarden",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "유리정원 중심부가 드러난다.",

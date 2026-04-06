@@ -26,7 +26,7 @@ export default function InventoryPanel({ compact = false }: InventoryPanelProps)
   );
 
   return (
-    <section className={`inventory-panel ${compact ? "inventory-panel-compact" : ""}`}>
+    <section className={`inventory-panel ${compact ? "inventory-panel-compact" : ""}`.trim()}>
       <header className="section-head">
         <div>
           <span className="eyebrow">Inventory</span>

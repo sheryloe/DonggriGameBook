@@ -1,11 +1,11 @@
 import { useGameStore } from "../store/gameStore";
 
 const ACTIONS = [
-  { id: "attack", label: "압박 사격" },
-  { id: "skill", label: "전술 스킬" },
-  { id: "item", label: "소모품 사용" },
+  { id: "attack", label: "기본 공격" },
+  { id: "skill", label: "스킬 사용" },
+  { id: "item", label: "아이템 사용" },
   { id: "move", label: "측면 이동" },
-  { id: "withdraw", label: "퇴각" }
+  { id: "withdraw", label: "철수" }
 ] as const;
 
 export default function BattleScreen() {

@@ -130,6 +130,7 @@ export interface GameStoreActions {
   triggerEvent: (eventId?: string) => { ok: true } | { ok: false; reason: string };
   canSelectChoice: (choiceId: string) => boolean;
   applyChoice: (choiceId: string) => { ok: true } | { ok: false; reason: string };
+  applyChoices: (choiceIds: string[]) => { ok: true } | { ok: false; reason: string };
   grantLoot: (lootTableId: string, sourceEventId: string, pendingNextEventId?: string | null) => void;
   commitLootSelection: (itemIds?: string[]) => void;
   closeLootSession: () => void;
@@ -791,6 +792,112 @@ function applyChoiceRuntimeLocal(runtime: RuntimeSnapshot, content: GameContentP
   };
 }
 
+function applyChoicesRuntimeLocal(runtime: RuntimeSnapshot, content: GameContentPack, choiceIds: string[]): RuntimeResult {
+  const event = currentEvent(content, runtime);
+  if (!event) {
+    return {
+      runtime,
+      warnings: [makeWarning("No active event is available for the selected choices.", "choice", "error")]
+    };
+  }
+
+  const uniqueIds = [...new Set(choiceIds)];
+  const selectedChoices = uniqueIds
+    .map((choiceId) => event.choices.find((entry) => entry.choice_id === choiceId))
+    .filter((choice): choice is EventDefinition["choices"][number] => Boolean(choice));
+
+  if (!selectedChoices.length) {
+    return {
+      runtime,
+      warnings: [makeWarning("No valid choices were selected.", "choice", "error")]
+    };
+  }
+
+  const warnings: RuntimeWarning[] = [];
+  for (const choice of selectedChoices) {
+    if (!canSelectChoiceWithContent(event.event_id, choice.choice_id, runtime, content, warnings)) {
+      return { runtime, warnings };
+    }
+  }
+
+  let nextRuntime = markEventCompleted(runtime, event.event_id, selectedChoices[selectedChoices.length - 1].choice_id);
+  const grantedLoot: ReturnType<typeof applyEffects>["grantedLoot"] = [];
+  const effectWarnings: RuntimeWarning[] = [];
+
+  for (const choice of selectedChoices) {
+    const effectResolution = applyEffects(nextRuntime, content, choice.effects, `choice:${choice.choice_id}`);
+    nextRuntime = effectResolution.runtime;
+    grantedLoot.push(...effectResolution.grantedLoot);
+    effectWarnings.push(...effectResolution.warnings);
+  }
+
+  const completionResolution = applyEffects(nextRuntime, content, event.on_complete_effects, `event:${event.event_id}:complete`);
+  nextRuntime = recomputeObjectivesForRuntime(applyInventoryRecalc(completionResolution.runtime, content), content);
+
+  const combinedWarnings = [...warnings, ...effectWarnings, ...completionResolution.warnings];
+  const nextEventIds = new Set(
+    selectedChoices.map((choice) => choice.next_event_id ?? event.next_event_id ?? null).filter(Boolean)
+  );
+  const nextEventId = selectedChoices[selectedChoices.length - 1].next_event_id ?? event.next_event_id ?? null;
+
+  if (nextEventIds.size > 1) {
+    combinedWarnings.push(
+      makeWarning(
+        `Multiple next_event_id values were selected in ${event.event_id}; using ${nextEventId ?? "none"}.`,
+        "choice",
+        "warning"
+      )
+    );
+  }
+
+  if (grantedLoot.length) {
+    return {
+      runtime: withScreen(
+        {
+          ...nextRuntime,
+          loot_session: {
+            loot_table_id: grantedLoot.map((drop) => drop.item_id).join("+"),
+            source_chapter_id: nextRuntime.current_chapter_id,
+            source_node_id: nextRuntime.current_node_id ?? event.node_id,
+            source_event_id: event.event_id,
+            drops: grantedLoot,
+            pending_next_event_id: nextEventId ?? null,
+            return_screen: "event_dialogue"
+          }
+        },
+        content,
+        "loot_resolution"
+      ),
+      warnings: combinedWarnings
+    };
+  }
+
+  if (nextEventId?.startsWith("END_")) {
+    const chapterResult = completeChapterRuntimeLocal(nextRuntime, content, nextEventId);
+    return {
+      runtime: chapterResult.runtime,
+      warnings: [...combinedWarnings, ...chapterResult.warnings]
+    };
+  }
+
+  if (nextEventId) {
+    const chainedRuntime = {
+      ...nextRuntime,
+      current_node_id: currentChapter(content, nextRuntime)?.events_by_id[nextEventId]?.node_id ?? nextRuntime.current_node_id
+    };
+    const chainResult = triggerEventRuntimeLocal(chainedRuntime, content, nextEventId);
+    return {
+      runtime: chainResult.runtime,
+      warnings: [...combinedWarnings, ...chainResult.warnings]
+    };
+  }
+
+  return {
+    runtime: withScreen(nextRuntime, content, "world_map"),
+    warnings: combinedWarnings
+  };
+}
+
 function startBattleRuntimeLocal(runtime: RuntimeSnapshot, content: GameContentPack): RuntimeResult {
   const event = currentEvent(content, runtime);
   if (!event?.combat) {
@@ -1157,6 +1264,19 @@ export const useGameStore = create<GameStore>()(
         }
 
         const outcome = applyChoiceRuntimeLocal(get().runtime, content, choiceId);
+        set((state) => withResult(state, outcome.runtime, outcome.warnings));
+        return outcome.warnings.some((warning) => warning.severity === "error")
+          ? { ok: false as const, reason: lastWarningMessage(outcome.warnings) }
+          : { ok: true as const };
+      },
+
+      applyChoices: (choiceIds) => {
+        const content = get().content;
+        if (!content) {
+          return { ok: false as const, reason: "Content is not loaded." };
+        }
+
+        const outcome = applyChoicesRuntimeLocal(get().runtime, content, choiceIds);
         set((state) => withResult(state, outcome.runtime, outcome.warnings));
         return outcome.warnings.some((warning) => warning.severity === "error")
           ? { ok: false as const, reason: lastWarningMessage(outcome.warnings) }

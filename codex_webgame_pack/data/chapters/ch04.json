@@ -995,7 +995,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_rail_transfer",
-        "music_key": "industrial_tension"
+        "music_key": "industrial_tension",
+        "widget_overrides": []
       },
       "text": {
         "summary": "레일 인계장에 잔해와 적이 얽혀 있다.",
@@ -1268,7 +1269,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "portrait_han_somyeong",
-        "music_key": "warehouse_safe"
+        "music_key": "warehouse_safe",
+        "widget_overrides": []
       },
       "text": {
         "summary": "현장 상인이 장비 교환을 제안한다.",
@@ -1647,7 +1649,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_sorting_hall",
-        "music_key": "printer_static"
+        "music_key": "printer_static",
+        "widget_overrides": []
       },
       "text": {
         "summary": "분류 라인을 재가동해 이동로를 확보한다.",
@@ -1712,7 +1715,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_delivery_tunnel",
-        "music_key": "industrial_low"
+        "music_key": "industrial_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "터널 끝에서 비상 보급 캐시를 발견한다.",

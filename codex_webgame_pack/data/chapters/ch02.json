@@ -1112,7 +1112,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_dongjak_culvert",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "제어실 전원을 정리해 배수문을 열 준비를 한다.",
@@ -2184,7 +2185,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_noryangjin_market",
-        "music_key": "market_dread"
+        "music_key": "market_dread",
+        "widget_overrides": []
       },
       "text": {
         "summary": "침수 구간의 흐름을 스캔해 진입로를 선택한다.",
@@ -2266,7 +2268,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_cold_storage",
-        "music_key": "under_market"
+        "music_key": "under_market",
+        "widget_overrides": []
       },
       "text": {
         "summary": "수면 아래에서 매복한 무리가 돌진한다.",
@@ -2335,7 +2338,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_flooded_market",
-        "music_key": "market_dread"
+        "music_key": "market_dread",
+        "widget_overrides": []
       },
       "text": {
         "summary": "뒤편 창고와 얼음 상자에서 보급품을 수색한다.",
@@ -2403,7 +2407,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_flooded_market",
-        "music_key": "market_dread"
+        "music_key": "market_dread",
+        "widget_overrides": []
       },
       "text": {
         "summary": "남은 상자와 파손된 냉동고를 더 뒤질 수 있다.",
@@ -2471,7 +2476,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_cold_storage",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "냉각로 안쪽에 보급품과 배선이 남아 있다.",
@@ -2539,7 +2545,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "portrait_jung_noah",
-        "music_key": "under_market"
+        "music_key": "under_market",
+        "widget_overrides": []
       },
       "text": {
         "summary": "천막촌 장부에 검역 패스 거래 루트가 적혀 있다.",
@@ -2602,7 +2609,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_flooded_pier",
-        "music_key": "pier_tension"
+        "music_key": "pier_tension",
+        "widget_overrides": []
       },
       "text": {
         "summary": "보트 엔진과 선착장 장비를 점검한다.",
@@ -2670,7 +2678,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_sluice_control",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "제어실 주변을 정리해 보스전에 대비한다.",

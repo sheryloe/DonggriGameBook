@@ -228,6 +228,18 @@ export interface ObjectiveDefinition {
   complete_when: RequirementExpression[];
 }
 
+export interface QuestTrackDefinition {
+  quest_track_id: string;
+  kind: "main" | "side";
+  title: string;
+  summary: string;
+  entry_event_id?: EventId;
+  completion_event_id?: EventId;
+  objective_ids?: string[];
+  unlock_when?: RequirementExpression[];
+  reveal_cap?: string;
+}
+
 export interface ConnectionCost {
   time: number;
   noise: number;
@@ -280,6 +292,7 @@ export interface EventPresentation {
   art_key: string;
   music_key: string;
   widget_overrides: string[];
+  allow_multi_choice?: boolean;
 }
 
 export interface EventTextBlock {
@@ -330,6 +343,7 @@ export interface RawChapterPackage {
     special_widgets: string[];
   };
   objectives: ObjectiveDefinition[];
+  quest_tracks?: QuestTrackDefinition[];
   nodes: MapNode[];
   events: EventDefinition[];
   boss_event_id?: EventId;
@@ -347,6 +361,7 @@ export interface ChapterDefinition {
     special_widgets: string[];
   };
   objectives: ObjectiveDefinition[];
+  quest_tracks: QuestTrackDefinition[];
   nodes: MapNode[];
   nodes_by_id: Record<NodeId, MapNode>;
   node_order: NodeId[];
