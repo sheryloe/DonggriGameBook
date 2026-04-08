@@ -1,4 +1,5 @@
 import { useGameStore } from '../store/gameStore';
+import { isOverencumbered } from './inventoryHelper';
 
 export const runEffect = (effect: { op: string; target: string; value: any }) => {
     const { op, target, value } = effect;
@@ -6,10 +7,17 @@ export const runEffect = (effect: { op: string; target: string; value: any }) =>
 
     switch(op) {
         case 'modify_stat':
-            store.modifyStat(target, value);
+            // 과적 상태일 때, 이동/행동 시 소음이 발생하면 추가 소음 페널티 적용
+            let finalValue = value;
+            if (target === 'noise' && value > 0 && isOverencumbered()) {
+                finalValue += 3; // 무거워서 달그락거리는 소리 추가
+                console.warn("[SYSTEM] 과적 상태로 인해 추가 소음이 발생했습니다.");
+            }
+
+            store.modifyStat(target, finalValue);
+
             if (target === 'hp' && store.stats.hp <= 0) {
                  store.dieAndLoseLoot();
-                 // Custom event handling can go here (e.g. playing death sound)
             }
             break;
         case 'grant_item':
