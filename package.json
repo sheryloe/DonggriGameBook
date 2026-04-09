@@ -3,9 +3,27 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "content:generate:part2-4": "node scripts/generate-part2-4-content.mjs",
+    "asset-prompts:generate": "node scripts/generate-asset-prompt-pack.mjs",
+    "dev:part1": "vite --config apps/part1/vite.config.ts",
+    "build:part1": "vite build --config apps/part1/vite.config.ts",
+    "dev:part2": "vite --config apps/part2/vite.config.ts",
+    "build:part2": "vite build --config apps/part2/vite.config.ts",
+    "dev:part3": "vite --config apps/part3/vite.config.ts",
+    "build:part3": "vite build --config apps/part3/vite.config.ts",
+    "dev:part4": "vite --config apps/part4/vite.config.ts",
+    "build:part4": "vite build --config apps/part4/vite.config.ts",
+    "build:apps": "npm run build:part1 && npm run build:part2 && npm run build:part3 && npm run build:part4",
+    "dev:server": "npm --prefix server run dev",
+    "build:server": "npm --prefix server run build",
     "preview": "vite preview",
     "repo:audit-assets": "bash scripts/audit-assets.sh",
     "ops:csv-gate-sync": "node scripts/csv-gate-sync.mjs",
@@ -14,6 +32,7 @@
     "nano:logout": "node scripts/gemini-nano.mjs --logout"
   },
   "dependencies": {
+    "@apps-in-toss/web-framework": "^2.4.3",
     "ajv": "^8.18.0",
     "dotenv": "^17.2.3",
     "google-auth-library": "^10.4.1",

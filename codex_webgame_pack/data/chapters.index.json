@@ -26,6 +26,81 @@
       "chapter_id": "CH05",
       "title": "미러센터",
       "file": "data/chapters/ch05.json"
+    },
+    {
+      "chapter_id": "CH06",
+      "title": "하강 관문",
+      "file": "data/chapters/ch06.json"
+    },
+    {
+      "chapter_id": "CH07",
+      "title": "적색 회랑",
+      "file": "data/chapters/ch07.json"
+    },
+    {
+      "chapter_id": "CH08",
+      "title": "봉쇄선의 방",
+      "file": "data/chapters/ch08.json"
+    },
+    {
+      "chapter_id": "CH09",
+      "title": "연기 저장고",
+      "file": "data/chapters/ch09.json"
+    },
+    {
+      "chapter_id": "CH10",
+      "title": "침하 항만",
+      "file": "data/chapters/ch10.json"
+    },
+    {
+      "chapter_id": "CH11",
+      "title": "철의 우회",
+      "file": "data/chapters/ch11.json"
+    },
+    {
+      "chapter_id": "CH12",
+      "title": "잔향 기지",
+      "file": "data/chapters/ch12.json"
+    },
+    {
+      "chapter_id": "CH13",
+      "title": "백색 야적장",
+      "file": "data/chapters/ch13.json"
+    },
+    {
+      "chapter_id": "CH14",
+      "title": "해무 변전소",
+      "file": "data/chapters/ch14.json"
+    },
+    {
+      "chapter_id": "CH15",
+      "title": "격리 파수",
+      "file": "data/chapters/ch15.json"
+    },
+    {
+      "chapter_id": "CH16",
+      "title": "균열 사구",
+      "file": "data/chapters/ch16.json"
+    },
+    {
+      "chapter_id": "CH17",
+      "title": "파편 수문",
+      "file": "data/chapters/ch17.json"
+    },
+    {
+      "chapter_id": "CH18",
+      "title": "소금 정거장",
+      "file": "data/chapters/ch18.json"
+    },
+    {
+      "chapter_id": "CH19",
+      "title": "외해 전초",
+      "file": "data/chapters/ch19.json"
+    },
+    {
+      "chapter_id": "CH20",
+      "title": "독도의 문",
+      "file": "data/chapters/ch20.json"
     }
   ]
 }

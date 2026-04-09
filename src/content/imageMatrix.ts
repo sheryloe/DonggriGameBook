@@ -1,3 +1,4 @@
+import { IMPLEMENTED_CHAPTER_IDS, getChapterRuntimeConfig } from "../../packages/world-registry/src";
 import type { AssetGenerationJob, AssetModelRoute, ChapterId } from "../types/game";
 
 export interface ImageMatrixEntry {
@@ -24,13 +25,12 @@ export const EXISTING_IMAGE_FALLBACKS = [
   "img/게임 오버 연출.png"
 ] as const;
 
-export const CHAPTER_DEFAULT_ART_KEYS: Record<ChapterId, string> = {
-  CH01: "bg_yeouido_ashroad",
-  CH02: "bg_noryangjin_market",
-  CH03: "bg_jamsil_lobby",
-  CH04: "bg_tancheon_embankment",
-  CH05: "bg_pangyo_interchange"
-};
+export const CHAPTER_DEFAULT_ART_KEYS: Record<ChapterId, string> = Object.fromEntries(
+  IMPLEMENTED_CHAPTER_IDS.map((chapterId) => [
+    chapterId,
+    getChapterRuntimeConfig(chapterId)?.default_art_key ?? `chapter_${chapterId.toLowerCase()}_placeholder`
+  ])
+) as Record<ChapterId, string>;
 
 function entry(
   key: string,

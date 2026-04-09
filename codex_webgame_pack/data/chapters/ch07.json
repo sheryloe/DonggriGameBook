@@ -1,0 +1,706 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH07",
+  "title": "적색 회랑",
+  "role": "여의도 대기 명단 구조와 추격전",
+  "entry_node_id": "CH07_N01",
+  "exit_node_ids": [
+    "CH07_N05"
+  ],
+  "recommended_level": 7,
+  "ui_profile": {
+    "theme": "red_corridor_pursuit",
+    "special_widgets": [
+      "checkpoint_priority",
+      "route_compare",
+      "crowd_pressure",
+      "red_line_alarm",
+      "escort_manifest",
+      "pursuit_meter"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch07_01",
+      "text": "붉은 비상 회랑에 진입한다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch07_entry"
+      ]
+    },
+    {
+      "objective_id": "obj_ch07_02",
+      "text": "붕괴 고가 하부에서 주 경로를 확정한다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch07_route_locked"
+      ]
+    },
+    {
+      "objective_id": "obj_ch07_03",
+      "text": "중계선 출구 펌프실의 핵심 압박을 돌파한다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch07_anchor_secured"
+      ]
+    },
+    {
+      "objective_id": "obj_ch07_04",
+      "text": "붉은 신호탄",
+      "required": false,
+      "complete_when": [
+        "flag:ch07_side_a_done"
+      ]
+    },
+    {
+      "objective_id": "obj_ch07_05",
+      "text": "끊긴 라디오",
+      "required": false,
+      "complete_when": [
+        "flag:ch07_side_b_done"
+      ]
+    }
+  ],
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch07_main",
+      "kind": "main",
+      "title": "적색 회랑",
+      "summary": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.",
+      "entry_event_id": "EV_CH07_ENTRY",
+      "completion_event_id": "EV_CH07_BOSS",
+      "objective_ids": [
+        "obj_ch07_01",
+        "obj_ch07_02",
+        "obj_ch07_03"
+      ],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch07_side_a",
+      "kind": "side",
+      "title": "붉은 신호탄",
+      "summary": "고립 생존자에게 신호탄 상자를 전달하거나 회수한다.",
+      "entry_event_id": "EV_CH07_SIDE_A",
+      "completion_event_id": "EV_CH07_SIDE_A",
+      "objective_ids": [
+        "obj_ch07_04"
+      ],
+      "unlock_when": [
+        "flag:ch07_anchor_secured"
+      ],
+      "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch07_side_b",
+      "kind": "side",
+      "title": "끊긴 라디오",
+      "summary": "회랑 내부 거래 채널을 복구해 우회 시간을 확보한다.",
+      "entry_event_id": "EV_CH07_SIDE_B",
+      "completion_event_id": "EV_CH07_SIDE_B",
+      "objective_ids": [
+        "obj_ch07_05"
+      ],
+      "unlock_when": [
+        "flag:ch07_anchor_secured"
+      ],
+      "reveal_cap": "evidence"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "CH07_N01",
+      "name": "붉은 비상 회랑",
+      "node_type": "travel",
+      "description": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.의 시작점.",
+      "coordinates": {
+        "x": 10,
+        "y": 80
+      },
+      "encounter_table_id": "enc_ch07_corridor_field",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "CH07_N02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH07_ENTRY"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "entry",
+        "p2"
+      ]
+    },
+    {
+      "node_id": "CH07_N02",
+      "name": "붕괴 고가 하부",
+      "node_type": "branch",
+      "description": "P2 전용 허브 리듬을 여는 구간.",
+      "coordinates": {
+        "x": 28,
+        "y": 62
+      },
+      "encounter_table_id": "enc_ch07_corridor_field",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "connections": [
+        {
+          "to": "CH07_N03",
+          "travel_type": "corridor",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "CH07_N04",
+          "travel_type": "detour",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH07_ROUTE"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "route",
+        "red_corridor_pursuit"
+      ]
+    },
+    {
+      "node_id": "CH07_N03",
+      "name": "중계선 출구 펌프실",
+      "node_type": "exploration",
+      "description": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.",
+      "coordinates": {
+        "x": 52,
+        "y": 48
+      },
+      "encounter_table_id": "enc_ch07_corridor_field",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "connections": [
+        {
+          "to": "CH07_N04",
+          "travel_type": "service_route",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "CH07_N05",
+          "travel_type": "push_forward",
+          "requires": [
+            "flag:ch07_route_locked"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH07_ANCHOR"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "main",
+        "p2"
+      ]
+    },
+    {
+      "node_id": "CH07_N04",
+      "name": "회랑 잠금문",
+      "node_type": "branch",
+      "description": "인물형/세계관형 사이드 퀘스트를 처리하는 보조 구역.",
+      "coordinates": {
+        "x": 70,
+        "y": 58
+      },
+      "encounter_table_id": "enc_ch07_corridor_field",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "connections": [
+        {
+          "to": "CH07_N05",
+          "travel_type": "return_route",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH07_SIDE_A",
+        "EV_CH07_SIDE_B"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "side",
+        "red_corridor_pursuit"
+      ]
+    },
+    {
+      "node_id": "CH07_N05",
+      "name": "적색 추적자 대응 구역",
+      "node_type": "boss",
+      "description": "적색 추적자와 충돌하는 클라이맥스 구간.",
+      "coordinates": {
+        "x": 90,
+        "y": 32
+      },
+      "encounter_table_id": "enc_ch07_corridor_boss",
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "connections": [],
+      "event_ids": [
+        "EV_CH07_BOSS"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "boss",
+        "p2"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH07_ENTRY",
+      "event_type": "briefing",
+      "node_id": "CH07_N01",
+      "title": "적색 회랑 진입",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "ch07_red_corridor_pursuit_entry",
+        "music_key": "red_corridor",
+        "widget_overrides": [
+          "objective_panel",
+          "red_line_alarm",
+          "escort_manifest",
+          "pursuit_meter"
+        ]
+      },
+      "text": {
+        "summary": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.",
+        "body": [
+          "P2의 분위기는 적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박로 간다.",
+          "이번 장의 핵심은 여의도 대기 명단 구조와 추격전이다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jang_taehun"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch07_start",
+          "label": "임무 시작",
+          "conditions": [],
+          "preview": "이번 장의 메인 루프를 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch07_entry",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH07_ROUTE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH07_ROUTE",
+      "event_type": "choice",
+      "node_id": "CH07_N02",
+      "title": "회랑 선택 확정",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 90,
+      "conditions": [
+        "flag:ch07_entry"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch07_red_corridor_pursuit_route",
+        "music_key": "red_corridor",
+        "widget_overrides": [
+          "red_line_alarm",
+          "escort_manifest",
+          "pursuit_meter"
+        ]
+      },
+      "text": {
+        "summary": "남하 회랑의 첫 인상에서 경로를 고른다.",
+        "body": [
+          "공식선과 우회선 중 어떤 리듬으로 갈지 결정한다.",
+          "직선 추격, 검문 스캔, 패널 슬라이드, 빠른 경보 점멸을 화면 전환에 반영한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch07_official",
+          "label": "공식선 유지",
+          "conditions": [],
+          "preview": "안전하지만 느리다.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route",
+              "value": "p2_red_corridor_pursuit_official"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch07_route_locked",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH07_ANCHOR"
+        },
+        {
+          "choice_id": "ch07_detour",
+          "label": "우회선 강행",
+          "conditions": [],
+          "preview": "빠르지만 비용이 크다.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route",
+              "value": "p2_red_corridor_pursuit_detour"
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch07_route_locked",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH07_ANCHOR"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH07_ANCHOR",
+      "event_type": "dialogue",
+      "node_id": "CH07_N03",
+      "title": "적색 회랑 핵심 압박",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 80,
+      "conditions": [
+        "flag:ch07_route_locked"
+      ],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "ch07_red_corridor_pursuit_anchor",
+        "music_key": "red_corridor",
+        "widget_overrides": [
+          "event_card",
+          "red_line_alarm",
+          "escort_manifest",
+          "pursuit_meter"
+        ]
+      },
+      "text": {
+        "summary": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.",
+        "body": [
+          "핵심 NPC: npc_jang_taehun, npc_jung_noah",
+          "인물 앵커와 세계관 앵커를 동시에 밀어 넣는다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch07_anchor",
+          "label": "압박 돌파",
+          "conditions": [],
+          "preview": "사이드 퀘스트와 보스 구간을 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch07_anchor_secured",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH07_SIDE_A"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH07_SIDE_A",
+      "event_type": "exploration",
+      "node_id": "CH07_N04",
+      "title": "붉은 신호탄",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 70,
+      "conditions": [
+        "flag:ch07_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch07_red_corridor_pursuit_side_a",
+        "music_key": "red_corridor",
+        "widget_overrides": [
+          "choice_list",
+          "red_line_alarm"
+        ]
+      },
+      "text": {
+        "summary": "고립 생존자에게 신호탄 상자를 전달하거나 회수한다.",
+        "body": [
+          "인물형 사이드 퀘스트로 신뢰와 보급을 움직인다.",
+          "Part 2의 감정 리듬을 강화한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch07_side_a",
+          "label": "사이드 처리",
+          "conditions": [],
+          "preview": "신뢰와 보급을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch07_side_a_done",
+              "value": true
+            },
+            {
+              "op": "add_trust",
+              "target": "npc_jang_taehun",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH07_SIDE_B"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH07_SIDE_B",
+      "event_type": "exploration",
+      "node_id": "CH07_N04",
+      "title": "끊긴 라디오",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 69,
+      "conditions": [
+        "flag:ch07_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch07_red_corridor_pursuit_side_b",
+        "music_key": "red_corridor",
+        "widget_overrides": [
+          "choice_list",
+          "escort_manifest"
+        ]
+      },
+      "text": {
+        "summary": "회랑 내부 거래 채널을 복구해 우회 시간을 확보한다.",
+        "body": [
+          "세계관형 사이드 퀘스트로 다음 장의 연결고리를 선행 공개한다.",
+          "시각적으로는 적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박을 유지하되 더 깊은 공간감을 준다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch07_side_b",
+          "label": "기록 회수",
+          "conditions": [],
+          "preview": "다음 장의 연결고리를 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch07_side_b_done",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH07_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH07_BOSS",
+      "event_type": "combat",
+      "node_id": "CH07_N05",
+      "title": "적색 추적자 제압",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 120,
+      "conditions": [
+        "flag:ch07_route_locked",
+        "flag:ch07_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "ch07_red_corridor_pursuit_boss",
+        "music_key": "red_corridor_boss",
+        "widget_overrides": [
+          "boss_hp",
+          "red_line_alarm",
+          "escort_manifest",
+          "pursuit_meter"
+        ]
+      },
+      "text": {
+        "summary": "적색 추적자가 적색 회랑의 규칙을 물리적으로 강요한다.",
+        "body": [
+          "이번 전투는 파트별 톤 차이를 가장 강하게 보여주는 구간이다.",
+          "전투 뒤 바로 다음 장으로 밀려나는 감정 잔향이 붙는다."
+        ]
+      },
+      "npc_ids": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "combat": {
+        "encounter_table_id": "enc_ch07_corridor_boss",
+        "boss_id": "red_tracker",
+        "arena_tags": [
+          "red_corridor_pursuit",
+          "p2"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch07_boss_clear",
+            "value": true
+          },
+          {
+            "op": "set_flag",
+            "target": "flag:chapter_07_completed",
+            "value": true
+          },
+          {
+            "op": "unlock_route",
+            "target": "chapter:CH07:complete",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 18
+          },
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          }
+        ]
+      },
+      "choices": [
+        {
+          "choice_id": "ch07_engage",
+          "label": "보스 교전",
+          "conditions": [],
+          "preview": "클라이맥스 전투를 시작한다.",
+          "effects": [],
+          "next_event_id": "EV_CH07_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH07_BOSS"
+}

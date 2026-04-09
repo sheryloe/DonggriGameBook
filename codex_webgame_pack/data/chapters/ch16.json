@@ -1,0 +1,710 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH16",
+  "title": "균열 사구",
+  "role": "안보경 이후 역할 승계와 최종 허브 이동",
+  "entry_node_id": "CH16_N01",
+  "exit_node_ids": [
+    "CH16_N05"
+  ],
+  "recommended_level": 16,
+  "ui_profile": {
+    "theme": "fractured_dune_loss",
+    "special_widgets": [
+      "public_queue",
+      "ending_matrix",
+      "broadcast_prep",
+      "loss_loadout",
+      "rope_stability",
+      "salt_exposure"
+    ]
+  },
+  "objectives": [
+    {
+      "objective_id": "obj_ch16_01",
+      "text": "붕괴 해안로에 진입한다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch16_entry"
+      ]
+    },
+    {
+      "objective_id": "obj_ch16_02",
+      "text": "모래 침식 터널에서 주 경로를 확정한다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch16_route_locked"
+      ]
+    },
+    {
+      "objective_id": "obj_ch16_03",
+      "text": "임시 현수교의 핵심 압박을 돌파한다.",
+      "required": true,
+      "complete_when": [
+        "flag:ch16_anchor_secured"
+      ]
+    },
+    {
+      "objective_id": "obj_ch16_04",
+      "text": "붕괴 해안로 표식",
+      "required": false,
+      "complete_when": [
+        "flag:ch16_side_a_done"
+      ]
+    },
+    {
+      "objective_id": "obj_ch16_05",
+      "text": "떠내려온 구명함",
+      "required": false,
+      "complete_when": [
+        "flag:ch16_side_b_done"
+      ]
+    }
+  ],
+  "quest_tracks": [
+    {
+      "quest_track_id": "qt_ch16_main",
+      "kind": "main",
+      "title": "균열 사구",
+      "summary": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.",
+      "entry_event_id": "EV_CH16_ENTRY",
+      "completion_event_id": "EV_CH16_BOSS",
+      "objective_ids": [
+        "obj_ch16_01",
+        "obj_ch16_02",
+        "obj_ch16_03"
+      ],
+      "reveal_cap": "confirmation"
+    },
+    {
+      "quest_track_id": "qt_ch16_side_a",
+      "kind": "side",
+      "title": "붕괴 해안로 표식",
+      "summary": "후속 길잡이용 표식을 회수한다.",
+      "entry_event_id": "EV_CH16_SIDE_A",
+      "completion_event_id": "EV_CH16_SIDE_A",
+      "objective_ids": [
+        "obj_ch16_04"
+      ],
+      "unlock_when": [
+        "flag:ch16_anchor_secured"
+      ],
+      "reveal_cap": "evidence"
+    },
+    {
+      "quest_track_id": "qt_ch16_side_b",
+      "kind": "side",
+      "title": "떠내려온 구명함",
+      "summary": "해안에 밀려온 유품과 보급을 구한다.",
+      "entry_event_id": "EV_CH16_SIDE_B",
+      "completion_event_id": "EV_CH16_SIDE_B",
+      "objective_ids": [
+        "obj_ch16_05"
+      ],
+      "unlock_when": [
+        "flag:ch16_anchor_secured"
+      ],
+      "reveal_cap": "evidence"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "CH16_N01",
+      "name": "붕괴 해안로",
+      "node_type": "travel",
+      "description": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.의 시작점.",
+      "coordinates": {
+        "x": 10,
+        "y": 80
+      },
+      "encounter_table_id": "enc_ch16_dune_field",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [],
+      "connections": [
+        {
+          "to": "CH16_N02",
+          "travel_type": "walk",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH16_ENTRY"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "entry",
+        "p4"
+      ]
+    },
+    {
+      "node_id": "CH16_N02",
+      "name": "모래 침식 터널",
+      "node_type": "branch",
+      "description": "P4 전용 허브 리듬을 여는 구간.",
+      "coordinates": {
+        "x": 28,
+        "y": 62
+      },
+      "encounter_table_id": "enc_ch16_dune_field",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom"
+      ],
+      "connections": [
+        {
+          "to": "CH16_N03",
+          "travel_type": "corridor",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "CH16_N04",
+          "travel_type": "detour",
+          "requires": [],
+          "cost": {
+            "time": 3,
+            "noise": 1,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH16_ROUTE"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "route",
+        "fractured_dune_loss"
+      ]
+    },
+    {
+      "node_id": "CH16_N03",
+      "name": "임시 현수교",
+      "node_type": "exploration",
+      "description": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.",
+      "coordinates": {
+        "x": 52,
+        "y": 48
+      },
+      "encounter_table_id": "enc_ch16_dune_field",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom",
+        "npc_han_somyeong"
+      ],
+      "connections": [
+        {
+          "to": "CH16_N04",
+          "travel_type": "service_route",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 2,
+            "contamination": 1
+          }
+        },
+        {
+          "to": "CH16_N05",
+          "travel_type": "push_forward",
+          "requires": [
+            "flag:ch16_route_locked"
+          ],
+          "cost": {
+            "time": 2,
+            "noise": 3,
+            "contamination": 2
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH16_ANCHOR"
+      ],
+      "revisit_rule": "always",
+      "tags": [
+        "main",
+        "p4"
+      ]
+    },
+    {
+      "node_id": "CH16_N04",
+      "name": "소금 정거장 초입",
+      "node_type": "branch",
+      "description": "인물형/세계관형 사이드 퀘스트를 처리하는 보조 구역.",
+      "coordinates": {
+        "x": 70,
+        "y": 58
+      },
+      "encounter_table_id": "enc_ch16_dune_field",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom",
+        "npc_han_somyeong"
+      ],
+      "connections": [
+        {
+          "to": "CH16_N05",
+          "travel_type": "return_route",
+          "requires": [],
+          "cost": {
+            "time": 2,
+            "noise": 1,
+            "contamination": 1
+          }
+        }
+      ],
+      "event_ids": [
+        "EV_CH16_SIDE_A",
+        "EV_CH16_SIDE_B"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "side",
+        "fractured_dune_loss"
+      ]
+    },
+    {
+      "node_id": "CH16_N05",
+      "name": "사구 절개체 대응 구역",
+      "node_type": "boss",
+      "description": "사구 절개체와 충돌하는 클라이맥스 구간.",
+      "coordinates": {
+        "x": 90,
+        "y": 32
+      },
+      "encounter_table_id": "enc_ch16_dune_boss",
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom"
+      ],
+      "connections": [],
+      "event_ids": [
+        "EV_CH16_BOSS"
+      ],
+      "revisit_rule": "after_clear",
+      "tags": [
+        "boss",
+        "p4"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "EV_CH16_ENTRY",
+      "event_type": "briefing",
+      "node_id": "CH16_N01",
+      "title": "균열 사구 진입",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 100,
+      "conditions": [],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "ch16_fractured_dune_loss_entry",
+        "music_key": "salt_station",
+        "widget_overrides": [
+          "objective_panel",
+          "loss_loadout",
+          "rope_stability",
+          "salt_exposure"
+        ]
+      },
+      "text": {
+        "summary": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.",
+        "body": [
+          "P4의 분위기는 염분 바람, 새벽 회색, 수기 명단, 방송 장비, 공공 배급 보드로 간다.",
+          "이번 장의 핵심은 안보경 이후 역할 승계와 최종 허브 이동이다."
+        ]
+      },
+      "npc_ids": [
+        "npc_seo_jinseo"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch16_start",
+          "label": "임무 시작",
+          "conditions": [],
+          "preview": "이번 장의 메인 루프를 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch16_entry",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH16_ROUTE"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH16_ROUTE",
+      "event_type": "choice",
+      "node_id": "CH16_N02",
+      "title": "최종 선택 확정",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 90,
+      "conditions": [
+        "flag:ch16_entry"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch16_fractured_dune_loss_route",
+        "music_key": "salt_station",
+        "widget_overrides": [
+          "loss_loadout",
+          "rope_stability",
+          "salt_exposure"
+        ]
+      },
+      "text": {
+        "summary": "외해 관문의 첫 인상에서 경로를 고른다.",
+        "body": [
+          "공식선과 우회선 중 어떤 리듬으로 갈지 결정한다.",
+          "대기열 갱신, 방송 파형, 무거운 페이드, 선택 후 잔향을 화면 전환에 반영한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch16_official",
+          "label": "공식선 유지",
+          "conditions": [],
+          "preview": "안전하지만 느리다.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route",
+              "value": "p4_fractured_dune_loss_official"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch16_route_locked",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH16_ANCHOR"
+        },
+        {
+          "choice_id": "ch16_detour",
+          "label": "우회선 강행",
+          "conditions": [],
+          "preview": "빠르지만 비용이 크다.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route",
+              "value": "p4_fractured_dune_loss_detour"
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch16_route_locked",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH16_ANCHOR"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH16_ANCHOR",
+      "event_type": "dialogue",
+      "node_id": "CH16_N03",
+      "title": "균열 사구 핵심 압박",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 80,
+      "conditions": [
+        "flag:ch16_route_locked"
+      ],
+      "presentation": {
+        "layout": "dialogue",
+        "art_key": "ch16_fractured_dune_loss_anchor",
+        "music_key": "salt_station",
+        "widget_overrides": [
+          "event_card",
+          "loss_loadout",
+          "rope_stability",
+          "salt_exposure"
+        ]
+      },
+      "text": {
+        "summary": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.",
+        "body": [
+          "핵심 NPC: npc_seo_jinseo, npc_shin_dogyeom, npc_han_somyeong",
+          "인물 앵커와 세계관 앵커를 동시에 밀어 넣는다."
+        ]
+      },
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom",
+        "npc_han_somyeong"
+      ],
+      "loot_table_ids": [],
+      "choices": [
+        {
+          "choice_id": "ch16_anchor",
+          "label": "압박 돌파",
+          "conditions": [],
+          "preview": "사이드 퀘스트와 보스 구간을 연다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch16_anchor_secured",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH16_SIDE_A"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH16_SIDE_A",
+      "event_type": "exploration",
+      "node_id": "CH16_N04",
+      "title": "붕괴 해안로 표식",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 70,
+      "conditions": [
+        "flag:ch16_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch16_fractured_dune_loss_side_a",
+        "music_key": "salt_station",
+        "widget_overrides": [
+          "choice_list",
+          "loss_loadout"
+        ]
+      },
+      "text": {
+        "summary": "후속 길잡이용 표식을 회수한다.",
+        "body": [
+          "인물형 사이드 퀘스트로 신뢰와 보급을 움직인다.",
+          "Part 4의 감정 리듬을 강화한다."
+        ]
+      },
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom"
+      ],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch16_side_a",
+          "label": "사이드 처리",
+          "conditions": [],
+          "preview": "신뢰와 보급을 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch16_side_a_done",
+              "value": true
+            },
+            {
+              "op": "add_trust",
+              "target": "npc_seo_jinseo",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH16_SIDE_B"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH16_SIDE_B",
+      "event_type": "exploration",
+      "node_id": "CH16_N04",
+      "title": "떠내려온 구명함",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 69,
+      "conditions": [
+        "flag:ch16_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch16_fractured_dune_loss_side_b",
+        "music_key": "salt_station",
+        "widget_overrides": [
+          "choice_list",
+          "rope_stability"
+        ]
+      },
+      "text": {
+        "summary": "해안에 밀려온 유품과 보급을 구한다.",
+        "body": [
+          "세계관형 사이드 퀘스트로 다음 장의 연결고리를 선행 공개한다.",
+          "시각적으로는 염분 바람, 새벽 회색, 수기 명단, 방송 장비, 공공 배급 보드을 유지하되 더 깊은 공간감을 준다."
+        ]
+      },
+      "npc_ids": [
+        "npc_shin_dogyeom",
+        "npc_han_somyeong"
+      ],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch16_side_b",
+          "label": "기록 회수",
+          "conditions": [],
+          "preview": "다음 장의 연결고리를 확보한다.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch16_side_b_done",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH16_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH16_BOSS",
+      "event_type": "combat",
+      "node_id": "CH16_N05",
+      "title": "사구 절개체 제압",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 120,
+      "conditions": [
+        "flag:ch16_route_locked",
+        "flag:ch16_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "boss",
+        "art_key": "ch16_fractured_dune_loss_boss",
+        "music_key": "salt_station_boss",
+        "widget_overrides": [
+          "boss_hp",
+          "loss_loadout",
+          "rope_stability",
+          "salt_exposure"
+        ]
+      },
+      "text": {
+        "summary": "사구 절개체가 균열 사구의 규칙을 물리적으로 강요한다.",
+        "body": [
+          "이번 전투는 파트별 톤 차이를 가장 강하게 보여주는 구간이다.",
+          "전투 뒤 바로 다음 장으로 밀려나는 감정 잔향이 붙는다."
+        ]
+      },
+      "npc_ids": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom"
+      ],
+      "loot_table_ids": [
+        "lt_global_basic_office"
+      ],
+      "combat": {
+        "encounter_table_id": "enc_ch16_dune_boss",
+        "boss_id": "dune_cutter",
+        "arena_tags": [
+          "fractured_dune_loss",
+          "p4"
+        ],
+        "victory_effects": [
+          {
+            "op": "set_flag",
+            "target": "flag:ch16_boss_clear",
+            "value": true
+          },
+          {
+            "op": "set_flag",
+            "target": "flag:chapter_16_completed",
+            "value": true
+          },
+          {
+            "op": "unlock_route",
+            "target": "chapter:CH16:complete",
+            "value": true
+          }
+        ],
+        "defeat_effects": [
+          {
+            "op": "sub_stat",
+            "target": "hp",
+            "value": 18
+          },
+          {
+            "op": "add_stat",
+            "target": "contamination",
+            "value": 8
+          }
+        ]
+      },
+      "choices": [
+        {
+          "choice_id": "ch16_engage",
+          "label": "보스 교전",
+          "conditions": [],
+          "preview": "클라이맥스 전투를 시작한다.",
+          "effects": [],
+          "next_event_id": "EV_CH16_BOSS"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    }
+  ],
+  "boss_event_id": "EV_CH16_BOSS"
+}

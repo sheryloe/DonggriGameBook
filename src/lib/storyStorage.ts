@@ -1,9 +1,11 @@
-﻿import { StoryProgress, StoryState } from "../types/story";
+import { createNamespacedStorageKey } from "../../packages/game-engine/src";
+import { CURRENT_SAVE_NAMESPACE } from "../app/appContext";
+import type { StoryProgress, StoryState } from "../types/story";
 
-const KEY_PREFIX = "donggrolgamebook:story:";
+const KEY_PREFIX = `${createNamespacedStorageKey(CURRENT_SAVE_NAMESPACE)}:story`;
 
 function makeKey(storyId: string): string {
-  return `${KEY_PREFIX}${storyId}`;
+  return `${KEY_PREFIX}:${storyId}`;
 }
 
 function hasStorage(): boolean {

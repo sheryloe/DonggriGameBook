@@ -1,4 +1,5 @@
-﻿import type {
+import { getChapterRuntimeConfig, type LegacyFallbackSlot } from "../../packages/world-registry/src";
+import type {
   AssetGenerationJob,
   AssetModelRoute,
   AssetResolution,
@@ -101,6 +102,14 @@ const clearScreen = imageByBasename("클리어 화면");
 const failScreen = imageByBasename("실패 화면");
 const gameOverScreen = imageByBasename("게임 오버 연출");
 
+const LEGACY_SLOT_IMAGES: Record<LegacyFallbackSlot, string | undefined> = {
+  start_background: startBackground,
+  inspection_background: inspectionBackground,
+  gate_background: gateBackground,
+  transmitter_background: transmitterBackground,
+  inventory_board: inventoryBoard
+};
+
 const GENERATION_ROUTE_BY_KEY: Record<string, AssetModelRoute> = {
   portrait_yoon_haein: "npc-main-pro",
   portrait_kim_ara: "npc-main-pro",
@@ -115,22 +124,6 @@ const GENERATION_ROUTE_BY_KEY: Record<string, AssetModelRoute> = {
   boss_glassgarden: "character-25",
   boss_mirror_lines: "character-25",
   boss_picker_prime: "character-25"
-};
-
-const CHAPTER_DEFAULT_ART_KEY: Record<ChapterId, string> = {
-  CH01: "bg_yeouido_ashroad",
-  CH02: "bg_noryangjin_market",
-  CH03: "bg_jamsil_lobby",
-  CH04: "bg_sorting_hall",
-  CH05: "bg_pangyo_lobby"
-};
-
-const CHAPTER_FALLBACK_IMAGES: Record<ChapterId, Array<string | undefined>> = {
-  CH01: [startBackground, inspectionBackground, transmitterBackground],
-  CH02: [gateBackground, inspectionBackground, startBackground],
-  CH03: [inspectionBackground, gateBackground, transmitterBackground],
-  CH04: [inventoryBoard, inspectionBackground, gateBackground],
-  CH05: [transmitterBackground, gateBackground, inspectionBackground]
 };
 
 const KEYED_FALLBACK_IMAGES: Record<string, Array<string | undefined>> = {
@@ -154,12 +147,7 @@ const KEYED_FALLBACK_ART_KEYS: Record<string, string[]> = {
   boss_mirror_lines: ["bg_arkp_serverhall"]
 };
 
-const GENERIC_FALLBACK_IMAGES = [
-  startBackground,
-  inspectionBackground,
-  gateBackground,
-  transmitterBackground
-];
+const GENERIC_FALLBACK_IMAGES = [startBackground, inspectionBackground, gateBackground, transmitterBackground];
 
 export const CONTENT_ALIASES: ContentAlias[] = [
   {
@@ -302,11 +290,17 @@ function chapterFallbackCandidates(chapterId?: ChapterId): string[] {
     return [];
   }
 
-  const chapterKey = CHAPTER_DEFAULT_ART_KEY[chapterId];
+  const chapterRuntime = getChapterRuntimeConfig(chapterId);
+  if (!chapterRuntime) {
+    return [];
+  }
+
+  const legacyFallbacks = chapterRuntime.legacy_fallback_slots.map((slot) => LEGACY_SLOT_IMAGES[slot]);
+
   return dedupe([
-    ...directCandidatesForKey(chapterKey),
-    ...publicGeneratedCandidates(chapterKey),
-    ...CHAPTER_FALLBACK_IMAGES[chapterId]
+    ...directCandidatesForKey(chapterRuntime.default_art_key),
+    ...publicGeneratedCandidates(chapterRuntime.default_art_key),
+    ...legacyFallbacks
   ]);
 }
 
@@ -327,7 +321,8 @@ export function isKnownArtKey(key: string): key is (typeof KNOWN_ART_KEYS)[numbe
 }
 
 export function resolveAssetKey(key?: string | null, chapterId?: ChapterId): AssetResolution {
-  const safeKey = key?.trim() || CHAPTER_DEFAULT_ART_KEY[chapterId ?? ""] || `chapter_${chapterId ?? "unknown"}_placeholder`;
+  const defaultArtKey = chapterId ? getChapterRuntimeConfig(chapterId)?.default_art_key : null;
+  const safeKey = key?.trim() || defaultArtKey || `chapter_${chapterId ?? "unknown"}_placeholder`;
   const directCandidates = directCandidatesForKey(safeKey);
   const generatedCandidates = safeKey.startsWith("/") ? [] : publicGeneratedCandidates(safeKey);
   const fallbackCandidates = dedupe([

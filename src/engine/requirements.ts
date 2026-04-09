@@ -7,6 +7,7 @@ import type {
   UIFlow,
   UITransition
 } from "../types/game";
+import { getChapterRuntimeConfig } from "../../packages/world-registry/src";
 
 function makeWarning(message: string, source: string): RuntimeWarning {
   return {
@@ -236,8 +237,9 @@ export function resolveSpecialScreenType(
     return targetScreen.screen_type;
   }
 
-  if (chapterId === "CH05" && eventId === "EV_CH05_EXTRACTION") {
-    return "event_dialogue";
+  const override = eventId ? getChapterRuntimeConfig(chapterId)?.special_screen_overrides?.[eventId] : null;
+  if (override) {
+    return override;
   }
 
   return null;
