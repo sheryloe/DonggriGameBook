@@ -1467,8 +1467,8 @@
       "event_type": "scene",
       "node_id": "PG-05",
       "title": "서버 정리",
-      "repeatable": false,
-      "once_per_run": true,
+      "repeatable": true,
+      "once_per_run": false,
       "priority": 55,
       "conditions": [],
       "presentation": {
@@ -1520,6 +1520,35 @@
             }
           ],
           "next_event_id": "EV_CH05_BOSS_LINES"
+        },
+        {
+          "choice_id": "ch05_server_loop",
+          "label": "?? ? ???",
+          "conditions": [],
+          "preview": "?? ?? ? ? ? ?? ??? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_server_loop",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_SERVER_PURGE"
         }
       ],
       "on_enter_effects": [],
@@ -1588,8 +1617,8 @@
       "event_type": "exploration",
       "node_id": "PG-02",
       "title": "로비 스캔",
-      "repeatable": false,
-      "once_per_run": true,
+      "repeatable": true,
+      "once_per_run": false,
       "priority": 60,
       "conditions": [],
       "presentation": {
@@ -1647,6 +1676,35 @@
             }
           ],
           "next_event_id": "EV_CH05_SKYWALK"
+        },
+        {
+          "choice_id": "ch05_scan_loop",
+          "label": "?? ?? ??",
+          "conditions": [],
+          "preview": "??? ? ?? ?? ??? ???.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_hub_scan_loop",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_LOBBY_SCAN"
         }
       ],
       "on_enter_effects": [],

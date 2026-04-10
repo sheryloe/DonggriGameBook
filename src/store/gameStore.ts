@@ -51,7 +51,9 @@ interface GameState {
   resetRun: () => void;
 }
 
-const STORAGE_NAME = `${createNamespacedStorageKey(CURRENT_SAVE_NAMESPACE)}:runtime-v2`;
+const STORAGE_NAME = `${createNamespacedStorageKey(CURRENT_SAVE_NAMESPACE)}:runtime-v3`;
+const BASE_EVENT_MINUTES = 2;
+const BASE_CHOICE_MINUTES = 1;
 
 function nowIso(): string {
   return new Date().toISOString();
@@ -72,6 +74,16 @@ function createIdleBattleState(): RuntimeSnapshot["battle_state"] {
 function mergeWarnings(current: RuntimeWarning[], next: RuntimeWarning[]): RuntimeWarning[] {
   const all = [...current, ...next];
   return all.slice(Math.max(0, all.length - 60));
+}
+
+function getFarmingRewardMultiplier(completionCount: number): number {
+  if (completionCount >= 5) {
+    return 0.45;
+  }
+  if (completionCount >= 3) {
+    return 0.7;
+  }
+  return 1;
 }
 
 function getPartChapterIds(content: GameContentPack): ChapterId[] {
@@ -122,6 +134,50 @@ function buildChapterProgress(content: GameContentPack, currentChapterId: Chapte
   return chapterProgress;
 }
 
+function buildQuestProgress(content: GameContentPack, currentChapterId: ChapterId): RuntimeSnapshot["quest_progress"] {
+  const questProgress: RuntimeSnapshot["quest_progress"] = {};
+  for (const chapterId of getPartChapterIds(content)) {
+    const chapter = getChapter(content, chapterId);
+    questProgress[chapterId] = Object.fromEntries(
+      chapter.quest_tracks.map((track) => [
+        track.quest_track_id,
+        {
+          quest_track_id: track.quest_track_id,
+          kind: track.kind,
+          unlocked: track.kind === "main" || chapterId === currentChapterId,
+          status: track.kind === "main" && chapterId === currentChapterId ? "active" : "locked"
+        }
+      ])
+    );
+  }
+  return questProgress;
+}
+
+function buildRunMetrics(content: GameContentPack): RuntimeSnapshot["run_metrics"] {
+  return {
+    chapter_minutes: Object.fromEntries(getPartChapterIds(content).map((chapterId) => [chapterId, 0])),
+    total_minutes: 0,
+    total_moves: 0,
+    total_events: 0,
+    total_choices: 0
+  };
+}
+
+function addRunMinutes(runtime: RuntimeSnapshot, chapterId: ChapterId, minutes: number): void {
+  const numeric = Math.max(0, Number(minutes) || 0);
+  runtime.run_metrics.chapter_minutes[chapterId] = Number(runtime.run_metrics.chapter_minutes[chapterId] ?? 0) + numeric;
+  runtime.run_metrics.total_minutes += numeric;
+}
+
+function sanitizeRuntimeMetrics(runtime: RuntimeSnapshot): void {
+  const hp = Number(runtime.stats["hp"] ?? 0);
+  const maxHp = Number(runtime.stats["max_hp"] ?? hp);
+  runtime.stats["max_hp"] = Math.max(1, maxHp);
+  runtime.stats["hp"] = Math.min(Math.max(0, hp), Number(runtime.stats["max_hp"]));
+  runtime.stats["noise"] = Math.max(0, Number(runtime.stats["noise"] ?? 0));
+  runtime.stats["contamination"] = Math.max(0, Number(runtime.stats["contamination"] ?? 0));
+}
+
 function buildRuntimeSnapshot(
   content: GameContentPack,
   chapterId: ChapterId,
@@ -153,6 +209,9 @@ function buildRuntimeSnapshot(
       carry_weight_modifier: 0
     },
     chapter_progress: buildChapterProgress(content, chapterId),
+    quest_progress: buildQuestProgress(content, chapterId),
+    farming_progress: {},
+    run_metrics: buildRunMetrics(content),
     visited_nodes: {},
     visited_events: {},
     loot_session: null,
@@ -164,6 +223,51 @@ function buildRuntimeSnapshot(
     campaign_complete: false,
     run_seed: nowIso()
   };
+}
+
+function ensureRuntimeSnapshot(content: GameContentPack, runtime: RuntimeSnapshot): RuntimeSnapshot {
+  const nextRuntime = structuredClone(runtime);
+  nextRuntime.quest_progress ??= {};
+  nextRuntime.farming_progress ??= {};
+  nextRuntime.run_metrics ??= {
+    chapter_minutes: {},
+    total_minutes: 0,
+    total_moves: 0,
+    total_events: 0,
+    total_choices: 0
+  };
+  nextRuntime.run_metrics.chapter_minutes ??= {};
+  nextRuntime.run_metrics.total_moves = Number(nextRuntime.run_metrics.total_moves ?? 0);
+  nextRuntime.run_metrics.total_events = Number(nextRuntime.run_metrics.total_events ?? 0);
+  nextRuntime.run_metrics.total_choices = Number(nextRuntime.run_metrics.total_choices ?? 0);
+
+  for (const chapterId of getPartChapterIds(content)) {
+    const chapter = getChapter(content, chapterId);
+    nextRuntime.chapter_progress[chapterId] ??= {
+      status: chapterId === nextRuntime.current_chapter_id ? "in_progress" : "available",
+      objective_completion: Object.fromEntries(chapter.objectives.map((objective) => [objective.objective_id, false]))
+    };
+    nextRuntime.quest_progress[chapterId] ??= {};
+    nextRuntime.farming_progress[chapterId] ??= {};
+    nextRuntime.run_metrics.chapter_minutes[chapterId] = Number(nextRuntime.run_metrics.chapter_minutes[chapterId] ?? 0);
+
+    for (const track of chapter.quest_tracks) {
+      nextRuntime.quest_progress[chapterId][track.quest_track_id] ??= {
+        quest_track_id: track.quest_track_id,
+        kind: track.kind,
+        unlocked: track.kind === "main" || chapterId === nextRuntime.current_chapter_id,
+        status: track.kind === "main" && chapterId === nextRuntime.current_chapter_id ? "active" : "locked"
+      };
+    }
+  }
+
+  nextRuntime.run_metrics.total_minutes = Object.values(nextRuntime.run_metrics.chapter_minutes).reduce(
+    (sum, value) => sum + Number(value ?? 0),
+    0
+  );
+  updateObjectives(nextRuntime, content, []);
+  sanitizeRuntimeMetrics(nextRuntime);
+  return nextRuntime;
 }
 
 function findScreenDefinition(content: GameContentPack, chapterId: ChapterId, screenId: string | null): UIScreenDefinition | undefined {
@@ -237,6 +341,58 @@ function updateObjectives(runtime: RuntimeSnapshot, content: GameContentPack, wa
       )
     ])
   );
+
+  updateQuestProgress(runtime, content, warnings);
+}
+
+function updateQuestProgress(runtime: RuntimeSnapshot, content: GameContentPack, warnings: RuntimeWarning[]): void {
+  const chapterId = runtime.current_chapter_id;
+  const chapter = getChapter(content, chapterId);
+  const chapterProgress = runtime.chapter_progress[chapterId];
+  if (!chapterProgress) {
+    return;
+  }
+
+  runtime.quest_progress[chapterId] ??= {};
+  for (const track of chapter.quest_tracks) {
+    const trackProgress = (runtime.quest_progress[chapterId][track.quest_track_id] ??= {
+      quest_track_id: track.quest_track_id,
+      kind: track.kind,
+      unlocked: track.kind === "main",
+      status: track.kind === "main" ? "active" : "locked"
+    });
+
+    const unlocked =
+      track.kind === "main" ||
+      !track.unlock_when ||
+      track.unlock_when.every((condition) => evaluateCondition(condition, runtime, warnings, `quest:${track.quest_track_id}`));
+
+    const completedByEvent =
+      track.completion_event_id !== undefined
+        ? (runtime.visited_events[chapterId]?.[track.completion_event_id]?.completed_count ?? 0) > 0
+        : false;
+    const objectiveIds = track.objective_ids ?? [];
+    const completedByObjectives =
+      objectiveIds.length > 0 && objectiveIds.every((objectiveId) => chapterProgress.objective_completion[objectiveId] === true);
+    const shouldComplete = completedByEvent || completedByObjectives;
+
+    let nextStatus: "locked" | "active" | "completed" = "locked";
+    if (shouldComplete) {
+      nextStatus = "completed";
+    } else if (unlocked) {
+      nextStatus = "active";
+    }
+
+    if (nextStatus !== "locked" && !trackProgress.started_at) {
+      trackProgress.started_at = nowIso();
+    }
+    if (nextStatus === "completed" && !trackProgress.completed_at) {
+      trackProgress.completed_at = nowIso();
+    }
+
+    trackProgress.unlocked = unlocked;
+    trackProgress.status = nextStatus;
+  }
 }
 
 function getOrCreateVisitState(runtime: RuntimeSnapshot, chapterId: ChapterId, eventId: string): EventVisitState {
@@ -314,6 +470,8 @@ function openEvent(
 
   const visitState = getOrCreateVisitState(nextRuntime, nextRuntime.current_chapter_id, event.event_id);
   visitState.seen_count += 1;
+  nextRuntime.run_metrics.total_events += 1;
+  addRunMinutes(nextRuntime, nextRuntime.current_chapter_id, BASE_EVENT_MINUTES);
 
   if (!visitState.entered_once && event.on_enter_effects.length > 0) {
     const effectResult = applyEffects(nextRuntime, content, event.on_enter_effects, `enter:${event.event_id}`);
@@ -322,6 +480,7 @@ function openEvent(
   }
 
   visitState.entered_once = true;
+  sanitizeRuntimeMetrics(nextRuntime);
   setScreen(nextRuntime, content, deriveEventScreenType(content, nextRuntime, event.event_id));
   updateObjectives(nextRuntime, content, warnings);
   return nextRuntime;
@@ -479,6 +638,26 @@ function applyLootDrops(runtime: RuntimeSnapshot): void {
   }
 }
 
+function applyRepeatFarmingPenalty(
+  runtime: RuntimeSnapshot,
+  chapterId: ChapterId,
+  event: EventDefinition,
+  completionCount: number
+): void {
+  runtime.farming_progress[chapterId] ??= {};
+  runtime.farming_progress[chapterId][event.event_id] = completionCount;
+
+  if (!event.repeatable || completionCount < 3) {
+    return;
+  }
+
+  runtime.stats["noise"] = Number(runtime.stats["noise"] ?? 0) + 1;
+  if (completionCount >= 5) {
+    runtime.stats["contamination"] = Number(runtime.stats["contamination"] ?? 0) + 1;
+  }
+  sanitizeRuntimeMetrics(runtime);
+}
+
 function finalizeEventChoice(
   content: GameContentPack,
   runtime: RuntimeSnapshot,
@@ -486,13 +665,26 @@ function finalizeEventChoice(
   choice: EventChoice,
   warnings: RuntimeWarning[]
 ): RuntimeSnapshot {
-  const effectResult = applyEffects(runtime, content, [...choice.effects, ...event.on_complete_effects], `choice:${choice.choice_id}`);
+  const previousCompletedCount =
+    runtime.visited_events[runtime.current_chapter_id]?.[event.event_id]?.completed_count ?? 0;
+  const completionCount = previousCompletedCount + 1;
+  const rewardMultiplier = event.repeatable ? getFarmingRewardMultiplier(completionCount) : 1;
+  const effectResult = applyEffects(
+    runtime,
+    content,
+    [...choice.effects, ...event.on_complete_effects],
+    `choice:${choice.choice_id}`,
+    { rewardMultiplier }
+  );
   let nextRuntime = effectResult.runtime;
   warnings.push(...effectResult.warnings);
 
   const visitState = getOrCreateVisitState(nextRuntime, nextRuntime.current_chapter_id, event.event_id);
   visitState.completed_count += 1;
   visitState.last_choice_id = choice.choice_id;
+  nextRuntime.run_metrics.total_choices += 1;
+  addRunMinutes(nextRuntime, nextRuntime.current_chapter_id, BASE_CHOICE_MINUTES);
+  applyRepeatFarmingPenalty(nextRuntime, nextRuntime.current_chapter_id, event, visitState.completed_count);
 
   updateObjectives(nextRuntime, content, warnings);
 
@@ -532,6 +724,19 @@ function createChapterStartRuntime(content: GameContentPack, runtime: RuntimeSna
   };
   nextRuntime.chapter_progress[chapterId].status = "in_progress";
   nextRuntime.chapter_progress[chapterId].started_at ??= nowIso();
+  nextRuntime.quest_progress[chapterId] ??= Object.fromEntries(
+    chapter.quest_tracks.map((track) => [
+      track.quest_track_id,
+      {
+        quest_track_id: track.quest_track_id,
+        kind: track.kind,
+        unlocked: track.kind === "main",
+        status: track.kind === "main" ? "active" : "locked"
+      }
+    ])
+  );
+  nextRuntime.farming_progress[chapterId] ??= {};
+  nextRuntime.run_metrics.chapter_minutes[chapterId] = Number(nextRuntime.run_metrics.chapter_minutes[chapterId] ?? 0);
   setScreen(nextRuntime, content, "chapter_briefing", content.ui_flows[chapterId]?.entry_screen_id ?? null);
   updateObjectives(nextRuntime, content, []);
   return nextRuntime;
@@ -580,7 +785,7 @@ export const useGameStore = create<GameState>()(
           const persistedRuntime = get().runtime;
           const runtime =
             persistedRuntime && content.chapters[persistedRuntime.current_chapter_id]
-              ? persistedRuntime
+              ? ensureRuntimeSnapshot(content, persistedRuntime)
               : buildRuntimeSnapshot(content, CURRENT_PART_START_CHAPTER, null);
 
           set({
@@ -634,8 +839,67 @@ export const useGameStore = create<GameState>()(
         }
 
         const chapterId = runtime.current_chapter_id;
+        const chapter = getChapter(content, chapterId);
         const localWarnings: RuntimeWarning[] = [];
         const nextRuntime = structuredClone(runtime);
+        const currentNodeId = runtime.current_node_id;
+
+        if (!chapter.nodes_by_id[nodeId]) {
+          localWarnings.push({
+            message: `Cannot move to missing node ${nodeId}.`,
+            source: "moveToNode",
+            severity: "warning"
+          });
+          set({
+            runtime,
+            warnings: mergeWarnings(warnings, localWarnings),
+            selectedChoiceId: null
+          });
+          return;
+        }
+
+        if (currentNodeId && currentNodeId !== nodeId) {
+          const currentNode = chapter.nodes_by_id[currentNodeId];
+          const connection = currentNode?.connections.find((entry) => entry.to === nodeId);
+          if (!connection) {
+            localWarnings.push({
+              message: `Route ${currentNodeId} -> ${nodeId} is not connected.`,
+              source: "moveToNode",
+              severity: "warning"
+            });
+            set({
+              runtime,
+              warnings: mergeWarnings(warnings, localWarnings),
+              selectedChoiceId: null
+            });
+            return;
+          }
+
+          const canTraverse = connection.requires.every((condition) =>
+            evaluateCondition(condition, nextRuntime, localWarnings, `connection:${currentNodeId}->${nodeId}`)
+          );
+          if (!canTraverse) {
+            localWarnings.push({
+              message: `Route ${currentNodeId} -> ${nodeId} requirements are not met.`,
+              source: "moveToNode",
+              severity: "warning"
+            });
+            set({
+              runtime,
+              warnings: mergeWarnings(warnings, localWarnings),
+              selectedChoiceId: null
+            });
+            return;
+          }
+
+          nextRuntime.stats["noise"] = Number(nextRuntime.stats["noise"] ?? 0) + Number(connection.cost.noise ?? 0);
+          nextRuntime.stats["contamination"] =
+            Number(nextRuntime.stats["contamination"] ?? 0) + Number(connection.cost.contamination ?? 0);
+          nextRuntime.run_metrics.total_moves += 1;
+          addRunMinutes(nextRuntime, chapterId, Number(connection.cost.time ?? 0));
+          sanitizeRuntimeMetrics(nextRuntime);
+        }
+
         nextRuntime.current_node_id = nodeId;
         recordNodeVisit(nextRuntime, chapterId, nodeId);
 
@@ -802,11 +1066,16 @@ export const useGameStore = create<GameState>()(
             const choice = event.choices.find(
               (entry) => entry.choice_id === nextRuntime.battle_state.pending_choice_id
             );
+            const previousCompletedCount =
+              nextRuntime.visited_events[nextRuntime.current_chapter_id]?.[event.event_id]?.completed_count ?? 0;
+            const completionCount = previousCompletedCount + 1;
+            const rewardMultiplier = event.repeatable ? getFarmingRewardMultiplier(completionCount) : 1;
             const effectResult = applyEffects(
               nextRuntime,
               content,
               [...nextRuntime.battle_state.pending_choice_effects, ...nextRuntime.battle_state.victory_effects],
-              `battle:${event.event_id}:victory`
+              `battle:${event.event_id}:victory`,
+              { rewardMultiplier }
             );
             nextRuntime = effectResult.runtime;
             localWarnings.push(...effectResult.warnings);
@@ -814,6 +1083,9 @@ export const useGameStore = create<GameState>()(
             const visitState = getOrCreateVisitState(nextRuntime, nextRuntime.current_chapter_id, event.event_id);
             visitState.completed_count += 1;
             visitState.last_choice_id = choice?.choice_id;
+            nextRuntime.run_metrics.total_choices += 1;
+            addRunMinutes(nextRuntime, nextRuntime.current_chapter_id, BASE_CHOICE_MINUTES);
+            applyRepeatFarmingPenalty(nextRuntime, nextRuntime.current_chapter_id, event, visitState.completed_count);
             nextRuntime.battle_state = createIdleBattleState();
             updateObjectives(nextRuntime, content, localWarnings);
 
@@ -926,7 +1198,7 @@ export const useGameStore = create<GameState>()(
     }),
     {
       name: STORAGE_NAME,
-      version: 2,
+      version: 3,
       partialize: (state) => ({
         runtime: state.runtime
       })

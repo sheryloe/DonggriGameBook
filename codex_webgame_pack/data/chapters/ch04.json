@@ -1016,7 +1016,8 @@
       "once_per_run": true,
       "priority": 50,
       "conditions": [
-        "flag:chapter_04_escape_ready"
+        "flag:chapter_04_escape_ready",
+        "item:itm_route_clearance_pangyo>=1"
       ],
       "presentation": {
         "layout": "results",
@@ -1341,8 +1342,8 @@
       "event_type": "dialogue",
       "node_id": "MJ-03",
       "title": "현장 거래",
-      "repeatable": false,
-      "once_per_run": true,
+      "repeatable": true,
+      "once_per_run": false,
       "priority": 60,
       "conditions": [],
       "presentation": {
@@ -1395,6 +1396,35 @@
             }
           ],
           "next_event_id": "EV_CH04_ROUTE_SELECTION"
+        },
+        {
+          "choice_id": "ch04_vendor_farm",
+          "label": "?? ?? ??",
+          "conditions": [],
+          "preview": "??? ?? ??? ? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_vendor_farm",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_VENDOR_BARTER"
         }
       ],
       "on_enter_effects": [],
@@ -1665,7 +1695,9 @@
       "repeatable": false,
       "once_per_run": true,
       "priority": 55,
-      "conditions": [],
+      "conditions": [
+        "item:itm_route_clearance_pangyo>=1"
+      ],
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_delivery_tunnel",
@@ -1787,8 +1819,8 @@
       "event_type": "exploration",
       "node_id": "MJ-07",
       "title": "배송 터널 캐시",
-      "repeatable": false,
-      "once_per_run": true,
+      "repeatable": true,
+      "once_per_run": false,
       "priority": 60,
       "conditions": [],
       "presentation": {
@@ -1823,6 +1855,11 @@
               "op": "grant_loot_table",
               "target": "loot:lt_ch04_logistics",
               "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_route_clearance_pangyo",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH04_BOSS_PICKER"
@@ -1837,9 +1874,43 @@
               "op": "set_flag",
               "target": "flag:ch04_tunnel_skip",
               "value": true
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_route_clearance_pangyo",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH04_BOSS_PICKER"
+        },
+        {
+          "choice_id": "ch04_cache_farm",
+          "label": "?? ?? ???",
+          "conditions": [],
+          "preview": "?? ? ?? ??? ?? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_tunnel_cache_farm",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_TUNNEL_CACHE"
         }
       ],
       "on_enter_effects": [],

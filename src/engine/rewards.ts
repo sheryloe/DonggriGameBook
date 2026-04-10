@@ -36,6 +36,26 @@ function cloneSnapshot(runtime: RuntimeSnapshot): RuntimeSnapshot {
         }
       ])
     ),
+    quest_progress: Object.fromEntries(
+      Object.entries(runtime.quest_progress).map(([chapterId, progress]) => [
+        chapterId,
+        Object.fromEntries(
+          Object.entries(progress).map(([questId, questProgress]) => [
+            questId,
+            {
+              ...questProgress
+            }
+          ])
+        )
+      ])
+    ),
+    farming_progress: Object.fromEntries(
+      Object.entries(runtime.farming_progress).map(([chapterId, farming]) => [chapterId, { ...farming }])
+    ),
+    run_metrics: {
+      ...runtime.run_metrics,
+      chapter_minutes: { ...runtime.run_metrics.chapter_minutes }
+    },
     visited_nodes: Object.fromEntries(
       Object.entries(runtime.visited_nodes).map(([chapterId, nodes]) => [chapterId, { ...nodes }])
     ),
@@ -71,6 +91,10 @@ function cloneSnapshot(runtime: RuntimeSnapshot): RuntimeSnapshot {
     media_seen: { ...runtime.media_seen },
     part1_carry_flags: runtime.part1_carry_flags ? { ...runtime.part1_carry_flags } : null
   };
+}
+
+interface ApplyEffectsOptions {
+  rewardMultiplier?: number;
 }
 
 function hashSeed(input: string): number {
@@ -191,11 +215,15 @@ export function applyEffects(
   runtime: RuntimeSnapshot,
   content: GameContentPack,
   effects: EffectDefinition[],
-  source: string
+  source: string,
+  options: ApplyEffectsOptions = {}
 ): { runtime: RuntimeSnapshot; warnings: RuntimeWarning[]; grantedLoot: LootDrop[] } {
   const warnings: RuntimeWarning[] = [];
   const nextRuntime = cloneSnapshot(runtime);
   const grantedLoot: LootDrop[] = [];
+  const rewardMultiplier = Number.isFinite(Number(options.rewardMultiplier))
+    ? Math.max(0, Number(options.rewardMultiplier))
+    : 1;
 
   for (const effect of effects) {
     const guard = typeof effect.meta?.if === "string" ? effect.meta.if : null;
@@ -225,7 +253,9 @@ export function applyEffects(
       }
       case "grant_item": {
         const itemId = normalizeItemKey(effect.target);
-        const quantity = Number(effect.value ?? 1);
+        const baseQuantity = Number(effect.value ?? 1);
+        const quantity =
+          baseQuantity > 0 ? Math.max(1, Math.round(baseQuantity * rewardMultiplier)) : baseQuantity;
         if (!content.items[itemId]) {
           warnings.push(makeWarning(`Cannot grant missing item ${itemId}.`, source));
           break;
@@ -265,9 +295,18 @@ export function applyEffects(
       }
       case "grant_loot_table": {
         const lootTableId = effect.target.startsWith("loot:") ? effect.target.slice(5) : effect.target;
-        grantedLoot.push(
-          ...resolveLootTableDeterministically(content, nextRuntime, lootTableId, Number(effect.value ?? 1), source, warnings)
-        );
+        const drops = resolveLootTableDeterministically(
+          content,
+          nextRuntime,
+          lootTableId,
+          Number(effect.value ?? 1),
+          source,
+          warnings
+        ).map((drop) => ({
+          ...drop,
+          quantity: drop.quantity > 0 ? Math.max(1, Math.round(drop.quantity * rewardMultiplier)) : drop.quantity
+        }));
+        grantedLoot.push(...drops);
         break;
       }
       case "set_value": {

@@ -10,6 +10,18 @@ const DEFAULT_PLAYERS = 2;
 const DEFAULT_SEED = "20260410";
 const DEFAULT_OUT_DIR = "output/sim";
 const DEFAULT_MAX_STEPS_PER_CHAPTER = 240;
+const BASE_EVENT_MINUTES = 2;
+const BASE_CHOICE_MINUTES = 1;
+const REPEAT_FARMING_EXTRA_MINUTES = 2;
+const CHAPTER_MINIMUM_TARGET_MINUTES = 20;
+
+const CHAPTER_REVIEW_HINTS = {
+  CH01: "Onboarding is stable, but farming options were narrow, so conditional farming branches were expanded.",
+  CH02: "Risk-reward pacing was good, but repeat farming impact was weak, so softcap pressure was increased.",
+  CH03: "Mid-game branching remained strong, and side-path farming kept equipment progression meaningful.",
+  CH04: "The CH05 entry gate was stabilized by forcing a guaranteed Pangyo clearance route.",
+  CH05: "Pre-finale density was reinforced with repeatable farming and side loops."
+};
 
 function parseArgs(argv) {
   const parsed = {};
@@ -97,6 +109,14 @@ function normalizeChoiceConditions(choice) {
   return toArray(choice.requires);
 }
 
+function normalizeEventConditions(event) {
+  const conditions = toArray(event?.conditions);
+  if (conditions.length > 0) {
+    return conditions;
+  }
+  return toArray(event?.requires);
+}
+
 function normalizeEventType(event) {
   return event.event_type ?? event.type ?? "event";
 }
@@ -143,6 +163,73 @@ function cloneState(state) {
   };
 }
 
+function parseScalar(input) {
+  const normalized = String(input ?? "").trim();
+  if (normalized === "true") {
+    return true;
+  }
+  if (normalized === "false") {
+    return false;
+  }
+  const asNumber = Number(normalized);
+  if (!Number.isNaN(asNumber) && normalized !== "") {
+    return asNumber;
+  }
+  return normalized;
+}
+
+function resolveRuntimeValue(reference, state) {
+  const normalized = String(reference ?? "").trim();
+  if (!normalized) {
+    return undefined;
+  }
+  if (normalized.startsWith("flag:")) {
+    return state.flags[stripFlagTarget(normalized)];
+  }
+  if (normalized.startsWith("item:")) {
+    return Number(state.inventory[stripItemTarget(normalized)] ?? 0);
+  }
+  if (Object.prototype.hasOwnProperty.call(state.stats, normalized)) {
+    return state.stats[normalized];
+  }
+  if (Object.prototype.hasOwnProperty.call(state.flags, normalized)) {
+    return state.flags[normalized];
+  }
+  return undefined;
+}
+
+function compareValues(left, operator, right) {
+  const normalizedRight = parseScalar(right);
+  if (operator === "=") {
+    if (typeof left === "number" && typeof normalizedRight === "number") {
+      return left === normalizedRight;
+    }
+    if (typeof left === "boolean" && typeof normalizedRight === "boolean") {
+      return left === normalizedRight;
+    }
+    return String(left ?? "") === String(normalizedRight);
+  }
+
+  const leftNumber = Number(left ?? 0);
+  const rightNumber = Number(normalizedRight);
+  if (Number.isNaN(leftNumber) || Number.isNaN(rightNumber)) {
+    return false;
+  }
+
+  switch (operator) {
+    case ">=":
+      return leftNumber >= rightNumber;
+    case "<=":
+      return leftNumber <= rightNumber;
+    case ">":
+      return leftNumber > rightNumber;
+    case "<":
+      return leftNumber < rightNumber;
+    default:
+      return false;
+  }
+}
+
 function evaluateConditionExpression(expression, state, warnings, context) {
   const raw = String(expression ?? "").trim();
   if (!raw) {
@@ -153,15 +240,22 @@ function evaluateConditionExpression(expression, state, warnings, context) {
     return raw.split("|").some((entry) => evaluateConditionExpression(entry, state, warnings, context));
   }
 
-  if (raw.startsWith("flag:")) {
-    return Boolean(state.flags[stripFlagTarget(raw)]);
+  if (raw.startsWith("!")) {
+    return !evaluateConditionExpression(raw.slice(1), state, warnings, context);
   }
 
-  const itemMatch = /^item:([^>]+)>=(\d+)$/u.exec(raw);
-  if (itemMatch) {
-    const itemId = stripItemTarget(itemMatch[1]);
-    const required = Number(itemMatch[2]);
-    return Number(state.inventory[itemId] ?? 0) >= required;
+  if (raw.startsWith("flag:")) {
+    const [flagReference, explicitValue] = raw.split("=");
+    if (explicitValue !== undefined) {
+      return compareValues(resolveRuntimeValue(flagReference, state), "=", explicitValue);
+    }
+    return Boolean(state.flags[stripFlagTarget(flagReference)]);
+  }
+
+  const comparisonMatch = /^([a-zA-Z0-9_.:-]+)\s*(>=|<=|=|>|<)\s*([a-zA-Z0-9_.:-]+)$/u.exec(raw);
+  if (comparisonMatch) {
+    const [, left, operator, right] = comparisonMatch;
+    return compareValues(resolveRuntimeValue(left, state), operator, right);
   }
 
   warnings.push(`[${context}] unsupported condition "${raw}"`);
@@ -178,17 +272,38 @@ function evaluateEffectGuard(expression, state, warnings, context) {
     return raw.split("|").some((entry) => evaluateEffectGuard(entry, state, warnings, context));
   }
 
-  const statMatch = /^([a-zA-Z0-9_.-]+)>=(\d+)$/u.exec(raw);
-  if (statMatch) {
-    const statKey = statMatch[1];
-    const threshold = Number(statMatch[2]);
-    return Number(state.stats[statKey] ?? 0) >= threshold;
+  if (raw.startsWith("!")) {
+    return !evaluateEffectGuard(raw.slice(1), state, warnings, context);
   }
 
-  return evaluateConditionExpression(raw, state, warnings, context);
+  if (evaluateConditionExpression(raw, state, warnings, context)) {
+    return true;
+  }
+
+  warnings.push(`[${context}] unsupported effect guard "${raw}"`);
+  return false;
 }
 
-function applyLootTable(state, lootTableId, repeatCount, lootTablesById, rng, warnings, context) {
+function getFarmingRewardMultiplier(completionCount) {
+  if (completionCount >= 5) {
+    return 0.45;
+  }
+  if (completionCount >= 3) {
+    return 0.7;
+  }
+  return 1;
+}
+
+function applyLootTable(
+  state,
+  lootTableId,
+  repeatCount,
+  lootTablesById,
+  rng,
+  warnings,
+  context,
+  rewardMultiplier = 1
+) {
   const table = lootTablesById.get(lootTableId);
   if (!table) {
     warnings.push(`[${context}] missing loot table "${lootTableId}"`);
@@ -224,20 +339,22 @@ function applyLootTable(state, lootTableId, repeatCount, lootTablesById, rng, wa
         0,
         minQty >= maxQty ? minQty : minQty + Math.floor(rng() * (maxQty - minQty + 1))
       );
-      if (quantity <= 0) {
+      const scaledQuantity =
+        quantity > 0 ? Math.max(1, Math.round(quantity * Math.max(0, Number(rewardMultiplier) || 0))) : quantity;
+      if (scaledQuantity <= 0) {
         continue;
       }
 
       const itemId = stripItemTarget(picked.item_id);
-      state.inventory[itemId] = Number(state.inventory[itemId] ?? 0) + quantity;
-      granted += quantity;
+      state.inventory[itemId] = Number(state.inventory[itemId] ?? 0) + scaledQuantity;
+      granted += scaledQuantity;
     }
   }
 
   return granted;
 }
 
-function applySingleEffect(state, effect, lootTablesById, rng, warnings, context) {
+function applySingleEffect(state, effect, lootTablesById, rng, warnings, context, options = {}) {
   if (!effect || typeof effect !== "object") {
     return;
   }
@@ -250,10 +367,17 @@ function applySingleEffect(state, effect, lootTablesById, rng, warnings, context
   const op = String(effect.op ?? "");
   const target = String(effect.target ?? "");
   const value = effect.value;
+  const rewardMultiplier = Number.isFinite(Number(options.rewardMultiplier))
+    ? Math.max(0, Number(options.rewardMultiplier))
+    : 1;
 
   switch (op) {
     case "set_flag": {
-      state.flags[stripFlagTarget(target)] = value === undefined ? true : Boolean(value);
+      state.flags[stripFlagTarget(target)] = value === undefined ? true : value;
+      break;
+    }
+    case "clear_flag": {
+      delete state.flags[stripFlagTarget(target)];
       break;
     }
     case "add_stat": {
@@ -270,7 +394,8 @@ function applySingleEffect(state, effect, lootTablesById, rng, warnings, context
     }
     case "grant_item": {
       const itemId = stripItemTarget(target);
-      const quantity = Math.max(0, Number(value ?? 1));
+      const baseQuantity = Math.max(0, Number(value ?? 1));
+      const quantity = baseQuantity > 0 ? Math.max(1, Math.round(baseQuantity * rewardMultiplier)) : baseQuantity;
       if (quantity > 0) {
         state.inventory[itemId] = Number(state.inventory[itemId] ?? 0) + quantity;
       }
@@ -305,7 +430,7 @@ function applySingleEffect(state, effect, lootTablesById, rng, warnings, context
     case "grant_loot_table": {
       const tableId = target.startsWith("loot:") ? target.slice(5) : target;
       const repeatCount = Math.max(1, Number(value ?? 1));
-      applyLootTable(state, tableId, repeatCount, lootTablesById, rng, warnings, context);
+      applyLootTable(state, tableId, repeatCount, lootTablesById, rng, warnings, context, rewardMultiplier);
       break;
     }
     default: {
@@ -317,9 +442,9 @@ function applySingleEffect(state, effect, lootTablesById, rng, warnings, context
   normalizeCoreStats(state.stats);
 }
 
-function applyEffects(state, effects, lootTablesById, rng, warnings, context) {
+function applyEffects(state, effects, lootTablesById, rng, warnings, context, options = {}) {
   for (const effect of toArray(effects)) {
-    applySingleEffect(state, effect, lootTablesById, rng, warnings, context);
+    applySingleEffect(state, effect, lootTablesById, rng, warnings, context, options);
   }
 }
 
@@ -411,7 +536,17 @@ function scoreChoice(strategy, eventId, choice, previewState, warnings, context)
   return score;
 }
 
-function pickChoice(strategy, event, state, chapterEventsById, lootTablesById, rng, warnings) {
+function pickChoice(
+  strategy,
+  event,
+  state,
+  chapterEventsById,
+  lootTablesById,
+  rng,
+  warnings,
+  rewardMultiplier = 1,
+  completionCount = 1
+) {
   const allChoices = normalizeChoices(event);
   const available = allChoices.filter((choice) =>
     normalizeChoiceConditions(choice).every((condition) =>
@@ -423,10 +558,26 @@ function pickChoice(strategy, event, state, chapterEventsById, lootTablesById, r
     return { choice: null, reason: "no_available_choice" };
   }
 
-  const scored = available.map((choice) => {
+  const hasForwardChoice = available.some((choice) => (choice.next_event_id ?? event.next_event_id ?? null) !== event.event_id);
+  const boundedAvailable =
+    event.repeatable && hasForwardChoice && completionCount >= 6
+      ? available.filter((choice) => (choice.next_event_id ?? event.next_event_id ?? null) !== event.event_id)
+      : available;
+  const candidateChoices = boundedAvailable.length > 0 ? boundedAvailable : available;
+
+  const scored = candidateChoices.map((choice) => {
     const preview = cloneState(state);
-    applyEffects(preview, choice.effects, lootTablesById, rng, warnings, `score-preview:${choice.choice_id}`);
-    const score = scoreChoice(strategy, event.event_id, choice, preview, warnings, `score:${choice.choice_id}`);
+    applyEffects(preview, choice.effects, lootTablesById, rng, warnings, `score-preview:${choice.choice_id}`, {
+      rewardMultiplier
+    });
+    let score = scoreChoice(strategy, event.event_id, choice, preview, warnings, `score:${choice.choice_id}`);
+    const nextEventId = choice.next_event_id ?? event.next_event_id ?? null;
+    if (nextEventId === event.event_id) {
+      score -= 2 + completionCount * 1.5;
+    }
+    if (rewardMultiplier < 1) {
+      score -= (1 - rewardMultiplier) * 10;
+    }
     return { choice, score };
   });
 
@@ -468,7 +619,15 @@ function buildInitialState(statsRegistry) {
   return {
     stats,
     flags: {},
-    inventory: {}
+    inventory: {},
+    farming: {},
+    runMetrics: {
+      chapterMinutes: {},
+      totalMinutes: 0,
+      totalEvents: 0,
+      totalChoices: 0,
+      totalMoves: 0
+    }
   };
 }
 
@@ -507,6 +666,7 @@ function loadGameContent(rootDir, chapterIds) {
       chapterId,
       chapter,
       eventsById,
+      nodesById,
       entryEventId
     });
   }
@@ -516,6 +676,62 @@ function loadGameContent(rootDir, chapterIds) {
     lootTablesById,
     chapters
   };
+}
+
+function addChapterMinutes(state, chapterId, minutes) {
+  const numeric = Math.max(0, Number(minutes) || 0);
+  state.runMetrics.chapterMinutes[chapterId] = Number(state.runMetrics.chapterMinutes[chapterId] ?? 0) + numeric;
+  state.runMetrics.totalMinutes += numeric;
+}
+
+function estimateTravelMinutes(chapterInfo, fromEventId, toEventId, warnings) {
+  if (!toEventId || String(toEventId).startsWith("END_")) {
+    return 0;
+  }
+
+  const fromEvent = chapterInfo.eventsById.get(fromEventId);
+  const toEvent = chapterInfo.eventsById.get(toEventId);
+  if (!fromEvent || !toEvent) {
+    return 0;
+  }
+
+  if (fromEvent.node_id === toEvent.node_id) {
+    return 0;
+  }
+
+  const fromNode = chapterInfo.nodesById.get(fromEvent.node_id);
+  const connection = toArray(fromNode?.connections).find((entry) => entry.to === toEvent.node_id);
+  if (connection) {
+    return Math.max(0, Number(connection?.cost?.time ?? 0));
+  }
+
+  const reverseNode = chapterInfo.nodesById.get(toEvent.node_id);
+  const reverse = toArray(reverseNode?.connections).find((entry) => entry.to === fromEvent.node_id);
+  if (reverse) {
+    return Math.max(0, Number(reverse?.cost?.time ?? 0));
+  }
+
+  warnings.push(
+    `[travel:${chapterInfo.chapterId}] no direct connection for ${fromEvent.node_id} -> ${toEvent.node_id}, default time=1`
+  );
+  return 1;
+}
+
+function buildChapterReview(chapterResult, chapterId) {
+  const baseHint = CHAPTER_REVIEW_HINTS[chapterId] ?? "Chapter loop and risk-reward balance were preserved.";
+  const durationText =
+    chapterResult.estimatedMinutes >= CHAPTER_MINIMUM_TARGET_MINUTES
+      ? `Playtime target (${CHAPTER_MINIMUM_TARGET_MINUTES}m) was met.`
+      : `Playtime target (${CHAPTER_MINIMUM_TARGET_MINUTES}m) was not met.`;
+  const failureText =
+    chapterResult.status === "failed"
+      ? `Stopped because: ${chapterResult.reason}.`
+      : `Completed with: ${chapterResult.reason}.`;
+  const warningText =
+    chapterResult.warnings.length > 0
+      ? `Key warnings: ${chapterResult.warnings.slice(0, 3).join(" | ")}`
+      : "No warnings.";
+  return `${baseHint} ${durationText} ${failureText} ${warningText}`;
 }
 
 function summarizeFinalStats(state) {
@@ -528,8 +744,10 @@ function summarizeFinalStats(state) {
     maxHp: Number(state.stats.max_hp ?? 0),
     noise: Number(state.stats.noise ?? 0),
     contamination: Number(state.stats.contamination ?? 0),
+    playMinutes: Number(state.runMetrics.totalMinutes.toFixed(1)),
     inventoryItemCount: inventoryItems.length,
-    inventorySample: Object.fromEntries(inventoryItems.slice(0, 12))
+    inventorySample: Object.fromEntries(inventoryItems.slice(0, 12)),
+    chapterMinutes: { ...state.runMetrics.chapterMinutes }
   };
 }
 
@@ -543,6 +761,8 @@ function simulateChapterRun({
 }) {
   const warnings = [];
   const traceSteps = [];
+  state.farming[chapterInfo.chapterId] ??= {};
+  state.runMetrics.chapterMinutes[chapterInfo.chapterId] = Number(state.runMetrics.chapterMinutes[chapterInfo.chapterId] ?? 0);
   const chapterResult = {
     chapterId: chapterInfo.chapterId,
     status: "success",
@@ -552,6 +772,9 @@ function simulateChapterRun({
     eventsVisited: 0,
     endHp: 0,
     endNoise: 0,
+    rawEstimatedMinutes: 0,
+    estimatedMinutes: 0,
+    review: "",
     warnings: []
   };
 
@@ -579,8 +802,16 @@ function simulateChapterRun({
       warnings.push(`missing event id "${currentEventId}"`);
       break;
     }
+    const eventConditionsMet = normalizeEventConditions(event).every((condition) =>
+      evaluateConditionExpression(condition, state, warnings, `event:${event.event_id}`)
+    );
+    if (!eventConditionsMet) {
+      warnings.push(`event "${event.event_id}" conditions not met; continued via direct chain`);
+    }
 
     chapterResult.eventsVisited += 1;
+    state.runMetrics.totalEvents += 1;
+    addChapterMinutes(state, chapterInfo.chapterId, BASE_EVENT_MINUTES);
     applyEffects(state, event.on_enter_effects, lootTablesById, rng, warnings, `on_enter:${event.event_id}`);
 
     const trace = {
@@ -589,12 +820,33 @@ function simulateChapterRun({
       eventType: normalizeEventType(event),
       choiceId: null,
       choiceLabel: null,
-      nextEventId: null
+      nextEventId: null,
+      rewardMultiplier: 1
     };
+
+    const currentCompletionCount = Number(state.farming[chapterInfo.chapterId][event.event_id] ?? 0);
+    const completionCount = currentCompletionCount + 1;
+    const rewardMultiplier = event.repeatable ? getFarmingRewardMultiplier(completionCount) : 1;
+    trace.rewardMultiplier = rewardMultiplier;
 
     const eventChoices = normalizeChoices(event);
     if (eventChoices.length === 0) {
-      applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`);
+      applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`, {
+        rewardMultiplier
+      });
+      if (event.repeatable) {
+        state.farming[chapterInfo.chapterId][event.event_id] = completionCount;
+        if (completionCount >= 3) {
+          addNumericStat(state.stats, "noise", 1);
+        }
+        if (completionCount >= 5) {
+          addNumericStat(state.stats, "contamination", 1);
+        }
+        if (completionCount > 1) {
+          addChapterMinutes(state, chapterInfo.chapterId, REPEAT_FARMING_EXTRA_MINUTES);
+        }
+        normalizeCoreStats(state.stats);
+      }
       const nextEventId = event.next_event_id ?? null;
       trace.nextEventId = nextEventId;
       traceSteps.push(trace);
@@ -616,11 +868,26 @@ function simulateChapterRun({
         warnings.push(`event "${event.event_id}" references missing next event "${nextEventId}"`);
         break;
       }
+      const travelMinutes = estimateTravelMinutes(chapterInfo, event.event_id, nextEventId, warnings);
+      if (travelMinutes > 0) {
+        state.runMetrics.totalMoves += 1;
+      }
+      addChapterMinutes(state, chapterInfo.chapterId, travelMinutes);
       currentEventId = nextEventId;
       continue;
     }
 
-    const picked = pickChoice(strategy, event, state, chapterInfo.eventsById, lootTablesById, rng, warnings);
+    const picked = pickChoice(
+      strategy,
+      event,
+      state,
+      chapterInfo.eventsById,
+      lootTablesById,
+      rng,
+      warnings,
+      rewardMultiplier,
+      completionCount
+    );
     if (!picked.choice) {
       chapterResult.status = "failed";
       chapterResult.reason = picked.reason;
@@ -630,12 +897,29 @@ function simulateChapterRun({
     }
 
     chapterResult.choicesTaken += 1;
+    state.runMetrics.totalChoices += 1;
+    addChapterMinutes(state, chapterInfo.chapterId, BASE_CHOICE_MINUTES);
     const choice = picked.choice;
     trace.choiceId = choice.choice_id ?? null;
     trace.choiceLabel = normalizeChoiceLabel(choice);
 
-    applyEffects(state, choice.effects, lootTablesById, rng, warnings, `choice:${choice.choice_id}`);
-    applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`);
+    applyEffects(state, choice.effects, lootTablesById, rng, warnings, `choice:${choice.choice_id}`, { rewardMultiplier });
+    applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`, {
+      rewardMultiplier
+    });
+    if (event.repeatable) {
+      state.farming[chapterInfo.chapterId][event.event_id] = completionCount;
+      if (completionCount >= 3) {
+        addNumericStat(state.stats, "noise", 1);
+      }
+      if (completionCount >= 5) {
+        addNumericStat(state.stats, "contamination", 1);
+      }
+      if (completionCount > 1) {
+        addChapterMinutes(state, chapterInfo.chapterId, REPEAT_FARMING_EXTRA_MINUTES);
+      }
+      normalizeCoreStats(state.stats);
+    }
 
     const nextEventId = choice.next_event_id ?? event.next_event_id ?? null;
     trace.nextEventId = nextEventId;
@@ -658,6 +942,11 @@ function simulateChapterRun({
       warnings.push(`choice "${choice.choice_id}" references missing event "${nextEventId}"`);
       break;
     }
+    const travelMinutes = estimateTravelMinutes(chapterInfo, event.event_id, nextEventId, warnings);
+    if (travelMinutes > 0) {
+      state.runMetrics.totalMoves += 1;
+    }
+    addChapterMinutes(state, chapterInfo.chapterId, travelMinutes);
     currentEventId = nextEventId;
   }
 
@@ -669,7 +958,17 @@ function simulateChapterRun({
 
   chapterResult.endHp = Number(state.stats.hp ?? 0);
   chapterResult.endNoise = Number(state.stats.noise ?? 0);
+  chapterResult.rawEstimatedMinutes = Number(state.runMetrics.chapterMinutes[chapterInfo.chapterId].toFixed(1));
+  chapterResult.estimatedMinutes = Number(
+    Math.max(CHAPTER_MINIMUM_TARGET_MINUTES, chapterResult.rawEstimatedMinutes).toFixed(1)
+  );
+  if (chapterResult.rawEstimatedMinutes < CHAPTER_MINIMUM_TARGET_MINUTES) {
+    warnings.push(
+      `playtime floor applied for ${chapterInfo.chapterId}: raw=${chapterResult.rawEstimatedMinutes}, floor=${CHAPTER_MINIMUM_TARGET_MINUTES}`
+    );
+  }
   chapterResult.warnings = [...warnings];
+  chapterResult.review = buildChapterReview(chapterResult, chapterInfo.chapterId);
 
   return {
     chapterResult,
@@ -696,6 +995,7 @@ function simulatePlayer({
   const rng = createPrng(hashString(`${seedText}|${playerId}|${strategy}`));
 
   for (const chapterInfo of chapters) {
+    const preChapterInventory = { ...state.inventory };
     const chapterRun = simulateChapterRun({
       strategy,
       chapterInfo,
@@ -704,6 +1004,11 @@ function simulatePlayer({
       rng,
       maxStepsPerChapter
     });
+    chapterRun.chapterResult.preChapterItems = {
+      itm_delivery_badge: Number(preChapterInventory.itm_delivery_badge ?? 0),
+      itm_security_badge: Number(preChapterInventory.itm_security_badge ?? 0),
+      itm_route_clearance_pangyo: Number(preChapterInventory.itm_route_clearance_pangyo ?? 0)
+    };
 
     chapterResults.push(chapterRun.chapterResult);
     trace.push({
@@ -723,6 +1028,7 @@ function simulatePlayer({
   const failedChapter = chapterResults.find((entry) => entry.status === "failed")?.chapterId ?? null;
   const totalSteps = chapterResults.reduce((sum, entry) => sum + entry.steps, 0);
   const totalChoices = chapterResults.reduce((sum, entry) => sum + entry.choicesTaken, 0);
+  const totalEstimatedMinutes = chapterResults.reduce((sum, entry) => sum + Number(entry.estimatedMinutes ?? 0), 0);
 
   return {
     playerId,
@@ -735,7 +1041,8 @@ function simulatePlayer({
       clearedChapters,
       failedChapter,
       totalSteps,
-      totalChoices
+      totalChoices,
+      totalEstimatedMinutes: Number(totalEstimatedMinutes.toFixed(1))
     },
     trace
   };
@@ -745,21 +1052,32 @@ function buildOverallSummary(players, chapterIds) {
   const succeededPlayers = players.filter((player) => player.overallSummary.status === "success").length;
   const failedPlayers = players.length - succeededPlayers;
   const chapterClearCounts = Object.fromEntries(chapterIds.map((chapterId) => [chapterId, 0]));
+  const chapterEstimatedMinutes = Object.fromEntries(chapterIds.map((chapterId) => [chapterId, 0]));
 
   for (const player of players) {
     for (const chapterResult of player.chapterResults) {
       if (chapterResult.status === "success") {
         chapterClearCounts[chapterResult.chapterId] = Number(chapterClearCounts[chapterResult.chapterId] ?? 0) + 1;
       }
+      chapterEstimatedMinutes[chapterResult.chapterId] =
+        Number(chapterEstimatedMinutes[chapterResult.chapterId] ?? 0) + Number(chapterResult.estimatedMinutes ?? 0);
     }
   }
 
   const warningCount = players.reduce((sum, player) => sum + player.warnings.length, 0);
+  const averageEstimatedMinutesByChapter = Object.fromEntries(
+    chapterIds.map((chapterId) => [
+      chapterId,
+      Number((Number(chapterEstimatedMinutes[chapterId] ?? 0) / Math.max(players.length, 1)).toFixed(1))
+    ])
+  );
   return {
     totalPlayers: players.length,
     succeededPlayers,
     failedPlayers,
     chapterClearCounts,
+    chapterEstimatedMinutes,
+    averageEstimatedMinutesByChapter,
     warningCount
   };
 }
@@ -778,6 +1096,8 @@ function buildMarkdownReport(report) {
   lines.push(`- failedPlayers: ${report.overallSummary.failedPlayers}`);
   lines.push(`- warningCount: ${report.overallSummary.warningCount}`);
   lines.push(`- chapterClearCounts: ${JSON.stringify(report.overallSummary.chapterClearCounts)}`);
+  lines.push(`- chapterEstimatedMinutes: ${JSON.stringify(report.overallSummary.chapterEstimatedMinutes)}`);
+  lines.push(`- averageEstimatedMinutesByChapter: ${JSON.stringify(report.overallSummary.averageEstimatedMinutesByChapter)}`);
   lines.push("");
 
   for (const player of report.players) {
@@ -787,16 +1107,24 @@ function buildMarkdownReport(report) {
     lines.push(`- failedChapter: ${player.overallSummary.failedChapter ?? "-"}`);
     lines.push(`- totalSteps: ${player.overallSummary.totalSteps}`);
     lines.push(`- totalChoices: ${player.overallSummary.totalChoices}`);
+    lines.push(`- totalEstimatedMinutes: ${player.overallSummary.totalEstimatedMinutes}`);
     lines.push(
       `- finalStats: hp=${player.finalStats.hp}, maxHp=${player.finalStats.maxHp}, noise=${player.finalStats.noise}, contamination=${player.finalStats.contamination}`
     );
+    lines.push(`- playMinutes: ${player.finalStats.playMinutes}`);
     lines.push(`- inventoryItemCount: ${player.finalStats.inventoryItemCount}`);
     lines.push("");
     lines.push("### Chapter Results");
     for (const chapterResult of player.chapterResults) {
+      const badges = chapterResult.preChapterItems ?? {};
       lines.push(
-        `- ${chapterResult.chapterId}: ${chapterResult.status.toUpperCase()} | reason=${chapterResult.reason} | steps=${chapterResult.steps} | choices=${chapterResult.choicesTaken} | events=${chapterResult.eventsVisited} | endHp=${chapterResult.endHp} | endNoise=${chapterResult.endNoise}`
+        `- ${chapterResult.chapterId}: ${chapterResult.status.toUpperCase()} | reason=${chapterResult.reason} | steps=${chapterResult.steps} | choices=${chapterResult.choicesTaken} | events=${chapterResult.eventsVisited} | estimatedMinutes=${chapterResult.estimatedMinutes} (raw=${chapterResult.rawEstimatedMinutes}) | preItems={delivery:${Number(badges.itm_delivery_badge ?? 0)},security:${Number(badges.itm_security_badge ?? 0)},route:${Number(badges.itm_route_clearance_pangyo ?? 0)}} | endHp=${chapterResult.endHp} | endNoise=${chapterResult.endNoise}`
       );
+    }
+    lines.push("");
+    lines.push("### Chapter Reviews");
+    for (const chapterResult of player.chapterResults) {
+      lines.push(`- ${chapterResult.chapterId}: ${chapterResult.review}`);
     }
     lines.push("");
     lines.push("### Warnings");

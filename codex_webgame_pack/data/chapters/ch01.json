@@ -2966,6 +2966,69 @@
             }
           ],
           "next_event_id": "EV_CH01_SERVICE_TUNNEL"
+        },
+        {
+          "choice_id": "ch01_scavenge_filtered",
+          "label": "?? ?? ??",
+          "conditions": [
+            "contamination<=6",
+            "noise<=9"
+          ],
+          "preview": "??? ???? ????.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "sub_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_scavenge_filtered",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_CONCOURSE_CACHE"
+        },
+        {
+          "choice_id": "ch01_scavenge_desperate",
+          "label": "?? ?? ??",
+          "conditions": [
+            "noise>=8|contamination>=8"
+          ],
+          "preview": "??? ???? ??? ? ? ? ????.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_global_basic_office",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 4
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_scavenge_desperate",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_CONCOURSE_CACHE"
         }
       ],
       "on_enter_effects": [],

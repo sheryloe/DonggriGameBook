@@ -580,6 +580,25 @@ export interface ChapterProgressState {
   ended_by?: string;
 }
 
+export type QuestTrackStatus = "locked" | "active" | "completed";
+
+export interface QuestTrackProgressState {
+  quest_track_id: string;
+  kind: "main" | "side";
+  unlocked: boolean;
+  status: QuestTrackStatus;
+  started_at?: string;
+  completed_at?: string;
+}
+
+export interface RunMetricsState {
+  chapter_minutes: Record<ChapterId, number>;
+  total_minutes: number;
+  total_moves: number;
+  total_events: number;
+  total_choices: number;
+}
+
 export interface LootDrop {
   item_id: ItemId;
   quantity: number;
@@ -644,6 +663,9 @@ export interface RuntimeSnapshot {
   flags: Record<string, FlagValue>;
   inventory: InventoryState;
   chapter_progress: Record<ChapterId, ChapterProgressState>;
+  quest_progress: Record<ChapterId, Record<string, QuestTrackProgressState>>;
+  farming_progress: Record<ChapterId, Record<EventId, number>>;
+  run_metrics: RunMetricsState;
   visited_nodes: Record<ChapterId, Record<NodeId, true>>;
   visited_events: Record<ChapterId, Record<EventId, EventVisitState>>;
   loot_session: LootSessionState | null;
