@@ -72,7 +72,7 @@
       "text": "편집실 잔류자의 결정을 확인한다.",
       "required": false,
       "complete_when": [
-        "flag:rescued_writer|flag:left_writer"
+        "flag:rescued_writer"
       ]
     },
     {
@@ -88,7 +88,7 @@
       "text": "침수 캐시를 조사해 장비를 확보한다.",
       "required": false,
       "complete_when": [
-        "flag:ch01_cache_cleared|flag:ch01_cache_skipped"
+        "flag:ch01_cache_cleared"
       ]
     },
     {
@@ -96,7 +96,7 @@
       "text": "옥상 송신기 릴레이를 복구한다.",
       "required": false,
       "complete_when": [
-        "flag:ch01_relay_repaired|flag:ch01_relay_bypass"
+        "flag:ch01_relay_repaired"
       ]
     },
     {
@@ -1350,7 +1350,23 @@
           "label": "옥상 사수",
           "conditions": [],
           "preview": "중계기와 증폭기를 지킨다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_trust",
+              "target": "trust.npc_yoon_haein",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "hold"
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
           "next_event_id": "EV_CH01_STUDIO_APPROACH"
         }
       ],
@@ -1522,7 +1538,23 @@
           "label": "매복 돌파",
           "conditions": [],
           "preview": "정리하고 기록실로 이동한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 3
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.yeouido",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_archive_fight",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH01_ARCHIVE_DECISION"
         }
       ],
@@ -2124,7 +2156,23 @@
           "label": "회랑 돌파",
           "conditions": [],
           "preview": "교전을 정리하고 로비로 진입한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "set_route",
+              "target": "route.underworld",
+              "value": "force"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_concourse_break",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH01_SERVICE_TUNNEL"
         },
         {
@@ -2675,7 +2723,23 @@
             "flag:ch01_route_archive"
           ],
           "preview": "침수 자료실을 먼저 확보한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.yeouido",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_security_to_archive",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH01_SECURITY_LOCKER"
         },
         {
@@ -2685,7 +2749,23 @@
             "flag:ch01_route_writer"
           ],
           "preview": "잔류자를 먼저 확인한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.compassion",
+              "value": "rescue"
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_han_sujin",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch01_security_to_writer",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH01_SECURITY_LOCKER"
         }
       ],
@@ -3026,6 +3106,37 @@
               "op": "set_flag",
               "target": "flag:ch01_scavenge_desperate",
               "value": true
+            }
+          ],
+          "next_event_id": "EV_CH01_CONCOURSE_CACHE"
+        },
+        {
+          "choice_id": "ch01_scavenge_repurpose",
+          "label": "?? ???",
+          "conditions": [
+            "item:itm_mask_filter_basic>=1"
+          ],
+          "preview": "??? ??? ?? ?? ???? ????.",
+          "effects": [
+            {
+              "op": "remove_item",
+              "target": "item:itm_mask_filter_basic",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_firstaid_kit_small",
+              "value": 1
+            },
+            {
+              "op": "sub_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "repurpose"
             }
           ],
           "next_event_id": "EV_CH01_CONCOURSE_CACHE"

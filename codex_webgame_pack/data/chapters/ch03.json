@@ -88,7 +88,7 @@
       "text": "정전 구간을 복구하거나 우회한다.",
       "required": false,
       "complete_when": [
-        "flag:ch03_blackout_fixed|flag:ch03_blackout_bypass|flag:ch03_blackout_skipped"
+        "flag:ch03_blackout_fixed"
       ]
     },
     {
@@ -96,7 +96,7 @@
       "text": "스카이브리지 구조 요청을 처리한다.",
       "required": false,
       "complete_when": [
-        "flag:ch03_rescue_complete|flag:ch03_rescue_marked"
+        "flag:ch03_rescue_complete"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "text": "보스전에 앞서 장비를 정비한다.",
       "required": false,
       "complete_when": [
-        "flag:ch03_prep_done|flag:ch03_prep_rushed"
+        "flag:ch03_prep_done"
       ]
     },
     {
@@ -1270,7 +1270,23 @@
           "label": "상층으로 이동한다",
           "conditions": [],
           "preview": "쇼룸으로 진입한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "advance"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_stair_push",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH03_SHOWROOM_SWEEP"
         }
       ],
@@ -1774,7 +1790,23 @@
           "label": "쇼룸 정리",
           "conditions": [],
           "preview": "전력실로 진입할 경로를 확보한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 2
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.jamsil",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_showroom_clear_direct",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH03_SHOWROOM_STORAGE"
         }
       ],
@@ -2090,7 +2122,23 @@
           "label": "계단을 정리한다",
           "conditions": [],
           "preview": "상층으로 이동한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch03_upper_luxury",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.underworld",
+              "value": "service"
+            }
+          ],
           "next_event_id": "EV_CH03_SERVICE_AMBUSH"
         }
       ],
@@ -2174,7 +2222,23 @@
           "label": "바로 통과",
           "conditions": [],
           "preview": "전력실로 이동한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_showroom_rushed",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH03_SHOWROOM_CACHE"
         }
       ],
@@ -2245,6 +2309,35 @@
             }
           ],
           "next_event_id": "EV_CH03_SHOWROOM_CACHE"
+        },
+        {
+          "choice_id": "ch03_luxury_recon",
+          "label": "?? ?? ??",
+          "conditions": [],
+          "preview": "??? ?? ?? ??? ??? ???.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_luxury_recon",
+              "value": true
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.jamsil",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.truth",
+              "value": "witness"
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH03_LUXURY_SCAVENGE"
         }
       ],
       "on_enter_effects": [],
@@ -2345,7 +2438,23 @@
           "label": "경계를 정리한다",
           "conditions": [],
           "preview": "보급 라인으로 이동한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_reputation",
+              "target": "rep.jamsil",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_upper_clear_direct",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH03_UPPER_SUPPLY"
         }
       ],
@@ -2429,7 +2538,23 @@
           "label": "빠르게 이동",
           "conditions": [],
           "preview": "스카이브릿지로 간다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.underworld",
+              "value": "clean"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch03_upper_supply_skip",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH03_SKYBRIDGE_ACCESS"
         }
       ],
@@ -2602,7 +2727,23 @@
           "label": "정면 돌입",
           "conditions": [],
           "preview": "보스전에 진입한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "raid"
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            }
+          ],
           "next_event_id": "EV_CH03_BOSS_GARDEN"
         }
       ],

@@ -1091,7 +1091,23 @@
           "label": "매복 돌파",
           "conditions": [],
           "preview": "골목을 정리하고 부두로 향한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 3
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.noryangjin",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_ambush_clear",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH02_CHANNEL_CLEAR"
         }
       ],
@@ -1389,7 +1405,23 @@
           "label": "매복 돌파",
           "conditions": [],
           "preview": "감염체를 정리하고 전진한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 4
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "push"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_submerged_fight",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH02_BLACKMARKET"
         }
       ],
@@ -1901,7 +1933,23 @@
           "label": "통제실 돌파",
           "conditions": [],
           "preview": "수문 전투 전, 구역을 정리한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 3
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "assault"
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.noryangjin",
+              "value": -1
+            }
+          ],
           "next_event_id": "EV_CH02_PIER_SIGNAL"
         }
       ],
@@ -2393,7 +2441,23 @@
           "label": "잔해를 치우고 전진한다",
           "conditions": [],
           "preview": "배수문 쪽으로 이동한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_drowned_push",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH02_PIER_BARGAIN"
         }
       ],
@@ -2533,6 +2597,35 @@
             }
           ],
           "next_event_id": "EV_CH02_TIDE_SCAN"
+        },
+        {
+          "choice_id": "ch02_market_loop_signal",
+          "label": "?? ?? ??",
+          "conditions": [],
+          "preview": "????? ?? ???? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_market_signal_trace",
+              "value": true
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.noryangjin",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.truth",
+              "value": "probe"
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH02_MARKET_BACKALLEY_LOOP"
         }
       ],
       "on_enter_effects": [],
@@ -2602,6 +2695,35 @@
             }
           ],
           "next_event_id": "EV_CH02_DROWNED_AMBUSH"
+        },
+        {
+          "choice_id": "ch02_cold_loop_stabilize",
+          "label": "?? ?? ???",
+          "conditions": [],
+          "preview": "?? ???? ??? ? ??? ???.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "stabilize"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch02_cold_stabilized",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH02_COLD_CRAWL"
         }
       ],
       "on_enter_effects": [],

@@ -16,11 +16,11 @@ const REPEAT_FARMING_EXTRA_MINUTES = 2;
 const CHAPTER_MINIMUM_TARGET_MINUTES = 20;
 
 const CHAPTER_REVIEW_HINTS = {
-  CH01: "Onboarding is stable, but farming options were narrow, so conditional farming branches were expanded.",
-  CH02: "Risk-reward pacing was good, but repeat farming impact was weak, so softcap pressure was increased.",
-  CH03: "Mid-game branching remained strong, and side-path farming kept equipment progression meaningful.",
-  CH04: "The CH05 entry gate was stabilized by forcing a guaranteed Pangyo clearance route.",
-  CH05: "Pre-finale density was reinforced with repeatable farming and side loops."
+  CH01: "온보딩은 안정적이지만 파밍 선택 폭이 좁아 조건형 보조 루프를 확장했다.",
+  CH02: "리스크-보상 구조는 유지하되 반복 파밍의 체감 페널티를 강화했다.",
+  CH03: "중반 분기 유지와 장비 성장 동기를 동시에 확보하도록 루프를 조정했다.",
+  CH04: "CH05 진입 막힘을 방지하도록 판교 진입권 경로를 고정했다.",
+  CH05: "피날레 직전 준비 밀도를 높이기 위해 반복 루프와 사이드 동선을 보강했다."
 };
 
 function parseArgs(argv) {
@@ -276,12 +276,7 @@ function evaluateEffectGuard(expression, state, warnings, context) {
     return !evaluateEffectGuard(raw.slice(1), state, warnings, context);
   }
 
-  if (evaluateConditionExpression(raw, state, warnings, context)) {
-    return true;
-  }
-
-  warnings.push(`[${context}] unsupported effect guard "${raw}"`);
-  return false;
+  return evaluateConditionExpression(raw, state, warnings, context);
 }
 
 function getFarmingRewardMultiplier(completionCount) {
@@ -717,21 +712,52 @@ function estimateTravelMinutes(chapterInfo, fromEventId, toEventId, warnings) {
   return 1;
 }
 
-function buildChapterReview(chapterResult, chapterId) {
-  const baseHint = CHAPTER_REVIEW_HINTS[chapterId] ?? "Chapter loop and risk-reward balance were preserved.";
+function buildChapterReview(chapterResult, chapterId, strategy) {
+  const baseHint = CHAPTER_REVIEW_HINTS[chapterId] ?? "챕터 루프와 리스크-보상 균형을 유지했다.";
+  const noiseDelta = Number(chapterResult.endNoise ?? 0) - Number(chapterResult.startNoise ?? 0);
+  const contaminationDelta = Number(chapterResult.endContamination ?? 0) - Number(chapterResult.startContamination ?? 0);
+  const hpDelta = Number(chapterResult.endHp ?? 0) - Number(chapterResult.startHp ?? 0);
+
+  const styleText =
+    strategy === "aggressive"
+      ? `공격적 성향으로 진행해 소음 변화는 ${noiseDelta >= 0 ? `+${noiseDelta}` : noiseDelta}, 체력 변화는 ${hpDelta}.`
+      : `신중 성향으로 진행해 소음 변화는 ${noiseDelta >= 0 ? `+${noiseDelta}` : noiseDelta}, 오염 변화는 ${contaminationDelta >= 0 ? `+${contaminationDelta}` : contaminationDelta}.`;
+
+  const loopEvents = Object.entries(chapterResult.repeatFarmEvents ?? {})
+    .filter(([, count]) => Number(count) > 0)
+    .sort((a, b) => Number(b[1]) - Number(a[1]))
+    .slice(0, 2)
+    .map(([eventId, count]) => `${eventId}x${count}`);
+  const loopText =
+    Number(chapterResult.loopCount ?? 0) > 0
+      ? `반복 루프 ${chapterResult.loopCount}회(${loopEvents.join(", ") || "이벤트 미상"})가 발생했다.`
+      : "반복 루프 없이 선형에 가깝게 진행됐다.";
+
+  const routeText =
+    Number(chapterResult.routeChoiceCount ?? 0) > 0
+      ? `경로 지정(set_route) 선택은 ${chapterResult.routeChoiceCount}회 반영됐다.`
+      : "경로 지정(set_route) 선택은 없었다.";
+
+  const majorChoices = (chapterResult.majorChoices ?? []).slice(0, 2);
+  const majorChoiceText =
+    majorChoices.length > 0
+      ? `주요 선택: ${majorChoices.map((x) => `${x.choiceId}(${x.count}회)`).join(", ")}.`
+      : "선택 분포가 고르게 분산됐다.";
+
   const durationText =
     chapterResult.estimatedMinutes >= CHAPTER_MINIMUM_TARGET_MINUTES
-      ? `Playtime target (${CHAPTER_MINIMUM_TARGET_MINUTES}m) was met.`
-      : `Playtime target (${CHAPTER_MINIMUM_TARGET_MINUTES}m) was not met.`;
-  const failureText =
+      ? `플레이타임 목표(${CHAPTER_MINIMUM_TARGET_MINUTES}분)를 충족했다.`
+      : `플레이타임 목표(${CHAPTER_MINIMUM_TARGET_MINUTES}분)를 충족하지 못했다.`;
+  const outcomeText =
     chapterResult.status === "failed"
-      ? `Stopped because: ${chapterResult.reason}.`
-      : `Completed with: ${chapterResult.reason}.`;
+      ? `중단 원인: ${chapterResult.reason}.`
+      : `완료 결과: ${chapterResult.reason}.`;
   const warningText =
     chapterResult.warnings.length > 0
-      ? `Key warnings: ${chapterResult.warnings.slice(0, 3).join(" | ")}`
-      : "No warnings.";
-  return `${baseHint} ${durationText} ${failureText} ${warningText}`;
+      ? `주요 경고: ${chapterResult.warnings.slice(0, 2).join(" | ")}`
+      : "주요 경고 없음.";
+
+  return `${baseHint} ${styleText} ${loopText} ${routeText} ${majorChoiceText} ${durationText} ${outcomeText} ${warningText}`;
 }
 
 function summarizeFinalStats(state) {
@@ -763,6 +789,13 @@ function simulateChapterRun({
   const traceSteps = [];
   state.farming[chapterInfo.chapterId] ??= {};
   state.runMetrics.chapterMinutes[chapterInfo.chapterId] = Number(state.runMetrics.chapterMinutes[chapterInfo.chapterId] ?? 0);
+  const startHp = Number(state.stats.hp ?? 0);
+  const startNoise = Number(state.stats.noise ?? 0);
+  const startContamination = Number(state.stats.contamination ?? 0);
+  const choiceCounts = {};
+  const repeatFarmEvents = {};
+  let loopCount = 0;
+  let routeChoiceCount = 0;
   const chapterResult = {
     chapterId: chapterInfo.chapterId,
     status: "success",
@@ -774,6 +807,14 @@ function simulateChapterRun({
     endNoise: 0,
     rawEstimatedMinutes: 0,
     estimatedMinutes: 0,
+    startHp,
+    startNoise,
+    startContamination,
+    endContamination: 0,
+    loopCount: 0,
+    repeatFarmEvents: {},
+    routeChoiceCount: 0,
+    majorChoices: [],
     review: "",
     warnings: []
   };
@@ -902,6 +943,10 @@ function simulateChapterRun({
     const choice = picked.choice;
     trace.choiceId = choice.choice_id ?? null;
     trace.choiceLabel = normalizeChoiceLabel(choice);
+    choiceCounts[choice.choice_id] = Number(choiceCounts[choice.choice_id] ?? 0) + 1;
+    if (toArray(choice.effects).some((effect) => effect?.op === "set_route")) {
+      routeChoiceCount += 1;
+    }
 
     applyEffects(state, choice.effects, lootTablesById, rng, warnings, `choice:${choice.choice_id}`, { rewardMultiplier });
     applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`, {
@@ -923,6 +968,10 @@ function simulateChapterRun({
 
     const nextEventId = choice.next_event_id ?? event.next_event_id ?? null;
     trace.nextEventId = nextEventId;
+    if (nextEventId === event.event_id) {
+      loopCount += 1;
+      repeatFarmEvents[event.event_id] = Number(repeatFarmEvents[event.event_id] ?? 0) + 1;
+    }
     traceSteps.push(trace);
 
     if (!nextEventId) {
@@ -958,6 +1007,14 @@ function simulateChapterRun({
 
   chapterResult.endHp = Number(state.stats.hp ?? 0);
   chapterResult.endNoise = Number(state.stats.noise ?? 0);
+  chapterResult.endContamination = Number(state.stats.contamination ?? 0);
+  chapterResult.loopCount = loopCount;
+  chapterResult.repeatFarmEvents = { ...repeatFarmEvents };
+  chapterResult.routeChoiceCount = routeChoiceCount;
+  chapterResult.majorChoices = Object.entries(choiceCounts)
+    .sort((a, b) => Number(b[1]) - Number(a[1]))
+    .slice(0, 3)
+    .map(([choiceId, count]) => ({ choiceId, count }));
   chapterResult.rawEstimatedMinutes = Number(state.runMetrics.chapterMinutes[chapterInfo.chapterId].toFixed(1));
   chapterResult.estimatedMinutes = Number(
     Math.max(CHAPTER_MINIMUM_TARGET_MINUTES, chapterResult.rawEstimatedMinutes).toFixed(1)
@@ -968,7 +1025,7 @@ function simulateChapterRun({
     );
   }
   chapterResult.warnings = [...warnings];
-  chapterResult.review = buildChapterReview(chapterResult, chapterInfo.chapterId);
+  chapterResult.review = buildChapterReview(chapterResult, chapterInfo.chapterId, strategy);
 
   return {
     chapterResult,

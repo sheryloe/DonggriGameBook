@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T15:38:20.864Z",
+  "generatedAt": "2026-04-10T15:59:13.840Z",
   "seed": "20260410",
   "chapters": [
     "CH01",
@@ -17,14 +17,35 @@
           "chapterId": "CH01",
           "status": "success",
           "reason": "END_CH01",
-          "steps": 21,
-          "choicesTaken": 20,
-          "eventsVisited": 21,
+          "steps": 22,
+          "choicesTaken": 21,
+          "eventsVisited": 22,
           "endHp": 100,
-          "endNoise": 1,
-          "rawEstimatedMinutes": 79,
-          "estimatedMinutes": 79,
-          "review": "Onboarding is stable, but farming options were narrow, so conditional farming branches were expanded. Playtime target (20m) was met. Completed with: END_CH01. Key warnings: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
+          "endNoise": 2,
+          "rawEstimatedMinutes": 82,
+          "estimatedMinutes": 82,
+          "startHp": 100,
+          "startNoise": 0,
+          "startContamination": 0,
+          "endContamination": 6,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch01_brief_go",
+              "count": 1
+            },
+            {
+              "choiceId": "ch01_approach_careful",
+              "count": 1
+            },
+            {
+              "choiceId": "ch01_concourse_scavenge",
+              "count": 1
+            }
+          ],
+          "review": "온보딩은 안정적이지만 파밍 선택 폭이 좁아 조건형 보조 루프를 확장했다. 신중 성향으로 진행해 소음 변화는 +2, 오염 변화는 +6. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 1회 반영됐다. 주요 선택: ch01_brief_go(1회), ch01_approach_careful(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH01. 주요 경고: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
           "warnings": [
             "event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain"
           ],
@@ -41,15 +62,34 @@
           "steps": 15,
           "choicesTaken": 14,
           "eventsVisited": 15,
-          "endHp": 100,
-          "endNoise": 0,
+          "endHp": 98,
+          "endNoise": 3,
           "rawEstimatedMinutes": 56,
           "estimatedMinutes": 56,
-          "review": "Risk-reward pacing was good, but repeat farming impact was weak, so softcap pressure was increased. Playtime target (20m) was met. Completed with: END_CH02. Key warnings: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain | [score-preview:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\" | [choice:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
+          "startHp": 100,
+          "startNoise": 2,
+          "startContamination": 6,
+          "endContamination": 24,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch02_entry_go",
+              "count": 1
+            },
+            {
+              "choiceId": "ch02_market_storage",
+              "count": 1
+            },
+            {
+              "choiceId": "ch02_backalley_skip",
+              "count": 1
+            }
+          ],
+          "review": "리스크-보상 구조는 유지하되 반복 파밍의 체감 페널티를 강화했다. 신중 성향으로 진행해 소음 변화는 +1, 오염 변화는 +18. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 1회 반영됐다. 주요 선택: ch02_entry_go(1회), ch02_market_storage(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH02. 주요 경고: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
           "warnings": [
-            "event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
-            "[score-preview:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
-            "[choice:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\""
+            "event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain"
           ],
           "preChapterItems": {
             "itm_delivery_badge": 0,
@@ -65,10 +105,31 @@
           "choicesTaken": 27,
           "eventsVisited": 28,
           "endHp": 100,
-          "endNoise": 0,
+          "endNoise": 8,
           "rawEstimatedMinutes": 97,
           "estimatedMinutes": 97,
-          "review": "Mid-game branching remained strong, and side-path farming kept equipment progression meaningful. Playtime target (20m) was met. Completed with: END_CH03. Key warnings: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
+          "startHp": 98,
+          "startNoise": 3,
+          "startContamination": 24,
+          "endContamination": 30,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 4,
+          "majorChoices": [
+            {
+              "choiceId": "ch03_start",
+              "count": 1
+            },
+            {
+              "choiceId": "ch03_basement_support",
+              "count": 1
+            },
+            {
+              "choiceId": "ch03_basement_scout",
+              "count": 1
+            }
+          ],
+          "review": "중반 분기 유지와 장비 성장 동기를 동시에 확보하도록 루프를 조정했다. 신중 성향으로 진행해 소음 변화는 +5, 오염 변화는 +6. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 4회 반영됐다. 주요 선택: ch03_start(1회), ch03_basement_support(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH03. 주요 경고: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
           "warnings": [
             "event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain"
           ],
@@ -86,10 +147,31 @@
           "choicesTaken": 15,
           "eventsVisited": 16,
           "endHp": 100,
-          "endNoise": 0,
+          "endNoise": 8,
           "rawEstimatedMinutes": 63,
           "estimatedMinutes": 63,
-          "review": "The CH05 entry gate was stabilized by forcing a guaranteed Pangyo clearance route. Playtime target (20m) was met. Completed with: END_CH04. Key warnings: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1 | event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
+          "startHp": 100,
+          "startNoise": 8,
+          "startContamination": 30,
+          "endContamination": 33,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 2,
+          "majorChoices": [
+            {
+              "choiceId": "ch04_start",
+              "count": 1
+            },
+            {
+              "choiceId": "ch04_cold_record",
+              "count": 1
+            },
+            {
+              "choiceId": "ch04_cold_skip",
+              "count": 1
+            }
+          ],
+          "review": "CH05 진입 막힘을 방지하도록 판교 진입권 경로를 고정했다. 신중 성향으로 진행해 소음 변화는 +0, 오염 변화는 +3. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 2회 반영됐다. 주요 선택: ch04_start(1회), ch04_cold_record(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH04. 주요 경고: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1 | event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
           "warnings": [
             "[travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1",
             "event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain"
@@ -108,16 +190,37 @@
           "choicesTaken": 14,
           "eventsVisited": 15,
           "endHp": 100,
-          "endNoise": 0,
+          "endNoise": 7,
           "rawEstimatedMinutes": 56,
           "estimatedMinutes": 56,
-          "review": "Pre-finale density was reinforced with repeatable farming and side loops. Playtime target (20m) was met. Completed with: END_CH05. Key warnings: [travel:CH05] no direct connection for PG-03 -> PG-04, default time=1 | event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain",
+          "startHp": 100,
+          "startNoise": 8,
+          "startContamination": 33,
+          "endContamination": 38,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch05_start",
+              "count": 1
+            },
+            {
+              "choiceId": "ch05_lobby_map",
+              "count": 1
+            },
+            {
+              "choiceId": "ch05_scan_skip",
+              "count": 1
+            }
+          ],
+          "review": "피날레 직전 준비 밀도를 높이기 위해 반복 루프와 사이드 동선을 보강했다. 신중 성향으로 진행해 소음 변화는 -1, 오염 변화는 +5. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 1회 반영됐다. 주요 선택: ch05_start(1회), ch05_lobby_map(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH05. 주요 경고: [travel:CH05] no direct connection for PG-03 -> PG-04, default time=1 | event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain",
           "warnings": [
             "[travel:CH05] no direct connection for PG-03 -> PG-04, default time=1",
             "event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain"
           ],
           "preChapterItems": {
-            "itm_delivery_badge": 2,
+            "itm_delivery_badge": 4,
             "itm_security_badge": 2,
             "itm_route_clearance_pangyo": 1
           }
@@ -126,26 +229,26 @@
       "finalStats": {
         "hp": 100,
         "maxHp": 100,
-        "noise": 0,
-        "contamination": 37,
-        "playMinutes": 351,
-        "inventoryItemCount": 33,
+        "noise": 7,
+        "contamination": 38,
+        "playMinutes": 354,
+        "inventoryItemCount": 35,
         "inventorySample": {
-          "itm_ammo_9mm": 28,
+          "itm_ammo_9mm": 18,
           "itm_arkp_access_key": 1,
           "itm_backpack_field_6": 1,
           "itm_backpack_salvage_10": 1,
-          "itm_battery_pack": 6,
-          "itm_box_label_roll": 4,
-          "itm_broadcast_log": 1,
-          "itm_cable_tie": 3,
-          "itm_container_seal": 3,
+          "itm_battery_pack": 8,
+          "itm_boat_fuel_can": 4,
+          "itm_box_label_roll": 5,
+          "itm_cable_tie": 2,
+          "itm_cleaver_market": 1,
           "itm_cooling_gel": 1,
-          "itm_copper_wire": 4,
-          "itm_delivery_badge": 2
+          "itm_copper_wire": 6,
+          "itm_delivery_badge": 4
         },
         "chapterMinutes": {
-          "CH01": 79,
+          "CH01": 82,
           "CH02": 56,
           "CH03": 97,
           "CH04": 63,
@@ -155,177 +258,6 @@
       "warnings": [
         "CH01: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
         "CH02: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
-        "CH02: [score-preview:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
-        "CH02: [choice:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
-        "CH03: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
-        "CH04: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1",
-        "CH04: event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
-        "CH05: [travel:CH05] no direct connection for PG-03 -> PG-04, default time=1",
-        "CH05: event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain"
-      ],
-      "overallSummary": {
-        "status": "success",
-        "clearedChapters": [
-          "CH01",
-          "CH02",
-          "CH03",
-          "CH04",
-          "CH05"
-        ],
-        "failedChapter": null,
-        "totalSteps": 95,
-        "totalChoices": 90,
-        "totalEstimatedMinutes": 351
-      }
-    },
-    {
-      "playerId": "player-02",
-      "strategy": "aggressive",
-      "chapterResults": [
-        {
-          "chapterId": "CH01",
-          "status": "success",
-          "reason": "END_CH01",
-          "steps": 21,
-          "choicesTaken": 20,
-          "eventsVisited": 21,
-          "endHp": 100,
-          "endNoise": 6,
-          "rawEstimatedMinutes": 79,
-          "estimatedMinutes": 79,
-          "review": "Onboarding is stable, but farming options were narrow, so conditional farming branches were expanded. Playtime target (20m) was met. Completed with: END_CH01. Key warnings: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
-          "warnings": [
-            "event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain"
-          ],
-          "preChapterItems": {
-            "itm_delivery_badge": 0,
-            "itm_security_badge": 0,
-            "itm_route_clearance_pangyo": 0
-          }
-        },
-        {
-          "chapterId": "CH02",
-          "status": "success",
-          "reason": "END_CH02",
-          "steps": 16,
-          "choicesTaken": 15,
-          "eventsVisited": 16,
-          "endHp": 100,
-          "endNoise": 9,
-          "rawEstimatedMinutes": 59,
-          "estimatedMinutes": 59,
-          "review": "Risk-reward pacing was good, but repeat farming impact was weak, so softcap pressure was increased. Playtime target (20m) was met. Completed with: END_CH02. Key warnings: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain | [score-preview:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\" | [choice:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
-          "warnings": [
-            "event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
-            "[score-preview:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
-            "[choice:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\""
-          ],
-          "preChapterItems": {
-            "itm_delivery_badge": 0,
-            "itm_security_badge": 0,
-            "itm_route_clearance_pangyo": 0
-          }
-        },
-        {
-          "chapterId": "CH03",
-          "status": "success",
-          "reason": "END_CH03",
-          "steps": 28,
-          "choicesTaken": 27,
-          "eventsVisited": 28,
-          "endHp": 100,
-          "endNoise": 17,
-          "rawEstimatedMinutes": 97,
-          "estimatedMinutes": 97,
-          "review": "Mid-game branching remained strong, and side-path farming kept equipment progression meaningful. Playtime target (20m) was met. Completed with: END_CH03. Key warnings: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
-          "warnings": [
-            "event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain"
-          ],
-          "preChapterItems": {
-            "itm_delivery_badge": 0,
-            "itm_security_badge": 0,
-            "itm_route_clearance_pangyo": 0
-          }
-        },
-        {
-          "chapterId": "CH04",
-          "status": "success",
-          "reason": "END_CH04",
-          "steps": 16,
-          "choicesTaken": 15,
-          "eventsVisited": 16,
-          "endHp": 100,
-          "endNoise": 20,
-          "rawEstimatedMinutes": 63,
-          "estimatedMinutes": 63,
-          "review": "The CH05 entry gate was stabilized by forcing a guaranteed Pangyo clearance route. Playtime target (20m) was met. Completed with: END_CH04. Key warnings: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1 | event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
-          "warnings": [
-            "[travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1",
-            "event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain"
-          ],
-          "preChapterItems": {
-            "itm_delivery_badge": 0,
-            "itm_security_badge": 0,
-            "itm_route_clearance_pangyo": 0
-          }
-        },
-        {
-          "chapterId": "CH05",
-          "status": "success",
-          "reason": "END_CH05",
-          "steps": 15,
-          "choicesTaken": 14,
-          "eventsVisited": 15,
-          "endHp": 100,
-          "endNoise": 24,
-          "rawEstimatedMinutes": 56,
-          "estimatedMinutes": 56,
-          "review": "Pre-finale density was reinforced with repeatable farming and side loops. Playtime target (20m) was met. Completed with: END_CH05. Key warnings: [travel:CH05] no direct connection for PG-03 -> PG-04, default time=1 | event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain",
-          "warnings": [
-            "[travel:CH05] no direct connection for PG-03 -> PG-04, default time=1",
-            "event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain"
-          ],
-          "preChapterItems": {
-            "itm_delivery_badge": 1,
-            "itm_security_badge": 1,
-            "itm_route_clearance_pangyo": 1
-          }
-        }
-      ],
-      "finalStats": {
-        "hp": 100,
-        "maxHp": 100,
-        "noise": 24,
-        "contamination": 35,
-        "playMinutes": 354,
-        "inventoryItemCount": 41,
-        "inventorySample": {
-          "itm_adrenaline": 1,
-          "itm_ammo_9mm": 27,
-          "itm_arkp_access_key": 4,
-          "itm_backpack_field_6": 1,
-          "itm_backpack_salvage_10": 1,
-          "itm_bandage": 1,
-          "itm_battery_pack": 15,
-          "itm_box_label_roll": 11,
-          "itm_cable_tie": 15,
-          "itm_cleaver_market": 2,
-          "itm_container_seal": 7,
-          "itm_cooling_gel": 4
-        },
-        "chapterMinutes": {
-          "CH01": 79,
-          "CH02": 59,
-          "CH03": 97,
-          "CH04": 63,
-          "CH05": 56
-        }
-      },
-      "warnings": [
-        "CH01: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
-        "CH02: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
-        "CH02: [score-preview:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
-        "CH02: [choice:ch02_finish] unsupported effect guard \"trust.npc_jung_noah>=1\"",
         "CH03: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
         "CH04: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1",
         "CH04: event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
@@ -346,6 +278,276 @@
         "totalChoices": 91,
         "totalEstimatedMinutes": 354
       }
+    },
+    {
+      "playerId": "player-02",
+      "strategy": "aggressive",
+      "chapterResults": [
+        {
+          "chapterId": "CH01",
+          "status": "success",
+          "reason": "END_CH01",
+          "steps": 21,
+          "choicesTaken": 20,
+          "eventsVisited": 21,
+          "endHp": 100,
+          "endNoise": 8,
+          "rawEstimatedMinutes": 79,
+          "estimatedMinutes": 79,
+          "startHp": 100,
+          "startNoise": 0,
+          "startContamination": 0,
+          "endContamination": 6,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 2,
+          "majorChoices": [
+            {
+              "choiceId": "ch01_brief_go",
+              "count": 1
+            },
+            {
+              "choiceId": "ch01_approach_careful",
+              "count": 1
+            },
+            {
+              "choiceId": "ch01_concourse_break",
+              "count": 1
+            }
+          ],
+          "review": "온보딩은 안정적이지만 파밍 선택 폭이 좁아 조건형 보조 루프를 확장했다. 공격적 성향으로 진행해 소음 변화는 +8, 체력 변화는 0. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 2회 반영됐다. 주요 선택: ch01_brief_go(1회), ch01_approach_careful(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH01. 주요 경고: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
+          "warnings": [
+            "event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain"
+          ],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH02",
+          "status": "success",
+          "reason": "END_CH02",
+          "steps": 16,
+          "choicesTaken": 15,
+          "eventsVisited": 16,
+          "endHp": 98,
+          "endNoise": 13,
+          "rawEstimatedMinutes": 59,
+          "estimatedMinutes": 59,
+          "startHp": 100,
+          "startNoise": 8,
+          "startContamination": 6,
+          "endContamination": 24,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch02_entry_go",
+              "count": 1
+            },
+            {
+              "choiceId": "ch02_market_storage",
+              "count": 1
+            },
+            {
+              "choiceId": "ch02_backalley_enter",
+              "count": 1
+            }
+          ],
+          "review": "리스크-보상 구조는 유지하되 반복 파밍의 체감 페널티를 강화했다. 공격적 성향으로 진행해 소음 변화는 +5, 체력 변화는 -2. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 1회 반영됐다. 주요 선택: ch02_entry_go(1회), ch02_market_storage(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH02. 주요 경고: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
+          "warnings": [
+            "event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain"
+          ],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH03",
+          "status": "success",
+          "reason": "END_CH03",
+          "steps": 27,
+          "choicesTaken": 26,
+          "eventsVisited": 27,
+          "endHp": 100,
+          "endNoise": 25,
+          "rawEstimatedMinutes": 94,
+          "estimatedMinutes": 94,
+          "startHp": 98,
+          "startNoise": 13,
+          "startContamination": 24,
+          "endContamination": 29,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 4,
+          "majorChoices": [
+            {
+              "choiceId": "ch03_start",
+              "count": 1
+            },
+            {
+              "choiceId": "ch03_basement_support",
+              "count": 1
+            },
+            {
+              "choiceId": "ch03_basement_scout",
+              "count": 1
+            }
+          ],
+          "review": "중반 분기 유지와 장비 성장 동기를 동시에 확보하도록 루프를 조정했다. 공격적 성향으로 진행해 소음 변화는 +12, 체력 변화는 2. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 4회 반영됐다. 주요 선택: ch03_start(1회), ch03_basement_support(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH03. 주요 경고: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
+          "warnings": [
+            "event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain"
+          ],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH04",
+          "status": "success",
+          "reason": "END_CH04",
+          "steps": 16,
+          "choicesTaken": 15,
+          "eventsVisited": 16,
+          "endHp": 100,
+          "endNoise": 29,
+          "rawEstimatedMinutes": 63,
+          "estimatedMinutes": 63,
+          "startHp": 100,
+          "startNoise": 25,
+          "startContamination": 29,
+          "endContamination": 31,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 2,
+          "majorChoices": [
+            {
+              "choiceId": "ch04_start",
+              "count": 1
+            },
+            {
+              "choiceId": "ch04_cold_record",
+              "count": 1
+            },
+            {
+              "choiceId": "ch04_cold_audit",
+              "count": 1
+            }
+          ],
+          "review": "CH05 진입 막힘을 방지하도록 판교 진입권 경로를 고정했다. 공격적 성향으로 진행해 소음 변화는 +4, 체력 변화는 0. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 2회 반영됐다. 주요 선택: ch04_start(1회), ch04_cold_record(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH04. 주요 경고: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1 | event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
+          "warnings": [
+            "[travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1",
+            "event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain"
+          ],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH05",
+          "status": "success",
+          "reason": "END_CH05",
+          "steps": 15,
+          "choicesTaken": 14,
+          "eventsVisited": 15,
+          "endHp": 100,
+          "endNoise": 34,
+          "rawEstimatedMinutes": 56,
+          "estimatedMinutes": 56,
+          "startHp": 100,
+          "startNoise": 29,
+          "startContamination": 31,
+          "endContamination": 36,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch05_start",
+              "count": 1
+            },
+            {
+              "choiceId": "ch05_lobby_logs",
+              "count": 1
+            },
+            {
+              "choiceId": "ch05_scan_extend",
+              "count": 1
+            }
+          ],
+          "review": "피날레 직전 준비 밀도를 높이기 위해 반복 루프와 사이드 동선을 보강했다. 공격적 성향으로 진행해 소음 변화는 +5, 체력 변화는 0. 반복 루프 없이 선형에 가깝게 진행됐다. 경로 지정(set_route) 선택은 1회 반영됐다. 주요 선택: ch05_start(1회), ch05_lobby_logs(1회). 플레이타임 목표(20분)를 충족했다. 완료 결과: END_CH05. 주요 경고: [travel:CH05] no direct connection for PG-03 -> PG-04, default time=1 | event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain",
+          "warnings": [
+            "[travel:CH05] no direct connection for PG-03 -> PG-04, default time=1",
+            "event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain"
+          ],
+          "preChapterItems": {
+            "itm_delivery_badge": 1,
+            "itm_security_badge": 1,
+            "itm_route_clearance_pangyo": 1
+          }
+        }
+      ],
+      "finalStats": {
+        "hp": 100,
+        "maxHp": 100,
+        "noise": 34,
+        "contamination": 36,
+        "playMinutes": 351,
+        "inventoryItemCount": 42,
+        "inventorySample": {
+          "itm_adrenaline": 1,
+          "itm_ammo_9mm": 27,
+          "itm_arkp_access_key": 4,
+          "itm_backpack_field_6": 1,
+          "itm_backpack_salvage_10": 1,
+          "itm_bandage": 1,
+          "itm_battery_pack": 15,
+          "itm_box_label_roll": 11,
+          "itm_cable_tie": 15,
+          "itm_cleaver_market": 2,
+          "itm_container_seal": 7,
+          "itm_cooling_gel": 4
+        },
+        "chapterMinutes": {
+          "CH01": 79,
+          "CH02": 59,
+          "CH03": 94,
+          "CH04": 63,
+          "CH05": 56
+        }
+      },
+      "warnings": [
+        "CH01: event \"EV_CH01_BOSS_BROADCAST\" conditions not met; continued via direct chain",
+        "CH02: event \"EV_CH02_SLUICE_BOSS\" conditions not met; continued via direct chain",
+        "CH03: event \"EV_CH03_BOSS_GARDEN\" conditions not met; continued via direct chain",
+        "CH04: [travel:CH04] no direct connection for MJ-04 -> MJ-06, default time=1",
+        "CH04: event \"EV_CH04_BOSS_PICKER\" conditions not met; continued via direct chain",
+        "CH05: [travel:CH05] no direct connection for PG-03 -> PG-04, default time=1",
+        "CH05: event \"EV_CH05_BOSS_LINES\" conditions not met; continued via direct chain"
+      ],
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH01",
+          "CH02",
+          "CH03",
+          "CH04",
+          "CH05"
+        ],
+        "failedChapter": null,
+        "totalSteps": 95,
+        "totalChoices": 90,
+        "totalEstimatedMinutes": 351
+      }
     }
   ],
   "overallSummary": {
@@ -360,19 +562,19 @@
       "CH05": 2
     },
     "chapterEstimatedMinutes": {
-      "CH01": 158,
+      "CH01": 161,
       "CH02": 115,
-      "CH03": 194,
+      "CH03": 191,
       "CH04": 126,
       "CH05": 112
     },
     "averageEstimatedMinutesByChapter": {
-      "CH01": 79,
+      "CH01": 80.5,
       "CH02": 57.5,
-      "CH03": 97,
+      "CH03": 95.5,
       "CH04": 63,
       "CH05": 56
     },
-    "warningCount": 18
+    "warningCount": 14
   }
 }

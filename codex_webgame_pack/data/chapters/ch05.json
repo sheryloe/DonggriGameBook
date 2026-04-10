@@ -88,7 +88,7 @@
       "text": "로비 감시망을 스캔한다.",
       "required": false,
       "complete_when": [
-        "flag:ch05_hub_scan_done|flag:ch05_hub_scan_skipped"
+        "flag:ch05_hub_scan_done"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "text": "ARK-P 릴레이를 정리한다.",
       "required": false,
       "complete_when": [
-        "flag:ch05_relay_locked|flag:ch05_relay_bypass"
+        "flag:ch05_relay_locked"
       ]
     },
     {
@@ -112,7 +112,7 @@
       "text": "보스전에 앞서 코어 방호를 준비한다.",
       "required": false,
       "complete_when": [
-        "flag:ch05_core_prep_done|flag:ch05_core_prep_rushed"
+        "flag:ch05_core_prep_done"
       ]
     }
   ],
@@ -1225,7 +1225,23 @@
           "label": "격리 구역 정리",
           "conditions": [],
           "preview": "감염체를 제압하고 정리한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 3
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.pangyo",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_breach_clear_direct",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH05_PREP_FINAL"
         }
       ],
@@ -1549,6 +1565,35 @@
             }
           ],
           "next_event_id": "EV_CH05_SERVER_PURGE"
+        },
+        {
+          "choice_id": "ch05_server_diag_loop",
+          "label": "?? ?? ??",
+          "conditions": [],
+          "preview": "????? ?? ??? ?? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_server_diag",
+              "value": true
+            },
+            {
+              "op": "set_route",
+              "target": "route.truth",
+              "value": "forensics"
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.pangyo",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_SERVER_PURGE"
         }
       ],
       "on_enter_effects": [],
@@ -1705,6 +1750,35 @@
             }
           ],
           "next_event_id": "EV_CH05_LOBBY_SCAN"
+        },
+        {
+          "choice_id": "ch05_scan_rescue_loop",
+          "label": "??? ?? ??",
+          "conditions": [],
+          "preview": "?? ?? ??? ??? ????.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_scan_rescue_trace",
+              "value": true
+            },
+            {
+              "op": "set_route",
+              "target": "route.compassion",
+              "value": "rescue"
+            },
+            {
+              "op": "add_trust",
+              "target": "trust.npc_kim_ara",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH05_LOBBY_SCAN"
         }
       ],
       "on_enter_effects": [],
@@ -1744,7 +1818,23 @@
           "label": "통로 정리",
           "conditions": [],
           "preview": "통로를 확보하고 전진한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.pangyo",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_cooling_clear_direct",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH05_COOLING_BREACH"
         }
       ],
@@ -2054,7 +2144,23 @@
           "label": "연구 격리실로 이동",
           "conditions": [],
           "preview": "김아라를 찾는다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "breach"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_cooling_continue",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH05_KIM_ARA"
         }
       ],

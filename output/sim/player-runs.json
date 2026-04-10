@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T15:38:20.864Z",
+  "generatedAt": "2026-04-10T15:59:13.840Z",
   "seed": "20260410",
   "chapters": [
     "CH01",
@@ -22,9 +22,9 @@
           "CH05"
         ],
         "failedChapter": null,
-        "totalSteps": 95,
-        "totalChoices": 90,
-        "totalEstimatedMinutes": 351
+        "totalSteps": 96,
+        "totalChoices": 91,
+        "totalEstimatedMinutes": 354
       },
       "trace": [
         {
@@ -54,13 +54,22 @@
               "step": 3,
               "eventId": "EV_CH01_CONCOURSE_SKIRMISH",
               "eventType": "danger",
-              "choiceId": "ch01_concourse_break",
-              "choiceLabel": "회랑 돌파",
-              "nextEventId": "EV_CH01_SERVICE_TUNNEL",
+              "choiceId": "ch01_concourse_scavenge",
+              "choiceLabel": "잔해 수색",
+              "nextEventId": "EV_CH01_CONCOURSE_SCAVENGE",
               "rewardMultiplier": 1
             },
             {
               "step": 4,
+              "eventId": "EV_CH01_CONCOURSE_SCAVENGE",
+              "eventType": "exploration",
+              "choiceId": "ch01_scavenge_skip",
+              "choiceLabel": "시간을 아낀다",
+              "nextEventId": "EV_CH01_SERVICE_TUNNEL",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
               "eventId": "EV_CH01_SERVICE_TUNNEL",
               "eventType": "scene",
               "choiceId": "ch01_tunnel_silent",
@@ -69,7 +78,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 5,
+              "step": 6,
               "eventId": "EV_CH01_PATROL_AMBUSH",
               "eventType": "combat",
               "choiceId": null,
@@ -78,7 +87,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 6,
+              "step": 7,
               "eventId": "EV_CH01_LOBBY_SEARCH",
               "eventType": "exploration",
               "choiceId": "ch01_lobby_corridor",
@@ -87,7 +96,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 7,
+              "step": 8,
               "eventId": "EV_CH01_SECURITY_CLEAR",
               "eventType": "combat",
               "choiceId": "ch01_security_to_writer",
@@ -96,7 +105,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 8,
+              "step": 9,
               "eventId": "EV_CH01_SECURITY_LOCKER",
               "eventType": "exploration",
               "choiceId": "ch01_locker_writer_skip",
@@ -105,7 +114,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 9,
+              "step": 10,
               "eventId": "EV_CH01_WRITER_RESCUE",
               "eventType": "dialogue",
               "choiceId": "ch01_writer_rescue",
@@ -114,7 +123,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 10,
+              "step": 11,
               "eventId": "EV_CH01_WRITER_SAFEHOUSE",
               "eventType": "dialogue",
               "choiceId": "ch01_writer_safe_skip",
@@ -123,7 +132,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 11,
+              "step": 12,
               "eventId": "EV_CH01_CACHE_SEARCH",
               "eventType": "exploration",
               "choiceId": "ch01_cache_open",
@@ -132,7 +141,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 12,
+              "step": 13,
               "eventId": "EV_CH01_POWER_RELAY",
               "eventType": "choice",
               "choiceId": "ch01_relay_repair",
@@ -141,7 +150,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 13,
+              "step": 14,
               "eventId": "EV_CH01_ROOFTOP_SIGNAL",
               "eventType": "dialogue",
               "choiceId": "ch01_signal_cut_broadcast",
@@ -150,7 +159,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 14,
+              "step": 15,
               "eventId": "EV_CH01_ROOFTOP_SWEEP",
               "eventType": "exploration",
               "choiceId": "ch01_rooftop_sweep",
@@ -159,7 +168,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 15,
+              "step": 16,
               "eventId": "EV_CH01_SIGNAL_CALIBRATION",
               "eventType": "scene",
               "choiceId": "ch01_signal_force",
@@ -168,7 +177,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 16,
+              "step": 17,
               "eventId": "EV_CH01_BOSS_BROADCAST",
               "eventType": "boss",
               "choiceId": "ch01_boss_fight",
@@ -177,7 +186,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 17,
+              "step": 18,
               "eventId": "EV_CH01_ESCAPE_RUN",
               "eventType": "danger",
               "choiceId": "ch01_escape_safe",
@@ -186,7 +195,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 18,
+              "step": 19,
               "eventId": "EV_CH01_ESCAPE_BACKTRACK",
               "eventType": "exploration",
               "choiceId": "ch01_escape_skip",
@@ -195,7 +204,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 19,
+              "step": 20,
               "eventId": "EV_CH01_EXTRACTION_PREP",
               "eventType": "scene",
               "choiceId": "ch01_extract_salvage",
@@ -204,7 +213,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 20,
+              "step": 21,
               "eventId": "EV_CH01_EXIT_CHECK",
               "eventType": "scene",
               "choiceId": "ch01_exit_skip",
@@ -213,7 +222,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 21,
+              "step": 22,
               "eventId": "EV_CH01_EXTRACTION",
               "eventType": "extraction",
               "choiceId": "ch01_extract_finish",
@@ -340,8 +349,8 @@
               "step": 13,
               "eventId": "EV_CH02_SLUICE_BOSS",
               "eventType": "boss",
-              "choiceId": "ch02_sluice_open",
-              "choiceLabel": "수문을 연다",
+              "choiceId": "ch02_sluice_close",
+              "choiceLabel": "수문을 닫아 둔다",
               "nextEventId": "EV_CH02_SLICE_ESCAPE",
               "rewardMultiplier": 1
             },
@@ -491,8 +500,8 @@
               "step": 14,
               "eventId": "EV_CH03_POWER_ROUTING",
               "eventType": "choice",
-              "choiceId": "ch03_power_lower",
-              "choiceLabel": "하층 급수 펌프 우선",
+              "choiceId": "ch03_power_upper",
+              "choiceLabel": "상층 방호 우선",
               "nextEventId": "EV_CH03_POWER_OVERRUN",
               "rewardMultiplier": 1
             },
@@ -892,8 +901,8 @@
               "step": 13,
               "eventId": "EV_CH05_BOSS_LINES",
               "eventType": "boss",
-              "choiceId": "ch05_core_break",
-              "choiceLabel": "코어 일부를 파기하고 탈출한다",
+              "choiceId": "ch05_core_preserve",
+              "choiceLabel": "코어를 살리고 탈출한다",
               "nextEventId": "EV_CH05_EXIT_PRESSURE",
               "rewardMultiplier": 1
             },
@@ -932,9 +941,9 @@
           "CH05"
         ],
         "failedChapter": null,
-        "totalSteps": 96,
-        "totalChoices": 91,
-        "totalEstimatedMinutes": 354
+        "totalSteps": 95,
+        "totalChoices": 90,
+        "totalEstimatedMinutes": 351
       },
       "trace": [
         {
@@ -1383,22 +1392,13 @@
               "step": 11,
               "eventId": "EV_CH03_SHOWROOM_STORAGE",
               "eventType": "exploration",
-              "choiceId": "ch03_showroom_route",
-              "choiceLabel": "보급 라인 연다",
-              "nextEventId": "EV_CH03_LUXURY_SCAVENGE",
-              "rewardMultiplier": 1
-            },
-            {
-              "step": 12,
-              "eventId": "EV_CH03_LUXURY_SCAVENGE",
-              "eventType": "exploration",
-              "choiceId": "ch03_luxury_exit",
-              "choiceLabel": "철수",
+              "choiceId": "ch03_showroom_route_skip",
+              "choiceLabel": "바로 통과",
               "nextEventId": "EV_CH03_SHOWROOM_CACHE",
               "rewardMultiplier": 1
             },
             {
-              "step": 13,
+              "step": 12,
               "eventId": "EV_CH03_SHOWROOM_CACHE",
               "eventType": "scene",
               "choiceId": "ch03_showroom_search",
@@ -1407,7 +1407,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 14,
+              "step": 13,
               "eventId": "EV_CH03_POWER_ROUTING",
               "eventType": "choice",
               "choiceId": "ch03_power_lower",
@@ -1416,7 +1416,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 15,
+              "step": 14,
               "eventId": "EV_CH03_POWER_OVERRUN",
               "eventType": "choice",
               "choiceId": "ch03_overrun_fix",
@@ -1425,7 +1425,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 16,
+              "step": 15,
               "eventId": "EV_CH03_BLACKOUT_REPAIR",
               "eventType": "choice",
               "choiceId": "ch03_blackout_bypass",
@@ -1434,7 +1434,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 17,
+              "step": 16,
               "eventId": "EV_CH03_UPPER_NEGOTIATION",
               "eventType": "dialogue",
               "choiceId": "ch03_lower_side",
@@ -1443,7 +1443,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 18,
+              "step": 17,
               "eventId": "EV_CH03_UPPER_SECURITY_SWEEP",
               "eventType": "combat",
               "choiceId": "ch03_upper_clear",
@@ -1452,7 +1452,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 19,
+              "step": 18,
               "eventId": "EV_CH03_UPPER_SUPPLY",
               "eventType": "exploration",
               "choiceId": "ch03_upper_supply_take",
@@ -1461,7 +1461,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 20,
+              "step": 19,
               "eventId": "EV_CH03_SKYBRIDGE_ACCESS",
               "eventType": "choice",
               "choiceId": "ch03_bridge_detour",
@@ -1470,7 +1470,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 21,
+              "step": 20,
               "eventId": "EV_CH03_SKYBRIDGE_WIND",
               "eventType": "exploration",
               "choiceId": "ch03_bridge_rush",
@@ -1479,7 +1479,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 22,
+              "step": 21,
               "eventId": "EV_CH03_SKYBRIDGE",
               "eventType": "danger",
               "choiceId": "ch03_bridge_silent",
@@ -1488,7 +1488,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 23,
+              "step": 22,
               "eventId": "EV_CH03_GLASS_PREP",
               "eventType": "dialogue",
               "choiceId": "ch03_prep_done",
@@ -1497,7 +1497,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 24,
+              "step": 23,
               "eventId": "EV_CH03_GLASS_ARMORY",
               "eventType": "exploration",
               "choiceId": "ch03_glass_armory",
@@ -1506,7 +1506,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 25,
+              "step": 24,
               "eventId": "EV_CH03_GARDEN_APPROACH",
               "eventType": "dialogue",
               "choiceId": "ch03_garden_enter",
@@ -1515,7 +1515,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 26,
+              "step": 25,
               "eventId": "EV_CH03_BOSS_GARDEN",
               "eventType": "boss",
               "choiceId": "ch03_boss_clear",
@@ -1524,7 +1524,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 27,
+              "step": 26,
               "eventId": "EV_CH03_EXTRACTION_PRESSURE",
               "eventType": "scene",
               "choiceId": "ch03_extract_smoke",
@@ -1533,7 +1533,7 @@
               "rewardMultiplier": 1
             },
             {
-              "step": 28,
+              "step": 27,
               "eventId": "EV_CH03_EXTRACTION",
               "eventType": "extraction",
               "choiceId": "ch03_finish",

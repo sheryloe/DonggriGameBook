@@ -73,7 +73,7 @@
       "text": "현장 상인의 거래를 정리한다.",
       "required": false,
       "complete_when": [
-        "flag:ch04_vendor_trade|flag:ch04_vendor_skip"
+        "flag:ch04_vendor_trade"
       ]
     },
     {
@@ -89,7 +89,7 @@
       "text": "라인 전원을 안정화한다.",
       "required": false,
       "complete_when": [
-        "flag:ch04_line_repair_on|flag:ch04_line_repair_bypass"
+        "flag:ch04_line_repair_on"
       ]
     },
     {
@@ -97,7 +97,7 @@
       "text": "배송 터널 캐시를 확인한다.",
       "required": false,
       "complete_when": [
-        "flag:ch04_tunnel_cache|flag:ch04_tunnel_skip"
+        "flag:ch04_tunnel_cache"
       ]
     }
   ],
@@ -1126,7 +1126,23 @@
           "label": "보안 사무실로 이동",
           "conditions": [],
           "preview": "배지를 확보한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.control",
+              "value": "logistics"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_rail_continue",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH04_SECURITY_BADGES"
         }
       ],
@@ -1168,7 +1184,23 @@
           "label": "구역 정리",
           "conditions": [],
           "preview": "보안 시스템을 무력화한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "add_reputation",
+              "target": "rep.magok",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_security_clear_direct",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH04_LINE_DECISION"
         }
       ],
@@ -1425,6 +1457,37 @@
             }
           ],
           "next_event_id": "EV_CH04_VENDOR_BARTER"
+        },
+        {
+          "choice_id": "ch04_vendor_repair_trade",
+          "label": "?? ?? ??",
+          "conditions": [
+            "item:itm_delivery_badge>=1"
+          ],
+          "preview": "?? ??? ??? ?? ??? ????.",
+          "effects": [
+            {
+              "op": "remove_item",
+              "target": "item:itm_delivery_badge",
+              "value": 1
+            },
+            {
+              "op": "grant_item",
+              "target": "item:itm_route_clearance_pangyo",
+              "value": 1
+            },
+            {
+              "op": "set_route",
+              "target": "route.underworld",
+              "value": "broker"
+            },
+            {
+              "op": "add_reputation",
+              "target": "rep.magok",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH04_VENDOR_BARTER"
         }
       ],
       "on_enter_effects": [],
@@ -1523,7 +1586,23 @@
           "label": "로딩 구역 정리",
           "conditions": [],
           "preview": "매복을 정리하고 라인으로 이동한다.",
-          "effects": [],
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "hp",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch04_loading_clear_direct",
+              "value": true
+            }
+          ],
           "next_event_id": "EV_CH04_ROUTE_SELECTION"
         }
       ],
