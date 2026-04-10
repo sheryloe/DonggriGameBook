@@ -1,0 +1,1423 @@
+{
+  "generatedAt": "2026-04-10T14:59:11.918Z",
+  "seed": "20260410",
+  "chapters": [
+    "CH01",
+    "CH02",
+    "CH03",
+    "CH04",
+    "CH05"
+  ],
+  "players": [
+    {
+      "playerId": "player-01",
+      "strategy": "cautious",
+      "overallSummary": {
+        "status": "failed",
+        "clearedChapters": [
+          "CH01",
+          "CH02",
+          "CH03",
+          "CH04"
+        ],
+        "failedChapter": "CH05",
+        "totalSteps": 81,
+        "totalChoices": 76
+      },
+      "trace": [
+        {
+          "chapterId": "CH01",
+          "status": "success",
+          "reason": "END_CH01",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH01_BRIEFING",
+              "eventType": "briefing",
+              "choiceId": "ch01_brief_go",
+              "choiceLabel": "출발한다",
+              "nextEventId": "EV_CH01_APPROACH"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH01_APPROACH",
+              "eventType": "exploration",
+              "choiceId": "ch01_approach_careful",
+              "choiceLabel": "조심스럽게 접근",
+              "nextEventId": "EV_CH01_CONCOURSE_SKIRMISH"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH01_CONCOURSE_SKIRMISH",
+              "eventType": "danger",
+              "choiceId": "ch01_concourse_break",
+              "choiceLabel": "회랑 돌파",
+              "nextEventId": "EV_CH01_SERVICE_TUNNEL"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH01_SERVICE_TUNNEL",
+              "eventType": "scene",
+              "choiceId": "ch01_tunnel_silent",
+              "choiceLabel": "조용히 이동",
+              "nextEventId": "EV_CH01_PATROL_AMBUSH"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH01_PATROL_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH01_LOBBY_SEARCH"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH01_LOBBY_SEARCH",
+              "eventType": "exploration",
+              "choiceId": "ch01_lobby_corridor",
+              "choiceLabel": "편집실 복도로 바로 간다",
+              "nextEventId": "EV_CH01_SECURITY_CLEAR"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH01_SECURITY_CLEAR",
+              "eventType": "combat",
+              "choiceId": "ch01_security_to_writer",
+              "choiceLabel": "편집실로 우회한다",
+              "nextEventId": "EV_CH01_SECURITY_LOCKER"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH01_SECURITY_LOCKER",
+              "eventType": "exploration",
+              "choiceId": "ch01_locker_writer_skip",
+              "choiceLabel": "시간 아끼고 편집실로 간다",
+              "nextEventId": "EV_CH01_WRITER_RESCUE"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH01_WRITER_RESCUE",
+              "eventType": "dialogue",
+              "choiceId": "ch01_writer_rescue",
+              "choiceLabel": "구조한다",
+              "nextEventId": "EV_CH01_WRITER_SAFEHOUSE"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH01_WRITER_SAFEHOUSE",
+              "eventType": "dialogue",
+              "choiceId": "ch01_writer_safe_skip",
+              "choiceLabel": "곧장 이동",
+              "nextEventId": "EV_CH01_CACHE_SEARCH"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH01_CACHE_SEARCH",
+              "eventType": "exploration",
+              "choiceId": "ch01_cache_open",
+              "choiceLabel": "캐비닛을 연다",
+              "nextEventId": "EV_CH01_POWER_RELAY"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH01_POWER_RELAY",
+              "eventType": "choice",
+              "choiceId": "ch01_relay_repair",
+              "choiceLabel": "정상 수리",
+              "nextEventId": "EV_CH01_ROOFTOP_SIGNAL"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH01_ROOFTOP_SIGNAL",
+              "eventType": "dialogue",
+              "choiceId": "ch01_signal_cut_broadcast",
+              "choiceLabel": "즉시 차단하고 내려간다",
+              "nextEventId": "EV_CH01_ROOFTOP_SWEEP"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH01_ROOFTOP_SWEEP",
+              "eventType": "exploration",
+              "choiceId": "ch01_rooftop_sweep",
+              "choiceLabel": "주변 정리",
+              "nextEventId": "EV_CH01_SIGNAL_CALIBRATION"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH01_SIGNAL_CALIBRATION",
+              "eventType": "scene",
+              "choiceId": "ch01_signal_force",
+              "choiceLabel": "강제 출력",
+              "nextEventId": "EV_CH01_BOSS_BROADCAST"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH01_BOSS_BROADCAST",
+              "eventType": "boss",
+              "choiceId": "ch01_boss_fight",
+              "choiceLabel": "보스를 돌파한다",
+              "nextEventId": "EV_CH01_ESCAPE_RUN"
+            },
+            {
+              "step": 17,
+              "eventId": "EV_CH01_ESCAPE_RUN",
+              "eventType": "danger",
+              "choiceId": "ch01_escape_safe",
+              "choiceLabel": "안전 확보",
+              "nextEventId": "EV_CH01_ESCAPE_BACKTRACK"
+            },
+            {
+              "step": 18,
+              "eventId": "EV_CH01_ESCAPE_BACKTRACK",
+              "eventType": "exploration",
+              "choiceId": "ch01_escape_skip",
+              "choiceLabel": "곧장 철수",
+              "nextEventId": "EV_CH01_EXTRACTION_PREP"
+            },
+            {
+              "step": 19,
+              "eventId": "EV_CH01_EXTRACTION_PREP",
+              "eventType": "scene",
+              "choiceId": "ch01_extract_salvage",
+              "choiceLabel": "잔해를 정리한다",
+              "nextEventId": "EV_CH01_EXIT_CHECK"
+            },
+            {
+              "step": 20,
+              "eventId": "EV_CH01_EXIT_CHECK",
+              "eventType": "scene",
+              "choiceId": "ch01_exit_skip",
+              "choiceLabel": "즉시 탈출",
+              "nextEventId": "EV_CH01_EXTRACTION"
+            },
+            {
+              "step": 21,
+              "eventId": "EV_CH01_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch01_extract_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH01"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH02",
+          "status": "success",
+          "reason": "END_CH02",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH02_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch02_entry_go",
+              "choiceLabel": "수몰시장으로 들어간다",
+              "nextEventId": "EV_CH02_FLOOD_AMBUSH"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH02_FLOOD_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH02_MARKET_SWEEP"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH02_MARKET_SWEEP",
+              "eventType": "exploration",
+              "choiceId": "ch02_market_storage",
+              "choiceLabel": "냉동창고를 먼저 턴다",
+              "nextEventId": "EV_CH02_MARKET_BACKALLEY"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH02_MARKET_BACKALLEY",
+              "eventType": "exploration",
+              "choiceId": "ch02_backalley_skip",
+              "choiceLabel": "바로 빠져나간다",
+              "nextEventId": "EV_CH02_TIDE_SCAN"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH02_TIDE_SCAN",
+              "eventType": "exploration",
+              "choiceId": "ch02_scan_cold",
+              "choiceLabel": "냉동창고 쪽 수면을 훑는다",
+              "nextEventId": "EV_CH02_COLD_STORAGE"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH02_COLD_STORAGE",
+              "eventType": "exploration",
+              "choiceId": "ch02_cold_off",
+              "choiceLabel": "배터리만 빼고 나온다",
+              "nextEventId": "EV_CH02_COLD_CRAWL"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH02_COLD_CRAWL",
+              "eventType": "exploration",
+              "choiceId": "ch02_cold_crawl_exit",
+              "choiceLabel": "빠져나간다",
+              "nextEventId": "EV_CH02_DROWNED_AMBUSH"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH02_DROWNED_AMBUSH",
+              "eventType": "combat",
+              "choiceId": "ch02_ambush_push",
+              "choiceLabel": "잔해를 치우고 전진한다",
+              "nextEventId": "EV_CH02_PIER_BARGAIN"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH02_PIER_BARGAIN",
+              "eventType": "dialogue",
+              "choiceId": "ch02_pier_land",
+              "choiceLabel": "육로를 강행한다",
+              "nextEventId": "EV_CH02_PIER_ENGINE"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH02_PIER_ENGINE",
+              "eventType": "exploration",
+              "choiceId": "ch02_pier_engine_skip",
+              "choiceLabel": "빠르게 이동",
+              "nextEventId": "EV_CH02_SLUICE_DIAGNOSTIC"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH02_SLUICE_DIAGNOSTIC",
+              "eventType": "choice",
+              "choiceId": "ch02_sluice_bypass",
+              "choiceLabel": "우회 회로 열기",
+              "nextEventId": "EV_CH02_SLUICE_PREP"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH02_SLUICE_PREP",
+              "eventType": "exploration",
+              "choiceId": "ch02_sluice_rush",
+              "choiceLabel": "바로 돌입",
+              "nextEventId": "EV_CH02_SLUICE_BOSS"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH02_SLUICE_BOSS",
+              "eventType": "boss",
+              "choiceId": "ch02_sluice_open",
+              "choiceLabel": "수문을 연다",
+              "nextEventId": "EV_CH02_SLICE_ESCAPE"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH02_SLICE_ESCAPE",
+              "eventType": "danger",
+              "choiceId": "ch02_escape_land",
+              "choiceLabel": "육상 탈출",
+              "nextEventId": "EV_CH02_EXTRACTION"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH02_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch02_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH02"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH03",
+          "status": "success",
+          "reason": "END_CH03",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH03_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch03_start",
+              "choiceLabel": "건물 내부로 들어간다",
+              "nextEventId": "EV_CH03_BASEMENT_MEET"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH03_BASEMENT_MEET",
+              "eventType": "dialogue",
+              "choiceId": "ch03_basement_support",
+              "choiceLabel": "하층부터 지원한다",
+              "nextEventId": "EV_CH03_BASEMENT_SURVEY"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH03_BASEMENT_SURVEY",
+              "eventType": "dialogue",
+              "choiceId": "ch03_basement_scout",
+              "choiceLabel": "정찰을 마친다",
+              "nextEventId": "EV_CH03_BASEMENT_CACHE"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH03_BASEMENT_CACHE",
+              "eventType": "exploration",
+              "choiceId": "ch03_cache_skip",
+              "choiceLabel": "무시하고 지나친다",
+              "nextEventId": "EV_CH03_SERVICE_SPIRAL"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH03_SERVICE_SPIRAL",
+              "eventType": "danger",
+              "choiceId": "ch03_service_clear",
+              "choiceLabel": "계단을 정리한다",
+              "nextEventId": "EV_CH03_SERVICE_AMBUSH"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH03_SERVICE_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH03_VERTICAL_ROUTE"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH03_VERTICAL_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch03_vertical_stairs",
+              "choiceLabel": "계단으로 오른다",
+              "nextEventId": "EV_CH03_STAIR_AMBUSH"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH03_STAIR_AMBUSH",
+              "eventType": "combat",
+              "choiceId": "ch03_stair_continue",
+              "choiceLabel": "상층으로 이동한다",
+              "nextEventId": "EV_CH03_SHOWROOM_SWEEP"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH03_SHOWROOM_SWEEP",
+              "eventType": "exploration",
+              "choiceId": "ch03_showroom_rush",
+              "choiceLabel": "핵심만 챙긴다",
+              "nextEventId": "EV_CH03_SHOWROOM_AMBUSH"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH03_SHOWROOM_AMBUSH",
+              "eventType": "danger",
+              "choiceId": "ch03_showroom_clear",
+              "choiceLabel": "쇼룸 정리",
+              "nextEventId": "EV_CH03_SHOWROOM_STORAGE"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH03_SHOWROOM_STORAGE",
+              "eventType": "exploration",
+              "choiceId": "ch03_showroom_route",
+              "choiceLabel": "보급 라인 연다",
+              "nextEventId": "EV_CH03_LUXURY_SCAVENGE"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH03_LUXURY_SCAVENGE",
+              "eventType": "exploration",
+              "choiceId": "ch03_luxury_exit",
+              "choiceLabel": "철수",
+              "nextEventId": "EV_CH03_SHOWROOM_CACHE"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH03_SHOWROOM_CACHE",
+              "eventType": "scene",
+              "choiceId": "ch03_showroom_pass",
+              "choiceLabel": "흔적만 확인",
+              "nextEventId": "EV_CH03_POWER_ROUTING"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH03_POWER_ROUTING",
+              "eventType": "choice",
+              "choiceId": "ch03_power_lower",
+              "choiceLabel": "하층 급수 펌프 우선",
+              "nextEventId": "EV_CH03_POWER_OVERRUN"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH03_POWER_OVERRUN",
+              "eventType": "choice",
+              "choiceId": "ch03_overrun_fix",
+              "choiceLabel": "안정화",
+              "nextEventId": "EV_CH03_BLACKOUT_REPAIR"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH03_BLACKOUT_REPAIR",
+              "eventType": "choice",
+              "choiceId": "ch03_blackout_bypass",
+              "choiceLabel": "우회 전원",
+              "nextEventId": "EV_CH03_UPPER_NEGOTIATION"
+            },
+            {
+              "step": 17,
+              "eventId": "EV_CH03_UPPER_NEGOTIATION",
+              "eventType": "dialogue",
+              "choiceId": "ch03_upper_side",
+              "choiceLabel": "류세온과 협력한다",
+              "nextEventId": "EV_CH03_UPPER_SECURITY_SWEEP"
+            },
+            {
+              "step": 18,
+              "eventId": "EV_CH03_UPPER_SECURITY_SWEEP",
+              "eventType": "combat",
+              "choiceId": "ch03_upper_clear",
+              "choiceLabel": "경계를 정리한다",
+              "nextEventId": "EV_CH03_UPPER_SUPPLY"
+            },
+            {
+              "step": 19,
+              "eventId": "EV_CH03_UPPER_SUPPLY",
+              "eventType": "exploration",
+              "choiceId": "ch03_upper_supply_skip",
+              "choiceLabel": "빠르게 이동",
+              "nextEventId": "EV_CH03_SKYBRIDGE_ACCESS"
+            },
+            {
+              "step": 20,
+              "eventId": "EV_CH03_SKYBRIDGE_ACCESS",
+              "eventType": "choice",
+              "choiceId": "ch03_bridge_detour",
+              "choiceLabel": "우회 접근",
+              "nextEventId": "EV_CH03_SKYBRIDGE_WIND"
+            },
+            {
+              "step": 21,
+              "eventId": "EV_CH03_SKYBRIDGE_WIND",
+              "eventType": "exploration",
+              "choiceId": "ch03_bridge_rush",
+              "choiceLabel": "강행",
+              "nextEventId": "EV_CH03_SKYBRIDGE"
+            },
+            {
+              "step": 22,
+              "eventId": "EV_CH03_SKYBRIDGE",
+              "eventType": "danger",
+              "choiceId": "ch03_bridge_silent",
+              "choiceLabel": "조용히 건넌다",
+              "nextEventId": "EV_CH03_GLASS_PREP"
+            },
+            {
+              "step": 23,
+              "eventId": "EV_CH03_GLASS_PREP",
+              "eventType": "dialogue",
+              "choiceId": "ch03_prep_done",
+              "choiceLabel": "장비 재정비",
+              "nextEventId": "EV_CH03_GLASS_ARMORY"
+            },
+            {
+              "step": 24,
+              "eventId": "EV_CH03_GLASS_ARMORY",
+              "eventType": "exploration",
+              "choiceId": "ch03_glass_rush",
+              "choiceLabel": "바로 돌입",
+              "nextEventId": "EV_CH03_GARDEN_APPROACH"
+            },
+            {
+              "step": 25,
+              "eventId": "EV_CH03_GARDEN_APPROACH",
+              "eventType": "dialogue",
+              "choiceId": "ch03_garden_enter",
+              "choiceLabel": "정면 돌입",
+              "nextEventId": "EV_CH03_BOSS_GARDEN"
+            },
+            {
+              "step": 26,
+              "eventId": "EV_CH03_BOSS_GARDEN",
+              "eventType": "boss",
+              "choiceId": "ch03_boss_clear",
+              "choiceLabel": "릴레이 렌즈를 확보하고 빠져나간다",
+              "nextEventId": "EV_CH03_EXTRACTION_PRESSURE"
+            },
+            {
+              "step": 27,
+              "eventId": "EV_CH03_EXTRACTION_PRESSURE",
+              "eventType": "scene",
+              "choiceId": "ch03_extract_smoke",
+              "choiceLabel": "연막 투입",
+              "nextEventId": "EV_CH03_EXTRACTION"
+            },
+            {
+              "step": 28,
+              "eventId": "EV_CH03_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch03_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH03"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH04",
+          "status": "success",
+          "reason": "END_CH04",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH04_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch04_start",
+              "choiceLabel": "물류벨트로 진입한다",
+              "nextEventId": "EV_CH04_TUNNEL_AMBUSH"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH04_TUNNEL_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH04_COLD_ALLOC"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH04_COLD_ALLOC",
+              "eventType": "choice",
+              "choiceId": "ch04_cold_record",
+              "choiceLabel": "기록국용으로 확보",
+              "nextEventId": "EV_CH04_COLD_AUDIT"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH04_COLD_AUDIT",
+              "eventType": "exploration",
+              "choiceId": "ch04_cold_skip",
+              "choiceLabel": "빠르게 통과한다",
+              "nextEventId": "EV_CH04_LOBBY_MEET"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH04_LOBBY_MEET",
+              "eventType": "dialogue",
+              "choiceId": "ch04_lobby_help",
+              "choiceLabel": "한소명의 안내를 받는다",
+              "nextEventId": "EV_CH04_VENDOR_BARTER"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH04_VENDOR_BARTER",
+              "eventType": "dialogue",
+              "choiceId": "ch04_vendor_trade",
+              "choiceLabel": "거래한다",
+              "nextEventId": "EV_CH04_ROUTE_SELECTION"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH04_ROUTE_SELECTION",
+              "eventType": "choice",
+              "choiceId": "ch04_route_rail",
+              "choiceLabel": "수서 철도선을 복구한다",
+              "nextEventId": "EV_CH04_RAIL_JAM"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH04_RAIL_JAM",
+              "eventType": "combat",
+              "choiceId": "ch04_rail_continue",
+              "choiceLabel": "보안 사무실로 이동",
+              "nextEventId": "EV_CH04_SECURITY_BADGES"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH04_SECURITY_BADGES",
+              "eventType": "exploration",
+              "choiceId": "ch04_badge_original",
+              "choiceLabel": "원본 배지를 회수한다",
+              "nextEventId": "EV_CH04_LINE_REPAIR"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH04_LINE_REPAIR",
+              "eventType": "choice",
+              "choiceId": "ch04_line_repair_bypass",
+              "choiceLabel": "부분 우회한다",
+              "nextEventId": "EV_CH04_LINE_DECISION"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH04_LINE_DECISION",
+              "eventType": "choice",
+              "choiceId": "ch04_line_off",
+              "choiceLabel": "라인을 죽여 둔다",
+              "nextEventId": "EV_CH04_TUNNEL_CACHE"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH04_TUNNEL_CACHE",
+              "eventType": "exploration",
+              "choiceId": "ch04_cache_open",
+              "choiceLabel": "캐시를 연다",
+              "nextEventId": "EV_CH04_BOSS_PICKER"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH04_BOSS_PICKER",
+              "eventType": "boss",
+              "choiceId": "ch04_boss_clear",
+              "choiceLabel": "분류홀을 장악한다",
+              "nextEventId": "EV_CH04_EXTRACTION_PREP"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH04_EXTRACTION_PREP",
+              "eventType": "scene",
+              "choiceId": "ch04_extract_sort",
+              "choiceLabel": "정리 후 이동",
+              "nextEventId": "EV_CH04_EXIT_CHECK"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH04_EXIT_CHECK",
+              "eventType": "scene",
+              "choiceId": "ch04_exit_skip",
+              "choiceLabel": "즉시 탈출",
+              "nextEventId": "EV_CH04_EXTRACTION"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH04_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch04_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH04"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH05",
+          "status": "failed",
+          "reason": "no_available_choice",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH05_ENTRY",
+              "eventType": "briefing",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "playerId": "player-02",
+      "strategy": "aggressive",
+      "overallSummary": {
+        "status": "failed",
+        "clearedChapters": [
+          "CH01",
+          "CH02",
+          "CH03",
+          "CH04"
+        ],
+        "failedChapter": "CH05",
+        "totalSteps": 82,
+        "totalChoices": 77
+      },
+      "trace": [
+        {
+          "chapterId": "CH01",
+          "status": "success",
+          "reason": "END_CH01",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH01_BRIEFING",
+              "eventType": "briefing",
+              "choiceId": "ch01_brief_go",
+              "choiceLabel": "출발한다",
+              "nextEventId": "EV_CH01_APPROACH"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH01_APPROACH",
+              "eventType": "exploration",
+              "choiceId": "ch01_approach_careful",
+              "choiceLabel": "조심스럽게 접근",
+              "nextEventId": "EV_CH01_CONCOURSE_SKIRMISH"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH01_CONCOURSE_SKIRMISH",
+              "eventType": "danger",
+              "choiceId": "ch01_concourse_break",
+              "choiceLabel": "회랑 돌파",
+              "nextEventId": "EV_CH01_SERVICE_TUNNEL"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH01_SERVICE_TUNNEL",
+              "eventType": "scene",
+              "choiceId": "ch01_tunnel_silent",
+              "choiceLabel": "조용히 이동",
+              "nextEventId": "EV_CH01_PATROL_AMBUSH"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH01_PATROL_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH01_LOBBY_SEARCH"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH01_LOBBY_SEARCH",
+              "eventType": "exploration",
+              "choiceId": "ch01_lobby_corridor",
+              "choiceLabel": "편집실 복도로 바로 간다",
+              "nextEventId": "EV_CH01_SECURITY_CLEAR"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH01_SECURITY_CLEAR",
+              "eventType": "combat",
+              "choiceId": "ch01_security_to_writer",
+              "choiceLabel": "편집실로 우회한다",
+              "nextEventId": "EV_CH01_SECURITY_LOCKER"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH01_SECURITY_LOCKER",
+              "eventType": "exploration",
+              "choiceId": "ch01_locker_writer_open",
+              "choiceLabel": "락커 열고 편집실로 간다",
+              "nextEventId": "EV_CH01_WRITER_RESCUE"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH01_WRITER_RESCUE",
+              "eventType": "dialogue",
+              "choiceId": "ch01_writer_rescue",
+              "choiceLabel": "구조한다",
+              "nextEventId": "EV_CH01_WRITER_SAFEHOUSE"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH01_WRITER_SAFEHOUSE",
+              "eventType": "dialogue",
+              "choiceId": "ch01_writer_safe_loot",
+              "choiceLabel": "장비를 정리한다",
+              "nextEventId": "EV_CH01_CACHE_SEARCH"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH01_CACHE_SEARCH",
+              "eventType": "exploration",
+              "choiceId": "ch01_cache_open",
+              "choiceLabel": "캐비닛을 연다",
+              "nextEventId": "EV_CH01_POWER_RELAY"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH01_POWER_RELAY",
+              "eventType": "choice",
+              "choiceId": "ch01_relay_repair",
+              "choiceLabel": "정상 수리",
+              "nextEventId": "EV_CH01_ROOFTOP_SIGNAL"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH01_ROOFTOP_SIGNAL",
+              "eventType": "dialogue",
+              "choiceId": "ch01_signal_cut_broadcast",
+              "choiceLabel": "즉시 차단하고 내려간다",
+              "nextEventId": "EV_CH01_ROOFTOP_SWEEP"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH01_ROOFTOP_SWEEP",
+              "eventType": "exploration",
+              "choiceId": "ch01_rooftop_sweep",
+              "choiceLabel": "주변 정리",
+              "nextEventId": "EV_CH01_SIGNAL_CALIBRATION"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH01_SIGNAL_CALIBRATION",
+              "eventType": "scene",
+              "choiceId": "ch01_signal_force",
+              "choiceLabel": "강제 출력",
+              "nextEventId": "EV_CH01_BOSS_BROADCAST"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH01_BOSS_BROADCAST",
+              "eventType": "boss",
+              "choiceId": "ch01_boss_fight",
+              "choiceLabel": "보스를 돌파한다",
+              "nextEventId": "EV_CH01_ESCAPE_RUN"
+            },
+            {
+              "step": 17,
+              "eventId": "EV_CH01_ESCAPE_RUN",
+              "eventType": "danger",
+              "choiceId": "ch01_escape_safe",
+              "choiceLabel": "안전 확보",
+              "nextEventId": "EV_CH01_ESCAPE_BACKTRACK"
+            },
+            {
+              "step": 18,
+              "eventId": "EV_CH01_ESCAPE_BACKTRACK",
+              "eventType": "exploration",
+              "choiceId": "ch01_escape_loot",
+              "choiceLabel": "잔해를 회수한다",
+              "nextEventId": "EV_CH01_EXTRACTION_PREP"
+            },
+            {
+              "step": 19,
+              "eventId": "EV_CH01_EXTRACTION_PREP",
+              "eventType": "scene",
+              "choiceId": "ch01_extract_salvage",
+              "choiceLabel": "잔해를 정리한다",
+              "nextEventId": "EV_CH01_EXIT_CHECK"
+            },
+            {
+              "step": 20,
+              "eventId": "EV_CH01_EXIT_CHECK",
+              "eventType": "scene",
+              "choiceId": "ch01_exit_skip",
+              "choiceLabel": "즉시 탈출",
+              "nextEventId": "EV_CH01_EXTRACTION"
+            },
+            {
+              "step": 21,
+              "eventId": "EV_CH01_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch01_extract_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH01"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH02",
+          "status": "success",
+          "reason": "END_CH02",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH02_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch02_entry_go",
+              "choiceLabel": "수몰시장으로 들어간다",
+              "nextEventId": "EV_CH02_FLOOD_AMBUSH"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH02_FLOOD_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH02_MARKET_SWEEP"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH02_MARKET_SWEEP",
+              "eventType": "exploration",
+              "choiceId": "ch02_market_storage",
+              "choiceLabel": "냉동창고를 먼저 턴다",
+              "nextEventId": "EV_CH02_MARKET_BACKALLEY"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH02_MARKET_BACKALLEY",
+              "eventType": "exploration",
+              "choiceId": "ch02_backalley_enter",
+              "choiceLabel": "뒤편으로 들어간다",
+              "nextEventId": "EV_CH02_MARKET_BACKALLEY_LOOP"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH02_MARKET_BACKALLEY_LOOP",
+              "eventType": "exploration",
+              "choiceId": "ch02_backalley_exit",
+              "choiceLabel": "철수",
+              "nextEventId": "EV_CH02_TIDE_SCAN"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH02_TIDE_SCAN",
+              "eventType": "exploration",
+              "choiceId": "ch02_scan_cold",
+              "choiceLabel": "냉동창고 쪽 수면을 훑는다",
+              "nextEventId": "EV_CH02_COLD_STORAGE"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH02_COLD_STORAGE",
+              "eventType": "exploration",
+              "choiceId": "ch02_cold_off",
+              "choiceLabel": "배터리만 빼고 나온다",
+              "nextEventId": "EV_CH02_COLD_CRAWL"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH02_COLD_CRAWL",
+              "eventType": "exploration",
+              "choiceId": "ch02_cold_crawl_exit",
+              "choiceLabel": "빠져나간다",
+              "nextEventId": "EV_CH02_DROWNED_AMBUSH"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH02_DROWNED_AMBUSH",
+              "eventType": "combat",
+              "choiceId": "ch02_ambush_push",
+              "choiceLabel": "잔해를 치우고 전진한다",
+              "nextEventId": "EV_CH02_PIER_BARGAIN"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH02_PIER_BARGAIN",
+              "eventType": "dialogue",
+              "choiceId": "ch02_pier_land",
+              "choiceLabel": "육로를 강행한다",
+              "nextEventId": "EV_CH02_PIER_ENGINE"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH02_PIER_ENGINE",
+              "eventType": "exploration",
+              "choiceId": "ch02_pier_engine_fix",
+              "choiceLabel": "응급 수리",
+              "nextEventId": "EV_CH02_SLUICE_DIAGNOSTIC"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH02_SLUICE_DIAGNOSTIC",
+              "eventType": "choice",
+              "choiceId": "ch02_sluice_bypass",
+              "choiceLabel": "우회 회로 열기",
+              "nextEventId": "EV_CH02_SLUICE_PREP"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH02_SLUICE_PREP",
+              "eventType": "exploration",
+              "choiceId": "ch02_sluice_rush",
+              "choiceLabel": "바로 돌입",
+              "nextEventId": "EV_CH02_SLUICE_BOSS"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH02_SLUICE_BOSS",
+              "eventType": "boss",
+              "choiceId": "ch02_sluice_close",
+              "choiceLabel": "수문을 닫아 둔다",
+              "nextEventId": "EV_CH02_SLICE_ESCAPE"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH02_SLICE_ESCAPE",
+              "eventType": "danger",
+              "choiceId": "ch02_escape_land",
+              "choiceLabel": "육상 탈출",
+              "nextEventId": "EV_CH02_EXTRACTION"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH02_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch02_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH02"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH03",
+          "status": "success",
+          "reason": "END_CH03",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH03_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch03_start",
+              "choiceLabel": "건물 내부로 들어간다",
+              "nextEventId": "EV_CH03_BASEMENT_MEET"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH03_BASEMENT_MEET",
+              "eventType": "dialogue",
+              "choiceId": "ch03_basement_support",
+              "choiceLabel": "하층부터 지원한다",
+              "nextEventId": "EV_CH03_BASEMENT_SURVEY"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH03_BASEMENT_SURVEY",
+              "eventType": "dialogue",
+              "choiceId": "ch03_basement_scout",
+              "choiceLabel": "정찰을 마친다",
+              "nextEventId": "EV_CH03_BASEMENT_CACHE"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH03_BASEMENT_CACHE",
+              "eventType": "exploration",
+              "choiceId": "ch03_cache_open",
+              "choiceLabel": "보관함을 연다",
+              "nextEventId": "EV_CH03_SERVICE_SPIRAL"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH03_SERVICE_SPIRAL",
+              "eventType": "danger",
+              "choiceId": "ch03_service_clear",
+              "choiceLabel": "계단을 정리한다",
+              "nextEventId": "EV_CH03_SERVICE_AMBUSH"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH03_SERVICE_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH03_VERTICAL_ROUTE"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH03_VERTICAL_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch03_vertical_stairs",
+              "choiceLabel": "계단으로 오른다",
+              "nextEventId": "EV_CH03_STAIR_AMBUSH"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH03_STAIR_AMBUSH",
+              "eventType": "combat",
+              "choiceId": "ch03_stair_continue",
+              "choiceLabel": "상층으로 이동한다",
+              "nextEventId": "EV_CH03_SHOWROOM_SWEEP"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH03_SHOWROOM_SWEEP",
+              "eventType": "exploration",
+              "choiceId": "ch03_showroom_rush",
+              "choiceLabel": "핵심만 챙긴다",
+              "nextEventId": "EV_CH03_SHOWROOM_AMBUSH"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH03_SHOWROOM_AMBUSH",
+              "eventType": "danger",
+              "choiceId": "ch03_showroom_clear",
+              "choiceLabel": "쇼룸 정리",
+              "nextEventId": "EV_CH03_SHOWROOM_STORAGE"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH03_SHOWROOM_STORAGE",
+              "eventType": "exploration",
+              "choiceId": "ch03_showroom_route",
+              "choiceLabel": "보급 라인 연다",
+              "nextEventId": "EV_CH03_LUXURY_SCAVENGE"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH03_LUXURY_SCAVENGE",
+              "eventType": "exploration",
+              "choiceId": "ch03_luxury_exit",
+              "choiceLabel": "철수",
+              "nextEventId": "EV_CH03_SHOWROOM_CACHE"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH03_SHOWROOM_CACHE",
+              "eventType": "scene",
+              "choiceId": "ch03_showroom_search",
+              "choiceLabel": "깊게 수색",
+              "nextEventId": "EV_CH03_POWER_ROUTING"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH03_POWER_ROUTING",
+              "eventType": "choice",
+              "choiceId": "ch03_power_lower",
+              "choiceLabel": "하층 급수 펌프 우선",
+              "nextEventId": "EV_CH03_POWER_OVERRUN"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH03_POWER_OVERRUN",
+              "eventType": "choice",
+              "choiceId": "ch03_overrun_fix",
+              "choiceLabel": "안정화",
+              "nextEventId": "EV_CH03_BLACKOUT_REPAIR"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH03_BLACKOUT_REPAIR",
+              "eventType": "choice",
+              "choiceId": "ch03_blackout_bypass",
+              "choiceLabel": "우회 전원",
+              "nextEventId": "EV_CH03_UPPER_NEGOTIATION"
+            },
+            {
+              "step": 17,
+              "eventId": "EV_CH03_UPPER_NEGOTIATION",
+              "eventType": "dialogue",
+              "choiceId": "ch03_lower_side",
+              "choiceLabel": "안보경 쪽을 든다",
+              "nextEventId": "EV_CH03_UPPER_SECURITY_SWEEP"
+            },
+            {
+              "step": 18,
+              "eventId": "EV_CH03_UPPER_SECURITY_SWEEP",
+              "eventType": "combat",
+              "choiceId": "ch03_upper_clear",
+              "choiceLabel": "경계를 정리한다",
+              "nextEventId": "EV_CH03_UPPER_SUPPLY"
+            },
+            {
+              "step": 19,
+              "eventId": "EV_CH03_UPPER_SUPPLY",
+              "eventType": "exploration",
+              "choiceId": "ch03_upper_supply_take",
+              "choiceLabel": "보급품 확보",
+              "nextEventId": "EV_CH03_SKYBRIDGE_ACCESS"
+            },
+            {
+              "step": 20,
+              "eventId": "EV_CH03_SKYBRIDGE_ACCESS",
+              "eventType": "choice",
+              "choiceId": "ch03_bridge_detour",
+              "choiceLabel": "우회 접근",
+              "nextEventId": "EV_CH03_SKYBRIDGE_WIND"
+            },
+            {
+              "step": 21,
+              "eventId": "EV_CH03_SKYBRIDGE_WIND",
+              "eventType": "exploration",
+              "choiceId": "ch03_bridge_rush",
+              "choiceLabel": "강행",
+              "nextEventId": "EV_CH03_SKYBRIDGE"
+            },
+            {
+              "step": 22,
+              "eventId": "EV_CH03_SKYBRIDGE",
+              "eventType": "danger",
+              "choiceId": "ch03_bridge_silent",
+              "choiceLabel": "조용히 건넌다",
+              "nextEventId": "EV_CH03_GLASS_PREP"
+            },
+            {
+              "step": 23,
+              "eventId": "EV_CH03_GLASS_PREP",
+              "eventType": "dialogue",
+              "choiceId": "ch03_prep_done",
+              "choiceLabel": "장비 재정비",
+              "nextEventId": "EV_CH03_GLASS_ARMORY"
+            },
+            {
+              "step": 24,
+              "eventId": "EV_CH03_GLASS_ARMORY",
+              "eventType": "exploration",
+              "choiceId": "ch03_glass_armory",
+              "choiceLabel": "정비한다",
+              "nextEventId": "EV_CH03_GARDEN_APPROACH"
+            },
+            {
+              "step": 25,
+              "eventId": "EV_CH03_GARDEN_APPROACH",
+              "eventType": "dialogue",
+              "choiceId": "ch03_garden_enter",
+              "choiceLabel": "정면 돌입",
+              "nextEventId": "EV_CH03_BOSS_GARDEN"
+            },
+            {
+              "step": 26,
+              "eventId": "EV_CH03_BOSS_GARDEN",
+              "eventType": "boss",
+              "choiceId": "ch03_boss_clear",
+              "choiceLabel": "릴레이 렌즈를 확보하고 빠져나간다",
+              "nextEventId": "EV_CH03_EXTRACTION_PRESSURE"
+            },
+            {
+              "step": 27,
+              "eventId": "EV_CH03_EXTRACTION_PRESSURE",
+              "eventType": "scene",
+              "choiceId": "ch03_extract_smoke",
+              "choiceLabel": "연막 투입",
+              "nextEventId": "EV_CH03_EXTRACTION"
+            },
+            {
+              "step": 28,
+              "eventId": "EV_CH03_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch03_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH03"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH04",
+          "status": "success",
+          "reason": "END_CH04",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH04_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch04_start",
+              "choiceLabel": "물류벨트로 진입한다",
+              "nextEventId": "EV_CH04_TUNNEL_AMBUSH"
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH04_TUNNEL_AMBUSH",
+              "eventType": "combat",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": "EV_CH04_COLD_ALLOC"
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH04_COLD_ALLOC",
+              "eventType": "choice",
+              "choiceId": "ch04_cold_record",
+              "choiceLabel": "기록국용으로 확보",
+              "nextEventId": "EV_CH04_COLD_AUDIT"
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH04_COLD_AUDIT",
+              "eventType": "exploration",
+              "choiceId": "ch04_cold_audit",
+              "choiceLabel": "점검을 진행한다",
+              "nextEventId": "EV_CH04_LOBBY_MEET"
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH04_LOBBY_MEET",
+              "eventType": "dialogue",
+              "choiceId": "ch04_lobby_help",
+              "choiceLabel": "한소명의 안내를 받는다",
+              "nextEventId": "EV_CH04_VENDOR_BARTER"
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH04_VENDOR_BARTER",
+              "eventType": "dialogue",
+              "choiceId": "ch04_vendor_trade",
+              "choiceLabel": "거래한다",
+              "nextEventId": "EV_CH04_ROUTE_SELECTION"
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH04_ROUTE_SELECTION",
+              "eventType": "choice",
+              "choiceId": "ch04_route_delivery",
+              "choiceLabel": "배송터널을 우선 개방한다",
+              "nextEventId": "EV_CH04_RAIL_JAM"
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH04_RAIL_JAM",
+              "eventType": "combat",
+              "choiceId": "ch04_rail_continue",
+              "choiceLabel": "보안 사무실로 이동",
+              "nextEventId": "EV_CH04_SECURITY_BADGES"
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH04_SECURITY_BADGES",
+              "eventType": "exploration",
+              "choiceId": "ch04_badge_original",
+              "choiceLabel": "원본 배지를 회수한다",
+              "nextEventId": "EV_CH04_LINE_REPAIR"
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH04_LINE_REPAIR",
+              "eventType": "choice",
+              "choiceId": "ch04_line_repair_bypass",
+              "choiceLabel": "부분 우회한다",
+              "nextEventId": "EV_CH04_LINE_DECISION"
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH04_LINE_DECISION",
+              "eventType": "choice",
+              "choiceId": "ch04_line_off",
+              "choiceLabel": "라인을 죽여 둔다",
+              "nextEventId": "EV_CH04_TUNNEL_CACHE"
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH04_TUNNEL_CACHE",
+              "eventType": "exploration",
+              "choiceId": "ch04_cache_open",
+              "choiceLabel": "캐시를 연다",
+              "nextEventId": "EV_CH04_BOSS_PICKER"
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH04_BOSS_PICKER",
+              "eventType": "boss",
+              "choiceId": "ch04_boss_clear",
+              "choiceLabel": "분류홀을 장악한다",
+              "nextEventId": "EV_CH04_EXTRACTION_PREP"
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH04_EXTRACTION_PREP",
+              "eventType": "scene",
+              "choiceId": "ch04_extract_sort",
+              "choiceLabel": "정리 후 이동",
+              "nextEventId": "EV_CH04_EXIT_CHECK"
+            },
+            {
+              "step": 15,
+              "eventId": "EV_CH04_EXIT_CHECK",
+              "eventType": "scene",
+              "choiceId": "ch04_exit_skip",
+              "choiceLabel": "즉시 탈출",
+              "nextEventId": "EV_CH04_EXTRACTION"
+            },
+            {
+              "step": 16,
+              "eventId": "EV_CH04_EXTRACTION",
+              "eventType": "extraction",
+              "choiceId": "ch04_finish",
+              "choiceLabel": "챕터를 종료한다",
+              "nextEventId": "END_CH04"
+            }
+          ]
+        },
+        {
+          "chapterId": "CH05",
+          "status": "failed",
+          "reason": "no_available_choice",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH05_ENTRY",
+              "eventType": "briefing",
+              "choiceId": null,
+              "choiceLabel": null,
+              "nextEventId": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

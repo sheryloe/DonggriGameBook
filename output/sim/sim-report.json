@@ -1,0 +1,224 @@
+{
+  "generatedAt": "2026-04-10T14:59:11.918Z",
+  "seed": "20260410",
+  "chapters": [
+    "CH01",
+    "CH02",
+    "CH03",
+    "CH04",
+    "CH05"
+  ],
+  "players": [
+    {
+      "playerId": "player-01",
+      "strategy": "cautious",
+      "chapterResults": [
+        {
+          "chapterId": "CH01",
+          "status": "success",
+          "reason": "END_CH01",
+          "steps": 21,
+          "choicesTaken": 20,
+          "eventsVisited": 21,
+          "endHp": 100,
+          "endNoise": 1,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH02",
+          "status": "success",
+          "reason": "END_CH02",
+          "steps": 15,
+          "choicesTaken": 14,
+          "eventsVisited": 15,
+          "endHp": 100,
+          "endNoise": 0,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH03",
+          "status": "success",
+          "reason": "END_CH03",
+          "steps": 28,
+          "choicesTaken": 27,
+          "eventsVisited": 28,
+          "endHp": 100,
+          "endNoise": 0,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH04",
+          "status": "success",
+          "reason": "END_CH04",
+          "steps": 16,
+          "choicesTaken": 15,
+          "eventsVisited": 16,
+          "endHp": 100,
+          "endNoise": 0,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH05",
+          "status": "failed",
+          "reason": "no_available_choice",
+          "steps": 1,
+          "choicesTaken": 0,
+          "eventsVisited": 1,
+          "endHp": 100,
+          "endNoise": 0,
+          "warnings": [
+            "choice selection failed at \"EV_CH05_ENTRY\" (no_available_choice)"
+          ]
+        }
+      ],
+      "finalStats": {
+        "hp": 100,
+        "maxHp": 100,
+        "noise": 0,
+        "contamination": 32,
+        "inventoryItemCount": 27,
+        "inventorySample": {
+          "itm_ammo_9mm": 25,
+          "itm_backpack_field_6": 1,
+          "itm_backpack_salvage_10": 1,
+          "itm_battery_pack": 7,
+          "itm_box_label_roll": 4,
+          "itm_broadcast_log": 1,
+          "itm_cable_tie": 4,
+          "itm_container_seal": 2,
+          "itm_copper_wire": 4,
+          "itm_delivery_badge": 1,
+          "itm_disinfectant": 4,
+          "itm_filter_pad": 1
+        }
+      },
+      "warnings": [
+        "CH05: choice selection failed at \"EV_CH05_ENTRY\" (no_available_choice)"
+      ],
+      "overallSummary": {
+        "status": "failed",
+        "clearedChapters": [
+          "CH01",
+          "CH02",
+          "CH03",
+          "CH04"
+        ],
+        "failedChapter": "CH05",
+        "totalSteps": 81,
+        "totalChoices": 76
+      }
+    },
+    {
+      "playerId": "player-02",
+      "strategy": "aggressive",
+      "chapterResults": [
+        {
+          "chapterId": "CH01",
+          "status": "success",
+          "reason": "END_CH01",
+          "steps": 21,
+          "choicesTaken": 20,
+          "eventsVisited": 21,
+          "endHp": 100,
+          "endNoise": 6,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH02",
+          "status": "success",
+          "reason": "END_CH02",
+          "steps": 16,
+          "choicesTaken": 15,
+          "eventsVisited": 16,
+          "endHp": 100,
+          "endNoise": 9,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH03",
+          "status": "success",
+          "reason": "END_CH03",
+          "steps": 28,
+          "choicesTaken": 27,
+          "eventsVisited": 28,
+          "endHp": 100,
+          "endNoise": 17,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH04",
+          "status": "success",
+          "reason": "END_CH04",
+          "steps": 16,
+          "choicesTaken": 15,
+          "eventsVisited": 16,
+          "endHp": 100,
+          "endNoise": 20,
+          "warnings": []
+        },
+        {
+          "chapterId": "CH05",
+          "status": "failed",
+          "reason": "no_available_choice",
+          "steps": 1,
+          "choicesTaken": 0,
+          "eventsVisited": 1,
+          "endHp": 100,
+          "endNoise": 20,
+          "warnings": [
+            "choice selection failed at \"EV_CH05_ENTRY\" (no_available_choice)"
+          ]
+        }
+      ],
+      "finalStats": {
+        "hp": 100,
+        "maxHp": 100,
+        "noise": 20,
+        "contamination": 34,
+        "inventoryItemCount": 33,
+        "inventorySample": {
+          "itm_ammo_9mm": 27,
+          "itm_backpack_field_6": 1,
+          "itm_backpack_salvage_10": 1,
+          "itm_bandage": 1,
+          "itm_battery_pack": 12,
+          "itm_box_label_roll": 8,
+          "itm_cable_tie": 16,
+          "itm_cleaver_market": 2,
+          "itm_container_seal": 7,
+          "itm_copper_wire": 4,
+          "itm_delivery_badge": 2,
+          "itm_disinfectant": 5
+        }
+      },
+      "warnings": [
+        "CH05: choice selection failed at \"EV_CH05_ENTRY\" (no_available_choice)"
+      ],
+      "overallSummary": {
+        "status": "failed",
+        "clearedChapters": [
+          "CH01",
+          "CH02",
+          "CH03",
+          "CH04"
+        ],
+        "failedChapter": "CH05",
+        "totalSteps": 82,
+        "totalChoices": 77
+      }
+    }
+  ],
+  "overallSummary": {
+    "totalPlayers": 2,
+    "succeededPlayers": 0,
+    "failedPlayers": 2,
+    "chapterClearCounts": {
+      "CH01": 2,
+      "CH02": 2,
+      "CH03": 2,
+      "CH04": 2,
+      "CH05": 0
+    },
+    "warningCount": 2
+  }
+}

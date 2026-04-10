@@ -28,6 +28,7 @@
     "preview": "vite preview",
     "repo:audit-assets": "bash scripts/audit-assets.sh",
     "ops:csv-gate-sync": "node scripts/csv-gate-sync.mjs",
+    "sim:agents": "node scripts/simulate_agents.mjs",
     "nano": "node scripts/gemini-nano.mjs",
     "nano:login": "node scripts/gemini-nano.mjs --login",
     "nano:logout": "node scripts/gemini-nano.mjs --logout"
