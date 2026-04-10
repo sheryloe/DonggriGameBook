@@ -10,12 +10,13 @@ itemData.items.forEach((item: any) => {
 // 현재 인벤토리의 총 무게 계산
 export const calculateTotalWeight = (): number => {
     const store = useGameStore.getState();
+    const quantities = store.runtime?.inventory?.quantities ?? {};
     let totalWeight = 0;
 
-    Object.entries(store.inventory).forEach(([itemId, amount]) => {
+    Object.entries(quantities).forEach(([itemId, amount]) => {
         const itemDef = itemRegistry.get(itemId);
         if (itemDef && itemDef.weight) {
-            totalWeight += itemDef.weight * amount;
+            totalWeight += itemDef.weight * Number(amount ?? 0);
         }
     });
 
