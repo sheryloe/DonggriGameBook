@@ -734,6 +734,21 @@
               "op": "set_flag",
               "target": "flag:ch05_ara_rescued_first",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "rescue"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_kim_ara_alive",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH05_ARC_RELAY"
@@ -753,6 +768,26 @@
               "op": "set_flag",
               "target": "flag:ch05_ara_delayed",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "pragmatic"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": -1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_kim_ara_alive",
+              "value": false
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 2
             }
           ],
           "next_event_id": "EV_CH05_ARC_RELAY"
@@ -810,6 +845,21 @@
               "op": "grant_item",
               "target": "item:itm_dokdo_signal_auth",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": -1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_data_first",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH05_CORE_PREP"
@@ -839,6 +889,16 @@
               "op": "add_reputation",
               "target": "reputation.pangyo_survivors",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch05_data_partial",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH05_CORE_PREP"
@@ -868,6 +928,16 @@
               "op": "add_stat",
               "target": "noise",
               "value": 7
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": 2
             }
           ],
           "next_event_id": "EV_CH05_CORE_PREP"
@@ -895,7 +965,9 @@
           "boss_hp",
           "heat_meter",
           "signal_noise_overlay"
-        ]
+        ],
+        "cinematic_still_key": "boss_mirror_lines",
+        "result_variant": "boss_resolution"
       },
       "text": {
         "summary": "비상 경보와 냉각팬, 저주파 장치가 뒤엉키며 미러코어 접합체가 각성한다.",
@@ -922,6 +994,11 @@
               "op": "set_flag",
               "target": "flag:chapter_05_escape_ready",
               "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:part1_hidden_evidence_ch05",
+              "value": false
             }
           ],
           "next_event_id": "EV_CH05_EXIT_PRESSURE"
@@ -941,6 +1018,16 @@
               "op": "set_flag",
               "target": "flag:chapter_05_escape_ready",
               "value": true
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:part1_hidden_evidence_ch05",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 2
             }
           ],
           "next_event_id": "EV_CH05_EXIT_PRESSURE"
@@ -996,7 +1083,9 @@
           "chapter_result",
           "signal_summary",
           "party_summary"
-        ]
+        ],
+        "cinematic_still_key": "result_p1_ch05",
+        "result_variant": "part1_ending"
       },
       "text": {
         "summary": "독도 신호는 가짜가 아니라는 것이 확인된다. 동시에 그 안전지대가 선별 체계일 가능성도 드러난다.",
@@ -1677,6 +1766,16 @@
               "op": "add_stat",
               "target": "noise",
               "value": 2
+            },
+            {
+              "op": "set_value",
+              "target": "route.underworld",
+              "value": "forge"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.underworld_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH05_SKYWALK"
@@ -1696,6 +1795,21 @@
               "op": "add_stat",
               "target": "noise",
               "value": 5
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH05_SKYWALK"
@@ -1928,6 +2042,16 @@
               "op": "add_stat",
               "target": "noise",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "lock"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH05_DATA_ACCESS"
@@ -1947,6 +2071,21 @@
               "op": "add_stat",
               "target": "contamination",
               "value": 2
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH05_DATA_ACCESS"
@@ -2093,6 +2232,79 @@
       ],
       "unlock_when": [
         "flag:ch05_ara_rescued_first|flag:ch05_ara_delayed"
+      ]
+    }
+  ],
+  "chapter_cinematic": {
+    "still_art_key": "briefing_p1_ch05",
+    "world_map_art_key": "map_p1_ch05",
+    "anchor_portrait_key": "portrait_kim_ara",
+    "support_portrait_key": "portrait_yoon_haein",
+    "boss_splash_key": "boss_mirror_lines",
+    "result_card_art_key": "result_p1_ch05",
+    "teaser_prompt_id": "P1_CH05_OPENING"
+  },
+  "ending_matrix": [
+    {
+      "ending_id": "P1_END_MIRROR_WITNESS",
+      "title": "Mirror Witness",
+      "summary": "모든 기록과 증거를 들고 빠져나왔지만, 우회 회선의 흔적이 남아 이후 추적의 대가를 피할 수 없다.",
+      "priority": 100,
+      "hint": "모든 증거를 모으고 김아라를 살린 뒤, 마지막엔 우회 회선을 감수해야 한다.",
+      "conditions": [
+        "route.truth=truth",
+        "route.compassion=rescue",
+        "route.control=bypass",
+        "flag:part1_evidence_bundle_complete",
+        "flag:part1_hidden_evidence_ch05",
+        "flag:ch05_kim_ara_alive"
+      ]
+    },
+    {
+      "ending_id": "P1_END_SIGNAL_KEEPERS",
+      "title": "Signal Keepers",
+      "summary": "기록은 살아 있고 사람도 살렸다. 그러나 선별 회선을 잠근 채 들고 나가야 하는 무게가 남는다.",
+      "priority": 80,
+      "hint": "진실, 구조, 잠금 루트를 끝까지 유지하고 strain을 낮게 눌러야 한다.",
+      "conditions": [
+        "route.truth=truth",
+        "route.compassion=rescue",
+        "route.control=lock",
+        "flag:ch05_kim_ara_alive",
+        "route.strain<=6"
+      ]
+    },
+    {
+      "ending_id": "P1_END_SMUGGLER_TIDE",
+      "title": "Smuggler Tide",
+      "summary": "위조와 우회로 살아남았지만, 공적인 기록과 공동체 신뢰는 대부분 떠내려갔다.",
+      "priority": 70,
+      "hint": "암시장과 위조 루트, 우회 제어를 밀어붙이면 이 결말에 가까워진다.",
+      "conditions": [
+        "route.underworld=forge",
+        "route.control=bypass"
+      ]
+    },
+    {
+      "ending_id": "P1_END_CONTROLLED_PASSAGE",
+      "title": "Controlled Passage",
+      "summary": "질서는 지켰고 통로도 확보했다. 다만 진실은 일부만 남겨둔 채 다음 장으로 넘어간다.",
+      "priority": 60,
+      "hint": "통제는 잠그고, 데이터는 우선 확보하되 전면 공개는 피해야 한다.",
+      "conditions": [
+        "route.control=lock",
+        "flag:ch05_data_first",
+        "route.truth=silence"
+      ]
+    },
+    {
+      "ending_id": "P1_END_ASHEN_ESCAPE",
+      "title": "Ashen Escape",
+      "summary": "생존만 겨우 건졌고, 구조와 증거는 재 속에 흩어졌다. 다음 여정은 소문과 후회 위에서 시작된다.",
+      "priority": 10,
+      "hint": "피로가 과도하게 쌓이거나 김아라를 놓치거나, 증거 수집에 실패하면 이 결말로 떨어진다.",
+      "conditions": [
+        "route.strain>=7|!flag:ch05_kim_ara_alive|!flag:part1_evidence_bundle_complete"
       ]
     }
   ]

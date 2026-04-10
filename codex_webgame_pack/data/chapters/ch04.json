@@ -514,6 +514,21 @@
               "op": "set_flag",
               "target": "flag:ch04_med_to_record",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:part1_evidence_ch04",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH04_COLD_AUDIT"
@@ -538,6 +553,16 @@
               "op": "set_flag",
               "target": "flag:ch04_med_to_locals",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "rescue"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH04_COLD_AUDIT"
@@ -741,6 +766,16 @@
               "op": "set_flag",
               "target": "flag:ch04_badges_original",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.underworld",
+              "value": "clean"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.underworld_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH04_LINE_REPAIR"
@@ -770,6 +805,21 @@
               "op": "set_flag",
               "target": "flag:ch04_badges_forged",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.underworld",
+              "value": "forge"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.underworld_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH04_LINE_REPAIR"
@@ -821,6 +871,21 @@
               "op": "add_stat",
               "target": "noise",
               "value": 8
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "lock"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH04_TUNNEL_CACHE"
@@ -840,6 +905,16 @@
               "op": "sub_stat",
               "target": "noise",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH04_TUNNEL_CACHE"
@@ -867,7 +942,9 @@
           "boss_hp",
           "line_status",
           "hazard_overlay"
-        ]
+        ],
+        "cinematic_still_key": "boss_picker_prime",
+        "result_variant": "boss_resolution"
       },
       "text": {
         "summary": "자동분류 접합체가 기계 팔과 롤러 라인을 이용해 메인홀 전체를 사냥터로 바꾼다.",
@@ -948,7 +1025,9 @@
         "widget_overrides": [
           "chapter_result",
           "route_summary"
-        ]
+        ],
+        "cinematic_still_key": "result_p1_ch04",
+        "result_variant": "chapter_result"
       },
       "text": {
         "summary": "배지와 진입권, 그리고 열어 둔 노선을 가지고 판교 외곽으로 향한다.",
@@ -1839,5 +1918,14 @@
         "flag:ch04_line_on|flag:ch04_line_off"
       ]
     }
-  ]
+  ],
+  "chapter_cinematic": {
+    "still_art_key": "briefing_p1_ch04",
+    "world_map_art_key": "map_p1_ch04",
+    "anchor_portrait_key": "portrait_han_somyeong",
+    "support_portrait_key": "portrait_jung_noah",
+    "boss_splash_key": "boss_picker_prime",
+    "result_card_art_key": "result_p1_ch04",
+    "teaser_prompt_id": "P1_CH04_OPENING"
+  }
 }

@@ -13,6 +13,7 @@ const bundledImageModules = {
 } as Record<string, string>;
 
 const GENERATED_EXTENSIONS = ["png", "webp", "jpg", "jpeg"] as const;
+const PART1_GENERATED_IMAGE_ROOT = "/generated/images";
 
 const BG_KEYS = [
   "bg_archive_flooded",
@@ -44,6 +45,49 @@ const BG_KEYS = [
   "bg_yeouido_ashroad"
 ] as const;
 
+const PART1_BRIEFING_KEYS = [
+  "briefing_p1_ch01",
+  "briefing_p1_ch02",
+  "briefing_p1_ch03",
+  "briefing_p1_ch04",
+  "briefing_p1_ch05"
+] as const;
+
+const PART1_MAP_KEYS = ["map_p1_ch01", "map_p1_ch02", "map_p1_ch03", "map_p1_ch04", "map_p1_ch05"] as const;
+
+const PART1_RESULT_KEYS = [
+  "result_p1_ch01",
+  "result_p1_ch02",
+  "result_p1_ch03",
+  "result_p1_ch04",
+  "result_p1_ch05"
+] as const;
+
+const PART1_ENDING_KEYS = [
+  "ending_p1_signal_keepers",
+  "ending_p1_controlled_passage",
+  "ending_p1_smuggler_tide",
+  "ending_p1_ashen_escape",
+  "ending_p1_mirror_witness"
+] as const;
+
+const PART1_ENDING_THUMB_KEYS = [
+  "ending_thumb_p1_signal_keepers",
+  "ending_thumb_p1_controlled_passage",
+  "ending_thumb_p1_smuggler_tide",
+  "ending_thumb_p1_ashen_escape",
+  "ending_thumb_p1_mirror_witness"
+] as const;
+
+const PART1_UTILITY_KEYS = ["ending_placeholder"] as const;
+const STRICT_PART1_DROP_KEYS = [
+  ...PART1_BRIEFING_KEYS,
+  ...PART1_MAP_KEYS,
+  ...PART1_RESULT_KEYS,
+  ...PART1_ENDING_KEYS,
+  ...PART1_ENDING_THUMB_KEYS
+] as const;
+
 const PORTRAIT_KEYS = [
   "npc_support_writer",
   "portrait_ahn_bogyeong",
@@ -70,7 +114,17 @@ const DOCUMENT_KEYS = [
   "doc_military_quarantine_sticker"
 ] as const;
 
-export const KNOWN_ART_KEYS = [...BG_KEYS, ...PORTRAIT_KEYS, ...BOSS_KEYS] as const;
+export const KNOWN_ART_KEYS = [
+  ...BG_KEYS,
+  ...PART1_BRIEFING_KEYS,
+  ...PART1_MAP_KEYS,
+  ...PART1_RESULT_KEYS,
+  ...PART1_ENDING_KEYS,
+  ...PART1_ENDING_THUMB_KEYS,
+  ...PART1_UTILITY_KEYS,
+  ...PORTRAIT_KEYS,
+  ...BOSS_KEYS
+] as const;
 
 function normalizePath(path: string): string {
   return path.replace(/\\/g, "/");
@@ -123,7 +177,33 @@ const GENERATION_ROUTE_BY_KEY: Record<string, AssetModelRoute> = {
   boss_editing_aberration: "character-25",
   boss_glassgarden: "character-25",
   boss_mirror_lines: "character-25",
-  boss_picker_prime: "character-25"
+  boss_picker_prime: "character-25",
+  briefing_p1_ch01: "nanobanana",
+  briefing_p1_ch02: "nanobanana",
+  briefing_p1_ch03: "nanobanana",
+  briefing_p1_ch04: "nanobanana",
+  briefing_p1_ch05: "nanobanana",
+  map_p1_ch01: "nanobanana",
+  map_p1_ch02: "nanobanana",
+  map_p1_ch03: "nanobanana",
+  map_p1_ch04: "nanobanana",
+  map_p1_ch05: "nanobanana",
+  result_p1_ch01: "nanobanana",
+  result_p1_ch02: "nanobanana",
+  result_p1_ch03: "nanobanana",
+  result_p1_ch04: "nanobanana",
+  result_p1_ch05: "nanobanana",
+  ending_p1_signal_keepers: "nanobanana",
+  ending_p1_controlled_passage: "nanobanana",
+  ending_p1_smuggler_tide: "nanobanana",
+  ending_p1_ashen_escape: "nanobanana",
+  ending_p1_mirror_witness: "nanobanana",
+  ending_thumb_p1_signal_keepers: "asset-nano",
+  ending_thumb_p1_controlled_passage: "asset-nano",
+  ending_thumb_p1_smuggler_tide: "asset-nano",
+  ending_thumb_p1_ashen_escape: "asset-nano",
+  ending_thumb_p1_mirror_witness: "asset-nano",
+  ending_placeholder: "asset-nano"
 };
 
 const KEYED_FALLBACK_IMAGES: Record<string, Array<string | undefined>> = {
@@ -136,7 +216,33 @@ const KEYED_FALLBACK_IMAGES: Record<string, Array<string | undefined>> = {
   boss_cheongeum: [failScreen, gateBackground],
   boss_glassgarden: [gateBackground, failScreen],
   boss_picker_prime: [inventoryBoard, gameOverScreen],
-  boss_mirror_lines: [transmitterBackground, gameOverScreen]
+  boss_mirror_lines: [transmitterBackground, gameOverScreen],
+  briefing_p1_ch01: [inspectionBackground, startBackground],
+  briefing_p1_ch02: [inspectionBackground, startBackground],
+  briefing_p1_ch03: [inspectionBackground, startBackground],
+  briefing_p1_ch04: [inspectionBackground, startBackground],
+  briefing_p1_ch05: [inspectionBackground, startBackground],
+  map_p1_ch01: [startBackground, inspectionBackground],
+  map_p1_ch02: [startBackground, inspectionBackground],
+  map_p1_ch03: [startBackground, inspectionBackground],
+  map_p1_ch04: [startBackground, inspectionBackground],
+  map_p1_ch05: [startBackground, inspectionBackground],
+  result_p1_ch01: [clearScreen, startBackground],
+  result_p1_ch02: [clearScreen, startBackground],
+  result_p1_ch03: [clearScreen, startBackground],
+  result_p1_ch04: [clearScreen, startBackground],
+  result_p1_ch05: [clearScreen, startBackground],
+  ending_p1_signal_keepers: [clearScreen, startBackground],
+  ending_p1_controlled_passage: [clearScreen, inspectionBackground],
+  ending_p1_smuggler_tide: [failScreen, gateBackground],
+  ending_p1_ashen_escape: [failScreen, gameOverScreen],
+  ending_p1_mirror_witness: [clearScreen, transmitterBackground],
+  ending_thumb_p1_signal_keepers: [clearScreen, startBackground],
+  ending_thumb_p1_controlled_passage: [clearScreen, inspectionBackground],
+  ending_thumb_p1_smuggler_tide: [failScreen, gateBackground],
+  ending_thumb_p1_ashen_escape: [failScreen, gameOverScreen],
+  ending_thumb_p1_mirror_witness: [clearScreen, transmitterBackground],
+  ending_placeholder: [clearScreen, failScreen, startBackground]
 };
 
 const KEYED_FALLBACK_ART_KEYS: Record<string, string[]> = {
@@ -144,7 +250,33 @@ const KEYED_FALLBACK_ART_KEYS: Record<string, string[]> = {
   boss_cheongeum: ["bg_dongjak_culvert"],
   boss_glassgarden: ["bg_jamsil_showroom"],
   boss_picker_prime: ["bg_sorting_hall"],
-  boss_mirror_lines: ["bg_arkp_serverhall"]
+  boss_mirror_lines: ["bg_arkp_serverhall"],
+  briefing_p1_ch01: ["bg_broadcast_lobby"],
+  briefing_p1_ch02: ["bg_noryangjin_market"],
+  briefing_p1_ch03: ["bg_jamsil_lobby"],
+  briefing_p1_ch04: ["bg_sorting_hall"],
+  briefing_p1_ch05: ["bg_pangyo_lobby"],
+  map_p1_ch01: ["bg_yeouido_ashroad"],
+  map_p1_ch02: ["bg_noryangjin_market"],
+  map_p1_ch03: ["bg_jamsil_showroom"],
+  map_p1_ch04: ["bg_tancheon_embankment"],
+  map_p1_ch05: ["bg_pangyo_interchange"],
+  result_p1_ch01: ["bg_rooftop_signal"],
+  result_p1_ch02: ["bg_dongjak_culvert"],
+  result_p1_ch03: ["bg_rooftop_escape"],
+  result_p1_ch04: ["bg_delivery_tunnel"],
+  result_p1_ch05: ["bg_arkp_exit"],
+  ending_p1_signal_keepers: ["result_p1_ch05", "bg_arkp_exit"],
+  ending_p1_controlled_passage: ["result_p1_ch05", "bg_pangyo_lobby"],
+  ending_p1_smuggler_tide: ["bg_dongjak_culvert", "bg_noryangjin_market"],
+  ending_p1_ashen_escape: ["bg_arkp_exit", "bg_pangyo_interchange"],
+  ending_p1_mirror_witness: ["bg_arkp_serverhall", "result_p1_ch05"],
+  ending_thumb_p1_signal_keepers: ["ending_p1_signal_keepers"],
+  ending_thumb_p1_controlled_passage: ["ending_p1_controlled_passage"],
+  ending_thumb_p1_smuggler_tide: ["ending_p1_smuggler_tide"],
+  ending_thumb_p1_ashen_escape: ["ending_p1_ashen_escape"],
+  ending_thumb_p1_mirror_witness: ["ending_p1_mirror_witness"],
+  ending_placeholder: ["result_p1_ch05"]
 };
 
 const GENERIC_FALLBACK_IMAGES = [startBackground, inspectionBackground, gateBackground, transmitterBackground];
@@ -249,6 +381,21 @@ export const ASSET_GENERATION_QUEUE: AssetGenerationJob[] = [
   ...BG_KEYS.map((key) =>
     makeJob(key, "background", "nanobanana", "Cinematic Korean apocalypse environment background")
   ),
+  ...PART1_BRIEFING_KEYS.map((key) =>
+    makeJob(key, "background", "nanobanana", "Part 1 chapter briefing still with grounded Korean disaster realism")
+  ),
+  ...PART1_MAP_KEYS.map((key) =>
+    makeJob(key, "background", "nanobanana", "Part 1 world map hero background with route emphasis")
+  ),
+  ...PART1_RESULT_KEYS.map((key) =>
+    makeJob(key, "background", "nanobanana", "Part 1 result card art for chapter summary")
+  ),
+  ...PART1_ENDING_KEYS.map((key) =>
+    makeJob(key, "background", "nanobanana", "Part 1 ending key art with strong silhouette and aftermath mood")
+  ),
+  ...PART1_ENDING_THUMB_KEYS.map((key) =>
+    makeJob(key, "document", "asset-nano", "Part 1 ending gallery thumbnail card")
+  ),
   ...PORTRAIT_KEYS.map((key) =>
     makeJob(
       key,
@@ -270,6 +417,10 @@ function dedupe(values: Array<string | undefined>): string[] {
 }
 
 function publicGeneratedCandidates(key: string): string[] {
+  return GENERATED_EXTENSIONS.map((extension) => `${PART1_GENERATED_IMAGE_ROOT}/${key}.${extension}`);
+}
+
+function legacyGeneratedCandidates(key: string): string[] {
   return GENERATED_EXTENSIONS.flatMap((extension) => [
     `/generated/${key}.${extension}`,
     `/generated/${key}/index.${extension}`
@@ -305,6 +456,10 @@ function chapterFallbackCandidates(chapterId?: ChapterId): string[] {
 }
 
 function keyedFallbackCandidates(key: string): string[] {
+  if ((STRICT_PART1_DROP_KEYS as readonly string[]).includes(key)) {
+    return [];
+  }
+
   const artKeyFallbacks = KEYED_FALLBACK_ART_KEYS[key] ?? [];
   const imageFallbacks = KEYED_FALLBACK_IMAGES[key] ?? [];
   return dedupe([
@@ -323,22 +478,38 @@ export function isKnownArtKey(key: string): key is (typeof KNOWN_ART_KEYS)[numbe
 export function resolveAssetKey(key?: string | null, chapterId?: ChapterId): AssetResolution {
   const defaultArtKey = chapterId ? getChapterRuntimeConfig(chapterId)?.default_art_key : null;
   const safeKey = key?.trim() || defaultArtKey || `chapter_${chapterId ?? "unknown"}_placeholder`;
+  const strictDrop = (STRICT_PART1_DROP_KEYS as readonly string[]).includes(safeKey);
   const directCandidates = directCandidatesForKey(safeKey);
-  const generatedCandidates = safeKey.startsWith("/") ? [] : publicGeneratedCandidates(safeKey);
+  const generatedCandidates = safeKey.startsWith("/")
+    ? []
+    : strictDrop
+      ? publicGeneratedCandidates(safeKey)
+      : dedupe([...publicGeneratedCandidates(safeKey), ...legacyGeneratedCandidates(safeKey)]);
   const fallbackCandidates = dedupe([
     ...keyedFallbackCandidates(safeKey),
-    ...chapterFallbackCandidates(chapterId),
-    ...GENERIC_FALLBACK_IMAGES
+    ...(strictDrop ? [] : chapterFallbackCandidates(chapterId)),
+    ...(strictDrop ? [] : GENERIC_FALLBACK_IMAGES)
   ]);
   const candidates = dedupe([...directCandidates, ...generatedCandidates, ...fallbackCandidates]);
+  const primarySrc = directCandidates[0] ?? generatedCandidates[0] ?? fallbackCandidates[0];
+  const expectedSrc = directCandidates[0] ? undefined : generatedCandidates[0];
+  const matchedFrom = directCandidates.length
+    ? "direct"
+    : generatedCandidates.length
+      ? "generated"
+      : "fallback";
+  const status = directCandidates.length || fallbackCandidates.length ? "resolved" : "missing_x";
 
   return {
     key: safeKey,
-    src: candidates[0],
-    fallback_srcs: candidates.slice(1),
+    src: primarySrc,
+    fallback_srcs: strictDrop ? [] : candidates.slice(1),
     candidates,
     route: defaultRouteForKey(safeKey),
-    matched_from: directCandidates.length ? "direct" : generatedCandidates.length ? "generated" : "fallback"
+    matched_from: matchedFrom,
+    status,
+    expected_src: expectedSrc,
+    strict_drop: strictDrop
   };
 }
 

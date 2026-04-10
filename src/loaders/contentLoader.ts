@@ -212,7 +212,9 @@ function normalizeChapter(raw: RawChapterPackage): ChapterDefinition {
     events: raw.events,
     events_by_id: mapById(raw.events, "event_id"),
     event_order: Object.fromEntries(raw.events.map((event, index) => [event.event_id, index])),
-    boss_event_id: raw.boss_event_id
+    boss_event_id: raw.boss_event_id,
+    chapter_cinematic: raw.chapter_cinematic,
+    ending_matrix: raw.ending_matrix ?? []
   };
 }
 

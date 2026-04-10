@@ -1013,6 +1013,26 @@
               "op": "set_flag",
               "target": "flag:ch03_rescue_signal",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:part1_evidence_ch03",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH03_RESCUE_DETOUR"
@@ -1032,6 +1052,16 @@
               "op": "set_flag",
               "target": "flag:ch03_silent_bridge",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH03_GLASS_PREP"
@@ -1059,7 +1089,9 @@
           "boss_hp",
           "fall_warning",
           "noise_meter"
-        ]
+        ],
+        "cinematic_still_key": "boss_glassgarden",
+        "result_variant": "boss_resolution"
       },
       "text": {
         "summary": "전망 접합체가 정원의 붕괴한 유리 구조물을 휘감으며 각성한다.",
@@ -1145,7 +1177,9 @@
         "widget_overrides": [
           "chapter_result",
           "faction_summary"
-        ]
+        ],
+        "cinematic_still_key": "result_p1_ch03",
+        "result_variant": "chapter_result"
       },
       "text": {
         "summary": "축전지와 릴레이 렌즈, 그리고 판교로 이어지는 데이터 키 조각을 챙긴다.",
@@ -1283,6 +1317,16 @@
               "op": "add_stat",
               "target": "noise",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "lock"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"
@@ -1302,6 +1346,21 @@
               "op": "add_stat",
               "target": "contamination",
               "value": 2
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"
@@ -1321,6 +1380,21 @@
               "op": "add_stat",
               "target": "noise",
               "value": 2
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH03_UPPER_NEGOTIATION"
@@ -1371,6 +1445,16 @@
               "op": "grant_loot_table",
               "target": "loot:lt_ch03_upper_luxury",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "rescue"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH03_GLASS_PREP"
@@ -1385,6 +1469,21 @@
               "op": "set_flag",
               "target": "flag:ch03_rescue_marked",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "pragmatic"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH03_GLASS_PREP"
@@ -2598,5 +2697,14 @@
       ],
       "reveal_cap": "ambient"
     }
-  ]
+  ],
+  "chapter_cinematic": {
+    "still_art_key": "briefing_p1_ch03",
+    "world_map_art_key": "map_p1_ch03",
+    "anchor_portrait_key": "portrait_ahn_bogyeong",
+    "support_portrait_key": "portrait_ryu_seon",
+    "boss_splash_key": "boss_glassgarden",
+    "result_card_art_key": "result_p1_ch03",
+    "teaser_prompt_id": "P1_CH03_OPENING"
+  }
 }

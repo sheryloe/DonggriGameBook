@@ -92,6 +92,15 @@
     },
     "boss_event_id": {
       "type": "string"
+    },
+    "chapter_cinematic": {
+      "$ref": "#/$defs/chapterCinematic"
+    },
+    "ending_matrix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/endingRule"
+      }
     }
   },
   "$defs": {
@@ -329,6 +338,12 @@
         },
         "allow_multi_choice": {
           "type": "boolean"
+        },
+        "cinematic_still_key": {
+          "type": "string"
+        },
+        "result_variant": {
+          "type": "string"
         }
       }
     },
@@ -420,7 +435,10 @@
           }
         },
         "next_event_id": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },
@@ -550,6 +568,77 @@
         },
         "fail_event_id": {
           "type": "string"
+        }
+      }
+    },
+    "chapterCinematic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "still_art_key",
+        "world_map_art_key",
+        "anchor_portrait_key",
+        "support_portrait_key",
+        "boss_splash_key",
+        "result_card_art_key",
+        "teaser_prompt_id"
+      ],
+      "properties": {
+        "still_art_key": {
+          "type": "string"
+        },
+        "world_map_art_key": {
+          "type": "string"
+        },
+        "anchor_portrait_key": {
+          "type": "string"
+        },
+        "support_portrait_key": {
+          "type": "string"
+        },
+        "boss_splash_key": {
+          "type": "string"
+        },
+        "result_card_art_key": {
+          "type": "string"
+        },
+        "teaser_prompt_id": {
+          "type": "string"
+        }
+      }
+    },
+    "endingRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ending_id",
+        "title",
+        "summary",
+        "priority",
+        "hint",
+        "conditions"
+      ],
+      "properties": {
+        "ending_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "hint": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }

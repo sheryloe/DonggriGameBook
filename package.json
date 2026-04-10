@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "part1:enhance": "node scripts/generate-part1-enhancements.mjs",
     "content:generate:part2-4": "node scripts/generate-part2-4-content.mjs",
     "asset-prompts:generate": "node scripts/generate-asset-prompt-pack.mjs",
     "dev:part1": "vite --config apps/part1/vite.config.ts",

@@ -1,256 +1,560 @@
-import { useEffect, useState } from "react";
-import { getChapterCatalogEntry, getChapterRuntimeConfig } from "../packages/world-registry/src";
+import { useEffect, useMemo, useState } from "react";
+import { ArtFrame, VideoCard } from "./assets/runtimeMedia";
+import { PART1_ENDINGS, PART1_ENDING_ORDER } from "./content/part1Endings";
+import { getPart1ChapterMedia, getPart1EndingMedia } from "./content/part1Media";
 import { useGameStore } from "./store/gameStore";
+import type { EndingId } from "./types/game";
 
-function useTypewriter(text: string, speed = 30) {
-  const [displayedText, setDisplayedText] = useState("");
+function formatDateTime(input?: string): string {
+  if (!input) {
+    return "-";
+  }
 
-  useEffect(() => {
-    setDisplayedText("");
-    let index = 0;
-    if (!text) {
-      return;
-    }
+  return new Intl.DateTimeFormat("ko-KR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(new Date(input));
+}
 
-    const timer = window.setInterval(() => {
-      setDisplayedText((prev) => prev + text.charAt(index));
-      index += 1;
-
-      if (index >= text.length) {
-        window.clearInterval(timer);
-      }
-    }, speed);
-
-    return () => window.clearInterval(timer);
-  }, [text, speed]);
-
-  return displayedText;
+function StatBar({ label, value, maxValue, tone }: { label: string; value: number; maxValue: number; tone?: "warning" | "danger" }) {
+  const percentage = Math.max(0, Math.min(100, (value / Math.max(maxValue, 1)) * 100));
+  return (
+    <div className={`stat-bar ${tone ? `stat-bar-${tone}` : ""}`}>
+      <div className="stat-bar-head">
+        <strong>{label}</strong>
+        <span>{value}</span>
+      </div>
+      <div className="stat-bar-track">
+        <div className="stat-bar-fill" style={{ width: `${percentage}%` }} />
+      </div>
+    </div>
+  );
 }
 
 function App() {
-  const store = useGameStore();
-  const chapterEntry = getChapterCatalogEntry(store.currentChapterId);
-  const chapterRuntime = getChapterRuntimeConfig(store.currentChapterId);
-  const chapterTitle = chapterEntry?.title ?? store.currentChapterId;
-  const hubNodeId = chapterRuntime?.hub_node_id ?? store.currentNodeId;
-  const deployNodeId = chapterRuntime?.deploy_node_id ?? store.currentNodeId;
+  const {
+    bootState,
+    bootError,
+    content,
+    runtime,
+    warnings,
+    selectedChoiceId,
+    bootstrapPack,
+    startMission,
+    moveToNode,
+    selectChoice,
+    startBossCombat,
+    toggleLootSelection,
+    confirmLoot,
+    resolveBattleAction,
+    confirmResult,
+    openEndingGallery,
+    closeEndingGallery,
+    resetRun
+  } = useGameStore();
+  const [selectedGalleryEndingId, setSelectedGalleryEndingId] = useState<EndingId | null>(null);
+  const currentEndingId = runtime?.chapter_outcome?.ending_id;
+  const unlockedEndingIds = useMemo(
+    () => (runtime ? PART1_ENDING_ORDER.filter((endingId) => Boolean(runtime.unlocked_endings[endingId])) : []),
+    [runtime]
+  );
 
-  const currentEventDesc =
-    "[SYSTEM LOG] 신호 해석과 회수 루프는 파트/챕터 catalog 기준으로 재구성되었다. 이제 허브 판정, 출격 노드, 복귀 지점은 개별 챕터 런타임 설정에서 읽는다.";
-  const typedText = useTypewriter(currentEventDesc, 24);
+  useEffect(() => {
+    void bootstrapPack();
+  }, [bootstrapPack]);
 
-  const isHub = store.currentNodeId === hubNodeId;
+  useEffect(() => {
+    if (!runtime || runtime.ui_screen !== "ending_gallery") {
+      return;
+    }
 
-  if (store.stats.hp <= 0) {
+    if (currentEndingId) {
+      setSelectedGalleryEndingId(currentEndingId);
+      return;
+    }
+
+    setSelectedGalleryEndingId((previous) => previous ?? unlockedEndingIds[0] ?? PART1_ENDING_ORDER[0]);
+  }, [currentEndingId, runtime, unlockedEndingIds]);
+
+  if (bootState === "idle" || bootState === "loading" || !content || !runtime) {
     return (
-      <div
-        style={{
-          backgroundColor: "#131313",
-          color: "#8B0000",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily: "monospace"
-        }}
-      >
-        <h1 style={{ fontSize: "5rem", margin: 0, textShadow: "2px 2px #ffb4a8" }}>K.I.A</h1>
-        <p style={{ color: "#e3beb8", fontSize: "1.2rem" }}>YOU LOST ALL UNSECURED ITEMS.</p>
-        <button
-          onClick={() => store.dieAndLoseLoot()}
-          style={{
-            marginTop: "2rem",
-            padding: "1rem 2rem",
-            backgroundColor: "#353534",
-            border: "1px solid #5a403c",
-            color: "#e5e2e1",
-            cursor: "pointer",
-            fontFamily: "monospace"
-          }}
-        >
-          WAKE UP AT HUB
-        </button>
-      </div>
-    );
-  }
-
-  if (isHub) {
-    return (
-      <div
-        style={{
-          backgroundColor: "#131313",
-          color: "#e5e2e1",
-          minHeight: "100vh",
-          padding: "2rem",
-          fontFamily: "monospace"
-        }}
-      >
-        <div style={{ borderBottom: "2px solid #353534", paddingBottom: "1rem", marginBottom: "2rem" }}>
-          <h1 style={{ color: "#ffb4a8", margin: 0 }}>BASECAMP HUB</h1>
-          <p style={{ color: "#e3beb8", margin: "0.5rem 0 0" }}>PART: {store.partId}</p>
-          <p style={{ color: "#e3beb8", margin: 0 }}>CHAPTER: {chapterTitle}</p>
-          <p style={{ color: "#e3beb8", margin: 0 }}>LOCATION: {store.currentNodeId}</p>
-        </div>
-
-        <div style={{ display: "flex", gap: "2rem", alignItems: "stretch" }}>
-          <div style={{ flex: 1, backgroundColor: "#0e0e0e", padding: "1.5rem", border: "1px solid #5a403c" }}>
-            <h3 style={{ marginTop: 0, color: "#8adb4d" }}>OPERATOR VITALS</h3>
-            <p>APP: {store.appId}</p>
-            <p>HP: {store.stats.hp} / {store.stats.max_hp}</p>
-            <p>NOISE: {store.stats.noise}</p>
-            <p>CONTAMINATION: {store.stats.contamination}</p>
-
-            <hr style={{ borderColor: "#353534" }} />
-            <h3 style={{ color: "#ffb4a8" }}>ACTIVE QUESTS</h3>
-            {Object.entries(store.quests)
-              .filter(([, status]) => status === "active")
-              .map(([questId]) => (
-                <div key={questId} style={{ color: "#e3beb8", fontSize: "0.9rem", marginBottom: "0.5rem" }}>
-                  &gt; {questId.replace(/_/g, " ").toUpperCase()}
-                </div>
-              ))}
-
-            <hr style={{ borderColor: "#353534" }} />
-            <h3 style={{ color: "#8adb4d" }}>INVENTORY</h3>
-            <pre style={{ color: "#e3beb8", fontSize: "0.8rem", whiteSpace: "pre-wrap" }}>
-              {JSON.stringify(store.inventory, null, 2)}
-            </pre>
-          </div>
-
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <button
-              style={{
-                padding: "1.5rem",
-                backgroundColor: "#201f1f",
-                color: "#e5e2e1",
-                border: "none",
-                textAlign: "left",
-                cursor: "pointer"
-              }}
-            >
-              [1] ORGANIZE STASH
-            </button>
-            <button
-              style={{
-                padding: "1.5rem",
-                backgroundColor: "#201f1f",
-                color: "#e5e2e1",
-                border: "none",
-                textAlign: "left",
-                cursor: "pointer"
-              }}
-            >
-              [2] BLACK MARKET
-            </button>
-            <div style={{ flexGrow: 1 }} />
-            <button
-              onClick={() => store.moveToNode(deployNodeId)}
-              style={{
-                padding: "2rem",
-                backgroundColor: "#8B0000",
-                color: "#131313",
-                border: "none",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                cursor: "pointer"
-              }}
-            >
-              \ DEPLOY TO RAID /
-            </button>
-          </div>
+      <div className="boot-screen">
+        <div className={`boot-card ${bootState === "error" ? "is-error" : ""}`}>
+          <p className="eyebrow">DonggrolGameBook Part 1</p>
+          <h1>Runtime Boot</h1>
+          <p className="muted-copy">{bootState === "error" ? bootError : "Loading CH01~CH05 runtime and generated asset contract."}</p>
         </div>
       </div>
     );
   }
+
+  const chapter = content.chapters[runtime.current_chapter_id];
+  const uiFlow = content.ui_flows[runtime.current_chapter_id];
+  const screen = uiFlow?.screens.find((entry) => entry.screen_id === runtime.current_screen_id) ?? uiFlow?.screens[0];
+  const currentNode = runtime.current_node_id ? chapter.nodes_by_id[runtime.current_node_id] : null;
+  const currentEvent = runtime.current_event_id ? chapter.events_by_id[runtime.current_event_id] : null;
+  const chapterMedia = getPart1ChapterMedia(runtime.current_chapter_id);
+  const currentEndingMedia = currentEndingId ? getPart1EndingMedia(currentEndingId) : null;
+  const selectedEndingId = selectedGalleryEndingId ?? currentEndingId ?? unlockedEndingIds[0] ?? PART1_ENDING_ORDER[0];
+  const selectedEnding = PART1_ENDINGS[selectedEndingId];
+  const selectedEndingMedia = getPart1EndingMedia(selectedEndingId);
+  const hp = Number(runtime.stats.hp ?? 0);
+  const maxHp = Number(runtime.stats.max_hp ?? 100);
+  const contamination = Number(runtime.stats.contamination ?? 0);
+  const noise = Number(runtime.stats.noise ?? 0);
+  const routeSummary = [
+    `truth=${String(runtime.stats["route.truth"] ?? "silence")}`,
+    `compassion=${String(runtime.stats["route.compassion"] ?? "pragmatic")}`,
+    `control=${String(runtime.stats["route.control"] ?? "lock")}`,
+    `underworld=${String(runtime.stats["route.underworld"] ?? "clean")}`,
+    `strain=${Number(runtime.stats["route.strain"] ?? 0)}`
+  ].join(" | ");
+
+  const backdropKey =
+    runtime.ui_screen === "chapter_briefing"
+      ? chapterMedia?.briefing_art_key ?? chapter.chapter_cinematic?.still_art_key
+      : runtime.ui_screen === "world_map"
+        ? chapterMedia?.map_art_key ?? chapter.chapter_cinematic?.world_map_art_key
+        : runtime.ui_screen === "boss_intro" || runtime.ui_screen === "combat_arena"
+          ? currentEvent?.presentation.cinematic_still_key ?? chapter.chapter_cinematic?.boss_splash_key
+      : runtime.ui_screen === "result_summary"
+            ? currentEndingMedia?.art_key ?? chapterMedia?.result_art_key ?? chapter.chapter_cinematic?.result_card_art_key
+            : runtime.ui_screen === "ending_gallery"
+              ? selectedEndingMedia?.art_key ?? "ending_placeholder"
+              : currentEvent?.presentation.art_key ?? chapterMedia?.map_art_key ?? chapter.chapter_cinematic?.world_map_art_key;
 
   return (
-    <div
-      style={{
-        backgroundColor: "#131313",
-        color: "#e5e2e1",
-        minHeight: "100vh",
-        padding: "2rem",
-        fontFamily: "monospace"
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          borderBottom: "1px solid #353534",
-          paddingBottom: "1rem",
-          marginBottom: "2rem"
-        }}
-      >
-        <div>
-          <h2 style={{ color: "#ffb4a8", margin: 0 }}>RAID: {chapterTitle}</h2>
-          <p style={{ margin: 0, color: "#e3beb8" }}>NODE: {store.currentNodeId}</p>
-        </div>
-        <div style={{ textAlign: "right" }}>
-          <p style={{ margin: 0, color: "#8adb4d" }}>
-            HP: {store.stats.hp} | NOISE: {store.stats.noise} | RAD: {store.stats.contamination}
-          </p>
-        </div>
+    <div className="runtime-shell">
+      <div className="runtime-backdrop">
+        <ArtFrame
+          artKey={backdropKey}
+          chapterId={runtime.current_chapter_id}
+          caption={screen?.title}
+          screenLabel={screen?.title}
+          placeholderMode="simple"
+        />
       </div>
 
-      <div style={{ backgroundColor: "#0e0e0e", padding: "2rem", border: "1px solid #5a403c", minHeight: 200 }}>
-        <p style={{ fontSize: "1.2rem", lineHeight: "1.6", color: "#ffb4a8" }}>
-          {typedText}
-          <span style={{ animation: "blink 1s step-end infinite" }}>_</span>
-        </p>
-      </div>
+      <div className="runtime-overlay">
+        <div className="dashboard-page">
+          <div className="card dashboard-header">
+            <p className="eyebrow">{runtime.current_chapter_id}</p>
+            <h1>{screen?.title ?? chapter.title}</h1>
+            <p className="dash-muted">{screen?.purpose}</p>
+            <p className="dash-muted">{routeSummary}</p>
+            <div className="choice-actions">
+              <button className="ghost-button" onClick={openEndingGallery}>
+                Ending Gallery
+              </button>
+              <button className="ghost-button" onClick={resetRun}>
+                Restart Run
+              </button>
+            </div>
+          </div>
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @keyframes blink {
-              50% { opacity: 0; }
-            }
-          `
-        }}
-      />
+          <div className="runtime-overlay-row">
+            <div className="runtime-drawer card">
+              <StatBar label="HP" value={hp} maxValue={maxHp} tone={hp <= 35 ? "danger" : undefined} />
+              <StatBar label="Noise" value={noise} maxValue={20} tone={noise >= 12 ? "warning" : undefined} />
+              <StatBar label="Contamination" value={contamination} maxValue={20} tone={contamination >= 10 ? "danger" : undefined} />
+            </div>
+          </div>
 
-      <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
-        <button
-          onClick={() => store.modifyStat("noise", 5)}
-          style={{
-            flex: 1,
-            padding: "1rem",
-            backgroundColor: "#201f1f",
-            color: "#e5e2e1",
-            border: "1px solid #5a403c",
-            cursor: "pointer"
-          }}
-        >
-          SCAVENGE (HIGH NOISE)
-        </button>
-        <button
-          onClick={() => store.modifyStat("hp", -20)}
-          style={{
-            flex: 1,
-            padding: "1rem",
-            backgroundColor: "#313030",
-            color: "#ffb4a8",
-            border: "1px solid #8b0000",
-            cursor: "pointer"
-          }}
-        >
-          FIGHT BUTCHER (HP COST)
-        </button>
-        <button
-          onClick={() => store.extractToHub()}
-          style={{
-            flex: 1,
-            padding: "1rem",
-            backgroundColor: "#201f1f",
-            color: "#8adb4d",
-            border: "1px solid #56a315",
-            cursor: "pointer"
-          }}
-        >
-          EXTRACT (RETURN TO HUB)
-        </button>
+          {runtime.ui_screen === "chapter_briefing" ? (
+            <div className="screen-card briefing-screen split-layout">
+              <div>
+                <div className="briefing-track-groups">
+                  <div className="briefing-track-group">
+                    <h3>Objectives</h3>
+                    <ul className="objective-list">
+                      {chapter.objectives.map((objective) => (
+                        <li
+                          key={objective.objective_id}
+                          className={runtime.chapter_progress[runtime.current_chapter_id]?.objective_completion[objective.objective_id] ? "is-complete" : ""}
+                        >
+                          <strong>{objective.text}</strong>
+                          <span>{objective.required ? "Main" : "Side"}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="choice-actions">
+                  <button className="primary-button" onClick={startMission}>
+                    Start Mission
+                  </button>
+                </div>
+              </div>
+
+              <div className="screen-side-stack briefing-visual-panel">
+                <VideoCard videoId={chapterMedia?.opening_video_id} chapterId={runtime.current_chapter_id} />
+                <div className="briefing-visual-grid">
+                  <div className="briefing-visual-large">
+                    <ArtFrame
+                      artKey={chapterMedia?.briefing_art_key ?? chapter.chapter_cinematic?.still_art_key}
+                      chapterId={runtime.current_chapter_id}
+                      caption="Chapter Briefing Still"
+                      screenLabel="chapter_briefing"
+                    />
+                  </div>
+                  <ArtFrame
+                    artKey={chapter.chapter_cinematic?.anchor_portrait_key}
+                    chapterId={runtime.current_chapter_id}
+                    caption="Anchor"
+                    screenLabel="anchor_portrait"
+                  />
+                  <ArtFrame
+                    artKey={chapter.chapter_cinematic?.support_portrait_key}
+                    chapterId={runtime.current_chapter_id}
+                    caption="Support"
+                    screenLabel="support_portrait"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "world_map" ? (
+            <div className="screen-card split-layout map-screen-grid">
+              <div className="node-map-shell">
+                <div className="node-map-grid">
+                  <svg className="node-map-lines" viewBox="0 0 1000 600" preserveAspectRatio="none">
+                    {chapter.nodes.flatMap((node) =>
+                      node.connections.map((connection) => {
+                        const target = chapter.nodes_by_id[connection.to];
+                        if (!target) {
+                          return null;
+                        }
+                        return (
+                          <line
+                            key={`${node.node_id}-${connection.to}`}
+                            x1={node.coordinates.x}
+                            y1={node.coordinates.y}
+                            x2={target.coordinates.x}
+                            y2={target.coordinates.y}
+                          />
+                        );
+                      })
+                    )}
+                  </svg>
+
+                  {chapter.nodes.map((node) => (
+                    <button
+                      key={node.node_id}
+                      className={`map-node ${runtime.current_node_id === node.node_id ? "is-current" : ""} ${
+                        runtime.visited_nodes[runtime.current_chapter_id]?.[node.node_id] ? "is-visited" : ""
+                      }`}
+                      style={{ left: `${node.coordinates.x / 10}%`, top: `${node.coordinates.y / 6}%` }}
+                      onClick={() => moveToNode(node.node_id)}
+                    >
+                      <span className="map-node-id">{node.node_id}</span>
+                      <strong>{node.name}</strong>
+                      <div>{node.node_type}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="intel-panel">
+                <div className="card intel-section">
+                  <h4>Current Node</h4>
+                  <p>{currentNode?.description ?? "Select a node to continue the route."}</p>
+                </div>
+
+                <div className="card intel-section">
+                  <h4>Inventory</h4>
+                  <ul className="intel-list">
+                    {Object.entries(runtime.inventory.quantities).length === 0 ? (
+                      <li>No carried items yet.</li>
+                    ) : (
+                      Object.entries(runtime.inventory.quantities).map(([itemId, quantity]) => (
+                        <li key={itemId}>
+                          <strong>{itemId}</strong>
+                          <span>x{quantity}</span>
+                        </li>
+                      ))
+                    )}
+                  </ul>
+                </div>
+
+                <div className="card intel-section">
+                  <h4>World Map Hero</h4>
+                  <ArtFrame
+                    artKey={chapterMedia?.map_art_key ?? chapter.chapter_cinematic?.world_map_art_key}
+                    chapterId={runtime.current_chapter_id}
+                    caption="World Map Hero"
+                    screenLabel="world_map"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "event_dialogue" || runtime.ui_screen === "safehouse" || runtime.ui_screen === "route_select" ? (
+            <div className="screen-card split-layout">
+              <div>
+                <p className="eyebrow">{currentEvent?.event_type ?? runtime.ui_screen}</p>
+                <h2>{currentEvent?.title}</h2>
+                <div className="event-summary">{currentEvent?.text.summary}</div>
+                {currentEvent?.text.body.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+
+                <div className="choice-list">
+                  {currentEvent?.choices.map((choice) => (
+                    <button key={choice.choice_id} className="choice-card" onClick={() => selectChoice(choice.choice_id)}>
+                      <strong>{choice.label}</strong>
+                      <span>{choice.preview ?? "The next node will react to this choice."}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="screen-side-stack portrait-panel">
+                <ArtFrame
+                  artKey={currentEvent?.presentation.art_key}
+                  chapterId={runtime.current_chapter_id}
+                  caption={currentEvent?.title}
+                  screenLabel={runtime.ui_screen}
+                />
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "loot_resolution" && runtime.loot_session ? (
+            <div className="screen-card split-layout">
+              <div>
+                <h2>Loot Resolution</h2>
+                <p>{runtime.loot_session.source_event_id} produced a new drop session.</p>
+                <div className="choice-list">
+                  {runtime.loot_session.drops.map((drop) => (
+                    <button
+                      key={drop.item_id}
+                      className={`loot-card ${drop.selected ? "is-selected" : ""}`}
+                      onClick={() => toggleLootSelection(drop.item_id)}
+                    >
+                      <strong>{drop.item_id}</strong>
+                      <span>x{drop.quantity}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="choice-actions">
+                  <button className="primary-button" onClick={confirmLoot}>
+                    Confirm Loot
+                  </button>
+                </div>
+              </div>
+
+              <div className="screen-side-stack">
+                <ArtFrame
+                  artKey={chapterMedia?.result_art_key ?? chapter.chapter_cinematic?.result_card_art_key}
+                  chapterId={runtime.current_chapter_id}
+                  caption="Result Card"
+                  screenLabel="loot_resolution"
+                />
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "boss_intro" && currentEvent ? (
+            <div className="screen-card split-layout boss-screen">
+              <div>
+                <p className="eyebrow">Boss Intro</p>
+                <h2>{currentEvent.title}</h2>
+                <div className="event-summary">{currentEvent.text.summary}</div>
+                {currentEvent.text.body.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+                <div className="choice-list">
+                  {currentEvent.choices.map((choice) => (
+                    <button
+                      key={choice.choice_id}
+                      className={`choice-card ${selectedChoiceId === choice.choice_id ? "is-selected" : ""}`}
+                      onClick={() => selectChoice(choice.choice_id)}
+                    >
+                      <strong>{choice.label}</strong>
+                      <span>{choice.preview}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="choice-actions">
+                  <button className="primary-button" onClick={startBossCombat} disabled={!selectedChoiceId}>
+                    Enter Boss Fight
+                  </button>
+                </div>
+              </div>
+
+              <div className="screen-side-stack">
+                <ArtFrame
+                  artKey={currentEvent.presentation.cinematic_still_key ?? chapter.chapter_cinematic?.boss_splash_key}
+                  chapterId={runtime.current_chapter_id}
+                  caption="Boss Splash"
+                  screenLabel="boss_intro"
+                />
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "combat_arena" ? (
+            <div className="screen-card split-layout">
+              <div>
+                <p className="eyebrow">Combat</p>
+                <h2>{currentEvent?.title ?? "Combat Arena"}</h2>
+                <div className="choice-list">
+                  {runtime.battle_state.units.map((unit, index) => (
+                    <div key={`${unit.enemy_id}-${index}`} className="choice-card">
+                      <strong>{unit.name}</strong>
+                      <span>
+                        {unit.current_hp} / {unit.max_hp} HP
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="choice-actions">
+                  <button className="primary-button" onClick={() => resolveBattleAction("attack")}>
+                    Attack
+                  </button>
+                  <button className="ghost-button" onClick={() => resolveBattleAction("skill")}>
+                    Skill
+                  </button>
+                  <button className="ghost-button" onClick={() => resolveBattleAction("item")}>
+                    Item
+                  </button>
+                  <button className="ghost-button" onClick={() => resolveBattleAction("move")}>
+                    Move
+                  </button>
+                </div>
+              </div>
+
+              <div className="screen-side-stack">
+                <ArtFrame
+                  artKey={currentEvent?.presentation.art_key ?? chapter.chapter_cinematic?.boss_splash_key}
+                  chapterId={runtime.current_chapter_id}
+                  caption="Combat Zone"
+                  screenLabel="combat_arena"
+                />
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "result_summary" && runtime.chapter_outcome ? (
+            <div className="screen-card split-layout result-screen">
+              <div>
+                <p className="eyebrow">{runtime.chapter_outcome.ending_id ? "Part 1 Ending" : "Chapter Result"}</p>
+                <h2>{runtime.chapter_outcome.ending_title ?? runtime.chapter_outcome.title}</h2>
+                <p>{runtime.chapter_outcome.summary}</p>
+                <p className="muted-copy">Next chapter: {runtime.chapter_outcome.next_chapter_id ?? "Part 1 complete"}</p>
+                {runtime.chapter_outcome.ending_id ? (
+                  <div className="result-hook-card">
+                    <strong>{PART1_ENDINGS[runtime.chapter_outcome.ending_id].hint}</strong>
+                  </div>
+                ) : null}
+                <div className="choice-actions">
+                  <button className="primary-button" onClick={confirmResult}>
+                    {runtime.chapter_outcome.ending_id ? "Open Ending Gallery" : "Next Chapter"}
+                  </button>
+                  {runtime.chapter_outcome.ending_id ? (
+                    <button className="ghost-button" onClick={resetRun}>
+                      Restart Run
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="screen-side-stack">
+                <ArtFrame
+                  artKey={currentEndingMedia?.art_key ?? chapterMedia?.result_art_key ?? chapter.chapter_cinematic?.result_card_art_key}
+                  chapterId={runtime.current_chapter_id}
+                  caption={runtime.chapter_outcome.ending_title ?? "Result"}
+                  screenLabel="result_summary"
+                />
+                {currentEndingMedia ? <VideoCard videoId={currentEndingMedia.video_id} chapterId={runtime.current_chapter_id} /> : null}
+              </div>
+            </div>
+          ) : null}
+
+          {runtime.ui_screen === "ending_gallery" ? (
+            <div className="screen-card ending-gallery-screen">
+              <div className="ending-gallery-head">
+                <div>
+                  <p className="eyebrow">Part 1 Gallery</p>
+                  <h2>Five Endings</h2>
+                  <p className="muted-copy">Unlocked endings keep their art, timestamp, and optional ending video card across reruns.</p>
+                </div>
+                <div className="choice-actions">
+                  <button className="primary-button" onClick={closeEndingGallery}>
+                    Close
+                  </button>
+                  <button className="ghost-button" onClick={resetRun}>
+                    Restart Run
+                  </button>
+                </div>
+              </div>
+
+              <div className="ending-gallery-layout">
+                <div className="ending-gallery-grid">
+                  {PART1_ENDING_ORDER.map((endingId) => {
+                    const ending = PART1_ENDINGS[endingId];
+                    const unlockedAt = runtime.unlocked_endings[endingId];
+                    const isSelected = selectedEndingId === endingId;
+                    return (
+                      <button
+                        key={endingId}
+                        className={`ending-gallery-card ${unlockedAt ? "is-unlocked" : "is-locked"} ${isSelected ? "is-selected" : ""}`}
+                        onClick={() => setSelectedGalleryEndingId(endingId)}
+                      >
+                        <ArtFrame
+                          artKey={unlockedAt ? ending.thumb_key : "ending_placeholder"}
+                          chapterId="CH05"
+                          caption={unlockedAt ? ending.title : "Locked"}
+                          screenLabel="ending_gallery_thumb"
+                        />
+                        <strong>{unlockedAt ? ending.title : "LOCKED ENDING"}</strong>
+                        <p>{unlockedAt ? ending.summary : ending.hint}</p>
+                        <span className="muted-copy">Unlocked at: {formatDateTime(unlockedAt)}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="ending-gallery-detail">
+                  <div className="card ending-gallery-detail-card">
+                    <p className="eyebrow">Selected Ending</p>
+                    <h3>{selectedEnding.title}</h3>
+                    <p>{runtime.unlocked_endings[selectedEndingId] ? selectedEnding.summary : selectedEnding.hint}</p>
+                    <ArtFrame
+                      artKey={runtime.unlocked_endings[selectedEndingId] ? selectedEndingMedia?.art_key : "ending_placeholder"}
+                      chapterId="CH05"
+                      caption={selectedEnding.title}
+                      screenLabel="ending_gallery_detail"
+                    />
+                    {runtime.unlocked_endings[selectedEndingId] && selectedEndingMedia ? (
+                      <VideoCard videoId={selectedEndingMedia.video_id} chapterId="CH05" />
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {warnings.length > 0 ? (
+            <div className="warnings-panel card">
+              <p className="eyebrow">Warnings</p>
+              <ul className="intel-list">
+                {warnings.slice(-4).map((warning, index) => (
+                  <li key={`${warning.source}-${index}`}>
+                    <strong>{warning.source}</strong>
+                    <span>{warning.message}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

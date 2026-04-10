@@ -1,6 +1,7 @@
 import type {
   ChapterId,
   EventDefinition,
+  FlagValue,
   GameContentPack,
   RuntimeSnapshot,
   RuntimeWarning,
@@ -22,6 +23,84 @@ function splitDisjunction(input: string): string[] {
     .split("|")
     .map((entry) => entry.trim())
     .filter(Boolean);
+}
+
+function parseScalar(input: string): string | number | boolean {
+  const normalized = input.trim();
+  if (normalized === "true") {
+    return true;
+  }
+
+  if (normalized === "false") {
+    return false;
+  }
+
+  const asNumber = Number(normalized);
+  if (!Number.isNaN(asNumber) && normalized !== "") {
+    return asNumber;
+  }
+
+  return normalized;
+}
+
+function resolveRuntimeValue(reference: string, runtime: RuntimeSnapshot): string | number | boolean | undefined {
+  const normalized = reference.trim();
+  if (!normalized) {
+    return undefined;
+  }
+
+  if (normalized.startsWith("flag:")) {
+    return runtime.flags[normalizeFlagKey(normalized)] as FlagValue | undefined;
+  }
+
+  if (normalized.startsWith("item:")) {
+    return runtime.inventory.quantities[normalizeItemKey(normalized)] ?? 0;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(runtime.stats, normalized)) {
+    return runtime.stats[normalized] as string | number | undefined;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(runtime.flags, normalized)) {
+    return runtime.flags[normalized] as FlagValue | undefined;
+  }
+
+  return undefined;
+}
+
+function compareValues(left: string | number | boolean | undefined, operator: string, right: string): boolean {
+  const normalizedRight = parseScalar(right);
+
+  if (operator === "=") {
+    if (typeof left === "number" && typeof normalizedRight === "number") {
+      return left === normalizedRight;
+    }
+
+    if (typeof left === "boolean" && typeof normalizedRight === "boolean") {
+      return left === normalizedRight;
+    }
+
+    return String(left ?? "") === String(normalizedRight);
+  }
+
+  const leftNumber = Number(left ?? 0);
+  const rightNumber = Number(normalizedRight);
+  if (Number.isNaN(leftNumber) || Number.isNaN(rightNumber)) {
+    return false;
+  }
+
+  switch (operator) {
+    case ">=":
+      return leftNumber >= rightNumber;
+    case "<=":
+      return leftNumber <= rightNumber;
+    case ">":
+      return leftNumber > rightNumber;
+    case "<":
+      return leftNumber < rightNumber;
+    default:
+      return false;
+  }
 }
 
 export function normalizeFlagKey(input: string): string {
@@ -53,14 +132,23 @@ export function evaluateCondition(
     return splitDisjunction(normalized).some((entry) => evaluateCondition(entry, runtime, warnings, source));
   }
 
-  if (normalized.startsWith("flag:")) {
-    return runtime.flags[normalizeFlagKey(normalized)] === true;
+  if (normalized.startsWith("!")) {
+    return !evaluateCondition(normalized.slice(1), runtime, warnings, source);
   }
 
-  const itemMatch = /^item:([^>]+)>=(\d+)$/u.exec(normalized);
-  if (itemMatch) {
-    const [, itemId, rawQty] = itemMatch;
-    return (runtime.inventory.quantities[normalizeItemKey(itemId)] ?? 0) >= Number(rawQty);
+  if (normalized.startsWith("flag:")) {
+    const [flagReference, explicitValue] = normalized.split("=");
+    if (explicitValue !== undefined) {
+      return compareValues(resolveRuntimeValue(flagReference, runtime), "=", explicitValue);
+    }
+
+    return runtime.flags[normalizeFlagKey(flagReference)] === true;
+  }
+
+  const comparisonMatch = /^([a-zA-Z0-9_.:-]+)\s*(>=|<=|=|>|<)\s*([a-zA-Z0-9_.:-]+)$/u.exec(normalized);
+  if (comparisonMatch) {
+    const [, left, operator, right] = comparisonMatch;
+    return compareValues(resolveRuntimeValue(left, runtime), operator, right);
   }
 
   warnings.push(makeWarning(`Unsupported event condition: ${normalized}`, source));
@@ -82,14 +170,12 @@ export function evaluateEffectGuard(
     return splitDisjunction(normalized).some((entry) => evaluateEffectGuard(entry, runtime, warnings, source));
   }
 
-  if (evaluateCondition(normalized, runtime, warnings, source)) {
-    return true;
+  if (normalized.startsWith("!")) {
+    return !evaluateEffectGuard(normalized.slice(1), runtime, warnings, source);
   }
 
-  const statMatch = /^([a-zA-Z0-9_.-]+)>=(\d+)$/u.exec(normalized);
-  if (statMatch) {
-    const [, statKey, rawQty] = statMatch;
-    return Number(runtime.stats[statKey] ?? 0) >= Number(rawQty);
+  if (evaluateCondition(normalized, runtime, warnings, source)) {
+    return true;
   }
 
   warnings.push(makeWarning(`Unsupported effect guard: ${normalized}`, source));

@@ -236,24 +236,11 @@
             "noise": 0,
             "contamination": 0
           }
-        },
-        {
-          "to": "YD-99",
-          "travel_type": "breach",
-          "requires": [
-            "item:itm_director_key>=1"
-          ],
-          "cost": {
-            "time": 1,
-            "noise": 3,
-            "contamination": 0
-          }
         }
       ],
       "event_ids": [
         "EV_CH01_LOBBY_LOCKDOWN",
-        "EV_CH01_LOBBY_SEARCH",
-        "EV_CH01_LOBBY_SCAVENGE"
+        "EV_CH01_LOBBY_SEARCH"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -310,8 +297,7 @@
         "EV_CH01_STAIRWELL_AMBUSH",
         "EV_CH01_WRITER_RESCUE",
         "EV_CH01_SECURITY_LOCKER",
-        "EV_CH01_WRITER_SAFEHOUSE",
-        "EV_CH01_DARK_ROOM_RUSH"
+        "EV_CH01_WRITER_SAFEHOUSE"
       ],
       "revisit_rule": "always",
       "tags": [
@@ -474,33 +460,11 @@
       ],
       "event_ids": [
         "EV_CH01_EXTRACTION",
-        "EV_CH01_ESCAPE_BACKTRACK",
-        "EV_CH01_ROPE_ESCAPE"
+        "EV_CH01_ESCAPE_BACKTRACK"
       ],
       "revisit_rule": "after_clear",
       "tags": [
         "exit"
-      ]
-    },
-    {
-      "node_id": "YD-99",
-      "name": "국장실 (마크방)",
-      "node_type": "loot",
-      "description": "굳게 잠겨있던 최고위층의 방. 엄청난 가치의 물자(의약품, 금괴)가 보존되어 있다.",
-      "connections": [
-        {
-          "to": "YD-03",
-          "travel_type": "walk",
-          "requires": [],
-          "cost": {
-            "time": 1,
-            "noise": 0,
-            "contamination": 0
-          }
-        }
-      ],
-      "loot_table_ids": [
-        "loot_high_value_medical"
       ]
     }
   ],
@@ -787,6 +751,26 @@
               "op": "set_flag",
               "target": "flag:ch01_archive_opened",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:part1_evidence_ch01",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH01_CACHE_SEARCH"
@@ -806,6 +790,16 @@
               "op": "set_flag",
               "target": "flag:ch01_archive_skipped",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH01_CACHE_SEARCH"
@@ -866,6 +860,16 @@
               "op": "add_reputation",
               "target": "reputation.record_bureau",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "rescue"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH01_WRITER_SAFEHOUSE"
@@ -885,6 +889,21 @@
               "op": "add_reputation",
               "target": "reputation.record_bureau",
               "value": -1
+            },
+            {
+              "op": "set_value",
+              "target": "route.compassion",
+              "value": "pragmatic"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.compassion_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH01_WRITER_SAFEHOUSE"
@@ -949,6 +968,21 @@
               "op": "set_flag",
               "target": "flag:ch01_broadcast_kept",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 2
             }
           ],
           "next_event_id": "EV_CH01_ROOFTOP_SWEEP"
@@ -968,6 +1002,16 @@
               "op": "set_flag",
               "target": "flag:ch01_broadcast_cut",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH01_ROOFTOP_SWEEP"
@@ -1001,7 +1045,9 @@
           "boss_hp",
           "noise_meter",
           "filter_meter"
-        ]
+        ],
+        "cinematic_still_key": "boss_editing_aberration",
+        "result_variant": "boss_resolution"
       },
       "text": {
         "summary": "편집괴와 교전하며 송출 로그 회수의 분기점에 선다.",
@@ -1081,7 +1127,9 @@
         "widget_overrides": [
           "chapter_result",
           "trust_summary"
-        ]
+        ],
+        "cinematic_still_key": "result_p1_ch01",
+        "result_variant": "chapter_result"
       },
       "text": {
         "summary": "첫 귀환을 준비하며 회수물 상태를 점검한다.",
@@ -1599,6 +1647,16 @@
               "op": "grant_loot_table",
               "target": "lt_global_basic_office",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "lock"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
@@ -1618,6 +1676,21 @@
               "op": "add_stat",
               "target": "contamination",
               "value": 3
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH01_ROOFTOP_SIGNAL"
@@ -2556,7 +2629,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_broadcast_lobby",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "편집실 복도 매복을 정리한다.",
@@ -2630,7 +2704,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_archive_flooded",
-        "music_key": "water_dread"
+        "music_key": "water_dread",
+        "widget_overrides": []
       },
       "text": {
         "summary": "침수 캐시를 조사해 보급품을 확보한다.",
@@ -2698,7 +2773,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_rooftop_signal",
-        "music_key": "signal_hiss"
+        "music_key": "signal_hiss",
+        "widget_overrides": []
       },
       "text": {
         "summary": "송신기 릴레이를 복구해 출력 안정성을 높인다.",
@@ -2769,7 +2845,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_sorting_hall",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "회랑 잔해를 수색해 보급품을 찾는다.",
@@ -2837,7 +2914,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_sorting_hall",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "회랑 물자 더미를 회수한다.",
@@ -2905,7 +2983,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_security_office",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "보안실 락커를 개방해 남은 장비를 확인한다.",
@@ -3019,7 +3098,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_archive_flooded",
-        "music_key": "water_dread"
+        "music_key": "water_dread",
+        "widget_overrides": []
       },
       "text": {
         "summary": "침수 통로 잔해를 통과한다.",
@@ -3075,7 +3155,8 @@
       "presentation": {
         "layout": "dialogue",
         "art_key": "bg_broadcast_corridor",
-        "music_key": "tension_low"
+        "music_key": "tension_low",
+        "widget_overrides": []
       },
       "text": {
         "summary": "편집실 임시 대피처를 확보한다.",
@@ -3143,7 +3224,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_rooftop_signal",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "옥상 주변을 정리해 후속 교신을 확보한다.",
@@ -3209,7 +3291,8 @@
       "presentation": {
         "layout": "choice",
         "art_key": "bg_saetgang_entry",
-        "music_key": "tension_mid"
+        "music_key": "tension_mid",
+        "widget_overrides": []
       },
       "text": {
         "summary": "샛강 잔해를 회수해 귀환 루트를 정리한다.",
@@ -3264,196 +3347,6 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
-    },
-    {
-      "event_id": "EV_CH01_LOBBY_SCAVENGE",
-      "type": "story",
-      "title": "로비 잡동사니 수색",
-      "description": "운이 좋다면 방송동 로비 구석에서 은축전지나 깨진 전구를 주울 수 있다. 하지만 소리를 내면 감염체가 몰려온다.",
-      "choices": [
-        {
-          "choice_id": "c_scavenge_safe",
-          "text": "조심스럽게 수색한다. (시간 소요, 소음 없음)",
-          "requires": [],
-          "effects": [
-            {
-              "op": "modify_stat",
-              "target": "time",
-              "value": -2
-            },
-            {
-              "op": "grant_item",
-              "target": "item:itm_silver_battery",
-              "value": 1
-            }
-          ],
-          "next_event_id": null
-        },
-        {
-          "choice_id": "c_scavenge_fast",
-          "text": "주변을 부수며 빠르게 뒤진다. (시간 절약, 소음 크게 증가)",
-          "requires": [],
-          "effects": [
-            {
-              "op": "modify_stat",
-              "target": "noise",
-              "value": 5
-            },
-            {
-              "op": "grant_item",
-              "target": "item:itm_silver_battery",
-              "value": 2
-            },
-            {
-              "op": "grant_item",
-              "target": "item:itm_broken_bulb",
-              "value": 3
-            }
-          ],
-          "next_event_id": "EV_CH01_ELITE_AMBUSH"
-        }
-      ]
-    },
-    {
-      "event_id": "EV_CH01_ELITE_AMBUSH",
-      "type": "combat",
-      "title": "소음에 이끌린 엘리트 감염체",
-      "description": "너무 큰 소리를 냈다. '편집괴'의 파편 중 하나가 끔찍한 속도로 다가온다. 싸우는 것은 자살 행위다.",
-      "enemy_id": "enm_ch01_elite_fragment",
-      "combat_type": "boss",
-      "choices": [
-        {
-          "choice_id": "c_run_away",
-          "text": "가진 것을 일부 버리고 필사적으로 도망친다! (체력 피해, 소음 초기화)",
-          "requires": [],
-          "effects": [
-            {
-              "op": "modify_stat",
-              "target": "hp",
-              "value": -30
-            },
-            {
-              "op": "modify_stat",
-              "target": "noise",
-              "value": -5
-            }
-          ],
-          "next_event_id": null
-        }
-      ]
-    },
-    {
-      "event_id": "EV_CH01_ROPE_ESCAPE",
-      "type": "story",
-      "title": "옥상 헬기장 탈출",
-      "description": "헬기장에 도달했다. 계단은 끊어졌지만, 전술 레펠 로프가 있다면 안전하게 지상으로 내려가 베이스캠프로 복귀할 수 있다.",
-      "choices": [
-        {
-          "choice_id": "c_use_rope",
-          "text": "레펠 로프를 사용하여 탈출한다. (챕터 1 목표달성 시 귀환)",
-          "requires": [
-            "item:itm_escape_rope>=1",
-            "item:itm_shortwave_amplifier>=1"
-          ],
-          "effects": [
-            {
-              "op": "remove_item",
-              "target": "item:itm_escape_rope",
-              "value": 1
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:chapter_01_completed",
-              "value": true
-            },
-            {
-              "op": "modify_stat",
-              "target": "noise",
-              "value": -100
-            }
-          ],
-          "next_event_id": "EV_CH01_CLEARED"
-        },
-        {
-          "choice_id": "c_no_rope",
-          "text": "로프가 없다. 혹은 퀘스트 템이 없다. 걸어서 돌아가야 한다.",
-          "requires": [],
-          "effects": [],
-          "next_event_id": null
-        }
-      ]
-    },
-    {
-      "event_id": "EV_CH01_DARK_ROOM_RUSH",
-      "type": "story",
-      "title": "침수 자료실 진입",
-      "description": "빛 하나 없는 칠흑의 공간. 손전등이 있다면 은밀하게 목표를 찾을 수 있지만, 없다면 닥치는대로 부수며 찾아야 한다.",
-      "choices": [
-        {
-          "choice_id": "c_stealth_search",
-          "text": "손전등을 켜고 은밀히 수색한다. (단파 증폭기 획득)",
-          "requires": [
-            "item:itm_flashlight>=1"
-          ],
-          "effects": [
-            {
-              "op": "modify_stat",
-              "target": "battery_charge",
-              "value": -20
-            },
-            {
-              "op": "grant_item",
-              "target": "item:itm_shortwave_amplifier",
-              "value": 1
-            }
-          ],
-          "next_event_id": null
-        },
-        {
-          "choice_id": "c_brute_force",
-          "text": "어둠 속을 더듬으며 강제로 물건을 빼낸다. (소음 폭발, HP 감소, 증폭기 획득)",
-          "requires": [],
-          "effects": [
-            {
-              "op": "modify_stat",
-              "target": "hp",
-              "value": -30
-            },
-            {
-              "op": "modify_stat",
-              "target": "noise",
-              "value": 15
-            },
-            {
-              "op": "grant_item",
-              "target": "item:itm_shortwave_amplifier",
-              "value": 1
-            }
-          ],
-          "next_event_id": "EV_CH01_ELITE_AMBUSH"
-        }
-      ]
-    },
-    {
-      "event_id": "EV_CH01_CLEARED",
-      "type": "story",
-      "title": "임무 완수: 잿빛 개장",
-      "description": "단파 증폭기를 무사히 회수했다. 이제 다음 구역인 검은 수로(CH02)로 나아갈 수 있다.",
-      "choices": [
-        {
-          "choice_id": "c_extract",
-          "text": "베이스캠프로 무사 귀환",
-          "requires": [],
-          "effects": [
-            {
-              "op": "set_flag",
-              "target": "flag:chapter_01_completed",
-              "value": true
-            }
-          ],
-          "next_event_id": null
-        }
-      ]
     }
   ],
   "boss_event_id": "EV_CH01_BOSS_BROADCAST",
@@ -3558,5 +3451,14 @@
       ],
       "reveal_cap": "ambient"
     }
-  ]
+  ],
+  "chapter_cinematic": {
+    "still_art_key": "briefing_p1_ch01",
+    "world_map_art_key": "map_p1_ch01",
+    "anchor_portrait_key": "portrait_yoon_haein",
+    "support_portrait_key": "npc_support_writer",
+    "boss_splash_key": "boss_editing_aberration",
+    "result_card_art_key": "result_p1_ch01",
+    "teaser_prompt_id": "P1_CH01_OPENING"
+  }
 }
