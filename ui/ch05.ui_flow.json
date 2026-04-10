@@ -1,1 +1,314 @@
-{   "version": "1.0.0",   "game_id": "dokdo_arc_webgame",   "chapter_id": "CH05",   "title": "미러센터 UI 플로우",   "entry_screen_id": "CH05_BRIEF",   "screens": [     {       "screen_id": "CH05_BRIEF",       "screen_type": "chapter_briefing",       "title": "판교 브리핑",       "purpose": "ARK-P 진입과 독도 신호 인증을 목표로 제시한다.",       "widgets": [         "objective_panel",         "card_auth_state",         "recommended_gear"       ],       "data_sources": [         "chapter_meta",         "player_inventory"       ],       "primary_actions": [         "start_mission"       ],       "notes": []     },     {       "screen_id": "CH05_MAP",       "screen_type": "world_map",       "title": "판교 시설도",       "purpose": "상부 스카이워크와 하부 냉각 라인을 함께 보여준다.",       "widgets": [         "map_overlay",         "heat_meter",         "card_auth_state",         "signal_decoder"       ],       "data_sources": [         "ch05.nodes",         "route_state",         "player_flags"       ],       "primary_actions": [         "select_node",         "toggle_heat_overlay",         "open_inventory"       ],       "notes": []     },     {       "screen_id": "CH05_EVENT",       "screen_type": "event_dialogue",       "title": "미러센터 이벤트",       "purpose": "김아라 구조, 데이터 공개, 냉각 루프 선택을 처리한다.",       "widgets": [         "event_card",         "choice_list",         "npc_portrait",         "heat_meter"       ],       "data_sources": [         "ch05.events",         "trust_state",         "player_flags"       ],       "primary_actions": [         "pick_choice",         "back_to_map"       ],       "notes": []     },     {       "screen_id": "CH05_SECURITY",       "screen_type": "event_dialogue",       "title": "출입 인증",       "purpose": "배지와 접근 키 상태를 확인한다.",       "widgets": [         "card_auth_state",         "access_key_state",         "choice_list"       ],       "data_sources": [         "player_items",         "player_flags"       ],       "primary_actions": [         "scan_badge",         "override_lock",         "cancel"       ],       "notes": []     },     {       "screen_id": "CH05_LOOT",       "screen_type": "loot_resolution",       "title": "서버/연구실 루팅",       "purpose": "희귀 데이터와 냉각 자원을 분리해서 보여준다.",       "widgets": [         "loot_grid",         "rarity_badge",         "heat_meter"       ],       "data_sources": [         "loot_table",         "player_inventory"       ],       "primary_actions": [         "take_selected",         "discard"       ],       "notes": []     },     {       "screen_id": "CH05_BOSS_INTRO",       "screen_type": "boss_intro",       "title": "회선 조우",       "purpose": "경보/냉각/저주파 기믹을 선명히 설명한다.",       "widgets": [         "boss_splash",         "signal_noise_overlay",         "boss_hint"       ],       "data_sources": [         "boss_meta",         "player_flags"       ],       "primary_actions": [         "enter_boss"       ],       "notes": []     },     {       "screen_id": "CH05_COMBAT",       "screen_type": "combat_arena",       "title": "하부 비상벙커 전투",       "purpose": "열, 소음, 코어 안정도를 동시에 관리한다.",       "widgets": [         "combat_hud",         "boss_hp",         "heat_meter",         "signal_noise_overlay"       ],       "data_sources": [         "combat_state",         "player_stats",         "enemy_state"       ],       "primary_actions": [         "attack",         "skill",         "item",         "move"       ],       "notes": []     },     {       "screen_id": "CH05_RESULT",       "screen_type": "result_summary",       "title": "초반 아크 종결",       "purpose": "데이터 공개 수준, 김아라 상태, 독도 신호 인증 결과를 정리한다.",       "widgets": [         "chapter_result",         "signal_summary",         "party_summary"       ],       "data_sources": [         "chapter_outcome",         "trust_state",         "route_state"       ],       "primary_actions": [         "confirm"       ],       "notes": []     }   ],   "transitions": [     {       "from_screen_id": "CH05_BRIEF",       "to_screen_id": "CH05_MAP",       "trigger": "start_mission",       "conditions": [],       "notes": ""     },     {       "from_screen_id": "CH05_MAP",       "to_screen_id": "CH05_SECURITY",       "trigger": "select_node",       "conditions": [         "node_id=PG-02|node_id=PG-05"       ],       "notes": "로비/서버홀에서 인증 상태 확인"     },     {       "from_screen_id": "CH05_SECURITY",       "to_screen_id": "CH05_EVENT",       "trigger": "auth_confirmed",       "conditions": [],       "notes": ""     },     {       "from_screen_id": "CH05_MAP",       "to_screen_id": "CH05_EVENT",       "trigger": "select_node",       "conditions": [         "node.has_event=true",         "node_id!=PG-02",         "node_id!=PG-05"       ],       "notes": ""     },     {       "from_screen_id": "CH05_EVENT",       "to_screen_id": "CH05_LOOT",       "trigger": "choice_resolved",       "conditions": [         "event.grants_loot=true"       ],       "notes": ""     },     {       "from_screen_id": "CH05_EVENT",       "to_screen_id": "CH05_BOSS_INTRO",       "trigger": "event_id=EV_CH05_BOSS_LINES",       "conditions": [],       "notes": ""     },     {       "from_screen_id": "CH05_LOOT",       "to_screen_id": "CH05_MAP",       "trigger": "loot_closed",       "conditions": [],       "notes": ""     },     {       "from_screen_id": "CH05_BOSS_INTRO",       "to_screen_id": "CH05_COMBAT",       "trigger": "enter_boss",       "conditions": [],       "notes": ""     },     {       "from_screen_id": "CH05_COMBAT",       "to_screen_id": "CH05_RESULT",       "trigger": "combat_victory",       "conditions": [         "flag:chapter_05_escape_ready"       ],       "notes": ""     },     {       "from_screen_id": "CH05_MAP",       "to_screen_id": "CH05_RESULT",       "trigger": "event_id=EV_CH05_EXTRACTION",       "conditions": [         "flag:chapter_05_completed"       ],       "notes": ""     }   ],   "notes": [     "CH05는 서버 열과 신호 간섭이 함께 보이도록 heat_meter와 signal_noise_overlay를 항상 동시에 배치하는 편이 좋다.",     "데이터 공개 분기는 결과 요약 카드에서 플레이어가 바로 이해할 수 있도록 시각화가 필요하다."   ] }
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH05",
+  "title": "미러센터 UI 플로우",
+  "entry_screen_id": "CH05_BRIEF",
+  "screens": [
+    {
+      "screen_id": "CH05_BRIEF",
+      "screen_type": "chapter_briefing",
+      "title": "판교 브리핑",
+      "purpose": "ARK-P 진입과 독도 신호 인증을 목표로 제시한다.",
+      "widgets": [
+        "objective_panel",
+        "card_auth_state",
+        "recommended_gear"
+      ],
+      "data_sources": [
+        "chapter_meta",
+        "player_inventory"
+      ],
+      "primary_actions": [
+        "start_mission"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_MAP",
+      "screen_type": "world_map",
+      "title": "판교 시설도",
+      "purpose": "상부 스카이워크와 하부 냉각 라인을 함께 보여준다.",
+      "widgets": [
+        "map_overlay",
+        "heat_meter",
+        "card_auth_state",
+        "signal_decoder"
+      ],
+      "data_sources": [
+        "ch05.nodes",
+        "route_state",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "select_node",
+        "toggle_heat_overlay",
+        "open_inventory"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_EVENT",
+      "screen_type": "event_dialogue",
+      "title": "미러센터 이벤트",
+      "purpose": "김아라 구조, 데이터 공개, 냉각 루프 선택을 처리한다.",
+      "widgets": [
+        "event_card",
+        "choice_list",
+        "npc_portrait",
+        "heat_meter"
+      ],
+      "data_sources": [
+        "ch05.events",
+        "trust_state",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "pick_choice",
+        "back_to_map"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_SECURITY",
+      "screen_type": "event_dialogue",
+      "title": "출입 인증",
+      "purpose": "배지와 접근 키 상태를 확인한다.",
+      "widgets": [
+        "card_auth_state",
+        "access_key_state",
+        "choice_list"
+      ],
+      "data_sources": [
+        "player_items",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "scan_badge",
+        "override_lock",
+        "cancel"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_LOOT",
+      "screen_type": "loot_resolution",
+      "title": "서버/연구실 루팅",
+      "purpose": "희귀 데이터와 냉각 자원을 분리해서 보여준다.",
+      "widgets": [
+        "loot_grid",
+        "rarity_badge",
+        "heat_meter"
+      ],
+      "data_sources": [
+        "loot_table",
+        "player_inventory"
+      ],
+      "primary_actions": [
+        "take_selected",
+        "discard"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_BOSS_INTRO",
+      "screen_type": "boss_intro",
+      "title": "회선 조우",
+      "purpose": "경보/냉각/저주파 기믹을 선명히 설명한다.",
+      "widgets": [
+        "boss_splash",
+        "signal_noise_overlay",
+        "boss_hint"
+      ],
+      "data_sources": [
+        "boss_meta",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "enter_boss"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_COMBAT",
+      "screen_type": "combat_arena",
+      "title": "하부 비상벙커 전투",
+      "purpose": "열, 소음, 코어 안정도를 동시에 관리한다.",
+      "widgets": [
+        "combat_hud",
+        "boss_hp",
+        "heat_meter",
+        "signal_noise_overlay"
+      ],
+      "data_sources": [
+        "combat_state",
+        "player_stats",
+        "enemy_state"
+      ],
+      "primary_actions": [
+        "attack",
+        "skill",
+        "item",
+        "move"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_RESULT",
+      "screen_type": "result_summary",
+      "title": "초반 아크 종결",
+      "purpose": "데이터 공개 수준, 김아라 상태, 독도 신호 인증 결과를 정리한다.",
+      "widgets": [
+        "chapter_result",
+        "ending_key_art",
+        "ending_unlock_status",
+        "signal_summary",
+        "party_summary"
+      ],
+      "data_sources": [
+        "chapter_outcome",
+        "trust_state",
+        "route_state",
+        "ending_gallery"
+      ],
+      "primary_actions": [
+        "confirm",
+        "open_gallery",
+        "start_new_run"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH05_ENDING_GALLERY",
+      "screen_type": "ending_gallery",
+      "title": "Part 1 엔딩 갤러리",
+      "purpose": "다섯 엔딩의 해금 상태와 키아트를 다시 확인한다.",
+      "widgets": [
+        "ending_grid",
+        "ending_thumb",
+        "ending_summary",
+        "next_part_hook"
+      ],
+      "data_sources": [
+        "ending_gallery",
+        "chapter_outcome"
+      ],
+      "primary_actions": [
+        "close_gallery",
+        "start_new_run"
+      ],
+      "notes": [
+        "미해금 엔딩은 실루엣과 힌트만 노출한다."
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from_screen_id": "CH05_BRIEF",
+      "to_screen_id": "CH05_MAP",
+      "trigger": "start_mission",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_MAP",
+      "to_screen_id": "CH05_SECURITY",
+      "trigger": "select_node",
+      "conditions": [
+        "node_id=PG-02|node_id=PG-05"
+      ],
+      "notes": "로비/서버홀에서 인증 상태 확인"
+    },
+    {
+      "from_screen_id": "CH05_SECURITY",
+      "to_screen_id": "CH05_EVENT",
+      "trigger": "auth_confirmed",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_MAP",
+      "to_screen_id": "CH05_EVENT",
+      "trigger": "select_node",
+      "conditions": [
+        "node.has_event=true",
+        "node_id!=PG-02",
+        "node_id!=PG-05"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_EVENT",
+      "to_screen_id": "CH05_LOOT",
+      "trigger": "choice_resolved",
+      "conditions": [
+        "event.grants_loot=true"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_EVENT",
+      "to_screen_id": "CH05_BOSS_INTRO",
+      "trigger": "event_id=EV_CH05_BOSS_LINES",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_LOOT",
+      "to_screen_id": "CH05_MAP",
+      "trigger": "loot_closed",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_BOSS_INTRO",
+      "to_screen_id": "CH05_COMBAT",
+      "trigger": "enter_boss",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_COMBAT",
+      "to_screen_id": "CH05_RESULT",
+      "trigger": "combat_victory",
+      "conditions": [
+        "flag:chapter_05_escape_ready"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_MAP",
+      "to_screen_id": "CH05_RESULT",
+      "trigger": "event_id=EV_CH05_EXTRACTION",
+      "conditions": [
+        "flag:chapter_05_completed"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH05_RESULT",
+      "to_screen_id": "CH05_ENDING_GALLERY",
+      "trigger": "open_gallery",
+      "conditions": [],
+      "notes": "엔딩 결과 화면에서 갤러리로 이동"
+    },
+    {
+      "from_screen_id": "CH05_ENDING_GALLERY",
+      "to_screen_id": "CH05_RESULT",
+      "trigger": "close_gallery",
+      "conditions": [],
+      "notes": "갤러리 닫기"
+    },
+    {
+      "from_screen_id": "CH05_ENDING_GALLERY",
+      "to_screen_id": "CH01_BRIEF",
+      "trigger": "start_new_run",
+      "conditions": [],
+      "notes": "Part 1 새 런 시작"
+    }
+  ],
+  "notes": [
+    "CH05는 서버 열과 신호 간섭이 함께 보이도록 heat_meter와 signal_noise_overlay를 항상 동시에 배치하는 편이 좋다.",
+    "데이터 공개 분기는 결과 요약 카드에서 플레이어가 바로 이해할 수 있도록 시각화가 필요하다."
+  ]
+}

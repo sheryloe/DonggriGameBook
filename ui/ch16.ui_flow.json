@@ -1,0 +1,258 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH16",
+  "title": "균열 사구 UI Flow",
+  "entry_screen_id": "CH16_BRIEF",
+  "screens": [
+    {
+      "screen_id": "CH16_BRIEF",
+      "screen_type": "chapter_briefing",
+      "title": "균열 사구 브리핑",
+      "purpose": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.",
+      "widgets": [
+        "objective_panel",
+        "loss_loadout",
+        "rope_stability",
+        "salt_exposure"
+      ],
+      "data_sources": [
+        "chapter_meta",
+        "player_stats"
+      ],
+      "primary_actions": [
+        "start_mission"
+      ],
+      "notes": [
+        "visual:염분 바람, 새벽 회색, 수기 명단, 방송 장비, 공공 배급 보드"
+      ]
+    },
+    {
+      "screen_id": "CH16_HUB",
+      "screen_type": "route_select",
+      "title": "최종 선택",
+      "purpose": "P4 전용 호흡과 선택 압박을 주는 화면.",
+      "widgets": [
+        "public_queue",
+        "ending_matrix",
+        "broadcast_prep",
+        "loss_loadout",
+        "rope_stability",
+        "salt_exposure"
+      ],
+      "data_sources": [
+        "route_state",
+        "player_flags",
+        "trust_state"
+      ],
+      "primary_actions": [
+        "confirm_route"
+      ],
+      "notes": [
+        "motion:대기열 갱신, 방송 파형, 무거운 페이드, 선택 후 잔향"
+      ]
+    },
+    {
+      "screen_id": "CH16_MAP",
+      "screen_type": "world_map",
+      "title": "균열 사구 노드",
+      "purpose": "붕괴 해안로 -> 모래 침식 터널 -> 임시 현수교 -> 소금 정거장 초입",
+      "widgets": [
+        "map_overlay",
+        "loss_loadout",
+        "rope_stability"
+      ],
+      "data_sources": [
+        "ch16.nodes",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "select_node",
+        "open_inventory"
+      ],
+      "notes": [
+        "theme:fractured_dune_loss"
+      ]
+    },
+    {
+      "screen_id": "CH16_EVENT",
+      "screen_type": "event_dialogue",
+      "title": "균열 사구 이벤트",
+      "purpose": "메인/사이드 선택과 텍스트 이벤트를 처리한다.",
+      "widgets": [
+        "event_card",
+        "choice_list",
+        "loss_loadout",
+        "rope_stability"
+      ],
+      "data_sources": [
+        "ch16.events",
+        "trust_state",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "pick_choice",
+        "back_to_map"
+      ],
+      "notes": [
+        "stitch:외해 관문"
+      ]
+    },
+    {
+      "screen_id": "CH16_LOOT",
+      "screen_type": "loot_resolution",
+      "title": "균열 사구 루팅",
+      "purpose": "사이드 퀘스트 결과와 보급 확보를 정산한다.",
+      "widgets": [
+        "loot_grid",
+        "loss_loadout"
+      ],
+      "data_sources": [
+        "loot_table",
+        "player_inventory"
+      ],
+      "primary_actions": [
+        "take_selected",
+        "discard"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH16_BOSS_INTRO",
+      "screen_type": "boss_intro",
+      "title": "사구 절개체 등장",
+      "purpose": "클라이맥스 전투 규칙과 비주얼 압박을 소개한다.",
+      "widgets": [
+        "boss_splash",
+        "loss_loadout",
+        "rope_stability"
+      ],
+      "data_sources": [
+        "boss_meta",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "enter_boss"
+      ],
+      "notes": [
+        "boss:dune_cutter"
+      ]
+    },
+    {
+      "screen_id": "CH16_COMBAT",
+      "screen_type": "combat_arena",
+      "title": "균열 사구 전투",
+      "purpose": "보스전과 파트별 HUD 밀도를 반영한다.",
+      "widgets": [
+        "combat_hud",
+        "boss_hp",
+        "loss_loadout",
+        "rope_stability"
+      ],
+      "data_sources": [
+        "combat_state",
+        "enemy_state",
+        "player_stats"
+      ],
+      "primary_actions": [
+        "attack",
+        "skill",
+        "item",
+        "move"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH16_RESULT",
+      "screen_type": "result_summary",
+      "title": "균열 사구 결과",
+      "purpose": "다음 장으로 밀려나는 결과와 Part 감정 잔향을 정리한다.",
+      "widgets": [
+        "chapter_result",
+        "party_summary",
+        "loss_loadout"
+      ],
+      "data_sources": [
+        "chapter_outcome",
+        "trust_state",
+        "route_state"
+      ],
+      "primary_actions": [
+        "confirm"
+      ],
+      "notes": [
+        "immersion:외해 관문"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from_screen_id": "CH16_BRIEF",
+      "to_screen_id": "CH16_HUB",
+      "trigger": "start_mission",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH16_HUB",
+      "to_screen_id": "CH16_MAP",
+      "trigger": "confirm_route",
+      "conditions": [],
+      "notes": "파트별 분위기 전용 허브 화면"
+    },
+    {
+      "from_screen_id": "CH16_MAP",
+      "to_screen_id": "CH16_EVENT",
+      "trigger": "select_node",
+      "conditions": [
+        "node.has_event=true"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH16_EVENT",
+      "to_screen_id": "CH16_LOOT",
+      "trigger": "choice_resolved",
+      "conditions": [
+        "event.grants_loot=true"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH16_EVENT",
+      "to_screen_id": "CH16_BOSS_INTRO",
+      "trigger": "event_id=EV_CH16_BOSS",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH16_LOOT",
+      "to_screen_id": "CH16_MAP",
+      "trigger": "loot_closed",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH16_BOSS_INTRO",
+      "to_screen_id": "CH16_COMBAT",
+      "trigger": "enter_boss",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH16_COMBAT",
+      "to_screen_id": "CH16_RESULT",
+      "trigger": "combat_victory",
+      "conditions": [
+        "flag:chapter_16_completed"
+      ],
+      "notes": ""
+    }
+  ],
+  "notes": [
+    "part:P4",
+    "visual:염분 바람, 새벽 회색, 수기 명단, 방송 장비, 공공 배급 보드",
+    "motion:대기열 갱신, 방송 파형, 무거운 페이드, 선택 후 잔향",
+    "stitch_theme:fractured_dune_loss"
+  ]
+}

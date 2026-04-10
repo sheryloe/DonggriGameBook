@@ -8,9 +8,16 @@ export type EncounterTableId = string;
 export type NpcId = string;
 export type SaveSlotId = string;
 export type StatValue = number | string;
+export type FlagValue = boolean | number | string;
 export type RequirementExpression = string;
 export type JsonPath = string;
 export type MarkdownPath = string;
+export type EndingId =
+  | "P1_END_SIGNAL_KEEPERS"
+  | "P1_END_CONTROLLED_PASSAGE"
+  | "P1_END_SMUGGLER_TIDE"
+  | "P1_END_ASHEN_ESCAPE"
+  | "P1_END_MIRROR_WITNESS";
 
 export type AssetModelRoute = "npc-main-pro" | "character-25" | "nanobanana" | "asset-nano";
 export type AssetGenerationGroup = "background" | "portrait" | "boss" | "document";
@@ -39,7 +46,8 @@ export type UIScreenType =
   | "combat_arena"
   | "result_summary"
   | "route_select"
-  | "safehouse";
+  | "safehouse"
+  | "ending_gallery";
 
 export type OverlayKey = "inventory" | "status" | "objectives" | "warnings";
 export type ChapterStatus = "locked" | "available" | "in_progress" | "completed";
@@ -284,7 +292,7 @@ export interface EventChoice {
   conditions: RequirementExpression[];
   preview?: string;
   effects: EffectDefinition[];
-  next_event_id: string;
+  next_event_id: string | null;
 }
 
 export interface EventPresentation {
@@ -293,6 +301,8 @@ export interface EventPresentation {
   music_key: string;
   widget_overrides: string[];
   allow_multi_choice?: boolean;
+  cinematic_still_key?: string;
+  result_variant?: string;
 }
 
 export interface EventTextBlock {
@@ -329,6 +339,87 @@ export interface EventDefinition {
   fail_event_id?: EventId;
 }
 
+export interface ChapterCinematic {
+  still_art_key: string;
+  world_map_art_key: string;
+  anchor_portrait_key: string;
+  support_portrait_key: string;
+  boss_splash_key: string;
+  result_card_art_key: string;
+  teaser_prompt_id: string;
+}
+
+export interface PartCarryFlags {
+  ending_id: EndingId;
+  truth_route: string;
+  compassion_route: string;
+  control_route: string;
+  underworld_route: string;
+  strain: number;
+  kim_ara_alive: boolean;
+  evidence_bundle_complete: boolean;
+}
+
+export interface EndingDefinition {
+  ending_id: EndingId;
+  title: string;
+  summary: string;
+  hint: string;
+  art_key: string;
+  thumb_key: string;
+  carry_flags: PartCarryFlags;
+}
+
+export interface EndingGalleryEntry {
+  ending_id: EndingId;
+  unlocked: boolean;
+  unlocked_at?: string;
+}
+
+export interface EndingMatrixRule {
+  ending_id: EndingId;
+  title: string;
+  summary: string;
+  priority: number;
+  hint: string;
+  conditions: RequirementExpression[];
+}
+
+export interface CinematicPromptDefinition {
+  video_id: string;
+  scene_id: string;
+  chapter_id?: ChapterId;
+  ending_id?: EndingId;
+  kind: "opening" | "ending" | "trailer";
+  duration: number;
+  aspect_ratio: string;
+  prompt_en: string;
+  prompt_ko_context: string;
+  camera_notes: string;
+  audio_notes: string;
+  source_art_key: string;
+}
+
+export interface MediaMetaDefinition {
+  title: string;
+  subtitle?: string;
+  caption?: string;
+  credit?: string;
+  chapter_id?: ChapterId;
+  ending_id?: EndingId;
+}
+
+export interface VideoRegistryEntry {
+  video_id: string;
+  chapter_id?: ChapterId;
+  ending_id?: EndingId;
+  poster_art_key: string;
+  title_default: string;
+  subtitle_default?: string;
+  caption_default?: string;
+  auto_surface: "opening" | "ending" | "trailer";
+}
+
 export interface RawChapterPackage {
   version: string;
   game_id: string;
@@ -347,6 +438,8 @@ export interface RawChapterPackage {
   nodes: MapNode[];
   events: EventDefinition[];
   boss_event_id?: EventId;
+  chapter_cinematic?: ChapterCinematic;
+  ending_matrix?: EndingMatrixRule[];
 }
 
 export interface ChapterDefinition {
@@ -369,6 +462,8 @@ export interface ChapterDefinition {
   events_by_id: Record<EventId, EventDefinition>;
   event_order: Record<EventId, number>;
   boss_event_id?: EventId;
+  chapter_cinematic?: ChapterCinematic;
+  ending_matrix: EndingMatrixRule[];
 }
 
 export interface UIScreenDefinition {
@@ -430,6 +525,9 @@ export interface AssetResolution {
   candidates: string[];
   route: AssetModelRoute;
   matched_from: "direct" | "generated" | "fallback";
+  status: "resolved" | "missing_x";
+  expected_src?: string;
+  strict_drop?: boolean;
 }
 
 export interface ResolvedProjectPaths {
@@ -530,6 +628,9 @@ export interface ChapterOutcome {
   summary: string;
   next_chapter_id?: ChapterId;
   campaign_complete: boolean;
+  ending_id?: EndingId;
+  ending_title?: string;
+  carry_flags?: PartCarryFlags;
 }
 
 export interface RuntimeSnapshot {
@@ -540,7 +641,7 @@ export interface RuntimeSnapshot {
   ui_screen: UIScreenType;
   overlays: Record<OverlayKey, boolean>;
   stats: Record<string, StatValue>;
-  flags: Record<string, boolean>;
+  flags: Record<string, FlagValue>;
   inventory: InventoryState;
   chapter_progress: Record<ChapterId, ChapterProgressState>;
   visited_nodes: Record<ChapterId, Record<NodeId, true>>;
@@ -548,6 +649,9 @@ export interface RuntimeSnapshot {
   loot_session: LootSessionState | null;
   battle_state: BattleState;
   chapter_outcome: ChapterOutcome | null;
+  unlocked_endings: Partial<Record<EndingId, string>>;
+  media_seen: Record<string, string>;
+  part1_carry_flags: PartCarryFlags | null;
   campaign_complete: boolean;
   run_seed: string;
 }

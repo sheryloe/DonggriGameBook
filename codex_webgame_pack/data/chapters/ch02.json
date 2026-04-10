@@ -653,6 +653,16 @@
               "op": "grant_item",
               "target": "item:itm_counterfeit_quarantine_pass",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.underworld",
+              "value": "clean"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.underworld_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH02_BLACKMARKET_LEDGER"
@@ -682,6 +692,21 @@
               "op": "add_stat",
               "target": "noise",
               "value": 5
+            },
+            {
+              "op": "set_value",
+              "target": "route.underworld",
+              "value": "forge"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.underworld_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH02_BLACKMARKET_LEDGER"
@@ -798,7 +823,9 @@
           "boss_hp",
           "water_level",
           "contamination_meter"
-        ]
+        ],
+        "cinematic_still_key": "boss_cheongeum",
+        "result_variant": "boss_resolution"
       },
       "text": {
         "summary": "배수문 벽을 뒤덮은 대형 포낭 개체가 수문 진동에 맞춰 회무를 뿜어낸다.",
@@ -907,7 +934,9 @@
         "widget_overrides": [
           "chapter_result",
           "route_summary"
-        ]
+        ],
+        "cinematic_still_key": "result_p1_ch02",
+        "result_variant": "chapter_result"
       },
       "text": {
         "summary": "수로 지도와 중계배터리를 가지고 빠져나오며, 여의도와 잠실을 잇는 다음 목표가 열린다.",
@@ -1601,6 +1630,16 @@
               "op": "set_flag",
               "target": "flag:ch02_drainage_stable",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH02_PIER_BARGAIN"
@@ -1620,6 +1659,16 @@
               "op": "set_flag",
               "target": "flag:ch02_drainage_stable",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "lock"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH02_PIER_BARGAIN"
@@ -2146,6 +2195,16 @@
               "op": "add_stat",
               "target": "noise",
               "value": 2
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "lock"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH02_GATE_ASSAULT"
@@ -2165,6 +2224,21 @@
               "op": "add_stat",
               "target": "contamination",
               "value": 2
+            },
+            {
+              "op": "set_value",
+              "target": "route.control",
+              "value": "bypass"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.control_score",
+              "value": -1
+            },
+            {
+              "op": "add_stat",
+              "target": "route.strain",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH02_GATE_ASSAULT"
@@ -2575,6 +2649,21 @@
               "op": "add_reputation",
               "target": "reputation.under_market",
               "value": 1
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "truth"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:part1_evidence_ch02",
+              "value": true
             }
           ],
           "next_event_id": "EV_CH02_DROWNED_AMBUSH"
@@ -2589,6 +2678,16 @@
               "op": "set_flag",
               "target": "flag:ch02_ledger_skip",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "route.truth",
+              "value": "silence"
+            },
+            {
+              "op": "add_stat",
+              "target": "route.truth_score",
+              "value": -1
             }
           ],
           "next_event_id": "EV_CH02_DROWNED_AMBUSH"
@@ -2727,47 +2826,6 @@
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
-    },
-    {
-      "event_id": "EV_CH02_VILLAIN_BUTCHER",
-      "type": "story",
-      "title": "수로의 도살자 조우",
-      "description": "어둠 속에서 거대한 그림자가 일어선다. 무수히 많은 방독면을 목걸이처럼 엮어 건 거구의 사내, 블랙마켓의 변절자 '도살자'다. 그는 당신의 방독면을 노리고 있다.",
-      "choices": [
-        {
-          "choice_id": "c_butcher_fight",
-          "text": "총을 뽑아든다. (보스전 돌입)",
-          "requires": [],
-          "effects": [
-            {
-              "op": "set_flag",
-              "target": "flag:villain.butcher.encounter",
-              "value": 1
-            }
-          ],
-          "next_event_id": "EV_CH02_VILLAIN_BUTCHER_COMBAT"
-        },
-        {
-          "choice_id": "c_butcher_run",
-          "text": "가진 귀중품을 던지고 필사적으로 도망친다. (아이템 상실, 체력 피해)",
-          "requires": [
-            "item:itm_val_gold_watch>=1"
-          ],
-          "effects": [
-            {
-              "op": "remove_item",
-              "target": "item:itm_val_gold_watch",
-              "value": 1
-            },
-            {
-              "op": "modify_stat",
-              "target": "hp",
-              "value": -20
-            }
-          ],
-          "next_event_id": null
-        }
-      ]
     }
   ],
   "boss_event_id": "EV_CH02_SLUICE_BOSS",
@@ -2858,5 +2916,14 @@
       ],
       "reveal_cap": "ambient"
     }
-  ]
+  ],
+  "chapter_cinematic": {
+    "still_art_key": "briefing_p1_ch02",
+    "world_map_art_key": "map_p1_ch02",
+    "anchor_portrait_key": "portrait_jung_noah",
+    "support_portrait_key": "portrait_seo_jinseo",
+    "boss_splash_key": "boss_cheongeum",
+    "result_card_art_key": "result_p1_ch02",
+    "teaser_prompt_id": "P1_CH02_OPENING"
+  }
 }

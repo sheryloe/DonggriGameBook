@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "game_id": "dokdo_arc_webgame",
-  "title": "Dokdo Arc Webgame Pack (CH01~CH05)",
+  "title": "Dokdo Arc Webgame Pack (CH01~CH20)",
   "schemas": {
     "chapter": "schemas/chapter_event.schema.json",
     "item": "schemas/inventory_item.schema.json",
@@ -23,7 +23,22 @@
       "ui/ch02.ui_flow.json",
       "ui/ch03.ui_flow.json",
       "ui/ch04.ui_flow.json",
-      "ui/ch05.ui_flow.json"
+      "ui/ch05.ui_flow.json",
+      "ui/ch06.ui_flow.json",
+      "ui/ch07.ui_flow.json",
+      "ui/ch08.ui_flow.json",
+      "ui/ch09.ui_flow.json",
+      "ui/ch10.ui_flow.json",
+      "ui/ch11.ui_flow.json",
+      "ui/ch12.ui_flow.json",
+      "ui/ch13.ui_flow.json",
+      "ui/ch14.ui_flow.json",
+      "ui/ch15.ui_flow.json",
+      "ui/ch16.ui_flow.json",
+      "ui/ch17.ui_flow.json",
+      "ui/ch18.ui_flow.json",
+      "ui/ch19.ui_flow.json",
+      "ui/ch20.ui_flow.json"
     ]
   }
 }

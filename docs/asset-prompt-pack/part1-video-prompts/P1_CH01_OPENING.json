@@ -1,0 +1,13 @@
+{
+  "video_id": "P1_CH01_OPENING",
+  "scene_id": "CH01_OPENING_SIGNAL",
+  "chapter_id": "CH01",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "A tense Korean disaster-thriller opening over a ruined Yeouido broadcast district, ash in the air, emergency rooftop antenna, survivors moving through a dim lobby, cinematic realism.",
+  "prompt_ko_context": "여의도 방송국 폐허와 구조 신호, 윤해인의 첫 진입을 보여주는 오프닝 티저.",
+  "camera_notes": "Start with a wide aerial drift, push into the broken lobby, finish on the rooftop antenna silhouette.",
+  "audio_notes": "Distant emergency siren, analog radio noise, low heartbeat percussion.",
+  "source_art_key": "briefing_p1_ch01"
+}

@@ -151,6 +151,442 @@
           "count": 3
         }
       ]
+    },
+    {
+      "encounter_table_id": "enc_ch06_gate_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "runner",
+          "count": 2
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch06_gate_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "gate_mauler",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch07_corridor_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "runner",
+          "count": 2
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch07_corridor_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "red_tracker",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch08_bureau_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "echoer",
+          "count": 2
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch08_bureau_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "seal_guardian",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch09_smoke_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 2
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch09_smoke_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "smoke_warehouse_mass",
+          "count": 1
+        },
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch10_port_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "floater",
+          "count": 2
+        },
+        {
+          "enemy_id": "runner",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch10_port_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "sinking_dock_hauler",
+          "count": 1
+        },
+        {
+          "enemy_id": "floater",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch11_rail_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "runner",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch11_rail_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "rail_guide",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch12_echo_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "echoer",
+          "count": 2
+        },
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch12_echo_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "resonance_priest",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch13_white_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "erosion_basic",
+          "count": 1
+        },
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch13_white_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "white_yard_tower",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch14_fog_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch14_fog_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "mist_transformer",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch15_watch_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "runner",
+          "count": 2
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch15_watch_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "quarantine_sentinel",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch16_dune_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        },
+        {
+          "enemy_id": "runner",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch16_dune_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "dune_cutter",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch17_gate_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch17_gate_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "fragment_gate_breaker",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch18_salt_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        },
+        {
+          "enemy_id": "runner",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch18_salt_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "salt_ration_wretch",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch19_outer_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch19_outer_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "outer_wave_lord",
+          "count": 1
+        },
+        {
+          "enemy_id": "runner",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch20_dokdo_field",
+      "threat_level": "high",
+      "units": [
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        },
+        {
+          "enemy_id": "spore_sac_small",
+          "count": 1
+        },
+        {
+          "enemy_id": "erosion_basic",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "encounter_table_id": "enc_ch20_dokdo_boss",
+      "threat_level": "boss",
+      "units": [
+        {
+          "enemy_id": "dokdo_gate_warden",
+          "count": 1
+        },
+        {
+          "enemy_id": "echoer",
+          "count": 1
+        }
+      ]
     }
   ]
 }

@@ -66,7 +66,10 @@ function cloneSnapshot(runtime: RuntimeSnapshot): RuntimeSnapshot {
       victory_effects: runtime.battle_state.victory_effects.map((effect) => ({ ...effect })),
       defeat_effects: runtime.battle_state.defeat_effects.map((effect) => ({ ...effect }))
     },
-    chapter_outcome: runtime.chapter_outcome ? { ...runtime.chapter_outcome } : null
+    chapter_outcome: runtime.chapter_outcome ? { ...runtime.chapter_outcome } : null,
+    unlocked_endings: { ...runtime.unlocked_endings },
+    media_seen: { ...runtime.media_seen },
+    part1_carry_flags: runtime.part1_carry_flags ? { ...runtime.part1_carry_flags } : null
   };
 }
 
@@ -202,7 +205,12 @@ export function applyEffects(
 
     switch (effect.op) {
       case "set_flag": {
-        nextRuntime.flags[normalizeFlagKey(effect.target)] = effect.value === undefined ? true : Boolean(effect.value);
+        nextRuntime.flags[normalizeFlagKey(effect.target)] =
+          effect.value === undefined ? true : (effect.value as boolean | number | string);
+        break;
+      }
+      case "clear_flag": {
+        delete nextRuntime.flags[normalizeFlagKey(effect.target)];
         break;
       }
       case "add_stat": {

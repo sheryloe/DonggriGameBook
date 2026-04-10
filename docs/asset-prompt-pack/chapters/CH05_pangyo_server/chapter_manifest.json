@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH05",
+  "title": "미러센터",
+  "part_id": "P1",
+  "theme": "pangyo_server",
+  "story_hook": "문정에서 확보한 배지와 진입권으로 판교 외곽 봉쇄를 뚫는다.",
+  "assets": [
+    {
+      "asset_id": "ch05_bg_primary",
+      "asset_type": "background",
+      "subject": "판교 외곽 인터체인지",
+      "art_key_runtime": "bg_pangyo_interchange",
+      "art_key_final": "bg_ch05_pangyo_server_primary",
+      "filename_target": "bg_ch05_pangyo_server_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch05_bg_secondary",
+      "asset_type": "background",
+      "subject": "스카이워크 가든",
+      "art_key_runtime": "bg_pangyo_lobby",
+      "art_key_final": "bg_ch05_pangyo_server_secondary",
+      "filename_target": "bg_ch05_pangyo_server_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch05_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "김아라",
+      "art_key_runtime": "portrait_kim_ara",
+      "art_key_final": "portrait_npc_kim_ara_ch05_anchor",
+      "filename_target": "portrait_npc_kim_ara_ch05_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch05_portrait_support",
+      "asset_type": "portrait",
+      "subject": "윤해인",
+      "art_key_runtime": "pending:npc_yoon_haein",
+      "art_key_final": "portrait_npc_yoon_haein_ch05_support",
+      "filename_target": "portrait_npc_yoon_haein_ch05_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch05_threat_signature",
+      "asset_type": "threat",
+      "subject": "미러코어 접합체 회선",
+      "art_key_runtime": "boss_mirror_lines",
+      "art_key_final": "threat_mirror_core_lines",
+      "filename_target": "threat_mirror_core_lines_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch05_poster_keyart",
+      "asset_type": "poster",
+      "subject": "미러센터 key art",
+      "art_key_runtime": "pending:poster_ch05_pangyo_server",
+      "art_key_final": "poster_ch05_pangyo_server",
+      "filename_target": "poster_ch05_pangyo_server_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch05_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "미러센터 entry beat",
+      "art_key_runtime": "pending:teaser_ch05_entry",
+      "art_key_final": "teaser_ch05_entry",
+      "filename_target": "teaser_ch05_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch05_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "미러센터 pressure beat",
+      "art_key_runtime": "pending:teaser_ch05_pressure",
+      "art_key_final": "teaser_ch05_pressure",
+      "filename_target": "teaser_ch05_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch05_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "미러센터 preclimax beat",
+      "art_key_runtime": "pending:teaser_ch05_preclimax",
+      "art_key_final": "teaser_ch05_preclimax",
+      "filename_target": "teaser_ch05_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH05_pangyo_server/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch05.json",
+        "ui/ch05.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH05.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

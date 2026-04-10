@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH03",
+  "title": "유리정원",
+  "part_id": "P1",
+  "theme": "jamsil_vertical",
+  "story_hook": "잠실 고층권에 남은 축전지와 릴레이 렌즈를 회수해야 한다.",
+  "assets": [
+    {
+      "asset_id": "ch03_bg_primary",
+      "asset_type": "background",
+      "subject": "저층 상가 로비",
+      "art_key_runtime": "bg_jamsil_lobby",
+      "art_key_final": "bg_ch03_jamsil_vertical_primary",
+      "filename_target": "bg_ch03_jamsil_vertical_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch03_bg_secondary",
+      "asset_type": "background",
+      "subject": "서비스 계단실",
+      "art_key_runtime": "bg_service_stair",
+      "art_key_final": "bg_ch03_jamsil_vertical_secondary",
+      "filename_target": "bg_ch03_jamsil_vertical_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch03_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "안보경",
+      "art_key_runtime": "portrait_ahn_bogyeong",
+      "art_key_final": "portrait_npc_ahn_bogyeong_ch03_anchor",
+      "filename_target": "portrait_npc_ahn_bogyeong_ch03_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch03_portrait_support",
+      "asset_type": "portrait",
+      "subject": "류세온",
+      "art_key_runtime": "portrait_ryu_seon",
+      "art_key_final": "portrait_npc_ryu_seon_ch03_support",
+      "filename_target": "portrait_npc_ryu_seon_ch03_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch03_threat_signature",
+      "asset_type": "threat",
+      "subject": "전망 접합체 유리정원",
+      "art_key_runtime": "boss_glassgarden",
+      "art_key_final": "threat_vista_amalgam_glassgarden",
+      "filename_target": "threat_vista_amalgam_glassgarden_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch03_poster_keyart",
+      "asset_type": "poster",
+      "subject": "유리정원 key art",
+      "art_key_runtime": "pending:poster_ch03_jamsil_vertical",
+      "art_key_final": "poster_ch03_jamsil_vertical",
+      "filename_target": "poster_ch03_jamsil_vertical_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch03_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "유리정원 entry beat",
+      "art_key_runtime": "pending:teaser_ch03_entry",
+      "art_key_final": "teaser_ch03_entry",
+      "filename_target": "teaser_ch03_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch03_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "유리정원 pressure beat",
+      "art_key_runtime": "pending:teaser_ch03_pressure",
+      "art_key_final": "teaser_ch03_pressure",
+      "filename_target": "teaser_ch03_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch03_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "유리정원 preclimax beat",
+      "art_key_runtime": "pending:teaser_ch03_preclimax",
+      "art_key_final": "teaser_ch03_preclimax",
+      "filename_target": "teaser_ch03_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH03_jamsil_vertical/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch03.json",
+        "ui/ch03.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH03.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

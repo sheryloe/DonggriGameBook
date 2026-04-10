@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH04",
+  "title": "상자들의 도시",
+  "part_id": "P1",
+  "theme": "munjeong_logistics",
+  "story_hook": "판교 외곽 자동봉쇄를 풀려면 문정 물류벨트에서 배송/보안 배지를 확보해야 한다.",
+  "assets": [
+    {
+      "asset_id": "ch04_bg_primary",
+      "asset_type": "background",
+      "subject": "탄천 둑길",
+      "art_key_runtime": "bg_tancheon_embankment",
+      "art_key_final": "bg_ch04_munjeong_logistics_primary",
+      "filename_target": "bg_ch04_munjeong_logistics_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch04_bg_secondary",
+      "asset_type": "background",
+      "subject": "자동분류센터 로비",
+      "art_key_runtime": "bg_cold_warehouse",
+      "art_key_final": "bg_ch04_munjeong_logistics_secondary",
+      "filename_target": "bg_ch04_munjeong_logistics_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch04_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "한소명",
+      "art_key_runtime": "portrait_han_somyeong",
+      "art_key_final": "portrait_npc_han_somyeong_ch04_anchor",
+      "filename_target": "portrait_npc_han_somyeong_ch04_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch04_portrait_support",
+      "asset_type": "portrait",
+      "subject": "윤해인",
+      "art_key_runtime": "pending:npc_yoon_haein",
+      "art_key_final": "portrait_npc_yoon_haein_ch04_support",
+      "filename_target": "portrait_npc_yoon_haein_ch04_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch04_threat_signature",
+      "asset_type": "threat",
+      "subject": "자동분류 접합체 피커",
+      "art_key_runtime": "boss_picker_prime",
+      "art_key_final": "threat_picker_prime",
+      "filename_target": "threat_picker_prime_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch04_poster_keyart",
+      "asset_type": "poster",
+      "subject": "상자들의 도시 key art",
+      "art_key_runtime": "pending:poster_ch04_munjeong_logistics",
+      "art_key_final": "poster_ch04_munjeong_logistics",
+      "filename_target": "poster_ch04_munjeong_logistics_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch04_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "상자들의 도시 entry beat",
+      "art_key_runtime": "pending:teaser_ch04_entry",
+      "art_key_final": "teaser_ch04_entry",
+      "filename_target": "teaser_ch04_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch04_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "상자들의 도시 pressure beat",
+      "art_key_runtime": "pending:teaser_ch04_pressure",
+      "art_key_final": "teaser_ch04_pressure",
+      "filename_target": "teaser_ch04_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch04_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "상자들의 도시 preclimax beat",
+      "art_key_runtime": "pending:teaser_ch04_preclimax",
+      "art_key_final": "teaser_ch04_preclimax",
+      "filename_target": "teaser_ch04_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH04_munjeong_logistics/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch04.json",
+        "ui/ch04.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH04.md",
+        "docs/world/story-bible/PART_BIBLE_P1.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

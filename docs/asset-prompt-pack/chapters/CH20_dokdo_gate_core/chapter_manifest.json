@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH20",
+  "title": "독도의 문",
+  "part_id": "P4",
+  "theme": "dokdo_gate_core",
+  "story_hook": "세 가지 미래 중 하나를 고르고 기록을 어떻게 남길지 결정한다.",
+  "assets": [
+    {
+      "asset_id": "ch20_bg_primary",
+      "asset_type": "background",
+      "subject": "독도 검역 터널",
+      "art_key_runtime": "ch20_dokdo_gate_core_entry",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch20_bg_secondary",
+      "asset_type": "background",
+      "subject": "코어 제어실",
+      "art_key_runtime": "ch20_dokdo_gate_core_route",
+      "art_key_final": "bg_ch20_dokdo_gate_core_secondary",
+      "filename_target": "bg_ch20_dokdo_gate_core_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch20_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "차문식",
+      "art_key_runtime": "pending:npc_cha_munsik",
+      "art_key_final": "portrait_npc_cha_munsik_ch20_anchor",
+      "filename_target": "portrait_npc_cha_munsik_ch20_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch20_portrait_support",
+      "asset_type": "portrait",
+      "subject": "윤해인",
+      "art_key_runtime": "pending:npc_yoon_haein",
+      "art_key_final": "portrait_npc_yoon_haein_ch20_support",
+      "filename_target": "portrait_npc_yoon_haein_ch20_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch20_threat_signature",
+      "asset_type": "threat",
+      "subject": "관문 집행체",
+      "art_key_runtime": "ch20_dokdo_gate_core_boss",
+      "art_key_final": "threat_dokdo_gate_warden",
+      "filename_target": "threat_dokdo_gate_warden_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch20_poster_keyart",
+      "asset_type": "poster",
+      "subject": "독도의 문 key art",
+      "art_key_runtime": "pending:poster_ch20_dokdo_gate_core",
+      "art_key_final": "poster_ch20_dokdo_gate_core",
+      "filename_target": "poster_ch20_dokdo_gate_core_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch20_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "독도의 문 entry beat",
+      "art_key_runtime": "pending:teaser_ch20_entry",
+      "art_key_final": "teaser_ch20_entry",
+      "filename_target": "teaser_ch20_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch20_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "독도의 문 pressure beat",
+      "art_key_runtime": "pending:teaser_ch20_pressure",
+      "art_key_final": "teaser_ch20_pressure",
+      "filename_target": "teaser_ch20_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch20_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "독도의 문 preclimax beat",
+      "art_key_runtime": "pending:teaser_ch20_preclimax",
+      "art_key_final": "teaser_ch20_preclimax",
+      "filename_target": "teaser_ch20_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch20.json",
+        "ui/ch20.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH20.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

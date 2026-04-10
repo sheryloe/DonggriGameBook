@@ -137,6 +137,244 @@
         "나는 사람들한테 희망을 판 거야.",
         "완장은 표식이지 권력이 아니야. 권력은, 믿는 쪽에 있어."
       ]
+    },
+    {
+      "npc_id": "npc_do_jaeyoon",
+      "name_ko": "도재윤",
+      "first_chapter": "CH06",
+      "role": "남부 중계 거점 실무 책임자",
+      "faction": "남부 중계 거점",
+      "tone_keywords": [
+        "실무",
+        "냉정",
+        "배분"
+      ],
+      "sample_lines": [
+        "지금 통과시키면 누군가를 뒤에 남겨야 한다.",
+        "명단은 숫자가 아니라 체온이다.",
+        "내가 고른 순서가 밤마다 돌아온다."
+      ]
+    },
+    {
+      "npc_id": "npc_yoo_minha",
+      "name_ko": "유민하",
+      "first_chapter": "CH06",
+      "role": "우회선 구조 담당 간호사",
+      "faction": "남부 중계 거점",
+      "tone_keywords": [
+        "이상",
+        "압박",
+        "회복"
+      ],
+      "sample_lines": [
+        "지금 숨 쉬는 사람부터 보자.",
+        "규칙은 살리는 데 쓰일 때만 의미가 있다.",
+        "남겨진 사람 이름을 내가 적어 둘게."
+      ]
+    },
+    {
+      "npc_id": "npc_sim_gyuseok",
+      "name_ko": "심규석",
+      "first_chapter": "CH08",
+      "role": "봉쇄 행정실 보안 책임자",
+      "faction": "봉쇄 행정국",
+      "tone_keywords": [
+        "의심",
+        "행정",
+        "통제"
+      ],
+      "sample_lines": [
+        "삭제된 줄이 가장 큰 증거다.",
+        "문서는 거짓말을 안 한다. 사람이 덧칠할 뿐이다.",
+        "누가 인장을 쥐었는지 찾으면 방향이 바뀐다."
+      ]
+    },
+    {
+      "npc_id": "npc_jang_taehun",
+      "name_ko": "장태훈",
+      "first_chapter": "CH07",
+      "role": "적색 회랑 브로커",
+      "faction": "우회선 브로커단",
+      "tone_keywords": [
+        "거래",
+        "재빠름",
+        "생존"
+      ],
+      "sample_lines": [
+        "살아남는 길은 늘 공식선 바깥에 있다.",
+        "난 팔아먹은 게 아니라 시간을 번 거다.",
+        "회랑은 빠른 사람보다 멈추지 않는 사람이 산다."
+      ]
+    },
+    {
+      "npc_id": "npc_bae_suhyeon",
+      "name_ko": "배수현",
+      "first_chapter": "CH08",
+      "role": "행정 기록 복원 담당",
+      "faction": "봉쇄 행정국",
+      "tone_keywords": [
+        "침착",
+        "분석",
+        "죄책"
+      ],
+      "sample_lines": [
+        "지운 이름은 서버보다 사람 표정에 먼저 남는다.",
+        "복원할수록 누가 무엇을 버렸는지 선명해진다.",
+        "이번에는 끝까지 읽고 넘기자."
+      ]
+    },
+    {
+      "npc_id": "npc_lee_soran",
+      "name_ko": "이소란",
+      "first_chapter": "CH09",
+      "role": "창고 배출 제어 기사",
+      "faction": "연기 저장고",
+      "tone_keywords": [
+        "불안",
+        "현장",
+        "책임"
+      ],
+      "sample_lines": [
+        "밸브를 닫으면 사람들이 갇히고 열면 감염이 번진다.",
+        "연기는 항상 늦게 값을 받는다.",
+        "나는 오늘 한쪽만 미워할 수 없다."
+      ]
+    },
+    {
+      "npc_id": "npc_nam_jaewook",
+      "name_ko": "남재욱",
+      "first_chapter": "CH10",
+      "role": "침하 항만 계약 중개인",
+      "faction": "침하 항만 계약선",
+      "tone_keywords": [
+        "계산",
+        "보존",
+        "냉소"
+      ],
+      "sample_lines": [
+        "선적표는 총보다 오래 남는다.",
+        "증언은 돈보다 비싸질 때가 있다.",
+        "백도형을 잡으면 바다가 열린다."
+      ]
+    },
+    {
+      "npc_id": "npc_park_isaac",
+      "name_ko": "박이삭",
+      "first_chapter": "CH11",
+      "role": "잔향 기지 운영병",
+      "faction": "잔향 기지",
+      "tone_keywords": [
+        "규율",
+        "기계",
+        "의무"
+      ],
+      "sample_lines": [
+        "선로는 거짓말을 못 한다.",
+        "우리는 움직이는 순서로 누구를 포기했는지 안다.",
+        "기지는 남겨 두는 기록으로 버틴다."
+      ]
+    },
+    {
+      "npc_id": "npc_nam_suryeon",
+      "name_ko": "남수련",
+      "first_chapter": "CH12",
+      "role": "기록 공개파 방송 기사",
+      "faction": "기록 공개파",
+      "tone_keywords": [
+        "선명",
+        "집요",
+        "공개"
+      ],
+      "sample_lines": [
+        "묻어 두면 다음 선별은 더 빨라진다.",
+        "누가 지워졌는지 말하는 순간부터 공동체가 시작된다.",
+        "방송은 감정이 아니라 책임의 형식이다."
+      ]
+    },
+    {
+      "npc_id": "npc_oh_gyeongtae",
+      "name_ko": "오경태",
+      "first_chapter": "CH13",
+      "role": "백색 야적장 경비대장",
+      "faction": "백색 야적장",
+      "tone_keywords": [
+        "완고",
+        "의혹",
+        "방어"
+      ],
+      "sample_lines": [
+        "약을 지키려면 거짓도 창고에 쌓인다.",
+        "우린 약을 숨긴 게 아니라 시간을 숨겼다.",
+        "보관실 문을 열면 더는 돌아갈 수 없다."
+      ]
+    },
+    {
+      "npc_id": "npc_shin_dogyeom",
+      "name_ko": "신도겸",
+      "first_chapter": "CH16",
+      "role": "소금 정거장 장비반장",
+      "faction": "소금 정거장",
+      "tone_keywords": [
+        "실무",
+        "무거움",
+        "책임"
+      ],
+      "sample_lines": [
+        "보경이 하던 걸 누가 맡든 오늘부터는 멈추면 안 된다.",
+        "장비는 핑계가 아니라 약속이다.",
+        "정거장은 사람보다 느리게 무너진다."
+      ]
+    },
+    {
+      "npc_id": "npc_mo_eunjae",
+      "name_ko": "모은재",
+      "first_chapter": "CH17",
+      "role": "배급 홀 관리자",
+      "faction": "소금 정거장",
+      "tone_keywords": [
+        "기록",
+        "균형",
+        "불면"
+      ],
+      "sample_lines": [
+        "배급표가 찢긴 자리마다 사연이 있다.",
+        "오늘 공정한 분배는 내일의 증오를 늦출 뿐이다.",
+        "나는 숫자를 적지만 얼굴을 지우진 못한다."
+      ]
+    },
+    {
+      "npc_id": "npc_moon_rahee",
+      "name_ko": "문라희",
+      "first_chapter": "CH17",
+      "role": "외해 승선 명단 담당",
+      "faction": "소금 정거장",
+      "tone_keywords": [
+        "행정",
+        "불신",
+        "피로"
+      ],
+      "sample_lines": [
+        "명단은 늘 마지막에 욕을 먹는다.",
+        "나는 기준을 고친 적 없고 적용했을 뿐이다.",
+        "그래서 더 많은 밤을 못 잔다."
+      ]
+    },
+    {
+      "npc_id": "npc_cha_munsik",
+      "name_ko": "차문식",
+      "first_chapter": "CH19",
+      "role": "선별 체계 설계 총괄",
+      "faction": "검역 코어",
+      "tone_keywords": [
+        "논리",
+        "통제",
+        "정당화"
+      ],
+      "sample_lines": [
+        "당신이 감당 못 할 숫자를 내가 대신 잘랐다.",
+        "기준 없는 연민은 더 많은 시체를 만든다.",
+        "공개는 쉽다. 운영은 누가 할 건가."
+      ]
     }
   ]
 }

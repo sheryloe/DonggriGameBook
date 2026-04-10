@@ -1,0 +1,12 @@
+{
+  "video_id": "P1_TRAILER_MAIN",
+  "scene_id": "PART1_TRAILER",
+  "kind": "trailer",
+  "duration": 45,
+  "aspect_ratio": "16:9",
+  "prompt_en": "A cinematic Korean apocalypse trailer moving from Yeouido to Pangyo, survivors, flooded markets, vertical terror, logistics warfare, a mirror center and five possible fates, realistic grounded tension.",
+  "prompt_ko_context": "Part 1 전체를 묶는 트레일러. 여의도, 노량진, 잠실, 물류권, 판교 미러센터, 그리고 다섯 결말의 분위기를 순차적으로 보여준다.",
+  "camera_notes": "Build in five chapters: signal, flood, vertical dread, industrial logistics, mirror-center climax. End on five ending silhouettes without revealing the canon.",
+  "audio_notes": "Starts with analog radio, rises to industrial percussion and choral tension, ends on a cutoff relay tone.",
+  "source_art_key": "ending_p1_signal_keepers"
+}

@@ -1,0 +1,13 @@
+{
+  "video_id": "P1_CH02_OPENING",
+  "scene_id": "CH02_OPENING_MARKET",
+  "chapter_id": "CH02",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "Flooded Noryangjin market alleys, hanging tarps, black water, barter violence and diesel smoke, a Korean post-apocalypse thriller with wet industrial realism.",
+  "prompt_ko_context": "검은 물과 암시장 거래, 정노아와 서진서의 영역으로 들어가는 Part 1 두 번째 티저.",
+  "camera_notes": "Low handheld glide through water, cut to a close barter exchange, end on a sluice gate silhouette.",
+  "audio_notes": "Water slosh, distant shouting, muffled diesel engine rumble.",
+  "source_art_key": "briefing_p1_ch02"
+}

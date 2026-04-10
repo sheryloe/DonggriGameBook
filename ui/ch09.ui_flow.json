@@ -1,0 +1,258 @@
+{
+  "version": "1.0.0",
+  "game_id": "dokdo_arc_webgame",
+  "chapter_id": "CH09",
+  "title": "연기 저장고 UI Flow",
+  "entry_screen_id": "CH09_BRIEF",
+  "screens": [
+    {
+      "screen_id": "CH09_BRIEF",
+      "screen_type": "chapter_briefing",
+      "title": "연기 저장고 브리핑",
+      "purpose": "호송 인원과 연료 적재를 동시에 맞춘다.",
+      "widgets": [
+        "objective_panel",
+        "smoke_density",
+        "cargo_split",
+        "respirator_status"
+      ],
+      "data_sources": [
+        "chapter_meta",
+        "player_stats"
+      ],
+      "primary_actions": [
+        "start_mission"
+      ],
+      "notes": [
+        "visual:적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박"
+      ]
+    },
+    {
+      "screen_id": "CH09_HUB",
+      "screen_type": "route_select",
+      "title": "회랑 선택",
+      "purpose": "P2 전용 호흡과 선택 압박을 주는 화면.",
+      "widgets": [
+        "checkpoint_priority",
+        "route_compare",
+        "crowd_pressure",
+        "smoke_density",
+        "cargo_split",
+        "respirator_status"
+      ],
+      "data_sources": [
+        "route_state",
+        "player_flags",
+        "trust_state"
+      ],
+      "primary_actions": [
+        "confirm_route"
+      ],
+      "notes": [
+        "motion:직선 추격, 검문 스캔, 패널 슬라이드, 빠른 경보 점멸"
+      ]
+    },
+    {
+      "screen_id": "CH09_MAP",
+      "screen_type": "world_map",
+      "title": "연기 저장고 노드",
+      "purpose": "연료 저장 탱크 구역 -> 배터리 적재장 -> 연기 배출 제어실 -> 보급 하역 램프",
+      "widgets": [
+        "map_overlay",
+        "smoke_density",
+        "cargo_split"
+      ],
+      "data_sources": [
+        "ch09.nodes",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "select_node",
+        "open_inventory"
+      ],
+      "notes": [
+        "theme:smoke_depot_toxic"
+      ]
+    },
+    {
+      "screen_id": "CH09_EVENT",
+      "screen_type": "event_dialogue",
+      "title": "연기 저장고 이벤트",
+      "purpose": "메인/사이드 선택과 텍스트 이벤트를 처리한다.",
+      "widgets": [
+        "event_card",
+        "choice_list",
+        "smoke_density",
+        "cargo_split"
+      ],
+      "data_sources": [
+        "ch09.events",
+        "trust_state",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "pick_choice",
+        "back_to_map"
+      ],
+      "notes": [
+        "stitch:남하 회랑"
+      ]
+    },
+    {
+      "screen_id": "CH09_LOOT",
+      "screen_type": "loot_resolution",
+      "title": "연기 저장고 루팅",
+      "purpose": "사이드 퀘스트 결과와 보급 확보를 정산한다.",
+      "widgets": [
+        "loot_grid",
+        "smoke_density"
+      ],
+      "data_sources": [
+        "loot_table",
+        "player_inventory"
+      ],
+      "primary_actions": [
+        "take_selected",
+        "discard"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH09_BOSS_INTRO",
+      "screen_type": "boss_intro",
+      "title": "연기 창고군 등장",
+      "purpose": "클라이맥스 전투 규칙과 비주얼 압박을 소개한다.",
+      "widgets": [
+        "boss_splash",
+        "smoke_density",
+        "cargo_split"
+      ],
+      "data_sources": [
+        "boss_meta",
+        "player_flags"
+      ],
+      "primary_actions": [
+        "enter_boss"
+      ],
+      "notes": [
+        "boss:smoke_warehouse_mass"
+      ]
+    },
+    {
+      "screen_id": "CH09_COMBAT",
+      "screen_type": "combat_arena",
+      "title": "연기 저장고 전투",
+      "purpose": "보스전과 파트별 HUD 밀도를 반영한다.",
+      "widgets": [
+        "combat_hud",
+        "boss_hp",
+        "smoke_density",
+        "cargo_split"
+      ],
+      "data_sources": [
+        "combat_state",
+        "enemy_state",
+        "player_stats"
+      ],
+      "primary_actions": [
+        "attack",
+        "skill",
+        "item",
+        "move"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH09_RESULT",
+      "screen_type": "result_summary",
+      "title": "연기 저장고 결과",
+      "purpose": "다음 장으로 밀려나는 결과와 Part 감정 잔향을 정리한다.",
+      "widgets": [
+        "chapter_result",
+        "party_summary",
+        "smoke_density"
+      ],
+      "data_sources": [
+        "chapter_outcome",
+        "trust_state",
+        "route_state"
+      ],
+      "primary_actions": [
+        "confirm"
+      ],
+      "notes": [
+        "immersion:남하 회랑"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from_screen_id": "CH09_BRIEF",
+      "to_screen_id": "CH09_HUB",
+      "trigger": "start_mission",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH09_HUB",
+      "to_screen_id": "CH09_MAP",
+      "trigger": "confirm_route",
+      "conditions": [],
+      "notes": "파트별 분위기 전용 허브 화면"
+    },
+    {
+      "from_screen_id": "CH09_MAP",
+      "to_screen_id": "CH09_EVENT",
+      "trigger": "select_node",
+      "conditions": [
+        "node.has_event=true"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH09_EVENT",
+      "to_screen_id": "CH09_LOOT",
+      "trigger": "choice_resolved",
+      "conditions": [
+        "event.grants_loot=true"
+      ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH09_EVENT",
+      "to_screen_id": "CH09_BOSS_INTRO",
+      "trigger": "event_id=EV_CH09_BOSS",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH09_LOOT",
+      "to_screen_id": "CH09_MAP",
+      "trigger": "loot_closed",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH09_BOSS_INTRO",
+      "to_screen_id": "CH09_COMBAT",
+      "trigger": "enter_boss",
+      "conditions": [],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH09_COMBAT",
+      "to_screen_id": "CH09_RESULT",
+      "trigger": "combat_victory",
+      "conditions": [
+        "flag:chapter_09_completed"
+      ],
+      "notes": ""
+    }
+  ],
+  "notes": [
+    "part:P2",
+    "visual:적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박",
+    "motion:직선 추격, 검문 스캔, 패널 슬라이드, 빠른 경보 점멸",
+    "stitch_theme:smoke_depot_toxic"
+  ]
+}

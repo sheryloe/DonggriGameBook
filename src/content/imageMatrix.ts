@@ -1,3 +1,4 @@
+import { IMPLEMENTED_CHAPTER_IDS, getChapterRuntimeConfig } from "../../packages/world-registry/src";
 import type { AssetGenerationJob, AssetModelRoute, ChapterId } from "../types/game";
 
 export interface ImageMatrixEntry {
@@ -24,13 +25,12 @@ export const EXISTING_IMAGE_FALLBACKS = [
   "img/게임 오버 연출.png"
 ] as const;
 
-export const CHAPTER_DEFAULT_ART_KEYS: Record<ChapterId, string> = {
-  CH01: "bg_yeouido_ashroad",
-  CH02: "bg_noryangjin_market",
-  CH03: "bg_jamsil_lobby",
-  CH04: "bg_tancheon_embankment",
-  CH05: "bg_pangyo_interchange"
-};
+export const CHAPTER_DEFAULT_ART_KEYS: Record<ChapterId, string> = Object.fromEntries(
+  IMPLEMENTED_CHAPTER_IDS.map((chapterId) => [
+    chapterId,
+    getChapterRuntimeConfig(chapterId)?.default_art_key ?? `chapter_${chapterId.toLowerCase()}_placeholder`
+  ])
+) as Record<ChapterId, string>;
 
 function entry(
   key: string,
@@ -153,6 +153,109 @@ export const CORE_IMAGE_GENERATION_MATRIX: ImageMatrixEntry[] = [
   })
 ];
 
+export const PART1_RUNTIME_IMAGE_MATRIX: ImageMatrixEntry[] = [
+  entry("briefing_p1_ch01", "background", "nanobanana", "Chapter 1 briefing still, ruined Yeouido broadcast district at dawn, grounded Korean disaster realism", {
+    chapter_id: "CH01",
+    chapter_default_key: "bg_yeouido_ashroad"
+  }),
+  entry("briefing_p1_ch02", "background", "nanobanana", "Chapter 2 briefing still, flooded Noryangjin corridor with market pressure and dim red lamps", {
+    chapter_id: "CH02",
+    chapter_default_key: "bg_noryangjin_market"
+  }),
+  entry("briefing_p1_ch03", "background", "nanobanana", "Chapter 3 briefing still, cold Jamsil tower interior and fractured glass skybridge", {
+    chapter_id: "CH03",
+    chapter_default_key: "bg_jamsil_lobby"
+  }),
+  entry("briefing_p1_ch04", "background", "nanobanana", "Chapter 4 briefing still, logistics belt with medicine crates, warning strobes and dead conveyors", {
+    chapter_id: "CH04",
+    chapter_default_key: "bg_tancheon_embankment"
+  }),
+  entry("briefing_p1_ch05", "background", "nanobanana", "Chapter 5 briefing still, Pangyo mirror center entrance with sealed gates and cold blue security light", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_pangyo_interchange"
+  }),
+  entry("map_p1_ch01", "background", "nanobanana", "Hero map background for Chapter 1, Yeouido ash roads and broadcast tower silhouette", {
+    chapter_id: "CH01",
+    chapter_default_key: "bg_yeouido_ashroad"
+  }),
+  entry("map_p1_ch02", "background", "nanobanana", "Hero map background for Chapter 2, flooded Noryangjin market with black water paths", {
+    chapter_id: "CH02",
+    chapter_default_key: "bg_noryangjin_market"
+  }),
+  entry("map_p1_ch03", "background", "nanobanana", "Hero map background for Chapter 3, layered high-rise floors and exposed skybridge void", {
+    chapter_id: "CH03",
+    chapter_default_key: "bg_jamsil_showroom"
+  }),
+  entry("map_p1_ch04", "background", "nanobanana", "Hero map background for Chapter 4, logistics embankment and industrial delivery tunnel access", {
+    chapter_id: "CH04",
+    chapter_default_key: "bg_tancheon_embankment"
+  }),
+  entry("map_p1_ch05", "background", "nanobanana", "Hero map background for Chapter 5, Pangyo mirror-center interchange with sealed access lanes", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_pangyo_interchange"
+  }),
+  entry("result_p1_ch01", "background", "nanobanana", "Chapter 1 result card art, rooftop signal aftermath above a ruined Korean broadcast district", {
+    chapter_id: "CH01",
+    chapter_default_key: "bg_rooftop_signal"
+  }),
+  entry("result_p1_ch02", "background", "nanobanana", "Chapter 2 result card art, drenched drainage route and improvised evac line at the pier", {
+    chapter_id: "CH02",
+    chapter_default_key: "bg_dongjak_culvert"
+  }),
+  entry("result_p1_ch03", "background", "nanobanana", "Chapter 3 result card art, survivors crossing a rooftop escape with glass shards and cold dawn", {
+    chapter_id: "CH03",
+    chapter_default_key: "bg_rooftop_escape"
+  }),
+  entry("result_p1_ch04", "background", "nanobanana", "Chapter 4 result card art, medicine convoy path through dead sorting infrastructure", {
+    chapter_id: "CH04",
+    chapter_default_key: "bg_delivery_tunnel"
+  }),
+  entry("result_p1_ch05", "background", "nanobanana", "Chapter 5 result card art, mirror-center exit with the southern road opening ahead", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_arkp_exit"
+  }),
+  entry("ending_p1_signal_keepers", "background", "nanobanana", "Part 1 ending art, survivors preserving signal archives and leaving under a pale hopeful dawn", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_arkp_exit"
+  }),
+  entry("ending_p1_controlled_passage", "background", "nanobanana", "Part 1 ending art, controlled checkpoint opening while sealed records remain guarded", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_pangyo_lobby"
+  }),
+  entry("ending_p1_smuggler_tide", "background", "nanobanana", "Part 1 ending art, forged passage over black water with a morally compromised escape team", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_dongjak_culvert"
+  }),
+  entry("ending_p1_ashen_escape", "background", "nanobanana", "Part 1 ending art, ash-blown evac road and burned evidence drifting through gray light", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_arkp_exit"
+  }),
+  entry("ending_p1_mirror_witness", "background", "nanobanana", "Part 1 ending art, hidden evidence and bypassed mirror relay behind the departing team", {
+    chapter_id: "CH05",
+    chapter_default_key: "bg_arkp_serverhall"
+  }),
+  entry("ending_thumb_p1_signal_keepers", "document", "asset-nano", "Gallery thumbnail card for Signal Keepers ending", {
+    chapter_id: "CH05",
+    chapter_default_key: "ending_p1_signal_keepers"
+  }),
+  entry("ending_thumb_p1_controlled_passage", "document", "asset-nano", "Gallery thumbnail card for Controlled Passage ending", {
+    chapter_id: "CH05",
+    chapter_default_key: "ending_p1_controlled_passage"
+  }),
+  entry("ending_thumb_p1_smuggler_tide", "document", "asset-nano", "Gallery thumbnail card for Smuggler Tide ending", {
+    chapter_id: "CH05",
+    chapter_default_key: "ending_p1_smuggler_tide"
+  }),
+  entry("ending_thumb_p1_ashen_escape", "document", "asset-nano", "Gallery thumbnail card for Ashen Escape ending", {
+    chapter_id: "CH05",
+    chapter_default_key: "ending_p1_ashen_escape"
+  }),
+  entry("ending_thumb_p1_mirror_witness", "document", "asset-nano", "Gallery thumbnail card for Mirror Witness ending", {
+    chapter_id: "CH05",
+    chapter_default_key: "ending_p1_mirror_witness"
+  })
+];
+
 export const SUPPLEMENTAL_DOCUMENT_IMAGE_MATRIX: ImageMatrixEntry[] = [
   entry("doc_broadcast_emergency_roster", "document", "asset-nano", "Flat document card for a broadcast station emergency roster, Korean paperwork UI", {
     chapter_id: "CH01",
@@ -188,11 +291,12 @@ export const SUPPLEMENTAL_DOCUMENT_IMAGE_MATRIX: ImageMatrixEntry[] = [
 
 export const CONTENT_IMAGE_GENERATION_MATRIX: ImageMatrixEntry[] = [
   ...CORE_IMAGE_GENERATION_MATRIX,
+  ...PART1_RUNTIME_IMAGE_MATRIX,
   ...SUPPLEMENTAL_DOCUMENT_IMAGE_MATRIX
 ];
 
 export function listCoreImageGenerationJobs(): AssetGenerationJob[] {
-  return CORE_IMAGE_GENERATION_MATRIX.map((entryItem) => ({
+  return [...CORE_IMAGE_GENERATION_MATRIX, ...PART1_RUNTIME_IMAGE_MATRIX].map((entryItem) => ({
     key: entryItem.key,
     group: entryItem.group,
     route: entryItem.route,
