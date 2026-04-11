@@ -4,6 +4,7 @@ import type {
   MediaMetaDefinition,
   VideoRegistryEntry
 } from "../types/game";
+import { getChapterRuntimeConfig } from "../../packages/world-registry/src";
 
 export interface Part1ChapterMediaDefinition {
   chapter_id: ChapterId;
@@ -487,7 +488,27 @@ export function getPart1VideoRegistryEntry(videoId?: string | null): VideoRegist
     return undefined;
   }
 
-  return PART1_VIDEO_REGISTRY[videoId];
+  const direct = PART1_VIDEO_REGISTRY[videoId];
+  if (direct) {
+    return direct;
+  }
+
+  const openingMatch = /^P([2-4])_(CH\d{2})_OPENING$/u.exec(videoId);
+  if (!openingMatch) {
+    return undefined;
+  }
+
+  const [, partNo, chapterId] = openingMatch;
+  const posterArtKey = getChapterRuntimeConfig(chapterId)?.default_art_key ?? `opening_${chapterId.toLowerCase()}_poster`;
+  return {
+    video_id: videoId,
+    chapter_id: chapterId as ChapterId,
+    poster_art_key: posterArtKey,
+    title_default: `${chapterId} Opening`,
+    subtitle_default: `Part ${partNo} cinematic`,
+    caption_default: `${chapterId} opening cinematic generated from Stitch prompt queue.`,
+    auto_surface: "opening"
+  };
 }
 
 export function getDefaultMediaMeta(id?: string | null): MediaMetaDefinition | undefined {

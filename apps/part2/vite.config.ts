@@ -9,6 +9,11 @@ const workspaceRoot = resolve(appRoot, "../..");
 export default defineConfig({
   root: appRoot,
   plugins: [react()],
+  define: {
+    "import.meta.env.VITE_PART_ID": JSON.stringify("P2"),
+    "import.meta.env.VITE_APP_ID": JSON.stringify("donggrolgamebook-p2"),
+    "import.meta.env.VITE_SAVE_SLOT": JSON.stringify("main")
+  },
   server: {
     fs: {
       allow: [workspaceRoot]

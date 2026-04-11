@@ -1,0 +1,18 @@
+{
+  "video_id": "P2_CH09_OPENING",
+  "scene_id": "CH09_OPENING_SMOKE_DEPOT_TOXIC",
+  "chapter_id": "CH09",
+  "part_id": "P2",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "Cinematic Korean apocalypse opening for CH09 연기 저장고. checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors. Location mood: 연료 저장 탱크 구역, 배터리 적재장, 연기 배출 제어실. Show route pressure, practical survival gear, and incoming threat 연기 창고군. Grounded realism, no fantasy.",
+  "prompt_ko_context": "호송 인원과 연료 적재를 동시에 맞춘다.",
+  "camera_notes": "medium lens, forward pressure, linear escape framing. Start wide, move into corridor pressure, end on route decision beat.",
+  "audio_notes": "Base cue red_corridor. Layer alarm pulses, crowd pressure ambience, and metallic reverb.",
+  "source_art_key": "ch09_smoke_depot_toxic_entry",
+  "target_video_path": "public/generated/videos/P2_CH09_OPENING.mp4",
+  "target_poster_path": "public/generated/images/ch09_smoke_depot_toxic_entry.webp",
+  "stitch_prompt": "Cinematic Korean apocalypse opening for CH09 연기 저장고. checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors. Location mood: 연료 저장 탱크 구역, 배터리 적재장, 연기 배출 제어실. Show route pressure, practical survival gear, and incoming threat 연기 창고군. Grounded realism, no fantasy. Match style pack P2.smoke_depot_toxic.",
+  "file": "P2_CH09_OPENING.json"
+}

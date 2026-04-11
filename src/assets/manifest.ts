@@ -1,4 +1,5 @@
 import { getChapterRuntimeConfig, type LegacyFallbackSlot } from "../../packages/world-registry/src";
+import runtimeArtAliasManifest from "../../docs/asset-prompt-pack/master/RUNTIME_ART_KEY_ALIAS.json";
 import type {
   AssetGenerationJob,
   AssetModelRoute,
@@ -281,6 +282,19 @@ const KEYED_FALLBACK_ART_KEYS: Record<string, string[]> = {
 
 const GENERIC_FALLBACK_IMAGES = [startBackground, inspectionBackground, gateBackground, transmitterBackground];
 
+interface RuntimeArtAliasEntry {
+  runtime_art_key: string;
+  art_key_final: string;
+  filename_target: string;
+}
+
+const RUNTIME_ALIAS_BY_KEY = new Map<string, RuntimeArtAliasEntry>(
+  ((runtimeArtAliasManifest as { mappings?: RuntimeArtAliasEntry[] }).mappings ?? []).map((entry) => [
+    entry.runtime_art_key,
+    entry
+  ])
+);
+
 export const CONTENT_ALIASES: ContentAlias[] = [
   {
     kind: "npc",
@@ -455,6 +469,28 @@ function chapterFallbackCandidates(chapterId?: ChapterId): string[] {
   ]);
 }
 
+function runtimeAliasCandidates(key: string): {
+  direct: string[];
+  generated: string[];
+} {
+  const alias = RUNTIME_ALIAS_BY_KEY.get(key);
+  if (!alias) {
+    return { direct: [], generated: [] };
+  }
+
+  const filenameStem = basenameWithoutExtension(alias.filename_target);
+  return {
+    direct: dedupe([
+      ...directCandidatesForKey(filenameStem),
+      ...directCandidatesForKey(alias.art_key_final)
+    ]),
+    generated: dedupe([
+      ...publicGeneratedCandidates(alias.art_key_final),
+      ...publicGeneratedCandidates(filenameStem)
+    ])
+  };
+}
+
 function keyedFallbackCandidates(key: string): string[] {
   if ((STRICT_PART1_DROP_KEYS as readonly string[]).includes(key)) {
     return [];
@@ -479,12 +515,17 @@ export function resolveAssetKey(key?: string | null, chapterId?: ChapterId): Ass
   const defaultArtKey = chapterId ? getChapterRuntimeConfig(chapterId)?.default_art_key : null;
   const safeKey = key?.trim() || defaultArtKey || `chapter_${chapterId ?? "unknown"}_placeholder`;
   const strictDrop = (STRICT_PART1_DROP_KEYS as readonly string[]).includes(safeKey);
-  const directCandidates = directCandidatesForKey(safeKey);
+  const aliasCandidates = runtimeAliasCandidates(safeKey);
+  const directCandidates = dedupe([...directCandidatesForKey(safeKey), ...aliasCandidates.direct]);
   const generatedCandidates = safeKey.startsWith("/")
     ? []
     : strictDrop
       ? publicGeneratedCandidates(safeKey)
-      : dedupe([...publicGeneratedCandidates(safeKey), ...legacyGeneratedCandidates(safeKey)]);
+      : dedupe([
+          ...publicGeneratedCandidates(safeKey),
+          ...aliasCandidates.generated,
+          ...legacyGeneratedCandidates(safeKey)
+        ]);
   const fallbackCandidates = dedupe([
     ...keyedFallbackCandidates(safeKey),
     ...(strictDrop ? [] : chapterFallbackCandidates(chapterId)),

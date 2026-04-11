@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArtFrame, VideoCard } from "./assets/runtimeMedia";
+import { CURRENT_PART_ID } from "./app/appContext";
 import { PART1_ENDINGS, PART1_ENDING_ORDER } from "./content/part1Endings";
 import { getPart1ChapterMedia, getPart1EndingMedia } from "./content/part1Media";
 import { useGameStore } from "./store/gameStore";
@@ -35,6 +36,8 @@ function StatBar({ label, value, maxValue, tone }: { label: string; value: numbe
 }
 
 function App() {
+  const isPart1 = CURRENT_PART_ID === "P1";
+  const partLabel = `Part ${CURRENT_PART_ID.replace("P", "")}`;
   const {
     bootState,
     bootError,
@@ -44,6 +47,7 @@ function App() {
     selectedChoiceId,
     bootstrapPack,
     startMission,
+    proceedHub,
     moveToNode,
     selectChoice,
     startBossCombat,
@@ -58,8 +62,8 @@ function App() {
   const [selectedGalleryEndingId, setSelectedGalleryEndingId] = useState<EndingId | null>(null);
   const currentEndingId = runtime?.chapter_outcome?.ending_id;
   const unlockedEndingIds = useMemo(
-    () => (runtime ? PART1_ENDING_ORDER.filter((endingId) => Boolean(runtime.unlocked_endings[endingId])) : []),
-    [runtime]
+    () => (isPart1 && runtime ? PART1_ENDING_ORDER.filter((endingId) => Boolean(runtime.unlocked_endings[endingId])) : []),
+    [isPart1, runtime]
   );
 
   useEffect(() => {
@@ -67,7 +71,7 @@ function App() {
   }, [bootstrapPack]);
 
   useEffect(() => {
-    if (!runtime || runtime.ui_screen !== "ending_gallery") {
+    if (!isPart1 || !runtime || runtime.ui_screen !== "ending_gallery") {
       return;
     }
 
@@ -77,15 +81,15 @@ function App() {
     }
 
     setSelectedGalleryEndingId((previous) => previous ?? unlockedEndingIds[0] ?? PART1_ENDING_ORDER[0]);
-  }, [currentEndingId, runtime, unlockedEndingIds]);
+  }, [currentEndingId, isPart1, runtime, unlockedEndingIds]);
 
   if (bootState === "idle" || bootState === "loading" || !content || !runtime) {
     return (
       <div className="boot-screen">
         <div className={`boot-card ${bootState === "error" ? "is-error" : ""}`}>
-          <p className="eyebrow">DonggrolGameBook Part 1</p>
+          <p className="eyebrow">DonggrolGameBook {partLabel}</p>
           <h1>Runtime Boot</h1>
-          <p className="muted-copy">{bootState === "error" ? bootError : "Loading CH01~CH05 runtime and generated asset contract."}</p>
+          <p className="muted-copy">{bootState === "error" ? bootError : `Loading ${partLabel} runtime and generated asset contract.`}</p>
         </div>
       </div>
     );
@@ -97,6 +101,7 @@ function App() {
   const currentNode = runtime.current_node_id ? chapter.nodes_by_id[runtime.current_node_id] : null;
   const currentEvent = runtime.current_event_id ? chapter.events_by_id[runtime.current_event_id] : null;
   const chapterMedia = getPart1ChapterMedia(runtime.current_chapter_id);
+  const openingVideoId = chapterMedia?.opening_video_id ?? `${CURRENT_PART_ID}_${runtime.current_chapter_id}_OPENING`;
   const currentEndingMedia = currentEndingId ? getPart1EndingMedia(currentEndingId) : null;
   const selectedEndingId = selectedGalleryEndingId ?? currentEndingId ?? unlockedEndingIds[0] ?? PART1_ENDING_ORDER[0];
   const selectedEnding = PART1_ENDINGS[selectedEndingId];
@@ -146,9 +151,11 @@ function App() {
             <p className="dash-muted">{screen?.purpose}</p>
             <p className="dash-muted">{routeSummary}</p>
             <div className="choice-actions">
-              <button className="ghost-button" onClick={openEndingGallery}>
-                Ending Gallery
-              </button>
+              {isPart1 ? (
+                <button className="ghost-button" onClick={openEndingGallery}>
+                  Ending Gallery
+                </button>
+              ) : null}
               <button className="ghost-button" onClick={resetRun}>
                 Restart Run
               </button>
@@ -191,7 +198,7 @@ function App() {
               </div>
 
               <div className="screen-side-stack briefing-visual-panel">
-                <VideoCard videoId={chapterMedia?.opening_video_id} chapterId={runtime.current_chapter_id} />
+                <VideoCard videoId={openingVideoId} chapterId={runtime.current_chapter_id} />
                 <div className="briefing-visual-grid">
                   <div className="briefing-visual-large">
                     <ArtFrame
@@ -298,20 +305,33 @@ function App() {
             <div className="screen-card split-layout">
               <div>
                 <p className="eyebrow">{currentEvent?.event_type ?? runtime.ui_screen}</p>
-                <h2>{currentEvent?.title}</h2>
-                <div className="event-summary">{currentEvent?.text.summary}</div>
-                {currentEvent?.text.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-
-                <div className="choice-list">
-                  {currentEvent?.choices.map((choice) => (
-                    <button key={choice.choice_id} className="choice-card" onClick={() => selectChoice(choice.choice_id)}>
-                      <strong>{choice.label}</strong>
-                      <span>{choice.preview ?? "The next node will react to this choice."}</span>
-                    </button>
-                  ))}
-                </div>
+                <h2>{currentEvent?.title ?? screen?.title ?? chapter.title}</h2>
+                {currentEvent ? (
+                  <>
+                    <div className="event-summary">{currentEvent.text.summary}</div>
+                    {currentEvent.text.body.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    <div className="choice-list">
+                      {currentEvent.choices.map((choice) => (
+                        <button key={choice.choice_id} className="choice-card" onClick={() => selectChoice(choice.choice_id)}>
+                          <strong>{choice.label}</strong>
+                          <span>{choice.preview ?? "The next node will react to this choice."}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="event-summary">{screen?.purpose ?? "Route hub overview."}</div>
+                    <p>{chapter.role}</p>
+                    <div className="choice-actions">
+                      <button className="primary-button" onClick={proceedHub}>
+                        Continue To Map
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="screen-side-stack portrait-panel">
@@ -447,7 +467,9 @@ function App() {
                 <p className="eyebrow">{runtime.chapter_outcome.ending_id ? "Part 1 Ending" : "Chapter Result"}</p>
                 <h2>{runtime.chapter_outcome.ending_title ?? runtime.chapter_outcome.title}</h2>
                 <p>{runtime.chapter_outcome.summary}</p>
-                <p className="muted-copy">Next chapter: {runtime.chapter_outcome.next_chapter_id ?? "Part 1 complete"}</p>
+                <p className="muted-copy">
+                  Next chapter: {runtime.chapter_outcome.next_chapter_id ?? `${partLabel} complete`}
+                </p>
                 {runtime.chapter_outcome.ending_id ? (
                   <div className="result-hook-card">
                     <strong>{PART1_ENDINGS[runtime.chapter_outcome.ending_id].hint}</strong>
@@ -455,9 +477,13 @@ function App() {
                 ) : null}
                 <div className="choice-actions">
                   <button className="primary-button" onClick={confirmResult}>
-                    {runtime.chapter_outcome.ending_id ? "Open Ending Gallery" : "Next Chapter"}
+                    {runtime.chapter_outcome.ending_id
+                      ? "Open Ending Gallery"
+                      : runtime.chapter_outcome.campaign_complete
+                        ? "Restart Part"
+                        : "Next Chapter"}
                   </button>
-                  {runtime.chapter_outcome.ending_id ? (
+                  {runtime.chapter_outcome.ending_id || runtime.chapter_outcome.campaign_complete ? (
                     <button className="ghost-button" onClick={resetRun}>
                       Restart Run
                     </button>
@@ -477,7 +503,7 @@ function App() {
             </div>
           ) : null}
 
-          {runtime.ui_screen === "ending_gallery" ? (
+          {isPart1 && runtime.ui_screen === "ending_gallery" ? (
             <div className="screen-card ending-gallery-screen">
               <div className="ending-gallery-head">
                 <div>

@@ -102,6 +102,109 @@ const partFromChapter = (chapterId) => {
   if (no <= 15) return "P3";
   return "P4";
 };
+const VIDEO_PROMPT_PARTS = ["P2", "P3", "P4"];
+const VIDEO_PROMPT_DIR_BY_PART = {
+  P2: "part2-video-prompts",
+  P3: "part3-video-prompts",
+  P4: "part4-video-prompts"
+};
+
+const partNo = (partId) => partId.replace("P", "");
+
+function createOpeningVideoPrompt(chapter, enemyMap) {
+  const partId = partFromChapter(chapter.chapter_id);
+  const chapterNo = chapterNumber(chapter.chapter_id);
+  const firstEvent = chapter.events[0];
+  const firstMusic = firstEvent?.presentation?.music_key ?? `${partId.toLowerCase()}_opening`;
+  const sourceArtKey =
+    collectRuntimeArtKeys(chapter).find((key) => key.includes("_entry")) ??
+    firstEvent?.presentation?.art_key ??
+    `pending_${chapter.chapter_id.toLowerCase()}_opening`;
+  const boss = pickBoss(chapter, enemyMap);
+  const file = `P${partNo(partId)}_${chapter.chapter_id}_OPENING.json`;
+  const videoId = `P${partNo(partId)}_${chapter.chapter_id}_OPENING`;
+  const sceneId = `${chapter.chapter_id}_OPENING_${slug(chapter.ui_profile.theme).toUpperCase()}`;
+  const targetVideoPath = `public/generated/videos/${videoId}.mp4`;
+  const targetPosterPath = `public/generated/images/${sourceArtKey}.webp`;
+  const promptEn = [
+    `Cinematic Korean apocalypse opening for ${chapter.chapter_id} ${chapter.title}.`,
+    `${PART_CONFIG[partId].tone}.`,
+    `Location mood: ${chapter.nodes.map((node) => node.name).slice(0, 3).join(", ")}.`,
+    `Show route pressure, practical survival gear, and incoming threat ${boss.bossName}.`,
+    `Grounded realism, no fantasy.`
+  ].join(" ");
+
+  return {
+    video_id: videoId,
+    scene_id: sceneId,
+    chapter_id: chapter.chapter_id,
+    part_id: partId,
+    kind: "opening",
+    duration: 15,
+    aspect_ratio: "16:9",
+    prompt_en: promptEn,
+    prompt_ko_context:
+      firstEvent?.text?.summary ?? `${chapter.chapter_id} 오프닝. ${chapter.role}.`,
+    camera_notes: `${PART_CONFIG[partId].camera}. Start wide, move into corridor pressure, end on route decision beat.`,
+    audio_notes: `Base cue ${firstMusic}. Layer alarm pulses, crowd pressure ambience, and metallic reverb.`,
+    source_art_key: sourceArtKey,
+    target_video_path: targetVideoPath,
+    target_poster_path: targetPosterPath,
+    stitch_prompt: `${promptEn} Match style pack ${partId}.${chapter.ui_profile.theme}.`,
+    file
+  };
+}
+
+function buildVideoManifest(partId, prompts) {
+  return {
+    version: "1.0.0",
+    scope: `${VIDEO_PROMPT_DIR_BY_PART[partId]}`,
+    part_id: partId,
+    count: prompts.length,
+    prompts: prompts.map((prompt) => ({
+      video_id: prompt.video_id,
+      scene_id: prompt.scene_id,
+      chapter_id: prompt.chapter_id,
+      kind: prompt.kind,
+      file: prompt.file,
+      source_art_key: prompt.source_art_key,
+      target_video_path: prompt.target_video_path,
+      target_poster_path: prompt.target_poster_path
+    }))
+  };
+}
+
+function buildStitchRenderQueue(masterAssets, videoPromptsByPart) {
+  const imageTasks = masterAssets
+    .filter((asset) => VIDEO_PROMPT_PARTS.includes(asset.part_id))
+    .map((asset) => ({
+      task_id: `img:${asset.art_key_final}`,
+      kind: "image",
+      part_id: asset.part_id,
+      chapter_id: asset.chapter_id,
+      prompt_file: asset.prompt_file,
+      target_path: `${asset.sync_target_path}${asset.filename_target}`,
+      stitch_space: `donggrol_${asset.part_id.toLowerCase()}_images`
+    }));
+  const videoTasks = Object.entries(videoPromptsByPart).flatMap(([partId, prompts]) =>
+    prompts.map((prompt) => ({
+      task_id: `video:${prompt.video_id}`,
+      kind: "video",
+      part_id: partId,
+      chapter_id: prompt.chapter_id,
+      prompt_file: `docs/asset-prompt-pack/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
+      target_path: prompt.target_video_path,
+      stitch_space: `donggrol_${partId.toLowerCase()}_videos`
+    }))
+  );
+
+  return {
+    version: "1.0.0",
+    image_task_count: imageTasks.length,
+    video_task_count: videoTasks.length,
+    tasks: [...imageTasks, ...videoTasks]
+  };
+}
 
 function collectRuntimeArtKeys(chapter) {
   return unique(chapter.events.map((event) => event.presentation?.art_key));
@@ -401,6 +504,7 @@ docs/asset-prompt-pack/
   master/
     MASTER_ASSET_MANIFEST.json
     RUNTIME_ART_KEY_ALIAS.json
+    STITCH_RENDER_QUEUE.json
     SYNC_CHECKLIST.md
   part-guides/
     P1.md
@@ -415,6 +519,15 @@ docs/asset-prompt-pack/
       threat/
       poster/
       teaser/
+  part2-video-prompts/
+    manifest.json
+    P2_CH06_OPENING.json ... P2_CH10_OPENING.json
+  part3-video-prompts/
+    manifest.json
+    P3_CH11_OPENING.json ... P3_CH15_OPENING.json
+  part4-video-prompts/
+    manifest.json
+    P4_CH16_OPENING.json ... P4_CH20_OPENING.json
 \`\`\`
 
 ## 생성 순서
@@ -438,6 +551,7 @@ docs/asset-prompt-pack/
 - threat: ` + "`4:5`" + `
 - poster: ` + "`4:5`" + `
 - teaser: ` + "`16:9`" + `
+- opening video: ` + "`16:9`" + `
 `;
 }
 
@@ -502,10 +616,11 @@ async function main() {
     chapters.push(chapter);
   }
 
-  await fs.rm(OUT_ROOT, { recursive: true, force: true });
+  await fs.mkdir(OUT_ROOT, { recursive: true });
 
   const masterAssets = [];
   const aliasMappings = [];
+  const videoPromptsByPart = { P2: [], P3: [], P4: [] };
   for (const chapter of chapters) {
     const assets = buildAssets(chapter, npcMap, enemyMap);
     const ctx = {
@@ -536,6 +651,11 @@ async function main() {
       await writeText(path.join(ROOT, asset.prompt_path), buildPromptMarkdown(asset, ctx));
     }
     aliasMappings.push(...buildAliasMappings(chapter, assets));
+
+    const chapterPart = partFromChapter(chapter.chapter_id);
+    if (VIDEO_PROMPT_PARTS.includes(chapterPart)) {
+      videoPromptsByPart[chapterPart].push(createOpeningVideoPrompt(chapter, enemyMap));
+    }
   }
 
   await writeText(path.join(OUT_ROOT, "README.md"), buildReadme());
@@ -543,6 +663,16 @@ async function main() {
   await Promise.all(Object.keys(PART_CONFIG).map((partId) => writeText(path.join(OUT_ROOT, "part-guides", `${partId}.md`), buildPartGuide(partId))));
   await writeJson(path.join(OUT_ROOT, "master", "MASTER_ASSET_MANIFEST.json"), { version: "1.0.0", asset_count: masterAssets.length, assets: masterAssets });
   await writeJson(path.join(OUT_ROOT, "master", "RUNTIME_ART_KEY_ALIAS.json"), { version: "1.0.0", mapping_count: aliasMappings.length, mappings: aliasMappings });
+  await writeJson(path.join(OUT_ROOT, "master", "STITCH_RENDER_QUEUE.json"), buildStitchRenderQueue(masterAssets, videoPromptsByPart));
+
+  for (const partId of VIDEO_PROMPT_PARTS) {
+    const dir = path.join(OUT_ROOT, VIDEO_PROMPT_DIR_BY_PART[partId]);
+    const prompts = videoPromptsByPart[partId];
+    await writeJson(path.join(dir, "manifest.json"), buildVideoManifest(partId, prompts));
+    for (const prompt of prompts) {
+      await writeJson(path.join(dir, prompt.file), prompt);
+    }
+  }
 
   const artKeySet = new Set(masterAssets.map((asset) => asset.art_key_final));
   const fileSet = new Set(masterAssets.map((asset) => asset.filename_target));
@@ -560,6 +690,8 @@ async function main() {
     }
   }
   if (promptFiles.length !== 180) throw new Error(`expected 180 prompt files, got ${promptFiles.length}`);
+  const videoPromptFiles = Object.values(videoPromptsByPart).reduce((count, entries) => count + entries.length, 0);
+  if (videoPromptFiles !== 15) throw new Error(`expected 15 video prompts for P2~P4, got ${videoPromptFiles}`);
 
   const runtimeCh0620 = chapters
     .filter((chapter) => Number(chapterNumber(chapter.chapter_id)) >= 6)
@@ -569,7 +701,9 @@ async function main() {
     if (!aliasSet.has(runtimeArtKey)) throw new Error(`missing runtime alias for ${runtimeArtKey}`);
   }
 
-  console.log(`generated asset prompt pack: ${masterAssets.length} assets, ${promptFiles.length} prompt files`);
+  console.log(
+    `generated asset prompt pack: ${masterAssets.length} assets, ${promptFiles.length} image prompts, ${videoPromptFiles} video prompts`
+  );
 }
 
 main().catch((error) => {

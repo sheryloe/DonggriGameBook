@@ -11,6 +11,7 @@ docs/asset-prompt-pack/
   master/
     MASTER_ASSET_MANIFEST.json
     RUNTIME_ART_KEY_ALIAS.json
+    STITCH_RENDER_QUEUE.json
     SYNC_CHECKLIST.md
   part-guides/
     P1.md
@@ -25,6 +26,15 @@ docs/asset-prompt-pack/
       threat/
       poster/
       teaser/
+  part2-video-prompts/
+    manifest.json
+    P2_CH06_OPENING.json ... P2_CH10_OPENING.json
+  part3-video-prompts/
+    manifest.json
+    P3_CH11_OPENING.json ... P3_CH15_OPENING.json
+  part4-video-prompts/
+    manifest.json
+    P4_CH16_OPENING.json ... P4_CH20_OPENING.json
 ```
 
 ## 생성 순서
@@ -48,3 +58,4 @@ docs/asset-prompt-pack/
 - threat: `4:5`
 - poster: `4:5`
 - teaser: `16:9`
+- opening video: `16:9`

@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "scope": "part4-video-prompts",
+  "part_id": "P4",
+  "count": 5,
+  "prompts": [
+    {
+      "video_id": "P4_CH16_OPENING",
+      "scene_id": "CH16_OPENING_FRACTURED_DUNE_LOSS",
+      "chapter_id": "CH16",
+      "kind": "opening",
+      "file": "P4_CH16_OPENING.json",
+      "source_art_key": "ch16_fractured_dune_loss_entry",
+      "target_video_path": "public/generated/videos/P4_CH16_OPENING.mp4",
+      "target_poster_path": "public/generated/images/ch16_fractured_dune_loss_entry.webp"
+    },
+    {
+      "video_id": "P4_CH17_OPENING",
+      "scene_id": "CH17_OPENING_FRAGMENT_GATE_CORROSION",
+      "chapter_id": "CH17",
+      "kind": "opening",
+      "file": "P4_CH17_OPENING.json",
+      "source_art_key": "ch17_fragment_gate_corrosion_entry",
+      "target_video_path": "public/generated/videos/P4_CH17_OPENING.mp4",
+      "target_poster_path": "public/generated/images/ch17_fragment_gate_corrosion_entry.webp"
+    },
+    {
+      "video_id": "P4_CH18_OPENING",
+      "scene_id": "CH18_OPENING_SALT_STATION_JUDGEMENT",
+      "chapter_id": "CH18",
+      "kind": "opening",
+      "file": "P4_CH18_OPENING.json",
+      "source_art_key": "ch18_salt_station_judgement_entry",
+      "target_video_path": "public/generated/videos/P4_CH18_OPENING.mp4",
+      "target_poster_path": "public/generated/images/ch18_salt_station_judgement_entry.webp"
+    },
+    {
+      "video_id": "P4_CH19_OPENING",
+      "scene_id": "CH19_OPENING_OUTER_SEA_PLATFORM_POLITICS",
+      "chapter_id": "CH19",
+      "kind": "opening",
+      "file": "P4_CH19_OPENING.json",
+      "source_art_key": "ch19_outer_sea_platform_politics_entry",
+      "target_video_path": "public/generated/videos/P4_CH19_OPENING.mp4",
+      "target_poster_path": "public/generated/images/ch19_outer_sea_platform_politics_entry.webp"
+    },
+    {
+      "video_id": "P4_CH20_OPENING",
+      "scene_id": "CH20_OPENING_DOKDO_GATE_CORE",
+      "chapter_id": "CH20",
+      "kind": "opening",
+      "file": "P4_CH20_OPENING.json",
+      "source_art_key": "ch20_dokdo_gate_core_entry",
+      "target_video_path": "public/generated/videos/P4_CH20_OPENING.mp4",
+      "target_poster_path": "public/generated/images/ch20_dokdo_gate_core_entry.webp"
+    }
+  ]
+}

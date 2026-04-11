@@ -24,7 +24,8 @@ export const PART_CONTENT_BUNDLES: Record<PartId, PartContentBundle> = {
   P2: {
     part_id: "P2",
     app_id: "donggrolgamebook-p2",
-    status: "planned",
+    status: "implemented",
+    primary_manifest_path: "package_manifest.json",
     docs: [
       "docs/world/part-02-world-expansion.md",
       "docs/world/chapter-synopsis-ch06-ch20.md"
@@ -34,7 +35,8 @@ export const PART_CONTENT_BUNDLES: Record<PartId, PartContentBundle> = {
   P3: {
     part_id: "P3",
     app_id: "donggrolgamebook-p3",
-    status: "planned",
+    status: "implemented",
+    primary_manifest_path: "package_manifest.json",
     docs: [
       "docs/world/part-03-world-expansion.md",
       "docs/world/chapter-synopsis-ch06-ch20.md"
@@ -44,7 +46,8 @@ export const PART_CONTENT_BUNDLES: Record<PartId, PartContentBundle> = {
   P4: {
     part_id: "P4",
     app_id: "donggrolgamebook-p4",
-    status: "planned",
+    status: "implemented",
+    primary_manifest_path: "package_manifest.json",
     docs: [
       "docs/world/part-04-world-expansion.md",
       "docs/world/chapter-synopsis-ch06-ch20.md"

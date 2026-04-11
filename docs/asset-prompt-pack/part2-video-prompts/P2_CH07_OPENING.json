@@ -1,0 +1,18 @@
+{
+  "video_id": "P2_CH07_OPENING",
+  "scene_id": "CH07_OPENING_RED_CORRIDOR_PURSUIT",
+  "chapter_id": "CH07",
+  "part_id": "P2",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "Cinematic Korean apocalypse opening for CH07 적색 회랑. checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors. Location mood: 붉은 비상 회랑, 붕괴 고가 하부, 중계선 출구 펌프실. Show route pressure, practical survival gear, and incoming threat 적색 추적자. Grounded realism, no fantasy.",
+  "prompt_ko_context": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.",
+  "camera_notes": "medium lens, forward pressure, linear escape framing. Start wide, move into corridor pressure, end on route decision beat.",
+  "audio_notes": "Base cue red_corridor. Layer alarm pulses, crowd pressure ambience, and metallic reverb.",
+  "source_art_key": "ch07_red_corridor_pursuit_entry",
+  "target_video_path": "public/generated/videos/P2_CH07_OPENING.mp4",
+  "target_poster_path": "public/generated/images/ch07_red_corridor_pursuit_entry.webp",
+  "stitch_prompt": "Cinematic Korean apocalypse opening for CH07 적색 회랑. checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors. Location mood: 붉은 비상 회랑, 붕괴 고가 하부, 중계선 출구 펌프실. Show route pressure, practical survival gear, and incoming threat 적색 추적자. Grounded realism, no fantasy. Match style pack P2.red_corridor_pursuit.",
+  "file": "P2_CH07_OPENING.json"
+}

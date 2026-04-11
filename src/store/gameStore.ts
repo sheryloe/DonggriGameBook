@@ -5,7 +5,14 @@ import { getChapterCatalogEntry } from "../../packages/world-registry/src";
 import { CURRENT_APP_ID, CURRENT_PART_ID, CURRENT_PART_START_CHAPTER, CURRENT_SAVE_NAMESPACE } from "../app/appContext";
 import { getPart1EndingDefinition } from "../content/part1Endings";
 import { createBattleState, resolveBattleTurn } from "../engine/battleResolver";
-import { canSelectChoice, canTriggerEvent, evaluateCondition, findScreenByType, resolveSpecialScreenType } from "../engine/requirements";
+import {
+  canSelectChoice,
+  canTriggerEvent,
+  evaluateCondition,
+  findScreenByType,
+  resolveSpecialScreenType,
+  resolveTransitionTarget
+} from "../engine/requirements";
 import { applyEffects } from "../engine/rewards";
 import { loadPack } from "../loaders/contentLoader";
 import type {
@@ -39,6 +46,7 @@ interface GameState {
   bootstrapPack: () => Promise<void>;
   startRun: (chapterId?: ChapterId) => void;
   startMission: () => void;
+  proceedHub: () => void;
   moveToNode: (nodeId: string) => void;
   selectChoice: (choiceId: string) => void;
   startBossCombat: () => void;
@@ -326,6 +334,62 @@ function setScreen(runtime: RuntimeSnapshot, content: GameContentPack, screenTyp
   markCurrentScreenMedia(runtime, content);
 }
 
+function applyTransitionByTrigger(
+  runtime: RuntimeSnapshot,
+  content: GameContentPack,
+  trigger: string
+): boolean {
+  const chapterId = runtime.current_chapter_id;
+  const uiFlow = content.ui_flows[chapterId];
+  const transition = resolveTransitionTarget(uiFlow, runtime.current_screen_id, trigger, runtime, {
+    currentEventId: runtime.current_event_id,
+    currentNodeId: runtime.current_node_id
+  });
+  if (!transition) {
+    return false;
+  }
+
+  const target = findScreenDefinition(content, chapterId, transition.to_screen_id);
+  if (!target) {
+    return false;
+  }
+
+  setScreen(runtime, content, target.screen_type, target.screen_id);
+  return true;
+}
+
+function applyFirstWorldMapTransition(runtime: RuntimeSnapshot, content: GameContentPack): boolean {
+  const chapterId = runtime.current_chapter_id;
+  const uiFlow = content.ui_flows[chapterId];
+  if (!uiFlow || !runtime.current_screen_id) {
+    return false;
+  }
+
+  const triggers = uiFlow.transitions
+    .filter((transition) => transition.from_screen_id === runtime.current_screen_id)
+    .map((transition) => transition.trigger);
+
+  for (const trigger of triggers) {
+    const transition = resolveTransitionTarget(uiFlow, runtime.current_screen_id, trigger, runtime, {
+      currentEventId: runtime.current_event_id,
+      currentNodeId: runtime.current_node_id
+    });
+    if (!transition) {
+      continue;
+    }
+
+    const target = findScreenDefinition(content, chapterId, transition.to_screen_id);
+    if (!target || target.screen_type !== "world_map") {
+      continue;
+    }
+
+    setScreen(runtime, content, "world_map", target.screen_id);
+    return true;
+  }
+
+  return false;
+}
+
 function updateObjectives(runtime: RuntimeSnapshot, content: GameContentPack, warnings: RuntimeWarning[]): void {
   const chapter = getChapter(content, runtime.current_chapter_id);
   const progress = runtime.chapter_progress[runtime.current_chapter_id];
@@ -544,6 +608,10 @@ function finalizeChapterOutcome(
   const chapterId = nextRuntime.current_chapter_id;
   const chapter = getChapter(content, chapterId);
   const chapterEntry = getChapterCatalogEntry(chapterId);
+  const nextChapterId = chapterEntry?.next_chapter_id;
+  const nextChapterInCurrentPart = Boolean(
+    nextChapterId && getChapterCatalogEntry(nextChapterId)?.part_id === CURRENT_PART_ID
+  );
   const progress = nextRuntime.chapter_progress[chapterId];
   if (progress) {
     progress.status = "completed";
@@ -564,7 +632,7 @@ function finalizeChapterOutcome(
       chapter_id: chapterId,
       title: chapter.title,
       summary: endingDef.summary,
-      next_chapter_id: chapterEntry?.next_chapter_id,
+      next_chapter_id: nextChapterId,
       campaign_complete: true,
       ending_id: endingDef.ending_id,
       ending_title: endingDef.title,
@@ -578,8 +646,8 @@ function finalizeChapterOutcome(
       chapter_id: chapterId,
       title: chapter.title,
       summary: summarizeChapter(nextRuntime, chapterId),
-      next_chapter_id: chapterEntry?.next_chapter_id,
-      campaign_complete: false
+      next_chapter_id: nextChapterId,
+      campaign_complete: !nextChapterInCurrentPart
     };
   }
 
@@ -747,6 +815,7 @@ const initialState: Omit<
   | "bootstrapPack"
   | "startRun"
   | "startMission"
+  | "proceedHub"
   | "moveToNode"
   | "selectChoice"
   | "startBossCombat"
@@ -827,9 +896,30 @@ export const useGameStore = create<GameState>()(
         }
 
         const nextRuntime = structuredClone(runtime);
-        setScreen(nextRuntime, content, "world_map");
+        const transitioned = applyTransitionByTrigger(nextRuntime, content, "start_mission");
+        if (!transitioned) {
+          setScreen(nextRuntime, content, "world_map");
+        }
         updateObjectives(nextRuntime, content, []);
         set({ runtime: nextRuntime });
+      },
+
+      proceedHub: () => {
+        const { content, runtime } = get();
+        if (!content || !runtime) {
+          return;
+        }
+
+        const nextRuntime = structuredClone(runtime);
+        const transitioned = applyFirstWorldMapTransition(nextRuntime, content);
+        if (!transitioned) {
+          setScreen(nextRuntime, content, "world_map");
+        }
+
+        set({
+          runtime: nextRuntime,
+          selectedChoiceId: null
+        });
       },
 
       moveToNode: (nodeId) => {
@@ -1151,7 +1241,17 @@ export const useGameStore = create<GameState>()(
           return;
         }
 
-        get().openEndingGallery();
+        if (runtime.chapter_outcome.campaign_complete) {
+          get().startRun(CURRENT_PART_START_CHAPTER);
+          return;
+        }
+
+        if (CURRENT_PART_ID === "P1") {
+          get().openEndingGallery();
+          return;
+        }
+
+        get().startRun(CURRENT_PART_START_CHAPTER);
       },
 
       openEndingGallery: () => {

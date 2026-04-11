@@ -1,0 +1,667 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CH01 스토리 파이프라인</title>
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: #161c24;
+      --panel-2: #1e2631;
+      --line: #5f778f;
+      --text: #e8eef5;
+      --muted: #9db0c3;
+      --accent: #3fa6ff;
+      --briefing: #2a7fff;
+      --exploration: #1ba67a;
+      --choice: #c98a2d;
+      --combat: #d04646;
+      --dialogue: #9d56d8;
+      --result: #4f8f2a;
+      --default: #4a5c6d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+      background: radial-gradient(circle at top right, #1b2430, var(--bg) 42%);
+      color: var(--text);
+    }
+
+    header {
+      padding: 20px 24px 12px;
+      border-bottom: 1px solid #2a3442;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0.4px;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      border: 1px solid #2c3847;
+      background: #121923;
+      color: #c5d3e1;
+      border-radius: 999px;
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 14px;
+      padding: 14px;
+      min-height: calc(100vh - 108px);
+    }
+
+    .viewport {
+      border: 1px solid #2a3442;
+      border-radius: 14px;
+      overflow: auto;
+      background: rgba(12, 18, 24, 0.8);
+      min-height: 640px;
+    }
+
+    #boardCanvas {
+      position: relative;
+      width: max-content;
+      height: max-content;
+      padding: 22px;
+    }
+
+    #links {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #board {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .node-column {
+      width: 310px;
+      min-width: 310px;
+      background: rgba(20, 27, 35, 0.75);
+      border: 1px solid #2e3948;
+      border-radius: 12px;
+      padding: 12px;
+      backdrop-filter: blur(2px);
+    }
+
+    .node-title {
+      margin: 0;
+      font-size: 14px;
+      color: #f0f5fb;
+    }
+
+    .node-meta {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .event-card {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--panel-2);
+      border: 1px solid #344357;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+      position: relative;
+    }
+
+    .event-head {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .event-type {
+      font-size: 10px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 2px 6px;
+      background: #2a3442;
+      color: #dae6f2;
+      border-left: 4px solid var(--default);
+    }
+
+    .event-id {
+      font-size: 10px;
+      color: #94a9bd;
+      overflow-wrap: anywhere;
+    }
+
+    .event-title {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .event-summary {
+      margin: 6px 0 8px;
+      color: #c2d1df;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .choice-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 6px;
+    }
+
+    .choice-item {
+      font-size: 11px;
+      color: #eaf2fa;
+      border: 1px solid #3a4b60;
+      background: #1a222d;
+      border-radius: 8px;
+      padding: 6px;
+    }
+
+    .choice-next {
+      display: block;
+      margin-top: 4px;
+      color: #8db5de;
+      font-size: 10px;
+    }
+
+    .empty {
+      margin-top: 10px;
+      padding: 8px;
+      border: 1px dashed #3a495b;
+      border-radius: 8px;
+      color: #8399ad;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .type-briefing .event-type { border-left-color: var(--briefing); }
+    .type-exploration .event-type { border-left-color: var(--exploration); }
+    .type-choice .event-type { border-left-color: var(--choice); }
+    .type-combat .event-type,
+    .type-boss .event-type { border-left-color: var(--combat); }
+    .type-dialogue .event-type { border-left-color: var(--dialogue); }
+    .type-result .event-type { border-left-color: var(--result); }
+
+    aside {
+      border: 1px solid #2a3442;
+      border-radius: 14px;
+      background: rgba(14, 20, 26, 0.85);
+      padding: 14px;
+      overflow: auto;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+    }
+
+    .track-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .track-card {
+      border: 1px solid #344155;
+      border-radius: 10px;
+      padding: 9px;
+      background: #18202a;
+    }
+
+    .track-kind {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #8abbe9;
+      border: 1px solid #3d5066;
+      border-radius: 999px;
+      padding: 1px 7px;
+    }
+
+    .track-title {
+      margin: 6px 0 4px;
+      font-size: 13px;
+    }
+
+    .track-summary {
+      margin: 0;
+      color: #b6c6d6;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .track-meta {
+      margin-top: 6px;
+      color: #95aabc;
+      font-size: 11px;
+    }
+
+    .run-box {
+      margin-top: 14px;
+      border: 1px solid #304156;
+      border-radius: 10px;
+      background: #131a22;
+      padding: 10px;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      color: #d0deec;
+      font-size: 12px;
+      line-height: 1.4;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    .error {
+      padding: 10px;
+      border: 1px solid #7a3030;
+      background: #2c1717;
+      border-radius: 8px;
+      color: #ffb2b2;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 1280px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="chapterTitle">CH01 스토리 파이프라인</h1>
+    <p class="subtitle" id="chapterSubtitle">데이터 로딩 중...</p>
+    <div class="meta">
+      <span class="pill" id="entryNodePill">ENTRY NODE: -</span>
+      <span class="pill" id="eventCountPill">EVENTS: -</span>
+      <span class="pill" id="edgeCountPill">CHOICE LINKS: -</span>
+      <span class="pill" id="sourcePill">SOURCE: -</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="viewport" aria-label="CH01 스토리 그래프">
+      <div id="boardCanvas">
+        <svg id="links" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div id="board"></div>
+      </div>
+    </section>
+
+    <aside>
+      <h2>퀘스트 트랙</h2>
+      <div id="trackList" class="track-list"></div>
+
+      <div class="run-box">
+        <h2>PowerShell 실행</h2>
+        <pre>cd D:\Donggri_Platform\DonggrolGameBook
+npm run dev
+# 브라우저에서:
+# http://localhost:5173/ch01-story-pipeline.html</pre>
+      </div>
+
+      <div id="errorBox"></div>
+    </aside>
+  </main>
+
+  <script>
+    const typeAlias = {
+      boss_intro: "boss",
+      boss: "boss",
+      result_summary: "result"
+    };
+
+    const chapterCandidates = [
+      "/codex_webgame_pack/data/chapters/ch01.json",
+      "./codex_webgame_pack/data/chapters/ch01.json",
+      "../codex_webgame_pack/data/chapters/ch01.json"
+    ];
+
+    const uiCandidates = [
+      "/ui/ch01.ui_flow.json",
+      "./ui/ch01.ui_flow.json",
+      "../ui/ch01.ui_flow.json"
+    ];
+
+    function normalizeType(value) {
+      const raw = String(value || "default").toLowerCase();
+      return typeAlias[raw] || raw;
+    }
+
+    async function fetchWithCandidates(paths) {
+      let lastError = null;
+      for (const path of paths) {
+        try {
+          const response = await fetch(path, { cache: "no-store" });
+          if (!response.ok) {
+            lastError = new Error(`${path} -> HTTP ${response.status}`);
+            continue;
+          }
+          return { data: await response.json(), path };
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw lastError || new Error("파일 로드 실패");
+    }
+
+    function trimText(text, max = 58) {
+      const value = String(text || "").trim();
+      if (value.length <= max) return value;
+      return `${value.slice(0, max - 1)}…`;
+    }
+
+    function createEventCard(event) {
+      const card = document.createElement("article");
+      const normalizedType = normalizeType(event.event_type);
+      card.className = `event-card type-${normalizedType}`;
+      card.dataset.eventId = event.event_id;
+
+      const summary = event.text?.summary || "요약 없음";
+      const choices = Array.isArray(event.choices) ? event.choices : [];
+      const choiceItems = choices
+        .map((choice) => {
+          const next = choice.next_event_id ? `→ ${choice.next_event_id}` : "→ 종료/맵 복귀";
+          return `<li class="choice-item">${trimText(choice.label || choice.choice_id, 36)}<span class="choice-next">${next}</span></li>`;
+        })
+        .join("");
+
+      card.innerHTML = `
+        <div class="event-head">
+          <span class="event-type">${normalizedType}</span>
+          <span class="event-id">${event.event_id}</span>
+        </div>
+        <h3 class="event-title">${event.title || "(제목 없음)"}</h3>
+        <p class="event-summary">${trimText(summary, 84)}</p>
+        ${choices.length > 0 ? `<ul class="choice-list">${choiceItems}</ul>` : `<div class="empty">선택지 없음</div>`}
+      `;
+
+      return card;
+    }
+
+    function createNodeColumn(node) {
+      const column = document.createElement("section");
+      column.className = "node-column";
+      column.dataset.nodeId = node.node_id;
+      column.innerHTML = `
+        <h2 class="node-title">${node.node_id} · ${node.name}</h2>
+        <div class="node-meta">${node.node_type}</div>
+      `;
+      return column;
+    }
+
+    function buildEdgeMap(events, eventIds) {
+      const edgeMap = new Map();
+      for (const event of events) {
+        const fromId = event.event_id;
+        const choices = Array.isArray(event.choices) ? event.choices : [];
+        for (const choice of choices) {
+          const toId = choice.next_event_id;
+          if (!toId || !eventIds.has(toId)) continue;
+          const key = `${fromId}->${toId}`;
+          if (!edgeMap.has(key)) {
+            edgeMap.set(key, {
+              from: fromId,
+              to: toId,
+              count: 0,
+              labels: []
+            });
+          }
+          const entry = edgeMap.get(key);
+          entry.count += 1;
+          entry.labels.push(choice.label || choice.choice_id || "choice");
+        }
+      }
+      return Array.from(edgeMap.values());
+    }
+
+    function drawEdges(edges, board, boardCanvas, svg, eventMap) {
+      const boardWidth = board.offsetWidth;
+      const boardHeight = board.offsetHeight;
+
+      boardCanvas.style.width = `${boardWidth + 44}px`;
+      boardCanvas.style.height = `${boardHeight + 44}px`;
+
+      svg.setAttribute("width", String(boardWidth + 44));
+      svg.setAttribute("height", String(boardHeight + 44));
+      svg.setAttribute("viewBox", `0 0 ${boardWidth + 44} ${boardHeight + 44}`);
+
+      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+      const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+      marker.setAttribute("id", "arrow");
+      marker.setAttribute("markerWidth", "10");
+      marker.setAttribute("markerHeight", "7");
+      marker.setAttribute("refX", "9");
+      marker.setAttribute("refY", "3.5");
+      marker.setAttribute("orient", "auto");
+      const markerPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      markerPath.setAttribute("d", "M0,0 L10,3.5 L0,7 Z");
+      markerPath.setAttribute("fill", "#6d88a2");
+      marker.appendChild(markerPath);
+      defs.appendChild(marker);
+      svg.innerHTML = "";
+      svg.appendChild(defs);
+
+      for (const edge of edges) {
+        const fromEl = eventMap.get(edge.from);
+        const toEl = eventMap.get(edge.to);
+        if (!fromEl || !toEl) continue;
+
+        const startX = board.offsetLeft + fromEl.offsetLeft + fromEl.offsetWidth;
+        const startY = board.offsetTop + fromEl.offsetTop + fromEl.offsetHeight / 2;
+        const endX = board.offsetLeft + toEl.offsetLeft;
+        const endY = board.offsetTop + toEl.offsetTop + toEl.offsetHeight / 2;
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+        if (edge.from === edge.to) {
+          const loopHeight = 26;
+          const loopWidth = 52;
+          const d = [
+            `M ${startX - 8} ${startY}`,
+            `C ${startX + loopWidth} ${startY - loopHeight}, ${startX + loopWidth} ${startY + loopHeight}, ${startX - 8} ${startY + 1}`
+          ].join(" ");
+          path.setAttribute("d", d);
+          path.setAttribute("stroke-dasharray", "4 4");
+        } else {
+          const bend = Math.max(56, Math.abs(endX - startX) * 0.45);
+          const d = `M ${startX} ${startY} C ${startX + bend} ${startY}, ${endX - bend} ${endY}, ${endX} ${endY}`;
+          path.setAttribute("d", d);
+        }
+
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", "#6d88a2");
+        path.setAttribute("stroke-width", String(Math.min(3, 1 + edge.count * 0.35)));
+        path.setAttribute("opacity", "0.78");
+        path.setAttribute("marker-end", "url(#arrow)");
+        svg.appendChild(path);
+
+        if (edge.count > 1) {
+          const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          label.textContent = `${edge.count} choices`;
+          label.setAttribute("x", String((startX + endX) / 2));
+          label.setAttribute("y", String((startY + endY) / 2 - 4));
+          label.setAttribute("font-size", "10");
+          label.setAttribute("fill", "#9bb7d1");
+          label.setAttribute("text-anchor", "middle");
+          svg.appendChild(label);
+        }
+      }
+    }
+
+    function renderTracks(chapter, eventTitleMap) {
+      const trackList = document.getElementById("trackList");
+      trackList.innerHTML = "";
+      const tracks = Array.isArray(chapter.quest_tracks) ? chapter.quest_tracks : [];
+
+      if (tracks.length === 0) {
+        trackList.innerHTML = '<div class="empty">퀘스트 트랙 없음</div>';
+        return;
+      }
+
+      for (const track of tracks) {
+        const card = document.createElement("article");
+        card.className = "track-card";
+        const entryTitle = eventTitleMap.get(track.entry_event_id) || track.entry_event_id || "-";
+        const completionTitle = track.completion_event_id
+          ? (eventTitleMap.get(track.completion_event_id) || track.completion_event_id)
+          : "(진행형/조건형)";
+
+        card.innerHTML = `
+          <span class="track-kind">${track.kind || "unknown"}</span>
+          <h3 class="track-title">${track.title || track.quest_track_id}</h3>
+          <p class="track-summary">${track.summary || ""}</p>
+          <div class="track-meta">진입: ${entryTitle}</div>
+          <div class="track-meta">완료: ${completionTitle}</div>
+        `;
+
+        trackList.appendChild(card);
+      }
+    }
+
+    async function render() {
+      const board = document.getElementById("board");
+      const boardCanvas = document.getElementById("boardCanvas");
+      const svg = document.getElementById("links");
+      const errorBox = document.getElementById("errorBox");
+
+      try {
+        const chapterResult = await fetchWithCandidates(chapterCandidates);
+        const chapter = chapterResult.data;
+
+        let uiResult = null;
+        try {
+          uiResult = await fetchWithCandidates(uiCandidates);
+        } catch {
+          uiResult = null;
+        }
+
+        document.getElementById("chapterTitle").textContent = `${chapter.chapter_id} 스토리 파이프라인`;
+        document.getElementById("chapterSubtitle").textContent = `${chapter.title} · ${chapter.role || ""}`;
+        document.getElementById("entryNodePill").textContent = `ENTRY NODE: ${chapter.entry_node_id || "-"}`;
+
+        const nodes = Array.isArray(chapter.nodes) ? chapter.nodes : [];
+        const events = Array.isArray(chapter.events) ? chapter.events : [];
+        const nodeMap = new Map(nodes.map((node) => [node.node_id, node]));
+        const eventIds = new Set(events.map((event) => event.event_id));
+        const eventMap = new Map();
+        const eventTitleMap = new Map();
+
+        const eventsByNode = new Map();
+        for (const node of nodes) {
+          eventsByNode.set(node.node_id, []);
+        }
+        eventsByNode.set("UNASSIGNED", []);
+
+        for (const event of events) {
+          eventTitleMap.set(event.event_id, event.title || event.event_id);
+          const bucketKey = nodeMap.has(event.node_id) ? event.node_id : "UNASSIGNED";
+          eventsByNode.get(bucketKey).push(event);
+        }
+
+        for (const [nodeId, eventList] of eventsByNode) {
+          eventList.sort((a, b) => {
+            const priorityA = Number.isFinite(a.priority) ? a.priority : 0;
+            const priorityB = Number.isFinite(b.priority) ? b.priority : 0;
+            if (priorityA !== priorityB) return priorityB - priorityA;
+            return String(a.event_id).localeCompare(String(b.event_id));
+          });
+        }
+
+        board.innerHTML = "";
+
+        for (const node of nodes) {
+          const column = createNodeColumn(node);
+          const eventList = eventsByNode.get(node.node_id) || [];
+
+          if (eventList.length === 0) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "empty";
+            placeholder.textContent = "연결 이벤트 없음";
+            column.appendChild(placeholder);
+          } else {
+            for (const event of eventList) {
+              const card = createEventCard(event);
+              eventMap.set(event.event_id, card);
+              column.appendChild(card);
+            }
+          }
+
+          board.appendChild(column);
+        }
+
+        const unassigned = eventsByNode.get("UNASSIGNED") || [];
+        if (unassigned.length > 0) {
+          const column = createNodeColumn({
+            node_id: "UNASSIGNED",
+            name: "미지정 이벤트",
+            node_type: "fallback"
+          });
+          for (const event of unassigned) {
+            const card = createEventCard(event);
+            eventMap.set(event.event_id, card);
+            column.appendChild(card);
+          }
+          board.appendChild(column);
+        }
+
+        const edges = buildEdgeMap(events, eventIds);
+        drawEdges(edges, board, boardCanvas, svg, eventMap);
+
+        document.getElementById("eventCountPill").textContent = `EVENTS: ${events.length}`;
+        document.getElementById("edgeCountPill").textContent = `CHOICE LINKS: ${edges.length}`;
+
+        const sourceText = uiResult
+          ? `SOURCE: ${chapterResult.path} + ${uiResult.path}`
+          : `SOURCE: ${chapterResult.path}`;
+        document.getElementById("sourcePill").textContent = sourceText;
+
+        renderTracks(chapter, eventTitleMap);
+        errorBox.innerHTML = "";
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        errorBox.innerHTML = `<div class="error">데이터 로딩 실패: ${message}<br/>PowerShell에서 <code>npm run dev</code> 실행 후 접속하세요.</div>`;
+      }
+    }
+
+    render();
+    window.addEventListener("resize", () => {
+      setTimeout(render, 40);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "video_id": "P4_CH19_OPENING",
+  "scene_id": "CH19_OPENING_OUTER_SEA_PLATFORM_POLITICS",
+  "chapter_id": "CH19",
+  "part_id": "P4",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "Cinematic Korean apocalypse opening for CH19 외해 전초. salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure. Location mood: 외해 승선 덱, 등록 홀, 파도 차단벽. Show route pressure, practical survival gear, and incoming threat 외해 파고체. Grounded realism, no fantasy.",
+  "prompt_ko_context": "차문식 논리와 공개 논리가 군중 앞에서 충돌한다.",
+  "camera_notes": "public-facing staging, heavier symmetry, final-decision weight. Start wide, move into corridor pressure, end on route decision beat.",
+  "audio_notes": "Base cue salt_station. Layer alarm pulses, crowd pressure ambience, and metallic reverb.",
+  "source_art_key": "ch19_outer_sea_platform_politics_entry",
+  "target_video_path": "public/generated/videos/P4_CH19_OPENING.mp4",
+  "target_poster_path": "public/generated/images/ch19_outer_sea_platform_politics_entry.webp",
+  "stitch_prompt": "Cinematic Korean apocalypse opening for CH19 외해 전초. salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure. Location mood: 외해 승선 덱, 등록 홀, 파도 차단벽. Show route pressure, practical survival gear, and incoming threat 외해 파고체. Grounded realism, no fantasy. Match style pack P4.outer_sea_platform_politics.",
+  "file": "P4_CH19_OPENING.json"
+}

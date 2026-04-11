@@ -1,0 +1,18 @@
+{
+  "video_id": "P4_CH16_OPENING",
+  "scene_id": "CH16_OPENING_FRACTURED_DUNE_LOSS",
+  "chapter_id": "CH16",
+  "part_id": "P4",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "Cinematic Korean apocalypse opening for CH16 균열 사구. salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure. Location mood: 붕괴 해안로, 모래 침식 터널, 임시 현수교. Show route pressure, practical survival gear, and incoming threat 사구 절개체. Grounded realism, no fantasy.",
+  "prompt_ko_context": "누가 안보경의 역할을 이어받을지 정하며 마지막 허브로 이동한다.",
+  "camera_notes": "public-facing staging, heavier symmetry, final-decision weight. Start wide, move into corridor pressure, end on route decision beat.",
+  "audio_notes": "Base cue salt_station. Layer alarm pulses, crowd pressure ambience, and metallic reverb.",
+  "source_art_key": "ch16_fractured_dune_loss_entry",
+  "target_video_path": "public/generated/videos/P4_CH16_OPENING.mp4",
+  "target_poster_path": "public/generated/images/ch16_fractured_dune_loss_entry.webp",
+  "stitch_prompt": "Cinematic Korean apocalypse opening for CH16 균열 사구. salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure. Location mood: 붕괴 해안로, 모래 침식 터널, 임시 현수교. Show route pressure, practical survival gear, and incoming threat 사구 절개체. Grounded realism, no fantasy. Match style pack P4.fractured_dune_loss.",
+  "file": "P4_CH16_OPENING.json"
+}

@@ -1,0 +1,18 @@
+{
+  "video_id": "P3_CH12_OPENING",
+  "scene_id": "CH12_OPENING_ECHO_BASE_SIGNAL",
+  "chapter_id": "CH12",
+  "part_id": "P3",
+  "kind": "opening",
+  "duration": 15,
+  "aspect_ratio": "16:9",
+  "prompt_en": "Cinematic Korean apocalypse opening for CH12 잔향 기지. radio mast, cold storage, sea fog, archival realism, delayed guilt. Location mood: 안테나 경사면, 지휘 벙커, 송신 어레이 옥상. Show route pressure, practical survival gear, and incoming threat 잔향 사제. Grounded realism, no fantasy.",
+  "prompt_ko_context": "죽은 명령 체계와 살아 있는 기록을 함께 해독한다.",
+  "camera_notes": "wider negative space, slower pans, distance before impact. Start wide, move into corridor pressure, end on route decision beat.",
+  "audio_notes": "Base cue echo_base. Layer alarm pulses, crowd pressure ambience, and metallic reverb.",
+  "source_art_key": "ch12_echo_base_signal_entry",
+  "target_video_path": "public/generated/videos/P3_CH12_OPENING.mp4",
+  "target_poster_path": "public/generated/images/ch12_echo_base_signal_entry.webp",
+  "stitch_prompt": "Cinematic Korean apocalypse opening for CH12 잔향 기지. radio mast, cold storage, sea fog, archival realism, delayed guilt. Location mood: 안테나 경사면, 지휘 벙커, 송신 어레이 옥상. Show route pressure, practical survival gear, and incoming threat 잔향 사제. Grounded realism, no fantasy. Match style pack P3.echo_base_signal.",
+  "file": "P3_CH12_OPENING.json"
+}

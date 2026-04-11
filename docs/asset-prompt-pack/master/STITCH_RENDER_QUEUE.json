@@ -1,0 +1,1357 @@
+{
+  "version": "1.0.0",
+  "image_task_count": 135,
+  "video_task_count": 15,
+  "tasks": [
+    {
+      "task_id": "img:bg_ch06_southern_gate_collapse_primary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch06_southern_gate_collapse_primary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch06_southern_gate_collapse_secondary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch06_southern_gate_collapse_secondary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_do_jaeyoon_ch06_anchor",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_do_jaeyoon_ch06_anchor_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_yoo_minha_ch06_support",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_yoo_minha_ch06_support_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:threat_gate_mauler",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_gate_mauler_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:poster_ch06_southern_gate_collapse",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch06_southern_gate_collapse_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch06_entry",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch06_entry_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch06_pressure",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch06_pressure_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch06_preclimax",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH06_southern_gate_collapse/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch06_preclimax_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch07_red_corridor_pursuit_primary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch07_red_corridor_pursuit_primary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch07_red_corridor_pursuit_secondary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch07_red_corridor_pursuit_secondary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_jang_taehun_ch07_anchor",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_jang_taehun_ch07_anchor_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_jung_noah_ch07_support",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_jung_noah_ch07_support_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:threat_red_tracker",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_red_tracker_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:poster_ch07_red_corridor_pursuit",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch07_red_corridor_pursuit_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch07_entry",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch07_entry_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch07_pressure",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch07_pressure_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch07_preclimax",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch07_preclimax_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch08_blockade_bureau_autopsy_primary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch08_blockade_bureau_autopsy_primary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch08_blockade_bureau_autopsy_secondary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch08_blockade_bureau_autopsy_secondary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_sim_gyuseok_ch08_anchor",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_sim_gyuseok_ch08_anchor_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_bae_suhyeon_ch08_support",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_bae_suhyeon_ch08_support_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:threat_seal_guardian",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_seal_guardian_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:poster_ch08_blockade_bureau_autopsy",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch08_blockade_bureau_autopsy_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch08_entry",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch08_entry_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch08_pressure",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch08_pressure_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch08_preclimax",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch08_preclimax_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch09_smoke_depot_toxic_primary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch09_smoke_depot_toxic_primary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch09_smoke_depot_toxic_secondary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch09_smoke_depot_toxic_secondary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_han_somyeong_ch09_anchor",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_han_somyeong_ch09_anchor_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_jang_taehun_ch09_support",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_jang_taehun_ch09_support_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:threat_smoke_warehouse_mass",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_smoke_warehouse_mass_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:poster_ch09_smoke_depot_toxic",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch09_smoke_depot_toxic_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch09_entry",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch09_entry_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch09_pressure",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch09_pressure_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch09_preclimax",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch09_preclimax_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch10_sinking_harbor_contract_primary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch10_sinking_harbor_contract_primary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch10_sinking_harbor_contract_secondary",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch10_sinking_harbor_contract_secondary_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_seo_jinseo_ch10_anchor",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_seo_jinseo_ch10_anchor_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:portrait_npc_nam_jaewook_ch10_support",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_nam_jaewook_ch10_support_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:threat_sinking_dock_hauler",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_sinking_dock_hauler_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:poster_ch10_sinking_harbor_contract",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch10_sinking_harbor_contract_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch10_entry",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch10_entry_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch10_pressure",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch10_pressure_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:teaser_ch10_preclimax",
+      "kind": "image",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch10_preclimax_v01.webp",
+      "stitch_space": "donggrol_p2_images"
+    },
+    {
+      "task_id": "img:bg_ch11_iron_detour_frost_primary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch11_iron_detour_frost_primary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch11_iron_detour_frost_secondary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch11_iron_detour_frost_secondary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_park_isaac_ch11_anchor",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_park_isaac_ch11_anchor_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_ryu_seon_ch11_support",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_ryu_seon_ch11_support_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:threat_rail_guide",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_rail_guide_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:poster_ch11_iron_detour_frost",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch11_iron_detour_frost_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch11_entry",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch11_entry_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch11_pressure",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch11_pressure_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch11_preclimax",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch11_preclimax_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch12_echo_base_signal_primary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch12_echo_base_signal_primary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch12_echo_base_signal_secondary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch12_echo_base_signal_secondary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_nam_suryeon_ch12_anchor",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_nam_suryeon_ch12_anchor_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_park_isaac_ch12_support",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_park_isaac_ch12_support_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:threat_resonance_priest",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_resonance_priest_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:poster_ch12_echo_base_signal",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch12_echo_base_signal_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch12_entry",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch12_entry_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch12_pressure",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch12_pressure_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch12_preclimax",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch12_preclimax_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch13_white_yard_ethics_primary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch13_white_yard_ethics_primary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch13_white_yard_ethics_secondary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch13_white_yard_ethics_secondary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_han_somyeong_ch13_anchor",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_han_somyeong_ch13_anchor_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_oh_gyeongtae_ch13_support",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_oh_gyeongtae_ch13_support_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:threat_white_yard_tower",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_white_yard_tower_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:poster_ch13_white_yard_ethics",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch13_white_yard_ethics_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch13_entry",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch13_entry_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch13_pressure",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch13_pressure_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch13_preclimax",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch13_preclimax_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch14_sea_fog_grid_primary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch14_sea_fog_grid_primary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch14_sea_fog_grid_secondary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch14_sea_fog_grid_secondary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_ahn_bogyeong_ch14_anchor",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_ahn_bogyeong_ch14_anchor_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_park_isaac_ch14_support",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_park_isaac_ch14_support_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:threat_mist_transformer",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_mist_transformer_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:poster_ch14_sea_fog_grid",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch14_sea_fog_grid_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch14_entry",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch14_entry_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch14_pressure",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch14_pressure_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch14_preclimax",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch14_preclimax_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch15_quarantine_watch_cliff_primary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch15_quarantine_watch_cliff_primary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch15_quarantine_watch_cliff_secondary",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch15_quarantine_watch_cliff_secondary_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_ahn_bogyeong_ch15_anchor",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_ahn_bogyeong_ch15_anchor_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:portrait_npc_nam_suryeon_ch15_support",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_nam_suryeon_ch15_support_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:threat_quarantine_sentinel",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_quarantine_sentinel_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:poster_ch15_quarantine_watch_cliff",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch15_quarantine_watch_cliff_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch15_entry",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch15_entry_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch15_pressure",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch15_pressure_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:teaser_ch15_preclimax",
+      "kind": "image",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch15_preclimax_v01.webp",
+      "stitch_space": "donggrol_p3_images"
+    },
+    {
+      "task_id": "img:bg_ch16_fractured_dune_loss_primary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch16_fractured_dune_loss_primary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch16_fractured_dune_loss_secondary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch16_fractured_dune_loss_secondary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_seo_jinseo_ch16_anchor",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_seo_jinseo_ch16_anchor_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_shin_dogyeom_ch16_support",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_shin_dogyeom_ch16_support_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:threat_dune_cutter",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_dune_cutter_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:poster_ch16_fractured_dune_loss",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch16_fractured_dune_loss_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch16_entry",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch16_entry_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch16_pressure",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch16_pressure_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch16_preclimax",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch16_preclimax_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch17_fragment_gate_corrosion_primary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch17_fragment_gate_corrosion_primary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch17_fragment_gate_corrosion_secondary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch17_fragment_gate_corrosion_secondary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_shin_dogyeom_ch17_anchor",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_shin_dogyeom_ch17_anchor_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_mo_eunjae_ch17_support",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_mo_eunjae_ch17_support_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:threat_fragment_gate_breaker",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_fragment_gate_breaker_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:poster_ch17_fragment_gate_corrosion",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch17_fragment_gate_corrosion_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch17_entry",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch17_entry_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch17_pressure",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch17_pressure_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch17_preclimax",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch17_preclimax_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch18_salt_station_judgement_primary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch18_salt_station_judgement_primary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch18_salt_station_judgement_secondary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch18_salt_station_judgement_secondary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_yoon_haein_ch18_anchor",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_yoon_haein_ch18_anchor_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_nam_suryeon_ch18_support",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_nam_suryeon_ch18_support_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:threat_salt_ration_wretch",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_salt_ration_wretch_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:poster_ch18_salt_station_judgement",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch18_salt_station_judgement_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch18_entry",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch18_entry_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch18_pressure",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch18_pressure_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch18_preclimax",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH18_salt_station_judgement/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch18_preclimax_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch19_outer_sea_platform_politics_primary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch19_outer_sea_platform_politics_primary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch19_outer_sea_platform_politics_secondary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch19_outer_sea_platform_politics_secondary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_cha_munsik_ch19_anchor",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_cha_munsik_ch19_anchor_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_yoon_haein_ch19_support",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_yoon_haein_ch19_support_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:threat_outer_wave_lord",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_outer_wave_lord_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:poster_ch19_outer_sea_platform_politics",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch19_outer_sea_platform_politics_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch19_entry",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch19_entry_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch19_pressure",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch19_pressure_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch19_preclimax",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch19_preclimax_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch20_dokdo_gate_core_primary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/background/bg_primary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch20_dokdo_gate_core_primary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:bg_ch20_dokdo_gate_core_secondary",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/background/bg_secondary.md",
+      "target_path": "codex_webgame_pack/img/bg/bg_ch20_dokdo_gate_core_secondary_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_cha_munsik_ch20_anchor",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/portrait/portrait_anchor.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_cha_munsik_ch20_anchor_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:portrait_npc_yoon_haein_ch20_support",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/portrait/portrait_support.md",
+      "target_path": "codex_webgame_pack/img/portrait/portrait_npc_yoon_haein_ch20_support_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:threat_dokdo_gate_warden",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/threat/threat_signature.md",
+      "target_path": "codex_webgame_pack/img/threat/threat_dokdo_gate_warden_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:poster_ch20_dokdo_gate_core",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/poster/poster_keyart.md",
+      "target_path": "codex_webgame_pack/img/poster/poster_ch20_dokdo_gate_core_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch20_entry",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/teaser/teaser_frame_01.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch20_entry_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch20_pressure",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/teaser/teaser_frame_02.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch20_pressure_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "img:teaser_ch20_preclimax",
+      "kind": "image",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH20_dokdo_gate_core/teaser/teaser_frame_03.md",
+      "target_path": "codex_webgame_pack/img/teaser/teaser_ch20_preclimax_v01.webp",
+      "stitch_space": "donggrol_p4_images"
+    },
+    {
+      "task_id": "video:P2_CH06_OPENING",
+      "kind": "video",
+      "part_id": "P2",
+      "chapter_id": "CH06",
+      "prompt_file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH06_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH06_OPENING.mp4",
+      "stitch_space": "donggrol_p2_videos"
+    },
+    {
+      "task_id": "video:P2_CH07_OPENING",
+      "kind": "video",
+      "part_id": "P2",
+      "chapter_id": "CH07",
+      "prompt_file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH07_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH07_OPENING.mp4",
+      "stitch_space": "donggrol_p2_videos"
+    },
+    {
+      "task_id": "video:P2_CH08_OPENING",
+      "kind": "video",
+      "part_id": "P2",
+      "chapter_id": "CH08",
+      "prompt_file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH08_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH08_OPENING.mp4",
+      "stitch_space": "donggrol_p2_videos"
+    },
+    {
+      "task_id": "video:P2_CH09_OPENING",
+      "kind": "video",
+      "part_id": "P2",
+      "chapter_id": "CH09",
+      "prompt_file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH09_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH09_OPENING.mp4",
+      "stitch_space": "donggrol_p2_videos"
+    },
+    {
+      "task_id": "video:P2_CH10_OPENING",
+      "kind": "video",
+      "part_id": "P2",
+      "chapter_id": "CH10",
+      "prompt_file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH10_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH10_OPENING.mp4",
+      "stitch_space": "donggrol_p2_videos"
+    },
+    {
+      "task_id": "video:P3_CH11_OPENING",
+      "kind": "video",
+      "part_id": "P3",
+      "chapter_id": "CH11",
+      "prompt_file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH11_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH11_OPENING.mp4",
+      "stitch_space": "donggrol_p3_videos"
+    },
+    {
+      "task_id": "video:P3_CH12_OPENING",
+      "kind": "video",
+      "part_id": "P3",
+      "chapter_id": "CH12",
+      "prompt_file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH12_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH12_OPENING.mp4",
+      "stitch_space": "donggrol_p3_videos"
+    },
+    {
+      "task_id": "video:P3_CH13_OPENING",
+      "kind": "video",
+      "part_id": "P3",
+      "chapter_id": "CH13",
+      "prompt_file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH13_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH13_OPENING.mp4",
+      "stitch_space": "donggrol_p3_videos"
+    },
+    {
+      "task_id": "video:P3_CH14_OPENING",
+      "kind": "video",
+      "part_id": "P3",
+      "chapter_id": "CH14",
+      "prompt_file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH14_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH14_OPENING.mp4",
+      "stitch_space": "donggrol_p3_videos"
+    },
+    {
+      "task_id": "video:P3_CH15_OPENING",
+      "kind": "video",
+      "part_id": "P3",
+      "chapter_id": "CH15",
+      "prompt_file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH15_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH15_OPENING.mp4",
+      "stitch_space": "donggrol_p3_videos"
+    },
+    {
+      "task_id": "video:P4_CH16_OPENING",
+      "kind": "video",
+      "part_id": "P4",
+      "chapter_id": "CH16",
+      "prompt_file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH16_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH16_OPENING.mp4",
+      "stitch_space": "donggrol_p4_videos"
+    },
+    {
+      "task_id": "video:P4_CH17_OPENING",
+      "kind": "video",
+      "part_id": "P4",
+      "chapter_id": "CH17",
+      "prompt_file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH17_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH17_OPENING.mp4",
+      "stitch_space": "donggrol_p4_videos"
+    },
+    {
+      "task_id": "video:P4_CH18_OPENING",
+      "kind": "video",
+      "part_id": "P4",
+      "chapter_id": "CH18",
+      "prompt_file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH18_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH18_OPENING.mp4",
+      "stitch_space": "donggrol_p4_videos"
+    },
+    {
+      "task_id": "video:P4_CH19_OPENING",
+      "kind": "video",
+      "part_id": "P4",
+      "chapter_id": "CH19",
+      "prompt_file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH19_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH19_OPENING.mp4",
+      "stitch_space": "donggrol_p4_videos"
+    },
+    {
+      "task_id": "video:P4_CH20_OPENING",
+      "kind": "video",
+      "part_id": "P4",
+      "chapter_id": "CH20",
+      "prompt_file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH20_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH20_OPENING.mp4",
+      "stitch_space": "donggrol_p4_videos"
+    }
+  ]
+}
