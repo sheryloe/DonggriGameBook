@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { getPart1DefaultMediaMeta, getPart1VideoRegistryEntry } from "../content/part1Media";
 import { resolveAssetKey, resolveResultFallback } from "./manifest";
 import type { ChapterId, MediaMetaDefinition, VideoRegistryEntry } from "../types/game";
+import { CURRENT_PART_ID } from "../app/appContext";
+import { getChapterCatalogEntry } from "../../packages/world-registry/src";
 
 type AssetStatus = "resolved" | "missing_x";
 
@@ -20,8 +22,98 @@ interface ResolvedVideoState {
   registry?: VideoRegistryEntry;
 }
 
+type PartThemeId = "P1" | "P2" | "P3" | "P4";
+
 const fileProbeCache = new Map<string, boolean>();
 const metaCache = new Map<string, MediaMetaDefinition | null>();
+
+function resolvePartTheme(chapterId?: string, key?: string | null): PartThemeId {
+  const partFromChapter = chapterId ? getChapterCatalogEntry(chapterId)?.part_id : undefined;
+  if (partFromChapter) {
+    return partFromChapter;
+  }
+
+  const partFromKey = key
+    ? (/^P([1-4])_/u.exec(key)?.[0]?.slice(0, 2) ??
+        /(?:^|_)p([1-4])_/iu.exec(key)?.[0]?.match(/p[1-4]/iu)?.[0]?.toUpperCase())
+    : undefined;
+  if (partFromKey === "P1" || partFromKey === "P2" || partFromKey === "P3" || partFromKey === "P4") {
+    return partFromKey;
+  }
+
+  return CURRENT_PART_ID;
+}
+
+function applyGlobalPartTheme(partId: PartThemeId): void {
+  if (typeof document === "undefined") {
+    return;
+  }
+
+  document.documentElement.dataset.part = partId;
+  document.body.dataset.part = partId;
+}
+
+applyGlobalPartTheme(CURRENT_PART_ID);
+
+function inferSurfaceKind(key?: string | null, screenLabel?: string): string {
+  const safeKey = key?.toLowerCase() ?? "";
+  const safeLabel = screenLabel?.toLowerCase() ?? "";
+
+  if (safeKey.startsWith("briefing_") || safeLabel.includes("briefing")) {
+    return "briefing";
+  }
+  if (safeKey.startsWith("map_") || safeLabel.includes("map")) {
+    return "map";
+  }
+  if (safeKey.startsWith("result_") || safeLabel.includes("result")) {
+    return "result";
+  }
+  if (safeKey.startsWith("ending_") || safeLabel.includes("ending")) {
+    return "ending";
+  }
+  if (safeLabel.includes("video") || safeLabel.includes("opening")) {
+    return "video";
+  }
+
+  return "scene";
+}
+
+function buildMissingMediaCopy({
+  artKey,
+  chapterId,
+  screenLabel,
+  expectedSrc
+}: {
+  artKey?: string | null;
+  chapterId?: string;
+  screenLabel?: string;
+  expectedSrc?: string;
+}) {
+  const partId = resolvePartTheme(chapterId, artKey);
+  const surface = inferSurfaceKind(artKey, screenLabel);
+  const chapterLabel = chapterId ?? "UNASSIGNED";
+  const channelLabel =
+    surface === "briefing"
+      ? "briefing feed offline"
+      : surface === "map"
+        ? "route board feed offline"
+        : surface === "result"
+          ? "after-action record delayed"
+          : surface === "ending"
+            ? "epilogue archive pending"
+            : surface === "video"
+              ? "cinematic reel pending"
+              : "field camera unavailable";
+
+  return {
+    partId,
+    surface,
+    chapterLabel,
+    channelLabel,
+    assetLabel: artKey ?? "missing_art_key",
+    expectedLabel: expectedSrc ?? "public/generated/images/<art_key>.webp"
+  };
+}
 
 async function probeStaticFile(path: string): Promise<boolean> {
   if (fileProbeCache.has(path)) {
@@ -225,23 +317,52 @@ export function ArtFrame({
 }) {
   const fallbackMeta = getPart1DefaultMediaMeta(artKey);
   const { status, src, expectedSrc, meta } = useResolvedArt(artKey, chapterId, fallbackMeta);
+  const partId = resolvePartTheme(chapterId, artKey);
+  const surfaceKind = inferSurfaceKind(artKey, screenLabel);
+  const missingCopy = buildMissingMediaCopy({ artKey, chapterId, screenLabel, expectedSrc });
   const frameClassName = ["art-frame", className].filter(Boolean).join(" ");
   const displayCaption = meta?.caption ?? caption;
   const displayTitle = meta?.title ?? caption ?? artKey ?? "Missing media";
 
+  useEffect(() => {
+    applyGlobalPartTheme(partId);
+  }, [partId]);
+
   if (!artKey) {
     const fallbackSrc = resolveResultFallback(fallback);
     return (
-      <div className={frameClassName}>
+      <div
+        className={frameClassName}
+        data-part={partId}
+        data-surface={surfaceKind}
+        data-media-status={fallbackSrc ? "fallback-image" : "missing"}
+      >
         {fallbackSrc ? (
           <img className="art-frame-image" src={fallbackSrc} alt={displayTitle} />
         ) : (
           <div className="art-frame-placeholder is-detailed">
             <div className="asset-missing-card">
-              <div className="asset-missing-x">X</div>
-              <strong>missing_art_key</strong>
-              <span>{screenLabel ?? "Missing generated image"}</span>
-              <code>public/generated/images/&lt;art_key&gt;.webp</code>
+              <span className="asset-missing-kicker">{missingCopy.channelLabel}</span>
+              <strong>{missingCopy.assetLabel}</strong>
+              <p className="asset-missing-summary">{screenLabel ?? "Generated artwork not assigned."}</p>
+              <dl className="asset-missing-grid">
+                <div>
+                  <dt>Part</dt>
+                  <dd>{missingCopy.partId}</dd>
+                </div>
+                <div>
+                  <dt>Chapter</dt>
+                  <dd>{missingCopy.chapterLabel}</dd>
+                </div>
+                <div>
+                  <dt>Surface</dt>
+                  <dd>{missingCopy.surface}</dd>
+                </div>
+                <div>
+                  <dt>Expected drop</dt>
+                  <dd>{missingCopy.expectedLabel}</dd>
+                </div>
+              </dl>
             </div>
           </div>
         )}
@@ -251,18 +372,42 @@ export function ArtFrame({
   }
 
   return (
-    <div className={frameClassName}>
+    <div
+      className={frameClassName}
+      data-part={partId}
+      data-surface={surfaceKind}
+      data-media-status={status === "resolved" && src ? "resolved" : "missing"}
+    >
       {status === "resolved" && src ? (
         <img className="art-frame-image" src={src} alt={displayTitle} />
       ) : (
         <div className={`art-frame-placeholder ${placeholderMode === "detailed" ? "is-detailed" : "is-simple"}`}>
           <div className="asset-missing-card">
-            <div className="asset-missing-x">X</div>
+            <span className="asset-missing-kicker">{missingCopy.channelLabel}</span>
             <strong>{artKey}</strong>
+            <p className="asset-missing-summary">
+              {screenLabel ?? "Generated artwork is not present in the runtime drop."}
+            </p>
             {placeholderMode === "detailed" ? (
               <>
-                <span>{screenLabel ?? "Missing generated image"}</span>
-                <code>{expectedSrc ?? "public/generated/images/<art_key>.webp"}</code>
+                <dl className="asset-missing-grid">
+                  <div>
+                    <dt>Part</dt>
+                    <dd>{missingCopy.partId}</dd>
+                  </div>
+                  <div>
+                    <dt>Chapter</dt>
+                    <dd>{missingCopy.chapterLabel}</dd>
+                  </div>
+                  <div>
+                    <dt>Surface</dt>
+                    <dd>{missingCopy.surface}</dd>
+                  </div>
+                  <div>
+                    <dt>Expected drop</dt>
+                    <dd>{expectedSrc ?? "public/generated/images/<art_key>.webp"}</dd>
+                  </div>
+                </dl>
               </>
             ) : null}
           </div>
@@ -283,17 +428,22 @@ export function VideoCard({
   const fallbackMeta = getPart1DefaultMediaMeta(videoId);
   const { available, src, meta, registry } = useResolvedVideo(videoId ?? undefined, fallbackMeta);
   const [isPlaying, setIsPlaying] = useState(false);
+  const partId = resolvePartTheme(chapterId ?? registry?.chapter_id, videoId ?? undefined);
 
   useEffect(() => {
     setIsPlaying(false);
   }, [available, videoId]);
+
+  useEffect(() => {
+    applyGlobalPartTheme(partId);
+  }, [partId]);
 
   if (!available || !src || !registry) {
     return null;
   }
 
   return (
-    <div className="media-video-card">
+    <div className="media-video-card" data-part={partId} data-surface="video" data-media-status="resolved">
       <div className="media-video-card-head">
         <div>
           <strong>{meta?.title ?? registry.title_default}</strong>

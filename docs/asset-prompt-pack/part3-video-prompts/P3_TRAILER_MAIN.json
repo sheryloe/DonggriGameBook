@@ -1,0 +1,19 @@
+{
+  "video_id": "P3_TRAILER_MAIN",
+  "scene_id": "PART3_TRAILER",
+  "chapter_id": null,
+  "ending_id": null,
+  "part_id": "P3",
+  "kind": "trailer",
+  "duration": 45,
+  "aspect_ratio": "16:9",
+  "prompt_en": "45-second cinematic trailer for Part 3 of a Korean apocalypse gamebook. Start in iron detour frost, move through an echo base, white freight yards, a sea-fog power grid, and the quarantine watch cliff. Show cold wind, route authentication, exposed evidence, medical triage, sacrificed capacity, and a final guarded passage without confirming which truth survives.",
+  "prompt_ko_context": "Part 3 전체를 묶는 발표용 트레일러. 냉기, 증거, 인증, 희생의 기조를 유지한다.",
+  "camera_notes": "Build as detour -> signal -> triage -> power routing -> final watch cliff. Use negative space and cold pauses between impact beats.",
+  "audio_notes": "Open with wind and mast hum, introduce clipped radio chatter, then build into restrained percussion and a final relay cutoff.",
+  "source_art_key": "ending_p3_certified_passage",
+  "target_video_path": "public/generated/videos/P3_TRAILER_MAIN.mp4",
+  "target_poster_path": "public/generated/images/ending_p3_certified_passage.webp",
+  "stitch_prompt": "45-second cinematic trailer for Part 3 of a Korean apocalypse gamebook. Start in iron detour frost, move through an echo base, white freight yards, a sea-fog power grid, and the quarantine watch cliff. Show cold wind, route authentication, exposed evidence, medical triage, sacrificed capacity, and a final guarded passage without confirming which truth survives. Match style pack P3.trailer.main.",
+  "file": "P3_TRAILER_MAIN.json"
+}

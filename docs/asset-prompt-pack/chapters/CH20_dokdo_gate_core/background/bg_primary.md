@@ -5,20 +5,20 @@
 - chapter_id: CH20
 - part_id: P4
 - asset_type: background
-- subject: 독도 검역 터널
+- subject: Entry Gate
 - ratio: 16:10
-- art_key_runtime: ch20_dokdo_gate_core_entry
+- art_key_runtime: ch20_entry
 - art_key_final: bg_ch20_dokdo_gate_core_primary
 - filename_target: bg_ch20_dokdo_gate_core_primary_v01.webp
 - sync_target_path: codex_webgame_pack/img/bg/
 
 ## English Prompt
 ```text
-primary background for 독도의 문, 독도 검역 터널, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, Korean urban apocalypse, documentary disaster realism, practical environmental storytelling, dokdo_gate_core, cinematic still, grounded materials
+primary background for Dokdo Gate, Entry Gate, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, Korean urban apocalypse, documentary disaster realism, practical environmental storytelling, dokdo_gate_core, cinematic still, grounded materials
 ```
 
 ## Korean Context
-CH20의 첫 인상을 잡는 메인 배경이다. 독도 검역 터널을 중심으로 챕터의 위기와 파트 분위기가 한 장면에 보여야 한다.
+CH20의 첫 인상을 잡는 메인 배경이다. Entry Gate을 중심으로 챕터의 위기와 파트 분위기가 한 장면에 보여야 한다.
 
 ## Negative Prompt
 ```text

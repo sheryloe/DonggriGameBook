@@ -7,14 +7,14 @@
 - asset_type: threat
 - subject: 염정 배급체
 - ratio: 4:5
-- art_key_runtime: ch18_salt_station_judgement_boss
+- art_key_runtime: ch18_boss
 - art_key_final: threat_salt_ration_wretch
 - filename_target: threat_salt_ration_wretch_v01.webp
 - sync_target_path: codex_webgame_pack/img/threat/
 
 ## English Prompt
 ```text
-염정 배급체, Korean disaster setting infected, fused with 승선 대기 울타리, 배급 홀을 배회하며 군중을 흩트리는 염분 군체, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
+염정 배급체, Korean disaster setting infected, fused with Salt Station Floor, 배급 홀을 배회하며 군중을 흩트리는 염분 군체, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
 ```
 
 ## Korean Context

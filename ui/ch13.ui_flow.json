@@ -2,19 +2,19 @@
   "version": "1.0.0",
   "game_id": "dokdo_arc_webgame",
   "chapter_id": "CH13",
-  "title": "백색 야적장 UI Flow",
+  "title": "White Log UI Flow",
   "entry_screen_id": "CH13_BRIEF",
   "screens": [
     {
       "screen_id": "CH13_BRIEF",
       "screen_type": "chapter_briefing",
-      "title": "백색 야적장 브리핑",
-      "purpose": "약과 증거, 누구를 위해 남겨진 물자인지를 판단한다.",
+      "title": "White Log briefing",
+      "purpose": "Start the chapter",
       "widgets": [
         "objective_panel",
-        "freeze_meter",
+        "signal_decoder",
         "evidence_balance",
-        "cargo_temperature"
+        "power_router"
       ],
       "data_sources": [
         "chapter_meta",
@@ -24,43 +24,42 @@
         "start_mission"
       ],
       "notes": [
-        "visual:푸른 응급등, 백색 서리, 철골, 넓은 음영, 구조 기록 보드"
+        "target:7m"
       ]
     },
     {
       "screen_id": "CH13_HUB",
-      "screen_type": "safehouse",
-      "title": "격리 기지",
-      "purpose": "P3 전용 호흡과 선택 압박을 주는 화면.",
+      "screen_type": "route_select",
+      "title": "White Log hub",
+      "purpose": "Expose chapter axis widgets",
       "widgets": [
-        "rail_switch_map",
-        "cold_exposure",
-        "frequency_map",
-        "freeze_meter",
+        "signal_decoder",
         "evidence_balance",
-        "cargo_temperature"
+        "power_router",
+        "checkpoint_auth",
+        "sacrifice_state",
+        "field_actions_remaining"
       ],
       "data_sources": [
         "route_state",
         "player_flags",
-        "trust_state"
+        "player_stats"
       ],
       "primary_actions": [
-        "leave_safehouse"
+        "confirm_route"
       ],
-      "notes": [
-        "motion:주파수 스윕, 무거운 패널, 느린 페이드, 저온 브레스"
-      ]
+      "notes": []
     },
     {
       "screen_id": "CH13_MAP",
       "screen_type": "world_map",
-      "title": "백색 야적장 노드",
-      "purpose": "냉동 컨테이너 통로 -> 적재 사무실 -> 백색 보관동 -> 야적장 출고문",
+      "title": "White Log graph",
+      "purpose": "Show chapter graph and node progression",
       "widgets": [
         "map_overlay",
-        "freeze_meter",
-        "evidence_balance"
+        "signal_decoder",
+        "evidence_balance",
+        "power_router"
       ],
       "data_sources": [
         "ch13.nodes",
@@ -71,41 +70,43 @@
         "open_inventory"
       ],
       "notes": [
-        "theme:white_yard_ethics"
+        "graph:Entry Gate -> Route Board -> Anchor Deck -> Field Window -> Terminal Gate"
       ]
     },
     {
       "screen_id": "CH13_EVENT",
       "screen_type": "event_dialogue",
-      "title": "백색 야적장 이벤트",
-      "purpose": "메인/사이드 선택과 텍스트 이벤트를 처리한다.",
+      "title": "White Log events",
+      "purpose": "Resolve branching events and side loops",
       "widgets": [
         "event_card",
         "choice_list",
-        "freeze_meter",
-        "evidence_balance"
+        "signal_decoder",
+        "evidence_balance",
+        "power_router"
       ],
       "data_sources": [
         "ch13.events",
-        "trust_state",
-        "player_flags"
+        "player_flags",
+        "player_stats"
       ],
       "primary_actions": [
         "pick_choice",
         "back_to_map"
       ],
       "notes": [
-        "stitch:동해 격리선"
+        "field_actions:2",
+        "repeatable:EV_CH13_SCAVENGE"
       ]
     },
     {
       "screen_id": "CH13_LOOT",
       "screen_type": "loot_resolution",
-      "title": "백색 야적장 루팅",
-      "purpose": "사이드 퀘스트 결과와 보급 확보를 정산한다.",
+      "title": "White Log loot",
+      "purpose": "Resolve scavenging and field rewards",
       "widgets": [
         "loot_grid",
-        "freeze_meter"
+        "signal_decoder"
       ],
       "data_sources": [
         "loot_table",
@@ -120,38 +121,40 @@
     {
       "screen_id": "CH13_BOSS_INTRO",
       "screen_type": "boss_intro",
-      "title": "백색 견인체 등장",
-      "purpose": "클라이맥스 전투 규칙과 비주얼 압박을 소개한다.",
+      "title": "Archive Pursuer intro",
+      "purpose": "Summarize the final confrontation",
       "widgets": [
         "boss_splash",
-        "freeze_meter",
-        "evidence_balance"
+        "boss_hp",
+        "signal_decoder",
+        "evidence_balance",
+        "power_router"
       ],
       "data_sources": [
         "boss_meta",
-        "player_flags"
+        "player_stats"
       ],
       "primary_actions": [
         "enter_boss"
       ],
       "notes": [
-        "boss:white_yard_tower"
+        "boss:archive_pursuer"
       ]
     },
     {
       "screen_id": "CH13_COMBAT",
       "screen_type": "combat_arena",
-      "title": "백색 야적장 전투",
-      "purpose": "보스전과 파트별 HUD 밀도를 반영한다.",
+      "title": "White Log combat",
+      "purpose": "Run the boss combat HUD",
       "widgets": [
         "combat_hud",
         "boss_hp",
-        "freeze_meter",
-        "evidence_balance"
+        "signal_decoder",
+        "evidence_balance",
+        "power_router"
       ],
       "data_sources": [
         "combat_state",
-        "enemy_state",
         "player_stats"
       ],
       "primary_actions": [
@@ -165,23 +168,46 @@
     {
       "screen_id": "CH13_RESULT",
       "screen_type": "result_summary",
-      "title": "백색 야적장 결과",
-      "purpose": "다음 장으로 밀려나는 결과와 Part 감정 잔향을 정리한다.",
+      "title": "White Log result",
+      "purpose": "Show closure or ending gate",
       "widgets": [
         "chapter_result",
-        "party_summary",
-        "freeze_meter"
+        "signal_decoder",
+        "evidence_balance"
       ],
       "data_sources": [
         "chapter_outcome",
-        "trust_state",
-        "route_state"
+        "player_flags",
+        "player_stats"
       ],
       "primary_actions": [
+        "confirm",
+        "open_gallery"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH13_ENDINGS",
+      "screen_type": "ending_gallery",
+      "title": "White Log ending gallery",
+      "purpose": "Show ending matrix, carry state, and demo route",
+      "widgets": [
+        "ending_gallery",
+        "chapter_result",
+        "signal_decoder",
+        "evidence_balance"
+      ],
+      "data_sources": [
+        "unlocked_endings",
+        "player_flags",
+        "player_stats"
+      ],
+      "primary_actions": [
+        "close_gallery",
         "confirm"
       ],
       "notes": [
-        "immersion:동해 격리선"
+        "ending_count:0"
       ]
     }
   ],
@@ -196,9 +222,9 @@
     {
       "from_screen_id": "CH13_HUB",
       "to_screen_id": "CH13_MAP",
-      "trigger": "leave_safehouse",
+      "trigger": "confirm_route",
       "conditions": [],
-      "notes": "파트별 분위기 전용 허브 화면"
+      "notes": ""
     },
     {
       "from_screen_id": "CH13_MAP",
@@ -244,15 +270,21 @@
       "to_screen_id": "CH13_RESULT",
       "trigger": "combat_victory",
       "conditions": [
-        "flag:chapter_13_completed"
+        "flag:ch13_boss_clear"
       ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH13_RESULT",
+      "to_screen_id": "CH13_ENDINGS",
+      "trigger": "open_gallery",
+      "conditions": [],
       "notes": ""
     }
   ],
   "notes": [
     "part:P3",
-    "visual:푸른 응급등, 백색 서리, 철골, 넓은 음영, 구조 기록 보드",
-    "motion:주파수 스윕, 무거운 패널, 느린 페이드, 저온 브레스",
-    "stitch_theme:white_yard_ethics"
+    "carry:p3.route_access,p3.public_evidence,p3.medical_reserve,p3.power_margin,p3.sacrifice_load",
+    "part:P?"
   ]
 }

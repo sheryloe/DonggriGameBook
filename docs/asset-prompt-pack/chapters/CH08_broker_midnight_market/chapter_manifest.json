@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH08",
+  "title": "Midnight Market",
+  "part_id": "P2",
+  "theme": "broker_midnight_market",
+  "story_hook": "Midnight Market opens with route pressure.",
+  "assets": [
+    {
+      "asset_id": "ch08_bg_primary",
+      "asset_type": "background",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch08_entry",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch08_bg_secondary",
+      "asset_type": "background",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch08_route",
+      "art_key_final": "bg_ch08_broker_midnight_market_secondary",
+      "filename_target": "bg_ch08_broker_midnight_market_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch08_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "심규석",
+      "art_key_runtime": "pending:npc_sim_gyuseok",
+      "art_key_final": "portrait_npc_sim_gyuseok_ch08_anchor",
+      "filename_target": "portrait_npc_sim_gyuseok_ch08_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch08_portrait_support",
+      "asset_type": "portrait",
+      "subject": "배수현",
+      "art_key_runtime": "pending:npc_bae_suhyeon",
+      "art_key_final": "portrait_npc_bae_suhyeon_ch08_support",
+      "filename_target": "portrait_npc_bae_suhyeon_ch08_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch08_threat_signature",
+      "asset_type": "threat",
+      "subject": "인장 수호체",
+      "art_key_runtime": "ch08_boss",
+      "art_key_final": "threat_seal_guardian",
+      "filename_target": "threat_seal_guardian_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch08_poster_keyart",
+      "asset_type": "poster",
+      "subject": "Midnight Market key art",
+      "art_key_runtime": "pending:poster_ch08_broker_midnight_market",
+      "art_key_final": "poster_ch08_broker_midnight_market",
+      "filename_target": "poster_ch08_broker_midnight_market_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch08_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "Midnight Market entry beat",
+      "art_key_runtime": "pending:teaser_ch08_entry",
+      "art_key_final": "teaser_ch08_entry",
+      "filename_target": "teaser_ch08_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch08_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "Midnight Market pressure beat",
+      "art_key_runtime": "pending:teaser_ch08_pressure",
+      "art_key_final": "teaser_ch08_pressure",
+      "filename_target": "teaser_ch08_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch08_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "Midnight Market preclimax beat",
+      "art_key_runtime": "pending:teaser_ch08_preclimax",
+      "art_key_final": "teaser_ch08_preclimax",
+      "filename_target": "teaser_ch08_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch08.json",
+        "ui/ch08.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

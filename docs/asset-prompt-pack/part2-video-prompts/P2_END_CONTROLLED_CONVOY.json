@@ -1,0 +1,19 @@
+{
+  "video_id": "P2_END_CONTROLLED_CONVOY",
+  "scene_id": "ENDING_CONTROLLED_CONVOY",
+  "chapter_id": "CH10",
+  "ending_id": "P2_END_CONTROLLED_CONVOY",
+  "part_id": "P2",
+  "kind": "ending",
+  "duration": 18,
+  "aspect_ratio": "16:9",
+  "prompt_en": "A bitter controlled harbor evacuation where sealed convoy lights move through diesel fog, survivors are filtered by stamped route cards, and witness crates disappear behind official trucks. checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors. official convoy lights, sealed route cards, diesel fog, survivors divided by rope barriers. Grounded Korean apocalypse cinematic realism.",
+  "prompt_ko_context": "공식 통제는 성공했지만 더 많은 생존자를 태우지 못한 엔딩. 질서와 결손이 동시에 느껴져야 한다.",
+  "camera_notes": "Open on route stamps and rope barriers, then drift with the convoy lights before ending on those left behind.",
+  "audio_notes": "Diesel idle, clipped PA announcements, low brass, and a fading manifest stamp.",
+  "source_art_key": "ending_p2_controlled_convoy",
+  "target_video_path": "public/generated/videos/P2_END_CONTROLLED_CONVOY.mp4",
+  "target_poster_path": "public/generated/images/ending_p2_controlled_convoy.webp",
+  "stitch_prompt": "A bitter controlled harbor evacuation where sealed convoy lights move through diesel fog, survivors are filtered by stamped route cards, and witness crates disappear behind official trucks. Match style pack P2.ending.p2_end_controlled_convoy.",
+  "file": "P2_END_CONTROLLED_CONVOY.json"
+}

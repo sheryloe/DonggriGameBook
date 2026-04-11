@@ -2,19 +2,19 @@
   "version": "1.0.0",
   "game_id": "dokdo_arc_webgame",
   "chapter_id": "CH07",
-  "title": "적색 회랑 UI Flow",
+  "title": "Red Corridor UI Flow",
   "entry_screen_id": "CH07_BRIEF",
   "screens": [
     {
       "screen_id": "CH07_BRIEF",
       "screen_type": "chapter_briefing",
-      "title": "적색 회랑 브리핑",
-      "purpose": "명단 속 사람을 데리고 긴 회랑을 빠져나온다.",
+      "title": "Red Corridor briefing",
+      "purpose": "Start the chapter",
       "widgets": [
         "objective_panel",
-        "red_line_alarm",
-        "escort_manifest",
-        "pursuit_meter"
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
       ],
       "data_sources": [
         "chapter_meta",
@@ -24,43 +24,42 @@
         "start_mission"
       ],
       "notes": [
-        "visual:적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박"
+        "target:6m"
       ]
     },
     {
       "screen_id": "CH07_HUB",
       "screen_type": "route_select",
-      "title": "회랑 선택",
-      "purpose": "P2 전용 호흡과 선택 압박을 주는 화면.",
+      "title": "Red Corridor hub",
+      "purpose": "Expose chapter axis widgets",
       "widgets": [
-        "checkpoint_priority",
-        "route_compare",
-        "crowd_pressure",
-        "red_line_alarm",
-        "escort_manifest",
-        "pursuit_meter"
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth",
+        "smoke_density",
+        "boarding_capacity",
+        "field_actions_remaining"
       ],
       "data_sources": [
         "route_state",
         "player_flags",
-        "trust_state"
+        "player_stats"
       ],
       "primary_actions": [
         "confirm_route"
       ],
-      "notes": [
-        "motion:직선 추격, 검문 스캔, 패널 슬라이드, 빠른 경보 점멸"
-      ]
+      "notes": []
     },
     {
       "screen_id": "CH07_MAP",
       "screen_type": "world_map",
-      "title": "적색 회랑 노드",
-      "purpose": "붉은 비상 회랑 -> 붕괴 고가 하부 -> 중계선 출구 펌프실 -> 회랑 잠금문",
+      "title": "Red Corridor graph",
+      "purpose": "Show chapter graph and node progression",
       "widgets": [
         "map_overlay",
-        "red_line_alarm",
-        "escort_manifest"
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
       ],
       "data_sources": [
         "ch07.nodes",
@@ -71,41 +70,43 @@
         "open_inventory"
       ],
       "notes": [
-        "theme:red_corridor_pursuit"
+        "graph:Entry Gate -> Route Board -> Anchor Deck -> Field Window -> Terminal Gate"
       ]
     },
     {
       "screen_id": "CH07_EVENT",
       "screen_type": "event_dialogue",
-      "title": "적색 회랑 이벤트",
-      "purpose": "메인/사이드 선택과 텍스트 이벤트를 처리한다.",
+      "title": "Red Corridor events",
+      "purpose": "Resolve branching events and side loops",
       "widgets": [
         "event_card",
         "choice_list",
-        "red_line_alarm",
-        "escort_manifest"
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
       ],
       "data_sources": [
         "ch07.events",
-        "trust_state",
-        "player_flags"
+        "player_flags",
+        "player_stats"
       ],
       "primary_actions": [
         "pick_choice",
         "back_to_map"
       ],
       "notes": [
-        "stitch:남하 회랑"
+        "field_actions:2",
+        "repeatable:EV_CH07_SCAVENGE"
       ]
     },
     {
       "screen_id": "CH07_LOOT",
       "screen_type": "loot_resolution",
-      "title": "적색 회랑 루팅",
-      "purpose": "사이드 퀘스트 결과와 보급 확보를 정산한다.",
+      "title": "Red Corridor loot",
+      "purpose": "Resolve scavenging and field rewards",
       "widgets": [
         "loot_grid",
-        "red_line_alarm"
+        "queue_pressure"
       ],
       "data_sources": [
         "loot_table",
@@ -120,38 +121,40 @@
     {
       "screen_id": "CH07_BOSS_INTRO",
       "screen_type": "boss_intro",
-      "title": "적색 추적자 등장",
-      "purpose": "클라이맥스 전투 규칙과 비주얼 압박을 소개한다.",
+      "title": "Tunnel Hound intro",
+      "purpose": "Summarize the final confrontation",
       "widgets": [
         "boss_splash",
-        "red_line_alarm",
-        "escort_manifest"
+        "boss_hp",
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
       ],
       "data_sources": [
         "boss_meta",
-        "player_flags"
+        "player_stats"
       ],
       "primary_actions": [
         "enter_boss"
       ],
       "notes": [
-        "boss:red_tracker"
+        "boss:tunnel_hound"
       ]
     },
     {
       "screen_id": "CH07_COMBAT",
       "screen_type": "combat_arena",
-      "title": "적색 회랑 전투",
-      "purpose": "보스전과 파트별 HUD 밀도를 반영한다.",
+      "title": "Red Corridor combat",
+      "purpose": "Run the boss combat HUD",
       "widgets": [
         "combat_hud",
         "boss_hp",
-        "red_line_alarm",
-        "escort_manifest"
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
       ],
       "data_sources": [
         "combat_state",
-        "enemy_state",
         "player_stats"
       ],
       "primary_actions": [
@@ -165,23 +168,46 @@
     {
       "screen_id": "CH07_RESULT",
       "screen_type": "result_summary",
-      "title": "적색 회랑 결과",
-      "purpose": "다음 장으로 밀려나는 결과와 Part 감정 잔향을 정리한다.",
+      "title": "Red Corridor result",
+      "purpose": "Show closure or ending gate",
       "widgets": [
         "chapter_result",
-        "party_summary",
-        "red_line_alarm"
+        "queue_pressure",
+        "pursuit_meter"
       ],
       "data_sources": [
         "chapter_outcome",
-        "trust_state",
-        "route_state"
+        "player_flags",
+        "player_stats"
       ],
       "primary_actions": [
+        "confirm",
+        "open_gallery"
+      ],
+      "notes": []
+    },
+    {
+      "screen_id": "CH07_ENDINGS",
+      "screen_type": "ending_gallery",
+      "title": "Red Corridor ending gallery",
+      "purpose": "Show ending matrix, carry state, and demo route",
+      "widgets": [
+        "ending_gallery",
+        "chapter_result",
+        "queue_pressure",
+        "pursuit_meter"
+      ],
+      "data_sources": [
+        "unlocked_endings",
+        "player_flags",
+        "player_stats"
+      ],
+      "primary_actions": [
+        "close_gallery",
         "confirm"
       ],
       "notes": [
-        "immersion:남하 회랑"
+        "ending_count:0"
       ]
     }
   ],
@@ -198,7 +224,7 @@
       "to_screen_id": "CH07_MAP",
       "trigger": "confirm_route",
       "conditions": [],
-      "notes": "파트별 분위기 전용 허브 화면"
+      "notes": ""
     },
     {
       "from_screen_id": "CH07_MAP",
@@ -244,15 +270,21 @@
       "to_screen_id": "CH07_RESULT",
       "trigger": "combat_victory",
       "conditions": [
-        "flag:chapter_07_completed"
+        "flag:ch07_boss_clear"
       ],
+      "notes": ""
+    },
+    {
+      "from_screen_id": "CH07_RESULT",
+      "to_screen_id": "CH07_ENDINGS",
+      "trigger": "open_gallery",
+      "conditions": [],
       "notes": ""
     }
   ],
   "notes": [
     "part:P2",
-    "visual:적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박",
-    "motion:직선 추격, 검문 스캔, 패널 슬라이드, 빠른 경보 점멸",
-    "stitch_theme:red_corridor_pursuit"
+    "carry:official_lane,broker_lane,witness_chain,capacity_ethics,harbor_force",
+    "part:P?"
   ]
 }

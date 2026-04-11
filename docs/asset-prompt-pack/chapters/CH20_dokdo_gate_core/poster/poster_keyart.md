@@ -5,7 +5,7 @@
 - chapter_id: CH20
 - part_id: P4
 - asset_type: poster
-- subject: 독도의 문 key art
+- subject: Dokdo Gate key art
 - ratio: 4:5
 - art_key_runtime: pending:poster_ch20_dokdo_gate_core
 - art_key_final: poster_ch20_dokdo_gate_core
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-poster for 독도의 문, Korean urban apocalypse, 기록 보관실, 세 가지 미래 중 하나를 고르고 기록을 어떻게 남길지 결정한다., one dominant silhouette, dramatic negative space, public judgement, one dominant silhouette, civic ritual tension, realistic cinematic color grading, distressed typography space
+poster for Dokdo Gate, Korean urban apocalypse, Route Board, Dokdo Gate opens with route pressure., one dominant silhouette, dramatic negative space, public judgement, one dominant silhouette, civic ritual tension, realistic cinematic color grading, distressed typography space
 ```
 
 ## Korean Context

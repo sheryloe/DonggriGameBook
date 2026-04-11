@@ -4,7 +4,7 @@ import type {
   MediaMetaDefinition,
   VideoRegistryEntry
 } from "../types/game";
-import { getChapterRuntimeConfig } from "../../packages/world-registry/src";
+import { getChapterCatalogEntry, getChapterRuntimeConfig } from "../../packages/world-registry/src";
 
 export interface Part1ChapterMediaDefinition {
   chapter_id: ChapterId;
@@ -467,6 +467,103 @@ export const PART1_DEFAULT_MEDIA_META: Record<string, MediaMetaDefinition> = {
   }
 };
 
+const PART_ENDING_CHAPTER: Record<string, ChapterId> = {
+  P1: "CH05",
+  P2: "CH10",
+  P3: "CH15",
+  P4: "CH20"
+};
+
+const SURFACE_LABELS: Record<string, string> = {
+  briefing: "Briefing",
+  map: "Route Board",
+  result: "Result",
+  ending: "Ending",
+  ending_thumb: "Ending Card"
+};
+
+function titleCaseToken(token: string): string {
+  return token.charAt(0).toUpperCase() + token.slice(1).toLowerCase();
+}
+
+function formatEndingSlug(slug: string): string {
+  return slug
+    .split("_")
+    .filter(Boolean)
+    .map(titleCaseToken)
+    .join(" ");
+}
+
+function inferChapterSurfaceMeta(id: string): MediaMetaDefinition | undefined {
+  const match = /^(briefing|map|result)_p([1-4])_(ch\d{2})$/iu.exec(id);
+  if (!match) {
+    return undefined;
+  }
+
+  const [, surfaceKey, partNo, rawChapterId] = match;
+  const chapterId = rawChapterId.toUpperCase() as ChapterId;
+  const chapterTitle = getChapterCatalogEntry(chapterId)?.title ?? chapterId;
+  const surfaceLabel = SURFACE_LABELS[surfaceKey] ?? titleCaseToken(surfaceKey);
+
+  return {
+    title: `${chapterId} ${surfaceLabel}`,
+    subtitle: `Part ${partNo} · ${chapterTitle}`,
+    caption: `${chapterId} ${surfaceLabel.toLowerCase()} surface for Part ${partNo}.`,
+    chapter_id: chapterId
+  };
+}
+
+function inferEndingSurfaceMeta(id: string): MediaMetaDefinition | undefined {
+  const match = /^(ending|ending_thumb)_p([1-4])_(.+)$/iu.exec(id);
+  if (!match) {
+    return undefined;
+  }
+
+  const [, surfaceKey, partNo, endingSlug] = match;
+  const partId = `P${partNo}`;
+  const chapterId = PART_ENDING_CHAPTER[partId];
+  const surfaceLabel = SURFACE_LABELS[surfaceKey] ?? "Ending";
+  const endingTitle = formatEndingSlug(endingSlug);
+
+  return {
+    title: endingTitle,
+    subtitle: `Part ${partNo} · ${surfaceLabel}`,
+    caption: `${endingTitle} media surface for Part ${partNo}.`,
+    chapter_id: chapterId,
+    ending_id: `${partId}_END_${endingSlug.toUpperCase()}` as EndingId
+  };
+}
+
+function inferVideoMeta(id: string): MediaMetaDefinition | undefined {
+  const openingMatch = /^P([1-4])_(CH\d{2})_OPENING$/u.exec(id);
+  if (openingMatch) {
+    const [, partNo, rawChapterId] = openingMatch;
+    const chapterId = rawChapterId as ChapterId;
+    const chapterTitle = getChapterCatalogEntry(chapterId)?.title ?? chapterId;
+    return {
+      title: `${chapterId} Opening`,
+      subtitle: `Part ${partNo} · ${chapterTitle}`,
+      caption: `${chapterId} opening cinematic surface for Part ${partNo}.`,
+      chapter_id: chapterId
+    };
+  }
+
+  const endingMatch = /^P([2-4])_END_(.+)$/u.exec(id);
+  if (!endingMatch) {
+    return undefined;
+  }
+
+  const [, partNo, endingSlug] = endingMatch;
+  const partId = `P${partNo}`;
+  return {
+    title: formatEndingSlug(endingSlug),
+    subtitle: `Part ${partNo} · Ending Video`,
+    caption: `${formatEndingSlug(endingSlug)} ending cinematic surface for Part ${partNo}.`,
+    chapter_id: PART_ENDING_CHAPTER[partId],
+    ending_id: `${partId}_END_${endingSlug.toUpperCase()}` as EndingId
+  };
+}
+
 export function getPart1ChapterMedia(chapterId?: ChapterId): Part1ChapterMediaDefinition | undefined {
   if (!chapterId) {
     return undefined;
@@ -494,20 +591,37 @@ export function getPart1VideoRegistryEntry(videoId?: string | null): VideoRegist
   }
 
   const openingMatch = /^P([2-4])_(CH\d{2})_OPENING$/u.exec(videoId);
-  if (!openingMatch) {
+  if (openingMatch) {
+    const [, partNo, chapterId] = openingMatch;
+    const posterArtKey = getChapterRuntimeConfig(chapterId)?.default_art_key ?? `opening_${chapterId.toLowerCase()}_poster`;
+    return {
+      video_id: videoId,
+      chapter_id: chapterId as ChapterId,
+      poster_art_key: posterArtKey,
+      title_default: `${chapterId} Opening`,
+      subtitle_default: `Part ${partNo} cinematic`,
+      caption_default: `${chapterId} opening cinematic generated from Stitch prompt queue.`,
+      auto_surface: "opening"
+    };
+  }
+
+  const endingMatch = /^P([2-4])_END_(.+)$/u.exec(videoId);
+  if (!endingMatch) {
     return undefined;
   }
 
-  const [, partNo, chapterId] = openingMatch;
-  const posterArtKey = getChapterRuntimeConfig(chapterId)?.default_art_key ?? `opening_${chapterId.toLowerCase()}_poster`;
+  const [, partNo, endingSlug] = endingMatch;
+  const partId = `P${partNo}`;
+  const endingTitle = formatEndingSlug(endingSlug);
   return {
     video_id: videoId,
-    chapter_id: chapterId as ChapterId,
-    poster_art_key: posterArtKey,
-    title_default: `${chapterId} Opening`,
-    subtitle_default: `Part ${partNo} cinematic`,
-    caption_default: `${chapterId} opening cinematic generated from Stitch prompt queue.`,
-    auto_surface: "opening"
+    chapter_id: PART_ENDING_CHAPTER[partId],
+    ending_id: `${partId}_END_${endingSlug.toUpperCase()}` as EndingId,
+    poster_art_key: `ending_${partId.toLowerCase()}_${endingSlug.toLowerCase()}`,
+    title_default: endingTitle,
+    subtitle_default: `Part ${partNo} ending cinematic`,
+    caption_default: `${endingTitle} ending cinematic generated from prompt queue.`,
+    auto_surface: "ending"
   };
 }
 
@@ -516,7 +630,7 @@ export function getDefaultMediaMeta(id?: string | null): MediaMetaDefinition | u
     return undefined;
   }
 
-  return PART1_DEFAULT_MEDIA_META[id];
+  return PART1_DEFAULT_MEDIA_META[id] ?? inferChapterSurfaceMeta(id) ?? inferEndingSurfaceMeta(id) ?? inferVideoMeta(id);
 }
 
 export const getPart1DefaultMediaMeta = getDefaultMediaMeta;

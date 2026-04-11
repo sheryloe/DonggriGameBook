@@ -1,0 +1,286 @@
+{
+  "version": "1.1.0",
+  "count": 40,
+  "entries": [
+    {
+      "part_id": "P2",
+      "type": "opening",
+      "id": "P2_CH06_OPENING",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH06_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH06_OPENING.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "opening",
+      "id": "P2_CH07_OPENING",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH07_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH07_OPENING.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "opening",
+      "id": "P2_CH08_OPENING",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH08_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH08_OPENING.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "opening",
+      "id": "P2_CH09_OPENING",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH09_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH09_OPENING.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "opening",
+      "id": "P2_CH10_OPENING",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_CH10_OPENING.json",
+      "target_path": "public/generated/videos/P2_CH10_OPENING.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "ending",
+      "id": "P2_END_CONTROLLED_CONVOY",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_END_CONTROLLED_CONVOY.json",
+      "target_path": "public/generated/videos/P2_END_CONTROLLED_CONVOY.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "ending",
+      "id": "P2_END_WITNESS_FERRY",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_END_WITNESS_FERRY.json",
+      "target_path": "public/generated/videos/P2_END_WITNESS_FERRY.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "ending",
+      "id": "P2_END_RED_CORRIDOR",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_END_RED_CORRIDOR.json",
+      "target_path": "public/generated/videos/P2_END_RED_CORRIDOR.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "ending",
+      "id": "P2_END_HARBOR_SEIZURE",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_END_HARBOR_SEIZURE.json",
+      "target_path": "public/generated/videos/P2_END_HARBOR_SEIZURE.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "ending",
+      "id": "P2_END_SUNKEN_LIST",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_END_SUNKEN_LIST.json",
+      "target_path": "public/generated/videos/P2_END_SUNKEN_LIST.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "trailer",
+      "id": "P2_TRAILER_MAIN",
+      "file": "docs/asset-prompt-pack/part2-video-prompts/P2_TRAILER_MAIN.json",
+      "target_path": "public/generated/videos/P2_TRAILER_MAIN.mp4"
+    },
+    {
+      "part_id": "P2",
+      "type": "poster",
+      "id": "P2_POSTER_MAIN",
+      "file": "docs/asset-prompt-pack/part2-poster-prompts/P2_POSTER_MAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P2_POSTER_MAIN.webp"
+    },
+    {
+      "part_id": "P2",
+      "type": "poster",
+      "id": "P2_POSTER_WITNESS_CHAIN",
+      "file": "docs/asset-prompt-pack/part2-poster-prompts/P2_POSTER_WITNESS_CHAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P2_POSTER_WITNESS_CHAIN.webp"
+    },
+    {
+      "part_id": "P2",
+      "type": "poster",
+      "id": "P2_POSTER_HARBOR_NIGHT",
+      "file": "docs/asset-prompt-pack/part2-poster-prompts/P2_POSTER_HARBOR_NIGHT.md",
+      "target_path": "docs/world/presentation/generated/posters/P2_POSTER_HARBOR_NIGHT.webp"
+    },
+    {
+      "part_id": "P3",
+      "type": "opening",
+      "id": "P3_CH11_OPENING",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH11_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH11_OPENING.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "opening",
+      "id": "P3_CH12_OPENING",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH12_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH12_OPENING.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "opening",
+      "id": "P3_CH13_OPENING",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH13_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH13_OPENING.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "opening",
+      "id": "P3_CH14_OPENING",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH14_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH14_OPENING.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "opening",
+      "id": "P3_CH15_OPENING",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_CH15_OPENING.json",
+      "target_path": "public/generated/videos/P3_CH15_OPENING.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "ending",
+      "id": "P3_END_CERTIFIED_PASSAGE",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_END_CERTIFIED_PASSAGE.json",
+      "target_path": "public/generated/videos/P3_END_CERTIFIED_PASSAGE.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "ending",
+      "id": "P3_END_PUBLIC_BREACH",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_END_PUBLIC_BREACH.json",
+      "target_path": "public/generated/videos/P3_END_PUBLIC_BREACH.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "ending",
+      "id": "P3_END_COLD_MERCY",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_END_COLD_MERCY.json",
+      "target_path": "public/generated/videos/P3_END_COLD_MERCY.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "ending",
+      "id": "P3_END_SEALED_RELAY",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_END_SEALED_RELAY.json",
+      "target_path": "public/generated/videos/P3_END_SEALED_RELAY.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "ending",
+      "id": "P3_END_SACRIFICE_CORRIDOR",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_END_SACRIFICE_CORRIDOR.json",
+      "target_path": "public/generated/videos/P3_END_SACRIFICE_CORRIDOR.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "trailer",
+      "id": "P3_TRAILER_MAIN",
+      "file": "docs/asset-prompt-pack/part3-video-prompts/P3_TRAILER_MAIN.json",
+      "target_path": "public/generated/videos/P3_TRAILER_MAIN.mp4"
+    },
+    {
+      "part_id": "P3",
+      "type": "poster",
+      "id": "P3_POSTER_MAIN",
+      "file": "docs/asset-prompt-pack/part3-poster-prompts/P3_POSTER_MAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P3_POSTER_MAIN.webp"
+    },
+    {
+      "part_id": "P3",
+      "type": "poster",
+      "id": "P3_POSTER_TRIAGE",
+      "file": "docs/asset-prompt-pack/part3-poster-prompts/P3_POSTER_TRIAGE.md",
+      "target_path": "docs/world/presentation/generated/posters/P3_POSTER_TRIAGE.webp"
+    },
+    {
+      "part_id": "P3",
+      "type": "poster",
+      "id": "P3_POSTER_RELAY",
+      "file": "docs/asset-prompt-pack/part3-poster-prompts/P3_POSTER_RELAY.md",
+      "target_path": "docs/world/presentation/generated/posters/P3_POSTER_RELAY.webp"
+    },
+    {
+      "part_id": "P4",
+      "type": "opening",
+      "id": "P4_CH16_OPENING",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH16_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH16_OPENING.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "opening",
+      "id": "P4_CH17_OPENING",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH17_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH17_OPENING.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "opening",
+      "id": "P4_CH18_OPENING",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH18_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH18_OPENING.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "opening",
+      "id": "P4_CH19_OPENING",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH19_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH19_OPENING.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "opening",
+      "id": "P4_CH20_OPENING",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_CH20_OPENING.json",
+      "target_path": "public/generated/videos/P4_CH20_OPENING.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "ending",
+      "id": "P4_END_ORDERED_SELECTION",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_END_ORDERED_SELECTION.json",
+      "target_path": "public/generated/videos/P4_END_ORDERED_SELECTION.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "ending",
+      "id": "P4_END_GATE_BROKEN",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_END_GATE_BROKEN.json",
+      "target_path": "public/generated/videos/P4_END_GATE_BROKEN.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "ending",
+      "id": "P4_END_WITNESSED_REDESIGN",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_END_WITNESSED_REDESIGN.json",
+      "target_path": "public/generated/videos/P4_END_WITNESSED_REDESIGN.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "trailer",
+      "id": "P4_TRAILER_MAIN",
+      "file": "docs/asset-prompt-pack/part4-video-prompts/P4_TRAILER_MAIN.json",
+      "target_path": "public/generated/videos/P4_TRAILER_MAIN.mp4"
+    },
+    {
+      "part_id": "P4",
+      "type": "poster",
+      "id": "P4_POSTER_MAIN",
+      "file": "docs/asset-prompt-pack/part4-poster-prompts/P4_POSTER_MAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P4_POSTER_MAIN.webp"
+    },
+    {
+      "part_id": "P4",
+      "type": "poster",
+      "id": "P4_POSTER_PUBLIC_JUDGEMENT",
+      "file": "docs/asset-prompt-pack/part4-poster-prompts/P4_POSTER_PUBLIC_JUDGEMENT.md",
+      "target_path": "docs/world/presentation/generated/posters/P4_POSTER_PUBLIC_JUDGEMENT.webp"
+    },
+    {
+      "part_id": "P4",
+      "type": "poster",
+      "id": "P4_POSTER_DOKDO_GATE",
+      "file": "docs/asset-prompt-pack/part4-poster-prompts/P4_POSTER_DOKDO_GATE.md",
+      "target_path": "docs/world/presentation/generated/posters/P4_POSTER_DOKDO_GATE.webp"
+    }
+  ]
+}

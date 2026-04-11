@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH15",
+  "title": "Sealed Relay",
+  "part_id": "P3",
+  "theme": "sealed_relay_corridor",
+  "story_hook": "Sealed Relay opens with route pressure.",
+  "assets": [
+    {
+      "asset_id": "ch15_bg_primary",
+      "asset_type": "background",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch15_entry",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch15_bg_secondary",
+      "asset_type": "background",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch15_route",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_secondary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch15_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "안보경",
+      "art_key_runtime": "pending:npc_ahn_bogyeong",
+      "art_key_final": "portrait_npc_ahn_bogyeong_ch15_anchor",
+      "filename_target": "portrait_npc_ahn_bogyeong_ch15_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch15_portrait_support",
+      "asset_type": "portrait",
+      "subject": "남수련",
+      "art_key_runtime": "pending:npc_nam_suryeon",
+      "art_key_final": "portrait_npc_nam_suryeon_ch15_support",
+      "filename_target": "portrait_npc_nam_suryeon_ch15_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch15_threat_signature",
+      "asset_type": "threat",
+      "subject": "파수 사령체",
+      "art_key_runtime": "ch15_boss",
+      "art_key_final": "threat_quarantine_sentinel",
+      "filename_target": "threat_quarantine_sentinel_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch15_poster_keyart",
+      "asset_type": "poster",
+      "subject": "Sealed Relay key art",
+      "art_key_runtime": "pending:poster_ch15_sealed_relay_corridor",
+      "art_key_final": "poster_ch15_sealed_relay_corridor",
+      "filename_target": "poster_ch15_sealed_relay_corridor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch15_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "Sealed Relay entry beat",
+      "art_key_runtime": "pending:teaser_ch15_entry",
+      "art_key_final": "teaser_ch15_entry",
+      "filename_target": "teaser_ch15_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch15_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "Sealed Relay pressure beat",
+      "art_key_runtime": "pending:teaser_ch15_pressure",
+      "art_key_final": "teaser_ch15_pressure",
+      "filename_target": "teaser_ch15_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch15_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "Sealed Relay preclimax beat",
+      "art_key_runtime": "pending:teaser_ch15_preclimax",
+      "art_key_final": "teaser_ch15_preclimax",
+      "filename_target": "teaser_ch15_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch15.json",
+        "ui/ch15.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

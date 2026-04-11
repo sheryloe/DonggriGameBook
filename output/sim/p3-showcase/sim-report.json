@@ -1,0 +1,549 @@
+{
+  "generatedAt": "2026-04-11T06:18:39.879Z",
+  "seed": "20260410",
+  "chapters": [
+    "CH11",
+    "CH12",
+    "CH13",
+    "CH14",
+    "CH15"
+  ],
+  "players": [
+    {
+      "playerId": "player-01",
+      "strategy": "cautious",
+      "chapterResults": [
+        {
+          "chapterId": "CH11",
+          "status": "success",
+          "reason": "END_CH11_RESOLVED",
+          "steps": 10,
+          "choicesTaken": 10,
+          "eventsVisited": 10,
+          "endHp": 72,
+          "endNoise": 16,
+          "rawEstimatedMinutes": 40,
+          "estimatedMinutes": 5.2,
+          "startHp": 100,
+          "startNoise": 0,
+          "startContamination": 0,
+          "endContamination": 10,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch11_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch11_route_certified",
+              "count": 1
+            },
+            {
+              "choiceId": "ch11_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Cautious routing changed noise by +16 and contamination by +10. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch11_entry_slow(1), ch11_route_certified(1). Playtime target (5m) met. Finished with END_CH11_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH12",
+          "status": "success",
+          "reason": "END_CH12_RESOLVED",
+          "steps": 12,
+          "choicesTaken": 12,
+          "eventsVisited": 12,
+          "endHp": 56,
+          "endNoise": 25,
+          "rawEstimatedMinutes": 48,
+          "estimatedMinutes": 6.4,
+          "startHp": 90,
+          "startNoise": 6,
+          "startContamination": 6,
+          "endContamination": 17,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch12_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch12_route_medical",
+              "count": 1
+            },
+            {
+              "choiceId": "ch12_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Cautious routing changed noise by +19 and contamination by +11. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch12_entry_slow(1), ch12_route_medical(1). Playtime target (6m) met. Finished with END_CH12_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH13",
+          "status": "success",
+          "reason": "END_CH13_RESOLVED",
+          "steps": 10,
+          "choicesTaken": 10,
+          "eventsVisited": 10,
+          "endHp": 49,
+          "endNoise": 32,
+          "rawEstimatedMinutes": 40,
+          "estimatedMinutes": 7.2,
+          "startHp": 74,
+          "startNoise": 15,
+          "startContamination": 13,
+          "endContamination": 23,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch13_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch13_route_certified",
+              "count": 1
+            },
+            {
+              "choiceId": "ch13_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Cautious routing changed noise by +17 and contamination by +10. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch13_entry_slow(1), ch13_route_certified(1). Playtime target (7m) met. Finished with END_CH13_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH14",
+          "status": "success",
+          "reason": "END_CH14_RESOLVED",
+          "steps": 10,
+          "choicesTaken": 10,
+          "eventsVisited": 10,
+          "endHp": 47,
+          "endNoise": 37,
+          "rawEstimatedMinutes": 40,
+          "estimatedMinutes": 5.2,
+          "startHp": 67,
+          "startNoise": 22,
+          "startContamination": 19,
+          "endContamination": 28,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch14_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch14_route_public",
+              "count": 1
+            },
+            {
+              "choiceId": "ch14_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Cautious routing changed noise by +15 and contamination by +9. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch14_entry_slow(1), ch14_route_public(1). Playtime target (5m) met. Finished with END_CH14_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH15",
+          "status": "success",
+          "reason": "END_CH15_RESOLVED",
+          "steps": 12,
+          "choicesTaken": 12,
+          "eventsVisited": 12,
+          "endHp": 29,
+          "endNoise": 46,
+          "rawEstimatedMinutes": 48,
+          "estimatedMinutes": 7.4,
+          "startHp": 65,
+          "startNoise": 27,
+          "startContamination": 24,
+          "endContamination": 33,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch15_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch15_route_public",
+              "count": 1
+            },
+            {
+              "choiceId": "ch15_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": "P3_END_COLD_MERCY",
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Cautious routing changed noise by +19 and contamination by +9. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch15_entry_slow(1), ch15_route_public(1). Playtime target (7m) met. Finished with END_CH15_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        }
+      ],
+      "finalStats": {
+        "hp": 63,
+        "maxHp": 100,
+        "noise": 36,
+        "contamination": 29,
+        "playMinutes": 216,
+        "inventoryItemCount": 8,
+        "inventorySample": {
+          "itm_adrenaline": 4,
+          "itm_arkp_access_key": 1,
+          "itm_cooling_gel": 5,
+          "itm_dokdo_signal_auth": 2,
+          "itm_server_blade": 6,
+          "itm_shock_baton": 4,
+          "itm_southern_corridor_data": 1,
+          "itm_thermal_paste": 8
+        },
+        "chapterMinutes": {
+          "CH11": 40,
+          "CH12": 48,
+          "CH13": 40,
+          "CH14": 40,
+          "CH15": 48
+        }
+      },
+      "warnings": [],
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH11",
+          "CH12",
+          "CH13",
+          "CH14",
+          "CH15"
+        ],
+        "failedChapter": null,
+        "totalSteps": 54,
+        "totalChoices": 54,
+        "totalEstimatedMinutes": 31.4
+      }
+    },
+    {
+      "playerId": "player-02",
+      "strategy": "aggressive",
+      "chapterResults": [
+        {
+          "chapterId": "CH11",
+          "status": "success",
+          "reason": "END_CH11_RESOLVED",
+          "steps": 10,
+          "choicesTaken": 10,
+          "eventsVisited": 10,
+          "endHp": 72,
+          "endNoise": 18,
+          "rawEstimatedMinutes": 40,
+          "estimatedMinutes": 5.2,
+          "startHp": 100,
+          "startNoise": 0,
+          "startContamination": 0,
+          "endContamination": 10,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch11_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch11_route_public",
+              "count": 1
+            },
+            {
+              "choiceId": "ch11_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Aggressive routing changed noise by +18 and hp by -28. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch11_entry_slow(1), ch11_route_public(1). Playtime target (5m) met. Finished with END_CH11_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH12",
+          "status": "success",
+          "reason": "END_CH12_RESOLVED",
+          "steps": 10,
+          "choicesTaken": 10,
+          "eventsVisited": 10,
+          "endHp": 60,
+          "endNoise": 27,
+          "rawEstimatedMinutes": 40,
+          "estimatedMinutes": 6.2,
+          "startHp": 90,
+          "startNoise": 8,
+          "startContamination": 6,
+          "endContamination": 14,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch12_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch12_route_public",
+              "count": 1
+            },
+            {
+              "choiceId": "ch12_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Aggressive routing changed noise by +19 and hp by -30. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch12_entry_slow(1), ch12_route_public(1). Playtime target (6m) met. Finished with END_CH12_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH13",
+          "status": "success",
+          "reason": "END_CH13_RESOLVED",
+          "steps": 12,
+          "choicesTaken": 12,
+          "eventsVisited": 12,
+          "endHp": 53,
+          "endNoise": 37,
+          "rawEstimatedMinutes": 48,
+          "estimatedMinutes": 7.4,
+          "startHp": 78,
+          "startNoise": 17,
+          "startContamination": 10,
+          "endContamination": 20,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch13_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch13_route_medical",
+              "count": 1
+            },
+            {
+              "choiceId": "ch13_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Aggressive routing changed noise by +20 and hp by -25. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch13_entry_slow(1), ch13_route_medical(1). Playtime target (7m) met. Finished with END_CH13_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH14",
+          "status": "success",
+          "reason": "END_CH14_RESOLVED",
+          "steps": 12,
+          "choicesTaken": 12,
+          "eventsVisited": 12,
+          "endHp": 51,
+          "endNoise": 45,
+          "rawEstimatedMinutes": 48,
+          "estimatedMinutes": 5.4,
+          "startHp": 71,
+          "startNoise": 27,
+          "startContamination": 16,
+          "endContamination": 25,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch14_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch14_route_public",
+              "count": 1
+            },
+            {
+              "choiceId": "ch14_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": null,
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Aggressive routing changed noise by +18 and hp by -20. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch14_entry_slow(1), ch14_route_public(1). Playtime target (5m) met. Finished with END_CH14_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        },
+        {
+          "chapterId": "CH15",
+          "status": "success",
+          "reason": "END_CH15_RESOLVED",
+          "steps": 10,
+          "choicesTaken": 10,
+          "eventsVisited": 10,
+          "endHp": 33,
+          "endNoise": 55,
+          "rawEstimatedMinutes": 40,
+          "estimatedMinutes": 7.2,
+          "startHp": 69,
+          "startNoise": 35,
+          "startContamination": 21,
+          "endContamination": 32,
+          "loopCount": 0,
+          "repeatFarmEvents": {},
+          "routeChoiceCount": 1,
+          "majorChoices": [
+            {
+              "choiceId": "ch15_entry_slow",
+              "count": 1
+            },
+            {
+              "choiceId": "ch15_route_medical",
+              "count": 1
+            },
+            {
+              "choiceId": "ch15_approach_record",
+              "count": 1
+            }
+          ],
+          "endingId": "P3_END_CERTIFIED_PASSAGE",
+          "review": "Chapter pacing stayed readable, but branch identity can still sharpen. Aggressive routing changed noise by +20 and hp by -36. The route stayed close to linear progression without farm loops. set_route was applied 1 time(s). Major choices: ch15_entry_slow(1), ch15_route_medical(1). Playtime target (7m) met. Finished with END_CH15_RESOLVED. No major warnings.",
+          "warnings": [],
+          "preChapterItems": {
+            "itm_delivery_badge": 0,
+            "itm_security_badge": 0,
+            "itm_route_clearance_pangyo": 0
+          }
+        }
+      ],
+      "finalStats": {
+        "hp": 63,
+        "maxHp": 100,
+        "noise": 45,
+        "contamination": 28,
+        "playMinutes": 216,
+        "inventoryItemCount": 8,
+        "inventorySample": {
+          "itm_adrenaline": 4,
+          "itm_arkp_access_key": 1,
+          "itm_cooling_gel": 7,
+          "itm_dokdo_signal_auth": 3,
+          "itm_server_blade": 3,
+          "itm_shock_baton": 4,
+          "itm_southern_corridor_data": 1,
+          "itm_thermal_paste": 10
+        },
+        "chapterMinutes": {
+          "CH11": 40,
+          "CH12": 40,
+          "CH13": 48,
+          "CH14": 48,
+          "CH15": 40
+        }
+      },
+      "warnings": [],
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH11",
+          "CH12",
+          "CH13",
+          "CH14",
+          "CH15"
+        ],
+        "failedChapter": null,
+        "totalSteps": 54,
+        "totalChoices": 54,
+        "totalEstimatedMinutes": 31.4
+      }
+    }
+  ],
+  "overallSummary": {
+    "totalPlayers": 2,
+    "succeededPlayers": 2,
+    "failedPlayers": 0,
+    "chapterClearCounts": {
+      "CH11": 2,
+      "CH12": 2,
+      "CH13": 2,
+      "CH14": 2,
+      "CH15": 2
+    },
+    "chapterReachedCounts": {
+      "CH11": 2,
+      "CH12": 2,
+      "CH13": 2,
+      "CH14": 2,
+      "CH15": 2
+    },
+    "chapterEstimatedMinutes": {
+      "CH11": 10.4,
+      "CH12": 12.600000000000001,
+      "CH13": 14.600000000000001,
+      "CH14": 10.600000000000001,
+      "CH15": 14.600000000000001
+    },
+    "averageEstimatedMinutesByChapter": {
+      "CH11": 5.2,
+      "CH12": 6.3,
+      "CH13": 7.3,
+      "CH14": 5.3,
+      "CH15": 7.3
+    },
+    "warningCount": 0
+  }
+}

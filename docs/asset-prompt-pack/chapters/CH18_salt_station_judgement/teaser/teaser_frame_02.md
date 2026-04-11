@@ -5,7 +5,7 @@
 - chapter_id: CH18
 - part_id: P4
 - asset_type: teaser
-- subject: 소금 정거장 pressure beat
+- subject: Salt Station pressure beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch18_pressure
 - art_key_final: teaser_ch18_pressure
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 소금 정거장, pressure beat, 등대 플랫폼, escalating conflict, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, crowd pressure, layered survival detail, realistic cinematic tension
+cinematic teaser frame for Salt Station, pressure beat, Anchor Deck, escalating conflict, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, crowd pressure, layered survival detail, realistic cinematic tension
 ```
 
 ## Korean Context

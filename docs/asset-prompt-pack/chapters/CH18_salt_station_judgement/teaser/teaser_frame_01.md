@@ -5,7 +5,7 @@
 - chapter_id: CH18
 - part_id: P4
 - asset_type: teaser
-- subject: 소금 정거장 entry beat
+- subject: Salt Station entry beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch18_entry
 - art_key_final: teaser_ch18_entry
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 소금 정거장, entry beat, 소금 창고, 누구를 태울지 공개적으로 말하고 기록 공개파를 실제로 세운다., salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, atmospheric realism, grounded disaster mood, strong opening image
+cinematic teaser frame for Salt Station, entry beat, Entry Gate, Salt Station opens with route pressure., salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, atmospheric realism, grounded disaster mood, strong opening image
 ```
 
 ## Korean Context

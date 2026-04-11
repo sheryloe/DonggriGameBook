@@ -1,15 +1,15 @@
 {
   "chapter_id": "CH06",
-  "title": "하강 관문",
+  "title": "Southern Gate",
   "part_id": "P2",
   "theme": "southern_gate_collapse",
-  "story_hook": "공식 검문과 우회선 사이에서 사람과 명단을 넘긴다.",
+  "story_hook": "Southern Gate opens with route pressure.",
   "assets": [
     {
       "asset_id": "ch06_bg_primary",
       "asset_type": "background",
-      "subject": "하강 관문 검문장",
-      "art_key_runtime": "ch06_southern_gate_collapse_entry",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch06_entry",
       "art_key_final": "bg_ch06_southern_gate_collapse_primary",
       "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp",
       "ratio": "16:10",
@@ -25,8 +25,8 @@
     {
       "asset_id": "ch06_bg_secondary",
       "asset_type": "background",
-      "subject": "우회 격리 복도",
-      "art_key_runtime": "ch06_southern_gate_collapse_route",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch06_route",
       "art_key_final": "bg_ch06_southern_gate_collapse_secondary",
       "filename_target": "bg_ch06_southern_gate_collapse_secondary_v01.webp",
       "ratio": "16:10",
@@ -77,7 +77,7 @@
       "asset_id": "ch06_threat_signature",
       "asset_type": "threat",
       "subject": "관문 압쇄체",
-      "art_key_runtime": "ch06_southern_gate_collapse_boss",
+      "art_key_runtime": "ch06_boss",
       "art_key_final": "threat_gate_mauler",
       "filename_target": "threat_gate_mauler_v01.webp",
       "ratio": "4:5",
@@ -93,7 +93,7 @@
     {
       "asset_id": "ch06_poster_keyart",
       "asset_type": "poster",
-      "subject": "하강 관문 key art",
+      "subject": "Southern Gate key art",
       "art_key_runtime": "pending:poster_ch06_southern_gate_collapse",
       "art_key_final": "poster_ch06_southern_gate_collapse",
       "filename_target": "poster_ch06_southern_gate_collapse_v01.webp",
@@ -110,7 +110,7 @@
     {
       "asset_id": "ch06_teaser_frame_01",
       "asset_type": "teaser",
-      "subject": "하강 관문 entry beat",
+      "subject": "Southern Gate entry beat",
       "art_key_runtime": "pending:teaser_ch06_entry",
       "art_key_final": "teaser_ch06_entry",
       "filename_target": "teaser_ch06_entry_v01.webp",
@@ -127,7 +127,7 @@
     {
       "asset_id": "ch06_teaser_frame_02",
       "asset_type": "teaser",
-      "subject": "하강 관문 pressure beat",
+      "subject": "Southern Gate pressure beat",
       "art_key_runtime": "pending:teaser_ch06_pressure",
       "art_key_final": "teaser_ch06_pressure",
       "filename_target": "teaser_ch06_pressure_v01.webp",
@@ -144,7 +144,7 @@
     {
       "asset_id": "ch06_teaser_frame_03",
       "asset_type": "teaser",
-      "subject": "하강 관문 preclimax beat",
+      "subject": "Southern Gate preclimax beat",
       "art_key_runtime": "pending:teaser_ch06_preclimax",
       "art_key_final": "teaser_ch06_preclimax",
       "filename_target": "teaser_ch06_preclimax_v01.webp",

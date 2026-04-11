@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "asset_count": 180,
   "assets": [
     {
@@ -907,7 +907,7 @@
       "chapter_id": "CH06",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch06_southern_gate_collapse_entry",
+      "art_key_runtime": "ch06_entry",
       "art_key_final": "bg_ch06_southern_gate_collapse_primary",
       "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp",
       "ratio": "16:10",
@@ -927,7 +927,7 @@
       "chapter_id": "CH06",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch06_southern_gate_collapse_route",
+      "art_key_runtime": "ch06_route",
       "art_key_final": "bg_ch06_southern_gate_collapse_secondary",
       "filename_target": "bg_ch06_southern_gate_collapse_secondary_v01.webp",
       "ratio": "16:10",
@@ -987,7 +987,7 @@
       "chapter_id": "CH06",
       "part_id": "P2",
       "asset_type": "threat",
-      "art_key_runtime": "ch06_southern_gate_collapse_boss",
+      "art_key_runtime": "ch06_boss",
       "art_key_final": "threat_gate_mauler",
       "filename_target": "threat_gate_mauler_v01.webp",
       "ratio": "4:5",
@@ -1087,11 +1087,11 @@
       "chapter_id": "CH07",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch07_red_corridor_pursuit_entry",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_primary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_primary_v01.webp",
+      "art_key_runtime": "ch07_entry",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1100,18 +1100,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_bg_secondary",
       "chapter_id": "CH07",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch07_red_corridor_pursuit_route",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_secondary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_secondary_v01.webp",
+      "art_key_runtime": "ch07_route",
+      "art_key_final": "bg_ch07_red_corridor_sprint_secondary",
+      "filename_target": "bg_ch07_red_corridor_sprint_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1120,7 +1120,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_portrait_anchor",
@@ -1131,7 +1131,7 @@
       "art_key_final": "portrait_npc_jang_taehun_ch07_anchor",
       "filename_target": "portrait_npc_jang_taehun_ch07_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1140,7 +1140,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_portrait_support",
@@ -1151,7 +1151,7 @@
       "art_key_final": "portrait_npc_jung_noah_ch07_support",
       "filename_target": "portrait_npc_jung_noah_ch07_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1160,18 +1160,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_threat_signature",
       "chapter_id": "CH07",
       "part_id": "P2",
       "asset_type": "threat",
-      "art_key_runtime": "ch07_red_corridor_pursuit_boss",
+      "art_key_runtime": "ch07_boss",
       "art_key_final": "threat_red_tracker",
       "filename_target": "threat_red_tracker_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1180,18 +1180,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_poster_keyart",
       "chapter_id": "CH07",
       "part_id": "P2",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch07_red_corridor_pursuit",
-      "art_key_final": "poster_ch07_red_corridor_pursuit",
-      "filename_target": "poster_ch07_red_corridor_pursuit_v01.webp",
+      "art_key_runtime": "pending:poster_ch07_red_corridor_sprint",
+      "art_key_final": "poster_ch07_red_corridor_sprint",
+      "filename_target": "poster_ch07_red_corridor_sprint_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1200,7 +1200,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_teaser_frame_01",
@@ -1211,7 +1211,7 @@
       "art_key_final": "teaser_ch07_entry",
       "filename_target": "teaser_ch07_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1220,7 +1220,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_teaser_frame_02",
@@ -1231,7 +1231,7 @@
       "art_key_final": "teaser_ch07_pressure",
       "filename_target": "teaser_ch07_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1240,7 +1240,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch07_teaser_frame_03",
@@ -1251,7 +1251,7 @@
       "art_key_final": "teaser_ch07_preclimax",
       "filename_target": "teaser_ch07_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_pursuit/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1260,18 +1260,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.red_corridor_pursuit"
+      "style_pack": "P2.red_corridor_sprint"
     },
     {
       "asset_id": "ch08_bg_primary",
       "chapter_id": "CH08",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch08_blockade_bureau_autopsy_entry",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_primary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_primary_v01.webp",
+      "art_key_runtime": "ch08_entry",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1280,18 +1280,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_bg_secondary",
       "chapter_id": "CH08",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch08_blockade_bureau_autopsy_route",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_secondary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_secondary_v01.webp",
+      "art_key_runtime": "ch08_route",
+      "art_key_final": "bg_ch08_broker_midnight_market_secondary",
+      "filename_target": "bg_ch08_broker_midnight_market_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1300,7 +1300,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_portrait_anchor",
@@ -1311,7 +1311,7 @@
       "art_key_final": "portrait_npc_sim_gyuseok_ch08_anchor",
       "filename_target": "portrait_npc_sim_gyuseok_ch08_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1320,7 +1320,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_portrait_support",
@@ -1331,7 +1331,7 @@
       "art_key_final": "portrait_npc_bae_suhyeon_ch08_support",
       "filename_target": "portrait_npc_bae_suhyeon_ch08_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1340,18 +1340,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_threat_signature",
       "chapter_id": "CH08",
       "part_id": "P2",
       "asset_type": "threat",
-      "art_key_runtime": "ch08_blockade_bureau_autopsy_boss",
+      "art_key_runtime": "ch08_boss",
       "art_key_final": "threat_seal_guardian",
       "filename_target": "threat_seal_guardian_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1360,18 +1360,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_poster_keyart",
       "chapter_id": "CH08",
       "part_id": "P2",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch08_blockade_bureau_autopsy",
-      "art_key_final": "poster_ch08_blockade_bureau_autopsy",
-      "filename_target": "poster_ch08_blockade_bureau_autopsy_v01.webp",
+      "art_key_runtime": "pending:poster_ch08_broker_midnight_market",
+      "art_key_final": "poster_ch08_broker_midnight_market",
+      "filename_target": "poster_ch08_broker_midnight_market_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1380,7 +1380,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_teaser_frame_01",
@@ -1391,7 +1391,7 @@
       "art_key_final": "teaser_ch08_entry",
       "filename_target": "teaser_ch08_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1400,7 +1400,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_teaser_frame_02",
@@ -1411,7 +1411,7 @@
       "art_key_final": "teaser_ch08_pressure",
       "filename_target": "teaser_ch08_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1420,7 +1420,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch08_teaser_frame_03",
@@ -1431,7 +1431,7 @@
       "art_key_final": "teaser_ch08_preclimax",
       "filename_target": "teaser_ch08_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_blockade_bureau_autopsy/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH08_broker_midnight_market/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1440,18 +1440,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH08.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.blockade_bureau_autopsy"
+      "style_pack": "P2.broker_midnight_market"
     },
     {
       "asset_id": "ch09_bg_primary",
       "chapter_id": "CH09",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch09_smoke_depot_toxic_entry",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_primary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_primary_v01.webp",
+      "art_key_runtime": "ch09_entry",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1460,18 +1460,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_bg_secondary",
       "chapter_id": "CH09",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch09_smoke_depot_toxic_route",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_secondary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_secondary_v01.webp",
+      "art_key_runtime": "ch09_route",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_secondary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1480,7 +1480,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_portrait_anchor",
@@ -1491,7 +1491,7 @@
       "art_key_final": "portrait_npc_han_somyeong_ch09_anchor",
       "filename_target": "portrait_npc_han_somyeong_ch09_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1500,7 +1500,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_portrait_support",
@@ -1511,7 +1511,7 @@
       "art_key_final": "portrait_npc_jang_taehun_ch09_support",
       "filename_target": "portrait_npc_jang_taehun_ch09_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1520,18 +1520,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_threat_signature",
       "chapter_id": "CH09",
       "part_id": "P2",
       "asset_type": "threat",
-      "art_key_runtime": "ch09_smoke_depot_toxic_boss",
+      "art_key_runtime": "ch09_boss",
       "art_key_final": "threat_smoke_warehouse_mass",
       "filename_target": "threat_smoke_warehouse_mass_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1540,18 +1540,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_poster_keyart",
       "chapter_id": "CH09",
       "part_id": "P2",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch09_smoke_depot_toxic",
-      "art_key_final": "poster_ch09_smoke_depot_toxic",
-      "filename_target": "poster_ch09_smoke_depot_toxic_v01.webp",
+      "art_key_runtime": "pending:poster_ch09_mooring_warehouse_pressure",
+      "art_key_final": "poster_ch09_mooring_warehouse_pressure",
+      "filename_target": "poster_ch09_mooring_warehouse_pressure_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1560,7 +1560,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_teaser_frame_01",
@@ -1571,7 +1571,7 @@
       "art_key_final": "teaser_ch09_entry",
       "filename_target": "teaser_ch09_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1580,7 +1580,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_teaser_frame_02",
@@ -1591,7 +1591,7 @@
       "art_key_final": "teaser_ch09_pressure",
       "filename_target": "teaser_ch09_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1600,7 +1600,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch09_teaser_frame_03",
@@ -1611,7 +1611,7 @@
       "art_key_final": "teaser_ch09_preclimax",
       "filename_target": "teaser_ch09_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_smoke_depot_toxic/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH09_mooring_warehouse_pressure/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1620,18 +1620,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH09.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.smoke_depot_toxic"
+      "style_pack": "P2.mooring_warehouse_pressure"
     },
     {
       "asset_id": "ch10_bg_primary",
       "chapter_id": "CH10",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch10_sinking_harbor_contract_entry",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_primary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_primary_v01.webp",
+      "art_key_runtime": "ch10_entry",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1640,18 +1640,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_bg_secondary",
       "chapter_id": "CH10",
       "part_id": "P2",
       "asset_type": "background",
-      "art_key_runtime": "ch10_sinking_harbor_contract_route",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_secondary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_secondary_v01.webp",
+      "art_key_runtime": "ch10_route",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_secondary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1660,7 +1660,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_portrait_anchor",
@@ -1671,7 +1671,7 @@
       "art_key_final": "portrait_npc_seo_jinseo_ch10_anchor",
       "filename_target": "portrait_npc_seo_jinseo_ch10_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1680,7 +1680,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_portrait_support",
@@ -1691,7 +1691,7 @@
       "art_key_final": "portrait_npc_nam_jaewook_ch10_support",
       "filename_target": "portrait_npc_nam_jaewook_ch10_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1700,18 +1700,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_threat_signature",
       "chapter_id": "CH10",
       "part_id": "P2",
       "asset_type": "threat",
-      "art_key_runtime": "ch10_sinking_harbor_contract_boss",
+      "art_key_runtime": "ch10_boss",
       "art_key_final": "threat_sinking_dock_hauler",
       "filename_target": "threat_sinking_dock_hauler_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1720,18 +1720,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_poster_keyart",
       "chapter_id": "CH10",
       "part_id": "P2",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch10_sinking_harbor_contract",
-      "art_key_final": "poster_ch10_sinking_harbor_contract",
-      "filename_target": "poster_ch10_sinking_harbor_contract_v01.webp",
+      "art_key_runtime": "pending:poster_ch10_sunken_harbor_contract",
+      "art_key_final": "poster_ch10_sunken_harbor_contract",
+      "filename_target": "poster_ch10_sunken_harbor_contract_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1740,7 +1740,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_teaser_frame_01",
@@ -1751,7 +1751,7 @@
       "art_key_final": "teaser_ch10_entry",
       "filename_target": "teaser_ch10_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1760,7 +1760,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_teaser_frame_02",
@@ -1771,7 +1771,7 @@
       "art_key_final": "teaser_ch10_pressure",
       "filename_target": "teaser_ch10_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1780,7 +1780,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch10_teaser_frame_03",
@@ -1791,7 +1791,7 @@
       "art_key_final": "teaser_ch10_preclimax",
       "filename_target": "teaser_ch10_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sinking_harbor_contract/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH10_sunken_harbor_contract/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1800,18 +1800,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH10.md",
         "docs/world/story-bible/PART_BIBLE_P2.md"
       ],
-      "style_pack": "P2.sinking_harbor_contract"
+      "style_pack": "P2.sunken_harbor_contract"
     },
     {
       "asset_id": "ch11_bg_primary",
       "chapter_id": "CH11",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch11_iron_detour_frost_entry",
-      "art_key_final": "bg_ch11_iron_detour_frost_primary",
-      "filename_target": "bg_ch11_iron_detour_frost_primary_v01.webp",
+      "art_key_runtime": "ch11_entry",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1820,18 +1820,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_bg_secondary",
       "chapter_id": "CH11",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch11_iron_detour_frost_route",
-      "art_key_final": "bg_ch11_iron_detour_frost_secondary",
-      "filename_target": "bg_ch11_iron_detour_frost_secondary_v01.webp",
+      "art_key_runtime": "ch11_route",
+      "art_key_final": "bg_ch11_thousand_lane_relay_secondary",
+      "filename_target": "bg_ch11_thousand_lane_relay_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1840,7 +1840,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_portrait_anchor",
@@ -1851,7 +1851,7 @@
       "art_key_final": "portrait_npc_park_isaac_ch11_anchor",
       "filename_target": "portrait_npc_park_isaac_ch11_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1860,7 +1860,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_portrait_support",
@@ -1871,7 +1871,7 @@
       "art_key_final": "portrait_npc_ryu_seon_ch11_support",
       "filename_target": "portrait_npc_ryu_seon_ch11_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1880,18 +1880,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_threat_signature",
       "chapter_id": "CH11",
       "part_id": "P3",
       "asset_type": "threat",
-      "art_key_runtime": "ch11_iron_detour_frost_boss",
+      "art_key_runtime": "ch11_boss",
       "art_key_final": "threat_rail_guide",
       "filename_target": "threat_rail_guide_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1900,18 +1900,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_poster_keyart",
       "chapter_id": "CH11",
       "part_id": "P3",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch11_iron_detour_frost",
-      "art_key_final": "poster_ch11_iron_detour_frost",
-      "filename_target": "poster_ch11_iron_detour_frost_v01.webp",
+      "art_key_runtime": "pending:poster_ch11_thousand_lane_relay",
+      "art_key_final": "poster_ch11_thousand_lane_relay",
+      "filename_target": "poster_ch11_thousand_lane_relay_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1920,7 +1920,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_teaser_frame_01",
@@ -1931,7 +1931,7 @@
       "art_key_final": "teaser_ch11_entry",
       "filename_target": "teaser_ch11_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1940,7 +1940,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_teaser_frame_02",
@@ -1951,7 +1951,7 @@
       "art_key_final": "teaser_ch11_pressure",
       "filename_target": "teaser_ch11_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1960,7 +1960,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch11_teaser_frame_03",
@@ -1971,7 +1971,7 @@
       "art_key_final": "teaser_ch11_preclimax",
       "filename_target": "teaser_ch11_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_iron_detour_frost/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH11_thousand_lane_relay/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -1980,18 +1980,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.iron_detour_frost"
+      "style_pack": "P3.thousand_lane_relay"
     },
     {
       "asset_id": "ch12_bg_primary",
       "chapter_id": "CH12",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch12_echo_base_signal_entry",
-      "art_key_final": "bg_ch12_echo_base_signal_primary",
-      "filename_target": "bg_ch12_echo_base_signal_primary_v01.webp",
+      "art_key_runtime": "ch12_entry",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2000,18 +2000,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_bg_secondary",
       "chapter_id": "CH12",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch12_echo_base_signal_route",
-      "art_key_final": "bg_ch12_echo_base_signal_secondary",
-      "filename_target": "bg_ch12_echo_base_signal_secondary_v01.webp",
+      "art_key_runtime": "ch12_route",
+      "art_key_final": "bg_ch12_bias_station_secondary",
+      "filename_target": "bg_ch12_bias_station_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2020,7 +2020,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_portrait_anchor",
@@ -2031,7 +2031,7 @@
       "art_key_final": "portrait_npc_nam_suryeon_ch12_anchor",
       "filename_target": "portrait_npc_nam_suryeon_ch12_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2040,7 +2040,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_portrait_support",
@@ -2051,7 +2051,7 @@
       "art_key_final": "portrait_npc_park_isaac_ch12_support",
       "filename_target": "portrait_npc_park_isaac_ch12_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2060,18 +2060,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_threat_signature",
       "chapter_id": "CH12",
       "part_id": "P3",
       "asset_type": "threat",
-      "art_key_runtime": "ch12_echo_base_signal_boss",
+      "art_key_runtime": "ch12_boss",
       "art_key_final": "threat_resonance_priest",
       "filename_target": "threat_resonance_priest_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2080,18 +2080,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_poster_keyart",
       "chapter_id": "CH12",
       "part_id": "P3",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch12_echo_base_signal",
-      "art_key_final": "poster_ch12_echo_base_signal",
-      "filename_target": "poster_ch12_echo_base_signal_v01.webp",
+      "art_key_runtime": "pending:poster_ch12_bias_station",
+      "art_key_final": "poster_ch12_bias_station",
+      "filename_target": "poster_ch12_bias_station_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2100,7 +2100,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_teaser_frame_01",
@@ -2111,7 +2111,7 @@
       "art_key_final": "teaser_ch12_entry",
       "filename_target": "teaser_ch12_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2120,7 +2120,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_teaser_frame_02",
@@ -2131,7 +2131,7 @@
       "art_key_final": "teaser_ch12_pressure",
       "filename_target": "teaser_ch12_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2140,7 +2140,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch12_teaser_frame_03",
@@ -2151,7 +2151,7 @@
       "art_key_final": "teaser_ch12_preclimax",
       "filename_target": "teaser_ch12_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_echo_base_signal/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH12_bias_station/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2160,18 +2160,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH12.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.echo_base_signal"
+      "style_pack": "P3.bias_station"
     },
     {
       "asset_id": "ch13_bg_primary",
       "chapter_id": "CH13",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch13_white_yard_ethics_entry",
-      "art_key_final": "bg_ch13_white_yard_ethics_primary",
-      "filename_target": "bg_ch13_white_yard_ethics_primary_v01.webp",
+      "art_key_runtime": "ch13_entry",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2180,18 +2180,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_bg_secondary",
       "chapter_id": "CH13",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch13_white_yard_ethics_route",
-      "art_key_final": "bg_ch13_white_yard_ethics_secondary",
-      "filename_target": "bg_ch13_white_yard_ethics_secondary_v01.webp",
+      "art_key_runtime": "ch13_route",
+      "art_key_final": "bg_ch13_white_log_archive_secondary",
+      "filename_target": "bg_ch13_white_log_archive_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2200,7 +2200,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_portrait_anchor",
@@ -2211,7 +2211,7 @@
       "art_key_final": "portrait_npc_han_somyeong_ch13_anchor",
       "filename_target": "portrait_npc_han_somyeong_ch13_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2220,7 +2220,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_portrait_support",
@@ -2231,7 +2231,7 @@
       "art_key_final": "portrait_npc_oh_gyeongtae_ch13_support",
       "filename_target": "portrait_npc_oh_gyeongtae_ch13_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2240,18 +2240,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_threat_signature",
       "chapter_id": "CH13",
       "part_id": "P3",
       "asset_type": "threat",
-      "art_key_runtime": "ch13_white_yard_ethics_boss",
+      "art_key_runtime": "ch13_boss",
       "art_key_final": "threat_white_yard_tower",
       "filename_target": "threat_white_yard_tower_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2260,18 +2260,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_poster_keyart",
       "chapter_id": "CH13",
       "part_id": "P3",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch13_white_yard_ethics",
-      "art_key_final": "poster_ch13_white_yard_ethics",
-      "filename_target": "poster_ch13_white_yard_ethics_v01.webp",
+      "art_key_runtime": "pending:poster_ch13_white_log_archive",
+      "art_key_final": "poster_ch13_white_log_archive",
+      "filename_target": "poster_ch13_white_log_archive_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2280,7 +2280,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_teaser_frame_01",
@@ -2291,7 +2291,7 @@
       "art_key_final": "teaser_ch13_entry",
       "filename_target": "teaser_ch13_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2300,7 +2300,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_teaser_frame_02",
@@ -2311,7 +2311,7 @@
       "art_key_final": "teaser_ch13_pressure",
       "filename_target": "teaser_ch13_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2320,7 +2320,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch13_teaser_frame_03",
@@ -2331,7 +2331,7 @@
       "art_key_final": "teaser_ch13_preclimax",
       "filename_target": "teaser_ch13_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_yard_ethics/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH13_white_log_archive/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2340,18 +2340,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH13.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.white_yard_ethics"
+      "style_pack": "P3.white_log_archive"
     },
     {
       "asset_id": "ch14_bg_primary",
       "chapter_id": "CH14",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch14_sea_fog_grid_entry",
-      "art_key_final": "bg_ch14_sea_fog_grid_primary",
-      "filename_target": "bg_ch14_sea_fog_grid_primary_v01.webp",
+      "art_key_runtime": "ch14_entry",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2360,18 +2360,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_bg_secondary",
       "chapter_id": "CH14",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch14_sea_fog_grid_route",
-      "art_key_final": "bg_ch14_sea_fog_grid_secondary",
-      "filename_target": "bg_ch14_sea_fog_grid_secondary_v01.webp",
+      "art_key_runtime": "ch14_route",
+      "art_key_final": "bg_ch14_medical_substation_secondary",
+      "filename_target": "bg_ch14_medical_substation_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2380,7 +2380,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_portrait_anchor",
@@ -2391,7 +2391,7 @@
       "art_key_final": "portrait_npc_ahn_bogyeong_ch14_anchor",
       "filename_target": "portrait_npc_ahn_bogyeong_ch14_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2400,7 +2400,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_portrait_support",
@@ -2411,7 +2411,7 @@
       "art_key_final": "portrait_npc_park_isaac_ch14_support",
       "filename_target": "portrait_npc_park_isaac_ch14_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2420,18 +2420,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_threat_signature",
       "chapter_id": "CH14",
       "part_id": "P3",
       "asset_type": "threat",
-      "art_key_runtime": "ch14_sea_fog_grid_boss",
+      "art_key_runtime": "ch14_boss",
       "art_key_final": "threat_mist_transformer",
       "filename_target": "threat_mist_transformer_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2440,18 +2440,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_poster_keyart",
       "chapter_id": "CH14",
       "part_id": "P3",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch14_sea_fog_grid",
-      "art_key_final": "poster_ch14_sea_fog_grid",
-      "filename_target": "poster_ch14_sea_fog_grid_v01.webp",
+      "art_key_runtime": "pending:poster_ch14_medical_substation",
+      "art_key_final": "poster_ch14_medical_substation",
+      "filename_target": "poster_ch14_medical_substation_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2460,7 +2460,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_teaser_frame_01",
@@ -2471,7 +2471,7 @@
       "art_key_final": "teaser_ch14_entry",
       "filename_target": "teaser_ch14_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2480,7 +2480,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_teaser_frame_02",
@@ -2491,7 +2491,7 @@
       "art_key_final": "teaser_ch14_pressure",
       "filename_target": "teaser_ch14_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2500,7 +2500,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch14_teaser_frame_03",
@@ -2511,7 +2511,7 @@
       "art_key_final": "teaser_ch14_preclimax",
       "filename_target": "teaser_ch14_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_sea_fog_grid/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH14_medical_substation/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2520,18 +2520,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.sea_fog_grid"
+      "style_pack": "P3.medical_substation"
     },
     {
       "asset_id": "ch15_bg_primary",
       "chapter_id": "CH15",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch15_quarantine_watch_cliff_entry",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_primary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_primary_v01.webp",
+      "art_key_runtime": "ch15_entry",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2540,18 +2540,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_bg_secondary",
       "chapter_id": "CH15",
       "part_id": "P3",
       "asset_type": "background",
-      "art_key_runtime": "ch15_quarantine_watch_cliff_route",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_secondary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_secondary_v01.webp",
+      "art_key_runtime": "ch15_route",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_secondary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2560,7 +2560,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_portrait_anchor",
@@ -2571,7 +2571,7 @@
       "art_key_final": "portrait_npc_ahn_bogyeong_ch15_anchor",
       "filename_target": "portrait_npc_ahn_bogyeong_ch15_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2580,7 +2580,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_portrait_support",
@@ -2591,7 +2591,7 @@
       "art_key_final": "portrait_npc_nam_suryeon_ch15_support",
       "filename_target": "portrait_npc_nam_suryeon_ch15_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2600,18 +2600,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_threat_signature",
       "chapter_id": "CH15",
       "part_id": "P3",
       "asset_type": "threat",
-      "art_key_runtime": "ch15_quarantine_watch_cliff_boss",
+      "art_key_runtime": "ch15_boss",
       "art_key_final": "threat_quarantine_sentinel",
       "filename_target": "threat_quarantine_sentinel_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2620,18 +2620,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_poster_keyart",
       "chapter_id": "CH15",
       "part_id": "P3",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch15_quarantine_watch_cliff",
-      "art_key_final": "poster_ch15_quarantine_watch_cliff",
-      "filename_target": "poster_ch15_quarantine_watch_cliff_v01.webp",
+      "art_key_runtime": "pending:poster_ch15_sealed_relay_corridor",
+      "art_key_final": "poster_ch15_sealed_relay_corridor",
+      "filename_target": "poster_ch15_sealed_relay_corridor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2640,7 +2640,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_teaser_frame_01",
@@ -2651,7 +2651,7 @@
       "art_key_final": "teaser_ch15_entry",
       "filename_target": "teaser_ch15_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2660,7 +2660,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_teaser_frame_02",
@@ -2671,7 +2671,7 @@
       "art_key_final": "teaser_ch15_pressure",
       "filename_target": "teaser_ch15_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2680,7 +2680,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch15_teaser_frame_03",
@@ -2691,7 +2691,7 @@
       "art_key_final": "teaser_ch15_preclimax",
       "filename_target": "teaser_ch15_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_quarantine_watch_cliff/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH15_sealed_relay_corridor/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2700,18 +2700,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH15.md",
         "docs/world/story-bible/PART_BIBLE_P3.md"
       ],
-      "style_pack": "P3.quarantine_watch_cliff"
+      "style_pack": "P3.sealed_relay_corridor"
     },
     {
       "asset_id": "ch16_bg_primary",
       "chapter_id": "CH16",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch16_fractured_dune_loss_entry",
-      "art_key_final": "bg_ch16_fractured_dune_loss_primary",
-      "filename_target": "bg_ch16_fractured_dune_loss_primary_v01.webp",
+      "art_key_runtime": "ch16_entry",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2720,18 +2720,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_bg_secondary",
       "chapter_id": "CH16",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch16_fractured_dune_loss_route",
-      "art_key_final": "bg_ch16_fractured_dune_loss_secondary",
-      "filename_target": "bg_ch16_fractured_dune_loss_secondary_v01.webp",
+      "art_key_runtime": "ch16_route",
+      "art_key_final": "bg_ch16_fracture_harbor_secondary",
+      "filename_target": "bg_ch16_fracture_harbor_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2740,7 +2740,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_portrait_anchor",
@@ -2751,7 +2751,7 @@
       "art_key_final": "portrait_npc_seo_jinseo_ch16_anchor",
       "filename_target": "portrait_npc_seo_jinseo_ch16_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2760,7 +2760,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_portrait_support",
@@ -2771,7 +2771,7 @@
       "art_key_final": "portrait_npc_shin_dogyeom_ch16_support",
       "filename_target": "portrait_npc_shin_dogyeom_ch16_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2780,18 +2780,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_threat_signature",
       "chapter_id": "CH16",
       "part_id": "P4",
       "asset_type": "threat",
-      "art_key_runtime": "ch16_fractured_dune_loss_boss",
+      "art_key_runtime": "ch16_boss",
       "art_key_final": "threat_dune_cutter",
       "filename_target": "threat_dune_cutter_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2800,18 +2800,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_poster_keyart",
       "chapter_id": "CH16",
       "part_id": "P4",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch16_fractured_dune_loss",
-      "art_key_final": "poster_ch16_fractured_dune_loss",
-      "filename_target": "poster_ch16_fractured_dune_loss_v01.webp",
+      "art_key_runtime": "pending:poster_ch16_fracture_harbor",
+      "art_key_final": "poster_ch16_fracture_harbor",
+      "filename_target": "poster_ch16_fracture_harbor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2820,7 +2820,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_teaser_frame_01",
@@ -2831,7 +2831,7 @@
       "art_key_final": "teaser_ch16_entry",
       "filename_target": "teaser_ch16_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2840,7 +2840,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_teaser_frame_02",
@@ -2851,7 +2851,7 @@
       "art_key_final": "teaser_ch16_pressure",
       "filename_target": "teaser_ch16_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2860,7 +2860,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch16_teaser_frame_03",
@@ -2871,7 +2871,7 @@
       "art_key_final": "teaser_ch16_preclimax",
       "filename_target": "teaser_ch16_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fractured_dune_loss/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2880,18 +2880,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fractured_dune_loss"
+      "style_pack": "P4.fracture_harbor"
     },
     {
       "asset_id": "ch17_bg_primary",
       "chapter_id": "CH17",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch17_fragment_gate_corrosion_entry",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_primary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_primary_v01.webp",
+      "art_key_runtime": "ch17_entry",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2900,18 +2900,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_bg_secondary",
       "chapter_id": "CH17",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch17_fragment_gate_corrosion_route",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_secondary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_secondary_v01.webp",
+      "art_key_runtime": "ch17_route",
+      "art_key_final": "bg_ch17_sluice_corridor_secondary",
+      "filename_target": "bg_ch17_sluice_corridor_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2920,7 +2920,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_portrait_anchor",
@@ -2931,7 +2931,7 @@
       "art_key_final": "portrait_npc_shin_dogyeom_ch17_anchor",
       "filename_target": "portrait_npc_shin_dogyeom_ch17_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2940,7 +2940,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_portrait_support",
@@ -2951,7 +2951,7 @@
       "art_key_final": "portrait_npc_mo_eunjae_ch17_support",
       "filename_target": "portrait_npc_mo_eunjae_ch17_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2960,18 +2960,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_threat_signature",
       "chapter_id": "CH17",
       "part_id": "P4",
       "asset_type": "threat",
-      "art_key_runtime": "ch17_fragment_gate_corrosion_boss",
+      "art_key_runtime": "ch17_boss",
       "art_key_final": "threat_fragment_gate_breaker",
       "filename_target": "threat_fragment_gate_breaker_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -2980,18 +2980,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_poster_keyart",
       "chapter_id": "CH17",
       "part_id": "P4",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch17_fragment_gate_corrosion",
-      "art_key_final": "poster_ch17_fragment_gate_corrosion",
-      "filename_target": "poster_ch17_fragment_gate_corrosion_v01.webp",
+      "art_key_runtime": "pending:poster_ch17_sluice_corridor",
+      "art_key_final": "poster_ch17_sluice_corridor",
+      "filename_target": "poster_ch17_sluice_corridor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3000,7 +3000,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_teaser_frame_01",
@@ -3011,7 +3011,7 @@
       "art_key_final": "teaser_ch17_entry",
       "filename_target": "teaser_ch17_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3020,7 +3020,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_teaser_frame_02",
@@ -3031,7 +3031,7 @@
       "art_key_final": "teaser_ch17_pressure",
       "filename_target": "teaser_ch17_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3040,7 +3040,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch17_teaser_frame_03",
@@ -3051,7 +3051,7 @@
       "art_key_final": "teaser_ch17_preclimax",
       "filename_target": "teaser_ch17_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_fragment_gate_corrosion/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH17_sluice_corridor/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3060,14 +3060,14 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH17.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.fragment_gate_corrosion"
+      "style_pack": "P4.sluice_corridor"
     },
     {
       "asset_id": "ch18_bg_primary",
       "chapter_id": "CH18",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch18_salt_station_judgement_entry",
+      "art_key_runtime": "ch18_entry",
       "art_key_final": "bg_ch18_salt_station_judgement_primary",
       "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp",
       "ratio": "16:10",
@@ -3087,7 +3087,7 @@
       "chapter_id": "CH18",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch18_salt_station_judgement_route",
+      "art_key_runtime": "ch18_route",
       "art_key_final": "bg_ch18_salt_station_judgement_secondary",
       "filename_target": "bg_ch18_salt_station_judgement_secondary_v01.webp",
       "ratio": "16:10",
@@ -3147,7 +3147,7 @@
       "chapter_id": "CH18",
       "part_id": "P4",
       "asset_type": "threat",
-      "art_key_runtime": "ch18_salt_station_judgement_boss",
+      "art_key_runtime": "ch18_boss",
       "art_key_final": "threat_salt_ration_wretch",
       "filename_target": "threat_salt_ration_wretch_v01.webp",
       "ratio": "4:5",
@@ -3247,11 +3247,11 @@
       "chapter_id": "CH19",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch19_outer_sea_platform_politics_entry",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_primary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_primary_v01.webp",
+      "art_key_runtime": "ch19_entry",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/background/bg_primary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/background/bg_primary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3260,18 +3260,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_bg_secondary",
       "chapter_id": "CH19",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch19_outer_sea_platform_politics_route",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_secondary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_secondary_v01.webp",
+      "art_key_runtime": "ch19_route",
+      "art_key_final": "bg_ch19_east_sea_outpost_secondary",
+      "filename_target": "bg_ch19_east_sea_outpost_secondary_v01.webp",
       "ratio": "16:10",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/background/bg_secondary.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/background/bg_secondary.md",
       "sync_target_path": "codex_webgame_pack/img/bg/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3280,7 +3280,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_portrait_anchor",
@@ -3291,7 +3291,7 @@
       "art_key_final": "portrait_npc_cha_munsik_ch19_anchor",
       "filename_target": "portrait_npc_cha_munsik_ch19_anchor_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/portrait/portrait_anchor.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/portrait/portrait_anchor.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3300,7 +3300,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_portrait_support",
@@ -3311,7 +3311,7 @@
       "art_key_final": "portrait_npc_yoon_haein_ch19_support",
       "filename_target": "portrait_npc_yoon_haein_ch19_support_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/portrait/portrait_support.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/portrait/portrait_support.md",
       "sync_target_path": "codex_webgame_pack/img/portrait/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3320,18 +3320,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_threat_signature",
       "chapter_id": "CH19",
       "part_id": "P4",
       "asset_type": "threat",
-      "art_key_runtime": "ch19_outer_sea_platform_politics_boss",
+      "art_key_runtime": "ch19_boss",
       "art_key_final": "threat_outer_wave_lord",
       "filename_target": "threat_outer_wave_lord_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/threat/threat_signature.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/threat/threat_signature.md",
       "sync_target_path": "codex_webgame_pack/img/threat/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3340,18 +3340,18 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_poster_keyart",
       "chapter_id": "CH19",
       "part_id": "P4",
       "asset_type": "poster",
-      "art_key_runtime": "pending:poster_ch19_outer_sea_platform_politics",
-      "art_key_final": "poster_ch19_outer_sea_platform_politics",
-      "filename_target": "poster_ch19_outer_sea_platform_politics_v01.webp",
+      "art_key_runtime": "pending:poster_ch19_east_sea_outpost",
+      "art_key_final": "poster_ch19_east_sea_outpost",
+      "filename_target": "poster_ch19_east_sea_outpost_v01.webp",
       "ratio": "4:5",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/poster/poster_keyart.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/poster/poster_keyart.md",
       "sync_target_path": "codex_webgame_pack/img/poster/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3360,7 +3360,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_teaser_frame_01",
@@ -3371,7 +3371,7 @@
       "art_key_final": "teaser_ch19_entry",
       "filename_target": "teaser_ch19_entry_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/teaser/teaser_frame_01.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/teaser/teaser_frame_01.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3380,7 +3380,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_teaser_frame_02",
@@ -3391,7 +3391,7 @@
       "art_key_final": "teaser_ch19_pressure",
       "filename_target": "teaser_ch19_pressure_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/teaser/teaser_frame_02.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/teaser/teaser_frame_02.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3400,7 +3400,7 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch19_teaser_frame_03",
@@ -3411,7 +3411,7 @@
       "art_key_final": "teaser_ch19_preclimax",
       "filename_target": "teaser_ch19_preclimax_v01.webp",
       "ratio": "16:9",
-      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_outer_sea_platform_politics/teaser/teaser_frame_03.md",
+      "prompt_file": "docs/asset-prompt-pack/chapters/CH19_east_sea_outpost/teaser/teaser_frame_03.md",
       "sync_target_path": "codex_webgame_pack/img/teaser/",
       "status": "prompt_ready",
       "source_refs": [
@@ -3420,14 +3420,14 @@
         "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH19.md",
         "docs/world/story-bible/PART_BIBLE_P4.md"
       ],
-      "style_pack": "P4.outer_sea_platform_politics"
+      "style_pack": "P4.east_sea_outpost"
     },
     {
       "asset_id": "ch20_bg_primary",
       "chapter_id": "CH20",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch20_dokdo_gate_core_entry",
+      "art_key_runtime": "ch20_entry",
       "art_key_final": "bg_ch20_dokdo_gate_core_primary",
       "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp",
       "ratio": "16:10",
@@ -3447,7 +3447,7 @@
       "chapter_id": "CH20",
       "part_id": "P4",
       "asset_type": "background",
-      "art_key_runtime": "ch20_dokdo_gate_core_route",
+      "art_key_runtime": "ch20_route",
       "art_key_final": "bg_ch20_dokdo_gate_core_secondary",
       "filename_target": "bg_ch20_dokdo_gate_core_secondary_v01.webp",
       "ratio": "16:10",
@@ -3507,7 +3507,7 @@
       "chapter_id": "CH20",
       "part_id": "P4",
       "asset_type": "threat",
-      "art_key_runtime": "ch20_dokdo_gate_core_boss",
+      "art_key_runtime": "ch20_boss",
       "art_key_final": "threat_dokdo_gate_warden",
       "filename_target": "threat_dokdo_gate_warden_v01.webp",
       "ratio": "4:5",

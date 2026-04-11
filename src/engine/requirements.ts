@@ -43,10 +43,93 @@ function parseScalar(input: string): string | number | boolean {
   return normalized;
 }
 
+function asBoolean(value: unknown): boolean {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  if (typeof value === "number") {
+    return value !== 0;
+  }
+
+  if (typeof value === "string") {
+    const normalized = value.trim().toLowerCase();
+    if (!normalized) {
+      return false;
+    }
+
+    if (normalized === "false" || normalized === "0" || normalized === "none" || normalized === "locked") {
+      return false;
+    }
+
+    return true;
+  }
+
+  return Boolean(value);
+}
+
+export function normalizeFlagKey(input: string): string {
+  const normalized = input.trim();
+  return normalized.startsWith("flag:") ? normalized.slice(5) : normalized;
+}
+
+export function normalizeItemKey(input: string): string {
+  const normalized = input.trim();
+  return normalized.startsWith("item:") ? normalized.slice(5) : normalized;
+}
+
+export function normalizeTrustKey(input: string): string {
+  const normalized = input.trim();
+  if (!normalized) {
+    return normalized;
+  }
+
+  if (normalized.startsWith("trust.")) {
+    return normalized;
+  }
+
+  if (normalized.startsWith("npc_")) {
+    return `trust.${normalized}`;
+  }
+
+  return normalized;
+}
+
+export function normalizeRouteUnlockKey(input: string): string {
+  return input.trim().replace(/^route:(?=.+)/u, "");
+}
+
+export function normalizeNodeUnlockKey(input: string): string {
+  return input.trim().replace(/^node:(?=.+)/u, "");
+}
+
+function resolveWidgetValue(reference: string, runtime: RuntimeSnapshot): string | number | boolean | undefined {
+  const [chapterHint, widgetKeyRaw] = reference.split(":", 2);
+  const widgetKey = widgetKeyRaw ? widgetKeyRaw.trim() : chapterHint.trim();
+  const chapterId = widgetKeyRaw ? chapterHint.trim() : runtime.current_chapter_id;
+  const chapterWidgets = runtime.chapter_widgets_state?.[chapterId];
+  const entry = chapterWidgets?.[widgetKey];
+  const value = entry?.value;
+
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+    return value;
+  }
+
+  return undefined;
+}
+
 function resolveRuntimeValue(reference: string, runtime: RuntimeSnapshot): string | number | boolean | undefined {
   const normalized = reference.trim();
   if (!normalized) {
     return undefined;
+  }
+
+  if (normalized.startsWith("trust.")) {
+    return runtime.stats[normalizeTrustKey(normalized)] as string | number | undefined;
+  }
+
+  if (normalized.startsWith("npc_")) {
+    return runtime.stats[normalizeTrustKey(normalized)] as string | number | undefined;
   }
 
   if (normalized.startsWith("flag:")) {
@@ -55,6 +138,56 @@ function resolveRuntimeValue(reference: string, runtime: RuntimeSnapshot): strin
 
   if (normalized.startsWith("item:")) {
     return runtime.inventory.quantities[normalizeItemKey(normalized)] ?? 0;
+  }
+
+  if (normalized.startsWith("route:")) {
+    return runtime.stats["route.current"] === normalized.slice(6);
+  }
+
+  if (normalized.startsWith("route_unlocked:") || normalized.startsWith("unlock_route:")) {
+    const rawKey = normalized.slice(normalized.indexOf(":") + 1);
+    const key = normalizeRouteUnlockKey(rawKey);
+    return (
+      runtime.route_unlocks?.[key]?.unlocked ??
+      (runtime.flags[`route.unlock.${key}`] as boolean | undefined) ??
+      (runtime.flags[key] as boolean | undefined)
+    );
+  }
+
+  if (normalized.startsWith("node_unlocked:") || normalized.startsWith("unlock_node:")) {
+    const rawKey = normalized.slice(normalized.indexOf(":") + 1);
+    const key = normalizeNodeUnlockKey(rawKey);
+    return (
+      runtime.node_unlocks?.[key]?.unlocked ??
+      (runtime.flags[`node.unlock.${key}`] as boolean | undefined) ??
+      (runtime.flags[key] as boolean | undefined)
+    );
+  }
+
+  if (normalized.startsWith("auth.")) {
+    return (
+      runtime.stats[normalized] as string | number | undefined
+    ) ?? (runtime.flags[normalized] as FlagValue | undefined);
+  }
+
+  if (normalized === "field_actions_remaining" || normalized === "field_actions.remaining") {
+    if (typeof runtime.field_actions_remaining === "number") {
+      return runtime.field_actions_remaining;
+    }
+
+    const chapterValue =
+      runtime.field_actions_remaining && typeof runtime.field_actions_remaining === "object"
+        ? runtime.field_actions_remaining[runtime.current_chapter_id]
+        : undefined;
+    return typeof chapterValue === "number" ? chapterValue : 0;
+  }
+
+  if (normalized.startsWith("widget.")) {
+    return resolveWidgetValue(normalized.slice("widget.".length), runtime);
+  }
+
+  if (normalized === "fail_state.active") {
+    return Boolean(runtime.fail_state);
   }
 
   if (Object.prototype.hasOwnProperty.call(runtime.stats, normalized)) {
@@ -103,16 +236,6 @@ function compareValues(left: string | number | boolean | undefined, operator: st
   }
 }
 
-export function normalizeFlagKey(input: string): string {
-  const normalized = input.trim();
-  return normalized.startsWith("flag:") ? normalized.slice(5) : normalized;
-}
-
-export function normalizeItemKey(input: string): string {
-  const normalized = input.trim();
-  return normalized.startsWith("item:") ? normalized.slice(5) : normalized;
-}
-
 export function evaluateCondition(
   condition: string,
   runtime: RuntimeSnapshot,
@@ -145,10 +268,36 @@ export function evaluateCondition(
     return runtime.flags[normalizeFlagKey(flagReference)] === true;
   }
 
+  if (normalized.startsWith("item:")) {
+    return Number(resolveRuntimeValue(normalized, runtime) ?? 0) > 0;
+  }
+
   const comparisonMatch = /^([a-zA-Z0-9_.:-]+)\s*(>=|<=|=|>|<)\s*([a-zA-Z0-9_.:-]+)$/u.exec(normalized);
   if (comparisonMatch) {
     const [, left, operator, right] = comparisonMatch;
     return compareValues(resolveRuntimeValue(left, runtime), operator, right);
+  }
+
+  if (
+    normalized.startsWith("route:") ||
+    normalized.startsWith("route_unlocked:") ||
+    normalized.startsWith("unlock_route:") ||
+    normalized.startsWith("node_unlocked:") ||
+    normalized.startsWith("unlock_node:") ||
+    normalized.startsWith("auth.") ||
+    normalized === "field_actions_remaining" ||
+    normalized === "field_actions.remaining" ||
+    normalized.startsWith("trust.") ||
+    normalized.startsWith("npc_") ||
+    normalized.startsWith("widget.") ||
+    normalized === "fail_state.active"
+  ) {
+    return asBoolean(resolveRuntimeValue(normalized, runtime));
+  }
+
+  const fallbackValue = resolveRuntimeValue(normalized, runtime);
+  if (fallbackValue !== undefined) {
+    return asBoolean(fallbackValue);
   }
 
   warnings.push(makeWarning(`Unsupported event condition: ${normalized}`, source));
@@ -161,25 +310,14 @@ export function evaluateEffectGuard(
   warnings: RuntimeWarning[],
   source: string
 ): boolean {
-  const normalized = condition.trim();
-  if (!normalized) {
+  if (!condition.trim()) {
     return true;
   }
 
-  if (normalized.includes("|")) {
-    return splitDisjunction(normalized).some((entry) => evaluateEffectGuard(entry, runtime, warnings, source));
-  }
-
-  if (normalized.startsWith("!")) {
-    return !evaluateEffectGuard(normalized.slice(1), runtime, warnings, source);
-  }
-
-  if (evaluateCondition(normalized, runtime, warnings, source)) {
-    return true;
-  }
-
-  warnings.push(makeWarning(`Unsupported effect guard: ${normalized}`, source));
-  return false;
+  const guardWarnings: RuntimeWarning[] = [];
+  const allowed = evaluateCondition(condition, runtime, guardWarnings, source);
+  warnings.push(...guardWarnings);
+  return allowed;
 }
 
 export function canTriggerEvent(
@@ -247,8 +385,16 @@ function evaluateUiCondition(
     return splitDisjunction(normalized).some((entry) => evaluateUiCondition(entry, runtime, context));
   }
 
+  if (normalized.startsWith("!")) {
+    return !evaluateUiCondition(normalized.slice(1), runtime, context);
+  }
+
   if (normalized.startsWith("flag:")) {
     return runtime.flags[normalizeFlagKey(normalized)] === true;
+  }
+
+  if (normalized.startsWith("auth.")) {
+    return asBoolean(resolveRuntimeValue(normalized, runtime));
   }
 
   if (normalized === "node.has_event=true") {
@@ -357,7 +503,7 @@ export function resolveTransitionTarget(
         return false;
       }
 
-      return transition.conditions.every((condition) => evaluateUiCondition(condition, runtime, context));
+      return transition.conditions.every((entry) => evaluateUiCondition(entry, runtime, context));
     }) ?? null
   );
 }

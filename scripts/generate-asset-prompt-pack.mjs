@@ -1,5 +1,11 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  PART_PRESENTATION_PACKAGES,
+  PRESENTATION_PARTS,
+  PRESENTATION_POSTER_DIR_BY_PART,
+  PRESENTATION_PROMPT_VERSION
+} from "./presentation-package-data.mjs";
 
 const ROOT = process.cwd();
 const OUT_ROOT = path.join(ROOT, "docs", "asset-prompt-pack");
@@ -108,6 +114,7 @@ const VIDEO_PROMPT_DIR_BY_PART = {
   P3: "part3-video-prompts",
   P4: "part4-video-prompts"
 };
+const POSTER_PROMPT_DIR_BY_PART = PRESENTATION_POSTER_DIR_BY_PART;
 
 const partNo = (partId) => partId.replace("P", "");
 
@@ -138,6 +145,7 @@ function createOpeningVideoPrompt(chapter, enemyMap) {
     video_id: videoId,
     scene_id: sceneId,
     chapter_id: chapter.chapter_id,
+    ending_id: null,
     part_id: partId,
     kind: "opening",
     duration: 15,
@@ -157,7 +165,7 @@ function createOpeningVideoPrompt(chapter, enemyMap) {
 
 function buildVideoManifest(partId, prompts) {
   return {
-    version: "1.0.0",
+    version: PRESENTATION_PROMPT_VERSION,
     scope: `${VIDEO_PROMPT_DIR_BY_PART[partId]}`,
     part_id: partId,
     count: prompts.length,
@@ -165,6 +173,7 @@ function buildVideoManifest(partId, prompts) {
       video_id: prompt.video_id,
       scene_id: prompt.scene_id,
       chapter_id: prompt.chapter_id,
+      ending_id: prompt.ending_id ?? null,
       kind: prompt.kind,
       file: prompt.file,
       source_art_key: prompt.source_art_key,
@@ -172,6 +181,164 @@ function buildVideoManifest(partId, prompts) {
       target_poster_path: prompt.target_poster_path
     }))
   };
+}
+
+function createEndingVideoPrompt(partId, ending) {
+  return {
+    video_id: ending.ending_id,
+    scene_id: ending.scene_id,
+    chapter_id: ending.chapter_id,
+    ending_id: ending.ending_id,
+    part_id: partId,
+    kind: "ending",
+    duration: ending.duration,
+    aspect_ratio: "16:9",
+    prompt_en: `${ending.prompt_en} ${PART_CONFIG[partId].tone}. ${ending.visual_anchor}. Grounded Korean apocalypse cinematic realism.`,
+    prompt_ko_context: ending.prompt_ko_context,
+    camera_notes: ending.camera_notes,
+    audio_notes: ending.audio_notes,
+    source_art_key: ending.source_art_key,
+    target_video_path: `public/generated/videos/${ending.ending_id}.mp4`,
+    target_poster_path: `public/generated/images/${ending.source_art_key}.webp`,
+    stitch_prompt: `${ending.prompt_en} Match style pack ${partId}.ending.${slug(ending.ending_id)}.`,
+    file: `${ending.ending_id}.json`
+  };
+}
+
+function createTrailerVideoPrompt(partId, trailer) {
+  return {
+    video_id: trailer.video_id,
+    scene_id: trailer.scene_id,
+    chapter_id: null,
+    ending_id: null,
+    part_id: partId,
+    kind: "trailer",
+    duration: trailer.duration,
+    aspect_ratio: "16:9",
+    prompt_en: trailer.prompt_en,
+    prompt_ko_context: trailer.prompt_ko_context,
+    camera_notes: trailer.camera_notes,
+    audio_notes: trailer.audio_notes,
+    source_art_key: trailer.source_art_key,
+    target_video_path: `public/generated/videos/${trailer.video_id}.mp4`,
+    target_poster_path: `public/generated/images/${trailer.source_art_key}.webp`,
+    stitch_prompt: `${trailer.prompt_en} Match style pack ${partId}.trailer.main.`,
+    file: `${trailer.video_id}.json`
+  };
+}
+
+function buildPosterPromptMarkdown(partId, poster) {
+  return `# ${poster.poster_id}
+
+## Header
+- poster_id: ${poster.poster_id}
+- part_id: ${partId}
+- category: ${poster.category}
+- ratio: 4:5
+- target_path: ${poster.target_path}
+- source_art_key_hint: ${poster.source_art_key_hint}
+
+## English Prompt
+\`\`\`text
+${poster.prompt_en}
+\`\`\`
+
+## Korean Context
+${poster.prompt_ko_context}
+
+## Negative Prompt
+\`\`\`text
+${PART_CONFIG[partId].negative_prompt}
+\`\`\`
+
+## Composition Notes
+${poster.composition_notes}
+`;
+}
+
+function buildPosterManifest(partId, posters) {
+  return {
+    version: PRESENTATION_PROMPT_VERSION,
+    scope: POSTER_PROMPT_DIR_BY_PART[partId],
+    part_id: partId,
+    count: posters.length,
+    posters: posters.map((poster) => ({
+      poster_id: poster.poster_id,
+      category: poster.category,
+      file: poster.file,
+      target_path: poster.target_path,
+      source_art_key_hint: poster.source_art_key_hint
+    }))
+  };
+}
+
+function buildPresentationManifest(videoPromptsByPart, posterPromptsByPart) {
+  const entries = [];
+  for (const partId of PRESENTATION_PARTS) {
+    for (const prompt of videoPromptsByPart[partId]) {
+      entries.push({
+        part_id: partId,
+        type: prompt.kind,
+        id: prompt.video_id,
+        file: `docs/asset-prompt-pack/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
+        target_path: prompt.target_video_path
+      });
+    }
+    for (const poster of posterPromptsByPart[partId]) {
+      entries.push({
+        part_id: partId,
+        type: "poster",
+        id: poster.poster_id,
+        file: `docs/asset-prompt-pack/${POSTER_PROMPT_DIR_BY_PART[partId]}/${poster.file}`,
+        target_path: poster.target_path
+      });
+    }
+  }
+  return {
+    version: PRESENTATION_PROMPT_VERSION,
+    count: entries.length,
+    entries
+  };
+}
+
+function buildPresentationRenderQueue(videoPromptsByPart, posterPromptsByPart) {
+  const tasks = [];
+  for (const partId of PRESENTATION_PARTS) {
+    for (const prompt of videoPromptsByPart[partId]) {
+      tasks.push({
+        task_id: `presentation-video:${prompt.video_id}`,
+        kind: "video",
+        part_id: partId,
+        prompt_file: `docs/asset-prompt-pack/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
+        target_path: prompt.target_video_path
+      });
+    }
+    for (const poster of posterPromptsByPart[partId]) {
+      tasks.push({
+        task_id: `presentation-poster:${poster.poster_id}`,
+        kind: "image",
+        part_id: partId,
+        prompt_file: `docs/asset-prompt-pack/${POSTER_PROMPT_DIR_BY_PART[partId]}/${poster.file}`,
+        target_path: poster.target_path
+      });
+    }
+  }
+  return {
+    version: PRESENTATION_PROMPT_VERSION,
+    task_count: tasks.length,
+    tasks
+  };
+}
+
+function buildPresentationPosterObjects() {
+  const result = {};
+  for (const partId of PRESENTATION_PARTS) {
+    result[partId] = PART_PRESENTATION_PACKAGES[partId].posters.map((poster) => ({
+      ...poster,
+      file: `${poster.poster_id}.md`
+    }));
+  }
+  return result;
 }
 
 function buildStitchRenderQueue(masterAssets, videoPromptsByPart) {
@@ -621,6 +788,7 @@ async function main() {
   const masterAssets = [];
   const aliasMappings = [];
   const videoPromptsByPart = { P2: [], P3: [], P4: [] };
+  const posterPromptsByPart = buildPresentationPosterObjects();
   for (const chapter of chapters) {
     const assets = buildAssets(chapter, npcMap, enemyMap);
     const ctx = {
@@ -658,11 +826,17 @@ async function main() {
     }
   }
 
+  for (const partId of PRESENTATION_PARTS) {
+    const pkg = PART_PRESENTATION_PACKAGES[partId];
+    videoPromptsByPart[partId].push(...pkg.endings.map((ending) => createEndingVideoPrompt(partId, ending)));
+    videoPromptsByPart[partId].push(createTrailerVideoPrompt(partId, pkg.trailer));
+  }
+
   await writeText(path.join(OUT_ROOT, "README.md"), buildReadme());
   await writeText(path.join(OUT_ROOT, "master", "SYNC_CHECKLIST.md"), buildSyncChecklist());
   await Promise.all(Object.keys(PART_CONFIG).map((partId) => writeText(path.join(OUT_ROOT, "part-guides", `${partId}.md`), buildPartGuide(partId))));
-  await writeJson(path.join(OUT_ROOT, "master", "MASTER_ASSET_MANIFEST.json"), { version: "1.0.0", asset_count: masterAssets.length, assets: masterAssets });
-  await writeJson(path.join(OUT_ROOT, "master", "RUNTIME_ART_KEY_ALIAS.json"), { version: "1.0.0", mapping_count: aliasMappings.length, mappings: aliasMappings });
+  await writeJson(path.join(OUT_ROOT, "master", "MASTER_ASSET_MANIFEST.json"), { version: PRESENTATION_PROMPT_VERSION, asset_count: masterAssets.length, assets: masterAssets });
+  await writeJson(path.join(OUT_ROOT, "master", "RUNTIME_ART_KEY_ALIAS.json"), { version: PRESENTATION_PROMPT_VERSION, mapping_count: aliasMappings.length, mappings: aliasMappings });
   await writeJson(path.join(OUT_ROOT, "master", "STITCH_RENDER_QUEUE.json"), buildStitchRenderQueue(masterAssets, videoPromptsByPart));
 
   for (const partId of VIDEO_PROMPT_PARTS) {
@@ -673,6 +847,24 @@ async function main() {
       await writeJson(path.join(dir, prompt.file), prompt);
     }
   }
+
+  for (const partId of PRESENTATION_PARTS) {
+    const dir = path.join(OUT_ROOT, POSTER_PROMPT_DIR_BY_PART[partId]);
+    const posters = posterPromptsByPart[partId];
+    await writeJson(path.join(dir, "manifest.json"), buildPosterManifest(partId, posters));
+    for (const poster of posters) {
+      await writeText(path.join(dir, poster.file), buildPosterPromptMarkdown(partId, poster));
+    }
+  }
+
+  await writeJson(
+    path.join(OUT_ROOT, "master", "PRESENTATION_PROMPT_MANIFEST.json"),
+    buildPresentationManifest(videoPromptsByPart, posterPromptsByPart)
+  );
+  await writeJson(
+    path.join(OUT_ROOT, "master", "PRESENTATION_RENDER_QUEUE.json"),
+    buildPresentationRenderQueue(videoPromptsByPart, posterPromptsByPart)
+  );
 
   const artKeySet = new Set(masterAssets.map((asset) => asset.art_key_final));
   const fileSet = new Set(masterAssets.map((asset) => asset.filename_target));
@@ -691,7 +883,9 @@ async function main() {
   }
   if (promptFiles.length !== 180) throw new Error(`expected 180 prompt files, got ${promptFiles.length}`);
   const videoPromptFiles = Object.values(videoPromptsByPart).reduce((count, entries) => count + entries.length, 0);
-  if (videoPromptFiles !== 15) throw new Error(`expected 15 video prompts for P2~P4, got ${videoPromptFiles}`);
+  if (videoPromptFiles !== 31) throw new Error(`expected 31 video prompts for P2~P4, got ${videoPromptFiles}`);
+  const posterPromptFiles = Object.values(posterPromptsByPart).reduce((count, entries) => count + entries.length, 0);
+  if (posterPromptFiles !== 9) throw new Error(`expected 9 poster prompts for P2~P4, got ${posterPromptFiles}`);
 
   const runtimeCh0620 = chapters
     .filter((chapter) => Number(chapterNumber(chapter.chapter_id)) >= 6)
@@ -702,7 +896,7 @@ async function main() {
   }
 
   console.log(
-    `generated asset prompt pack: ${masterAssets.length} assets, ${promptFiles.length} image prompts, ${videoPromptFiles} video prompts`
+    `generated asset prompt pack: ${masterAssets.length} assets, ${promptFiles.length} image prompts, ${videoPromptFiles} video prompts, ${posterPromptFiles} poster prompts`
   );
 }
 

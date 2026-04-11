@@ -5,7 +5,7 @@
 - chapter_id: CH06
 - part_id: P2
 - asset_type: poster
-- subject: 하강 관문 key art
+- subject: Southern Gate key art
 - ratio: 4:5
 - art_key_runtime: pending:poster_ch06_southern_gate_collapse
 - art_key_final: poster_ch06_southern_gate_collapse
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-poster for 하강 관문, Korean urban apocalypse, 붕괴 버스 차선, 공식 검문과 우회선 사이에서 사람과 명단을 넘긴다., one dominant silhouette, dramatic negative space, narrow route, converging lines, survival bottleneck, realistic cinematic color grading, distressed typography space
+poster for Southern Gate, Korean urban apocalypse, Route Board, Southern Gate opens with route pressure., one dominant silhouette, dramatic negative space, narrow route, converging lines, survival bottleneck, realistic cinematic color grading, distressed typography space
 ```
 
 ## Korean Context

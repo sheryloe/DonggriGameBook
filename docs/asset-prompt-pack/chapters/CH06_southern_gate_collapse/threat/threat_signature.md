@@ -7,14 +7,14 @@
 - asset_type: threat
 - subject: 관문 압쇄체
 - ratio: 4:5
-- art_key_runtime: ch06_southern_gate_collapse_boss
+- art_key_runtime: ch06_boss
 - art_key_final: threat_gate_mauler
 - filename_target: threat_gate_mauler_v01.webp
 - sync_target_path: codex_webgame_pack/img/threat/
 
 ## English Prompt
 ```text
-관문 압쇄체, Korean disaster setting infected, fused with 남부 중계 방벽, 검문장 구조물과 융합된 압박형 감염체, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
+관문 압쇄체, Korean disaster setting infected, fused with Field Window, 검문장 구조물과 융합된 압박형 감염체, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
 ```
 
 ## Korean Context

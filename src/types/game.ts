@@ -17,7 +17,22 @@ export type EndingId =
   | "P1_END_CONTROLLED_PASSAGE"
   | "P1_END_SMUGGLER_TIDE"
   | "P1_END_ASHEN_ESCAPE"
-  | "P1_END_MIRROR_WITNESS";
+  | "P1_END_MIRROR_WITNESS"
+  | "P2_END_CONTROLLED_CONVOY"
+  | "P2_END_WITNESS_FERRY"
+  | "P2_END_RED_CORRIDOR"
+  | "P2_END_HARBOR_SEIZURE"
+  | "P2_END_SUNKEN_LIST"
+  | "P3_END_CERTIFIED_PASSAGE"
+  | "P3_END_PUBLIC_BREACH"
+  | "P3_END_COLD_MERCY"
+  | "P3_END_SEALED_RELAY"
+  | "P3_END_SACRIFICE_CORRIDOR"
+  | "P4_END_ORDERED_SELECTION"
+  | "P4_END_GATE_BROKEN"
+  | "P4_END_WITNESSED_REDESIGN";
+
+export type PartThemeId = "P1" | "P2" | "P3" | "P4" | string;
 
 export type AssetModelRoute = "npc-main-pro" | "character-25" | "nanobanana" | "asset-nano";
 export type AssetGenerationGroup = "background" | "portrait" | "boss" | "document";
@@ -27,6 +42,8 @@ export type EffectOperation =
   | "clear_flag"
   | "add_stat"
   | "sub_stat"
+  | "consume_slot"
+  | "consume_fuel"
   | "grant_item"
   | "remove_item"
   | "unlock_node"
@@ -53,6 +70,13 @@ export type OverlayKey = "inventory" | "status" | "objectives" | "warnings";
 export type ChapterStatus = "locked" | "available" | "in_progress" | "completed";
 export type BattleAction = "attack" | "skill" | "item" | "move" | "withdraw";
 export type RuntimeWarningSeverity = "info" | "warning" | "error";
+export type WidgetStateValue =
+  | string
+  | number
+  | boolean
+  | null
+  | WidgetStateValue[]
+  | { [key: string]: WidgetStateValue };
 
 export interface RuntimeWarning {
   message: string;
@@ -84,6 +108,7 @@ export interface PackageManifest {
   };
   docs?: {
     preferred_root?: string;
+    roots?: string[];
   };
   assets?: {
     generated_root?: string;
@@ -293,6 +318,7 @@ export interface EventChoice {
   preview?: string;
   effects: EffectDefinition[];
   next_event_id: string | null;
+  next_node_id?: NodeId | null;
 }
 
 export interface EventPresentation {
@@ -336,7 +362,9 @@ export interface EventDefinition {
   on_enter_effects: EffectDefinition[];
   on_complete_effects: EffectDefinition[];
   next_event_id?: EventId;
+  next_node_id?: NodeId;
   fail_event_id?: EventId;
+  setback_event_id?: EventId;
 }
 
 export interface ChapterCinematic {
@@ -374,6 +402,45 @@ export interface EndingGalleryEntry {
   ending_id: EndingId;
   unlocked: boolean;
   unlocked_at?: string;
+}
+
+export interface RouteUnlockState {
+  unlocked: boolean;
+  value?: FlagValue;
+  unlocked_at?: string;
+  source?: string;
+}
+
+export interface NodeUnlockState {
+  unlocked: boolean;
+  value?: FlagValue;
+  unlocked_at?: string;
+  source?: string;
+}
+
+export interface FailState {
+  source?: string;
+  reason?: string;
+  event_id?: EventId;
+  setback_event_id?: EventId;
+  can_retry?: boolean;
+}
+
+export interface WidgetStateEntry {
+  widget_id: string;
+  value: WidgetStateValue;
+  source?: string;
+  updated_at?: string;
+}
+
+export interface ChapterResultPayload {
+  title?: string;
+  summary?: string;
+  metrics?: Record<string, StatValue>;
+  flags?: Record<string, FlagValue>;
+  widgets?: Record<string, WidgetStateValue>;
+  notes?: string[];
+  epilogue_card_ids?: string[];
 }
 
 export interface EndingMatrixRule {
@@ -533,6 +600,7 @@ export interface AssetResolution {
 export interface ResolvedProjectPaths {
   manifest: JsonPath;
   docs_root: string;
+  docs_roots?: string[];
   schemas: Partial<Record<"chapter" | "item" | "ui_flow", JsonPath>>;
   data: Partial<Record<string, JsonPath>>;
   ui: Partial<Record<ChapterId, JsonPath>>;
@@ -650,6 +718,7 @@ export interface ChapterOutcome {
   ending_id?: EndingId;
   ending_title?: string;
   carry_flags?: PartCarryFlags;
+  result_payload?: ChapterResultPayload;
 }
 
 export interface RuntimeSnapshot {
@@ -671,7 +740,15 @@ export interface RuntimeSnapshot {
   loot_session: LootSessionState | null;
   battle_state: BattleState;
   chapter_outcome: ChapterOutcome | null;
+  chapter_result_payload?: ChapterResultPayload | null;
   unlocked_endings: Partial<Record<EndingId, string>>;
+  ending_gallery?: Partial<Record<EndingId, EndingGalleryEntry>>;
+  route_unlocks?: Record<string, RouteUnlockState>;
+  node_unlocks?: Record<string, NodeUnlockState>;
+  field_actions_remaining?: Record<ChapterId, number> | number;
+  fail_state?: FailState | null;
+  part_theme?: PartThemeId;
+  chapter_widgets_state?: Record<ChapterId, Record<string, WidgetStateEntry>>;
   media_seen: Record<string, string>;
   part1_carry_flags: PartCarryFlags | null;
   campaign_complete: boolean;

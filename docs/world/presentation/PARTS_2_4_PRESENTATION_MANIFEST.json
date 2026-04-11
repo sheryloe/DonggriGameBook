@@ -1,0 +1,63 @@
+{
+  "version": "1.1.0",
+  "part_count": 3,
+  "documents": [
+    "docs/world/presentation/PRESENTATION_SUMMARY.md",
+    "docs/world/presentation/KEYART_SELECTION.md",
+    "docs/world/presentation/PROMPT_BUNDLE_INDEX.md",
+    "docs/world/presentation/PLAYTIME_ENDINGS_BRANCHING_SLIDES.md",
+    "docs/world/presentation/DEMO_CHECKLIST.md",
+    "docs/world/presentation/PARTS_2_4_SHOWCASE_DECK.html"
+  ],
+  "parts": [
+    {
+      "part_id": "P2",
+      "playtime_target_minutes": 30,
+      "endings": [
+        "P2_END_CONTROLLED_CONVOY",
+        "P2_END_WITNESS_FERRY",
+        "P2_END_RED_CORRIDOR",
+        "P2_END_HARBOR_SEIZURE",
+        "P2_END_SUNKEN_LIST"
+      ],
+      "trailer": "P2_TRAILER_MAIN",
+      "posters": [
+        "P2_POSTER_MAIN",
+        "P2_POSTER_WITNESS_CHAIN",
+        "P2_POSTER_HARBOR_NIGHT"
+      ]
+    },
+    {
+      "part_id": "P3",
+      "playtime_target_minutes": 30,
+      "endings": [
+        "P3_END_CERTIFIED_PASSAGE",
+        "P3_END_PUBLIC_BREACH",
+        "P3_END_COLD_MERCY",
+        "P3_END_SEALED_RELAY",
+        "P3_END_SACRIFICE_CORRIDOR"
+      ],
+      "trailer": "P3_TRAILER_MAIN",
+      "posters": [
+        "P3_POSTER_MAIN",
+        "P3_POSTER_TRIAGE",
+        "P3_POSTER_RELAY"
+      ]
+    },
+    {
+      "part_id": "P4",
+      "playtime_target_minutes": 40,
+      "endings": [
+        "P4_END_ORDERED_SELECTION",
+        "P4_END_GATE_BROKEN",
+        "P4_END_WITNESSED_REDESIGN"
+      ],
+      "trailer": "P4_TRAILER_MAIN",
+      "posters": [
+        "P4_POSTER_MAIN",
+        "P4_POSTER_PUBLIC_JUDGEMENT",
+        "P4_POSTER_DOKDO_GATE"
+      ]
+    }
+  ]
+}

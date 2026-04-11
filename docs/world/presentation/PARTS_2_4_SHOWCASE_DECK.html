@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donggri Part 2-4 Showcase Deck</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f1418;
+      --panel: rgba(22, 29, 35, 0.96);
+      --line: rgba(255,255,255,0.12);
+      --text: #f3ede3;
+      --muted: #b4bdc6;
+      --accent: #d59c62;
+      --accent2: #9fc0de;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(213,156,98,0.18), transparent 24%),
+        linear-gradient(180deg, #0b1014 0%, #151d24 52%, #091015 100%);
+      color: var(--text);
+    }
+    main {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+      display: grid;
+      gap: 24px;
+    }
+    .slide {
+      min-height: 720px;
+      padding: 40px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(22,29,35,0.96), rgba(12,17,22,0.98));
+      box-shadow: 0 18px 56px rgba(0,0,0,0.28);
+      page-break-after: always;
+    }
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    h1, h2, p, ul { margin: 0; }
+    h1 { font-size: 48px; margin-bottom: 16px; }
+    h2 { font-size: 28px; margin-bottom: 12px; }
+    p { font-size: 18px; line-height: 1.5; }
+    p.muted { color: var(--muted); margin-bottom: 8px; }
+    ul {
+      margin-top: 16px;
+      padding-left: 20px;
+      display: grid;
+      gap: 8px;
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .panel {
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      padding: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+    strong { color: var(--accent2); }
+    @media (max-width: 900px) {
+      .slide { min-height: unset; padding: 28px 20px; }
+      .grid.two, .grid.three { grid-template-columns: 1fr; }
+      h1 { font-size: 36px; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="slide">
+      <div class="eyebrow">Donggri Platform</div>
+      <h1>Part 2-4 Showcase Deck</h1>
+      <p>Prompt pipeline expansion for openings, endings, trailers, and posters. Repo-native presentation package only.</p>
+      <div class="grid three">
+        
+        <article class="panel">
+          <div class="eyebrow">P2</div>
+          <h2>Part 2 하향 몰락</h2>
+          <p>명단과 통과권, 증언과 호송을 두고 검문소가 무너지는 파트.</p>
+          <ul>
+            <li><strong>CH06</strong> 5m - 하강 관문 진입과 공식선/우회선 선언</li><li><strong>CH07</strong> 6m - 붉은 회랑 추격과 명단 호송 압박</li><li><strong>CH08</strong> 6m - 검문국 해부와 배신 경로 확인</li><li><strong>CH09</strong> 6m - 독성 저장고에서 사람과 보급 슬롯 경쟁</li><li><strong>CH10</strong> 7m - 침하 항만에서 계약, 강탈, 생포 협상 결전</li>
+          </ul>
+        </article>
+      
+        <article class="panel">
+          <div class="eyebrow">P3</div>
+          <h2>Part 3 동해 격리선</h2>
+          <p>인증과 공개, 희생과 전력 배분이 충돌하는 냉랭한 파트.</p>
+          <ul>
+            <li><strong>CH11</strong> 5m - 철의 우회와 책임 선언</li><li><strong>CH12</strong> 6m - 잔향 기지에서 신호 복구와 로그 해독</li><li><strong>CH13</strong> 7m - 백색 야적장 triage 딜레마</li><li><strong>CH14</strong> 5m - 해무 변전소의 라인 선택</li><li><strong>CH15</strong> 7m - 격리 파수의 정식 인증/강행 돌파 결말</li>
+          </ul>
+        </article>
+      
+        <article class="panel">
+          <div class="eyebrow">P4</div>
+          <h2>Part 4 외해 관문</h2>
+          <p>배분, 방송, 승선 명부, 코어 선택이 마지막 공공심판으로 수렴하는 파트.</p>
+          <ul>
+            <li><strong>CH16</strong> 6m - 역할 승계와 균열 사구 진입</li><li><strong>CH17</strong> 7m - 파편 수문과 유입 제어</li><li><strong>CH18</strong> 10m - 소금 정거장의 공개 배분 심판</li><li><strong>CH19</strong> 8m - 외해 전초의 정치 대면</li><li><strong>CH20</strong> 9m - 독도의 문에서 3개 최종 선택</li>
+          </ul>
+        </article>
+      
+      </div>
+    </section>
+    
+        <section class="slide">
+          <div class="eyebrow">P2 Endings</div>
+          <h1>Part 2 하향 몰락</h1>
+          <div class="grid two">
+            
+                  <article class="panel">
+                    <h2>통제 호송</h2>
+                    <p class="muted">P2_END_CONTROLLED_CONVOY</p>
+                    <p>공식선은 유지되지만 가장 많은 사람을 살리지는 못한다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>증언선</h2>
+                    <p class="muted">P2_END_WITNESS_FERRY</p>
+                    <p>증언 패키지를 살리고 더 적은 수를 데려간다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>적색 회랑</h2>
+                    <p class="muted">P2_END_RED_CORRIDOR</p>
+                    <p>회랑은 뚫었지만 명단과 기록이 붕괴한다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>항만 강탈</h2>
+                    <p class="muted">P2_END_HARBOR_SEIZURE</p>
+                    <p>항만을 손에 넣지만 다음 파트에 큰 적을 남긴다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>침수 명단</h2>
+                    <p class="muted">P2_END_SUNKEN_LIST</p>
+                    <p>명단과 사람 모두를 충분히 구하지 못한 최저점 엔딩.</p>
+                  </article>
+                
+          </div>
+        </section>
+      
+
+        <section class="slide">
+          <div class="eyebrow">P3 Endings</div>
+          <h1>Part 3 동해 격리선</h1>
+          <div class="grid two">
+            
+                  <article class="panel">
+                    <h2>정식 통과</h2>
+                    <p class="muted">P3_END_CERTIFIED_PASSAGE</p>
+                    <p>가장 많은 질서를 지키지만, 많은 진실을 묻는다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>공개 돌파</h2>
+                    <p class="muted">P3_END_PUBLIC_BREACH</p>
+                    <p>증거 공개는 성공하지만 이후의 혼란 비용이 크게 남는다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>냉혹한 자비</h2>
+                    <p class="muted">P3_END_COLD_MERCY</p>
+                    <p>의약품과 인명을 우선했지만 경로와 증거 일부를 버린다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>봉인 중계</h2>
+                    <p class="muted">P3_END_SEALED_RELAY</p>
+                    <p>중계소는 유지되지만 기록은 일부 봉인되고 미래가 닫힌다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>희생 회랑</h2>
+                    <p class="muted">P3_END_SACRIFICE_CORRIDOR</p>
+                    <p>희생을 발판으로 길을 열지만 가장 무거운 기억을 남긴다.</p>
+                  </article>
+                
+          </div>
+        </section>
+      
+
+        <section class="slide">
+          <div class="eyebrow">P4 Endings</div>
+          <h1>Part 4 외해 관문</h1>
+          <div class="grid two">
+            
+                  <article class="panel">
+                    <h2>선별 유지</h2>
+                    <p class="muted">P4_END_ORDERED_SELECTION</p>
+                    <p>가장 많은 붕괴를 막지만 배제 체계를 이어간다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>선별 파괴</h2>
+                    <p class="muted">P4_END_GATE_BROKEN</p>
+                    <p>해방감은 크지만 이후 혼란과 손실도 최대다.</p>
+                  </article>
+                
+                  <article class="panel">
+                    <h2>기록 공개 후 재설계</h2>
+                    <p class="muted">P4_END_WITNESSED_REDESIGN</p>
+                    <p>가장 균형적이지만 사전 준비가 부족하면 큰 대가를 치른다.</p>
+                  </article>
+                
+          </div>
+        </section>
+      
+    <section class="slide">
+      <div class="eyebrow">Delivery</div>
+      <h1>Presentation Package Outputs</h1>
+      <div class="grid two">
+        <article class="panel">
+          <h2>Docs</h2>
+          <ul>
+            <li>PRESENTATION_SUMMARY.md</li>
+            <li>KEYART_SELECTION.md</li>
+            <li>PROMPT_BUNDLE_INDEX.md</li>
+            <li>PLAYTIME_ENDINGS_BRANCHING_SLIDES.md</li>
+            <li>DEMO_CHECKLIST.md</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h2>Prompt Packs</h2>
+          <ul>
+            <li>P2 video/prompt manifests</li>
+            <li>P3 video/prompt manifests</li>
+            <li>P4 video/prompt manifests</li>
+            <li>P2-P4 poster prompt manifests</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

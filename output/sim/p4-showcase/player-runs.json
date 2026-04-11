@@ -1,0 +1,1113 @@
+{
+  "generatedAt": "2026-04-11T06:18:39.928Z",
+  "seed": "20260410",
+  "chapters": [
+    "CH16",
+    "CH17",
+    "CH18",
+    "CH19",
+    "CH20"
+  ],
+  "players": [
+    {
+      "playerId": "player-01",
+      "strategy": "cautious",
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH16",
+          "CH17",
+          "CH18",
+          "CH19",
+          "CH20"
+        ],
+        "failedChapter": null,
+        "totalSteps": 54,
+        "totalChoices": 54,
+        "totalEstimatedMinutes": 41.4
+      },
+      "trace": [
+        {
+          "chapterId": "CH16",
+          "status": "success",
+          "reason": "END_CH16_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH16_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch16_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH16_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH16_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch16_route_order",
+              "choiceLabel": "Stabilize ordered selection",
+              "nextEventId": "EV_CH16_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH16_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch16_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH16_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH16_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch16_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH16_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH16_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch16_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH16_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH16_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch16_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH16_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH16_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch16_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH16_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH16_PREP",
+              "eventType": "choice",
+              "choiceId": "ch16_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH16_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH16_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch16_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH16_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH16_RESULT",
+              "eventType": "result",
+              "choiceId": "ch16_closure_a",
+              "choiceLabel": "Bank public support",
+              "nextEventId": "END_CH16_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH17",
+          "status": "success",
+          "reason": "END_CH17_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH17_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch17_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH17_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH17_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch17_route_solidarity",
+              "choiceLabel": "Organize gate-breaking solidarity",
+              "nextEventId": "EV_CH17_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH17_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch17_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH17_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH17_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch17_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH17_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH17_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch17_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH17_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH17_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch17_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH17_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH17_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch17_field_b",
+              "choiceLabel": "Prime the broadcast bay",
+              "nextEventId": "EV_CH17_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH17_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch17_broadcast_a",
+              "choiceLabel": "Prepare the testimony reel",
+              "nextEventId": "EV_CH17_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH17_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch17_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH17_PREP",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH17_PREP",
+              "eventType": "choice",
+              "choiceId": "ch17_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH17_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH17_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch17_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH17_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH17_RESULT",
+              "eventType": "result",
+              "choiceId": "ch17_closure_b",
+              "choiceLabel": "Push the platform into overtime",
+              "nextEventId": "END_CH17_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH18",
+          "status": "success",
+          "reason": "END_CH18_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH18_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch18_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH18_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH18_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch18_route_order",
+              "choiceLabel": "Stabilize ordered selection",
+              "nextEventId": "EV_CH18_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH18_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch18_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH18_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH18_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch18_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH18_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH18_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch18_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH18_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH18_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch18_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH18_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH18_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch18_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH18_HEARING",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH18_HEARING",
+              "eventType": "dialogue",
+              "choiceId": "ch18_hearing_open",
+              "choiceLabel": "Open the hearing board",
+              "nextEventId": "EV_CH18_VOTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH18_VOTE",
+              "eventType": "choice",
+              "choiceId": "ch18_vote_witness",
+              "choiceLabel": "Put witness testimony on the board",
+              "nextEventId": "EV_CH18_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH18_PREP",
+              "eventType": "choice",
+              "choiceId": "ch18_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH18_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH18_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch18_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH18_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH18_RESULT",
+              "eventType": "result",
+              "choiceId": "ch18_closure_b",
+              "choiceLabel": "Push the platform into overtime",
+              "nextEventId": "END_CH18_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH19",
+          "status": "success",
+          "reason": "END_CH19_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH19_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch19_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH19_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH19_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch19_route_solidarity",
+              "choiceLabel": "Organize gate-breaking solidarity",
+              "nextEventId": "EV_CH19_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH19_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch19_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH19_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH19_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch19_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH19_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH19_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch19_field_b",
+              "choiceLabel": "Prime the broadcast bay",
+              "nextEventId": "EV_CH19_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH19_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch19_broadcast_a",
+              "choiceLabel": "Prepare the testimony reel",
+              "nextEventId": "EV_CH19_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH19_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch19_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH19_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH19_PREP",
+              "eventType": "choice",
+              "choiceId": "ch19_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH19_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH19_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch19_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH19_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH19_RESULT",
+              "eventType": "result",
+              "choiceId": "ch19_closure_b",
+              "choiceLabel": "Push the platform into overtime",
+              "nextEventId": "END_CH19_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH20",
+          "status": "success",
+          "reason": "END_CH20_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH20_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch20_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH20_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH20_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch20_route_order",
+              "choiceLabel": "Stabilize ordered selection",
+              "nextEventId": "EV_CH20_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH20_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch20_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH20_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH20_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch20_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH20_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH20_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch20_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH20_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH20_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch20_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH20_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH20_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch20_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH20_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH20_PREP",
+              "eventType": "choice",
+              "choiceId": "ch20_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH20_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH20_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch20_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH20_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH20_RESULT",
+              "eventType": "result",
+              "choiceId": "ch20_ending_b",
+              "choiceLabel": "Gate Broken",
+              "nextEventId": "END_CH20_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "playerId": "player-02",
+      "strategy": "aggressive",
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH16",
+          "CH17",
+          "CH18",
+          "CH19",
+          "CH20"
+        ],
+        "failedChapter": null,
+        "totalSteps": 56,
+        "totalChoices": 56,
+        "totalEstimatedMinutes": 41.6
+      },
+      "trace": [
+        {
+          "chapterId": "CH16",
+          "status": "success",
+          "reason": "END_CH16_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH16_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch16_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH16_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH16_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch16_route_witness",
+              "choiceLabel": "Raise witnessed redesign",
+              "nextEventId": "EV_CH16_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH16_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch16_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH16_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH16_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch16_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH16_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH16_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch16_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH16_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH16_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch16_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH16_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH16_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch16_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH16_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH16_PREP",
+              "eventType": "choice",
+              "choiceId": "ch16_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH16_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH16_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch16_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH16_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH16_RESULT",
+              "eventType": "result",
+              "choiceId": "ch16_closure_a",
+              "choiceLabel": "Bank public support",
+              "nextEventId": "END_CH16_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH17",
+          "status": "success",
+          "reason": "END_CH17_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH17_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch17_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH17_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH17_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch17_route_witness",
+              "choiceLabel": "Raise witnessed redesign",
+              "nextEventId": "EV_CH17_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH17_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch17_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH17_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH17_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch17_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH17_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH17_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch17_field_b",
+              "choiceLabel": "Prime the broadcast bay",
+              "nextEventId": "EV_CH17_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH17_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch17_broadcast_a",
+              "choiceLabel": "Prepare the testimony reel",
+              "nextEventId": "EV_CH17_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH17_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch17_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH17_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH17_PREP",
+              "eventType": "choice",
+              "choiceId": "ch17_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH17_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH17_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch17_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH17_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH17_RESULT",
+              "eventType": "result",
+              "choiceId": "ch17_closure_a",
+              "choiceLabel": "Bank public support",
+              "nextEventId": "END_CH17_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH18",
+          "status": "success",
+          "reason": "END_CH18_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH18_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch18_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH18_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH18_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch18_route_solidarity",
+              "choiceLabel": "Organize gate-breaking solidarity",
+              "nextEventId": "EV_CH18_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH18_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch18_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH18_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH18_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch18_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH18_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH18_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch18_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH18_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH18_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch18_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH18_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH18_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch18_field_b",
+              "choiceLabel": "Prime the broadcast bay",
+              "nextEventId": "EV_CH18_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH18_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch18_broadcast_a",
+              "choiceLabel": "Prepare the testimony reel",
+              "nextEventId": "EV_CH18_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH18_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch18_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH18_HEARING",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH18_HEARING",
+              "eventType": "dialogue",
+              "choiceId": "ch18_hearing_open",
+              "choiceLabel": "Open the hearing board",
+              "nextEventId": "EV_CH18_VOTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH18_VOTE",
+              "eventType": "choice",
+              "choiceId": "ch18_vote_break",
+              "choiceLabel": "Authorize pressure on the gate",
+              "nextEventId": "EV_CH18_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH18_PREP",
+              "eventType": "choice",
+              "choiceId": "ch18_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH18_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 13,
+              "eventId": "EV_CH18_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch18_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH18_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 14,
+              "eventId": "EV_CH18_RESULT",
+              "eventType": "result",
+              "choiceId": "ch18_closure_a",
+              "choiceLabel": "Bank public support",
+              "nextEventId": "END_CH18_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH19",
+          "status": "success",
+          "reason": "END_CH19_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH19_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch19_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH19_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH19_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch19_route_solidarity",
+              "choiceLabel": "Organize gate-breaking solidarity",
+              "nextEventId": "EV_CH19_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH19_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch19_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH19_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH19_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch19_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH19_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH19_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch19_field_a",
+              "choiceLabel": "Rewrite the boarding queue",
+              "nextEventId": "EV_CH19_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH19_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch19_queue_a",
+              "choiceLabel": "Preserve order",
+              "nextEventId": "EV_CH19_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH19_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch19_field_b",
+              "choiceLabel": "Prime the broadcast bay",
+              "nextEventId": "EV_CH19_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH19_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch19_broadcast_a",
+              "choiceLabel": "Prepare the testimony reel",
+              "nextEventId": "EV_CH19_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH19_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch19_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH19_PREP",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH19_PREP",
+              "eventType": "choice",
+              "choiceId": "ch19_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH19_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH19_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch19_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH19_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH19_RESULT",
+              "eventType": "result",
+              "choiceId": "ch19_closure_b",
+              "choiceLabel": "Push the platform into overtime",
+              "nextEventId": "END_CH19_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH20",
+          "status": "success",
+          "reason": "END_CH20_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH20_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch20_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH20_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH20_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch20_route_witness",
+              "choiceLabel": "Raise witnessed redesign",
+              "nextEventId": "EV_CH20_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH20_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch20_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH20_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH20_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch20_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH20_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH20_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch20_field_b",
+              "choiceLabel": "Prime the broadcast bay",
+              "nextEventId": "EV_CH20_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH20_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch20_broadcast_a",
+              "choiceLabel": "Prepare the testimony reel",
+              "nextEventId": "EV_CH20_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH20_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch20_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH20_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH20_PREP",
+              "eventType": "choice",
+              "choiceId": "ch20_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH20_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH20_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch20_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH20_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH20_RESULT",
+              "eventType": "result",
+              "choiceId": "ch20_ending_a",
+              "choiceLabel": "Ordered Selection",
+              "nextEventId": "END_CH20_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -2,25 +2,47 @@
   "version": "1.0.0",
   "game_id": "dokdo_arc_webgame",
   "chapter_id": "CH06",
-  "title": "하강 관문",
-  "role": "남하 진입과 공식선/우회선 충돌",
+  "title": "Southern Gate",
+  "role": "Southern Gate for P2.",
   "entry_node_id": "CH06_N01",
   "exit_node_ids": [
     "CH06_N05"
   ],
   "recommended_level": 6,
+  "estimated_first_run_minutes": 5,
+  "field_action_budget": 2,
+  "carryover_keys": [
+    "official_lane",
+    "broker_lane",
+    "witness_chain",
+    "capacity_ethics",
+    "harbor_force"
+  ],
+  "repeatable_scavenging_events": [
+    "EV_CH06_SCAVENGE"
+  ],
+  "demo_route": [
+    "EV_CH06_ENTRY",
+    "EV_CH06_ROUTE",
+    "EV_CH06_ANCHOR",
+    "EV_CH06_PREP",
+    "EV_CH06_RESULT"
+  ],
   "ui_profile": {
     "theme": "southern_gate_collapse",
     "special_widgets": [
-      "checkpoint_priority",
-      "route_compare",
-      "crowd_pressure"
+      "queue_pressure",
+      "pursuit_meter",
+      "stamp_auth",
+      "smoke_density",
+      "boarding_capacity",
+      "field_actions_remaining"
     ]
   },
   "objectives": [
     {
       "objective_id": "obj_ch06_01",
-      "text": "하강 관문 검문장에 진입한다.",
+      "text": "Enter the chapter",
       "required": true,
       "complete_when": [
         "flag:ch06_entry"
@@ -28,7 +50,7 @@
     },
     {
       "objective_id": "obj_ch06_02",
-      "text": "붕괴 버스 차선에서 주 경로를 확정한다.",
+      "text": "Lock the route axis",
       "required": true,
       "complete_when": [
         "flag:ch06_route_locked"
@@ -36,7 +58,7 @@
     },
     {
       "objective_id": "obj_ch06_03",
-      "text": "우회 격리 복도의 핵심 압박을 돌파한다.",
+      "text": "Secure the anchor deck",
       "required": true,
       "complete_when": [
         "flag:ch06_anchor_secured"
@@ -44,18 +66,26 @@
     },
     {
       "objective_id": "obj_ch06_04",
-      "text": "관문 대기 가족",
+      "text": "Resolve optional field action A",
       "required": false,
       "complete_when": [
-        "flag:ch06_side_a_done"
+        "flag:ch06_manifest_done"
       ]
     },
     {
       "objective_id": "obj_ch06_05",
-      "text": "폐기된 통행 장부",
+      "text": "Resolve optional field action B",
       "required": false,
       "complete_when": [
-        "flag:ch06_side_b_done"
+        "flag:ch06_smoke_done"
+      ]
+    },
+    {
+      "objective_id": "obj_ch06_06",
+      "text": "Close the chapter result",
+      "required": true,
+      "complete_when": [
+        "flag:ch06_chapter_closed"
       ]
     }
   ],
@@ -63,24 +93,25 @@
     {
       "quest_track_id": "qt_ch06_main",
       "kind": "main",
-      "title": "하강 관문",
-      "summary": "공식 검문과 우회선 사이에서 사람과 명단을 넘긴다.",
+      "title": "Southern Gate",
+      "summary": "Southern Gate",
       "entry_event_id": "EV_CH06_ENTRY",
-      "completion_event_id": "EV_CH06_BOSS",
+      "completion_event_id": "EV_CH06_RESULT",
       "objective_ids": [
         "obj_ch06_01",
         "obj_ch06_02",
-        "obj_ch06_03"
+        "obj_ch06_03",
+        "obj_ch06_06"
       ],
       "reveal_cap": "confirmation"
     },
     {
       "quest_track_id": "qt_ch06_side_a",
       "kind": "side",
-      "title": "관문 대기 가족",
-      "summary": "검문장에 남겨진 가족 단위를 통과시킬지 정한다.",
-      "entry_event_id": "EV_CH06_SIDE_A",
-      "completion_event_id": "EV_CH06_SIDE_A",
+      "title": "Sweep the loading manifest",
+      "summary": "Sweep the loading manifest",
+      "entry_event_id": "EV_CH06_ACTION_A",
+      "completion_event_id": "EV_CH06_ACTION_A",
       "objective_ids": [
         "obj_ch06_04"
       ],
@@ -92,10 +123,10 @@
     {
       "quest_track_id": "qt_ch06_side_b",
       "kind": "side",
-      "title": "폐기된 통행 장부",
-      "summary": "남하 검문 기록에서 누가 버려졌는지 확인한다.",
-      "entry_event_id": "EV_CH06_SIDE_B",
-      "completion_event_id": "EV_CH06_SIDE_B",
+      "title": "Split the smoke queue",
+      "summary": "Split the smoke queue",
+      "entry_event_id": "EV_CH06_ACTION_B",
+      "completion_event_id": "EV_CH06_ACTION_B",
       "objective_ids": [
         "obj_ch06_05"
       ],
@@ -108,25 +139,29 @@
   "nodes": [
     {
       "node_id": "CH06_N01",
-      "name": "하강 관문 검문장",
+      "name": "Entry Gate",
       "node_type": "travel",
-      "description": "공식 검문과 우회선 사이에서 사람과 명단을 넘긴다.의 시작점.",
+      "description": "Southern Gate Entry Gate.",
       "coordinates": {
-        "x": 10,
-        "y": 80
+        "x": 22,
+        "y": 74
       },
       "encounter_table_id": "enc_ch06_gate_field",
       "loot_table_ids": [
         "lt_ch04_logistics"
       ],
-      "npc_ids": [],
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
       "connections": [
         {
           "to": "CH06_N02",
-          "travel_type": "walk",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
-            "time": 3,
+            "time": 2,
             "noise": 1,
             "contamination": 1
           }
@@ -137,18 +172,19 @@
       ],
       "revisit_rule": "always",
       "tags": [
-        "entry",
-        "p2"
+        "p2",
+        "southern_gate_collapse",
+        "travel"
       ]
     },
     {
       "node_id": "CH06_N02",
-      "name": "붕괴 버스 차선",
-      "node_type": "branch",
-      "description": "P2 전용 허브 리듬을 여는 구간.",
+      "name": "Route Board",
+      "node_type": "route_select",
+      "description": "Southern Gate Route Board.",
       "coordinates": {
-        "x": 28,
-        "y": 62
+        "x": 26,
+        "y": 70
       },
       "encounter_table_id": "enc_ch06_gate_field",
       "loot_table_ids": [
@@ -156,47 +192,40 @@
       ],
       "npc_ids": [
         "npc_do_jaeyoon",
-        "npc_yoo_minha"
+        "npc_yoo_minha",
+        "npc_jung_noah"
       ],
       "connections": [
         {
           "to": "CH06_N03",
-          "travel_type": "corridor",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
-            "noise": 2,
-            "contamination": 1
-          }
-        },
-        {
-          "to": "CH06_N04",
-          "travel_type": "detour",
-          "requires": [],
-          "cost": {
-            "time": 3,
             "noise": 1,
-            "contamination": 2
+            "contamination": 1
           }
         }
       ],
       "event_ids": [
-        "EV_CH06_ROUTE"
+        "EV_CH06_ROUTE",
+        "EV_CH06_APPROACH"
       ],
       "revisit_rule": "always",
       "tags": [
-        "route",
-        "southern_gate_collapse"
+        "p2",
+        "southern_gate_collapse",
+        "route_select"
       ]
     },
     {
       "node_id": "CH06_N03",
-      "name": "우회 격리 복도",
+      "name": "Anchor Deck",
       "node_type": "exploration",
-      "description": "공식 검문과 우회선 사이에서 사람과 명단을 넘긴다.",
+      "description": "Southern Gate Anchor Deck.",
       "coordinates": {
-        "x": 52,
-        "y": 48
+        "x": 22,
+        "y": 74
       },
       "encounter_table_id": "enc_ch06_gate_field",
       "loot_table_ids": [
@@ -210,24 +239,12 @@
       "connections": [
         {
           "to": "CH06_N04",
-          "travel_type": "service_route",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
-            "noise": 2,
+            "noise": 1,
             "contamination": 1
-          }
-        },
-        {
-          "to": "CH06_N05",
-          "travel_type": "push_forward",
-          "requires": [
-            "flag:ch06_route_locked"
-          ],
-          "cost": {
-            "time": 2,
-            "noise": 3,
-            "contamination": 2
           }
         }
       ],
@@ -236,18 +253,19 @@
       ],
       "revisit_rule": "always",
       "tags": [
-        "main",
-        "p2"
+        "p2",
+        "southern_gate_collapse",
+        "exploration"
       ]
     },
     {
       "node_id": "CH06_N04",
-      "name": "남부 중계 방벽",
+      "name": "Field Window",
       "node_type": "branch",
-      "description": "인물형/세계관형 사이드 퀘스트를 처리하는 보조 구역.",
+      "description": "Southern Gate Field Window.",
       "coordinates": {
-        "x": 70,
-        "y": 58
+        "x": 34,
+        "y": 62
       },
       "encounter_table_id": "enc_ch06_gate_field",
       "loot_table_ids": [
@@ -261,7 +279,7 @@
       "connections": [
         {
           "to": "CH06_N05",
-          "travel_type": "return_route",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
@@ -271,23 +289,26 @@
         }
       ],
       "event_ids": [
-        "EV_CH06_SIDE_A",
-        "EV_CH06_SIDE_B"
+        "EV_CH06_FIELD_HUB",
+        "EV_CH06_ACTION_A",
+        "EV_CH06_ACTION_B",
+        "EV_CH06_SCAVENGE"
       ],
-      "revisit_rule": "after_clear",
+      "revisit_rule": "always",
       "tags": [
-        "side",
-        "southern_gate_collapse"
+        "p2",
+        "southern_gate_collapse",
+        "branch"
       ]
     },
     {
       "node_id": "CH06_N05",
-      "name": "관문 압쇄체 대응 구역",
+      "name": "Terminal Gate",
       "node_type": "boss",
-      "description": "관문 압쇄체와 충돌하는 클라이맥스 구간.",
+      "description": "Southern Gate Terminal Gate.",
       "coordinates": {
-        "x": 90,
-        "y": 32
+        "x": 30,
+        "y": 66
       },
       "encounter_table_id": "enc_ch06_gate_boss",
       "loot_table_ids": [
@@ -295,16 +316,20 @@
       ],
       "npc_ids": [
         "npc_do_jaeyoon",
-        "npc_yoo_minha"
+        "npc_yoo_minha",
+        "npc_jung_noah"
       ],
       "connections": [],
       "event_ids": [
-        "EV_CH06_BOSS"
+        "EV_CH06_PREP",
+        "EV_CH06_BOSS",
+        "EV_CH06_RESULT"
       ],
-      "revisit_rule": "after_clear",
+      "revisit_rule": "always",
       "tags": [
-        "boss",
-        "p2"
+        "p2",
+        "southern_gate_collapse",
+        "boss"
       ]
     }
   ],
@@ -313,44 +338,75 @@
       "event_id": "EV_CH06_ENTRY",
       "event_type": "briefing",
       "node_id": "CH06_N01",
-      "title": "하강 관문 진입",
+      "title": "Chapter entry",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 100,
+      "priority": 98,
       "conditions": [],
       "presentation": {
-        "layout": "dialogue",
-        "art_key": "ch06_southern_gate_collapse_entry",
-        "music_key": "red_corridor",
+        "layout": "choice",
+        "art_key": "ch06_entry",
+        "music_key": "southern_gate_collapse",
         "widget_overrides": [
-          "objective_panel",
-          "checkpoint_priority",
-          "route_compare",
-          "crowd_pressure"
+          "queue_pressure",
+          "pursuit_meter",
+          "stamp_auth"
         ]
       },
       "text": {
-        "summary": "공식 검문과 우회선 사이에서 사람과 명단을 넘긴다.",
+        "summary": "Southern Gate opens with route pressure.",
         "body": [
-          "P2의 분위기는 적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박로 간다.",
-          "이번 장의 핵심은 남하 진입과 공식선/우회선 충돌이다."
+          "Target first-run time: 5 minutes."
         ]
       },
       "npc_ids": [
-        "npc_do_jaeyoon"
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
       "choices": [
         {
-          "choice_id": "ch06_start",
-          "label": "임무 시작",
+          "choice_id": "ch06_entry_slow",
+          "label": "Move under cover",
           "conditions": [],
-          "preview": "이번 장의 메인 루프를 연다.",
+          "preview": "Lower noise, slower tempo.",
           "effects": [
             {
               "op": "set_flag",
               "target": "flag:ch06_entry",
               "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_ROUTE"
+        },
+        {
+          "choice_id": "ch06_entry_fast",
+          "label": "Push through the breach",
+          "conditions": [],
+          "preview": "Faster, louder opening.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_entry",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH06_ROUTE"
@@ -363,75 +419,206 @@
       "event_id": "EV_CH06_ROUTE",
       "event_type": "choice",
       "node_id": "CH06_N02",
-      "title": "회랑 선택 확정",
+      "title": "Route lock",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 90,
+      "priority": 97,
       "conditions": [
         "flag:ch06_entry"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch06_southern_gate_collapse_route",
-        "music_key": "red_corridor",
+        "art_key": "ch06_route",
+        "music_key": "southern_gate_collapse",
         "widget_overrides": [
-          "checkpoint_priority",
-          "route_compare",
-          "crowd_pressure"
+          "queue_pressure",
+          "pursuit_meter",
+          "stamp_auth",
+          "smoke_density",
+          "boarding_capacity",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "남하 회랑의 첫 인상에서 경로를 고른다.",
+        "summary": "Lock one dominant route axis.",
         "body": [
-          "공식선과 우회선 중 어떤 리듬으로 갈지 결정한다.",
-          "직선 추격, 검문 스캔, 패널 슬라이드, 빠른 경보 점멸을 화면 전환에 반영한다."
+          "Carry state starts here."
         ]
       },
       "npc_ids": [
         "npc_do_jaeyoon",
-        "npc_yoo_minha"
+        "npc_yoo_minha",
+        "npc_jung_noah"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
       "choices": [
         {
-          "choice_id": "ch06_official",
-          "label": "공식선 유지",
+          "choice_id": "ch06_route_official",
+          "label": "Lock the official lane",
           "conditions": [],
-          "preview": "안전하지만 느리다.",
+          "preview": "This becomes the main chapter axis.",
           "effects": [
             {
               "op": "set_route",
-              "target": "route",
-              "value": "p2_southern_gate_collapse_official"
+              "target": "route.current",
+              "value": "official_lane"
             },
             {
               "op": "set_flag",
               "target": "flag:ch06_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "official_lane",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "queue_pressure",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_APPROACH"
+        },
+        {
+          "choice_id": "ch06_route_broker",
+          "label": "Cut through broker traffic",
+          "conditions": [],
+          "preview": "This becomes the main chapter axis.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "broker_lane"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "broker_lane",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "pursuit_meter",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_APPROACH"
+        },
+        {
+          "choice_id": "ch06_route_witness",
+          "label": "Escort the witness chain",
+          "conditions": [],
+          "preview": "This becomes the main chapter axis.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "witness_chain"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "witness_chain",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "stamp_auth",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_APPROACH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH06_APPROACH",
+      "event_type": "choice",
+      "node_id": "CH06_N02",
+      "title": "Initial approach",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch06_route_locked"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch06_approach",
+        "music_key": "southern_gate_collapse",
+        "widget_overrides": [
+          "queue_pressure",
+          "pursuit_meter"
+        ]
+      },
+      "text": {
+        "summary": "Choose what this chapter reads first.",
+        "body": [
+          "The first read changes later review tone."
+        ]
+      },
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch06_approach_record",
+          "label": "Read the system record first",
+          "conditions": [],
+          "preview": "Lower volatility, stronger context.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "queue_pressure",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_approach_record",
               "value": true
             }
           ],
           "next_event_id": "EV_CH06_ANCHOR"
         },
         {
-          "choice_id": "ch06_detour",
-          "label": "우회선 강행",
+          "choice_id": "ch06_approach_people",
+          "label": "Read the human queue first",
           "conditions": [],
-          "preview": "빠르지만 비용이 크다.",
+          "preview": "Higher pressure, stronger witness angle.",
           "effects": [
             {
-              "op": "set_route",
-              "target": "route",
-              "value": "p2_southern_gate_collapse_detour"
+              "op": "add_stat",
+              "target": "pursuit_meter",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_approach_people",
+              "value": true
             },
             {
               "op": "add_stat",
               "target": "noise",
-              "value": 3
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch06_route_locked",
-              "value": true
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH06_ANCHOR"
@@ -442,31 +629,28 @@
     },
     {
       "event_id": "EV_CH06_ANCHOR",
-      "event_type": "dialogue",
+      "event_type": "choice",
       "node_id": "CH06_N03",
-      "title": "하강 관문 핵심 압박",
+      "title": "Anchor secured",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 80,
+      "priority": 98,
       "conditions": [
         "flag:ch06_route_locked"
       ],
       "presentation": {
-        "layout": "dialogue",
-        "art_key": "ch06_southern_gate_collapse_anchor",
-        "music_key": "red_corridor",
+        "layout": "choice",
+        "art_key": "ch06_anchor",
+        "music_key": "southern_gate_collapse",
         "widget_overrides": [
-          "event_card",
-          "checkpoint_priority",
-          "route_compare",
-          "crowd_pressure"
+          "stamp_auth",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "공식 검문과 우회선 사이에서 사람과 명단을 넘긴다.",
+        "summary": "The anchor grants two optional field actions.",
         "body": [
-          "핵심 NPC: npc_do_jaeyoon, npc_yoo_minha, npc_jung_noah",
-          "인물 앵커와 세계관 앵커를 동시에 밀어 넣는다."
+          "You can still progress without clearing both."
         ]
       },
       "npc_ids": [
@@ -474,117 +658,96 @@
         "npc_yoo_minha",
         "npc_jung_noah"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
       "choices": [
         {
-          "choice_id": "ch06_anchor",
-          "label": "압박 돌파",
+          "choice_id": "ch06_anchor_hold",
+          "label": "Secure the anchor deck",
           "conditions": [],
-          "preview": "사이드 퀘스트와 보스 구간을 연다.",
+          "preview": "Open the side windows cleanly.",
           "effects": [
             {
               "op": "set_flag",
               "target": "flag:ch06_anchor_secured",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "field_actions_remaining",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "stamp_auth",
+              "value": 1
             }
           ],
-          "next_event_id": "EV_CH06_SIDE_A"
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch06_anchor_force",
+          "label": "Force the anchor deck",
+          "conditions": [],
+          "preview": "Open the side windows under pressure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_anchor_secured",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "field_actions_remaining",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "queue_pressure",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
         }
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
     },
     {
-      "event_id": "EV_CH06_SIDE_A",
-      "event_type": "exploration",
+      "event_id": "EV_CH06_FIELD_HUB",
+      "event_type": "choice",
       "node_id": "CH06_N04",
-      "title": "관문 대기 가족",
-      "repeatable": false,
-      "once_per_run": true,
-      "priority": 70,
+      "title": "Field action hub",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 95,
       "conditions": [
         "flag:ch06_anchor_secured"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch06_southern_gate_collapse_side_a",
-        "music_key": "red_corridor",
+        "art_key": "ch06_field_hub",
+        "music_key": "southern_gate_collapse",
         "widget_overrides": [
-          "choice_list",
-          "checkpoint_priority"
+          "queue_pressure",
+          "pursuit_meter",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "검문장에 남겨진 가족 단위를 통과시킬지 정한다.",
+        "summary": "Field actions are optional and capped at two.",
         "body": [
-          "인물형 사이드 퀘스트로 신뢰와 보급을 움직인다.",
-          "Part 2의 감정 리듬을 강화한다."
+          "Scavenging is repeatable, but pressure rises."
         ]
       },
       "npc_ids": [
         "npc_do_jaeyoon",
-        "npc_yoo_minha"
-      ],
-      "loot_table_ids": [
-        "lt_ch04_logistics"
-      ],
-      "choices": [
-        {
-          "choice_id": "ch06_side_a",
-          "label": "사이드 처리",
-          "conditions": [],
-          "preview": "신뢰와 보급을 확보한다.",
-          "effects": [
-            {
-              "op": "set_flag",
-              "target": "flag:ch06_side_a_done",
-              "value": true
-            },
-            {
-              "op": "add_trust",
-              "target": "npc_do_jaeyoon",
-              "value": 1
-            },
-            {
-              "op": "grant_loot_table",
-              "target": "loot:lt_ch04_logistics",
-              "value": 1
-            }
-          ],
-          "next_event_id": "EV_CH06_SIDE_B"
-        }
-      ],
-      "on_enter_effects": [],
-      "on_complete_effects": []
-    },
-    {
-      "event_id": "EV_CH06_SIDE_B",
-      "event_type": "exploration",
-      "node_id": "CH06_N04",
-      "title": "폐기된 통행 장부",
-      "repeatable": false,
-      "once_per_run": true,
-      "priority": 69,
-      "conditions": [
-        "flag:ch06_anchor_secured"
-      ],
-      "presentation": {
-        "layout": "choice",
-        "art_key": "ch06_southern_gate_collapse_side_b",
-        "music_key": "red_corridor",
-        "widget_overrides": [
-          "choice_list",
-          "route_compare"
-        ]
-      },
-      "text": {
-        "summary": "남하 검문 기록에서 누가 버려졌는지 확인한다.",
-        "body": [
-          "세계관형 사이드 퀘스트로 다음 장의 연결고리를 선행 공개한다.",
-          "시각적으로는 적색 경고등, 젖은 콘크리트, 차단봉, 좁은 통로, 군중 압박을 유지하되 더 깊은 공간감을 준다."
-        ]
-      },
-      "npc_ids": [
         "npc_yoo_minha",
         "npc_jung_noah"
       ],
@@ -593,19 +756,455 @@
       ],
       "choices": [
         {
-          "choice_id": "ch06_side_b",
-          "label": "기록 회수",
-          "conditions": [],
-          "preview": "다음 장의 연결고리를 확보한다.",
+          "choice_id": "ch06_field_a",
+          "label": "Sweep the loading manifest",
+          "conditions": [
+            "field_actions_remaining>=1",
+            "!flag:ch06_manifest_done"
+          ],
+          "preview": "Spend one field action budget.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch06_side_b_done",
+              "target": "flag:ch06_manifest_pending",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH06_ACTION_A"
+        },
+        {
+          "choice_id": "ch06_field_b",
+          "label": "Split the smoke queue",
+          "conditions": [
+            "field_actions_remaining>=1",
+            "!flag:ch06_smoke_done"
+          ],
+          "preview": "Spend one field action budget.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_smoke_pending",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH06_ACTION_B"
+        },
+        {
+          "choice_id": "ch06_scavenge",
+          "label": "Repeatable scavenging pass",
+          "conditions": [],
+          "preview": "Short loot loop with extra pressure.",
+          "effects": [],
+          "next_event_id": "EV_CH06_SCAVENGE"
+        },
+        {
+          "choice_id": "ch06_prep",
+          "label": "Stage the final push",
+          "conditions": [
+            "flag:ch06_manifest_done|flag:ch06_smoke_done|field_actions_remaining<=0"
+          ],
+          "preview": "Move toward the closure path.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_prep_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH06_PREP"
+        },
+        {
+          "choice_id": "ch06_hold",
+          "label": "Hold position",
+          "conditions": [],
+          "preview": "Stay in the field loop.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH06_ACTION_A",
+      "event_type": "choice",
+      "node_id": "CH06_N04",
+      "title": "Sweep the loading manifest",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch06_manifest_pending"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch06_manifest",
+        "music_key": "southern_gate_collapse",
+        "widget_overrides": [
+          "stamp_auth",
+          "field_actions_remaining"
+        ]
+      },
+      "text": {
+        "summary": "Sweep the loading manifest is optional.",
+        "body": [
+          "Its completion feeds the review text and final matrix."
+        ]
+      },
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch06_manifest_a",
+          "label": "Clone the papers",
+          "conditions": [],
+          "preview": "Safer resolution.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_manifest_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch06_manifest_pending",
               "value": true
             },
             {
               "op": "grant_loot_table",
               "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "stamp_auth",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch06_manifest_b",
+          "label": "Leak a false roster",
+          "conditions": [],
+          "preview": "Riskier but louder.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_manifest_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch06_manifest_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "stamp_auth",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH06_ACTION_B",
+      "event_type": "choice",
+      "node_id": "CH06_N04",
+      "title": "Split the smoke queue",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch06_smoke_pending"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch06_smoke",
+        "music_key": "southern_gate_collapse",
+        "widget_overrides": [
+          "smoke_density",
+          "field_actions_remaining"
+        ]
+      },
+      "text": {
+        "summary": "Split the smoke queue is optional.",
+        "body": [
+          "Its completion feeds the review text and final matrix."
+        ]
+      },
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch06_smoke_a",
+          "label": "Open a witness lane",
+          "conditions": [],
+          "preview": "Safer resolution.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_smoke_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch06_smoke_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "smoke_density",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch06_smoke_b",
+          "label": "Push the decoy convoy",
+          "conditions": [],
+          "preview": "Riskier but louder.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_smoke_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch06_smoke_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "smoke_density",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH06_SCAVENGE",
+      "event_type": "exploration",
+      "node_id": "CH06_N04",
+      "title": "Scavenge loop",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 98,
+      "conditions": [
+        "flag:ch06_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch06_scavenge",
+        "music_key": "southern_gate_collapse",
+        "widget_overrides": [
+          "loot_grid",
+          "queue_pressure"
+        ]
+      },
+      "text": {
+        "summary": "Repeatable scavenging is available in every chapter.",
+        "body": [
+          "Per-part minimum is exceeded by design."
+        ]
+      },
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch06_scavenge_quick",
+          "label": "Grab what is near",
+          "conditions": [],
+          "preview": "Gain loot and accept noise.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch04_logistics",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch06_scavenge_exit",
+          "label": "Cut the scavenging short",
+          "conditions": [],
+          "preview": "Return to the field hub.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_scavenge_seen",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH06_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH06_PREP",
+      "event_type": "choice",
+      "node_id": "CH06_N05",
+      "title": "Final preparation",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch06_prep_ready"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch06_prep",
+        "music_key": "southern_gate_collapse",
+        "widget_overrides": [
+          "queue_pressure",
+          "stamp_auth"
+        ]
+      },
+      "text": {
+        "summary": "Prep translates carry state into the boss approach.",
+        "body": [
+          "Boss choices never self-loop."
+        ]
+      },
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch06_prep_clean",
+          "label": "Carry the clean route into the gate",
+          "conditions": [],
+          "preview": "Lower contamination, cleaner closure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_prep_clean",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "stamp_auth",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_BOSS"
+        },
+        {
+          "choice_id": "ch06_prep_hard",
+          "label": "Carry pressure straight into the gate",
+          "conditions": [],
+          "preview": "Higher strain, stronger confrontation.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_prep_hard",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "queue_pressure",
               "value": 1
             }
           ],
@@ -619,60 +1218,98 @@
       "event_id": "EV_CH06_BOSS",
       "event_type": "combat",
       "node_id": "CH06_N05",
-      "title": "관문 압쇄체 제압",
+      "title": "Gate Mauler",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 120,
+      "priority": 98,
       "conditions": [
-        "flag:ch06_route_locked",
-        "flag:ch06_anchor_secured"
+        "flag:ch06_prep_ready"
       ],
       "presentation": {
         "layout": "boss",
-        "art_key": "ch06_southern_gate_collapse_boss",
-        "music_key": "red_corridor_boss",
+        "art_key": "ch06_boss",
+        "music_key": "southern_gate_collapse",
         "widget_overrides": [
           "boss_hp",
-          "checkpoint_priority",
-          "route_compare",
-          "crowd_pressure"
+          "queue_pressure",
+          "pursuit_meter"
         ]
       },
       "text": {
-        "summary": "관문 압쇄체가 하강 관문의 규칙을 물리적으로 강요한다.",
+        "summary": "Gate Mauler is the terminal pressure test.",
         "body": [
-          "이번 전투는 파트별 톤 차이를 가장 강하게 보여주는 구간이다.",
-          "전투 뒤 바로 다음 장으로 밀려나는 감정 잔향이 붙는다."
+          "Both boss choices resolve into the result event."
         ]
       },
       "npc_ids": [
         "npc_do_jaeyoon",
-        "npc_yoo_minha"
+        "npc_yoo_minha",
+        "npc_jung_noah"
       ],
       "loot_table_ids": [
         "lt_ch04_logistics"
       ],
+      "choices": [
+        {
+          "choice_id": "ch06_boss_direct",
+          "label": "Break the front",
+          "conditions": [],
+          "preview": "Direct confrontation into the closure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_boss_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "queue_pressure",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_RESULT"
+        },
+        {
+          "choice_id": "ch06_boss_overload",
+          "label": "Overload the gate",
+          "conditions": [],
+          "preview": "Higher contamination for stronger swing.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_boss_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "pursuit_meter",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH06_RESULT"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
       "combat": {
         "encounter_table_id": "enc_ch06_gate_boss",
         "boss_id": "gate_mauler",
         "arena_tags": [
           "southern_gate_collapse",
+          "boss",
           "p2"
         ],
+        "fail_event_id": "EV_CH06_RESULT",
+        "setback_event_id": "EV_CH06_RESULT",
         "victory_effects": [
           {
             "op": "set_flag",
             "target": "flag:ch06_boss_clear",
-            "value": true
-          },
-          {
-            "op": "set_flag",
-            "target": "flag:chapter_06_completed",
-            "value": true
-          },
-          {
-            "op": "unlock_route",
-            "target": "chapter:CH06:complete",
             "value": true
           }
         ],
@@ -680,23 +1317,89 @@
           {
             "op": "sub_stat",
             "target": "hp",
-            "value": 18
+            "value": 14
           },
           {
             "op": "add_stat",
             "target": "contamination",
-            "value": 8
+            "value": 4
           }
         ]
+      }
+    },
+    {
+      "event_id": "EV_CH06_RESULT",
+      "event_type": "result",
+      "node_id": "CH06_N05",
+      "title": "Chapter closure",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch06_boss_clear"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch06_result",
+        "music_key": "southern_gate_collapse",
+        "widget_overrides": [
+          "chapter_result",
+          "queue_pressure",
+          "pursuit_meter"
+        ]
       },
+      "text": {
+        "summary": "Each non-final chapter ends with a result-oriented closure.",
+        "body": [
+          "The next chapter inherits carry state instead of a hard reset."
+        ]
+      },
+      "npc_ids": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "loot_table_ids": [
+        "lt_ch04_logistics"
+      ],
       "choices": [
         {
-          "choice_id": "ch06_engage",
-          "label": "보스 교전",
+          "choice_id": "ch06_closure_a",
+          "label": "Carry the pressure forward",
           "conditions": [],
-          "preview": "클라이맥스 전투를 시작한다.",
-          "effects": [],
-          "next_event_id": "EV_CH06_BOSS"
+          "preview": "Carry the dominant axis forward.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_chapter_closed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "queue_pressure",
+              "value": 1
+            }
+          ],
+          "next_event_id": "END_CH06_RESOLVED"
+        },
+        {
+          "choice_id": "ch06_closure_b",
+          "label": "Freeze the witness route",
+          "conditions": [],
+          "preview": "Carry the stress signal forward.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch06_chapter_closed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "pursuit_meter",
+              "value": 1
+            }
+          ],
+          "next_event_id": "END_CH06_RESOLVED"
         }
       ],
       "on_enter_effects": [],

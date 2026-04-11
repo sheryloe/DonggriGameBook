@@ -1,0 +1,19 @@
+{
+  "video_id": "P2_END_SUNKEN_LIST",
+  "scene_id": "ENDING_SUNKEN_LIST",
+  "chapter_id": "CH10",
+  "ending_id": "P2_END_SUNKEN_LIST",
+  "part_id": "P2",
+  "kind": "ending",
+  "duration": 18,
+  "aspect_ratio": "16:9",
+  "prompt_en": "A mournful harbor ending with manifest pages floating in oily water, abandoned route stamps, and survivors searching the tide for names that are already gone. checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors. manifest pages in oily tide, abandoned route stamps, survivors with lamps, flooded harbor edge. Grounded Korean apocalypse cinematic realism.",
+  "prompt_ko_context": "명단이 물에 잠기고 생존자도 잃어버린 최저점 엔딩. 이름과 물, 실패가 동시에 읽혀야 한다.",
+  "camera_notes": "Open on the papers in water, reveal searching lamps, and hold on a name list dissolving under the tide.",
+  "audio_notes": "Water slap, distant siren, sparse piano, and breath caught in cold air.",
+  "source_art_key": "ending_p2_sunken_list",
+  "target_video_path": "public/generated/videos/P2_END_SUNKEN_LIST.mp4",
+  "target_poster_path": "public/generated/images/ending_p2_sunken_list.webp",
+  "stitch_prompt": "A mournful harbor ending with manifest pages floating in oily water, abandoned route stamps, and survivors searching the tide for names that are already gone. Match style pack P2.ending.p2_end_sunken_list.",
+  "file": "P2_END_SUNKEN_LIST.json"
+}

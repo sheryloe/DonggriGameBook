@@ -2,28 +2,47 @@
   "version": "1.0.0",
   "game_id": "dokdo_arc_webgame",
   "chapter_id": "CH13",
-  "title": "백색 야적장",
-  "role": "의약품과 은폐된 증거 사이 선택",
+  "title": "White Log",
+  "role": "White Log for P3.",
   "entry_node_id": "CH13_N01",
   "exit_node_ids": [
     "CH13_N05"
   ],
   "recommended_level": 13,
+  "estimated_first_run_minutes": 7,
+  "field_action_budget": 2,
+  "carryover_keys": [
+    "p3.route_access",
+    "p3.public_evidence",
+    "p3.medical_reserve",
+    "p3.power_margin",
+    "p3.sacrifice_load"
+  ],
+  "repeatable_scavenging_events": [
+    "EV_CH13_SCAVENGE"
+  ],
+  "demo_route": [
+    "EV_CH13_ENTRY",
+    "EV_CH13_ROUTE",
+    "EV_CH13_ANCHOR",
+    "EV_CH13_PREP",
+    "EV_CH13_RESULT"
+  ],
   "ui_profile": {
-    "theme": "white_yard_ethics",
+    "theme": "white_log_archive",
     "special_widgets": [
-      "rail_switch_map",
-      "cold_exposure",
-      "frequency_map",
-      "freeze_meter",
+      "signal_decoder",
       "evidence_balance",
-      "cargo_temperature"
+      "power_router",
+      "checkpoint_auth",
+      "sacrifice_state",
+      "field_actions_remaining"
     ]
   },
   "objectives": [
     {
       "objective_id": "obj_ch13_01",
-      "text": "냉동 컨테이너 통로에 진입한다.",
+      "text": "Enter the chapter",
       "required": true,
       "complete_when": [
         "flag:ch13_entry"
@@ -31,7 +50,7 @@
     },
     {
       "objective_id": "obj_ch13_02",
-      "text": "적재 사무실에서 주 경로를 확정한다.",
+      "text": "Lock the route axis",
       "required": true,
       "complete_when": [
         "flag:ch13_route_locked"
@@ -39,7 +58,7 @@
     },
     {
       "objective_id": "obj_ch13_03",
-      "text": "백색 보관동의 핵심 압박을 돌파한다.",
+      "text": "Secure the anchor deck",
       "required": true,
       "complete_when": [
         "flag:ch13_anchor_secured"
@@ -47,18 +66,26 @@
     },
     {
       "objective_id": "obj_ch13_04",
-      "text": "백색 상차증",
+      "text": "Resolve optional field action A",
       "required": false,
       "complete_when": [
-        "flag:ch13_side_a_done"
+        "flag:ch13_relay_done"
       ]
     },
     {
       "objective_id": "obj_ch13_05",
-      "text": "냉동보관실 아이",
+      "text": "Resolve optional field action B",
       "required": false,
       "complete_when": [
-        "flag:ch13_side_b_done"
+        "flag:ch13_triage_done"
+      ]
+    },
+    {
+      "objective_id": "obj_ch13_06",
+      "text": "Close the chapter result",
+      "required": true,
+      "complete_when": [
+        "flag:ch13_chapter_closed"
       ]
     }
   ],
@@ -66,24 +93,25 @@
     {
       "quest_track_id": "qt_ch13_main",
       "kind": "main",
-      "title": "백색 야적장",
-      "summary": "약과 증거, 누구를 위해 남겨진 물자인지를 판단한다.",
+      "title": "White Log",
+      "summary": "White Log",
       "entry_event_id": "EV_CH13_ENTRY",
-      "completion_event_id": "EV_CH13_BOSS",
+      "completion_event_id": "EV_CH13_RESULT",
       "objective_ids": [
         "obj_ch13_01",
         "obj_ch13_02",
-        "obj_ch13_03"
+        "obj_ch13_03",
+        "obj_ch13_06"
       ],
       "reveal_cap": "confirmation"
     },
     {
       "quest_track_id": "qt_ch13_side_a",
       "kind": "side",
-      "title": "백색 상차증",
-      "summary": "우선 이동 화물의 정체를 확인한다.",
-      "entry_event_id": "EV_CH13_SIDE_A",
-      "completion_event_id": "EV_CH13_SIDE_A",
+      "title": "Rewire the relay stack",
+      "summary": "Rewire the relay stack",
+      "entry_event_id": "EV_CH13_ACTION_A",
+      "completion_event_id": "EV_CH13_ACTION_A",
       "objective_ids": [
         "obj_ch13_04"
       ],
@@ -95,10 +123,10 @@
     {
       "quest_track_id": "qt_ch13_side_b",
       "kind": "side",
-      "title": "냉동보관실 아이",
-      "summary": "생존자 또는 유품을 통해 은폐의 대가를 확인한다.",
-      "entry_event_id": "EV_CH13_SIDE_B",
-      "completion_event_id": "EV_CH13_SIDE_B",
+      "title": "Sort the triage reserve",
+      "summary": "Sort the triage reserve",
+      "entry_event_id": "EV_CH13_ACTION_B",
+      "completion_event_id": "EV_CH13_ACTION_B",
       "objective_ids": [
         "obj_ch13_05"
       ],
@@ -111,25 +139,29 @@
   "nodes": [
     {
       "node_id": "CH13_N01",
-      "name": "냉동 컨테이너 통로",
+      "name": "Entry Gate",
       "node_type": "travel",
-      "description": "약과 증거, 누구를 위해 남겨진 물자인지를 판단한다.의 시작점.",
+      "description": "White Log Entry Gate.",
       "coordinates": {
-        "x": 10,
-        "y": 80
+        "x": 22,
+        "y": 74
       },
       "encounter_table_id": "enc_ch13_white_field",
       "loot_table_ids": [
         "lt_ch05_server"
       ],
-      "npc_ids": [],
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
       "connections": [
         {
           "to": "CH13_N02",
-          "travel_type": "walk",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
-            "time": 3,
+            "time": 2,
             "noise": 1,
             "contamination": 1
           }
@@ -140,18 +172,19 @@
       ],
       "revisit_rule": "always",
       "tags": [
-        "entry",
-        "p3"
+        "p3",
+        "white_log_archive",
+        "travel"
       ]
     },
     {
       "node_id": "CH13_N02",
-      "name": "적재 사무실",
-      "node_type": "safehouse",
-      "description": "P3 전용 허브 리듬을 여는 구간.",
+      "name": "Route Board",
+      "node_type": "route_select",
+      "description": "White Log Route Board.",
       "coordinates": {
-        "x": 28,
-        "y": 62
+        "x": 26,
+        "y": 70
       },
       "encounter_table_id": "enc_ch13_white_field",
       "loot_table_ids": [
@@ -159,47 +192,40 @@
       ],
       "npc_ids": [
         "npc_han_somyeong",
-        "npc_oh_gyeongtae"
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
       ],
       "connections": [
         {
           "to": "CH13_N03",
-          "travel_type": "corridor",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
-            "noise": 2,
-            "contamination": 1
-          }
-        },
-        {
-          "to": "CH13_N04",
-          "travel_type": "detour",
-          "requires": [],
-          "cost": {
-            "time": 3,
             "noise": 1,
-            "contamination": 2
+            "contamination": 1
           }
         }
       ],
       "event_ids": [
-        "EV_CH13_ROUTE"
+        "EV_CH13_ROUTE",
+        "EV_CH13_APPROACH"
       ],
       "revisit_rule": "always",
       "tags": [
-        "route",
-        "white_yard_ethics"
+        "p3",
+        "white_log_archive",
+        "route_select"
       ]
     },
     {
       "node_id": "CH13_N03",
-      "name": "백색 보관동",
+      "name": "Anchor Deck",
       "node_type": "exploration",
-      "description": "약과 증거, 누구를 위해 남겨진 물자인지를 판단한다.",
+      "description": "White Log Anchor Deck.",
       "coordinates": {
-        "x": 52,
-        "y": 48
+        "x": 22,
+        "y": 74
       },
       "encounter_table_id": "enc_ch13_white_field",
       "loot_table_ids": [
@@ -213,24 +239,12 @@
       "connections": [
         {
           "to": "CH13_N04",
-          "travel_type": "service_route",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
-            "noise": 2,
+            "noise": 1,
             "contamination": 1
-          }
-        },
-        {
-          "to": "CH13_N05",
-          "travel_type": "push_forward",
-          "requires": [
-            "flag:ch13_route_locked"
-          ],
-          "cost": {
-            "time": 2,
-            "noise": 3,
-            "contamination": 2
           }
         }
       ],
@@ -239,18 +253,19 @@
       ],
       "revisit_rule": "always",
       "tags": [
-        "main",
-        "p3"
+        "p3",
+        "white_log_archive",
+        "exploration"
       ]
     },
     {
       "node_id": "CH13_N04",
-      "name": "야적장 출고문",
+      "name": "Field Window",
       "node_type": "branch",
-      "description": "인물형/세계관형 사이드 퀘스트를 처리하는 보조 구역.",
+      "description": "White Log Field Window.",
       "coordinates": {
-        "x": 70,
-        "y": 58
+        "x": 34,
+        "y": 62
       },
       "encounter_table_id": "enc_ch13_white_field",
       "loot_table_ids": [
@@ -264,7 +279,7 @@
       "connections": [
         {
           "to": "CH13_N05",
-          "travel_type": "return_route",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
@@ -274,23 +289,26 @@
         }
       ],
       "event_ids": [
-        "EV_CH13_SIDE_A",
-        "EV_CH13_SIDE_B"
+        "EV_CH13_FIELD_HUB",
+        "EV_CH13_ACTION_A",
+        "EV_CH13_ACTION_B",
+        "EV_CH13_SCAVENGE"
       ],
-      "revisit_rule": "after_clear",
+      "revisit_rule": "always",
       "tags": [
-        "side",
-        "white_yard_ethics"
+        "p3",
+        "white_log_archive",
+        "branch"
       ]
     },
     {
       "node_id": "CH13_N05",
-      "name": "백색 견인체 대응 구역",
+      "name": "Terminal Gate",
       "node_type": "boss",
-      "description": "백색 견인체와 충돌하는 클라이맥스 구간.",
+      "description": "White Log Terminal Gate.",
       "coordinates": {
-        "x": 90,
-        "y": 32
+        "x": 30,
+        "y": 66
       },
       "encounter_table_id": "enc_ch13_white_boss",
       "loot_table_ids": [
@@ -298,16 +316,20 @@
       ],
       "npc_ids": [
         "npc_han_somyeong",
-        "npc_oh_gyeongtae"
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
       ],
       "connections": [],
       "event_ids": [
-        "EV_CH13_BOSS"
+        "EV_CH13_PREP",
+        "EV_CH13_BOSS",
+        "EV_CH13_RESULT"
       ],
-      "revisit_rule": "after_clear",
+      "revisit_rule": "always",
       "tags": [
-        "boss",
-        "p3"
+        "p3",
+        "white_log_archive",
+        "boss"
       ]
     }
   ],
@@ -316,44 +338,75 @@
       "event_id": "EV_CH13_ENTRY",
       "event_type": "briefing",
       "node_id": "CH13_N01",
-      "title": "백색 야적장 진입",
+      "title": "Chapter entry",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 100,
+      "priority": 98,
       "conditions": [],
       "presentation": {
-        "layout": "dialogue",
-        "art_key": "ch13_white_yard_ethics_entry",
-        "music_key": "echo_base",
+        "layout": "choice",
+        "art_key": "ch13_entry",
+        "music_key": "white_log_archive",
         "widget_overrides": [
-          "objective_panel",
-          "freeze_meter",
+          "signal_decoder",
           "evidence_balance",
-          "cargo_temperature"
+          "power_router"
         ]
       },
       "text": {
-        "summary": "약과 증거, 누구를 위해 남겨진 물자인지를 판단한다.",
+        "summary": "White Log opens with route pressure.",
         "body": [
-          "P3의 분위기는 푸른 응급등, 백색 서리, 철골, 넓은 음영, 구조 기록 보드로 간다.",
-          "이번 장의 핵심은 의약품과 은폐된 증거 사이 선택이다."
+          "Target first-run time: 7 minutes."
         ]
       },
       "npc_ids": [
-        "npc_han_somyeong"
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch13_start",
-          "label": "임무 시작",
+          "choice_id": "ch13_entry_slow",
+          "label": "Move under cover",
           "conditions": [],
-          "preview": "이번 장의 메인 루프를 연다.",
+          "preview": "Lower noise, slower tempo.",
           "effects": [
             {
               "op": "set_flag",
               "target": "flag:ch13_entry",
               "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_ROUTE"
+        },
+        {
+          "choice_id": "ch13_entry_fast",
+          "label": "Push through the breach",
+          "conditions": [],
+          "preview": "Faster, louder opening.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_entry",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH13_ROUTE"
@@ -366,75 +419,206 @@
       "event_id": "EV_CH13_ROUTE",
       "event_type": "choice",
       "node_id": "CH13_N02",
-      "title": "격리 기지 확정",
+      "title": "Route lock",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 90,
+      "priority": 97,
       "conditions": [
         "flag:ch13_entry"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch13_white_yard_ethics_route",
-        "music_key": "echo_base",
+        "art_key": "ch13_route",
+        "music_key": "white_log_archive",
         "widget_overrides": [
-          "freeze_meter",
+          "signal_decoder",
           "evidence_balance",
-          "cargo_temperature"
+          "power_router",
+          "checkpoint_auth",
+          "sacrifice_state",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "동해 격리선의 첫 인상에서 경로를 고른다.",
+        "summary": "Lock one dominant route axis.",
         "body": [
-          "공식선과 우회선 중 어떤 리듬으로 갈지 결정한다.",
-          "주파수 스윕, 무거운 패널, 느린 페이드, 저온 브레스을 화면 전환에 반영한다."
+          "Carry state starts here."
         ]
       },
       "npc_ids": [
         "npc_han_somyeong",
-        "npc_oh_gyeongtae"
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch13_official",
-          "label": "공식선 유지",
+          "choice_id": "ch13_route_certified",
+          "label": "Rebuild the certified passage",
           "conditions": [],
-          "preview": "안전하지만 느리다.",
+          "preview": "This becomes the main chapter axis.",
           "effects": [
             {
               "op": "set_route",
-              "target": "route",
-              "value": "p3_white_yard_ethics_official"
+              "target": "route.current",
+              "value": "p3.route_access"
             },
             {
               "op": "set_flag",
               "target": "flag:ch13_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "p3.route_access",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "checkpoint_auth",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_APPROACH"
+        },
+        {
+          "choice_id": "ch13_route_public",
+          "label": "Expose the evidence publicly",
+          "conditions": [],
+          "preview": "This becomes the main chapter axis.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "p3.public_evidence"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "p3.public_evidence",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_APPROACH"
+        },
+        {
+          "choice_id": "ch13_route_medical",
+          "label": "Protect the cold reserve",
+          "conditions": [],
+          "preview": "This becomes the main chapter axis.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "p3.medical_reserve"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "p3.medical_reserve",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "sacrifice_state",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_APPROACH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH13_APPROACH",
+      "event_type": "choice",
+      "node_id": "CH13_N02",
+      "title": "Initial approach",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch13_route_locked"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch13_approach",
+        "music_key": "white_log_archive",
+        "widget_overrides": [
+          "signal_decoder",
+          "evidence_balance"
+        ]
+      },
+      "text": {
+        "summary": "Choose what this chapter reads first.",
+        "body": [
+          "The first read changes later review tone."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch13_approach_record",
+          "label": "Read the system record first",
+          "conditions": [],
+          "preview": "Lower volatility, stronger context.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_approach_record",
               "value": true
             }
           ],
           "next_event_id": "EV_CH13_ANCHOR"
         },
         {
-          "choice_id": "ch13_detour",
-          "label": "우회선 강행",
+          "choice_id": "ch13_approach_people",
+          "label": "Read the human queue first",
           "conditions": [],
-          "preview": "빠르지만 비용이 크다.",
+          "preview": "Higher pressure, stronger witness angle.",
           "effects": [
             {
-              "op": "set_route",
-              "target": "route",
-              "value": "p3_white_yard_ethics_detour"
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_approach_people",
+              "value": true
             },
             {
               "op": "add_stat",
               "target": "noise",
-              "value": 3
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch13_route_locked",
-              "value": true
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH13_ANCHOR"
@@ -445,31 +629,28 @@
     },
     {
       "event_id": "EV_CH13_ANCHOR",
-      "event_type": "dialogue",
+      "event_type": "choice",
       "node_id": "CH13_N03",
-      "title": "백색 야적장 핵심 압박",
+      "title": "Anchor secured",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 80,
+      "priority": 98,
       "conditions": [
         "flag:ch13_route_locked"
       ],
       "presentation": {
-        "layout": "dialogue",
-        "art_key": "ch13_white_yard_ethics_anchor",
-        "music_key": "echo_base",
+        "layout": "choice",
+        "art_key": "ch13_anchor",
+        "music_key": "white_log_archive",
         "widget_overrides": [
-          "event_card",
-          "freeze_meter",
-          "evidence_balance",
-          "cargo_temperature"
+          "power_router",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "약과 증거, 누구를 위해 남겨진 물자인지를 판단한다.",
+        "summary": "The anchor grants two optional field actions.",
         "body": [
-          "핵심 NPC: npc_han_somyeong, npc_oh_gyeongtae, npc_ryu_seon",
-          "인물 앵커와 세계관 앵커를 동시에 밀어 넣는다."
+          "You can still progress without clearing both."
         ]
       },
       "npc_ids": [
@@ -477,117 +658,96 @@
         "npc_oh_gyeongtae",
         "npc_ryu_seon"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch13_anchor",
-          "label": "압박 돌파",
+          "choice_id": "ch13_anchor_hold",
+          "label": "Secure the anchor deck",
           "conditions": [],
-          "preview": "사이드 퀘스트와 보스 구간을 연다.",
+          "preview": "Open the side windows cleanly.",
           "effects": [
             {
               "op": "set_flag",
               "target": "flag:ch13_anchor_secured",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "field_actions_remaining",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
             }
           ],
-          "next_event_id": "EV_CH13_SIDE_A"
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch13_anchor_force",
+          "label": "Force the anchor deck",
+          "conditions": [],
+          "preview": "Open the side windows under pressure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_anchor_secured",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "field_actions_remaining",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
         }
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
     },
     {
-      "event_id": "EV_CH13_SIDE_A",
-      "event_type": "exploration",
+      "event_id": "EV_CH13_FIELD_HUB",
+      "event_type": "choice",
       "node_id": "CH13_N04",
-      "title": "백색 상차증",
-      "repeatable": false,
-      "once_per_run": true,
-      "priority": 70,
+      "title": "Field action hub",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 95,
       "conditions": [
         "flag:ch13_anchor_secured"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch13_white_yard_ethics_side_a",
-        "music_key": "echo_base",
+        "art_key": "ch13_field_hub",
+        "music_key": "white_log_archive",
         "widget_overrides": [
-          "choice_list",
-          "freeze_meter"
+          "signal_decoder",
+          "evidence_balance",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "우선 이동 화물의 정체를 확인한다.",
+        "summary": "Field actions are optional and capped at two.",
         "body": [
-          "인물형 사이드 퀘스트로 신뢰와 보급을 움직인다.",
-          "Part 3의 감정 리듬을 강화한다."
+          "Scavenging is repeatable, but pressure rises."
         ]
       },
       "npc_ids": [
         "npc_han_somyeong",
-        "npc_oh_gyeongtae"
-      ],
-      "loot_table_ids": [
-        "lt_ch05_server"
-      ],
-      "choices": [
-        {
-          "choice_id": "ch13_side_a",
-          "label": "사이드 처리",
-          "conditions": [],
-          "preview": "신뢰와 보급을 확보한다.",
-          "effects": [
-            {
-              "op": "set_flag",
-              "target": "flag:ch13_side_a_done",
-              "value": true
-            },
-            {
-              "op": "add_trust",
-              "target": "npc_han_somyeong",
-              "value": 1
-            },
-            {
-              "op": "grant_loot_table",
-              "target": "loot:lt_ch05_server",
-              "value": 1
-            }
-          ],
-          "next_event_id": "EV_CH13_SIDE_B"
-        }
-      ],
-      "on_enter_effects": [],
-      "on_complete_effects": []
-    },
-    {
-      "event_id": "EV_CH13_SIDE_B",
-      "event_type": "exploration",
-      "node_id": "CH13_N04",
-      "title": "냉동보관실 아이",
-      "repeatable": false,
-      "once_per_run": true,
-      "priority": 69,
-      "conditions": [
-        "flag:ch13_anchor_secured"
-      ],
-      "presentation": {
-        "layout": "choice",
-        "art_key": "ch13_white_yard_ethics_side_b",
-        "music_key": "echo_base",
-        "widget_overrides": [
-          "choice_list",
-          "evidence_balance"
-        ]
-      },
-      "text": {
-        "summary": "생존자 또는 유품을 통해 은폐의 대가를 확인한다.",
-        "body": [
-          "세계관형 사이드 퀘스트로 다음 장의 연결고리를 선행 공개한다.",
-          "시각적으로는 푸른 응급등, 백색 서리, 철골, 넓은 음영, 구조 기록 보드을 유지하되 더 깊은 공간감을 준다."
-        ]
-      },
-      "npc_ids": [
         "npc_oh_gyeongtae",
         "npc_ryu_seon"
       ],
@@ -596,19 +756,455 @@
       ],
       "choices": [
         {
-          "choice_id": "ch13_side_b",
-          "label": "기록 회수",
-          "conditions": [],
-          "preview": "다음 장의 연결고리를 확보한다.",
+          "choice_id": "ch13_field_a",
+          "label": "Rewire the relay stack",
+          "conditions": [
+            "field_actions_remaining>=1",
+            "!flag:ch13_relay_done"
+          ],
+          "preview": "Spend one field action budget.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch13_side_b_done",
+              "target": "flag:ch13_relay_pending",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH13_ACTION_A"
+        },
+        {
+          "choice_id": "ch13_field_b",
+          "label": "Sort the triage reserve",
+          "conditions": [
+            "field_actions_remaining>=1",
+            "!flag:ch13_triage_done"
+          ],
+          "preview": "Spend one field action budget.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_triage_pending",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH13_ACTION_B"
+        },
+        {
+          "choice_id": "ch13_scavenge",
+          "label": "Repeatable scavenging pass",
+          "conditions": [],
+          "preview": "Short loot loop with extra pressure.",
+          "effects": [],
+          "next_event_id": "EV_CH13_SCAVENGE"
+        },
+        {
+          "choice_id": "ch13_prep",
+          "label": "Stage the final push",
+          "conditions": [
+            "flag:ch13_relay_done|flag:ch13_triage_done|field_actions_remaining<=0"
+          ],
+          "preview": "Move toward the closure path.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_prep_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH13_PREP"
+        },
+        {
+          "choice_id": "ch13_hold",
+          "label": "Hold position",
+          "conditions": [],
+          "preview": "Stay in the field loop.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH13_ACTION_A",
+      "event_type": "choice",
+      "node_id": "CH13_N04",
+      "title": "Rewire the relay stack",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch13_relay_pending"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch13_relay",
+        "music_key": "white_log_archive",
+        "widget_overrides": [
+          "power_router",
+          "field_actions_remaining"
+        ]
+      },
+      "text": {
+        "summary": "Rewire the relay stack is optional.",
+        "body": [
+          "Its completion feeds the review text and final matrix."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch13_relay_a",
+          "label": "Protect clean power",
+          "conditions": [],
+          "preview": "Safer resolution.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_relay_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch13_relay_pending",
               "value": true
             },
             {
               "op": "grant_loot_table",
               "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch13_relay_b",
+          "label": "Overclock the signal",
+          "conditions": [],
+          "preview": "Riskier but louder.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_relay_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch13_relay_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH13_ACTION_B",
+      "event_type": "choice",
+      "node_id": "CH13_N04",
+      "title": "Sort the triage reserve",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch13_triage_pending"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch13_triage",
+        "music_key": "white_log_archive",
+        "widget_overrides": [
+          "sacrifice_state",
+          "field_actions_remaining"
+        ]
+      },
+      "text": {
+        "summary": "Sort the triage reserve is optional.",
+        "body": [
+          "Its completion feeds the review text and final matrix."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch13_triage_a",
+          "label": "Save the medicine cache",
+          "conditions": [],
+          "preview": "Safer resolution.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_triage_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch13_triage_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "sacrifice_state",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch13_triage_b",
+          "label": "Publish the ration list",
+          "conditions": [],
+          "preview": "Riskier but louder.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_triage_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch13_triage_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "sacrifice_state",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH13_SCAVENGE",
+      "event_type": "exploration",
+      "node_id": "CH13_N04",
+      "title": "Scavenge loop",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 98,
+      "conditions": [
+        "flag:ch13_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch13_scavenge",
+        "music_key": "white_log_archive",
+        "widget_overrides": [
+          "loot_grid",
+          "signal_decoder"
+        ]
+      },
+      "text": {
+        "summary": "Repeatable scavenging is available in every chapter.",
+        "body": [
+          "Per-part minimum is exceeded by design."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch13_scavenge_quick",
+          "label": "Grab what is near",
+          "conditions": [],
+          "preview": "Gain loot and accept noise.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch13_scavenge_exit",
+          "label": "Cut the scavenging short",
+          "conditions": [],
+          "preview": "Return to the field hub.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_scavenge_seen",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH13_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH13_PREP",
+      "event_type": "choice",
+      "node_id": "CH13_N05",
+      "title": "Final preparation",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch13_prep_ready"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch13_prep",
+        "music_key": "white_log_archive",
+        "widget_overrides": [
+          "signal_decoder",
+          "power_router"
+        ]
+      },
+      "text": {
+        "summary": "Prep translates carry state into the boss approach.",
+        "body": [
+          "Boss choices never self-loop."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch13_prep_clean",
+          "label": "Carry the clean route into the gate",
+          "conditions": [],
+          "preview": "Lower contamination, cleaner closure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_prep_clean",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_BOSS"
+        },
+        {
+          "choice_id": "ch13_prep_hard",
+          "label": "Carry pressure straight into the gate",
+          "conditions": [],
+          "preview": "Higher strain, stronger confrontation.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_prep_hard",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
               "value": 1
             }
           ],
@@ -622,60 +1218,98 @@
       "event_id": "EV_CH13_BOSS",
       "event_type": "combat",
       "node_id": "CH13_N05",
-      "title": "백색 견인체 제압",
+      "title": "Archive Pursuer",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 120,
+      "priority": 98,
       "conditions": [
-        "flag:ch13_route_locked",
-        "flag:ch13_anchor_secured"
+        "flag:ch13_prep_ready"
       ],
       "presentation": {
         "layout": "boss",
-        "art_key": "ch13_white_yard_ethics_boss",
-        "music_key": "echo_base_boss",
+        "art_key": "ch13_boss",
+        "music_key": "white_log_archive",
         "widget_overrides": [
           "boss_hp",
-          "freeze_meter",
-          "evidence_balance",
-          "cargo_temperature"
+          "signal_decoder",
+          "evidence_balance"
         ]
       },
       "text": {
-        "summary": "백색 견인체가 백색 야적장의 규칙을 물리적으로 강요한다.",
+        "summary": "Archive Pursuer is the terminal pressure test.",
         "body": [
-          "이번 전투는 파트별 톤 차이를 가장 강하게 보여주는 구간이다.",
-          "전투 뒤 바로 다음 장으로 밀려나는 감정 잔향이 붙는다."
+          "Both boss choices resolve into the result event."
         ]
       },
       "npc_ids": [
         "npc_han_somyeong",
-        "npc_oh_gyeongtae"
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
       ],
       "loot_table_ids": [
         "lt_ch05_server"
       ],
+      "choices": [
+        {
+          "choice_id": "ch13_boss_direct",
+          "label": "Break the front",
+          "conditions": [],
+          "preview": "Direct confrontation into the closure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_boss_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_RESULT"
+        },
+        {
+          "choice_id": "ch13_boss_overload",
+          "label": "Overload the gate",
+          "conditions": [],
+          "preview": "Higher contamination for stronger swing.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_boss_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH13_RESULT"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
       "combat": {
         "encounter_table_id": "enc_ch13_white_boss",
         "boss_id": "white_yard_tower",
         "arena_tags": [
-          "white_yard_ethics",
+          "white_log_archive",
+          "boss",
           "p3"
         ],
+        "fail_event_id": "EV_CH13_RESULT",
+        "setback_event_id": "EV_CH13_RESULT",
         "victory_effects": [
           {
             "op": "set_flag",
             "target": "flag:ch13_boss_clear",
-            "value": true
-          },
-          {
-            "op": "set_flag",
-            "target": "flag:chapter_13_completed",
-            "value": true
-          },
-          {
-            "op": "unlock_route",
-            "target": "chapter:CH13:complete",
             "value": true
           }
         ],
@@ -683,23 +1317,89 @@
           {
             "op": "sub_stat",
             "target": "hp",
-            "value": 18
+            "value": 14
           },
           {
             "op": "add_stat",
             "target": "contamination",
-            "value": 8
+            "value": 4
           }
         ]
+      }
+    },
+    {
+      "event_id": "EV_CH13_RESULT",
+      "event_type": "result",
+      "node_id": "CH13_N05",
+      "title": "Chapter closure",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch13_boss_clear"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch13_result",
+        "music_key": "white_log_archive",
+        "widget_overrides": [
+          "chapter_result",
+          "signal_decoder",
+          "evidence_balance"
+        ]
       },
+      "text": {
+        "summary": "Each non-final chapter ends with a result-oriented closure.",
+        "body": [
+          "The next chapter inherits carry state instead of a hard reset."
+        ]
+      },
+      "npc_ids": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch13_engage",
-          "label": "보스 교전",
+          "choice_id": "ch13_closure_a",
+          "label": "Lock the certification trail",
           "conditions": [],
-          "preview": "클라이맥스 전투를 시작한다.",
-          "effects": [],
-          "next_event_id": "EV_CH13_BOSS"
+          "preview": "Carry the dominant axis forward.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_chapter_closed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            }
+          ],
+          "next_event_id": "END_CH13_RESOLVED"
+        },
+        {
+          "choice_id": "ch13_closure_b",
+          "label": "Leave the evidence burning",
+          "conditions": [],
+          "preview": "Carry the stress signal forward.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch13_chapter_closed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            }
+          ],
+          "next_event_id": "END_CH13_RESOLVED"
         }
       ],
       "on_enter_effects": [],

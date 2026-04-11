@@ -5,20 +5,20 @@
 - chapter_id: CH20
 - part_id: P4
 - asset_type: background
-- subject: 코어 제어실
+- subject: Anchor Deck
 - ratio: 16:10
-- art_key_runtime: ch20_dokdo_gate_core_route
+- art_key_runtime: ch20_route
 - art_key_final: bg_ch20_dokdo_gate_core_secondary
 - filename_target: bg_ch20_dokdo_gate_core_secondary_v01.webp
 - sync_target_path: codex_webgame_pack/img/bg/
 
 ## English Prompt
 ```text
-secondary background for 독도의 문, 코어 제어실 and 관문 개방 데크, 세 가지 엔딩 선택과 코어 처리, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, realistic infrastructure decay, Korean civic survival mood, layered signage, cinematic environment concept art, grounded realism
+secondary background for Dokdo Gate, Anchor Deck and Field Window, Dokdo Gate for P4., salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, realistic infrastructure decay, Korean civic survival mood, layered signage, cinematic environment concept art, grounded realism
 ```
 
 ## Korean Context
-CH20의 진행 압박이 깊어지는 배경이다. 코어 제어실 또는 관문 개방 데크를 중심으로 메인 갈등이 실제 공간처럼 느껴져야 한다.
+CH20의 진행 압박이 깊어지는 배경이다. Anchor Deck 또는 Field Window를 중심으로 메인 갈등이 실제 공간처럼 느껴져야 한다.
 
 ## Negative Prompt
 ```text

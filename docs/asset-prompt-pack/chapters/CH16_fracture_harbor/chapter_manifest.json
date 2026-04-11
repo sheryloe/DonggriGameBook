@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH16",
+  "title": "Fracture Harbor",
+  "part_id": "P4",
+  "theme": "fracture_harbor",
+  "story_hook": "Fracture Harbor opens with route pressure.",
+  "assets": [
+    {
+      "asset_id": "ch16_bg_primary",
+      "asset_type": "background",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch16_entry",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch16_bg_secondary",
+      "asset_type": "background",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch16_route",
+      "art_key_final": "bg_ch16_fracture_harbor_secondary",
+      "filename_target": "bg_ch16_fracture_harbor_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch16_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "서진서",
+      "art_key_runtime": "pending:npc_seo_jinseo",
+      "art_key_final": "portrait_npc_seo_jinseo_ch16_anchor",
+      "filename_target": "portrait_npc_seo_jinseo_ch16_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch16_portrait_support",
+      "asset_type": "portrait",
+      "subject": "신도겸",
+      "art_key_runtime": "pending:npc_shin_dogyeom",
+      "art_key_final": "portrait_npc_shin_dogyeom_ch16_support",
+      "filename_target": "portrait_npc_shin_dogyeom_ch16_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch16_threat_signature",
+      "asset_type": "threat",
+      "subject": "사구 절개체",
+      "art_key_runtime": "ch16_boss",
+      "art_key_final": "threat_dune_cutter",
+      "filename_target": "threat_dune_cutter_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch16_poster_keyart",
+      "asset_type": "poster",
+      "subject": "Fracture Harbor key art",
+      "art_key_runtime": "pending:poster_ch16_fracture_harbor",
+      "art_key_final": "poster_ch16_fracture_harbor",
+      "filename_target": "poster_ch16_fracture_harbor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch16_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "Fracture Harbor entry beat",
+      "art_key_runtime": "pending:teaser_ch16_entry",
+      "art_key_final": "teaser_ch16_entry",
+      "filename_target": "teaser_ch16_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch16_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "Fracture Harbor pressure beat",
+      "art_key_runtime": "pending:teaser_ch16_pressure",
+      "art_key_final": "teaser_ch16_pressure",
+      "filename_target": "teaser_ch16_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch16_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "Fracture Harbor preclimax beat",
+      "art_key_runtime": "pending:teaser_ch16_preclimax",
+      "art_key_final": "teaser_ch16_preclimax",
+      "filename_target": "teaser_ch16_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH16_fracture_harbor/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch16.json",
+        "ui/ch16.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH16.md",
+        "docs/world/story-bible/PART_BIBLE_P4.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

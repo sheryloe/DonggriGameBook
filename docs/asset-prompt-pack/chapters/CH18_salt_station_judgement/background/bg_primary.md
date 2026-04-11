@@ -5,20 +5,20 @@
 - chapter_id: CH18
 - part_id: P4
 - asset_type: background
-- subject: 소금 창고
+- subject: Entry Gate
 - ratio: 16:10
-- art_key_runtime: ch18_salt_station_judgement_entry
+- art_key_runtime: ch18_entry
 - art_key_final: bg_ch18_salt_station_judgement_primary
 - filename_target: bg_ch18_salt_station_judgement_primary_v01.webp
 - sync_target_path: codex_webgame_pack/img/bg/
 
 ## English Prompt
 ```text
-primary background for 소금 정거장, 소금 창고, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, Korean urban apocalypse, documentary disaster realism, practical environmental storytelling, salt_station_judgement, cinematic still, grounded materials
+primary background for Salt Station, Entry Gate, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, Korean urban apocalypse, documentary disaster realism, practical environmental storytelling, salt_station_judgement, cinematic still, grounded materials
 ```
 
 ## Korean Context
-CH18의 첫 인상을 잡는 메인 배경이다. 소금 창고을 중심으로 챕터의 위기와 파트 분위기가 한 장면에 보여야 한다.
+CH18의 첫 인상을 잡는 메인 배경이다. Entry Gate을 중심으로 챕터의 위기와 파트 분위기가 한 장면에 보여야 한다.
 
 ## Negative Prompt
 ```text

@@ -5,20 +5,20 @@
 - chapter_id: CH06
 - part_id: P2
 - asset_type: background
-- subject: 하강 관문 검문장
+- subject: Entry Gate
 - ratio: 16:10
-- art_key_runtime: ch06_southern_gate_collapse_entry
+- art_key_runtime: ch06_entry
 - art_key_final: bg_ch06_southern_gate_collapse_primary
 - filename_target: bg_ch06_southern_gate_collapse_primary_v01.webp
 - sync_target_path: codex_webgame_pack/img/bg/
 
 ## English Prompt
 ```text
-primary background for 하강 관문, 하강 관문 검문장, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, checkpoint corridor, red warning lane, diesel smoke, crowd pressure, Korean urban apocalypse, documentary disaster realism, practical environmental storytelling, southern_gate_collapse, cinematic still, grounded materials
+primary background for Southern Gate, Entry Gate, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, checkpoint corridor, red warning lane, diesel smoke, crowd pressure, Korean urban apocalypse, documentary disaster realism, practical environmental storytelling, southern_gate_collapse, cinematic still, grounded materials
 ```
 
 ## Korean Context
-CH06의 첫 인상을 잡는 메인 배경이다. 하강 관문 검문장을 중심으로 챕터의 위기와 파트 분위기가 한 장면에 보여야 한다.
+CH06의 첫 인상을 잡는 메인 배경이다. Entry Gate을 중심으로 챕터의 위기와 파트 분위기가 한 장면에 보여야 한다.
 
 ## Negative Prompt
 ```text

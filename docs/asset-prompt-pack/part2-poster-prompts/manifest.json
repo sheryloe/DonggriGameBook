@@ -1,0 +1,29 @@
+{
+  "version": "1.1.0",
+  "scope": "part2-poster-prompts",
+  "part_id": "P2",
+  "count": 3,
+  "posters": [
+    {
+      "poster_id": "P2_POSTER_MAIN",
+      "category": "key_art",
+      "file": "P2_POSTER_MAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P2_POSTER_MAIN.webp",
+      "source_art_key_hint": "ending_p2_controlled_convoy"
+    },
+    {
+      "poster_id": "P2_POSTER_WITNESS_CHAIN",
+      "category": "character_conflict",
+      "file": "P2_POSTER_WITNESS_CHAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P2_POSTER_WITNESS_CHAIN.webp",
+      "source_art_key_hint": "ending_p2_witness_ferry"
+    },
+    {
+      "poster_id": "P2_POSTER_HARBOR_NIGHT",
+      "category": "environment",
+      "file": "P2_POSTER_HARBOR_NIGHT.md",
+      "target_path": "docs/world/presentation/generated/posters/P2_POSTER_HARBOR_NIGHT.webp",
+      "source_art_key_hint": "ending_p2_harbor_seizure"
+    }
+  ]
+}

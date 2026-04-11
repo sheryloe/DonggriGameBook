@@ -5,20 +5,20 @@
 - chapter_id: CH18
 - part_id: P4
 - asset_type: background
-- subject: 등대 플랫폼
+- subject: Anchor Deck
 - ratio: 16:10
-- art_key_runtime: ch18_salt_station_judgement_route
+- art_key_runtime: ch18_route
 - art_key_final: bg_ch18_salt_station_judgement_secondary
 - filename_target: bg_ch18_salt_station_judgement_secondary_v01.webp
 - sync_target_path: codex_webgame_pack/img/bg/
 
 ## English Prompt
 ```text
-secondary background for 소금 정거장, 등대 플랫폼 and 승선 대기 울타리, 공동체 배분과 공개 방송 준비, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, realistic infrastructure decay, Korean civic survival mood, layered signage, cinematic environment concept art, grounded realism
+secondary background for Salt Station, Anchor Deck and Salt Station Floor, Salt Station for P4., salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, realistic infrastructure decay, Korean civic survival mood, layered signage, cinematic environment concept art, grounded realism
 ```
 
 ## Korean Context
-CH18의 진행 압박이 깊어지는 배경이다. 등대 플랫폼 또는 승선 대기 울타리를 중심으로 메인 갈등이 실제 공간처럼 느껴져야 한다.
+CH18의 진행 압박이 깊어지는 배경이다. Anchor Deck 또는 Salt Station Floor를 중심으로 메인 갈등이 실제 공간처럼 느껴져야 한다.
 
 ## Negative Prompt
 ```text

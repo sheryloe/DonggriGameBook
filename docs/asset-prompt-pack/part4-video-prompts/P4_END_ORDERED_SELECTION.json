@@ -1,0 +1,19 @@
+{
+  "video_id": "P4_END_ORDERED_SELECTION",
+  "scene_id": "ENDING_ORDERED_SELECTION",
+  "chapter_id": "CH20",
+  "ending_id": "P4_END_ORDERED_SELECTION",
+  "part_id": "P4",
+  "kind": "ending",
+  "duration": 20,
+  "aspect_ratio": "16:9",
+  "prompt_en": "A disciplined final ending at the Dokdo gate where ordered boarding lines move under pale dawn, green approval lamps blink across salt-stained barriers, and exclusion survives as the cost of stability. salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure. ordered boarding lines, green approval lamps, salt-stained barriers, dawn sea haze, restrained security presence. Grounded Korean apocalypse cinematic realism.",
+  "prompt_ko_context": "질서를 유지한 채 선별을 지속하는 엔딩. 새벽빛과 승인 램프, 남겨진 사람의 그림자가 동시에 필요하다.",
+  "camera_notes": "Begin on the lines moving cleanly, then reveal the unchosen side of the barrier before the final wide shot.",
+  "audio_notes": "Dawn wind, speaker announcements, slow low brass, measured footsteps on metal decking.",
+  "source_art_key": "ending_p4_ordered_selection",
+  "target_video_path": "public/generated/videos/P4_END_ORDERED_SELECTION.mp4",
+  "target_poster_path": "public/generated/images/ending_p4_ordered_selection.webp",
+  "stitch_prompt": "A disciplined final ending at the Dokdo gate where ordered boarding lines move under pale dawn, green approval lamps blink across salt-stained barriers, and exclusion survives as the cost of stability. Match style pack P4.ending.p4_end_ordered_selection.",
+  "file": "P4_END_ORDERED_SELECTION.json"
+}

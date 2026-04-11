@@ -1,0 +1,29 @@
+{
+  "version": "1.1.0",
+  "scope": "part4-poster-prompts",
+  "part_id": "P4",
+  "count": 3,
+  "posters": [
+    {
+      "poster_id": "P4_POSTER_MAIN",
+      "category": "key_art",
+      "file": "P4_POSTER_MAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P4_POSTER_MAIN.webp",
+      "source_art_key_hint": "ending_p4_witnessed_redesign"
+    },
+    {
+      "poster_id": "P4_POSTER_PUBLIC_JUDGEMENT",
+      "category": "public_square",
+      "file": "P4_POSTER_PUBLIC_JUDGEMENT.md",
+      "target_path": "docs/world/presentation/generated/posters/P4_POSTER_PUBLIC_JUDGEMENT.webp",
+      "source_art_key_hint": "ending_p4_ordered_selection"
+    },
+    {
+      "poster_id": "P4_POSTER_DOKDO_GATE",
+      "category": "final_environment",
+      "file": "P4_POSTER_DOKDO_GATE.md",
+      "target_path": "docs/world/presentation/generated/posters/P4_POSTER_DOKDO_GATE.webp",
+      "source_art_key_hint": "ending_p4_gate_broken"
+    }
+  ]
+}

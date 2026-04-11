@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "mapping_count": 142,
+  "version": "1.1.0",
+  "mapping_count": 219,
   "mappings": [
     {
       "chapter_id": "CH01",
@@ -368,633 +368,1172 @@
     },
     {
       "chapter_id": "CH06",
-      "runtime_art_key": "ch06_southern_gate_collapse_entry",
+      "runtime_art_key": "ch06_entry",
       "asset_id": "ch06_bg_primary",
       "art_key_final": "bg_ch06_southern_gate_collapse_primary",
       "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
     },
     {
       "chapter_id": "CH06",
-      "runtime_art_key": "ch06_southern_gate_collapse_route",
+      "runtime_art_key": "ch06_route",
       "asset_id": "ch06_bg_secondary",
       "art_key_final": "bg_ch06_southern_gate_collapse_secondary",
       "filename_target": "bg_ch06_southern_gate_collapse_secondary_v01.webp"
     },
     {
       "chapter_id": "CH06",
-      "runtime_art_key": "ch06_southern_gate_collapse_anchor",
+      "runtime_art_key": "ch06_approach",
       "asset_id": "ch06_bg_primary",
       "art_key_final": "bg_ch06_southern_gate_collapse_primary",
       "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
     },
     {
       "chapter_id": "CH06",
-      "runtime_art_key": "ch06_southern_gate_collapse_side_a",
-      "asset_id": "ch06_bg_secondary",
-      "art_key_final": "bg_ch06_southern_gate_collapse_secondary",
-      "filename_target": "bg_ch06_southern_gate_collapse_secondary_v01.webp"
+      "runtime_art_key": "ch06_anchor",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
     },
     {
       "chapter_id": "CH06",
-      "runtime_art_key": "ch06_southern_gate_collapse_side_b",
-      "asset_id": "ch06_bg_secondary",
-      "art_key_final": "bg_ch06_southern_gate_collapse_secondary",
-      "filename_target": "bg_ch06_southern_gate_collapse_secondary_v01.webp"
+      "runtime_art_key": "ch06_field_hub",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
     },
     {
       "chapter_id": "CH06",
-      "runtime_art_key": "ch06_southern_gate_collapse_boss",
+      "runtime_art_key": "ch06_manifest",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH06",
+      "runtime_art_key": "ch06_smoke",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH06",
+      "runtime_art_key": "ch06_scavenge",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH06",
+      "runtime_art_key": "ch06_prep",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH06",
+      "runtime_art_key": "ch06_boss",
       "asset_id": "ch06_threat_signature",
       "art_key_final": "threat_gate_mauler",
       "filename_target": "threat_gate_mauler_v01.webp"
     },
     {
+      "chapter_id": "CH06",
+      "runtime_art_key": "ch06_result",
+      "asset_id": "ch06_bg_primary",
+      "art_key_final": "bg_ch06_southern_gate_collapse_primary",
+      "filename_target": "bg_ch06_southern_gate_collapse_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH07",
-      "runtime_art_key": "ch07_red_corridor_pursuit_entry",
+      "runtime_art_key": "ch07_entry",
       "asset_id": "ch07_bg_primary",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_primary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_primary_v01.webp"
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
     },
     {
       "chapter_id": "CH07",
-      "runtime_art_key": "ch07_red_corridor_pursuit_route",
+      "runtime_art_key": "ch07_route",
       "asset_id": "ch07_bg_secondary",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_secondary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_secondary_v01.webp"
+      "art_key_final": "bg_ch07_red_corridor_sprint_secondary",
+      "filename_target": "bg_ch07_red_corridor_sprint_secondary_v01.webp"
     },
     {
       "chapter_id": "CH07",
-      "runtime_art_key": "ch07_red_corridor_pursuit_anchor",
+      "runtime_art_key": "ch07_approach",
       "asset_id": "ch07_bg_primary",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_primary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_primary_v01.webp"
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
     },
     {
       "chapter_id": "CH07",
-      "runtime_art_key": "ch07_red_corridor_pursuit_side_a",
-      "asset_id": "ch07_bg_secondary",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_secondary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_secondary_v01.webp"
+      "runtime_art_key": "ch07_anchor",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
     },
     {
       "chapter_id": "CH07",
-      "runtime_art_key": "ch07_red_corridor_pursuit_side_b",
-      "asset_id": "ch07_bg_secondary",
-      "art_key_final": "bg_ch07_red_corridor_pursuit_secondary",
-      "filename_target": "bg_ch07_red_corridor_pursuit_secondary_v01.webp"
+      "runtime_art_key": "ch07_field_hub",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
     },
     {
       "chapter_id": "CH07",
-      "runtime_art_key": "ch07_red_corridor_pursuit_boss",
+      "runtime_art_key": "ch07_manifest",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH07",
+      "runtime_art_key": "ch07_smoke",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH07",
+      "runtime_art_key": "ch07_scavenge",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH07",
+      "runtime_art_key": "ch07_prep",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH07",
+      "runtime_art_key": "ch07_boss",
       "asset_id": "ch07_threat_signature",
       "art_key_final": "threat_red_tracker",
       "filename_target": "threat_red_tracker_v01.webp"
     },
     {
+      "chapter_id": "CH07",
+      "runtime_art_key": "ch07_result",
+      "asset_id": "ch07_bg_primary",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH08",
-      "runtime_art_key": "ch08_blockade_bureau_autopsy_entry",
+      "runtime_art_key": "ch08_entry",
       "asset_id": "ch08_bg_primary",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_primary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_primary_v01.webp"
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
     },
     {
       "chapter_id": "CH08",
-      "runtime_art_key": "ch08_blockade_bureau_autopsy_route",
+      "runtime_art_key": "ch08_route",
       "asset_id": "ch08_bg_secondary",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_secondary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_secondary_v01.webp"
+      "art_key_final": "bg_ch08_broker_midnight_market_secondary",
+      "filename_target": "bg_ch08_broker_midnight_market_secondary_v01.webp"
     },
     {
       "chapter_id": "CH08",
-      "runtime_art_key": "ch08_blockade_bureau_autopsy_anchor",
+      "runtime_art_key": "ch08_approach",
       "asset_id": "ch08_bg_primary",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_primary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_primary_v01.webp"
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
     },
     {
       "chapter_id": "CH08",
-      "runtime_art_key": "ch08_blockade_bureau_autopsy_side_a",
-      "asset_id": "ch08_bg_secondary",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_secondary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_secondary_v01.webp"
+      "runtime_art_key": "ch08_anchor",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
     },
     {
       "chapter_id": "CH08",
-      "runtime_art_key": "ch08_blockade_bureau_autopsy_side_b",
-      "asset_id": "ch08_bg_secondary",
-      "art_key_final": "bg_ch08_blockade_bureau_autopsy_secondary",
-      "filename_target": "bg_ch08_blockade_bureau_autopsy_secondary_v01.webp"
+      "runtime_art_key": "ch08_field_hub",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
     },
     {
       "chapter_id": "CH08",
-      "runtime_art_key": "ch08_blockade_bureau_autopsy_boss",
+      "runtime_art_key": "ch08_manifest",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH08",
+      "runtime_art_key": "ch08_smoke",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH08",
+      "runtime_art_key": "ch08_scavenge",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH08",
+      "runtime_art_key": "ch08_prep",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH08",
+      "runtime_art_key": "ch08_boss",
       "asset_id": "ch08_threat_signature",
       "art_key_final": "threat_seal_guardian",
       "filename_target": "threat_seal_guardian_v01.webp"
     },
     {
+      "chapter_id": "CH08",
+      "runtime_art_key": "ch08_result",
+      "asset_id": "ch08_bg_primary",
+      "art_key_final": "bg_ch08_broker_midnight_market_primary",
+      "filename_target": "bg_ch08_broker_midnight_market_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH09",
-      "runtime_art_key": "ch09_smoke_depot_toxic_entry",
+      "runtime_art_key": "ch09_entry",
       "asset_id": "ch09_bg_primary",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_primary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_primary_v01.webp"
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
     },
     {
       "chapter_id": "CH09",
-      "runtime_art_key": "ch09_smoke_depot_toxic_route",
+      "runtime_art_key": "ch09_route",
       "asset_id": "ch09_bg_secondary",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_secondary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_secondary_v01.webp"
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_secondary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_secondary_v01.webp"
     },
     {
       "chapter_id": "CH09",
-      "runtime_art_key": "ch09_smoke_depot_toxic_anchor",
+      "runtime_art_key": "ch09_approach",
       "asset_id": "ch09_bg_primary",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_primary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_primary_v01.webp"
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
     },
     {
       "chapter_id": "CH09",
-      "runtime_art_key": "ch09_smoke_depot_toxic_side_a",
-      "asset_id": "ch09_bg_secondary",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_secondary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_secondary_v01.webp"
+      "runtime_art_key": "ch09_anchor",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
     },
     {
       "chapter_id": "CH09",
-      "runtime_art_key": "ch09_smoke_depot_toxic_side_b",
-      "asset_id": "ch09_bg_secondary",
-      "art_key_final": "bg_ch09_smoke_depot_toxic_secondary",
-      "filename_target": "bg_ch09_smoke_depot_toxic_secondary_v01.webp"
+      "runtime_art_key": "ch09_field_hub",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
     },
     {
       "chapter_id": "CH09",
-      "runtime_art_key": "ch09_smoke_depot_toxic_boss",
+      "runtime_art_key": "ch09_manifest",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH09",
+      "runtime_art_key": "ch09_smoke",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH09",
+      "runtime_art_key": "ch09_scavenge",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH09",
+      "runtime_art_key": "ch09_prep",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH09",
+      "runtime_art_key": "ch09_boss",
       "asset_id": "ch09_threat_signature",
       "art_key_final": "threat_smoke_warehouse_mass",
       "filename_target": "threat_smoke_warehouse_mass_v01.webp"
     },
     {
+      "chapter_id": "CH09",
+      "runtime_art_key": "ch09_result",
+      "asset_id": "ch09_bg_primary",
+      "art_key_final": "bg_ch09_mooring_warehouse_pressure_primary",
+      "filename_target": "bg_ch09_mooring_warehouse_pressure_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH10",
-      "runtime_art_key": "ch10_sinking_harbor_contract_entry",
+      "runtime_art_key": "ch10_entry",
       "asset_id": "ch10_bg_primary",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_primary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_primary_v01.webp"
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
     },
     {
       "chapter_id": "CH10",
-      "runtime_art_key": "ch10_sinking_harbor_contract_route",
+      "runtime_art_key": "ch10_route",
       "asset_id": "ch10_bg_secondary",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_secondary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_secondary_v01.webp"
+      "art_key_final": "bg_ch10_sunken_harbor_contract_secondary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_secondary_v01.webp"
     },
     {
       "chapter_id": "CH10",
-      "runtime_art_key": "ch10_sinking_harbor_contract_anchor",
+      "runtime_art_key": "ch10_approach",
       "asset_id": "ch10_bg_primary",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_primary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_primary_v01.webp"
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
     },
     {
       "chapter_id": "CH10",
-      "runtime_art_key": "ch10_sinking_harbor_contract_side_a",
-      "asset_id": "ch10_bg_secondary",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_secondary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_secondary_v01.webp"
+      "runtime_art_key": "ch10_anchor",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
     },
     {
       "chapter_id": "CH10",
-      "runtime_art_key": "ch10_sinking_harbor_contract_side_b",
-      "asset_id": "ch10_bg_secondary",
-      "art_key_final": "bg_ch10_sinking_harbor_contract_secondary",
-      "filename_target": "bg_ch10_sinking_harbor_contract_secondary_v01.webp"
+      "runtime_art_key": "ch10_field_hub",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
     },
     {
       "chapter_id": "CH10",
-      "runtime_art_key": "ch10_sinking_harbor_contract_boss",
+      "runtime_art_key": "ch10_manifest",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH10",
+      "runtime_art_key": "ch10_smoke",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH10",
+      "runtime_art_key": "ch10_scavenge",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH10",
+      "runtime_art_key": "ch10_prep",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH10",
+      "runtime_art_key": "ch10_boss",
       "asset_id": "ch10_threat_signature",
       "art_key_final": "threat_sinking_dock_hauler",
       "filename_target": "threat_sinking_dock_hauler_v01.webp"
     },
     {
+      "chapter_id": "CH10",
+      "runtime_art_key": "ch10_result",
+      "asset_id": "ch10_bg_primary",
+      "art_key_final": "bg_ch10_sunken_harbor_contract_primary",
+      "filename_target": "bg_ch10_sunken_harbor_contract_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH11",
-      "runtime_art_key": "ch11_iron_detour_frost_entry",
+      "runtime_art_key": "ch11_entry",
       "asset_id": "ch11_bg_primary",
-      "art_key_final": "bg_ch11_iron_detour_frost_primary",
-      "filename_target": "bg_ch11_iron_detour_frost_primary_v01.webp"
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
     },
     {
       "chapter_id": "CH11",
-      "runtime_art_key": "ch11_iron_detour_frost_route",
+      "runtime_art_key": "ch11_route",
       "asset_id": "ch11_bg_secondary",
-      "art_key_final": "bg_ch11_iron_detour_frost_secondary",
-      "filename_target": "bg_ch11_iron_detour_frost_secondary_v01.webp"
+      "art_key_final": "bg_ch11_thousand_lane_relay_secondary",
+      "filename_target": "bg_ch11_thousand_lane_relay_secondary_v01.webp"
     },
     {
       "chapter_id": "CH11",
-      "runtime_art_key": "ch11_iron_detour_frost_anchor",
+      "runtime_art_key": "ch11_approach",
       "asset_id": "ch11_bg_primary",
-      "art_key_final": "bg_ch11_iron_detour_frost_primary",
-      "filename_target": "bg_ch11_iron_detour_frost_primary_v01.webp"
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
     },
     {
       "chapter_id": "CH11",
-      "runtime_art_key": "ch11_iron_detour_frost_side_a",
-      "asset_id": "ch11_bg_secondary",
-      "art_key_final": "bg_ch11_iron_detour_frost_secondary",
-      "filename_target": "bg_ch11_iron_detour_frost_secondary_v01.webp"
+      "runtime_art_key": "ch11_anchor",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
     },
     {
       "chapter_id": "CH11",
-      "runtime_art_key": "ch11_iron_detour_frost_side_b",
-      "asset_id": "ch11_bg_secondary",
-      "art_key_final": "bg_ch11_iron_detour_frost_secondary",
-      "filename_target": "bg_ch11_iron_detour_frost_secondary_v01.webp"
+      "runtime_art_key": "ch11_field_hub",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
     },
     {
       "chapter_id": "CH11",
-      "runtime_art_key": "ch11_iron_detour_frost_boss",
+      "runtime_art_key": "ch11_relay",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH11",
+      "runtime_art_key": "ch11_triage",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH11",
+      "runtime_art_key": "ch11_scavenge",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH11",
+      "runtime_art_key": "ch11_prep",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH11",
+      "runtime_art_key": "ch11_boss",
       "asset_id": "ch11_threat_signature",
       "art_key_final": "threat_rail_guide",
       "filename_target": "threat_rail_guide_v01.webp"
     },
     {
+      "chapter_id": "CH11",
+      "runtime_art_key": "ch11_result",
+      "asset_id": "ch11_bg_primary",
+      "art_key_final": "bg_ch11_thousand_lane_relay_primary",
+      "filename_target": "bg_ch11_thousand_lane_relay_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH12",
-      "runtime_art_key": "ch12_echo_base_signal_entry",
+      "runtime_art_key": "ch12_entry",
       "asset_id": "ch12_bg_primary",
-      "art_key_final": "bg_ch12_echo_base_signal_primary",
-      "filename_target": "bg_ch12_echo_base_signal_primary_v01.webp"
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
     },
     {
       "chapter_id": "CH12",
-      "runtime_art_key": "ch12_echo_base_signal_route",
+      "runtime_art_key": "ch12_route",
       "asset_id": "ch12_bg_secondary",
-      "art_key_final": "bg_ch12_echo_base_signal_secondary",
-      "filename_target": "bg_ch12_echo_base_signal_secondary_v01.webp"
+      "art_key_final": "bg_ch12_bias_station_secondary",
+      "filename_target": "bg_ch12_bias_station_secondary_v01.webp"
     },
     {
       "chapter_id": "CH12",
-      "runtime_art_key": "ch12_echo_base_signal_anchor",
+      "runtime_art_key": "ch12_approach",
       "asset_id": "ch12_bg_primary",
-      "art_key_final": "bg_ch12_echo_base_signal_primary",
-      "filename_target": "bg_ch12_echo_base_signal_primary_v01.webp"
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
     },
     {
       "chapter_id": "CH12",
-      "runtime_art_key": "ch12_echo_base_signal_side_a",
-      "asset_id": "ch12_bg_secondary",
-      "art_key_final": "bg_ch12_echo_base_signal_secondary",
-      "filename_target": "bg_ch12_echo_base_signal_secondary_v01.webp"
+      "runtime_art_key": "ch12_anchor",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
     },
     {
       "chapter_id": "CH12",
-      "runtime_art_key": "ch12_echo_base_signal_side_b",
-      "asset_id": "ch12_bg_secondary",
-      "art_key_final": "bg_ch12_echo_base_signal_secondary",
-      "filename_target": "bg_ch12_echo_base_signal_secondary_v01.webp"
+      "runtime_art_key": "ch12_field_hub",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
     },
     {
       "chapter_id": "CH12",
-      "runtime_art_key": "ch12_echo_base_signal_boss",
+      "runtime_art_key": "ch12_relay",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH12",
+      "runtime_art_key": "ch12_triage",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH12",
+      "runtime_art_key": "ch12_scavenge",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH12",
+      "runtime_art_key": "ch12_prep",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH12",
+      "runtime_art_key": "ch12_boss",
       "asset_id": "ch12_threat_signature",
       "art_key_final": "threat_resonance_priest",
       "filename_target": "threat_resonance_priest_v01.webp"
     },
     {
+      "chapter_id": "CH12",
+      "runtime_art_key": "ch12_result",
+      "asset_id": "ch12_bg_primary",
+      "art_key_final": "bg_ch12_bias_station_primary",
+      "filename_target": "bg_ch12_bias_station_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH13",
-      "runtime_art_key": "ch13_white_yard_ethics_entry",
+      "runtime_art_key": "ch13_entry",
       "asset_id": "ch13_bg_primary",
-      "art_key_final": "bg_ch13_white_yard_ethics_primary",
-      "filename_target": "bg_ch13_white_yard_ethics_primary_v01.webp"
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
     },
     {
       "chapter_id": "CH13",
-      "runtime_art_key": "ch13_white_yard_ethics_route",
+      "runtime_art_key": "ch13_route",
       "asset_id": "ch13_bg_secondary",
-      "art_key_final": "bg_ch13_white_yard_ethics_secondary",
-      "filename_target": "bg_ch13_white_yard_ethics_secondary_v01.webp"
+      "art_key_final": "bg_ch13_white_log_archive_secondary",
+      "filename_target": "bg_ch13_white_log_archive_secondary_v01.webp"
     },
     {
       "chapter_id": "CH13",
-      "runtime_art_key": "ch13_white_yard_ethics_anchor",
+      "runtime_art_key": "ch13_approach",
       "asset_id": "ch13_bg_primary",
-      "art_key_final": "bg_ch13_white_yard_ethics_primary",
-      "filename_target": "bg_ch13_white_yard_ethics_primary_v01.webp"
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
     },
     {
       "chapter_id": "CH13",
-      "runtime_art_key": "ch13_white_yard_ethics_side_a",
-      "asset_id": "ch13_bg_secondary",
-      "art_key_final": "bg_ch13_white_yard_ethics_secondary",
-      "filename_target": "bg_ch13_white_yard_ethics_secondary_v01.webp"
+      "runtime_art_key": "ch13_anchor",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
     },
     {
       "chapter_id": "CH13",
-      "runtime_art_key": "ch13_white_yard_ethics_side_b",
-      "asset_id": "ch13_bg_secondary",
-      "art_key_final": "bg_ch13_white_yard_ethics_secondary",
-      "filename_target": "bg_ch13_white_yard_ethics_secondary_v01.webp"
+      "runtime_art_key": "ch13_field_hub",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
     },
     {
       "chapter_id": "CH13",
-      "runtime_art_key": "ch13_white_yard_ethics_boss",
+      "runtime_art_key": "ch13_relay",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH13",
+      "runtime_art_key": "ch13_triage",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH13",
+      "runtime_art_key": "ch13_scavenge",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH13",
+      "runtime_art_key": "ch13_prep",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH13",
+      "runtime_art_key": "ch13_boss",
       "asset_id": "ch13_threat_signature",
       "art_key_final": "threat_white_yard_tower",
       "filename_target": "threat_white_yard_tower_v01.webp"
     },
     {
+      "chapter_id": "CH13",
+      "runtime_art_key": "ch13_result",
+      "asset_id": "ch13_bg_primary",
+      "art_key_final": "bg_ch13_white_log_archive_primary",
+      "filename_target": "bg_ch13_white_log_archive_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH14",
-      "runtime_art_key": "ch14_sea_fog_grid_entry",
+      "runtime_art_key": "ch14_entry",
       "asset_id": "ch14_bg_primary",
-      "art_key_final": "bg_ch14_sea_fog_grid_primary",
-      "filename_target": "bg_ch14_sea_fog_grid_primary_v01.webp"
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
     },
     {
       "chapter_id": "CH14",
-      "runtime_art_key": "ch14_sea_fog_grid_route",
+      "runtime_art_key": "ch14_route",
       "asset_id": "ch14_bg_secondary",
-      "art_key_final": "bg_ch14_sea_fog_grid_secondary",
-      "filename_target": "bg_ch14_sea_fog_grid_secondary_v01.webp"
+      "art_key_final": "bg_ch14_medical_substation_secondary",
+      "filename_target": "bg_ch14_medical_substation_secondary_v01.webp"
     },
     {
       "chapter_id": "CH14",
-      "runtime_art_key": "ch14_sea_fog_grid_anchor",
+      "runtime_art_key": "ch14_approach",
       "asset_id": "ch14_bg_primary",
-      "art_key_final": "bg_ch14_sea_fog_grid_primary",
-      "filename_target": "bg_ch14_sea_fog_grid_primary_v01.webp"
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
     },
     {
       "chapter_id": "CH14",
-      "runtime_art_key": "ch14_sea_fog_grid_side_a",
-      "asset_id": "ch14_bg_secondary",
-      "art_key_final": "bg_ch14_sea_fog_grid_secondary",
-      "filename_target": "bg_ch14_sea_fog_grid_secondary_v01.webp"
+      "runtime_art_key": "ch14_anchor",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
     },
     {
       "chapter_id": "CH14",
-      "runtime_art_key": "ch14_sea_fog_grid_side_b",
-      "asset_id": "ch14_bg_secondary",
-      "art_key_final": "bg_ch14_sea_fog_grid_secondary",
-      "filename_target": "bg_ch14_sea_fog_grid_secondary_v01.webp"
+      "runtime_art_key": "ch14_field_hub",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
     },
     {
       "chapter_id": "CH14",
-      "runtime_art_key": "ch14_sea_fog_grid_boss",
+      "runtime_art_key": "ch14_relay",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH14",
+      "runtime_art_key": "ch14_triage",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH14",
+      "runtime_art_key": "ch14_scavenge",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH14",
+      "runtime_art_key": "ch14_prep",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH14",
+      "runtime_art_key": "ch14_boss",
       "asset_id": "ch14_threat_signature",
       "art_key_final": "threat_mist_transformer",
       "filename_target": "threat_mist_transformer_v01.webp"
     },
     {
+      "chapter_id": "CH14",
+      "runtime_art_key": "ch14_result",
+      "asset_id": "ch14_bg_primary",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH15",
-      "runtime_art_key": "ch15_quarantine_watch_cliff_entry",
+      "runtime_art_key": "ch15_entry",
       "asset_id": "ch15_bg_primary",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_primary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_primary_v01.webp"
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH15",
-      "runtime_art_key": "ch15_quarantine_watch_cliff_route",
+      "runtime_art_key": "ch15_route",
       "asset_id": "ch15_bg_secondary",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_secondary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_secondary_v01.webp"
+      "art_key_final": "bg_ch15_sealed_relay_corridor_secondary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_secondary_v01.webp"
     },
     {
       "chapter_id": "CH15",
-      "runtime_art_key": "ch15_quarantine_watch_cliff_anchor",
+      "runtime_art_key": "ch15_approach",
       "asset_id": "ch15_bg_primary",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_primary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_primary_v01.webp"
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH15",
-      "runtime_art_key": "ch15_quarantine_watch_cliff_side_a",
-      "asset_id": "ch15_bg_secondary",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_secondary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_secondary_v01.webp"
+      "runtime_art_key": "ch15_anchor",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH15",
-      "runtime_art_key": "ch15_quarantine_watch_cliff_side_b",
-      "asset_id": "ch15_bg_secondary",
-      "art_key_final": "bg_ch15_quarantine_watch_cliff_secondary",
-      "filename_target": "bg_ch15_quarantine_watch_cliff_secondary_v01.webp"
+      "runtime_art_key": "ch15_field_hub",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH15",
-      "runtime_art_key": "ch15_quarantine_watch_cliff_boss",
+      "runtime_art_key": "ch15_relay",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH15",
+      "runtime_art_key": "ch15_triage",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH15",
+      "runtime_art_key": "ch15_scavenge",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH15",
+      "runtime_art_key": "ch15_prep",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH15",
+      "runtime_art_key": "ch15_boss",
       "asset_id": "ch15_threat_signature",
       "art_key_final": "threat_quarantine_sentinel",
       "filename_target": "threat_quarantine_sentinel_v01.webp"
     },
     {
+      "chapter_id": "CH15",
+      "runtime_art_key": "ch15_result",
+      "asset_id": "ch15_bg_primary",
+      "art_key_final": "bg_ch15_sealed_relay_corridor_primary",
+      "filename_target": "bg_ch15_sealed_relay_corridor_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH16",
-      "runtime_art_key": "ch16_fractured_dune_loss_entry",
+      "runtime_art_key": "ch16_entry",
       "asset_id": "ch16_bg_primary",
-      "art_key_final": "bg_ch16_fractured_dune_loss_primary",
-      "filename_target": "bg_ch16_fractured_dune_loss_primary_v01.webp"
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
     },
     {
       "chapter_id": "CH16",
-      "runtime_art_key": "ch16_fractured_dune_loss_route",
+      "runtime_art_key": "ch16_route",
       "asset_id": "ch16_bg_secondary",
-      "art_key_final": "bg_ch16_fractured_dune_loss_secondary",
-      "filename_target": "bg_ch16_fractured_dune_loss_secondary_v01.webp"
+      "art_key_final": "bg_ch16_fracture_harbor_secondary",
+      "filename_target": "bg_ch16_fracture_harbor_secondary_v01.webp"
     },
     {
       "chapter_id": "CH16",
-      "runtime_art_key": "ch16_fractured_dune_loss_anchor",
+      "runtime_art_key": "ch16_approach",
       "asset_id": "ch16_bg_primary",
-      "art_key_final": "bg_ch16_fractured_dune_loss_primary",
-      "filename_target": "bg_ch16_fractured_dune_loss_primary_v01.webp"
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
     },
     {
       "chapter_id": "CH16",
-      "runtime_art_key": "ch16_fractured_dune_loss_side_a",
-      "asset_id": "ch16_bg_secondary",
-      "art_key_final": "bg_ch16_fractured_dune_loss_secondary",
-      "filename_target": "bg_ch16_fractured_dune_loss_secondary_v01.webp"
+      "runtime_art_key": "ch16_anchor",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
     },
     {
       "chapter_id": "CH16",
-      "runtime_art_key": "ch16_fractured_dune_loss_side_b",
-      "asset_id": "ch16_bg_secondary",
-      "art_key_final": "bg_ch16_fractured_dune_loss_secondary",
-      "filename_target": "bg_ch16_fractured_dune_loss_secondary_v01.webp"
+      "runtime_art_key": "ch16_field_hub",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
     },
     {
       "chapter_id": "CH16",
-      "runtime_art_key": "ch16_fractured_dune_loss_boss",
+      "runtime_art_key": "ch16_queue",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH16",
+      "runtime_art_key": "ch16_broadcast",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH16",
+      "runtime_art_key": "ch16_scavenge",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH16",
+      "runtime_art_key": "ch16_prep",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH16",
+      "runtime_art_key": "ch16_boss",
       "asset_id": "ch16_threat_signature",
       "art_key_final": "threat_dune_cutter",
       "filename_target": "threat_dune_cutter_v01.webp"
     },
     {
+      "chapter_id": "CH16",
+      "runtime_art_key": "ch16_result",
+      "asset_id": "ch16_bg_primary",
+      "art_key_final": "bg_ch16_fracture_harbor_primary",
+      "filename_target": "bg_ch16_fracture_harbor_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH17",
-      "runtime_art_key": "ch17_fragment_gate_corrosion_entry",
+      "runtime_art_key": "ch17_entry",
       "asset_id": "ch17_bg_primary",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_primary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_primary_v01.webp"
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH17",
-      "runtime_art_key": "ch17_fragment_gate_corrosion_route",
+      "runtime_art_key": "ch17_route",
       "asset_id": "ch17_bg_secondary",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_secondary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_secondary_v01.webp"
+      "art_key_final": "bg_ch17_sluice_corridor_secondary",
+      "filename_target": "bg_ch17_sluice_corridor_secondary_v01.webp"
     },
     {
       "chapter_id": "CH17",
-      "runtime_art_key": "ch17_fragment_gate_corrosion_anchor",
+      "runtime_art_key": "ch17_approach",
       "asset_id": "ch17_bg_primary",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_primary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_primary_v01.webp"
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH17",
-      "runtime_art_key": "ch17_fragment_gate_corrosion_side_a",
-      "asset_id": "ch17_bg_secondary",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_secondary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_secondary_v01.webp"
+      "runtime_art_key": "ch17_anchor",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH17",
-      "runtime_art_key": "ch17_fragment_gate_corrosion_side_b",
-      "asset_id": "ch17_bg_secondary",
-      "art_key_final": "bg_ch17_fragment_gate_corrosion_secondary",
-      "filename_target": "bg_ch17_fragment_gate_corrosion_secondary_v01.webp"
+      "runtime_art_key": "ch17_field_hub",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
     },
     {
       "chapter_id": "CH17",
-      "runtime_art_key": "ch17_fragment_gate_corrosion_boss",
+      "runtime_art_key": "ch17_queue",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH17",
+      "runtime_art_key": "ch17_broadcast",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH17",
+      "runtime_art_key": "ch17_scavenge",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH17",
+      "runtime_art_key": "ch17_prep",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH17",
+      "runtime_art_key": "ch17_boss",
       "asset_id": "ch17_threat_signature",
       "art_key_final": "threat_fragment_gate_breaker",
       "filename_target": "threat_fragment_gate_breaker_v01.webp"
     },
     {
+      "chapter_id": "CH17",
+      "runtime_art_key": "ch17_result",
+      "asset_id": "ch17_bg_primary",
+      "art_key_final": "bg_ch17_sluice_corridor_primary",
+      "filename_target": "bg_ch17_sluice_corridor_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH18",
-      "runtime_art_key": "ch18_salt_station_judgement_entry",
+      "runtime_art_key": "ch18_entry",
       "asset_id": "ch18_bg_primary",
       "art_key_final": "bg_ch18_salt_station_judgement_primary",
       "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
     },
     {
       "chapter_id": "CH18",
-      "runtime_art_key": "ch18_salt_station_judgement_route",
+      "runtime_art_key": "ch18_route",
       "asset_id": "ch18_bg_secondary",
       "art_key_final": "bg_ch18_salt_station_judgement_secondary",
       "filename_target": "bg_ch18_salt_station_judgement_secondary_v01.webp"
     },
     {
       "chapter_id": "CH18",
-      "runtime_art_key": "ch18_salt_station_judgement_anchor",
+      "runtime_art_key": "ch18_approach",
       "asset_id": "ch18_bg_primary",
       "art_key_final": "bg_ch18_salt_station_judgement_primary",
       "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
     },
     {
       "chapter_id": "CH18",
-      "runtime_art_key": "ch18_salt_station_judgement_side_a",
-      "asset_id": "ch18_bg_secondary",
-      "art_key_final": "bg_ch18_salt_station_judgement_secondary",
-      "filename_target": "bg_ch18_salt_station_judgement_secondary_v01.webp"
+      "runtime_art_key": "ch18_anchor",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
     },
     {
       "chapter_id": "CH18",
-      "runtime_art_key": "ch18_salt_station_judgement_side_b",
-      "asset_id": "ch18_bg_secondary",
-      "art_key_final": "bg_ch18_salt_station_judgement_secondary",
-      "filename_target": "bg_ch18_salt_station_judgement_secondary_v01.webp"
+      "runtime_art_key": "ch18_field_hub",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
     },
     {
       "chapter_id": "CH18",
-      "runtime_art_key": "ch18_salt_station_judgement_boss",
+      "runtime_art_key": "ch18_queue",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_broadcast",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_scavenge",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_hearing",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_vote",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_prep",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_boss",
       "asset_id": "ch18_threat_signature",
       "art_key_final": "threat_salt_ration_wretch",
       "filename_target": "threat_salt_ration_wretch_v01.webp"
     },
     {
+      "chapter_id": "CH18",
+      "runtime_art_key": "ch18_result",
+      "asset_id": "ch18_bg_primary",
+      "art_key_final": "bg_ch18_salt_station_judgement_primary",
+      "filename_target": "bg_ch18_salt_station_judgement_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH19",
-      "runtime_art_key": "ch19_outer_sea_platform_politics_entry",
+      "runtime_art_key": "ch19_entry",
       "asset_id": "ch19_bg_primary",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_primary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_primary_v01.webp"
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
     },
     {
       "chapter_id": "CH19",
-      "runtime_art_key": "ch19_outer_sea_platform_politics_route",
+      "runtime_art_key": "ch19_route",
       "asset_id": "ch19_bg_secondary",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_secondary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_secondary_v01.webp"
+      "art_key_final": "bg_ch19_east_sea_outpost_secondary",
+      "filename_target": "bg_ch19_east_sea_outpost_secondary_v01.webp"
     },
     {
       "chapter_id": "CH19",
-      "runtime_art_key": "ch19_outer_sea_platform_politics_anchor",
+      "runtime_art_key": "ch19_approach",
       "asset_id": "ch19_bg_primary",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_primary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_primary_v01.webp"
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
     },
     {
       "chapter_id": "CH19",
-      "runtime_art_key": "ch19_outer_sea_platform_politics_side_a",
-      "asset_id": "ch19_bg_secondary",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_secondary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_secondary_v01.webp"
+      "runtime_art_key": "ch19_anchor",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
     },
     {
       "chapter_id": "CH19",
-      "runtime_art_key": "ch19_outer_sea_platform_politics_side_b",
-      "asset_id": "ch19_bg_secondary",
-      "art_key_final": "bg_ch19_outer_sea_platform_politics_secondary",
-      "filename_target": "bg_ch19_outer_sea_platform_politics_secondary_v01.webp"
+      "runtime_art_key": "ch19_field_hub",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
     },
     {
       "chapter_id": "CH19",
-      "runtime_art_key": "ch19_outer_sea_platform_politics_boss",
+      "runtime_art_key": "ch19_queue",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH19",
+      "runtime_art_key": "ch19_broadcast",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH19",
+      "runtime_art_key": "ch19_scavenge",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH19",
+      "runtime_art_key": "ch19_prep",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH19",
+      "runtime_art_key": "ch19_boss",
       "asset_id": "ch19_threat_signature",
       "art_key_final": "threat_outer_wave_lord",
       "filename_target": "threat_outer_wave_lord_v01.webp"
     },
     {
+      "chapter_id": "CH19",
+      "runtime_art_key": "ch19_result",
+      "asset_id": "ch19_bg_primary",
+      "art_key_final": "bg_ch19_east_sea_outpost_primary",
+      "filename_target": "bg_ch19_east_sea_outpost_primary_v01.webp"
+    },
+    {
       "chapter_id": "CH20",
-      "runtime_art_key": "ch20_dokdo_gate_core_entry",
+      "runtime_art_key": "ch20_entry",
       "asset_id": "ch20_bg_primary",
       "art_key_final": "bg_ch20_dokdo_gate_core_primary",
       "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
     },
     {
       "chapter_id": "CH20",
-      "runtime_art_key": "ch20_dokdo_gate_core_route",
+      "runtime_art_key": "ch20_route",
       "asset_id": "ch20_bg_secondary",
       "art_key_final": "bg_ch20_dokdo_gate_core_secondary",
       "filename_target": "bg_ch20_dokdo_gate_core_secondary_v01.webp"
     },
     {
       "chapter_id": "CH20",
-      "runtime_art_key": "ch20_dokdo_gate_core_anchor",
+      "runtime_art_key": "ch20_approach",
       "asset_id": "ch20_bg_primary",
       "art_key_final": "bg_ch20_dokdo_gate_core_primary",
       "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
     },
     {
       "chapter_id": "CH20",
-      "runtime_art_key": "ch20_dokdo_gate_core_side_a",
-      "asset_id": "ch20_bg_secondary",
-      "art_key_final": "bg_ch20_dokdo_gate_core_secondary",
-      "filename_target": "bg_ch20_dokdo_gate_core_secondary_v01.webp"
+      "runtime_art_key": "ch20_anchor",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
     },
     {
       "chapter_id": "CH20",
-      "runtime_art_key": "ch20_dokdo_gate_core_side_b",
-      "asset_id": "ch20_bg_secondary",
-      "art_key_final": "bg_ch20_dokdo_gate_core_secondary",
-      "filename_target": "bg_ch20_dokdo_gate_core_secondary_v01.webp"
+      "runtime_art_key": "ch20_field_hub",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
     },
     {
       "chapter_id": "CH20",
-      "runtime_art_key": "ch20_dokdo_gate_core_boss",
+      "runtime_art_key": "ch20_queue",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH20",
+      "runtime_art_key": "ch20_broadcast",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH20",
+      "runtime_art_key": "ch20_scavenge",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH20",
+      "runtime_art_key": "ch20_prep",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
+    },
+    {
+      "chapter_id": "CH20",
+      "runtime_art_key": "ch20_boss",
       "asset_id": "ch20_threat_signature",
       "art_key_final": "threat_dokdo_gate_warden",
       "filename_target": "threat_dokdo_gate_warden_v01.webp"
+    },
+    {
+      "chapter_id": "CH20",
+      "runtime_art_key": "ch20_result",
+      "asset_id": "ch20_bg_primary",
+      "art_key_final": "bg_ch20_dokdo_gate_core_primary",
+      "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp"
     }
   ]
 }

@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH07",
+  "title": "Red Corridor",
+  "part_id": "P2",
+  "theme": "red_corridor_sprint",
+  "story_hook": "Red Corridor opens with route pressure.",
+  "assets": [
+    {
+      "asset_id": "ch07_bg_primary",
+      "asset_type": "background",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch07_entry",
+      "art_key_final": "bg_ch07_red_corridor_sprint_primary",
+      "filename_target": "bg_ch07_red_corridor_sprint_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch07_bg_secondary",
+      "asset_type": "background",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch07_route",
+      "art_key_final": "bg_ch07_red_corridor_sprint_secondary",
+      "filename_target": "bg_ch07_red_corridor_sprint_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch07_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "장태훈",
+      "art_key_runtime": "pending:npc_jang_taehun",
+      "art_key_final": "portrait_npc_jang_taehun_ch07_anchor",
+      "filename_target": "portrait_npc_jang_taehun_ch07_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch07_portrait_support",
+      "asset_type": "portrait",
+      "subject": "정노아",
+      "art_key_runtime": "pending:npc_jung_noah",
+      "art_key_final": "portrait_npc_jung_noah_ch07_support",
+      "filename_target": "portrait_npc_jung_noah_ch07_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch07_threat_signature",
+      "asset_type": "threat",
+      "subject": "적색 추적자",
+      "art_key_runtime": "ch07_boss",
+      "art_key_final": "threat_red_tracker",
+      "filename_target": "threat_red_tracker_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch07_poster_keyart",
+      "asset_type": "poster",
+      "subject": "Red Corridor key art",
+      "art_key_runtime": "pending:poster_ch07_red_corridor_sprint",
+      "art_key_final": "poster_ch07_red_corridor_sprint",
+      "filename_target": "poster_ch07_red_corridor_sprint_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch07_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "Red Corridor entry beat",
+      "art_key_runtime": "pending:teaser_ch07_entry",
+      "art_key_final": "teaser_ch07_entry",
+      "filename_target": "teaser_ch07_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch07_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "Red Corridor pressure beat",
+      "art_key_runtime": "pending:teaser_ch07_pressure",
+      "art_key_final": "teaser_ch07_pressure",
+      "filename_target": "teaser_ch07_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch07_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "Red Corridor preclimax beat",
+      "art_key_runtime": "pending:teaser_ch07_preclimax",
+      "art_key_final": "teaser_ch07_preclimax",
+      "filename_target": "teaser_ch07_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH07_red_corridor_sprint/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch07.json",
+        "ui/ch07.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH07.md",
+        "docs/world/story-bible/PART_BIBLE_P2.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

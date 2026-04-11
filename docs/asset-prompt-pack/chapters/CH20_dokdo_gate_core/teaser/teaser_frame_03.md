@@ -5,7 +5,7 @@
 - chapter_id: CH20
 - part_id: P4
 - asset_type: teaser
-- subject: 독도의 문 preclimax beat
+- subject: Dokdo Gate preclimax beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch20_preclimax
 - art_key_final: teaser_ch20_preclimax
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 독도의 문, pre-climax beat, 관문 개방 데크, 관문 집행체 about to emerge, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, unresolved hope and dread, realistic cinematic still
+cinematic teaser frame for Dokdo Gate, pre-climax beat, Field Window, 관문 집행체 about to emerge, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, unresolved hope and dread, realistic cinematic still
 ```
 
 ## Korean Context

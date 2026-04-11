@@ -1,15 +1,15 @@
 {
   "chapter_id": "CH20",
-  "title": "독도의 문",
+  "title": "Dokdo Gate",
   "part_id": "P4",
   "theme": "dokdo_gate_core",
-  "story_hook": "세 가지 미래 중 하나를 고르고 기록을 어떻게 남길지 결정한다.",
+  "story_hook": "Dokdo Gate opens with route pressure.",
   "assets": [
     {
       "asset_id": "ch20_bg_primary",
       "asset_type": "background",
-      "subject": "독도 검역 터널",
-      "art_key_runtime": "ch20_dokdo_gate_core_entry",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch20_entry",
       "art_key_final": "bg_ch20_dokdo_gate_core_primary",
       "filename_target": "bg_ch20_dokdo_gate_core_primary_v01.webp",
       "ratio": "16:10",
@@ -25,8 +25,8 @@
     {
       "asset_id": "ch20_bg_secondary",
       "asset_type": "background",
-      "subject": "코어 제어실",
-      "art_key_runtime": "ch20_dokdo_gate_core_route",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch20_route",
       "art_key_final": "bg_ch20_dokdo_gate_core_secondary",
       "filename_target": "bg_ch20_dokdo_gate_core_secondary_v01.webp",
       "ratio": "16:10",
@@ -77,7 +77,7 @@
       "asset_id": "ch20_threat_signature",
       "asset_type": "threat",
       "subject": "관문 집행체",
-      "art_key_runtime": "ch20_dokdo_gate_core_boss",
+      "art_key_runtime": "ch20_boss",
       "art_key_final": "threat_dokdo_gate_warden",
       "filename_target": "threat_dokdo_gate_warden_v01.webp",
       "ratio": "4:5",
@@ -93,7 +93,7 @@
     {
       "asset_id": "ch20_poster_keyart",
       "asset_type": "poster",
-      "subject": "독도의 문 key art",
+      "subject": "Dokdo Gate key art",
       "art_key_runtime": "pending:poster_ch20_dokdo_gate_core",
       "art_key_final": "poster_ch20_dokdo_gate_core",
       "filename_target": "poster_ch20_dokdo_gate_core_v01.webp",
@@ -110,7 +110,7 @@
     {
       "asset_id": "ch20_teaser_frame_01",
       "asset_type": "teaser",
-      "subject": "독도의 문 entry beat",
+      "subject": "Dokdo Gate entry beat",
       "art_key_runtime": "pending:teaser_ch20_entry",
       "art_key_final": "teaser_ch20_entry",
       "filename_target": "teaser_ch20_entry_v01.webp",
@@ -127,7 +127,7 @@
     {
       "asset_id": "ch20_teaser_frame_02",
       "asset_type": "teaser",
-      "subject": "독도의 문 pressure beat",
+      "subject": "Dokdo Gate pressure beat",
       "art_key_runtime": "pending:teaser_ch20_pressure",
       "art_key_final": "teaser_ch20_pressure",
       "filename_target": "teaser_ch20_pressure_v01.webp",
@@ -144,7 +144,7 @@
     {
       "asset_id": "ch20_teaser_frame_03",
       "asset_type": "teaser",
-      "subject": "독도의 문 preclimax beat",
+      "subject": "Dokdo Gate preclimax beat",
       "art_key_runtime": "pending:teaser_ch20_preclimax",
       "art_key_final": "teaser_ch20_preclimax",
       "filename_target": "teaser_ch20_preclimax_v01.webp",

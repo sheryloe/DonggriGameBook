@@ -1,58 +1,129 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scope": "part2-video-prompts",
   "part_id": "P2",
-  "count": 5,
+  "count": 11,
   "prompts": [
     {
       "video_id": "P2_CH06_OPENING",
       "scene_id": "CH06_OPENING_SOUTHERN_GATE_COLLAPSE",
       "chapter_id": "CH06",
+      "ending_id": null,
       "kind": "opening",
       "file": "P2_CH06_OPENING.json",
-      "source_art_key": "ch06_southern_gate_collapse_entry",
+      "source_art_key": "ch06_entry",
       "target_video_path": "public/generated/videos/P2_CH06_OPENING.mp4",
-      "target_poster_path": "public/generated/images/ch06_southern_gate_collapse_entry.webp"
+      "target_poster_path": "public/generated/images/ch06_entry.webp"
     },
     {
       "video_id": "P2_CH07_OPENING",
-      "scene_id": "CH07_OPENING_RED_CORRIDOR_PURSUIT",
+      "scene_id": "CH07_OPENING_RED_CORRIDOR_SPRINT",
       "chapter_id": "CH07",
+      "ending_id": null,
       "kind": "opening",
       "file": "P2_CH07_OPENING.json",
-      "source_art_key": "ch07_red_corridor_pursuit_entry",
+      "source_art_key": "ch07_entry",
       "target_video_path": "public/generated/videos/P2_CH07_OPENING.mp4",
-      "target_poster_path": "public/generated/images/ch07_red_corridor_pursuit_entry.webp"
+      "target_poster_path": "public/generated/images/ch07_entry.webp"
     },
     {
       "video_id": "P2_CH08_OPENING",
-      "scene_id": "CH08_OPENING_BLOCKADE_BUREAU_AUTOPSY",
+      "scene_id": "CH08_OPENING_BROKER_MIDNIGHT_MARKET",
       "chapter_id": "CH08",
+      "ending_id": null,
       "kind": "opening",
       "file": "P2_CH08_OPENING.json",
-      "source_art_key": "ch08_blockade_bureau_autopsy_entry",
+      "source_art_key": "ch08_entry",
       "target_video_path": "public/generated/videos/P2_CH08_OPENING.mp4",
-      "target_poster_path": "public/generated/images/ch08_blockade_bureau_autopsy_entry.webp"
+      "target_poster_path": "public/generated/images/ch08_entry.webp"
     },
     {
       "video_id": "P2_CH09_OPENING",
-      "scene_id": "CH09_OPENING_SMOKE_DEPOT_TOXIC",
+      "scene_id": "CH09_OPENING_MOORING_WAREHOUSE_PRESSURE",
       "chapter_id": "CH09",
+      "ending_id": null,
       "kind": "opening",
       "file": "P2_CH09_OPENING.json",
-      "source_art_key": "ch09_smoke_depot_toxic_entry",
+      "source_art_key": "ch09_entry",
       "target_video_path": "public/generated/videos/P2_CH09_OPENING.mp4",
-      "target_poster_path": "public/generated/images/ch09_smoke_depot_toxic_entry.webp"
+      "target_poster_path": "public/generated/images/ch09_entry.webp"
     },
     {
       "video_id": "P2_CH10_OPENING",
-      "scene_id": "CH10_OPENING_SINKING_HARBOR_CONTRACT",
+      "scene_id": "CH10_OPENING_SUNKEN_HARBOR_CONTRACT",
       "chapter_id": "CH10",
+      "ending_id": null,
       "kind": "opening",
       "file": "P2_CH10_OPENING.json",
-      "source_art_key": "ch10_sinking_harbor_contract_entry",
+      "source_art_key": "ch10_entry",
       "target_video_path": "public/generated/videos/P2_CH10_OPENING.mp4",
-      "target_poster_path": "public/generated/images/ch10_sinking_harbor_contract_entry.webp"
+      "target_poster_path": "public/generated/images/ch10_entry.webp"
+    },
+    {
+      "video_id": "P2_END_CONTROLLED_CONVOY",
+      "scene_id": "ENDING_CONTROLLED_CONVOY",
+      "chapter_id": "CH10",
+      "ending_id": "P2_END_CONTROLLED_CONVOY",
+      "kind": "ending",
+      "file": "P2_END_CONTROLLED_CONVOY.json",
+      "source_art_key": "ending_p2_controlled_convoy",
+      "target_video_path": "public/generated/videos/P2_END_CONTROLLED_CONVOY.mp4",
+      "target_poster_path": "public/generated/images/ending_p2_controlled_convoy.webp"
+    },
+    {
+      "video_id": "P2_END_WITNESS_FERRY",
+      "scene_id": "ENDING_WITNESS_FERRY",
+      "chapter_id": "CH10",
+      "ending_id": "P2_END_WITNESS_FERRY",
+      "kind": "ending",
+      "file": "P2_END_WITNESS_FERRY.json",
+      "source_art_key": "ending_p2_witness_ferry",
+      "target_video_path": "public/generated/videos/P2_END_WITNESS_FERRY.mp4",
+      "target_poster_path": "public/generated/images/ending_p2_witness_ferry.webp"
+    },
+    {
+      "video_id": "P2_END_RED_CORRIDOR",
+      "scene_id": "ENDING_RED_CORRIDOR",
+      "chapter_id": "CH10",
+      "ending_id": "P2_END_RED_CORRIDOR",
+      "kind": "ending",
+      "file": "P2_END_RED_CORRIDOR.json",
+      "source_art_key": "ending_p2_red_corridor",
+      "target_video_path": "public/generated/videos/P2_END_RED_CORRIDOR.mp4",
+      "target_poster_path": "public/generated/images/ending_p2_red_corridor.webp"
+    },
+    {
+      "video_id": "P2_END_HARBOR_SEIZURE",
+      "scene_id": "ENDING_HARBOR_SEIZURE",
+      "chapter_id": "CH10",
+      "ending_id": "P2_END_HARBOR_SEIZURE",
+      "kind": "ending",
+      "file": "P2_END_HARBOR_SEIZURE.json",
+      "source_art_key": "ending_p2_harbor_seizure",
+      "target_video_path": "public/generated/videos/P2_END_HARBOR_SEIZURE.mp4",
+      "target_poster_path": "public/generated/images/ending_p2_harbor_seizure.webp"
+    },
+    {
+      "video_id": "P2_END_SUNKEN_LIST",
+      "scene_id": "ENDING_SUNKEN_LIST",
+      "chapter_id": "CH10",
+      "ending_id": "P2_END_SUNKEN_LIST",
+      "kind": "ending",
+      "file": "P2_END_SUNKEN_LIST.json",
+      "source_art_key": "ending_p2_sunken_list",
+      "target_video_path": "public/generated/videos/P2_END_SUNKEN_LIST.mp4",
+      "target_poster_path": "public/generated/images/ending_p2_sunken_list.webp"
+    },
+    {
+      "video_id": "P2_TRAILER_MAIN",
+      "scene_id": "PART2_TRAILER",
+      "chapter_id": null,
+      "ending_id": null,
+      "kind": "trailer",
+      "file": "P2_TRAILER_MAIN.json",
+      "source_art_key": "ending_p2_controlled_convoy",
+      "target_video_path": "public/generated/videos/P2_TRAILER_MAIN.mp4",
+      "target_poster_path": "public/generated/images/ending_p2_controlled_convoy.webp"
     }
   ]
 }

@@ -1,0 +1,1095 @@
+{
+  "generatedAt": "2026-04-11T06:18:39.847Z",
+  "seed": "20260410",
+  "chapters": [
+    "CH06",
+    "CH07",
+    "CH08",
+    "CH09",
+    "CH10"
+  ],
+  "players": [
+    {
+      "playerId": "player-01",
+      "strategy": "cautious",
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH06",
+          "CH07",
+          "CH08",
+          "CH09",
+          "CH10"
+        ],
+        "failedChapter": null,
+        "totalSteps": 54,
+        "totalChoices": 54,
+        "totalEstimatedMinutes": 31.4
+      },
+      "trace": [
+        {
+          "chapterId": "CH06",
+          "status": "success",
+          "reason": "END_CH06_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH06_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch06_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH06_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH06_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch06_route_official",
+              "choiceLabel": "Lock the official lane",
+              "nextEventId": "EV_CH06_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH06_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch06_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH06_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH06_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch06_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH06_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH06_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch06_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH06_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH06_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch06_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH06_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH06_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch06_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH06_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH06_PREP",
+              "eventType": "choice",
+              "choiceId": "ch06_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH06_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH06_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch06_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH06_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH06_RESULT",
+              "eventType": "result",
+              "choiceId": "ch06_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH06_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH07",
+          "status": "success",
+          "reason": "END_CH07_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH07_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch07_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH07_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH07_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch07_route_witness",
+              "choiceLabel": "Escort the witness chain",
+              "nextEventId": "EV_CH07_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH07_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch07_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH07_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH07_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch07_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH07_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH07_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch07_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH07_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH07_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch07_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH07_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH07_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch07_field_b",
+              "choiceLabel": "Split the smoke queue",
+              "nextEventId": "EV_CH07_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH07_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch07_smoke_a",
+              "choiceLabel": "Open a witness lane",
+              "nextEventId": "EV_CH07_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH07_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch07_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH07_PREP",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH07_PREP",
+              "eventType": "choice",
+              "choiceId": "ch07_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH07_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH07_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch07_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH07_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH07_RESULT",
+              "eventType": "result",
+              "choiceId": "ch07_closure_b",
+              "choiceLabel": "Freeze the witness route",
+              "nextEventId": "END_CH07_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH08",
+          "status": "success",
+          "reason": "END_CH08_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH08_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch08_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH08_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH08_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch08_route_official",
+              "choiceLabel": "Lock the official lane",
+              "nextEventId": "EV_CH08_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH08_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch08_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH08_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH08_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch08_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH08_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH08_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch08_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH08_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH08_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch08_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH08_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH08_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch08_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH08_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH08_PREP",
+              "eventType": "choice",
+              "choiceId": "ch08_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH08_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH08_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch08_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH08_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH08_RESULT",
+              "eventType": "result",
+              "choiceId": "ch08_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH08_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH09",
+          "status": "success",
+          "reason": "END_CH09_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH09_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch09_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH09_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH09_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch09_route_broker",
+              "choiceLabel": "Cut through broker traffic",
+              "nextEventId": "EV_CH09_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH09_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch09_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH09_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH09_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch09_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH09_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH09_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch09_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH09_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH09_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch09_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH09_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH09_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch09_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH09_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH09_PREP",
+              "eventType": "choice",
+              "choiceId": "ch09_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH09_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH09_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch09_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH09_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH09_RESULT",
+              "eventType": "result",
+              "choiceId": "ch09_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH09_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH10",
+          "status": "success",
+          "reason": "END_CH10_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH10_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch10_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH10_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH10_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch10_route_broker",
+              "choiceLabel": "Cut through broker traffic",
+              "nextEventId": "EV_CH10_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH10_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch10_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH10_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH10_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch10_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH10_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH10_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch10_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH10_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH10_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch10_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH10_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH10_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch10_field_b",
+              "choiceLabel": "Split the smoke queue",
+              "nextEventId": "EV_CH10_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH10_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch10_smoke_a",
+              "choiceLabel": "Open a witness lane",
+              "nextEventId": "EV_CH10_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH10_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch10_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH10_PREP",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH10_PREP",
+              "eventType": "choice",
+              "choiceId": "ch10_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH10_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH10_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch10_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH10_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH10_RESULT",
+              "eventType": "result",
+              "choiceId": "ch10_ending_c",
+              "choiceLabel": "Red Corridor",
+              "nextEventId": "END_CH10_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "playerId": "player-02",
+      "strategy": "aggressive",
+      "overallSummary": {
+        "status": "success",
+        "clearedChapters": [
+          "CH06",
+          "CH07",
+          "CH08",
+          "CH09",
+          "CH10"
+        ],
+        "failedChapter": null,
+        "totalSteps": 54,
+        "totalChoices": 54,
+        "totalEstimatedMinutes": 31.4
+      },
+      "trace": [
+        {
+          "chapterId": "CH06",
+          "status": "success",
+          "reason": "END_CH06_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH06_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch06_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH06_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH06_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch06_route_broker",
+              "choiceLabel": "Cut through broker traffic",
+              "nextEventId": "EV_CH06_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH06_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch06_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH06_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH06_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch06_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH06_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH06_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch06_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH06_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH06_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch06_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH06_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH06_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch06_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH06_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH06_PREP",
+              "eventType": "choice",
+              "choiceId": "ch06_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH06_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH06_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch06_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH06_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH06_RESULT",
+              "eventType": "result",
+              "choiceId": "ch06_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH06_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH07",
+          "status": "success",
+          "reason": "END_CH07_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH07_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch07_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH07_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH07_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch07_route_broker",
+              "choiceLabel": "Cut through broker traffic",
+              "nextEventId": "EV_CH07_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH07_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch07_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH07_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH07_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch07_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH07_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH07_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch07_field_b",
+              "choiceLabel": "Split the smoke queue",
+              "nextEventId": "EV_CH07_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH07_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch07_smoke_a",
+              "choiceLabel": "Open a witness lane",
+              "nextEventId": "EV_CH07_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH07_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch07_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH07_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH07_PREP",
+              "eventType": "choice",
+              "choiceId": "ch07_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH07_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH07_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch07_boss_direct",
+              "choiceLabel": "Break the front",
+              "nextEventId": "EV_CH07_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH07_RESULT",
+              "eventType": "result",
+              "choiceId": "ch07_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH07_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH08",
+          "status": "success",
+          "reason": "END_CH08_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH08_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch08_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH08_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH08_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch08_route_witness",
+              "choiceLabel": "Escort the witness chain",
+              "nextEventId": "EV_CH08_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH08_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch08_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH08_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH08_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch08_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH08_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH08_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch08_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH08_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH08_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch08_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH08_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH08_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch08_field_b",
+              "choiceLabel": "Split the smoke queue",
+              "nextEventId": "EV_CH08_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH08_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch08_smoke_a",
+              "choiceLabel": "Open a witness lane",
+              "nextEventId": "EV_CH08_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH08_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch08_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH08_PREP",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH08_PREP",
+              "eventType": "choice",
+              "choiceId": "ch08_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH08_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH08_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch08_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH08_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH08_RESULT",
+              "eventType": "result",
+              "choiceId": "ch08_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH08_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH09",
+          "status": "success",
+          "reason": "END_CH09_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH09_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch09_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH09_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH09_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch09_route_broker",
+              "choiceLabel": "Cut through broker traffic",
+              "nextEventId": "EV_CH09_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH09_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch09_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH09_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH09_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch09_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH09_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH09_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch09_field_b",
+              "choiceLabel": "Split the smoke queue",
+              "nextEventId": "EV_CH09_ACTION_B",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH09_ACTION_B",
+              "eventType": "choice",
+              "choiceId": "ch09_smoke_a",
+              "choiceLabel": "Open a witness lane",
+              "nextEventId": "EV_CH09_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH09_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch09_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH09_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH09_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch09_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH09_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH09_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch09_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH09_PREP",
+              "rewardMultiplier": 0.7
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH09_PREP",
+              "eventType": "choice",
+              "choiceId": "ch09_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH09_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 11,
+              "eventId": "EV_CH09_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch09_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH09_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 12,
+              "eventId": "EV_CH09_RESULT",
+              "eventType": "result",
+              "choiceId": "ch09_closure_a",
+              "choiceLabel": "Carry the pressure forward",
+              "nextEventId": "END_CH09_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        },
+        {
+          "chapterId": "CH10",
+          "status": "success",
+          "reason": "END_CH10_RESOLVED",
+          "steps": [
+            {
+              "step": 1,
+              "eventId": "EV_CH10_ENTRY",
+              "eventType": "briefing",
+              "choiceId": "ch10_entry_slow",
+              "choiceLabel": "Move under cover",
+              "nextEventId": "EV_CH10_ROUTE",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 2,
+              "eventId": "EV_CH10_ROUTE",
+              "eventType": "choice",
+              "choiceId": "ch10_route_witness",
+              "choiceLabel": "Escort the witness chain",
+              "nextEventId": "EV_CH10_APPROACH",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 3,
+              "eventId": "EV_CH10_APPROACH",
+              "eventType": "choice",
+              "choiceId": "ch10_approach_record",
+              "choiceLabel": "Read the system record first",
+              "nextEventId": "EV_CH10_ANCHOR",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 4,
+              "eventId": "EV_CH10_ANCHOR",
+              "eventType": "choice",
+              "choiceId": "ch10_anchor_hold",
+              "choiceLabel": "Secure the anchor deck",
+              "nextEventId": "EV_CH10_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 5,
+              "eventId": "EV_CH10_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch10_field_a",
+              "choiceLabel": "Sweep the loading manifest",
+              "nextEventId": "EV_CH10_ACTION_A",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 6,
+              "eventId": "EV_CH10_ACTION_A",
+              "eventType": "choice",
+              "choiceId": "ch10_manifest_a",
+              "choiceLabel": "Clone the papers",
+              "nextEventId": "EV_CH10_FIELD_HUB",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 7,
+              "eventId": "EV_CH10_FIELD_HUB",
+              "eventType": "choice",
+              "choiceId": "ch10_prep",
+              "choiceLabel": "Stage the final push",
+              "nextEventId": "EV_CH10_PREP",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 8,
+              "eventId": "EV_CH10_PREP",
+              "eventType": "choice",
+              "choiceId": "ch10_prep_clean",
+              "choiceLabel": "Carry the clean route into the gate",
+              "nextEventId": "EV_CH10_BOSS",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 9,
+              "eventId": "EV_CH10_BOSS",
+              "eventType": "combat",
+              "choiceId": "ch10_boss_overload",
+              "choiceLabel": "Overload the gate",
+              "nextEventId": "EV_CH10_RESULT",
+              "rewardMultiplier": 1
+            },
+            {
+              "step": 10,
+              "eventId": "EV_CH10_RESULT",
+              "eventType": "result",
+              "choiceId": "ch10_ending_a",
+              "choiceLabel": "Controlled Convoy",
+              "nextEventId": "END_CH10_RESOLVED",
+              "rewardMultiplier": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

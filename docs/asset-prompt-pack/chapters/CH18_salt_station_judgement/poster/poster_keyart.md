@@ -5,7 +5,7 @@
 - chapter_id: CH18
 - part_id: P4
 - asset_type: poster
-- subject: 소금 정거장 key art
+- subject: Salt Station key art
 - ratio: 4:5
 - art_key_runtime: pending:poster_ch18_salt_station_judgement
 - art_key_final: poster_ch18_salt_station_judgement
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-poster for 소금 정거장, Korean urban apocalypse, 배급 홀, 누구를 태울지 공개적으로 말하고 기록 공개파를 실제로 세운다., one dominant silhouette, dramatic negative space, public judgement, one dominant silhouette, civic ritual tension, realistic cinematic color grading, distressed typography space
+poster for Salt Station, Korean urban apocalypse, Judgement Board, Salt Station opens with route pressure., one dominant silhouette, dramatic negative space, public judgement, one dominant silhouette, civic ritual tension, realistic cinematic color grading, distressed typography space
 ```
 
 ## Korean Context

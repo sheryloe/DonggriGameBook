@@ -5,7 +5,7 @@
 - chapter_id: CH06
 - part_id: P2
 - asset_type: teaser
-- subject: 하강 관문 preclimax beat
+- subject: Southern Gate preclimax beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch06_preclimax
 - art_key_final: teaser_ch06_preclimax
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 하강 관문, pre-climax beat, 남부 중계 방벽, 관문 압쇄체 about to emerge, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, unresolved hope and dread, realistic cinematic still
+cinematic teaser frame for Southern Gate, pre-climax beat, Field Window, 관문 압쇄체 about to emerge, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, unresolved hope and dread, realistic cinematic still
 ```
 
 ## Korean Context

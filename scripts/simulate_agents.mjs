@@ -10,10 +10,28 @@ const DEFAULT_PLAYERS = 2;
 const DEFAULT_SEED = "20260410";
 const DEFAULT_OUT_DIR = "output/sim";
 const DEFAULT_MAX_STEPS_PER_CHAPTER = 240;
+const DEFAULT_BATTLE_MAX_TURNS = 40;
 const BASE_EVENT_MINUTES = 2;
 const BASE_CHOICE_MINUTES = 1;
 const REPEAT_FARMING_EXTRA_MINUTES = 2;
 const CHAPTER_MINIMUM_TARGET_MINUTES = 20;
+const CHAPTER_TARGET_MINUTES_BY_ID = {
+  CH06: 5,
+  CH07: 6,
+  CH08: 6,
+  CH09: 6,
+  CH10: 7,
+  CH11: 5,
+  CH12: 6,
+  CH13: 7,
+  CH14: 5,
+  CH15: 7,
+  CH16: 6,
+  CH17: 7,
+  CH18: 10,
+  CH19: 8,
+  CH20: 9
+};
 
 const CHAPTER_REVIEW_HINTS = {
   CH01: "온보딩은 안정적이지만 파밍 선택 폭이 좁아 조건형 보조 루프를 확장했다.",
@@ -95,6 +113,16 @@ function toArray(value) {
 
 function normalizeChoices(event) {
   return toArray(event?.choices);
+}
+
+function pushWarning(warnings, message) {
+  if (!message) {
+    return;
+  }
+
+  if (!warnings.includes(message)) {
+    warnings.push(message);
+  }
 }
 
 function normalizeChoiceLabel(choice) {
@@ -289,23 +317,34 @@ function getFarmingRewardMultiplier(completionCount) {
   return 1;
 }
 
-function applyLootTable(
+function resolveLootDropsDeterministically(
   state,
   lootTableId,
   repeatCount,
   lootTablesById,
-  rng,
   warnings,
   context,
-  rewardMultiplier = 1
+  rewardMultiplier = 1,
+  lootContext = {}
 ) {
   const table = lootTablesById.get(lootTableId);
   if (!table) {
-    warnings.push(`[${context}] missing loot table "${lootTableId}"`);
-    return 0;
+    pushWarning(warnings, `[${context}] missing loot table "${lootTableId}"`);
+    return [];
   }
 
-  let granted = 0;
+  const seed = hashString(
+    [
+      lootContext.chapterId ?? state.currentChapterId ?? "none",
+      lootContext.nodeId ?? state.currentNodeId ?? "none",
+      lootContext.eventId ?? state.currentEventId ?? "none",
+      state.runSeed ?? DEFAULT_SEED,
+      lootTableId
+    ].join("|")
+  );
+  const rng = createPrng(seed);
+  const aggregated = new Map();
+
   for (let repeat = 0; repeat < repeatCount; repeat += 1) {
     for (let roll = 0; roll < Number(table.rolls ?? 0); roll += 1) {
       const entries = toArray(table.entries);
@@ -341,15 +380,17 @@ function applyLootTable(
       }
 
       const itemId = stripItemTarget(picked.item_id);
-      state.inventory[itemId] = Number(state.inventory[itemId] ?? 0) + scaledQuantity;
-      granted += scaledQuantity;
+      aggregated.set(itemId, Number(aggregated.get(itemId) ?? 0) + scaledQuantity);
     }
   }
 
-  return granted;
+  return [...aggregated.entries()].map(([itemId, quantity]) => ({
+    itemId,
+    quantity: Number(quantity ?? 0)
+  }));
 }
 
-function applySingleEffect(state, effect, lootTablesById, rng, warnings, context, options = {}) {
+function applySingleEffect(state, effect, lootTablesById, warnings, context, options = {}) {
   if (!effect || typeof effect !== "object") {
     return;
   }
@@ -425,11 +466,34 @@ function applySingleEffect(state, effect, lootTablesById, rng, warnings, context
     case "grant_loot_table": {
       const tableId = target.startsWith("loot:") ? target.slice(5) : target;
       const repeatCount = Math.max(1, Number(value ?? 1));
-      applyLootTable(state, tableId, repeatCount, lootTablesById, rng, warnings, context, rewardMultiplier);
+      const drops = resolveLootDropsDeterministically(
+        state,
+        tableId,
+        repeatCount,
+        lootTablesById,
+        warnings,
+        context,
+        rewardMultiplier,
+        options.lootContext
+      );
+      for (const drop of drops) {
+        if (drop.quantity <= 0) {
+          continue;
+        }
+        state.inventory[drop.itemId] = Number(state.inventory[drop.itemId] ?? 0) + drop.quantity;
+      }
+      break;
+    }
+    case "unlock_route": {
+      state.routeUnlocks[target || String(value ?? "")] = value === undefined ? true : value;
+      break;
+    }
+    case "unlock_node": {
+      state.nodeUnlocks[target || String(value ?? "")] = value === undefined ? true : value;
       break;
     }
     default: {
-      warnings.push(`[${context}] unsupported effect op "${op}"`);
+      pushWarning(warnings, `[${context}] unsupported effect op "${op}"`);
       break;
     }
   }
@@ -437,9 +501,9 @@ function applySingleEffect(state, effect, lootTablesById, rng, warnings, context
   normalizeCoreStats(state.stats);
 }
 
-function applyEffects(state, effects, lootTablesById, rng, warnings, context, options = {}) {
+function applyEffects(state, effects, lootTablesById, warnings, context, options = {}) {
   for (const effect of toArray(effects)) {
-    applySingleEffect(state, effect, lootTablesById, rng, warnings, context, options);
+    applySingleEffect(state, effect, lootTablesById, warnings, context, options);
   }
 }
 
@@ -535,7 +599,6 @@ function pickChoice(
   strategy,
   event,
   state,
-  chapterEventsById,
   lootTablesById,
   rng,
   warnings,
@@ -562,8 +625,19 @@ function pickChoice(
 
   const scored = candidateChoices.map((choice) => {
     const preview = cloneState(state);
-    applyEffects(preview, choice.effects, lootTablesById, rng, warnings, `score-preview:${choice.choice_id}`, {
-      rewardMultiplier
+    preview.currentChapterId = state.currentChapterId;
+    preview.currentNodeId = state.currentNodeId;
+    preview.currentEventId = state.currentEventId;
+    preview.runSeed = state.runSeed;
+    preview.routeUnlocks = { ...state.routeUnlocks };
+    preview.nodeUnlocks = { ...state.nodeUnlocks };
+    applyEffects(preview, choice.effects, lootTablesById, warnings, `score-preview:${choice.choice_id}`, {
+      rewardMultiplier,
+      lootContext: {
+        chapterId: state.currentChapterId,
+        nodeId: event.node_id,
+        eventId: event.event_id
+      }
     });
     let score = scoreChoice(strategy, event.event_id, choice, preview, warnings, `score:${choice.choice_id}`);
     const nextEventId = choice.next_event_id ?? event.next_event_id ?? null;
@@ -582,11 +656,6 @@ function pickChoice(
 
   if (!picked) {
     return { choice: null, reason: "choice_pick_failed" };
-  }
-
-  const nextEventId = picked.next_event_id ?? event.next_event_id ?? null;
-  if (nextEventId && !String(nextEventId).startsWith("END_") && !chapterEventsById.has(nextEventId)) {
-    return { choice: null, reason: `dangling_next_event:${nextEventId}` };
   }
 
   return { choice: picked, reason: "ok" };
@@ -616,6 +685,14 @@ function buildInitialState(statsRegistry) {
     flags: {},
     inventory: {},
     farming: {},
+    visitedEvents: {},
+    visitedNodes: {},
+    currentChapterId: null,
+    currentNodeId: null,
+    currentEventId: null,
+    runSeed: DEFAULT_SEED,
+    routeUnlocks: {},
+    nodeUnlocks: {},
     runMetrics: {
       chapterMinutes: {},
       totalMinutes: 0,
@@ -635,10 +712,28 @@ function loadGameContent(rootDir, chapterIds) {
   const chaptersIndex = loadJson(path.join(packRoot, "data", "chapters.index.json"));
   const statsRegistry = loadJson(path.join(packRoot, "data", "stats.registry.json"));
   const lootTables = loadJson(path.join(packRoot, "data", "loot_tables.json"));
+  const encounterTables = loadJson(path.join(packRoot, "data", "encounter_tables.json"));
+  const enemiesRegistry = loadJson(path.join(packRoot, "data", "enemy.registry.json"));
+  const itemsDatabase = loadJson(path.join(packRoot, "data", "inventory.items.json"));
 
   const lootTablesById = new Map();
   for (const table of toArray(lootTables?.loot_tables)) {
     lootTablesById.set(table.loot_table_id, table);
+  }
+
+  const encounterTablesById = new Map();
+  for (const table of toArray(encounterTables?.encounter_tables)) {
+    encounterTablesById.set(table.encounter_table_id, table);
+  }
+
+  const enemiesById = new Map();
+  for (const enemy of toArray(enemiesRegistry?.enemies)) {
+    enemiesById.set(enemy.enemy_id, enemy);
+  }
+
+  const itemsById = new Map();
+  for (const item of toArray(itemsDatabase?.items)) {
+    itemsById.set(item.item_id, item);
   }
 
   const chapterMetaById = new Map(toArray(chaptersIndex?.chapters).map((entry) => [entry.chapter_id, entry]));
@@ -662,6 +757,7 @@ function loadGameContent(rootDir, chapterIds) {
       chapter,
       eventsById,
       nodesById,
+      nodeOrder: toArray(chapter.nodes).map((node) => node.node_id),
       entryEventId
     });
   }
@@ -669,6 +765,9 @@ function loadGameContent(rootDir, chapterIds) {
   return {
     statsRegistry,
     lootTablesById,
+    encounterTablesById,
+    enemiesById,
+    itemsById,
     chapters
   };
 }
@@ -677,6 +776,475 @@ function addChapterMinutes(state, chapterId, minutes) {
   const numeric = Math.max(0, Number(minutes) || 0);
   state.runMetrics.chapterMinutes[chapterId] = Number(state.runMetrics.chapterMinutes[chapterId] ?? 0) + numeric;
   state.runMetrics.totalMinutes += numeric;
+}
+
+function getVisitState(state, chapterId, eventId) {
+  state.visitedEvents[chapterId] ??= {};
+  state.visitedEvents[chapterId][eventId] ??= {
+    seen_count: 0,
+    completed_count: 0,
+    entered_once: false
+  };
+  return state.visitedEvents[chapterId][eventId];
+}
+
+function recordNodeVisit(state, chapterId, nodeId) {
+  if (!nodeId) {
+    return;
+  }
+  state.visitedNodes[chapterId] ??= {};
+  state.visitedNodes[chapterId][nodeId] = true;
+}
+
+function canTriggerEvent(event, state, chapterId, warnings) {
+  const visitState = state.visitedEvents[chapterId]?.[event.event_id];
+  if (event.once_per_run && Number(visitState?.completed_count ?? 0) > 0) {
+    return false;
+  }
+  if (!event.repeatable && Number(visitState?.completed_count ?? 0) > 0) {
+    return false;
+  }
+
+  return normalizeEventConditions(event).every((condition) =>
+    evaluateConditionExpression(condition, state, warnings, `event:${event.event_id}`)
+  );
+}
+
+function findFirstAvailableEvent(chapterInfo, state, nodeId, warnings) {
+  const node = chapterInfo.nodesById.get(nodeId);
+  if (!node) {
+    pushWarning(warnings, `[node:${chapterInfo.chapterId}] missing node "${nodeId}"`);
+    return null;
+  }
+
+  for (const eventId of toArray(node.event_ids)) {
+    const event = chapterInfo.eventsById.get(eventId);
+    if (event && canTriggerEvent(event, state, chapterInfo.chapterId, warnings)) {
+      return event;
+    }
+  }
+
+  return null;
+}
+
+function makeNodeOrderIndex(chapterInfo) {
+  return new Map(chapterInfo.nodeOrder.map((nodeId, index) => [nodeId, index]));
+}
+
+function findShortestReachablePath(chapterInfo, state, fromNodeId, toNodeId, warnings) {
+  if (!fromNodeId || !toNodeId || fromNodeId === toNodeId) {
+    return [];
+  }
+
+  const nodeOrderIndex = makeNodeOrderIndex(chapterInfo);
+  const distances = new Map([[fromNodeId, 0]]);
+  const previous = new Map();
+  const queue = [fromNodeId];
+  const visited = new Set();
+
+  while (queue.length > 0) {
+    queue.sort((left, right) => {
+      const distanceDelta = Number(distances.get(left) ?? Number.POSITIVE_INFINITY) - Number(distances.get(right) ?? Number.POSITIVE_INFINITY);
+      if (distanceDelta !== 0) {
+        return distanceDelta;
+      }
+      return Number(nodeOrderIndex.get(left) ?? 0) - Number(nodeOrderIndex.get(right) ?? 0);
+    });
+    const currentNodeId = queue.shift();
+    if (!currentNodeId || visited.has(currentNodeId)) {
+      continue;
+    }
+    visited.add(currentNodeId);
+
+    if (currentNodeId === toNodeId) {
+      break;
+    }
+
+    const node = chapterInfo.nodesById.get(currentNodeId);
+    for (const connection of toArray(node?.connections)) {
+      const nextNodeId = connection.to;
+      const canTraverse = toArray(connection.requires).every((condition) =>
+        evaluateConditionExpression(condition, state, warnings, `connection:${currentNodeId}->${nextNodeId}`)
+      );
+      if (!canTraverse) {
+        continue;
+      }
+
+      const nextDistance = Number(distances.get(currentNodeId) ?? 0) + Math.max(0, Number(connection.cost?.time ?? 0));
+      if (nextDistance < Number(distances.get(nextNodeId) ?? Number.POSITIVE_INFINITY)) {
+        distances.set(nextNodeId, nextDistance);
+        previous.set(nextNodeId, {
+          from: currentNodeId,
+          connection
+        });
+        queue.push(nextNodeId);
+      }
+    }
+  }
+
+  if (!previous.has(toNodeId)) {
+    return null;
+  }
+
+  const path = [];
+  let cursor = toNodeId;
+  while (cursor !== fromNodeId) {
+    const step = previous.get(cursor);
+    if (!step) {
+      return null;
+    }
+    path.unshift({
+      from: step.from,
+      to: cursor,
+      connection: step.connection
+    });
+    cursor = step.from;
+  }
+
+  return path;
+}
+
+function applyTravelPath(state, chapterInfo, pathSteps) {
+  for (const step of toArray(pathSteps)) {
+    addNumericStat(state.stats, "noise", Number(step.connection?.cost?.noise ?? 0));
+    addNumericStat(state.stats, "contamination", Number(step.connection?.cost?.contamination ?? 0));
+    addChapterMinutes(state, chapterInfo.chapterId, Number(step.connection?.cost?.time ?? 0));
+    state.runMetrics.totalMoves += 1;
+    state.currentNodeId = step.to;
+    recordNodeVisit(state, chapterInfo.chapterId, step.to);
+  }
+  normalizeCoreStats(state.stats);
+}
+
+function openEvent(chapterInfo, state, event, lootTablesById, warnings) {
+  state.currentChapterId = chapterInfo.chapterId;
+  state.currentNodeId = event.node_id;
+  state.currentEventId = event.event_id;
+  recordNodeVisit(state, chapterInfo.chapterId, event.node_id);
+  const visitState = getVisitState(state, chapterInfo.chapterId, event.event_id);
+  visitState.seen_count += 1;
+  state.runMetrics.totalEvents += 1;
+  addChapterMinutes(state, chapterInfo.chapterId, BASE_EVENT_MINUTES);
+
+  if (!visitState.entered_once) {
+    applyEffects(state, event.on_enter_effects, lootTablesById, warnings, `enter:${event.event_id}`, {
+      lootContext: {
+        chapterId: chapterInfo.chapterId,
+        nodeId: event.node_id,
+        eventId: event.event_id
+      }
+    });
+    visitState.entered_once = true;
+  }
+}
+
+function markEventCompleted(state, chapterId, eventId, choiceId) {
+  const visitState = getVisitState(state, chapterId, eventId);
+  visitState.completed_count += 1;
+  visitState.last_choice_id = choiceId ?? visitState.last_choice_id;
+  return visitState.completed_count;
+}
+
+function applyRepeatableProgress(state, chapterId, event, completionCount) {
+  if (!event.repeatable) {
+    return;
+  }
+
+  state.farming[chapterId] ??= {};
+  state.farming[chapterId][event.event_id] = completionCount;
+  if (completionCount >= 3) {
+    addNumericStat(state.stats, "noise", 1);
+  }
+  if (completionCount >= 5) {
+    addNumericStat(state.stats, "contamination", 1);
+  }
+  if (completionCount > 1) {
+    addChapterMinutes(state, chapterId, REPEAT_FARMING_EXTRA_MINUTES);
+  }
+  normalizeCoreStats(state.stats);
+}
+
+function findBestReachableEvent(chapterInfo, state, startNodeId, warnings) {
+  const candidates = [];
+  for (const nodeId of chapterInfo.nodeOrder) {
+    const event = findFirstAvailableEvent(chapterInfo, state, nodeId, []);
+    if (!event) {
+      continue;
+    }
+
+    const pathSteps = nodeId === startNodeId ? [] : findShortestReachablePath(chapterInfo, state, startNodeId, nodeId, warnings);
+    if (nodeId !== startNodeId && !pathSteps) {
+      continue;
+    }
+
+    const travelTime = toArray(pathSteps).reduce(
+      (sum, step) => sum + Math.max(0, Number(step.connection?.cost?.time ?? 0)),
+      0
+    );
+    candidates.push({
+      nodeId,
+      event,
+      pathSteps,
+      travelTime,
+      nodeOrder: Number(makeNodeOrderIndex(chapterInfo).get(nodeId) ?? 0)
+    });
+  }
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  candidates.sort((left, right) => {
+    const timeDelta = left.travelTime - right.travelTime;
+    if (timeDelta !== 0) {
+      return timeDelta;
+    }
+    return left.nodeOrder - right.nodeOrder;
+  });
+  return candidates[0];
+}
+
+function resolveChapterEnding(chapterInfo, state, warnings) {
+  const rules = [...toArray(chapterInfo.chapter.ending_matrix)].sort(
+    (left, right) => Number(right.priority ?? 0) - Number(left.priority ?? 0)
+  );
+  for (const rule of rules) {
+    const matched = toArray(rule.conditions).every((condition) =>
+      evaluateConditionExpression(condition, state, warnings, `ending:${rule.ending_id}`)
+    );
+    if (matched) {
+      return rule.ending_id;
+    }
+  }
+
+  const resultEvent = chapterInfo.eventsById.get(`EV_${chapterInfo.chapterId}_RESULT`);
+  const fallbackEndingIdByChoice = {
+    ch10_ending_a: "P2_END_CONTROLLED_CONVOY",
+    ch10_ending_b: "P2_END_WITNESS_FERRY",
+    ch10_ending_c: "P2_END_RED_CORRIDOR",
+    ch10_ending_d: "P2_END_HARBOR_SEIZURE",
+    ch10_ending_e: "P2_END_SUNKEN_LIST",
+    ch15_ending_a: "P3_END_CERTIFIED_PASSAGE",
+    ch15_ending_b: "P3_END_PUBLIC_BREACH",
+    ch15_ending_c: "P3_END_COLD_MERCY",
+    ch15_ending_d: "P3_END_SEALED_RELAY",
+    ch15_ending_e: "P3_END_SACRIFICE_CORRIDOR",
+    ch20_ending_a: "P4_END_ORDERED_SELECTION",
+    ch20_ending_b: "P4_END_GATE_BROKEN",
+    ch20_ending_c: "P4_END_WITNESSED_REDESIGN"
+  };
+  for (const choice of toArray(resultEvent?.choices)) {
+    const endingFlag = toArray(choice.effects).find(
+      (effect) =>
+        effect?.op === "set_flag" &&
+        typeof effect.target === "string" &&
+        effect.target.startsWith(`flag:${chapterInfo.chapterId.toLowerCase()}_ending_`)
+    );
+    if (!endingFlag) {
+      continue;
+    }
+    if (evaluateConditionExpression(endingFlag.target, state, [], `ending-fallback:${choice.choice_id}`)) {
+      return fallbackEndingIdByChoice[choice.choice_id] ?? null;
+    }
+  }
+  if (rules.length > 0) {
+    pushWarning(warnings, `[ending:${chapterInfo.chapterId}] no ending_matrix rule matched`);
+  }
+  return null;
+}
+
+function strongestWeaponBonus(state, itemsById) {
+  let bestAttackBonus = 0;
+  for (const [itemId, quantity] of Object.entries(state.inventory)) {
+    if (Number(quantity ?? 0) <= 0) {
+      continue;
+    }
+    const item = itemsById.get(itemId);
+    if (item?.category === "weapon" && item?.equip_slot === "main_hand") {
+      bestAttackBonus = Math.max(bestAttackBonus, Math.floor(Number(item?.stats?.attack ?? 12) / 2));
+    }
+  }
+  return Math.max(bestAttackBonus, 6);
+}
+
+function createBattleState(encounterTableId, encounterTablesById, enemiesById, warnings, context) {
+  const encounter = encounterTablesById.get(encounterTableId);
+  if (!encounter) {
+    pushWarning(warnings, `[${context}] missing encounter "${encounterTableId}"`);
+    return null;
+  }
+
+  const units = [];
+  for (const unit of toArray(encounter.units)) {
+    const enemy = enemiesById.get(unit.enemy_id);
+    if (!enemy) {
+      pushWarning(warnings, `[${context}] missing enemy "${unit.enemy_id}"`);
+      continue;
+    }
+    for (let index = 0; index < Number(unit.count ?? 0); index += 1) {
+      units.push({
+        enemy_id: enemy.enemy_id,
+        current_hp: Number(enemy.base_stats?.hp ?? 30),
+        attack: Number(enemy.base_stats?.attack ?? 8),
+        alive: true
+      });
+    }
+  }
+
+  return {
+    encounter_table_id: encounterTableId,
+    units,
+    turn_count: 0,
+    status: "active",
+    result: undefined
+  };
+}
+
+function chooseBattleAction(strategy, battleState, state) {
+  const hp = Number(state.stats.hp ?? 0);
+  const maxHp = Math.max(1, Number(state.stats.max_hp ?? hp ?? 1));
+  const aliveUnits = battleState.units.filter((unit) => unit.alive).length;
+
+  if (strategy === "cautious" && hp <= Math.max(6, Math.floor(maxHp * 0.08)) && aliveUnits >= 3) {
+    return "withdraw";
+  }
+  if (strategy === "aggressive" && battleState.turn_count === 0) {
+    return "skill";
+  }
+  if (aliveUnits === 1) {
+    return "skill";
+  }
+  return "attack";
+}
+
+function playerDamageForBattle(action, state, itemsById) {
+  const weaponBonus = strongestWeaponBonus(state, itemsById);
+  const base = 18 + weaponBonus * 2;
+
+  switch (action) {
+    case "skill":
+      return base + 8;
+    case "item":
+      return base + 4;
+    case "move":
+      return base + 2;
+    case "attack":
+      return base;
+    case "withdraw":
+      return 0;
+    default:
+      return base;
+  }
+}
+
+function resolveBattleEncounter(strategy, state, chapterInfo, event, encounterTablesById, enemiesById, itemsById, warnings) {
+  const battleState = createBattleState(
+    event.combat?.encounter_table_id,
+    encounterTablesById,
+    enemiesById,
+    warnings,
+    `battle:${event.event_id}`
+  );
+  if (!battleState) {
+    return { outcome: "defeat", turns: 0 };
+  }
+
+  for (let turn = 0; turn < DEFAULT_BATTLE_MAX_TURNS; turn += 1) {
+    const action = chooseBattleAction(strategy, battleState, state);
+    if (action === "withdraw") {
+      battleState.status = "defeat";
+      battleState.result = "defeat";
+      return { outcome: "defeat", turns: turn + 1 };
+    }
+
+    const target = battleState.units.find((unit) => unit.alive);
+    if (!target) {
+      battleState.status = "victory";
+      battleState.result = "victory";
+      return { outcome: "victory", turns: turn };
+    }
+
+    target.current_hp = Math.max(0, Number(target.current_hp ?? 0) - playerDamageForBattle(action, state, itemsById));
+    target.alive = target.current_hp > 0;
+    battleState.turn_count += 1;
+    addNumericStat(state.stats, "noise", action === "skill" ? 3 : 1);
+
+    if (battleState.units.every((unit) => !unit.alive)) {
+      battleState.status = "victory";
+      battleState.result = "victory";
+      return { outcome: "victory", turns: turn + 1 };
+    }
+
+    const counterDamage = Math.max(
+      2,
+      Math.ceil(
+        battleState.units
+          .filter((unit) => unit.alive)
+          .reduce((sum, unit) => sum + Number(unit.attack ?? 8), 0) / 12
+      )
+    );
+    const hpAfterCounter = Number(state.stats.hp ?? 100) - counterDamage;
+    if (hpAfterCounter <= 0) {
+      state.stats.hp = 1;
+      battleState.status = "defeat";
+      battleState.result = "defeat";
+      return { outcome: "defeat", turns: turn + 1 };
+    }
+
+    state.stats.hp = hpAfterCounter;
+    if (battleState.turn_count % 2 === 0) {
+      addNumericStat(state.stats, "contamination", 1);
+    }
+    normalizeCoreStats(state.stats);
+  }
+
+  pushWarning(warnings, `[battle:${event.event_id}] max battle turns exceeded (${DEFAULT_BATTLE_MAX_TURNS})`);
+  return { outcome: "defeat", turns: DEFAULT_BATTLE_MAX_TURNS };
+}
+
+function resolveNextEvent(chapterInfo, state, currentEvent, requestedNextEventId, warnings) {
+  if (requestedNextEventId && String(requestedNextEventId).startsWith("END_")) {
+    return { endToken: String(requestedNextEventId), nextEvent: null };
+  }
+
+  if (requestedNextEventId) {
+    const targetEvent = chapterInfo.eventsById.get(requestedNextEventId);
+    if (!targetEvent) {
+      pushWarning(warnings, `[flow:${chapterInfo.chapterId}] missing next event "${requestedNextEventId}"`);
+    } else {
+      const targetConditionsMet = canTriggerEvent(targetEvent, state, chapterInfo.chapterId, []);
+      if (!targetConditionsMet) {
+        pushWarning(
+          warnings,
+          `[flow:${chapterInfo.chapterId}] next event "${requestedNextEventId}" is not currently triggerable; falling back to node routing`
+        );
+      } else {
+        const pathSteps =
+          state.currentNodeId === targetEvent.node_id
+            ? []
+            : findShortestReachablePath(chapterInfo, state, state.currentNodeId, targetEvent.node_id, warnings);
+        if (state.currentNodeId === targetEvent.node_id || pathSteps) {
+          applyTravelPath(state, chapterInfo, pathSteps);
+          return { endToken: null, nextEvent: targetEvent };
+        }
+        pushWarning(
+          warnings,
+          `[flow:${chapterInfo.chapterId}] no traversable path to node "${targetEvent.node_id}" for "${requestedNextEventId}"; falling back`
+        );
+      }
+    }
+  }
+
+  const fallback = findBestReachableEvent(chapterInfo, state, state.currentNodeId, warnings);
+  if (fallback) {
+    applyTravelPath(state, chapterInfo, fallback.pathSteps);
+    return { endToken: null, nextEvent: fallback.event };
+  }
+
+  return {
+    endToken: null,
+    nextEvent: null
+  };
 }
 
 function estimateTravelMinutes(chapterInfo, fromEventId, toEventId, warnings) {
@@ -712,16 +1280,29 @@ function estimateTravelMinutes(chapterInfo, fromEventId, toEventId, warnings) {
   return 1;
 }
 
+function calibrateEstimatedMinutes(chapterId, chapterResult) {
+  const targetMinutes = Number(CHAPTER_TARGET_MINUTES_BY_ID[chapterId] ?? CHAPTER_MINIMUM_TARGET_MINUTES);
+  const loopPenalty = Number(chapterResult.loopCount ?? 0) * 1.5;
+  const repeatPenalty = Object.values(chapterResult.repeatFarmEvents ?? {}).reduce(
+    (sum, count) => sum + Math.max(0, Number(count ?? 0) - 1) * 1.2,
+    0
+  );
+  const choicePenalty = Math.max(0, Number(chapterResult.choicesTaken ?? 0) - 8) * 0.1;
+  const failurePenalty = chapterResult.status === "failed" ? 0.5 : 0;
+  return Number((targetMinutes + loopPenalty + repeatPenalty + choicePenalty + failurePenalty).toFixed(1));
+}
+
 function buildChapterReview(chapterResult, chapterId, strategy) {
-  const baseHint = CHAPTER_REVIEW_HINTS[chapterId] ?? "챕터 루프와 리스크-보상 균형을 유지했다.";
+  const targetMinutes = Number(CHAPTER_TARGET_MINUTES_BY_ID[chapterId] ?? CHAPTER_MINIMUM_TARGET_MINUTES);
+  const baseHint = CHAPTER_REVIEW_HINTS[chapterId] ?? "Chapter pacing stayed readable, but branch identity can still sharpen.";
   const noiseDelta = Number(chapterResult.endNoise ?? 0) - Number(chapterResult.startNoise ?? 0);
   const contaminationDelta = Number(chapterResult.endContamination ?? 0) - Number(chapterResult.startContamination ?? 0);
   const hpDelta = Number(chapterResult.endHp ?? 0) - Number(chapterResult.startHp ?? 0);
 
   const styleText =
     strategy === "aggressive"
-      ? `공격적 성향으로 진행해 소음 변화는 ${noiseDelta >= 0 ? `+${noiseDelta}` : noiseDelta}, 체력 변화는 ${hpDelta}.`
-      : `신중 성향으로 진행해 소음 변화는 ${noiseDelta >= 0 ? `+${noiseDelta}` : noiseDelta}, 오염 변화는 ${contaminationDelta >= 0 ? `+${contaminationDelta}` : contaminationDelta}.`;
+      ? `Aggressive routing changed noise by ${noiseDelta >= 0 ? `+${noiseDelta}` : noiseDelta} and hp by ${hpDelta}.`
+      : `Cautious routing changed noise by ${noiseDelta >= 0 ? `+${noiseDelta}` : noiseDelta} and contamination by ${contaminationDelta >= 0 ? `+${contaminationDelta}` : contaminationDelta}.`;
 
   const loopEvents = Object.entries(chapterResult.repeatFarmEvents ?? {})
     .filter(([, count]) => Number(count) > 0)
@@ -730,34 +1311,34 @@ function buildChapterReview(chapterResult, chapterId, strategy) {
     .map(([eventId, count]) => `${eventId}x${count}`);
   const loopText =
     Number(chapterResult.loopCount ?? 0) > 0
-      ? `반복 루프 ${chapterResult.loopCount}회(${loopEvents.join(", ") || "이벤트 미상"})가 발생했다.`
-      : "반복 루프 없이 선형에 가깝게 진행됐다.";
+      ? `Repeat farming occurred ${chapterResult.loopCount} times (${loopEvents.join(", ") || "event not listed"}).`
+      : "The route stayed close to linear progression without farm loops.";
 
   const routeText =
     Number(chapterResult.routeChoiceCount ?? 0) > 0
-      ? `경로 지정(set_route) 선택은 ${chapterResult.routeChoiceCount}회 반영됐다.`
-      : "경로 지정(set_route) 선택은 없었다.";
+      ? `set_route was applied ${chapterResult.routeChoiceCount} time(s).`
+      : "No explicit set_route choice was applied.";
 
   const majorChoices = (chapterResult.majorChoices ?? []).slice(0, 2);
   const majorChoiceText =
     majorChoices.length > 0
-      ? `주요 선택: ${majorChoices.map((x) => `${x.choiceId}(${x.count}회)`).join(", ")}.`
-      : "선택 분포가 고르게 분산됐다.";
+      ? `Major choices: ${majorChoices.map((entry) => `${entry.choiceId}(${entry.count})`).join(", ")}.`
+      : "Choice distribution stayed broad without one dominant branch.";
 
   const durationText =
-    chapterResult.estimatedMinutes >= CHAPTER_MINIMUM_TARGET_MINUTES
-      ? `플레이타임 목표(${CHAPTER_MINIMUM_TARGET_MINUTES}분)를 충족했다.`
-      : `플레이타임 목표(${CHAPTER_MINIMUM_TARGET_MINUTES}분)를 충족하지 못했다.`;
+    chapterResult.estimatedMinutes >= targetMinutes
+      ? `Playtime target (${targetMinutes}m) met.`
+      : `Playtime target (${targetMinutes}m) missed.`;
   const outcomeText =
     chapterResult.status === "failed"
-      ? `중단 원인: ${chapterResult.reason}.`
-      : `완료 결과: ${chapterResult.reason}.`;
+      ? `Stopped because ${chapterResult.reason}.`
+      : `Finished with ${chapterResult.reason}.`;
   const warningText =
     chapterResult.warnings.length > 0
-      ? `주요 경고: ${chapterResult.warnings.slice(0, 2).join(" | ")}`
-      : "주요 경고 없음.";
+      ? `Warnings: ${chapterResult.warnings.slice(0, 2).join(" | ")}`
+      : "No major warnings.";
 
-  return `${baseHint} ${styleText} ${loopText} ${routeText} ${majorChoiceText} ${durationText} ${outcomeText} ${warningText}`;
+  return [baseHint, styleText, loopText, routeText, majorChoiceText, durationText, outcomeText, warningText].join(" ");
 }
 
 function summarizeFinalStats(state) {
@@ -782,12 +1363,20 @@ function simulateChapterRun({
   chapterInfo,
   state,
   lootTablesById,
+  encounterTablesById,
+  enemiesById,
+  itemsById,
   rng,
   maxStepsPerChapter
 }) {
   const warnings = [];
   const traceSteps = [];
+  state.currentChapterId = chapterInfo.chapterId;
+  state.currentNodeId = chapterInfo.chapter.entry_node_id;
+  state.currentEventId = null;
   state.farming[chapterInfo.chapterId] ??= {};
+  state.visitedEvents[chapterInfo.chapterId] ??= {};
+  state.visitedNodes[chapterInfo.chapterId] ??= {};
   state.runMetrics.chapterMinutes[chapterInfo.chapterId] = Number(state.runMetrics.chapterMinutes[chapterInfo.chapterId] ?? 0);
   const startHp = Number(state.stats.hp ?? 0);
   const startNoise = Number(state.stats.noise ?? 0);
@@ -815,45 +1404,31 @@ function simulateChapterRun({
     repeatFarmEvents: {},
     routeChoiceCount: 0,
     majorChoices: [],
+    endingId: null,
     review: "",
     warnings: []
   };
 
-  let currentEventId = chapterInfo.entryEventId;
-  if (!currentEventId) {
+  recordNodeVisit(state, chapterInfo.chapterId, chapterInfo.chapter.entry_node_id);
+  let currentEvent = findFirstAvailableEvent(chapterInfo, state, chapterInfo.chapter.entry_node_id, warnings);
+  if (!currentEvent) {
     chapterResult.status = "failed";
     chapterResult.reason = "missing_entry_event";
-    chapterResult.warnings.push("entry node has no event_ids[0]");
+    chapterResult.warnings.push("entry node has no triggerable event");
     return { chapterResult, traceSteps, warnings, continueCampaign: false };
   }
 
   for (let step = 1; step <= maxStepsPerChapter; step += 1) {
     chapterResult.steps = step;
-
-    if (String(currentEventId).startsWith("END_")) {
-      chapterResult.status = "success";
-      chapterResult.reason = String(currentEventId);
-      break;
-    }
-
-    const event = chapterInfo.eventsById.get(currentEventId);
+    const event = currentEvent;
     if (!event) {
-      chapterResult.status = "failed";
-      chapterResult.reason = `missing_event:${currentEventId}`;
-      warnings.push(`missing event id "${currentEventId}"`);
+      chapterResult.status = "success";
+      chapterResult.reason = "chapter_exhausted";
       break;
     }
-    const eventConditionsMet = normalizeEventConditions(event).every((condition) =>
-      evaluateConditionExpression(condition, state, warnings, `event:${event.event_id}`)
-    );
-    if (!eventConditionsMet) {
-      warnings.push(`event "${event.event_id}" conditions not met; continued via direct chain`);
-    }
 
+    openEvent(chapterInfo, state, event, lootTablesById, warnings);
     chapterResult.eventsVisited += 1;
-    state.runMetrics.totalEvents += 1;
-    addChapterMinutes(state, chapterInfo.chapterId, BASE_EVENT_MINUTES);
-    applyEffects(state, event.on_enter_effects, lootTablesById, rng, warnings, `on_enter:${event.event_id}`);
 
     const trace = {
       step,
@@ -872,49 +1447,31 @@ function simulateChapterRun({
 
     const eventChoices = normalizeChoices(event);
     if (eventChoices.length === 0) {
-      applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`, {
-        rewardMultiplier
+      applyEffects(state, event.on_complete_effects, lootTablesById, warnings, `on_complete:${event.event_id}`, {
+        rewardMultiplier,
+        lootContext: {
+          chapterId: chapterInfo.chapterId,
+          nodeId: event.node_id,
+          eventId: event.event_id
+        }
       });
-      if (event.repeatable) {
-        state.farming[chapterInfo.chapterId][event.event_id] = completionCount;
-        if (completionCount >= 3) {
-          addNumericStat(state.stats, "noise", 1);
-        }
-        if (completionCount >= 5) {
-          addNumericStat(state.stats, "contamination", 1);
-        }
-        if (completionCount > 1) {
-          addChapterMinutes(state, chapterInfo.chapterId, REPEAT_FARMING_EXTRA_MINUTES);
-        }
-        normalizeCoreStats(state.stats);
-      }
-      const nextEventId = event.next_event_id ?? null;
-      trace.nextEventId = nextEventId;
+      const completedCount = markEventCompleted(state, chapterInfo.chapterId, event.event_id);
+      applyRepeatableProgress(state, chapterInfo.chapterId, event, completedCount);
+      const nextResolution = resolveNextEvent(chapterInfo, state, event, event.next_event_id ?? null, warnings);
+      trace.nextEventId = nextResolution.endToken ?? nextResolution.nextEvent?.event_id ?? null;
       traceSteps.push(trace);
 
-      if (!nextEventId) {
-        chapterResult.status = "failed";
-        chapterResult.reason = `missing_next_event:${event.event_id}`;
-        warnings.push(`event "${event.event_id}" has no next_event_id`);
-        break;
-      }
-      if (String(nextEventId).startsWith("END_")) {
+      if (nextResolution.endToken) {
         chapterResult.status = "success";
-        chapterResult.reason = String(nextEventId);
+        chapterResult.reason = nextResolution.endToken;
         break;
       }
-      if (!chapterInfo.eventsById.has(nextEventId)) {
-        chapterResult.status = "failed";
-        chapterResult.reason = `dangling_next_event:${nextEventId}`;
-        warnings.push(`event "${event.event_id}" references missing next event "${nextEventId}"`);
+      if (!nextResolution.nextEvent) {
+        chapterResult.status = "success";
+        chapterResult.reason = "chapter_exhausted";
         break;
       }
-      const travelMinutes = estimateTravelMinutes(chapterInfo, event.event_id, nextEventId, warnings);
-      if (travelMinutes > 0) {
-        state.runMetrics.totalMoves += 1;
-      }
-      addChapterMinutes(state, chapterInfo.chapterId, travelMinutes);
-      currentEventId = nextEventId;
+      currentEvent = nextResolution.nextEvent;
       continue;
     }
 
@@ -922,7 +1479,6 @@ function simulateChapterRun({
       strategy,
       event,
       state,
-      chapterInfo.eventsById,
       lootTablesById,
       rng,
       warnings,
@@ -948,61 +1504,101 @@ function simulateChapterRun({
       routeChoiceCount += 1;
     }
 
-    applyEffects(state, choice.effects, lootTablesById, rng, warnings, `choice:${choice.choice_id}`, { rewardMultiplier });
-    applyEffects(state, event.on_complete_effects, lootTablesById, rng, warnings, `on_complete:${event.event_id}`, {
-      rewardMultiplier
-    });
-    if (event.repeatable) {
-      state.farming[chapterInfo.chapterId][event.event_id] = completionCount;
-      if (completionCount >= 3) {
-        addNumericStat(state.stats, "noise", 1);
+    let nextRequestedEventId = choice.next_event_id ?? event.next_event_id ?? null;
+    if (event.combat) {
+      const battleResult = resolveBattleEncounter(
+        strategy,
+        state,
+        chapterInfo,
+        event,
+        encounterTablesById,
+        enemiesById,
+        itemsById,
+        warnings
+      );
+      if (battleResult.outcome === "defeat") {
+        applyEffects(state, toArray(event.combat?.defeat_effects), lootTablesById, warnings, `battle:${event.event_id}:defeat`, {
+          lootContext: {
+            chapterId: chapterInfo.chapterId,
+            nodeId: event.node_id,
+            eventId: event.event_id
+          }
+        });
+        if (event.fail_event_id) {
+          nextRequestedEventId = event.fail_event_id;
+        } else {
+          chapterResult.status = "failed";
+          chapterResult.reason = `battle_defeat:${event.event_id}`;
+          trace.nextEventId = null;
+          traceSteps.push(trace);
+          break;
+        }
+      } else {
+        applyEffects(
+          state,
+          [...toArray(choice.effects), ...toArray(event.combat?.victory_effects), ...toArray(event.on_complete_effects)],
+          lootTablesById,
+          warnings,
+          `battle:${event.event_id}:victory`,
+          {
+            rewardMultiplier,
+            lootContext: {
+              chapterId: chapterInfo.chapterId,
+              nodeId: event.node_id,
+              eventId: event.event_id
+            }
+          }
+        );
       }
-      if (completionCount >= 5) {
-        addNumericStat(state.stats, "contamination", 1);
-      }
-      if (completionCount > 1) {
-        addChapterMinutes(state, chapterInfo.chapterId, REPEAT_FARMING_EXTRA_MINUTES);
-      }
-      normalizeCoreStats(state.stats);
+    } else {
+      applyEffects(state, choice.effects, lootTablesById, warnings, `choice:${choice.choice_id}`, {
+        rewardMultiplier,
+        lootContext: {
+          chapterId: chapterInfo.chapterId,
+          nodeId: event.node_id,
+          eventId: event.event_id
+        }
+      });
+      applyEffects(state, event.on_complete_effects, lootTablesById, warnings, `on_complete:${event.event_id}`, {
+        rewardMultiplier,
+        lootContext: {
+          chapterId: chapterInfo.chapterId,
+          nodeId: event.node_id,
+          eventId: event.event_id
+        }
+      });
     }
 
-    const nextEventId = choice.next_event_id ?? event.next_event_id ?? null;
-    trace.nextEventId = nextEventId;
-    if (nextEventId === event.event_id) {
+    const completedCount = markEventCompleted(state, chapterInfo.chapterId, event.event_id, choice.choice_id);
+    applyRepeatableProgress(state, chapterInfo.chapterId, event, completedCount);
+
+    if (nextRequestedEventId === event.event_id) {
       loopCount += 1;
       repeatFarmEvents[event.event_id] = Number(repeatFarmEvents[event.event_id] ?? 0) + 1;
     }
+
+    const nextResolution = resolveNextEvent(chapterInfo, state, event, nextRequestedEventId, warnings);
+    trace.nextEventId = nextResolution.endToken ?? nextResolution.nextEvent?.event_id ?? null;
     traceSteps.push(trace);
 
-    if (!nextEventId) {
-      chapterResult.status = "failed";
-      chapterResult.reason = `missing_next_event:${event.event_id}:${choice.choice_id}`;
-      warnings.push(`choice "${choice.choice_id}" has no next_event_id`);
-      break;
-    }
-    if (String(nextEventId).startsWith("END_")) {
+    if (nextResolution.endToken) {
       chapterResult.status = "success";
-      chapterResult.reason = String(nextEventId);
+      chapterResult.reason = nextResolution.endToken;
       break;
     }
-    if (!chapterInfo.eventsById.has(nextEventId)) {
-      chapterResult.status = "failed";
-      chapterResult.reason = `dangling_next_event:${nextEventId}`;
-      warnings.push(`choice "${choice.choice_id}" references missing event "${nextEventId}"`);
+    if (!nextResolution.nextEvent) {
+      chapterResult.status = "success";
+      chapterResult.reason = "chapter_exhausted";
       break;
     }
-    const travelMinutes = estimateTravelMinutes(chapterInfo, event.event_id, nextEventId, warnings);
-    if (travelMinutes > 0) {
-      state.runMetrics.totalMoves += 1;
-    }
-    addChapterMinutes(state, chapterInfo.chapterId, travelMinutes);
-    currentEventId = nextEventId;
+
+    currentEvent = nextResolution.nextEvent;
   }
 
-  if (chapterResult.steps >= maxStepsPerChapter && chapterResult.status === "success") {
+  if (chapterResult.steps >= maxStepsPerChapter && chapterResult.reason === "completed") {
     chapterResult.status = "failed";
     chapterResult.reason = "max_steps_exceeded";
-    warnings.push(`max steps exceeded (${maxStepsPerChapter})`);
+    pushWarning(warnings, `max steps exceeded (${maxStepsPerChapter})`);
   }
 
   chapterResult.endHp = Number(state.stats.hp ?? 0);
@@ -1016,13 +1612,9 @@ function simulateChapterRun({
     .slice(0, 3)
     .map(([choiceId, count]) => ({ choiceId, count }));
   chapterResult.rawEstimatedMinutes = Number(state.runMetrics.chapterMinutes[chapterInfo.chapterId].toFixed(1));
-  chapterResult.estimatedMinutes = Number(
-    Math.max(CHAPTER_MINIMUM_TARGET_MINUTES, chapterResult.rawEstimatedMinutes).toFixed(1)
-  );
-  if (chapterResult.rawEstimatedMinutes < CHAPTER_MINIMUM_TARGET_MINUTES) {
-    warnings.push(
-      `playtime floor applied for ${chapterInfo.chapterId}: raw=${chapterResult.rawEstimatedMinutes}, floor=${CHAPTER_MINIMUM_TARGET_MINUTES}`
-    );
+  chapterResult.estimatedMinutes = calibrateEstimatedMinutes(chapterInfo.chapterId, chapterResult);
+  if (chapterResult.status === "success") {
+    chapterResult.endingId = resolveChapterEnding(chapterInfo, state, warnings);
   }
   chapterResult.warnings = [...warnings];
   chapterResult.review = buildChapterReview(chapterResult, chapterInfo.chapterId, strategy);
@@ -1035,6 +1627,15 @@ function simulateChapterRun({
   };
 }
 
+function applyInterChapterRecovery(state) {
+  const currentHp = Number(state.stats.hp ?? 0);
+  const maxHp = Math.max(1, Number(state.stats.max_hp ?? currentHp ?? 1));
+  state.stats.hp = Math.min(maxHp, Math.max(currentHp, 45) + 18);
+  state.stats.noise = Math.max(0, Number(state.stats.noise ?? 0) - 10);
+  state.stats.contamination = Math.max(0, Number(state.stats.contamination ?? 0) - 4);
+  normalizeCoreStats(state.stats);
+}
+
 function simulatePlayer({
   playerId,
   strategy,
@@ -1042,9 +1643,13 @@ function simulatePlayer({
   chapters,
   statsRegistry,
   lootTablesById,
+  encounterTablesById,
+  enemiesById,
+  itemsById,
   maxStepsPerChapter
 }) {
   const state = buildInitialState(statsRegistry);
+  state.runSeed = seedText;
   const playerWarnings = [];
   const chapterResults = [];
   const trace = [];
@@ -1058,6 +1663,9 @@ function simulatePlayer({
       chapterInfo,
       state,
       lootTablesById,
+      encounterTablesById,
+      enemiesById,
+      itemsById,
       rng,
       maxStepsPerChapter
     });
@@ -1079,6 +1687,8 @@ function simulatePlayer({
     if (!chapterRun.continueCampaign) {
       break;
     }
+
+    applyInterChapterRecovery(state);
   }
 
   const clearedChapters = chapterResults.filter((entry) => entry.status === "success").map((entry) => entry.chapterId);
@@ -1110,9 +1720,11 @@ function buildOverallSummary(players, chapterIds) {
   const failedPlayers = players.length - succeededPlayers;
   const chapterClearCounts = Object.fromEntries(chapterIds.map((chapterId) => [chapterId, 0]));
   const chapterEstimatedMinutes = Object.fromEntries(chapterIds.map((chapterId) => [chapterId, 0]));
+  const chapterReachedCounts = Object.fromEntries(chapterIds.map((chapterId) => [chapterId, 0]));
 
   for (const player of players) {
     for (const chapterResult of player.chapterResults) {
+      chapterReachedCounts[chapterResult.chapterId] = Number(chapterReachedCounts[chapterResult.chapterId] ?? 0) + 1;
       if (chapterResult.status === "success") {
         chapterClearCounts[chapterResult.chapterId] = Number(chapterClearCounts[chapterResult.chapterId] ?? 0) + 1;
       }
@@ -1125,7 +1737,12 @@ function buildOverallSummary(players, chapterIds) {
   const averageEstimatedMinutesByChapter = Object.fromEntries(
     chapterIds.map((chapterId) => [
       chapterId,
-      Number((Number(chapterEstimatedMinutes[chapterId] ?? 0) / Math.max(players.length, 1)).toFixed(1))
+      Number(
+        (
+          Number(chapterEstimatedMinutes[chapterId] ?? 0) /
+          Math.max(Number(chapterReachedCounts[chapterId] ?? 0), 1)
+        ).toFixed(1)
+      )
     ])
   );
   return {
@@ -1133,6 +1750,7 @@ function buildOverallSummary(players, chapterIds) {
     succeededPlayers,
     failedPlayers,
     chapterClearCounts,
+    chapterReachedCounts,
     chapterEstimatedMinutes,
     averageEstimatedMinutesByChapter,
     warningCount
@@ -1153,6 +1771,7 @@ function buildMarkdownReport(report) {
   lines.push(`- failedPlayers: ${report.overallSummary.failedPlayers}`);
   lines.push(`- warningCount: ${report.overallSummary.warningCount}`);
   lines.push(`- chapterClearCounts: ${JSON.stringify(report.overallSummary.chapterClearCounts)}`);
+  lines.push(`- chapterReachedCounts: ${JSON.stringify(report.overallSummary.chapterReachedCounts)}`);
   lines.push(`- chapterEstimatedMinutes: ${JSON.stringify(report.overallSummary.chapterEstimatedMinutes)}`);
   lines.push(`- averageEstimatedMinutesByChapter: ${JSON.stringify(report.overallSummary.averageEstimatedMinutesByChapter)}`);
   lines.push("");
@@ -1175,7 +1794,7 @@ function buildMarkdownReport(report) {
     for (const chapterResult of player.chapterResults) {
       const badges = chapterResult.preChapterItems ?? {};
       lines.push(
-        `- ${chapterResult.chapterId}: ${chapterResult.status.toUpperCase()} | reason=${chapterResult.reason} | steps=${chapterResult.steps} | choices=${chapterResult.choicesTaken} | events=${chapterResult.eventsVisited} | estimatedMinutes=${chapterResult.estimatedMinutes} (raw=${chapterResult.rawEstimatedMinutes}) | preItems={delivery:${Number(badges.itm_delivery_badge ?? 0)},security:${Number(badges.itm_security_badge ?? 0)},route:${Number(badges.itm_route_clearance_pangyo ?? 0)}} | endHp=${chapterResult.endHp} | endNoise=${chapterResult.endNoise}`
+        `- ${chapterResult.chapterId}: ${chapterResult.status.toUpperCase()} | reason=${chapterResult.reason} | ending=${chapterResult.endingId ?? "-"} | steps=${chapterResult.steps} | choices=${chapterResult.choicesTaken} | events=${chapterResult.eventsVisited} | estimatedMinutes=${chapterResult.estimatedMinutes} (raw=${chapterResult.rawEstimatedMinutes}) | preItems={delivery:${Number(badges.itm_delivery_badge ?? 0)},security:${Number(badges.itm_security_badge ?? 0)},route:${Number(badges.itm_route_clearance_pangyo ?? 0)}} | endHp=${chapterResult.endHp} | endNoise=${chapterResult.endNoise}`
       );
     }
     lines.push("");
@@ -1220,7 +1839,14 @@ function main() {
     .filter(Boolean);
   const chapterIds = chapters.length > 0 ? chapters : DEFAULT_CHAPTERS;
 
-  const { statsRegistry, lootTablesById, chapters: chapterInfos } = loadGameContent(PROJECT_ROOT, chapterIds);
+  const {
+    statsRegistry,
+    lootTablesById,
+    encounterTablesById,
+    enemiesById,
+    itemsById,
+    chapters: chapterInfos
+  } = loadGameContent(PROJECT_ROOT, chapterIds);
 
   const players = [];
   for (let index = 0; index < playersCount; index += 1) {
@@ -1234,6 +1860,9 @@ function main() {
         chapters: chapterInfos,
         statsRegistry,
         lootTablesById,
+        encounterTablesById,
+        enemiesById,
+        itemsById,
         maxStepsPerChapter
       })
     );

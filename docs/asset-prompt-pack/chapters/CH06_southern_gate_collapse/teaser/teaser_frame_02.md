@@ -5,7 +5,7 @@
 - chapter_id: CH06
 - part_id: P2
 - asset_type: teaser
-- subject: 하강 관문 pressure beat
+- subject: Southern Gate pressure beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch06_pressure
 - art_key_final: teaser_ch06_pressure
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 하강 관문, pressure beat, 우회 격리 복도, escalating conflict, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, crowd pressure, layered survival detail, realistic cinematic tension
+cinematic teaser frame for Southern Gate, pressure beat, Anchor Deck, escalating conflict, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, crowd pressure, layered survival detail, realistic cinematic tension
 ```
 
 ## Korean Context

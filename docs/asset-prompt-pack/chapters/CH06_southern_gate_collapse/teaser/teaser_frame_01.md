@@ -5,7 +5,7 @@
 - chapter_id: CH06
 - part_id: P2
 - asset_type: teaser
-- subject: 하강 관문 entry beat
+- subject: Southern Gate entry beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch06_entry
 - art_key_final: teaser_ch06_entry
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 하강 관문, entry beat, 하강 관문 검문장, 공식 검문과 우회선 사이에서 사람과 명단을 넘긴다., checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, atmospheric realism, grounded disaster mood, strong opening image
+cinematic teaser frame for Southern Gate, entry beat, Entry Gate, Southern Gate opens with route pressure., checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, atmospheric realism, grounded disaster mood, strong opening image
 ```
 
 ## Korean Context

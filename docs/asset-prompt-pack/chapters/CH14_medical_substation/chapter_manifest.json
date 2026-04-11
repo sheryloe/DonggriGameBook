@@ -1,0 +1,162 @@
+{
+  "chapter_id": "CH14",
+  "title": "Medical Substation",
+  "part_id": "P3",
+  "theme": "medical_substation",
+  "story_hook": "Medical Substation opens with route pressure.",
+  "assets": [
+    {
+      "asset_id": "ch14_bg_primary",
+      "asset_type": "background",
+      "subject": "Entry Gate",
+      "art_key_runtime": "ch14_entry",
+      "art_key_final": "bg_ch14_medical_substation_primary",
+      "filename_target": "bg_ch14_medical_substation_primary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/background/bg_primary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch14_bg_secondary",
+      "asset_type": "background",
+      "subject": "Anchor Deck",
+      "art_key_runtime": "ch14_route",
+      "art_key_final": "bg_ch14_medical_substation_secondary",
+      "filename_target": "bg_ch14_medical_substation_secondary_v01.webp",
+      "ratio": "16:10",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/background/bg_secondary.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/bg/"
+    },
+    {
+      "asset_id": "ch14_portrait_anchor",
+      "asset_type": "portrait",
+      "subject": "안보경",
+      "art_key_runtime": "pending:npc_ahn_bogyeong",
+      "art_key_final": "portrait_npc_ahn_bogyeong_ch14_anchor",
+      "filename_target": "portrait_npc_ahn_bogyeong_ch14_anchor_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/portrait/portrait_anchor.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch14_portrait_support",
+      "asset_type": "portrait",
+      "subject": "박이삭",
+      "art_key_runtime": "pending:npc_park_isaac",
+      "art_key_final": "portrait_npc_park_isaac_ch14_support",
+      "filename_target": "portrait_npc_park_isaac_ch14_support_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/portrait/portrait_support.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/portrait/"
+    },
+    {
+      "asset_id": "ch14_threat_signature",
+      "asset_type": "threat",
+      "subject": "변압수",
+      "art_key_runtime": "ch14_boss",
+      "art_key_final": "threat_mist_transformer",
+      "filename_target": "threat_mist_transformer_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/threat/threat_signature.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/threat/"
+    },
+    {
+      "asset_id": "ch14_poster_keyart",
+      "asset_type": "poster",
+      "subject": "Medical Substation key art",
+      "art_key_runtime": "pending:poster_ch14_medical_substation",
+      "art_key_final": "poster_ch14_medical_substation",
+      "filename_target": "poster_ch14_medical_substation_v01.webp",
+      "ratio": "4:5",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/poster/poster_keyart.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/poster/"
+    },
+    {
+      "asset_id": "ch14_teaser_frame_01",
+      "asset_type": "teaser",
+      "subject": "Medical Substation entry beat",
+      "art_key_runtime": "pending:teaser_ch14_entry",
+      "art_key_final": "teaser_ch14_entry",
+      "filename_target": "teaser_ch14_entry_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/teaser/teaser_frame_01.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch14_teaser_frame_02",
+      "asset_type": "teaser",
+      "subject": "Medical Substation pressure beat",
+      "art_key_runtime": "pending:teaser_ch14_pressure",
+      "art_key_final": "teaser_ch14_pressure",
+      "filename_target": "teaser_ch14_pressure_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/teaser/teaser_frame_02.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    },
+    {
+      "asset_id": "ch14_teaser_frame_03",
+      "asset_type": "teaser",
+      "subject": "Medical Substation preclimax beat",
+      "art_key_runtime": "pending:teaser_ch14_preclimax",
+      "art_key_final": "teaser_ch14_preclimax",
+      "filename_target": "teaser_ch14_preclimax_v01.webp",
+      "ratio": "16:9",
+      "prompt_path": "docs/asset-prompt-pack/chapters/CH14_medical_substation/teaser/teaser_frame_03.md",
+      "source_doc_refs": [
+        "codex_webgame_pack/data/chapters/ch14.json",
+        "ui/ch14.ui_flow.json",
+        "docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH14.md",
+        "docs/world/story-bible/PART_BIBLE_P3.md"
+      ],
+      "sync_target_path": "codex_webgame_pack/img/teaser/"
+    }
+  ]
+}

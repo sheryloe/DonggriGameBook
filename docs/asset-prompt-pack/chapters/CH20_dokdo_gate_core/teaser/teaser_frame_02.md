@@ -5,7 +5,7 @@
 - chapter_id: CH20
 - part_id: P4
 - asset_type: teaser
-- subject: 독도의 문 pressure beat
+- subject: Dokdo Gate pressure beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch20_pressure
 - art_key_final: teaser_ch20_pressure
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 독도의 문, pressure beat, 코어 제어실, escalating conflict, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, crowd pressure, layered survival detail, realistic cinematic tension
+cinematic teaser frame for Dokdo Gate, pressure beat, Anchor Deck, escalating conflict, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, crowd pressure, layered survival detail, realistic cinematic tension
 ```
 
 ## Korean Context

@@ -1,0 +1,29 @@
+{
+  "version": "1.1.0",
+  "scope": "part3-poster-prompts",
+  "part_id": "P3",
+  "count": 3,
+  "posters": [
+    {
+      "poster_id": "P3_POSTER_MAIN",
+      "category": "key_art",
+      "file": "P3_POSTER_MAIN.md",
+      "target_path": "docs/world/presentation/generated/posters/P3_POSTER_MAIN.webp",
+      "source_art_key_hint": "ending_p3_certified_passage"
+    },
+    {
+      "poster_id": "P3_POSTER_TRIAGE",
+      "category": "ethics",
+      "file": "P3_POSTER_TRIAGE.md",
+      "target_path": "docs/world/presentation/generated/posters/P3_POSTER_TRIAGE.webp",
+      "source_art_key_hint": "ending_p3_cold_mercy"
+    },
+    {
+      "poster_id": "P3_POSTER_RELAY",
+      "category": "environment",
+      "file": "P3_POSTER_RELAY.md",
+      "target_path": "docs/world/presentation/generated/posters/P3_POSTER_RELAY.webp",
+      "source_art_key_hint": "ending_p3_sealed_relay"
+    }
+  ]
+}

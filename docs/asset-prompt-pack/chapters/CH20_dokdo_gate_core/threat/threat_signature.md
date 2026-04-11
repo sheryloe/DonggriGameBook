@@ -7,14 +7,14 @@
 - asset_type: threat
 - subject: 관문 집행체
 - ratio: 4:5
-- art_key_runtime: ch20_dokdo_gate_core_boss
+- art_key_runtime: ch20_boss
 - art_key_final: threat_dokdo_gate_warden
 - filename_target: threat_dokdo_gate_warden_v01.webp
 - sync_target_path: codex_webgame_pack/img/threat/
 
 ## English Prompt
 ```text
-관문 집행체, Korean disaster setting infected, fused with 관문 개방 데크, 검역 코어 주변에서 선별 규칙을 물리적으로 강요하는 최종 개체, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
+관문 집행체, Korean disaster setting infected, fused with Field Window, 검역 코어 주변에서 선별 규칙을 물리적으로 강요하는 최종 개체, salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
 ```
 
 ## Korean Context

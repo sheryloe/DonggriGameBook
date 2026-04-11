@@ -1,0 +1,19 @@
+{
+  "video_id": "P4_END_WITNESSED_REDESIGN",
+  "scene_id": "ENDING_WITNESSED_REDESIGN",
+  "chapter_id": "CH20",
+  "ending_id": "P4_END_WITNESSED_REDESIGN",
+  "part_id": "P4",
+  "kind": "ending",
+  "duration": 20,
+  "aspect_ratio": "16:9",
+  "prompt_en": "A hard-won redesign ending where public testimony plays across weathered speakers, revised boarding lists hang in dawn light, and survivors rebuild the gate rules under witness instead of secrecy. salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure. weathered speakers, revised boarding lists, dawn light, public testimony, exhausted but present survivors. Grounded Korean apocalypse cinematic realism.",
+  "prompt_ko_context": "기록을 공개하고 규칙을 다시 짜는 균형 엔딩. 새 명부와 증언 방송, 피곤한 합의가 핵심이다.",
+  "camera_notes": "Center the new lists and the speaker system. Human faces should read relief and cost at the same time.",
+  "audio_notes": "Broadcast testimony, sea wind, restrained hopeful strings, mechanical hum settling into quiet.",
+  "source_art_key": "ending_p4_witnessed_redesign",
+  "target_video_path": "public/generated/videos/P4_END_WITNESSED_REDESIGN.mp4",
+  "target_poster_path": "public/generated/images/ending_p4_witnessed_redesign.webp",
+  "stitch_prompt": "A hard-won redesign ending where public testimony plays across weathered speakers, revised boarding lists hang in dawn light, and survivors rebuild the gate rules under witness instead of secrecy. Match style pack P4.ending.p4_end_witnessed_redesign.",
+  "file": "P4_END_WITNESSED_REDESIGN.json"
+}

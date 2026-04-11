@@ -5,20 +5,20 @@
 - chapter_id: CH06
 - part_id: P2
 - asset_type: background
-- subject: 우회 격리 복도
+- subject: Anchor Deck
 - ratio: 16:10
-- art_key_runtime: ch06_southern_gate_collapse_route
+- art_key_runtime: ch06_route
 - art_key_final: bg_ch06_southern_gate_collapse_secondary
 - filename_target: bg_ch06_southern_gate_collapse_secondary_v01.webp
 - sync_target_path: codex_webgame_pack/img/bg/
 
 ## English Prompt
 ```text
-secondary background for 하강 관문, 우회 격리 복도 and 남부 중계 방벽, 남하 진입과 공식선/우회선 충돌, checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, realistic infrastructure decay, Korean civic survival mood, layered signage, cinematic environment concept art, grounded realism
+secondary background for Southern Gate, Anchor Deck and Field Window, Southern Gate for P2., checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, realistic infrastructure decay, Korean civic survival mood, layered signage, cinematic environment concept art, grounded realism
 ```
 
 ## Korean Context
-CH06의 진행 압박이 깊어지는 배경이다. 우회 격리 복도 또는 남부 중계 방벽를 중심으로 메인 갈등이 실제 공간처럼 느껴져야 한다.
+CH06의 진행 압박이 깊어지는 배경이다. Anchor Deck 또는 Field Window를 중심으로 메인 갈등이 실제 공간처럼 느껴져야 한다.
 
 ## Negative Prompt
 ```text

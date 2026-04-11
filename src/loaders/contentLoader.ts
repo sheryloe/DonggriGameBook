@@ -50,6 +50,11 @@ const markdownModules = {
     eager: true,
     query: "?raw",
     import: "default"
+  }),
+  ...import.meta.glob("../../docs/world/**/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default"
   })
 } as Record<string, string>;
 
@@ -127,21 +132,20 @@ function resolveJsonPath(path: string, manifestPath: string): string | null {
   return pathCandidates(path, manifestPath).find((candidate) => hasJsonModule(candidate)) ?? null;
 }
 
+function resolveDocsRoots(manifest: PackageManifest): string[] {
+  const roots = [
+    ...(manifest.docs?.preferred_root ? [manifest.docs.preferred_root] : []),
+    ...(manifest.docs?.roots ?? []),
+    "docs/world",
+    "docs/concept_arc_01_05_md",
+    "apocalypse_arc_01_05"
+  ];
+
+  return [...new Set(roots.map((root) => root.trim()).filter((root) => root && hasMarkdownRoot(root)))];
+}
+
 function resolveDocsRoot(manifest: PackageManifest): string {
-  const preferred = manifest.docs?.preferred_root;
-  if (preferred && hasMarkdownRoot(preferred)) {
-    return preferred;
-  }
-
-  if (hasMarkdownRoot("apocalypse_arc_01_05")) {
-    return "apocalypse_arc_01_05";
-  }
-
-  if (hasMarkdownRoot("docs/concept_arc_01_05_md")) {
-    return "docs/concept_arc_01_05_md";
-  }
-
-  return "docs/concept_arc_01_05_md";
+  return resolveDocsRoots(manifest)[0] ?? "docs/concept_arc_01_05_md";
 }
 
 function extractTitle(markdown: string, fallback: string): string {
@@ -218,24 +222,31 @@ function normalizeChapter(raw: RawChapterPackage): ChapterDefinition {
   };
 }
 
-function collectDocs(root: string): Record<string, NarrativeDoc> {
-  return Object.fromEntries(
-    Object.entries(indexedMarkdownModules)
-      .filter(([path]) => path.startsWith(`${root}/`))
-      .sort(([left], [right]) => left.localeCompare(right))
-      .map(([path, body]) => {
-        const fallbackTitle = path.split("/").pop()?.replace(/\.md$/u, "") ?? path;
-        const id = path.replace(`${root}/`, "").replace(/\.md$/u, "");
-        const doc: NarrativeDoc = {
-          id,
-          title: extractTitle(body, fallbackTitle),
-          source_path: path,
-          body
-        };
+function collectDocs(roots: string[]): Record<string, NarrativeDoc> {
+  const docs = new Map<string, NarrativeDoc>();
 
-        return [id, doc];
-      })
-  );
+  for (const root of roots) {
+    for (const [path, body] of Object.entries(indexedMarkdownModules)
+      .filter(([entryPath]) => entryPath.startsWith(`${root}/`))
+      .sort(([left], [right]) => left.localeCompare(right))) {
+      const fallbackTitle = path.split("/").pop()?.replace(/\.md$/u, "") ?? path;
+      const id = path.replace(`${root}/`, "").replace(/\.md$/u, "");
+      const doc: NarrativeDoc = {
+        id,
+        title: extractTitle(body, fallbackTitle),
+        source_path: path,
+        body
+      };
+
+      if (!docs.has(id)) {
+        docs.set(id, doc);
+      }
+
+      docs.set(path, doc);
+    }
+  }
+
+  return Object.fromEntries(docs.entries());
 }
 
 function resolveManifestPathInternal(): JsonPath {
@@ -272,10 +283,12 @@ export async function loadPack(): Promise<GameContentPack> {
   const warnings: RuntimeWarning[] = [];
   const manifestPath = resolveManifestPathInternal();
   const manifest = readJson<PackageManifest>(manifestPath);
+  const docsRoots = resolveDocsRoots(manifest);
 
   const resolvedPaths: ResolvedProjectPaths = {
     manifest: manifestPath,
     docs_root: resolveDocsRoot(manifest),
+    docs_roots: docsRoots,
     schemas: {},
     data: {},
     ui: {}
@@ -380,7 +393,7 @@ export async function loadPack(): Promise<GameContentPack> {
     }
   }
 
-  const docs = collectDocs(resolvedPaths.docs_root);
+  const docs = collectDocs(docsRoots);
 
   return {
     manifest_path: manifestPath,

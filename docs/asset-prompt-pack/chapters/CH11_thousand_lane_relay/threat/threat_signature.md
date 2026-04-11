@@ -1,0 +1,38 @@
+# ch11_threat_signature
+
+## Header
+- asset_id: ch11_threat_signature
+- chapter_id: CH11
+- part_id: P3
+- asset_type: threat
+- subject: 레일 인도자
+- ratio: 4:5
+- art_key_runtime: ch11_boss
+- art_key_final: threat_rail_guide
+- filename_target: threat_rail_guide_v01.webp
+- sync_target_path: codex_webgame_pack/img/threat/
+
+## English Prompt
+```text
+레일 인도자, Korean disaster setting infected, fused with Field Window, 분기 레일을 따라 방향을 비트는 저온 개체, radio mast, cold storage, sea fog, archival realism, delayed guilt, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror
+```
+
+## Korean Context
+CH11의 시그니처 위협이다. 장소 적응형 감염체라는 점과 공략 포인트가 동시에 느껴져야 한다.
+
+## Negative Prompt
+```text
+no superhero pose, no cyberpunk neon city, no glossy sci-fi armor, no recognizable brands, no excessive gore, no anime proportions
+```
+
+## Composition Notes
+정면 박제보다 3/4 각도 우선. 환경과 융합된 형태가 한눈에 읽혀야 한다.
+
+## Continuity Notes
+P3 / thousand_lane_relay 스타일팩 유지. 후속 동기화 시 filename과 art_key_final을 그대로 사용한다.
+
+## Source Refs
+- codex_webgame_pack/data/chapters/ch11.json
+- ui/ch11.ui_flow.json
+- docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_CH11.md
+- docs/world/story-bible/PART_BIBLE_P3.md

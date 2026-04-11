@@ -1,13 +1,22 @@
 import type {
   EffectDefinition,
+  FlagValue,
   GameContentPack,
   InventoryItem,
   LootDrop,
   LootTable,
   RuntimeSnapshot,
-  RuntimeWarning
+  RuntimeWarning,
+  WidgetStateValue
 } from "../types/game";
-import { evaluateEffectGuard, normalizeFlagKey, normalizeItemKey } from "./requirements";
+import {
+  evaluateEffectGuard,
+  normalizeFlagKey,
+  normalizeItemKey,
+  normalizeNodeUnlockKey,
+  normalizeRouteUnlockKey,
+  normalizeTrustKey
+} from "./requirements";
 
 function makeWarning(message: string, source: string): RuntimeWarning {
   return {
@@ -15,6 +24,10 @@ function makeWarning(message: string, source: string): RuntimeWarning {
     source,
     severity: "warning"
   };
+}
+
+function nowIso(): string {
+  return new Date().toISOString();
 }
 
 function cloneSnapshot(runtime: RuntimeSnapshot): RuntimeSnapshot {
@@ -86,8 +99,74 @@ function cloneSnapshot(runtime: RuntimeSnapshot): RuntimeSnapshot {
       victory_effects: runtime.battle_state.victory_effects.map((effect) => ({ ...effect })),
       defeat_effects: runtime.battle_state.defeat_effects.map((effect) => ({ ...effect }))
     },
-    chapter_outcome: runtime.chapter_outcome ? { ...runtime.chapter_outcome } : null,
+    chapter_outcome: runtime.chapter_outcome
+      ? {
+          ...runtime.chapter_outcome,
+          result_payload: runtime.chapter_outcome.result_payload
+            ? {
+                ...runtime.chapter_outcome.result_payload,
+                metrics: runtime.chapter_outcome.result_payload.metrics
+                  ? { ...runtime.chapter_outcome.result_payload.metrics }
+                  : undefined,
+                flags: runtime.chapter_outcome.result_payload.flags
+                  ? { ...runtime.chapter_outcome.result_payload.flags }
+                  : undefined,
+                widgets: runtime.chapter_outcome.result_payload.widgets
+                  ? { ...runtime.chapter_outcome.result_payload.widgets }
+                  : undefined,
+                notes: runtime.chapter_outcome.result_payload.notes
+                  ? [...runtime.chapter_outcome.result_payload.notes]
+                  : undefined,
+                epilogue_card_ids: runtime.chapter_outcome.result_payload.epilogue_card_ids
+                  ? [...runtime.chapter_outcome.result_payload.epilogue_card_ids]
+                  : undefined
+              }
+            : undefined
+        }
+      : null,
+    chapter_result_payload: runtime.chapter_result_payload
+      ? {
+          ...runtime.chapter_result_payload,
+          metrics: runtime.chapter_result_payload.metrics ? { ...runtime.chapter_result_payload.metrics } : undefined,
+          flags: runtime.chapter_result_payload.flags ? { ...runtime.chapter_result_payload.flags } : undefined,
+          widgets: runtime.chapter_result_payload.widgets ? { ...runtime.chapter_result_payload.widgets } : undefined,
+          notes: runtime.chapter_result_payload.notes ? [...runtime.chapter_result_payload.notes] : undefined,
+          epilogue_card_ids: runtime.chapter_result_payload.epilogue_card_ids
+            ? [...runtime.chapter_result_payload.epilogue_card_ids]
+            : undefined
+        }
+      : runtime.chapter_result_payload ?? null,
     unlocked_endings: { ...runtime.unlocked_endings },
+    ending_gallery: runtime.ending_gallery ? { ...runtime.ending_gallery } : undefined,
+    route_unlocks: runtime.route_unlocks
+      ? Object.fromEntries(Object.entries(runtime.route_unlocks).map(([key, value]) => [key, { ...value }]))
+      : undefined,
+    node_unlocks: runtime.node_unlocks
+      ? Object.fromEntries(Object.entries(runtime.node_unlocks).map(([key, value]) => [key, { ...value }]))
+      : undefined,
+    field_actions_remaining:
+      typeof runtime.field_actions_remaining === "number"
+        ? runtime.field_actions_remaining
+        : runtime.field_actions_remaining
+          ? { ...runtime.field_actions_remaining }
+          : runtime.field_actions_remaining,
+    fail_state: runtime.fail_state ? { ...runtime.fail_state } : runtime.fail_state ?? null,
+    chapter_widgets_state: runtime.chapter_widgets_state
+      ? Object.fromEntries(
+          Object.entries(runtime.chapter_widgets_state).map(([chapterId, widgets]) => [
+            chapterId,
+            Object.fromEntries(
+              Object.entries(widgets).map(([widgetId, entry]) => [
+                widgetId,
+                {
+                  ...entry,
+                  value: entry.value
+                }
+              ])
+            )
+          ])
+        )
+      : undefined,
     media_seen: { ...runtime.media_seen },
     part1_carry_flags: runtime.part1_carry_flags ? { ...runtime.part1_carry_flags } : null
   };
@@ -139,6 +218,126 @@ function between(min: number, max: number, prng: () => number): number {
   }
 
   return min + Math.floor(prng() * (max - min + 1));
+}
+
+function toFlagValue(value: unknown, fallback = true): FlagValue {
+  if (typeof value === "boolean" || typeof value === "number" || typeof value === "string") {
+    return value;
+  }
+
+  return fallback;
+}
+
+function setAuthValue(runtime: RuntimeSnapshot, target: string, value: unknown): void {
+  runtime.stats[target] = value as string | number;
+  runtime.flags[target] = toFlagValue(value);
+}
+
+function clearAuthValue(runtime: RuntimeSnapshot, target: string): void {
+  delete runtime.stats[target];
+  delete runtime.flags[target];
+}
+
+function ensureChapterWidgetBucket(runtime: RuntimeSnapshot): Record<string, { widget_id: string; value: WidgetStateValue; source?: string; updated_at?: string }> {
+  runtime.chapter_widgets_state ??= {};
+  runtime.chapter_widgets_state[runtime.current_chapter_id] ??= {};
+  return runtime.chapter_widgets_state[runtime.current_chapter_id];
+}
+
+function setWidgetValue(runtime: RuntimeSnapshot, target: string, value: WidgetStateValue, source: string): void {
+  const widgetKey = target.replace(/^widget(?:_state)?\./u, "").trim();
+  if (!widgetKey) {
+    return;
+  }
+
+  const widgets = ensureChapterWidgetBucket(runtime);
+  widgets[widgetKey] = {
+    widget_id: widgetKey,
+    value,
+    source,
+    updated_at: nowIso()
+  };
+}
+
+function setFailStateValue(runtime: RuntimeSnapshot, target: string, value: unknown, source: string): void {
+  const key = target.replace(/^fail_state\./u, "").trim();
+  runtime.fail_state ??= { source };
+
+  if (!key) {
+    runtime.fail_state.reason = typeof value === "string" ? value : runtime.fail_state.reason;
+    runtime.fail_state.source = source;
+    return;
+  }
+
+  if (key === "active") {
+    if (!value) {
+      runtime.fail_state = null;
+    }
+    return;
+  }
+
+  if (key === "can_retry") {
+    runtime.fail_state.can_retry = Boolean(value);
+    return;
+  }
+
+  if (key === "event_id" || key === "setback_event_id" || key === "reason" || key === "source") {
+    (runtime.fail_state as Record<string, unknown>)[key] = value;
+  }
+}
+
+function setRouteUnlock(runtime: RuntimeSnapshot, target: string, value: unknown, source: string): void {
+  const key = normalizeRouteUnlockKey(target);
+  const flagValue = toFlagValue(value);
+
+  runtime.route_unlocks ??= {};
+  runtime.route_unlocks[key] = {
+    unlocked: Boolean(flagValue),
+    value: flagValue,
+    unlocked_at: nowIso(),
+    source
+  };
+  runtime.flags[`route.unlock.${key}`] = flagValue;
+  runtime.flags[key] = flagValue;
+}
+
+function setNodeUnlock(runtime: RuntimeSnapshot, target: string, value: unknown, source: string): void {
+  const key = normalizeNodeUnlockKey(target);
+  const flagValue = toFlagValue(value);
+
+  runtime.node_unlocks ??= {};
+  runtime.node_unlocks[key] = {
+    unlocked: Boolean(flagValue),
+    value: flagValue,
+    unlocked_at: nowIso(),
+    source
+  };
+  runtime.flags[`node.unlock.${key}`] = flagValue;
+  runtime.flags[key] = flagValue;
+}
+
+function readFieldActionBudget(runtime: RuntimeSnapshot): number {
+  if (typeof runtime.field_actions_remaining === "number") {
+    return runtime.field_actions_remaining;
+  }
+
+  if (runtime.field_actions_remaining && typeof runtime.field_actions_remaining === "object") {
+    const chapterValue = runtime.field_actions_remaining[runtime.current_chapter_id];
+    return typeof chapterValue === "number" ? chapterValue : 0;
+  }
+
+  return 0;
+}
+
+function writeFieldActionBudget(runtime: RuntimeSnapshot, nextValue: number): void {
+  const safeValue = Math.max(0, nextValue);
+  if (typeof runtime.field_actions_remaining === "number") {
+    runtime.field_actions_remaining = safeValue;
+    return;
+  }
+
+  runtime.field_actions_remaining ??= {};
+  runtime.field_actions_remaining[runtime.current_chapter_id] = safeValue;
 }
 
 export function resolveLootTableDeterministically(
@@ -233,12 +432,20 @@ export function applyEffects(
 
     switch (effect.op) {
       case "set_flag": {
-        nextRuntime.flags[normalizeFlagKey(effect.target)] =
-          effect.value === undefined ? true : (effect.value as boolean | number | string);
+        const flagKey = normalizeFlagKey(effect.target);
+        const nextValue = effect.value === undefined ? true : (effect.value as boolean | number | string);
+        nextRuntime.flags[flagKey] = nextValue;
+        if (flagKey.startsWith("auth.")) {
+          setAuthValue(nextRuntime, flagKey, nextValue);
+        }
         break;
       }
       case "clear_flag": {
-        delete nextRuntime.flags[normalizeFlagKey(effect.target)];
+        const flagKey = normalizeFlagKey(effect.target);
+        delete nextRuntime.flags[flagKey];
+        if (flagKey.startsWith("auth.")) {
+          clearAuthValue(nextRuntime, flagKey);
+        }
         break;
       }
       case "add_stat": {
@@ -249,6 +456,16 @@ export function applyEffects(
       case "sub_stat": {
         const current = Number(nextRuntime.stats[effect.target] ?? content.stats_registry[effect.target]?.default ?? 0);
         nextRuntime.stats[effect.target] = current - Number(effect.value ?? 0);
+        break;
+      }
+      case "consume_slot": {
+        writeFieldActionBudget(nextRuntime, readFieldActionBudget(nextRuntime) - Math.max(1, Number(effect.value ?? 1)));
+        break;
+      }
+      case "consume_fuel": {
+        const fuelKey = effect.target || "fuel";
+        const current = Number(nextRuntime.stats[fuelKey] ?? content.stats_registry[fuelKey]?.default ?? 0);
+        nextRuntime.stats[fuelKey] = Math.max(0, current - Math.max(1, Number(effect.value ?? 1)));
         break;
       }
       case "grant_item": {
@@ -276,6 +493,14 @@ export function applyEffects(
         nextRuntime.inventory.quantities[itemId] = Math.max(0, current - Math.max(0, quantity));
         break;
       }
+      case "unlock_route": {
+        setRouteUnlock(nextRuntime, effect.target, effect.value, source);
+        break;
+      }
+      case "unlock_node": {
+        setNodeUnlock(nextRuntime, effect.target, effect.value, source);
+        break;
+      }
       case "set_route": {
         const routeKey = effect.target || "route.current";
         const routeValue = String(effect.value ?? "none");
@@ -287,7 +512,12 @@ export function applyEffects(
         };
         break;
       }
-      case "add_trust":
+      case "add_trust": {
+        const trustKey = normalizeTrustKey(effect.target);
+        const current = Number(nextRuntime.stats[trustKey] ?? content.stats_registry[trustKey]?.default ?? 0);
+        nextRuntime.stats[trustKey] = current + Number(effect.value ?? 0);
+        break;
+      }
       case "add_reputation": {
         const current = Number(nextRuntime.stats[effect.target] ?? content.stats_registry[effect.target]?.default ?? 0);
         nextRuntime.stats[effect.target] = current + Number(effect.value ?? 0);
@@ -310,6 +540,21 @@ export function applyEffects(
         break;
       }
       case "set_value": {
+        if (effect.target.startsWith("auth.")) {
+          setAuthValue(nextRuntime, effect.target, effect.value);
+          break;
+        }
+
+        if (/^widget(?:_state)?\./u.test(effect.target)) {
+          setWidgetValue(nextRuntime, effect.target, (effect.value ?? null) as WidgetStateValue, source);
+          break;
+        }
+
+        if (effect.target.startsWith("fail_state.")) {
+          setFailStateValue(nextRuntime, effect.target, effect.value, source);
+          break;
+        }
+
         nextRuntime.stats[effect.target] = effect.value as string | number;
         break;
       }

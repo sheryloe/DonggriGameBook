@@ -2,26 +2,47 @@
   "version": "1.0.0",
   "game_id": "dokdo_arc_webgame",
   "chapter_id": "CH11",
-  "title": "철의 우회",
-  "role": "동해 우회선 확보와 이동 집단 규칙 노출",
+  "title": "Thousand Lanes",
+  "role": "Thousand Lanes for P3.",
   "entry_node_id": "CH11_N01",
   "exit_node_ids": [
     "CH11_N05"
   ],
   "recommended_level": 11,
+  "estimated_first_run_minutes": 5,
+  "field_action_budget": 2,
+  "carryover_keys": [
+    "p3.route_access",
+    "p3.public_evidence",
+    "p3.medical_reserve",
+    "p3.power_margin",
+    "p3.sacrifice_load"
+  ],
+  "repeatable_scavenging_events": [
+    "EV_CH11_SCAVENGE"
+  ],
+  "demo_route": [
+    "EV_CH11_ENTRY",
+    "EV_CH11_ROUTE",
+    "EV_CH11_ANCHOR",
+    "EV_CH11_PREP",
+    "EV_CH11_RESULT"
+  ],
   "ui_profile": {
-    "theme": "iron_detour_frost",
+    "theme": "thousand_lane_relay",
     "special_widgets": [
-      "rail_switch_map",
-      "cold_exposure",
-      "frequency_map",
-      "route_weight"
+      "signal_decoder",
+      "evidence_balance",
+      "power_router",
+      "checkpoint_auth",
+      "sacrifice_state",
+      "field_actions_remaining"
     ]
   },
   "objectives": [
     {
       "objective_id": "obj_ch11_01",
-      "text": "폐 신호소에 진입한다.",
+      "text": "Enter the chapter",
       "required": true,
       "complete_when": [
         "flag:ch11_entry"
@@ -29,7 +50,7 @@
     },
     {
       "objective_id": "obj_ch11_02",
-      "text": "우회 선로 분기점에서 주 경로를 확정한다.",
+      "text": "Lock the route axis",
       "required": true,
       "complete_when": [
         "flag:ch11_route_locked"
@@ -37,7 +58,7 @@
     },
     {
       "objective_id": "obj_ch11_03",
-      "text": "정비 화차의 핵심 압박을 돌파한다.",
+      "text": "Secure the anchor deck",
       "required": true,
       "complete_when": [
         "flag:ch11_anchor_secured"
@@ -45,18 +66,26 @@
     },
     {
       "objective_id": "obj_ch11_04",
-      "text": "선로반장의 편지",
+      "text": "Resolve optional field action A",
       "required": false,
       "complete_when": [
-        "flag:ch11_side_a_done"
+        "flag:ch11_relay_done"
       ]
     },
     {
       "objective_id": "obj_ch11_05",
-      "text": "폐화차 냉각코어",
+      "text": "Resolve optional field action B",
       "required": false,
       "complete_when": [
-        "flag:ch11_side_b_done"
+        "flag:ch11_triage_done"
+      ]
+    },
+    {
+      "objective_id": "obj_ch11_06",
+      "text": "Close the chapter result",
+      "required": true,
+      "complete_when": [
+        "flag:ch11_chapter_closed"
       ]
     }
   ],
@@ -64,24 +93,25 @@
     {
       "quest_track_id": "qt_ch11_main",
       "kind": "main",
-      "title": "철의 우회",
-      "summary": "증언과 장비를 실은 채 냉기 어린 우회선을 통과한다.",
+      "title": "Thousand Lanes",
+      "summary": "Thousand Lanes",
       "entry_event_id": "EV_CH11_ENTRY",
-      "completion_event_id": "EV_CH11_BOSS",
+      "completion_event_id": "EV_CH11_RESULT",
       "objective_ids": [
         "obj_ch11_01",
         "obj_ch11_02",
-        "obj_ch11_03"
+        "obj_ch11_03",
+        "obj_ch11_06"
       ],
       "reveal_cap": "confirmation"
     },
     {
       "quest_track_id": "qt_ch11_side_a",
       "kind": "side",
-      "title": "선로반장의 편지",
-      "summary": "마지막 점검자의 기록을 회수한다.",
-      "entry_event_id": "EV_CH11_SIDE_A",
-      "completion_event_id": "EV_CH11_SIDE_A",
+      "title": "Rewire the relay stack",
+      "summary": "Rewire the relay stack",
+      "entry_event_id": "EV_CH11_ACTION_A",
+      "completion_event_id": "EV_CH11_ACTION_A",
       "objective_ids": [
         "obj_ch11_04"
       ],
@@ -93,10 +123,10 @@
     {
       "quest_track_id": "qt_ch11_side_b",
       "kind": "side",
-      "title": "폐화차 냉각코어",
-      "summary": "후속 장비 수리를 위한 냉각 코어를 확보한다.",
-      "entry_event_id": "EV_CH11_SIDE_B",
-      "completion_event_id": "EV_CH11_SIDE_B",
+      "title": "Sort the triage reserve",
+      "summary": "Sort the triage reserve",
+      "entry_event_id": "EV_CH11_ACTION_B",
+      "completion_event_id": "EV_CH11_ACTION_B",
       "objective_ids": [
         "obj_ch11_05"
       ],
@@ -109,25 +139,28 @@
   "nodes": [
     {
       "node_id": "CH11_N01",
-      "name": "폐 신호소",
+      "name": "Entry Gate",
       "node_type": "travel",
-      "description": "증언과 장비를 실은 채 냉기 어린 우회선을 통과한다.의 시작점.",
+      "description": "Thousand Lanes Entry Gate.",
       "coordinates": {
-        "x": 10,
-        "y": 80
+        "x": 22,
+        "y": 74
       },
       "encounter_table_id": "enc_ch11_rail_field",
       "loot_table_ids": [
         "lt_ch05_server"
       ],
-      "npc_ids": [],
+      "npc_ids": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
       "connections": [
         {
           "to": "CH11_N02",
-          "travel_type": "walk",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
-            "time": 3,
+            "time": 2,
             "noise": 1,
             "contamination": 1
           }
@@ -138,18 +171,19 @@
       ],
       "revisit_rule": "always",
       "tags": [
-        "entry",
-        "p3"
+        "p3",
+        "thousand_lane_relay",
+        "travel"
       ]
     },
     {
       "node_id": "CH11_N02",
-      "name": "우회 선로 분기점",
-      "node_type": "safehouse",
-      "description": "P3 전용 허브 리듬을 여는 구간.",
+      "name": "Route Board",
+      "node_type": "route_select",
+      "description": "Thousand Lanes Route Board.",
       "coordinates": {
-        "x": 28,
-        "y": 62
+        "x": 26,
+        "y": 70
       },
       "encounter_table_id": "enc_ch11_rail_field",
       "loot_table_ids": [
@@ -162,42 +196,34 @@
       "connections": [
         {
           "to": "CH11_N03",
-          "travel_type": "corridor",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
-            "noise": 2,
-            "contamination": 1
-          }
-        },
-        {
-          "to": "CH11_N04",
-          "travel_type": "detour",
-          "requires": [],
-          "cost": {
-            "time": 3,
             "noise": 1,
-            "contamination": 2
+            "contamination": 1
           }
         }
       ],
       "event_ids": [
-        "EV_CH11_ROUTE"
+        "EV_CH11_ROUTE",
+        "EV_CH11_APPROACH"
       ],
       "revisit_rule": "always",
       "tags": [
-        "route",
-        "iron_detour_frost"
+        "p3",
+        "thousand_lane_relay",
+        "route_select"
       ]
     },
     {
       "node_id": "CH11_N03",
-      "name": "정비 화차",
+      "name": "Anchor Deck",
       "node_type": "exploration",
-      "description": "증언과 장비를 실은 채 냉기 어린 우회선을 통과한다.",
+      "description": "Thousand Lanes Anchor Deck.",
       "coordinates": {
-        "x": 52,
-        "y": 48
+        "x": 22,
+        "y": 74
       },
       "encounter_table_id": "enc_ch11_rail_field",
       "loot_table_ids": [
@@ -210,24 +236,12 @@
       "connections": [
         {
           "to": "CH11_N04",
-          "travel_type": "service_route",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
-            "noise": 2,
+            "noise": 1,
             "contamination": 1
-          }
-        },
-        {
-          "to": "CH11_N05",
-          "travel_type": "push_forward",
-          "requires": [
-            "flag:ch11_route_locked"
-          ],
-          "cost": {
-            "time": 2,
-            "noise": 3,
-            "contamination": 2
           }
         }
       ],
@@ -236,18 +250,19 @@
       ],
       "revisit_rule": "always",
       "tags": [
-        "main",
-        "p3"
+        "p3",
+        "thousand_lane_relay",
+        "exploration"
       ]
     },
     {
       "node_id": "CH11_N04",
-      "name": "잔향 기지 외곽",
+      "name": "Field Window",
       "node_type": "branch",
-      "description": "인물형/세계관형 사이드 퀘스트를 처리하는 보조 구역.",
+      "description": "Thousand Lanes Field Window.",
       "coordinates": {
-        "x": 70,
-        "y": 58
+        "x": 34,
+        "y": 62
       },
       "encounter_table_id": "enc_ch11_rail_field",
       "loot_table_ids": [
@@ -260,7 +275,7 @@
       "connections": [
         {
           "to": "CH11_N05",
-          "travel_type": "return_route",
+          "travel_type": "advance",
           "requires": [],
           "cost": {
             "time": 2,
@@ -270,23 +285,26 @@
         }
       ],
       "event_ids": [
-        "EV_CH11_SIDE_A",
-        "EV_CH11_SIDE_B"
+        "EV_CH11_FIELD_HUB",
+        "EV_CH11_ACTION_A",
+        "EV_CH11_ACTION_B",
+        "EV_CH11_SCAVENGE"
       ],
-      "revisit_rule": "after_clear",
+      "revisit_rule": "always",
       "tags": [
-        "side",
-        "iron_detour_frost"
+        "p3",
+        "thousand_lane_relay",
+        "branch"
       ]
     },
     {
       "node_id": "CH11_N05",
-      "name": "레일 인도자 대응 구역",
+      "name": "Terminal Gate",
       "node_type": "boss",
-      "description": "레일 인도자와 충돌하는 클라이맥스 구간.",
+      "description": "Thousand Lanes Terminal Gate.",
       "coordinates": {
-        "x": 90,
-        "y": 32
+        "x": 30,
+        "y": 66
       },
       "encounter_table_id": "enc_ch11_rail_boss",
       "loot_table_ids": [
@@ -298,12 +316,15 @@
       ],
       "connections": [],
       "event_ids": [
-        "EV_CH11_BOSS"
+        "EV_CH11_PREP",
+        "EV_CH11_BOSS",
+        "EV_CH11_RESULT"
       ],
-      "revisit_rule": "after_clear",
+      "revisit_rule": "always",
       "tags": [
-        "boss",
-        "p3"
+        "p3",
+        "thousand_lane_relay",
+        "boss"
       ]
     }
   ],
@@ -312,44 +333,74 @@
       "event_id": "EV_CH11_ENTRY",
       "event_type": "briefing",
       "node_id": "CH11_N01",
-      "title": "철의 우회 진입",
+      "title": "Chapter entry",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 100,
+      "priority": 98,
       "conditions": [],
       "presentation": {
-        "layout": "dialogue",
-        "art_key": "ch11_iron_detour_frost_entry",
-        "music_key": "echo_base",
+        "layout": "choice",
+        "art_key": "ch11_entry",
+        "music_key": "thousand_lane_relay",
         "widget_overrides": [
-          "objective_panel",
-          "rail_switch_map",
-          "cold_exposure",
-          "route_weight"
+          "signal_decoder",
+          "evidence_balance",
+          "power_router"
         ]
       },
       "text": {
-        "summary": "증언과 장비를 실은 채 냉기 어린 우회선을 통과한다.",
+        "summary": "Thousand Lanes opens with route pressure.",
         "body": [
-          "P3의 분위기는 푸른 응급등, 백색 서리, 철골, 넓은 음영, 구조 기록 보드로 간다.",
-          "이번 장의 핵심은 동해 우회선 확보와 이동 집단 규칙 노출이다."
+          "Target first-run time: 5 minutes."
         ]
       },
       "npc_ids": [
-        "npc_park_isaac"
+        "npc_park_isaac",
+        "npc_ryu_seon"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch11_start",
-          "label": "임무 시작",
+          "choice_id": "ch11_entry_slow",
+          "label": "Move under cover",
           "conditions": [],
-          "preview": "이번 장의 메인 루프를 연다.",
+          "preview": "Lower noise, slower tempo.",
           "effects": [
             {
               "op": "set_flag",
               "target": "flag:ch11_entry",
               "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_ROUTE"
+        },
+        {
+          "choice_id": "ch11_entry_fast",
+          "label": "Push through the breach",
+          "conditions": [],
+          "preview": "Faster, louder opening.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_entry",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH11_ROUTE"
@@ -362,75 +413,204 @@
       "event_id": "EV_CH11_ROUTE",
       "event_type": "choice",
       "node_id": "CH11_N02",
-      "title": "격리 기지 확정",
+      "title": "Route lock",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 90,
+      "priority": 97,
       "conditions": [
         "flag:ch11_entry"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch11_iron_detour_frost_route",
-        "music_key": "echo_base",
+        "art_key": "ch11_route",
+        "music_key": "thousand_lane_relay",
         "widget_overrides": [
-          "rail_switch_map",
-          "cold_exposure",
-          "route_weight"
+          "signal_decoder",
+          "evidence_balance",
+          "power_router",
+          "checkpoint_auth",
+          "sacrifice_state",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "동해 격리선의 첫 인상에서 경로를 고른다.",
+        "summary": "Lock one dominant route axis.",
         "body": [
-          "공식선과 우회선 중 어떤 리듬으로 갈지 결정한다.",
-          "주파수 스윕, 무거운 패널, 느린 페이드, 저온 브레스을 화면 전환에 반영한다."
+          "Carry state starts here."
         ]
       },
       "npc_ids": [
         "npc_park_isaac",
         "npc_ryu_seon"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch11_official",
-          "label": "공식선 유지",
+          "choice_id": "ch11_route_certified",
+          "label": "Rebuild the certified passage",
           "conditions": [],
-          "preview": "안전하지만 느리다.",
+          "preview": "This becomes the main chapter axis.",
           "effects": [
             {
               "op": "set_route",
-              "target": "route",
-              "value": "p3_iron_detour_frost_official"
+              "target": "route.current",
+              "value": "p3.route_access"
             },
             {
               "op": "set_flag",
               "target": "flag:ch11_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "p3.route_access",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "checkpoint_auth",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_APPROACH"
+        },
+        {
+          "choice_id": "ch11_route_public",
+          "label": "Expose the evidence publicly",
+          "conditions": [],
+          "preview": "This becomes the main chapter axis.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "p3.public_evidence"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "p3.public_evidence",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_APPROACH"
+        },
+        {
+          "choice_id": "ch11_route_medical",
+          "label": "Protect the cold reserve",
+          "conditions": [],
+          "preview": "This becomes the main chapter axis.",
+          "effects": [
+            {
+              "op": "set_route",
+              "target": "route.current",
+              "value": "p3.medical_reserve"
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_route_locked",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "p3.medical_reserve",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "sacrifice_state",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_APPROACH"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH11_APPROACH",
+      "event_type": "choice",
+      "node_id": "CH11_N02",
+      "title": "Initial approach",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch11_route_locked"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch11_approach",
+        "music_key": "thousand_lane_relay",
+        "widget_overrides": [
+          "signal_decoder",
+          "evidence_balance"
+        ]
+      },
+      "text": {
+        "summary": "Choose what this chapter reads first.",
+        "body": [
+          "The first read changes later review tone."
+        ]
+      },
+      "npc_ids": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch11_approach_record",
+          "label": "Read the system record first",
+          "conditions": [],
+          "preview": "Lower volatility, stronger context.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_approach_record",
               "value": true
             }
           ],
           "next_event_id": "EV_CH11_ANCHOR"
         },
         {
-          "choice_id": "ch11_detour",
-          "label": "우회선 강행",
+          "choice_id": "ch11_approach_people",
+          "label": "Read the human queue first",
           "conditions": [],
-          "preview": "빠르지만 비용이 크다.",
+          "preview": "Higher pressure, stronger witness angle.",
           "effects": [
             {
-              "op": "set_route",
-              "target": "route",
-              "value": "p3_iron_detour_frost_detour"
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_approach_people",
+              "value": true
             },
             {
               "op": "add_stat",
               "target": "noise",
-              "value": 3
-            },
-            {
-              "op": "set_flag",
-              "target": "flag:ch11_route_locked",
-              "value": true
+              "value": 1
             }
           ],
           "next_event_id": "EV_CH11_ANCHOR"
@@ -441,82 +621,120 @@
     },
     {
       "event_id": "EV_CH11_ANCHOR",
-      "event_type": "dialogue",
+      "event_type": "choice",
       "node_id": "CH11_N03",
-      "title": "철의 우회 핵심 압박",
+      "title": "Anchor secured",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 80,
+      "priority": 98,
       "conditions": [
         "flag:ch11_route_locked"
       ],
       "presentation": {
-        "layout": "dialogue",
-        "art_key": "ch11_iron_detour_frost_anchor",
-        "music_key": "echo_base",
+        "layout": "choice",
+        "art_key": "ch11_anchor",
+        "music_key": "thousand_lane_relay",
         "widget_overrides": [
-          "event_card",
-          "rail_switch_map",
-          "cold_exposure",
-          "route_weight"
+          "power_router",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "증언과 장비를 실은 채 냉기 어린 우회선을 통과한다.",
+        "summary": "The anchor grants two optional field actions.",
         "body": [
-          "핵심 NPC: npc_park_isaac, npc_ryu_seon",
-          "인물 앵커와 세계관 앵커를 동시에 밀어 넣는다."
+          "You can still progress without clearing both."
         ]
       },
       "npc_ids": [
         "npc_park_isaac",
         "npc_ryu_seon"
       ],
-      "loot_table_ids": [],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch11_anchor",
-          "label": "압박 돌파",
+          "choice_id": "ch11_anchor_hold",
+          "label": "Secure the anchor deck",
           "conditions": [],
-          "preview": "사이드 퀘스트와 보스 구간을 연다.",
+          "preview": "Open the side windows cleanly.",
           "effects": [
             {
               "op": "set_flag",
               "target": "flag:ch11_anchor_secured",
               "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "field_actions_remaining",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
             }
           ],
-          "next_event_id": "EV_CH11_SIDE_A"
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch11_anchor_force",
+          "label": "Force the anchor deck",
+          "conditions": [],
+          "preview": "Open the side windows under pressure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_anchor_secured",
+              "value": true
+            },
+            {
+              "op": "set_value",
+              "target": "field_actions_remaining",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
         }
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
     },
     {
-      "event_id": "EV_CH11_SIDE_A",
-      "event_type": "exploration",
+      "event_id": "EV_CH11_FIELD_HUB",
+      "event_type": "choice",
       "node_id": "CH11_N04",
-      "title": "선로반장의 편지",
-      "repeatable": false,
-      "once_per_run": true,
-      "priority": 70,
+      "title": "Field action hub",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 95,
       "conditions": [
         "flag:ch11_anchor_secured"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch11_iron_detour_frost_side_a",
-        "music_key": "echo_base",
+        "art_key": "ch11_field_hub",
+        "music_key": "thousand_lane_relay",
         "widget_overrides": [
-          "choice_list",
-          "rail_switch_map"
+          "signal_decoder",
+          "evidence_balance",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "마지막 점검자의 기록을 회수한다.",
+        "summary": "Field actions are optional and capped at two.",
         "body": [
-          "인물형 사이드 퀘스트로 신뢰와 보급을 움직인다.",
-          "Part 3의 감정 리듬을 강화한다."
+          "Scavenging is repeatable, but pressure rises."
         ]
       },
       "npc_ids": [
@@ -528,61 +746,109 @@
       ],
       "choices": [
         {
-          "choice_id": "ch11_side_a",
-          "label": "사이드 처리",
-          "conditions": [],
-          "preview": "신뢰와 보급을 확보한다.",
+          "choice_id": "ch11_field_a",
+          "label": "Rewire the relay stack",
+          "conditions": [
+            "field_actions_remaining>=1",
+            "!flag:ch11_relay_done"
+          ],
+          "preview": "Spend one field action budget.",
           "effects": [
             {
               "op": "set_flag",
-              "target": "flag:ch11_side_a_done",
+              "target": "flag:ch11_relay_pending",
               "value": true
-            },
+            }
+          ],
+          "next_event_id": "EV_CH11_ACTION_A"
+        },
+        {
+          "choice_id": "ch11_field_b",
+          "label": "Sort the triage reserve",
+          "conditions": [
+            "field_actions_remaining>=1",
+            "!flag:ch11_triage_done"
+          ],
+          "preview": "Spend one field action budget.",
+          "effects": [
             {
-              "op": "add_trust",
-              "target": "npc_park_isaac",
-              "value": 1
-            },
+              "op": "set_flag",
+              "target": "flag:ch11_triage_pending",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH11_ACTION_B"
+        },
+        {
+          "choice_id": "ch11_scavenge",
+          "label": "Repeatable scavenging pass",
+          "conditions": [],
+          "preview": "Short loot loop with extra pressure.",
+          "effects": [],
+          "next_event_id": "EV_CH11_SCAVENGE"
+        },
+        {
+          "choice_id": "ch11_prep",
+          "label": "Stage the final push",
+          "conditions": [
+            "flag:ch11_relay_done|flag:ch11_triage_done|field_actions_remaining<=0"
+          ],
+          "preview": "Move toward the closure path.",
+          "effects": [
             {
-              "op": "grant_loot_table",
-              "target": "loot:lt_ch05_server",
+              "op": "set_flag",
+              "target": "flag:ch11_prep_ready",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH11_PREP"
+        },
+        {
+          "choice_id": "ch11_hold",
+          "label": "Hold position",
+          "conditions": [],
+          "preview": "Stay in the field loop.",
+          "effects": [
+            {
+              "op": "add_stat",
+              "target": "noise",
               "value": 1
             }
           ],
-          "next_event_id": "EV_CH11_SIDE_B"
+          "next_event_id": "EV_CH11_FIELD_HUB"
         }
       ],
       "on_enter_effects": [],
       "on_complete_effects": []
     },
     {
-      "event_id": "EV_CH11_SIDE_B",
-      "event_type": "exploration",
+      "event_id": "EV_CH11_ACTION_A",
+      "event_type": "choice",
       "node_id": "CH11_N04",
-      "title": "폐화차 냉각코어",
+      "title": "Rewire the relay stack",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 69,
+      "priority": 98,
       "conditions": [
-        "flag:ch11_anchor_secured"
+        "flag:ch11_relay_pending"
       ],
       "presentation": {
         "layout": "choice",
-        "art_key": "ch11_iron_detour_frost_side_b",
-        "music_key": "echo_base",
+        "art_key": "ch11_relay",
+        "music_key": "thousand_lane_relay",
         "widget_overrides": [
-          "choice_list",
-          "cold_exposure"
+          "power_router",
+          "field_actions_remaining"
         ]
       },
       "text": {
-        "summary": "후속 장비 수리를 위한 냉각 코어를 확보한다.",
+        "summary": "Rewire the relay stack is optional.",
         "body": [
-          "세계관형 사이드 퀘스트로 다음 장의 연결고리를 선행 공개한다.",
-          "시각적으로는 푸른 응급등, 백색 서리, 철골, 넓은 음영, 구조 기록 보드을 유지하되 더 깊은 공간감을 준다."
+          "Its completion feeds the review text and final matrix."
         ]
       },
       "npc_ids": [
+        "npc_park_isaac",
         "npc_ryu_seon"
       ],
       "loot_table_ids": [
@@ -590,19 +856,341 @@
       ],
       "choices": [
         {
-          "choice_id": "ch11_side_b",
-          "label": "기록 회수",
+          "choice_id": "ch11_relay_a",
+          "label": "Protect clean power",
           "conditions": [],
-          "preview": "다음 장의 연결고리를 확보한다.",
+          "preview": "Safer resolution.",
           "effects": [
             {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
               "op": "set_flag",
-              "target": "flag:ch11_side_b_done",
+              "target": "flag:ch11_relay_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch11_relay_pending",
               "value": true
             },
             {
               "op": "grant_loot_table",
               "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch11_relay_b",
+          "label": "Overclock the signal",
+          "conditions": [],
+          "preview": "Riskier but louder.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_relay_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch11_relay_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH11_ACTION_B",
+      "event_type": "choice",
+      "node_id": "CH11_N04",
+      "title": "Sort the triage reserve",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch11_triage_pending"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch11_triage",
+        "music_key": "thousand_lane_relay",
+        "widget_overrides": [
+          "sacrifice_state",
+          "field_actions_remaining"
+        ]
+      },
+      "text": {
+        "summary": "Sort the triage reserve is optional.",
+        "body": [
+          "Its completion feeds the review text and final matrix."
+        ]
+      },
+      "npc_ids": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch11_triage_a",
+          "label": "Save the medicine cache",
+          "conditions": [],
+          "preview": "Safer resolution.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_triage_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch11_triage_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "sacrifice_state",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch11_triage_b",
+          "label": "Publish the ration list",
+          "conditions": [],
+          "preview": "Riskier but louder.",
+          "effects": [
+            {
+              "op": "sub_stat",
+              "target": "field_actions_remaining",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_triage_done",
+              "value": true
+            },
+            {
+              "op": "clear_flag",
+              "target": "flag:ch11_triage_pending",
+              "value": true
+            },
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "sacrifice_state",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH11_SCAVENGE",
+      "event_type": "exploration",
+      "node_id": "CH11_N04",
+      "title": "Scavenge loop",
+      "repeatable": true,
+      "once_per_run": false,
+      "priority": 98,
+      "conditions": [
+        "flag:ch11_anchor_secured"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch11_scavenge",
+        "music_key": "thousand_lane_relay",
+        "widget_overrides": [
+          "loot_grid",
+          "signal_decoder"
+        ]
+      },
+      "text": {
+        "summary": "Repeatable scavenging is available in every chapter.",
+        "body": [
+          "Per-part minimum is exceeded by design."
+        ]
+      },
+      "npc_ids": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch11_scavenge_quick",
+          "label": "Grab what is near",
+          "conditions": [],
+          "preview": "Gain loot and accept noise.",
+          "effects": [
+            {
+              "op": "grant_loot_table",
+              "target": "loot:lt_ch05_server",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        },
+        {
+          "choice_id": "ch11_scavenge_exit",
+          "label": "Cut the scavenging short",
+          "conditions": [],
+          "preview": "Return to the field hub.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_scavenge_seen",
+              "value": true
+            }
+          ],
+          "next_event_id": "EV_CH11_FIELD_HUB"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": []
+    },
+    {
+      "event_id": "EV_CH11_PREP",
+      "event_type": "choice",
+      "node_id": "CH11_N05",
+      "title": "Final preparation",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch11_prep_ready"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch11_prep",
+        "music_key": "thousand_lane_relay",
+        "widget_overrides": [
+          "signal_decoder",
+          "power_router"
+        ]
+      },
+      "text": {
+        "summary": "Prep translates carry state into the boss approach.",
+        "body": [
+          "Boss choices never self-loop."
+        ]
+      },
+      "npc_ids": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
+      "choices": [
+        {
+          "choice_id": "ch11_prep_clean",
+          "label": "Carry the clean route into the gate",
+          "conditions": [],
+          "preview": "Lower contamination, cleaner closure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_prep_clean",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "power_router",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_BOSS"
+        },
+        {
+          "choice_id": "ch11_prep_hard",
+          "label": "Carry pressure straight into the gate",
+          "conditions": [],
+          "preview": "Higher strain, stronger confrontation.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_prep_hard",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "noise",
+              "value": 1
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
               "value": 1
             }
           ],
@@ -616,30 +1204,27 @@
       "event_id": "EV_CH11_BOSS",
       "event_type": "combat",
       "node_id": "CH11_N05",
-      "title": "레일 인도자 제압",
+      "title": "Relay Sentinel",
       "repeatable": false,
       "once_per_run": true,
-      "priority": 120,
+      "priority": 98,
       "conditions": [
-        "flag:ch11_route_locked",
-        "flag:ch11_anchor_secured"
+        "flag:ch11_prep_ready"
       ],
       "presentation": {
         "layout": "boss",
-        "art_key": "ch11_iron_detour_frost_boss",
-        "music_key": "echo_base_boss",
+        "art_key": "ch11_boss",
+        "music_key": "thousand_lane_relay",
         "widget_overrides": [
           "boss_hp",
-          "rail_switch_map",
-          "cold_exposure",
-          "route_weight"
+          "signal_decoder",
+          "evidence_balance"
         ]
       },
       "text": {
-        "summary": "레일 인도자가 철의 우회의 규칙을 물리적으로 강요한다.",
+        "summary": "Relay Sentinel is the terminal pressure test.",
         "body": [
-          "이번 전투는 파트별 톤 차이를 가장 강하게 보여주는 구간이다.",
-          "전투 뒤 바로 다음 장으로 밀려나는 감정 잔향이 붙는다."
+          "Both boss choices resolve into the result event."
         ]
       },
       "npc_ids": [
@@ -649,27 +1234,67 @@
       "loot_table_ids": [
         "lt_ch05_server"
       ],
+      "choices": [
+        {
+          "choice_id": "ch11_boss_direct",
+          "label": "Break the front",
+          "conditions": [],
+          "preview": "Direct confrontation into the closure.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_boss_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_RESULT"
+        },
+        {
+          "choice_id": "ch11_boss_overload",
+          "label": "Overload the gate",
+          "conditions": [],
+          "preview": "Higher contamination for stronger swing.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_boss_clear",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "contamination",
+              "value": 2
+            },
+            {
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            }
+          ],
+          "next_event_id": "EV_CH11_RESULT"
+        }
+      ],
+      "on_enter_effects": [],
+      "on_complete_effects": [],
       "combat": {
         "encounter_table_id": "enc_ch11_rail_boss",
         "boss_id": "rail_guide",
         "arena_tags": [
-          "iron_detour_frost",
+          "thousand_lane_relay",
+          "boss",
           "p3"
         ],
+        "fail_event_id": "EV_CH11_RESULT",
+        "setback_event_id": "EV_CH11_RESULT",
         "victory_effects": [
           {
             "op": "set_flag",
             "target": "flag:ch11_boss_clear",
-            "value": true
-          },
-          {
-            "op": "set_flag",
-            "target": "flag:chapter_11_completed",
-            "value": true
-          },
-          {
-            "op": "unlock_route",
-            "target": "chapter:CH11:complete",
             "value": true
           }
         ],
@@ -677,23 +1302,88 @@
           {
             "op": "sub_stat",
             "target": "hp",
-            "value": 18
+            "value": 14
           },
           {
             "op": "add_stat",
             "target": "contamination",
-            "value": 8
+            "value": 4
           }
         ]
+      }
+    },
+    {
+      "event_id": "EV_CH11_RESULT",
+      "event_type": "result",
+      "node_id": "CH11_N05",
+      "title": "Chapter closure",
+      "repeatable": false,
+      "once_per_run": true,
+      "priority": 98,
+      "conditions": [
+        "flag:ch11_boss_clear"
+      ],
+      "presentation": {
+        "layout": "choice",
+        "art_key": "ch11_result",
+        "music_key": "thousand_lane_relay",
+        "widget_overrides": [
+          "chapter_result",
+          "signal_decoder",
+          "evidence_balance"
+        ]
       },
+      "text": {
+        "summary": "Each non-final chapter ends with a result-oriented closure.",
+        "body": [
+          "The next chapter inherits carry state instead of a hard reset."
+        ]
+      },
+      "npc_ids": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
+      "loot_table_ids": [
+        "lt_ch05_server"
+      ],
       "choices": [
         {
-          "choice_id": "ch11_engage",
-          "label": "보스 교전",
+          "choice_id": "ch11_closure_a",
+          "label": "Lock the certification trail",
           "conditions": [],
-          "preview": "클라이맥스 전투를 시작한다.",
-          "effects": [],
-          "next_event_id": "EV_CH11_BOSS"
+          "preview": "Carry the dominant axis forward.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_chapter_closed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "signal_decoder",
+              "value": 1
+            }
+          ],
+          "next_event_id": "END_CH11_RESOLVED"
+        },
+        {
+          "choice_id": "ch11_closure_b",
+          "label": "Leave the evidence burning",
+          "conditions": [],
+          "preview": "Carry the stress signal forward.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "target": "flag:ch11_chapter_closed",
+              "value": true
+            },
+            {
+              "op": "add_stat",
+              "target": "evidence_balance",
+              "value": 1
+            }
+          ],
+          "next_event_id": "END_CH11_RESOLVED"
         }
       ],
       "on_enter_effects": [],

@@ -5,7 +5,7 @@
 - chapter_id: CH20
 - part_id: P4
 - asset_type: teaser
-- subject: 독도의 문 entry beat
+- subject: Dokdo Gate entry beat
 - ratio: 16:9
 - art_key_runtime: pending:teaser_ch20_entry
 - art_key_final: teaser_ch20_entry
@@ -14,7 +14,7 @@
 
 ## English Prompt
 ```text
-cinematic teaser frame for 독도의 문, entry beat, 독도 검역 터널, 세 가지 미래 중 하나를 고르고 기록을 어떻게 남길지 결정한다., salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, atmospheric realism, grounded disaster mood, strong opening image
+cinematic teaser frame for Dokdo Gate, entry beat, Entry Gate, Dokdo Gate opens with route pressure., salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure, atmospheric realism, grounded disaster mood, strong opening image
 ```
 
 ## Korean Context

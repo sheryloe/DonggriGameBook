@@ -33,6 +33,70 @@ import type {
 
 type BootState = "idle" | "loading" | "ready" | "error";
 
+interface ChapterResultPayload {
+  chapter_id: ChapterId;
+  ended_by: string;
+  selected_route?: string;
+  chapter_minutes: number;
+  total_minutes: number;
+  objective_summary: Array<{
+    objective_id: string;
+    text: string;
+    required: boolean;
+    completed: boolean;
+  }>;
+  quest_summary: Array<{
+    quest_track_id: string;
+    title: string;
+    kind: "main" | "side";
+    status: "locked" | "active" | "completed";
+  }>;
+  widget_state: Record<string, string | number | boolean>;
+  active_flags: string[];
+}
+
+interface EndingGalleryRuntimeEntry {
+  ending_id: string;
+  chapter_id: ChapterId;
+  title: string;
+  summary: string;
+  hint: string;
+  art_key: string;
+  thumb_key: string;
+  video_id?: string;
+  unlocked_at?: string;
+}
+
+interface FailStateSnapshot {
+  source_event_id?: string | null;
+  reason: "fail" | "setback";
+  failed_at: string;
+}
+
+interface ExtendedRuntimeSnapshot extends RuntimeSnapshot {
+  chapter_result_payload?: ChapterResultPayload | null;
+  ending_gallery?: Record<string, EndingGalleryRuntimeEntry>;
+  route_unlocks?: Record<string, boolean>;
+  node_unlocks?: Record<string, boolean>;
+  field_actions_remaining?: number;
+  fail_state?: FailStateSnapshot | null;
+  chapter_widgets_state?: Record<string, string | number | boolean>;
+}
+
+type ExtendedChapterOutcome = NonNullable<RuntimeSnapshot["chapter_outcome"]> & {
+  chapter_result_payload?: ChapterResultPayload;
+  gallery_chapter_id?: ChapterId;
+  result_variant?: string;
+};
+
+interface FlowTarget {
+  nextEventId?: string | null;
+  nextNodeId?: string | null;
+  failEventId?: string | null;
+  setbackEventId?: string | null;
+  mode?: "default" | "fail" | "setback";
+}
+
 interface GameState {
   appId: typeof CURRENT_APP_ID;
   partId: typeof CURRENT_PART_ID;
@@ -65,6 +129,63 @@ const BASE_CHOICE_MINUTES = 1;
 
 function nowIso(): string {
   return new Date().toISOString();
+}
+
+function asExtendedRuntime(runtime: RuntimeSnapshot): ExtendedRuntimeSnapshot {
+  return runtime as ExtendedRuntimeSnapshot;
+}
+
+function humanizeToken(value: string): string {
+  return value
+    .replace(/^P\d+_END_/u, "")
+    .replace(/^ending_/u, "")
+    .split(/[_:. -]+/u)
+    .filter(Boolean)
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function buildGenericEndingArtKey(endingId: string): string {
+  return `ending_${endingId.toLowerCase()}`;
+}
+
+function buildGenericEndingThumbKey(endingId: string): string {
+  return `ending_thumb_${endingId.toLowerCase()}`;
+}
+
+function getChapterCompletionFlag(chapterId: ChapterId): string {
+  return `chapter_${chapterId.slice(2)}_completed`;
+}
+
+function isChapterMarkedComplete(runtime: RuntimeSnapshot, chapterId: ChapterId): boolean {
+  return runtime.flags[getChapterCompletionFlag(chapterId)] === true || runtime.chapter_progress[chapterId]?.status === "completed";
+}
+
+function readFlowLink(source: unknown, key: string): string | null | undefined {
+  if (!source || typeof source !== "object") {
+    return undefined;
+  }
+
+  const value = (source as Record<string, unknown>)[key];
+  if (typeof value === "string") {
+    return value;
+  }
+
+  if (value === null) {
+    return null;
+  }
+
+  return undefined;
+}
+
+function buildChoiceFlowTarget(event: EventDefinition, choice?: EventChoice | null, mode: FlowTarget["mode"] = "default"): FlowTarget {
+  return {
+    mode,
+    nextEventId: choice?.next_event_id ?? event.next_event_id ?? null,
+    nextNodeId: readFlowLink(choice, "next_node_id") ?? readFlowLink(event, "next_node_id") ?? null,
+    failEventId: readFlowLink(choice, "fail_event_id") ?? event.fail_event_id ?? readFlowLink(event, "fail_event_id") ?? null,
+    setbackEventId: readFlowLink(choice, "setback_event_id") ?? readFlowLink(event, "setback_event_id") ?? null
+  };
 }
 
 function createIdleBattleState(): RuntimeSnapshot["battle_state"] {
@@ -229,12 +350,20 @@ function buildRuntimeSnapshot(
     media_seen: preserved?.media_seen ?? {},
     part1_carry_flags: null,
     campaign_complete: false,
-    run_seed: nowIso()
+    run_seed: nowIso(),
+    chapter_result_payload: null,
+    ending_gallery: {},
+    route_unlocks: {},
+    node_unlocks: {},
+    field_actions_remaining: 0,
+    fail_state: null,
+    chapter_widgets_state: {}
   };
 }
 
 function ensureRuntimeSnapshot(content: GameContentPack, runtime: RuntimeSnapshot): RuntimeSnapshot {
   const nextRuntime = structuredClone(runtime);
+  const extendedRuntime = asExtendedRuntime(nextRuntime);
   nextRuntime.quest_progress ??= {};
   nextRuntime.farming_progress ??= {};
   nextRuntime.run_metrics ??= {
@@ -273,6 +402,13 @@ function ensureRuntimeSnapshot(content: GameContentPack, runtime: RuntimeSnapsho
     (sum, value) => sum + Number(value ?? 0),
     0
   );
+  extendedRuntime.chapter_result_payload ??= null;
+  extendedRuntime.ending_gallery ??= {};
+  extendedRuntime.route_unlocks ??= {};
+  extendedRuntime.node_unlocks ??= {};
+  extendedRuntime.field_actions_remaining ??= { [nextRuntime.current_chapter_id]: 2 };
+  extendedRuntime.fail_state ??= null;
+  extendedRuntime.chapter_widgets_state ??= {};
   updateObjectives(nextRuntime, content, []);
   sanitizeRuntimeMetrics(nextRuntime);
   return nextRuntime;
@@ -528,6 +664,7 @@ function openEvent(
   warnings: RuntimeWarning[]
 ): RuntimeSnapshot {
   const nextRuntime = structuredClone(runtime);
+  const extendedRuntime = asExtendedRuntime(nextRuntime);
   nextRuntime.current_event_id = event.event_id;
   nextRuntime.current_node_id = event.node_id;
   recordNodeVisit(nextRuntime, nextRuntime.current_chapter_id, event.node_id);
@@ -544,6 +681,7 @@ function openEvent(
   }
 
   visitState.entered_once = true;
+  extendedRuntime.fail_state = null;
   sanitizeRuntimeMetrics(nextRuntime);
   setScreen(nextRuntime, content, deriveEventScreenType(content, nextRuntime, event.event_id));
   updateObjectives(nextRuntime, content, warnings);
@@ -556,6 +694,101 @@ function summarizeChapter(runtime: RuntimeSnapshot, chapterId: ChapterId): strin
   const control = String(runtime.stats["route.control"] ?? "lock");
   const strain = Number(runtime.stats["route.strain"] ?? 0);
   return `${chapterId} 종료. truth=${truth}, compassion=${compassion}, control=${control}, strain=${strain}.`;
+}
+
+function buildWidgetStateSnapshot(
+  content: GameContentPack,
+  runtime: RuntimeSnapshot,
+  chapterId: ChapterId
+): Record<string, string | number | boolean> {
+  const chapter = getChapter(content, chapterId);
+  const resultScreen = findScreenByType(content.ui_flows[chapterId], "result_summary");
+  const widgetState: Record<string, string | number | boolean> = {};
+  const completionFlag = getChapterCompletionFlag(chapterId);
+
+  for (const widgetId of resultScreen?.widgets ?? []) {
+    switch (widgetId) {
+      case "chapter_result":
+        widgetState[widgetId] = summarizeChapter(runtime, chapterId);
+        break;
+      case "route_summary":
+      case "route_hint":
+      case "route_compare":
+        widgetState[widgetId] = String(
+          runtime.chapter_progress[chapterId]?.selected_route ?? runtime.stats["route.current"] ?? "unassigned"
+        );
+        break;
+      case "party_summary":
+        widgetState[widgetId] = `HP ${Number(runtime.stats["hp"] ?? 0)} / ${Number(runtime.stats["max_hp"] ?? 0)}`;
+        break;
+      case "trust_summary":
+      case "reputation_change":
+      case "faction_summary":
+        widgetState[widgetId] = Object.entries(runtime.stats).filter(
+          ([key, value]) => (key.startsWith("trust.") || key.startsWith("reputation.")) && Number(value ?? 0) !== 0
+        ).length;
+        break;
+      case "loot_summary":
+        widgetState[widgetId] = Object.values(runtime.inventory.quantities).reduce((sum, value) => sum + Number(value ?? 0), 0);
+        break;
+      case "ending_matrix":
+        widgetState[widgetId] = chapter.ending_matrix.length;
+        break;
+      case "field_actions_remaining":
+        widgetState[widgetId] =
+          typeof runtime.field_actions_remaining === "number"
+            ? runtime.field_actions_remaining
+            : Number(runtime.field_actions_remaining?.[chapterId] ?? 0);
+        break;
+      default: {
+        if (runtime.stats[widgetId] !== undefined) {
+          widgetState[widgetId] = runtime.stats[widgetId];
+          break;
+        }
+        if (runtime.flags[widgetId] !== undefined) {
+          widgetState[widgetId] = typeof runtime.flags[widgetId] === "boolean" ? runtime.flags[widgetId] === true : String(runtime.flags[widgetId]);
+          break;
+        }
+        widgetState[widgetId] = widgetId === completionFlag ? runtime.flags[completionFlag] === true : false;
+        break;
+      }
+    }
+  }
+
+  return widgetState;
+}
+
+function buildChapterResultPayload(
+  content: GameContentPack,
+  runtime: RuntimeSnapshot,
+  chapterId: ChapterId,
+  endedBy: string
+): ChapterResultPayload {
+  const chapter = getChapter(content, chapterId);
+  const chapterProgress = runtime.chapter_progress[chapterId];
+  return {
+    chapter_id: chapterId,
+    ended_by: endedBy,
+    selected_route: chapterProgress?.selected_route,
+    chapter_minutes: Number(runtime.run_metrics.chapter_minutes[chapterId] ?? 0),
+    total_minutes: Number(runtime.run_metrics.total_minutes ?? 0),
+    objective_summary: chapter.objectives.map((objective) => ({
+      objective_id: objective.objective_id,
+      text: objective.text,
+      required: objective.required,
+      completed: chapterProgress?.objective_completion[objective.objective_id] === true
+    })),
+    quest_summary: chapter.quest_tracks.map((track) => ({
+      quest_track_id: track.quest_track_id,
+      title: track.title,
+      kind: track.kind,
+      status: runtime.quest_progress[chapterId]?.[track.quest_track_id]?.status ?? "locked"
+    })),
+    widget_state: buildWidgetStateSnapshot(content, runtime, chapterId),
+    active_flags: Object.keys(runtime.flags)
+      .filter((key) => key.includes(chapterId.toLowerCase()) || key === getChapterCompletionFlag(chapterId))
+      .slice(0, 12)
+  };
 }
 
 function buildCarryFlags(runtime: RuntimeSnapshot, endingId: EndingId) {
@@ -598,6 +831,54 @@ function resolveEndingId(content: GameContentPack, runtime: RuntimeSnapshot, war
   return "P1_END_ASHEN_ESCAPE";
 }
 
+function resolveGenericEndingRule(
+  content: GameContentPack,
+  runtime: RuntimeSnapshot,
+  warnings: RuntimeWarning[]
+): ChapterDefinition["ending_matrix"][number] | null {
+  const chapter = getChapter(content, runtime.current_chapter_id);
+  if (chapter.ending_matrix.length === 0) {
+    return null;
+  }
+
+  const orderedRules = [...chapter.ending_matrix].sort((left, right) => right.priority - left.priority);
+  for (const rule of orderedRules) {
+    const matched = rule.conditions.every((condition) =>
+      evaluateCondition(condition, runtime, warnings, `ending:${rule.ending_id}`)
+    );
+    if (matched) {
+      return rule;
+    }
+  }
+
+  return orderedRules[orderedRules.length - 1] ?? null;
+}
+
+function registerEndingGalleryEntry(
+  runtime: RuntimeSnapshot,
+  chapterId: ChapterId,
+  endingId: string,
+  title: string,
+  summary: string,
+  hint: string,
+  unlockedAt: string,
+  videoId?: string
+): void {
+  const extendedRuntime = asExtendedRuntime(runtime);
+  extendedRuntime.ending_gallery ??= {};
+  extendedRuntime.ending_gallery[endingId] = {
+    ending_id: endingId,
+    chapter_id: chapterId,
+    title,
+    summary,
+    hint,
+    art_key: buildGenericEndingArtKey(endingId),
+    thumb_key: buildGenericEndingThumbKey(endingId),
+    video_id: videoId,
+    unlocked_at: unlockedAt
+  };
+}
+
 function finalizeChapterOutcome(
   content: GameContentPack,
   runtime: RuntimeSnapshot,
@@ -605,6 +886,7 @@ function finalizeChapterOutcome(
   warnings: RuntimeWarning[]
 ): RuntimeSnapshot {
   const nextRuntime = structuredClone(runtime);
+  const extendedRuntime = asExtendedRuntime(nextRuntime);
   const chapterId = nextRuntime.current_chapter_id;
   const chapter = getChapter(content, chapterId);
   const chapterEntry = getChapterCatalogEntry(chapterId);
@@ -619,15 +901,30 @@ function finalizeChapterOutcome(
     progress.ended_by = endToken;
   }
 
+  const chapterResultPayload = buildChapterResultPayload(content, nextRuntime, chapterId, endToken);
+  extendedRuntime.chapter_result_payload = chapterResultPayload;
+  extendedRuntime.fail_state = null;
+  extendedRuntime.chapter_widgets_state = chapterResultPayload.widget_state;
+
   if (chapterId === "CH05") {
     const endingId = resolveEndingId(content, nextRuntime, warnings);
     const endingDef = getPart1EndingDefinition(endingId);
     const carryFlags = buildCarryFlags(nextRuntime, endingId);
-    const unlockedAt = nextRuntime.unlocked_endings[endingId] ?? nowIso();
+    const unlockedAt = (nextRuntime.unlocked_endings as Record<string, string | undefined>)[endingId] ?? nowIso();
 
-    nextRuntime.unlocked_endings[endingId] = unlockedAt;
+    (nextRuntime.unlocked_endings as Record<string, string | undefined>)[endingId] = unlockedAt;
     nextRuntime.part1_carry_flags = carryFlags;
     nextRuntime.flags["part1.ending_id"] = endingId;
+    registerEndingGalleryEntry(
+      nextRuntime,
+      chapterId,
+      endingId,
+      endingDef.title,
+      endingDef.summary,
+      endingDef.hint,
+      unlockedAt,
+      endingId
+    );
     nextRuntime.chapter_outcome = {
       chapter_id: chapterId,
       title: chapter.title,
@@ -637,18 +934,52 @@ function finalizeChapterOutcome(
       ending_id: endingDef.ending_id,
       ending_title: endingDef.title,
       carry_flags: carryFlags
-    };
+    } as ExtendedChapterOutcome;
+    (nextRuntime.chapter_outcome as ExtendedChapterOutcome).chapter_result_payload = chapterResultPayload;
+    (nextRuntime.chapter_outcome as ExtendedChapterOutcome).gallery_chapter_id = chapterId;
+    (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = "ending";
     nextRuntime.campaign_complete = true;
     markMediaSeen(nextRuntime, endingDef.art_key);
     markMediaSeen(nextRuntime, endingDef.thumb_key);
   } else {
-    nextRuntime.chapter_outcome = {
-      chapter_id: chapterId,
-      title: chapter.title,
-      summary: summarizeChapter(nextRuntime, chapterId),
-      next_chapter_id: nextChapterId,
-      campaign_complete: !nextChapterInCurrentPart
-    };
+    const resolvedEndingRule = resolveGenericEndingRule(content, nextRuntime, warnings);
+    if (resolvedEndingRule) {
+      const endingId = resolvedEndingRule.ending_id;
+      const unlockedAt = (nextRuntime.unlocked_endings as Record<string, string | undefined>)[endingId] ?? nowIso();
+      (nextRuntime.unlocked_endings as Record<string, string | undefined>)[endingId] = unlockedAt;
+      registerEndingGalleryEntry(
+        nextRuntime,
+        chapterId,
+        endingId,
+        resolvedEndingRule.title,
+        resolvedEndingRule.summary,
+        resolvedEndingRule.hint,
+        unlockedAt
+      );
+      nextRuntime.chapter_outcome = {
+        chapter_id: chapterId,
+        title: chapter.title,
+        summary: resolvedEndingRule.summary,
+        next_chapter_id: nextChapterId,
+        campaign_complete: !nextChapterInCurrentPart,
+        ending_id: endingId as EndingId,
+        ending_title: resolvedEndingRule.title
+      } as ExtendedChapterOutcome;
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).chapter_result_payload = chapterResultPayload;
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).gallery_chapter_id = chapterId;
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = "ending";
+    } else {
+      nextRuntime.chapter_outcome = {
+        chapter_id: chapterId,
+        title: chapter.title,
+        summary: summarizeChapter(nextRuntime, chapterId),
+        next_chapter_id: nextChapterId,
+        campaign_complete: !nextChapterInCurrentPart
+      } as ExtendedChapterOutcome;
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).chapter_result_payload = chapterResultPayload;
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).gallery_chapter_id = chapterId;
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = "chapter";
+    }
   }
 
   nextRuntime.current_event_id = null;
@@ -659,13 +990,73 @@ function finalizeChapterOutcome(
   return nextRuntime;
 }
 
+function routeToNodeTarget(
+  content: GameContentPack,
+  runtime: RuntimeSnapshot,
+  nodeId: string,
+  warnings: RuntimeWarning[]
+): RuntimeSnapshot {
+  const chapterId = runtime.current_chapter_id;
+  const chapter = getChapter(content, chapterId);
+  if (!chapter.nodes_by_id[nodeId]) {
+    warnings.push({
+      message: `Next node ${nodeId} is missing.`,
+      source: "runtime",
+      severity: "warning"
+    });
+    const nextRuntime = structuredClone(runtime);
+    setScreen(nextRuntime, content, "world_map");
+    return nextRuntime;
+  }
+
+  const nextRuntime = structuredClone(runtime);
+  nextRuntime.current_event_id = null;
+  nextRuntime.current_node_id = nodeId;
+  nextRuntime.loot_session = null;
+  recordNodeVisit(nextRuntime, chapterId, nodeId);
+  const event = findFirstAvailableEvent(content, nextRuntime, chapterId, nodeId, warnings);
+  if (!event) {
+    setScreen(nextRuntime, content, "world_map");
+    return nextRuntime;
+  }
+
+  return openEvent(content, nextRuntime, event, warnings);
+}
+
 function continueFromNextTarget(
   content: GameContentPack,
   runtime: RuntimeSnapshot,
-  nextEventId: string | null | undefined,
+  target: string | FlowTarget | null | undefined,
   warnings: RuntimeWarning[]
 ): RuntimeSnapshot {
-  if (!nextEventId) {
+  const flowTarget: FlowTarget =
+    typeof target === "string" || target == null
+      ? {
+          nextEventId: target ?? null,
+          mode: "default"
+        }
+      : target;
+  const targetEventId =
+    flowTarget.mode === "fail"
+      ? flowTarget.failEventId ?? flowTarget.setbackEventId ?? flowTarget.nextEventId ?? null
+      : flowTarget.mode === "setback"
+        ? flowTarget.setbackEventId ?? flowTarget.failEventId ?? flowTarget.nextEventId ?? null
+        : flowTarget.nextEventId ?? null;
+  const targetNodeId = flowTarget.nextNodeId ?? null;
+
+  if (targetEventId?.startsWith("END_")) {
+    return finalizeChapterOutcome(content, runtime, targetEventId, warnings);
+  }
+
+  if ((!targetEventId || targetEventId === runtime.current_event_id) && isChapterMarkedComplete(runtime, runtime.current_chapter_id)) {
+    return finalizeChapterOutcome(content, runtime, `END_${runtime.current_chapter_id}_AUTO`, warnings);
+  }
+
+  if (!targetEventId && targetNodeId) {
+    return routeToNodeTarget(content, runtime, targetNodeId, warnings);
+  }
+
+  if (!targetEventId) {
     const nextRuntime = structuredClone(runtime);
     nextRuntime.current_event_id = null;
     nextRuntime.loot_session = null;
@@ -673,17 +1064,16 @@ function continueFromNextTarget(
     return nextRuntime;
   }
 
-  if (nextEventId.startsWith("END_")) {
-    return finalizeChapterOutcome(content, runtime, nextEventId, warnings);
-  }
-
-  const event = getChapter(content, runtime.current_chapter_id).events_by_id[nextEventId];
+  const event = getChapter(content, runtime.current_chapter_id).events_by_id[targetEventId];
   if (!event) {
     warnings.push({
-      message: `Next event ${nextEventId} is missing.`,
+      message: `Next event ${targetEventId} is missing.`,
       source: "runtime",
       severity: "warning"
     });
+    if (targetNodeId) {
+      return routeToNodeTarget(content, runtime, targetNodeId, warnings);
+    }
     const nextRuntime = structuredClone(runtime);
     setScreen(nextRuntime, content, "world_map");
     return nextRuntime;
@@ -753,10 +1143,11 @@ function finalizeEventChoice(
   nextRuntime.run_metrics.total_choices += 1;
   addRunMinutes(nextRuntime, nextRuntime.current_chapter_id, BASE_CHOICE_MINUTES);
   applyRepeatFarmingPenalty(nextRuntime, nextRuntime.current_chapter_id, event, visitState.completed_count);
+  asExtendedRuntime(nextRuntime).fail_state = null;
 
   updateObjectives(nextRuntime, content, warnings);
 
-  const nextEventId = choice.next_event_id ?? event.next_event_id ?? null;
+  const flowTarget = buildChoiceFlowTarget(event, choice);
   if (effectResult.grantedLoot.length > 0) {
     nextRuntime.loot_session = {
       loot_table_id: `${event.event_id}:granted`,
@@ -764,18 +1155,34 @@ function finalizeEventChoice(
       source_node_id: event.node_id,
       source_event_id: event.event_id,
       drops: effectResult.grantedLoot.map((drop: LootDrop) => ({ ...drop })),
-      pending_next_event_id: nextEventId,
+      pending_next_event_id: flowTarget.nextEventId ?? null,
       return_screen: "world_map"
-    };
+    } as RuntimeSnapshot["loot_session"];
+    (nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+      pending_next_node_id?: string | null;
+      fail_event_id?: string | null;
+      setback_event_id?: string | null;
+    }).pending_next_node_id = flowTarget.nextNodeId ?? null;
+    (nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+      pending_next_node_id?: string | null;
+      fail_event_id?: string | null;
+      setback_event_id?: string | null;
+    }).fail_event_id = flowTarget.failEventId ?? null;
+    (nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+      pending_next_node_id?: string | null;
+      fail_event_id?: string | null;
+      setback_event_id?: string | null;
+    }).setback_event_id = flowTarget.setbackEventId ?? null;
     setScreen(nextRuntime, content, "loot_resolution");
     return nextRuntime;
   }
 
-  return continueFromNextTarget(content, nextRuntime, nextEventId, warnings);
+  return continueFromNextTarget(content, nextRuntime, flowTarget, warnings);
 }
 
 function createChapterStartRuntime(content: GameContentPack, runtime: RuntimeSnapshot, chapterId: ChapterId): RuntimeSnapshot {
   const nextRuntime = structuredClone(runtime);
+  const extendedRuntime = asExtendedRuntime(nextRuntime);
   const chapter = getChapter(content, chapterId);
   nextRuntime.current_chapter_id = chapterId;
   nextRuntime.current_node_id = chapter.entry_node_id;
@@ -785,6 +1192,16 @@ function createChapterStartRuntime(content: GameContentPack, runtime: RuntimeSna
   nextRuntime.battle_state = createIdleBattleState();
   nextRuntime.campaign_complete = false;
   nextRuntime.stats["chapter.current"] = chapterId;
+  extendedRuntime.chapter_result_payload = null;
+  extendedRuntime.fail_state = null;
+  extendedRuntime.field_actions_remaining =
+    typeof runtime.field_actions_remaining === "number"
+      ? 2
+      : {
+          ...(runtime.field_actions_remaining ?? {}),
+          [chapterId]: 2
+        };
+  extendedRuntime.chapter_widgets_state = {};
 
   nextRuntime.chapter_progress[chapterId] ??= {
     status: "available",
@@ -1127,9 +1544,23 @@ export const useGameStore = create<GameState>()(
         const localWarnings: RuntimeWarning[] = [];
         const nextRuntime = structuredClone(runtime);
         applyLootDrops(nextRuntime);
-        const nextEventId = nextRuntime.loot_session?.pending_next_event_id;
+        const lootFlow = nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+          pending_next_node_id?: string | null;
+          fail_event_id?: string | null;
+          setback_event_id?: string | null;
+        };
         nextRuntime.loot_session = null;
-        const routedRuntime = continueFromNextTarget(content, nextRuntime, nextEventId, localWarnings);
+        const routedRuntime = continueFromNextTarget(
+          content,
+          nextRuntime,
+          {
+            nextEventId: lootFlow?.pending_next_event_id ?? null,
+            nextNodeId: lootFlow?.pending_next_node_id ?? null,
+            failEventId: lootFlow?.fail_event_id ?? null,
+            setbackEventId: lootFlow?.setback_event_id ?? null
+          },
+          localWarnings
+        );
         set({
           runtime: routedRuntime,
           warnings: mergeWarnings(warnings, localWarnings)
@@ -1177,7 +1608,9 @@ export const useGameStore = create<GameState>()(
             addRunMinutes(nextRuntime, nextRuntime.current_chapter_id, BASE_CHOICE_MINUTES);
             applyRepeatFarmingPenalty(nextRuntime, nextRuntime.current_chapter_id, event, visitState.completed_count);
             nextRuntime.battle_state = createIdleBattleState();
+            asExtendedRuntime(nextRuntime).fail_state = null;
             updateObjectives(nextRuntime, content, localWarnings);
+            const flowTarget = buildChoiceFlowTarget(event, choice);
 
             if (effectResult.grantedLoot.length > 0) {
               nextRuntime.loot_session = {
@@ -1186,31 +1619,58 @@ export const useGameStore = create<GameState>()(
                 source_node_id: event.node_id,
                 source_event_id: event.event_id,
                 drops: effectResult.grantedLoot.map((drop) => ({ ...drop })),
-                pending_next_event_id: choice?.next_event_id ?? event.next_event_id ?? null,
+                pending_next_event_id: flowTarget.nextEventId ?? null,
                 return_screen: "world_map"
-              };
+              } as RuntimeSnapshot["loot_session"];
+              (nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+                pending_next_node_id?: string | null;
+                fail_event_id?: string | null;
+                setback_event_id?: string | null;
+              }).pending_next_node_id = flowTarget.nextNodeId ?? null;
+              (nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+                pending_next_node_id?: string | null;
+                fail_event_id?: string | null;
+                setback_event_id?: string | null;
+              }).fail_event_id = flowTarget.failEventId ?? null;
+              (nextRuntime.loot_session as RuntimeSnapshot["loot_session"] & {
+                pending_next_node_id?: string | null;
+                fail_event_id?: string | null;
+                setback_event_id?: string | null;
+              }).setback_event_id = flowTarget.setbackEventId ?? null;
               setScreen(nextRuntime, content, "loot_resolution");
             } else {
-              nextRuntime = continueFromNextTarget(
-                content,
-                nextRuntime,
-                choice?.next_event_id ?? event.next_event_id ?? null,
-                localWarnings
-              );
+              nextRuntime = continueFromNextTarget(content, nextRuntime, flowTarget, localWarnings);
             }
           }
         } else if (turnResult.outcome === "defeat") {
+          const sourceEventId = nextRuntime.battle_state.source_event_id ?? nextRuntime.current_event_id;
+          const sourceEvent = sourceEventId
+            ? getChapter(content, nextRuntime.current_chapter_id).events_by_id[sourceEventId]
+            : null;
           const effectResult = applyEffects(
             nextRuntime,
             content,
             nextRuntime.battle_state.defeat_effects,
-            `battle:${nextRuntime.battle_state.source_event_id ?? "unknown"}:defeat`
+            `battle:${sourceEventId ?? "unknown"}:defeat`
           );
           nextRuntime = effectResult.runtime;
           localWarnings.push(...effectResult.warnings);
           nextRuntime.battle_state = createIdleBattleState();
-          nextRuntime.current_event_id = null;
-          setScreen(nextRuntime, content, "world_map");
+          asExtendedRuntime(nextRuntime).fail_state = {
+            source_event_id: sourceEventId,
+            reason: readFlowLink(sourceEvent, "setback_event_id") ? "setback" : "fail",
+            failed_at: nowIso()
+          };
+          nextRuntime = continueFromNextTarget(
+            content,
+            nextRuntime,
+            sourceEvent
+              ? {
+                  ...buildChoiceFlowTarget(sourceEvent, null, readFlowLink(sourceEvent, "setback_event_id") ? "setback" : "fail")
+                }
+              : { mode: "fail" },
+            localWarnings
+          );
         }
 
         set({
@@ -1246,11 +1706,6 @@ export const useGameStore = create<GameState>()(
           return;
         }
 
-        if (CURRENT_PART_ID === "P1") {
-          get().openEndingGallery();
-          return;
-        }
-
         get().startRun(CURRENT_PART_START_CHAPTER);
       },
 
@@ -1261,8 +1716,12 @@ export const useGameStore = create<GameState>()(
         }
 
         const nextRuntime = structuredClone(runtime);
-        const fallbackScreenId = nextRuntime.current_screen_id ?? findScreenIdByType(content, "CH05", "result_summary");
-        setScreen(nextRuntime, content, "ending_gallery", findScreenIdByType(content, "CH05", "ending_gallery"));
+        const galleryChapterId = ((nextRuntime.chapter_outcome as ExtendedChapterOutcome | null)?.gallery_chapter_id ??
+          nextRuntime.current_chapter_id) as ChapterId;
+        const fallbackScreenId =
+          nextRuntime.current_screen_id ?? findScreenIdByType(content, galleryChapterId, "result_summary");
+        nextRuntime.current_chapter_id = galleryChapterId;
+        setScreen(nextRuntime, content, "ending_gallery", findScreenIdByType(content, galleryChapterId, "ending_gallery"));
         set({
           runtime: nextRuntime,
           galleryReturnScreenId: fallbackScreenId
@@ -1276,12 +1735,15 @@ export const useGameStore = create<GameState>()(
         }
 
         const nextRuntime = structuredClone(runtime);
-        const hasEnding = Boolean(nextRuntime.chapter_outcome?.ending_id);
+        const outcome = nextRuntime.chapter_outcome as ExtendedChapterOutcome | null;
+        const galleryChapterId = (outcome?.gallery_chapter_id ?? nextRuntime.current_chapter_id) as ChapterId;
+        const hasEnding = Boolean(outcome?.ending_id);
         const returnScreenId = hasEnding
-          ? findScreenIdByType(content, "CH05", "result_summary")
-          : galleryReturnScreenId ?? content.ui_flows[nextRuntime.current_chapter_id]?.entry_screen_id ?? null;
-        const returnChapterId = hasEnding ? ("CH05" as ChapterId) : nextRuntime.current_chapter_id;
+          ? findScreenIdByType(content, galleryChapterId, "result_summary")
+          : galleryReturnScreenId ?? content.ui_flows[galleryChapterId]?.entry_screen_id ?? null;
+        const returnChapterId = galleryChapterId;
         const returnScreen = findScreenDefinition(content, returnChapterId, returnScreenId);
+        nextRuntime.current_chapter_id = returnChapterId;
         nextRuntime.current_screen_id = returnScreen?.screen_id ?? returnScreenId ?? null;
         nextRuntime.ui_screen = (returnScreen?.screen_type ?? "chapter_briefing") as UIScreenType;
         markCurrentScreenMedia(nextRuntime, content);
