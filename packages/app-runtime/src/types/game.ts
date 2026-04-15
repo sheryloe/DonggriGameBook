@@ -1,0 +1,864 @@
+﻿export type ChapterId = string;
+export type NodeId = string;
+export type EventId = string;
+export type ItemId = string;
+export type EnemyId = string;
+export type LootTableId = string;
+export type EncounterTableId = string;
+export type NpcId = string;
+export type SaveSlotId = string;
+export type StatValue = number | string;
+export type FlagValue = boolean | number | string;
+export type RequirementExpression = string;
+export type JsonPath = string;
+export type MarkdownPath = string;
+export type EndingId =
+  | "P1_END_SIGNAL_KEEPERS"
+  | "P1_END_CONTROLLED_PASSAGE"
+  | "P1_END_SMUGGLER_TIDE"
+  | "P1_END_ASHEN_ESCAPE"
+  | "P1_END_MIRROR_WITNESS"
+  | "P2_END_CONTROLLED_CONVOY"
+  | "P2_END_WITNESS_FERRY"
+  | "P2_END_RED_CORRIDOR"
+  | "P2_END_HARBOR_SEIZURE"
+  | "P2_END_SUNKEN_LIST"
+  | "P3_END_CERTIFIED_PASSAGE"
+  | "P3_END_PUBLIC_BREACH"
+  | "P3_END_COLD_MERCY"
+  | "P3_END_SEALED_RELAY"
+  | "P3_END_SACRIFICE_CORRIDOR"
+  | "P4_END_ORDERED_SELECTION"
+  | "P4_END_GATE_BROKEN"
+  | "P4_END_WITNESSED_REDESIGN";
+
+export type PartThemeId = "P1" | "P2" | "P3" | "P4" | string;
+
+export type AssetModelRoute = "npc-main-pro" | "character-25" | "nanobanana" | "asset-nano";
+export type AssetGenerationGroup = "background" | "portrait" | "boss" | "document";
+
+export type EffectOperation =
+  | "set_flag"
+  | "clear_flag"
+  | "add_stat"
+  | "sub_stat"
+  | "consume_slot"
+  | "consume_fuel"
+  | "grant_item"
+  | "remove_item"
+  | "unlock_node"
+  | "unlock_route"
+  | "set_route"
+  | "add_trust"
+  | "add_reputation"
+  | "grant_loot_table"
+  | "set_value";
+
+export type UIScreenType =
+  | "chapter_briefing"
+  | "world_map"
+  | "event_dialogue"
+  | "loot_resolution"
+  | "boss_intro"
+  | "combat_arena"
+  | "result_summary"
+  | "route_select"
+  | "safehouse"
+  | "ending_gallery";
+
+export type OverlayKey = "inventory" | "status" | "objectives" | "warnings";
+export type ChapterStatus = "locked" | "available" | "in_progress" | "completed";
+export type BattleAction = "attack" | "skill" | "item" | "move" | "withdraw";
+export type RuntimeWarningSeverity = "info" | "warning" | "error";
+export type WidgetStateValue =
+  | string
+  | number
+  | boolean
+  | null
+  | WidgetStateValue[]
+  | { [key: string]: WidgetStateValue };
+
+export interface RuntimeWarning {
+  message: string;
+  source: string;
+  severity: RuntimeWarningSeverity;
+}
+
+export interface PackageManifest {
+  version: string;
+  game_id: string;
+  title: string;
+  schemas: {
+    chapter: JsonPath;
+    item: JsonPath;
+    ui_flow: JsonPath;
+  };
+  data: {
+    stats: JsonPath;
+    npcs: JsonPath;
+    enemies: JsonPath;
+    items: JsonPath;
+    loot_tables: JsonPath;
+    encounter_tables: JsonPath;
+    chapters_index: JsonPath;
+  };
+  ui: {
+    overview?: string;
+    chapters: JsonPath[];
+  };
+  docs?: {
+    preferred_root?: string;
+    roots?: string[];
+  };
+  assets?: {
+    generated_root?: string;
+  };
+}
+
+export interface ChaptersIndexEntry {
+  chapter_id: ChapterId;
+  title: string;
+  file: JsonPath;
+}
+
+export interface ChaptersIndex {
+  version: string;
+  game_id: string;
+  chapters: ChaptersIndexEntry[];
+}
+
+export interface StatRegistryEntry {
+  key: string;
+  type: "number" | "string";
+  default: StatValue;
+}
+
+export interface RawStatsRegistry {
+  version: string;
+  game_id: string;
+  stats: StatRegistryEntry[];
+}
+
+export interface NpcDefinition {
+  npc_id: NpcId;
+  name_ko: string;
+  first_chapter: ChapterId;
+  role: string;
+  faction: string;
+  tone_keywords: string[];
+  sample_lines: string[];
+}
+
+export interface RawNpcRegistry {
+  version: string;
+  game_id: string;
+  npcs: NpcDefinition[];
+}
+
+export interface EnemyDefinition {
+  enemy_id: EnemyId;
+  name_ko: string;
+  archetype: string;
+  introduced_in: ChapterId;
+  tags: string[];
+  base_stats: Record<string, number>;
+  behavior: string;
+  weak_points: string[];
+  drops: ItemId[];
+}
+
+export interface RawEnemyRegistry {
+  version: string;
+  game_id: string;
+  enemies: EnemyDefinition[];
+}
+
+export interface InventoryItemEffect {
+  effect_type: string;
+  value: unknown;
+}
+
+export interface InventoryItemRecipeInput {
+  item_id: ItemId;
+  qty: number;
+}
+
+export interface InventoryItem {
+  item_id: ItemId;
+  name_ko: string;
+  name_en?: string;
+  category: string;
+  subcategory?: string;
+  rarity: string;
+  stackable: boolean;
+  max_stack: number;
+  weight: number;
+  size?: number;
+  value: number;
+  introduced_in: ChapterId;
+  equip_slot?: string;
+  durability?: {
+    max?: number;
+    current?: number;
+  };
+  stats?: Record<string, unknown>;
+  effects?: InventoryItemEffect[];
+  recipe?: {
+    station?: string;
+    inputs?: InventoryItemRecipeInput[];
+  };
+  tags?: string[];
+  description: string;
+}
+
+export interface RawItemDatabase {
+  version: string;
+  game_id: string;
+  categories: string[];
+  items: InventoryItem[];
+}
+
+export interface LootEntry {
+  item_id: ItemId;
+  weight: number;
+  qty_min: number;
+  qty_max: number;
+}
+
+export interface LootTable {
+  loot_table_id: LootTableId;
+  rolls: number;
+  entries: LootEntry[];
+}
+
+export interface RawLootTables {
+  version: string;
+  game_id: string;
+  loot_tables: LootTable[];
+}
+
+export interface EncounterUnit {
+  enemy_id: EnemyId;
+  count: number;
+}
+
+export interface EncounterTable {
+  encounter_table_id: EncounterTableId;
+  threat_level: string;
+  units: EncounterUnit[];
+}
+
+export interface RawEncounterTables {
+  version: string;
+  game_id: string;
+  encounter_tables: EncounterTable[];
+}
+
+export interface ObjectiveDefinition {
+  objective_id: string;
+  text: string;
+  required: boolean;
+  complete_when: RequirementExpression[];
+}
+
+export interface QuestTrackDefinition {
+  quest_track_id: string;
+  kind: "main" | "side";
+  title: string;
+  summary: string;
+  entry_event_id?: EventId;
+  completion_event_id?: EventId;
+  objective_ids?: string[];
+  unlock_when?: RequirementExpression[];
+  reveal_cap?: string;
+}
+
+export interface ConnectionCost {
+  time: number;
+  noise: number;
+  contamination: number;
+}
+
+export interface MapConnection {
+  to: NodeId;
+  travel_type: string;
+  requires: RequirementExpression[];
+  cost: ConnectionCost;
+}
+
+export interface MapNode {
+  node_id: NodeId;
+  name: string;
+  node_type: string;
+  description: string;
+  coordinates: {
+    x: number;
+    y: number;
+  };
+  encounter_table_id?: EncounterTableId;
+  loot_table_ids?: LootTableId[];
+  npc_ids?: NpcId[];
+  connections: MapConnection[];
+  event_ids: EventId[];
+  revisit_rule: string;
+  tags?: string[];
+}
+
+export interface EffectDefinition {
+  op: EffectOperation | string;
+  target: string;
+  value?: unknown;
+  meta?: Record<string, unknown>;
+}
+
+export interface EventChoice {
+  choice_id: string;
+  label: string;
+  conditions: RequirementExpression[];
+  preview?: string;
+  effects: EffectDefinition[];
+  next_event_id: string | null;
+  next_node_id?: NodeId | null;
+}
+
+export interface EventPresentation {
+  layout: string;
+  art_key: string;
+  music_key: string;
+  widget_overrides: string[];
+  allow_multi_choice?: boolean;
+  cinematic_still_key?: string;
+  result_variant?: string;
+}
+
+export interface EventSceneBlock {
+  block_id: string;
+  kind: "narration" | "dialogue" | "memory" | "system" | string;
+  speaker_id?: NpcId;
+  speaker_label?: string;
+  portrait_art_key?: string;
+  lines: string[];
+  emphasis?: string;
+}
+
+export interface EventTextBlock {
+  summary: string;
+  body: string[];
+  scene_blocks?: EventSceneBlock[];
+  carry_line?: string;
+}
+
+export interface CombatDefinition {
+  encounter_table_id: EncounterTableId;
+  boss_id?: EnemyId;
+  arena_tags?: string[];
+  fail_event_id?: EventId;
+  setback_event_id?: EventId;
+  victory_effects: EffectDefinition[];
+  defeat_effects: EffectDefinition[];
+}
+
+export interface EventDefinition {
+  event_id: EventId;
+  event_type: string;
+  node_id: NodeId;
+  title: string;
+  repeatable: boolean;
+  once_per_run: boolean;
+  priority: number;
+  conditions: RequirementExpression[];
+  presentation: EventPresentation;
+  text: EventTextBlock;
+  npc_ids?: NpcId[];
+  loot_table_ids?: LootTableId[];
+  combat?: CombatDefinition;
+  choices: EventChoice[];
+  on_enter_effects: EffectDefinition[];
+  on_complete_effects: EffectDefinition[];
+  next_event_id?: EventId;
+  next_node_id?: NodeId;
+  fail_event_id?: EventId;
+  setback_event_id?: EventId;
+}
+
+export interface ChapterCinematic {
+  still_art_key: string;
+  world_map_art_key: string;
+  anchor_portrait_key: string;
+  support_portrait_key: string;
+  boss_splash_key: string;
+  result_card_art_key: string;
+  teaser_prompt_id: string;
+  beats?: ChapterCinematicBeat[];
+}
+
+export interface ChapterCinematicBeat {
+  scene_id: string;
+  title?: string;
+  label?: string;
+  beat?: string;
+  summary: string;
+  pressure?: string;
+  tension_axis?: string[];
+  visual?: string;
+}
+
+export interface PartCarryFlags {
+  ending_id: EndingId;
+  truth_route: string;
+  compassion_route: string;
+  control_route: string;
+  underworld_route: string;
+  strain: number;
+  kim_ara_alive: boolean;
+  evidence_bundle_complete: boolean;
+}
+
+export interface EndingDefinition {
+  ending_id: EndingId;
+  title: string;
+  summary: string;
+  hint: string;
+  art_key: string;
+  thumb_key: string;
+  carry_flags: PartCarryFlags;
+}
+
+export interface EndingGalleryEntry {
+  ending_id: EndingId;
+  unlocked: boolean;
+  unlocked_at?: string;
+}
+
+export interface RouteUnlockState {
+  unlocked: boolean;
+  value?: FlagValue;
+  unlocked_at?: string;
+  source?: string;
+}
+
+export interface NodeUnlockState {
+  unlocked: boolean;
+  value?: FlagValue;
+  unlocked_at?: string;
+  source?: string;
+}
+
+export interface FailState {
+  source?: string;
+  reason?: string;
+  event_id?: EventId;
+  setback_event_id?: EventId;
+  can_retry?: boolean;
+}
+
+export interface WidgetStateEntry {
+  widget_id: string;
+  value: WidgetStateValue;
+  source?: string;
+  updated_at?: string;
+}
+
+export interface ChapterResultPayload {
+  chapter_id?: ChapterId;
+  ended_by?: string;
+  selected_route?: string;
+  chapter_minutes?: number;
+  total_minutes?: number;
+  objective_summary?: Array<{
+    objective_id: string;
+    text: string;
+    required: boolean;
+    completed: boolean;
+  }>;
+  quest_summary?: Array<{
+    quest_track_id: string;
+    title: string;
+    kind?: "main" | "side";
+    status?: QuestTrackStatus;
+  }>;
+  widget_state?: Record<string, WidgetStateValue>;
+  active_flags?: string[];
+  title?: string;
+  summary?: string;
+  metrics?: Record<string, StatValue>;
+  flags?: Record<string, FlagValue>;
+  widgets?: Record<string, WidgetStateValue>;
+  notes?: string[];
+  epilogue_card_ids?: string[];
+}
+
+export interface EndingMatrixRule {
+  ending_id: EndingId;
+  title: string;
+  summary: string;
+  priority: number;
+  hint: string;
+  conditions: RequirementExpression[];
+}
+
+export interface CinematicPromptDefinition {
+  video_id: string;
+  scene_id: string;
+  chapter_id?: ChapterId;
+  ending_id?: EndingId;
+  kind: "opening" | "ending" | "trailer";
+  duration: number;
+  aspect_ratio: string;
+  prompt_en: string;
+  prompt_ko_context: string;
+  camera_notes: string;
+  audio_notes: string;
+  source_art_key: string;
+}
+
+export interface MediaMetaDefinition {
+  title: string;
+  subtitle?: string;
+  caption?: string;
+  credit?: string;
+  chapter_id?: ChapterId;
+  ending_id?: EndingId;
+}
+
+export interface VideoRegistryEntry {
+  video_id: string;
+  chapter_id?: ChapterId;
+  ending_id?: EndingId;
+  poster_art_key: string;
+  title_default: string;
+  subtitle_default?: string;
+  caption_default?: string;
+  auto_surface: "opening" | "ending" | "trailer";
+}
+
+export interface RawChapterPackage {
+  version: string;
+  game_id: string;
+  chapter_id: ChapterId;
+  title: string;
+  role: string;
+  entry_node_id: NodeId;
+  exit_node_ids: NodeId[];
+  recommended_level: number;
+  estimated_first_run_minutes?: number;
+  field_action_budget?: number;
+  carryover_keys?: string[];
+  repeatable_scavenging_events?: EventId[];
+  demo_route?: EventId[];
+  ui_profile: {
+    theme: string;
+    special_widgets: string[];
+  };
+  objectives: ObjectiveDefinition[];
+  quest_tracks?: QuestTrackDefinition[];
+  nodes: MapNode[];
+  events: EventDefinition[];
+  boss_event_id?: EventId;
+  chapter_cinematic?: ChapterCinematic;
+  ending_matrix?: EndingMatrixRule[];
+}
+
+export interface ChapterDefinition {
+  chapter_id: ChapterId;
+  title: string;
+  role: string;
+  entry_node_id: NodeId;
+  exit_node_ids: NodeId[];
+  recommended_level: number;
+  estimated_first_run_minutes?: number;
+  field_action_budget?: number;
+  carryover_keys?: string[];
+  repeatable_scavenging_events?: EventId[];
+  demo_route?: EventId[];
+  ui_profile: {
+    theme: string;
+    special_widgets: string[];
+  };
+  objectives: ObjectiveDefinition[];
+  quest_tracks: QuestTrackDefinition[];
+  nodes: MapNode[];
+  nodes_by_id: Record<NodeId, MapNode>;
+  node_order: NodeId[];
+  events: EventDefinition[];
+  events_by_id: Record<EventId, EventDefinition>;
+  event_order: Record<EventId, number>;
+  boss_event_id?: EventId;
+  chapter_cinematic?: ChapterCinematic;
+  ending_matrix: EndingMatrixRule[];
+}
+
+export interface UIScreenDefinition {
+  screen_id: string;
+  screen_type: UIScreenType;
+  title: string;
+  purpose: string;
+  widgets: string[];
+  data_sources: string[];
+  primary_actions: string[];
+  notes?: string[];
+}
+
+export interface UITransition {
+  from_screen_id: string;
+  to_screen_id: string;
+  trigger: string;
+  conditions: RequirementExpression[];
+  notes?: string;
+}
+
+export interface UIFlow {
+  version: string;
+  game_id: string;
+  chapter_id: ChapterId;
+  title: string;
+  entry_screen_id: string;
+  screens: UIScreenDefinition[];
+  transitions: UITransition[];
+  notes?: string[];
+}
+
+export interface NarrativeDoc {
+  id: string;
+  title: string;
+  source_path: MarkdownPath;
+  body: string;
+}
+
+export interface ContentAlias {
+  kind: "npc" | "enemy" | "item" | "doc";
+  source_name: string;
+  canonical_id: string;
+  display_name: string;
+  note: string;
+}
+
+export interface AssetGenerationJob {
+  key: string;
+  group: AssetGenerationGroup;
+  route: AssetModelRoute;
+  prompt_hint: string;
+}
+
+export interface RuntimeArtAliasEntry {
+  asset_id?: string;
+  chapter_id?: ChapterId;
+  runtime_art_key: string;
+  art_key_final: string;
+  filename_target: string;
+}
+
+export interface RuntimeStitchRenderTask {
+  task_id: string;
+  kind: string;
+  part_id?: string | null;
+  chapter_id?: ChapterId | null;
+  prompt_file?: string | null;
+  public_runtime_target?: string | null;
+  target_path?: string | null;
+}
+
+export interface RuntimeAssetManifest {
+  version: string;
+  generated_at?: string;
+  known_art_keys?: string[];
+  mappings: RuntimeArtAliasEntry[];
+  tasks: RuntimeStitchRenderTask[];
+  content_aliases?: ContentAlias[];
+  asset_generation_queue?: AssetGenerationJob[];
+}
+
+export interface AssetResolution {
+  key: string;
+  src?: string;
+  fallback_srcs: string[];
+  candidates: string[];
+  route: AssetModelRoute;
+  matched_from: "direct" | "generated" | "fallback";
+  status: "resolved" | "missing_x";
+  expected_src?: string;
+  strict_drop?: boolean;
+  stitch_required?: boolean;
+  stitch_target_key?: string;
+  stitch_target_path?: string;
+  stitch_prompt_file?: string;
+}
+
+export interface ResolvedProjectPaths {
+  manifest: JsonPath;
+  docs_root: string;
+  docs_roots?: string[];
+  schemas: Partial<Record<"chapter" | "item" | "ui_flow", JsonPath>>;
+  data: Partial<Record<string, JsonPath>>;
+  ui: Partial<Record<ChapterId, JsonPath>>;
+}
+
+export interface GameContentPack {
+  manifest_path: JsonPath;
+  manifest: PackageManifest;
+  resolved_paths: ResolvedProjectPaths;
+  chapter_order: ChapterId[];
+  chapters: Record<ChapterId, ChapterDefinition>;
+  ui_flows: Record<ChapterId, UIFlow>;
+  stats_registry: Record<string, StatRegistryEntry>;
+  npcs: Record<NpcId, NpcDefinition>;
+  enemies: Record<EnemyId, EnemyDefinition>;
+  items: Record<ItemId, InventoryItem>;
+  loot_tables: Record<LootTableId, LootTable>;
+  encounter_tables: Record<EncounterTableId, EncounterTable>;
+  docs: Record<string, NarrativeDoc>;
+  content_aliases: ContentAlias[];
+  asset_generation_queue: AssetGenerationJob[];
+  warnings: RuntimeWarning[];
+}
+
+export interface InventoryState {
+  quantities: Record<ItemId, number>;
+  equipped: Partial<Record<string, ItemId>>;
+  carry_weight_modifier: number;
+}
+
+export interface EventVisitState {
+  seen_count: number;
+  completed_count: number;
+  entered_once: boolean;
+  last_choice_id?: string;
+}
+
+export interface ChapterProgressState {
+  status: ChapterStatus;
+  started_at?: string;
+  completed_at?: string;
+  objective_completion: Record<string, boolean>;
+  selected_route?: string;
+  last_visited_node_id?: NodeId;
+  ended_by?: string;
+}
+
+export type QuestTrackStatus = "locked" | "active" | "completed";
+
+export interface QuestTrackProgressState {
+  quest_track_id: string;
+  kind: "main" | "side";
+  unlocked: boolean;
+  status: QuestTrackStatus;
+  started_at?: string;
+  completed_at?: string;
+}
+
+export interface RunMetricsState {
+  chapter_minutes: Record<ChapterId, number>;
+  total_minutes: number;
+  total_moves: number;
+  total_events: number;
+  total_choices: number;
+}
+
+export interface LootDrop {
+  item_id: ItemId;
+  quantity: number;
+  selected: boolean;
+}
+
+export interface StoryLogEntry {
+  entry_id: string;
+  chapter_id: ChapterId;
+  node_id?: NodeId | null;
+  event_id?: EventId | null;
+  title: string;
+  summary: string;
+  carry_line?: string;
+  speaker_labels: string[];
+  created_at: string;
+  screen_type?: UIScreenType;
+}
+
+export interface LootSessionState {
+  loot_table_id: LootTableId;
+  source_chapter_id: ChapterId;
+  source_node_id: NodeId;
+  source_event_id: EventId;
+  drops: LootDrop[];
+  pending_next_event_id: string | null;
+  return_screen: UIScreenType;
+}
+
+export interface BattleUnitState {
+  enemy_id: EnemyId;
+  name: string;
+  max_hp: number;
+  current_hp: number;
+  alive: boolean;
+}
+
+export interface BattleState {
+  status: "idle" | "active" | "victory" | "defeat";
+  source_chapter_id?: ChapterId;
+  source_node_id?: NodeId;
+  source_event_id?: EventId;
+  encounter_table_id?: EncounterTableId;
+  boss_id?: EnemyId;
+  arena_tags: string[];
+  units: BattleUnitState[];
+  turn_count: number;
+  pending_choice_id?: string;
+  pending_next_event_id?: string | null;
+  pending_choice_effects: EffectDefinition[];
+  victory_effects: EffectDefinition[];
+  defeat_effects: EffectDefinition[];
+  result?: "victory" | "defeat";
+}
+
+export interface ChapterOutcome {
+  chapter_id: ChapterId;
+  title: string;
+  summary: string;
+  next_chapter_id?: ChapterId;
+  campaign_complete: boolean;
+  ending_id?: EndingId;
+  ending_title?: string;
+  carry_flags?: PartCarryFlags;
+  result_payload?: ChapterResultPayload;
+}
+
+export interface RuntimeSnapshot {
+  current_chapter_id: ChapterId;
+  current_node_id: NodeId | null;
+  current_event_id: EventId | null;
+  current_screen_id: string | null;
+  ui_screen: UIScreenType;
+  overlays: Record<OverlayKey, boolean>;
+  stats: Record<string, StatValue>;
+  flags: Record<string, FlagValue>;
+  inventory: InventoryState;
+  chapter_progress: Record<ChapterId, ChapterProgressState>;
+  quest_progress: Record<ChapterId, Record<string, QuestTrackProgressState>>;
+  farming_progress: Record<ChapterId, Record<EventId, number>>;
+  run_metrics: RunMetricsState;
+  story_log: StoryLogEntry[];
+  visited_nodes: Record<ChapterId, Record<NodeId, true>>;
+  visited_events: Record<ChapterId, Record<EventId, EventVisitState>>;
+  loot_session: LootSessionState | null;
+  battle_state: BattleState;
+  chapter_outcome: ChapterOutcome | null;
+  chapter_result_payload?: ChapterResultPayload | null;
+  unlocked_endings: Partial<Record<EndingId, string>>;
+  ending_gallery?: Partial<Record<EndingId, EndingGalleryEntry>>;
+  route_unlocks?: Record<string, RouteUnlockState>;
+  node_unlocks?: Record<string, NodeUnlockState>;
+  field_actions_remaining?: Record<ChapterId, number> | number;
+  fail_state?: FailState | null;
+  part_theme?: PartThemeId;
+  chapter_widgets_state?: Record<ChapterId, Record<string, WidgetStateEntry>>;
+  media_seen: Record<string, string>;
+  part1_carry_flags: PartCarryFlags | null;
+  campaign_complete: boolean;
+  run_seed: string;
+}
+
+export interface SaveSlotState {
+  id: SaveSlotId;
+  label: string;
+  updated_at?: string;
+  snapshot: RuntimeSnapshot;
+}

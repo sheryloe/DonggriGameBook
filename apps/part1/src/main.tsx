@@ -1,7 +1,7 @@
-import React from "react";
+﻿import React from "react";
 import ReactDOM from "react-dom/client";
-import "../../../src/styles/index.css";
-import App from "../../../src/App";
+import "@donggrol/app-runtime/styles.css";
+import { App } from "@donggrol/app-runtime";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
