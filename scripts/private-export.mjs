@@ -16,6 +16,7 @@ import {
   resolveNormalizedRepoPath,
   toPosix
 } from "./private-paths.mjs";
+import { validatePrivateContent } from "./private-validation.mjs";
 
 function createWarning(message, source, severity = "warning") {
   return { message, source, severity };
@@ -332,17 +333,29 @@ async function main() {
     "utf8"
   );
 
+  const validation = await validatePrivateContent();
+  await fs.writeFile(
+    path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "content-diagnostics.json"),
+    `${JSON.stringify(validation.diagnostics, null, 2)}\n`,
+    "utf8"
+  );
+
   const result = {
     output: {
       pack: relFromRoot(path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "game-content-pack.json")),
-      runtime_asset_manifest: relFromRoot(path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "runtime-asset-manifest.json"))
+      runtime_asset_manifest: relFromRoot(path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "runtime-asset-manifest.json")),
+      diagnostics: relFromRoot(path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "content-diagnostics.json"))
     },
     chapter_count: pack.chapter_order.length,
     ui_flow_count: Object.keys(pack.ui_flows).length,
-    warnings: [...contentWarnings, ...assetWarnings].length
+    warnings: [...contentWarnings, ...assetWarnings].length,
+    validation_ok: validation.ok
   };
 
   console.log(JSON.stringify(result, null, 2));
+  if (!validation.ok) {
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {

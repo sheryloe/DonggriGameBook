@@ -13,6 +13,11 @@
     "entry_node_id",
     "exit_node_ids",
     "recommended_level",
+    "estimated_first_run_minutes",
+    "field_action_budget",
+    "carryover_keys",
+    "repeatable_scavenging_events",
+    "demo_route",
     "ui_profile",
     "objectives",
     "nodes",
@@ -46,6 +51,29 @@
     "recommended_level": {
       "type": "integer",
       "minimum": 1
+    },
+    "estimated_first_run_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "field_action_budget": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "carryover_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repeatable_scavenging_events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "demo_route": {
+      "type": "string"
     },
     "ui_profile": {
       "type": "object",
@@ -363,6 +391,47 @@
           "items": {
             "type": "string"
           }
+        },
+        "carry_line": {
+          "type": "string"
+        },
+        "scene_blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sceneBlock"
+          }
+        }
+      }
+    },
+    "sceneBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "block_id",
+        "kind",
+        "lines"
+      ],
+      "properties": {
+        "block_id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "speaker_id": {
+          "type": "string"
+        },
+        "speaker_label": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "emphasis": {
+          "type": "string"
         }
       }
     },
@@ -474,6 +543,12 @@
           "items": {
             "$ref": "#/$defs/effect"
           }
+        },
+        "fail_event_id": {
+          "type": "string"
+        },
+        "setback_event_id": {
+          "type": "string"
         }
       }
     },
@@ -604,6 +679,50 @@
         },
         "teaser_prompt_id": {
           "type": "string"
+        },
+        "beats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/chapterBeat"
+          }
+        }
+      }
+    },
+    "chapterBeat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scene_id",
+        "summary"
+      ],
+      "properties": {
+        "scene_id": {
+          "type": "string"
+        },
+        "beat": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "tension_axis": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       }
     },

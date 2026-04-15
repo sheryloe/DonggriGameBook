@@ -18,7 +18,7 @@ D:\Donggri_Platform\DonggrolGameBook
 ├─ server/                   # Fastify API
 ├─ schemas/                  # 공개 가능한 JSON 계약
 ├─ scripts/                  # export, sync, dashboard, ops 스크립트
-├─ docs/ops/                 # 운영 문서
+├─ docs/                     # 운영 문서와 작업 가이드
 ├─ private/                  # 개인 소유 콘텐츠, Git 제외
 │  ├─ story/
 │  ├─ content/
@@ -108,12 +108,11 @@ npm run audio-prompts:boss
 
 ### Antigravity 작업 가이드
 ```powershell
-ii D:\Donggri_Platform\DonggrolGameBook\docs\ops\ANTIGRAVITY_README.md
+ii D:\Donggri_Platform\DonggrolGameBook\docs\Antigravity.md
 ```
 
 ## 주요 문서
-- 운영 가이드: `docs/ops/`
-- Antigravity 작업 가이드: `docs/ops/ANTIGRAVITY_README.md`
+- Antigravity 작업 가이드: `docs/Antigravity.md`
 - 공개 계약 카탈로그: `packages/world-registry/`
 
 ## 원칙

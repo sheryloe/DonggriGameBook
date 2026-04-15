@@ -9,6 +9,7 @@ import {
   PRIVATE_STORY_WORLD_ROOT,
   relFromRoot
 } from "./private-paths.mjs";
+import { validatePrivateContent } from "./private-validation.mjs";
 
 async function pathExists(filePath) {
   try {
@@ -60,8 +61,26 @@ async function main() {
   ]);
 
   const missingRequired = checks.filter((check) => check.required && !check.exists);
-  console.log(JSON.stringify({ ok: missingRequired.length === 0, checks }, null, 2));
-  if (missingRequired.length > 0) {
+  const validation = missingRequired.length === 0
+    ? await validatePrivateContent()
+    : {
+        ok: false,
+        diagnostics: {
+          warnings: [],
+          errors: [],
+          contract_violations: [],
+          missing_references: []
+        }
+      };
+
+  const result = {
+    ok: missingRequired.length === 0 && validation.ok,
+    checks,
+    validation
+  };
+
+  console.log(JSON.stringify(result, null, 2));
+  if (!result.ok) {
     process.exitCode = 1;
   }
 }
