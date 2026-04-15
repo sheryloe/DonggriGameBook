@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import path from "node:path";
 import {
   PART_PRESENTATION_PACKAGES,
@@ -8,7 +8,11 @@ import {
 } from "./presentation-package-data.mjs";
 
 const ROOT = process.cwd();
-const OUT_ROOT = path.join(ROOT, "docs", "asset-prompt-pack");
+const OUT_ROOT = path.join(ROOT, "private", "prompts", "antigravity");
+const GENERATED_IMAGE_ROOT = "public/generated/images";
+const GENERATED_IMAGE_INBOX_ROOT = `${GENERATED_IMAGE_ROOT}/inbox`;
+const PART1_VIDEO_PROMPT_DIR = "part1-video-prompts";
+const PART1_VIDEO_PROMPT_COUNT = 11;
 const NEGATIVE_PROMPT = [
   "no superhero pose",
   "no cyberpunk neon city",
@@ -18,16 +22,23 @@ const NEGATIVE_PROMPT = [
   "no anime proportions"
 ].join(", ");
 
+const PART_DROP_DIR_BY_PART = {
+  P1: `${GENERATED_IMAGE_INBOX_ROOT}/P1`,
+  P2: `${GENERATED_IMAGE_INBOX_ROOT}/P2`,
+  P3: `${GENERATED_IMAGE_INBOX_ROOT}/P3`,
+  P4: `${GENERATED_IMAGE_INBOX_ROOT}/P4`
+};
+
 const ASSET_LAYOUT = [
-  { key: "bg_primary", asset_type: "background", folder: "background", file: "bg_primary.md", ratio: "16:10", sync_target_path: "codex_webgame_pack/img/bg/" },
-  { key: "bg_secondary", asset_type: "background", folder: "background", file: "bg_secondary.md", ratio: "16:10", sync_target_path: "codex_webgame_pack/img/bg/" },
-  { key: "portrait_anchor", asset_type: "portrait", folder: "portrait", file: "portrait_anchor.md", ratio: "4:5", sync_target_path: "codex_webgame_pack/img/portrait/" },
-  { key: "portrait_support", asset_type: "portrait", folder: "portrait", file: "portrait_support.md", ratio: "4:5", sync_target_path: "codex_webgame_pack/img/portrait/" },
-  { key: "threat_signature", asset_type: "threat", folder: "threat", file: "threat_signature.md", ratio: "4:5", sync_target_path: "codex_webgame_pack/img/threat/" },
-  { key: "poster_keyart", asset_type: "poster", folder: "poster", file: "poster_keyart.md", ratio: "4:5", sync_target_path: "codex_webgame_pack/img/poster/" },
-  { key: "teaser_frame_01", asset_type: "teaser", folder: "teaser", file: "teaser_frame_01.md", ratio: "16:9", sync_target_path: "codex_webgame_pack/img/teaser/" },
-  { key: "teaser_frame_02", asset_type: "teaser", folder: "teaser", file: "teaser_frame_02.md", ratio: "16:9", sync_target_path: "codex_webgame_pack/img/teaser/" },
-  { key: "teaser_frame_03", asset_type: "teaser", folder: "teaser", file: "teaser_frame_03.md", ratio: "16:9", sync_target_path: "codex_webgame_pack/img/teaser/" }
+  { key: "bg_primary", asset_type: "background", folder: "background", file: "bg_primary.md", ratio: "16:10", sync_target_path: "private/generated/packaged/images/bg/" },
+  { key: "bg_secondary", asset_type: "background", folder: "background", file: "bg_secondary.md", ratio: "16:10", sync_target_path: "private/generated/packaged/images/bg/" },
+  { key: "portrait_anchor", asset_type: "portrait", folder: "portrait", file: "portrait_anchor.md", ratio: "4:5", sync_target_path: "private/generated/packaged/images/portrait/" },
+  { key: "portrait_support", asset_type: "portrait", folder: "portrait", file: "portrait_support.md", ratio: "4:5", sync_target_path: "private/generated/packaged/images/portrait/" },
+  { key: "threat_signature", asset_type: "threat", folder: "threat", file: "threat_signature.md", ratio: "4:5", sync_target_path: "private/generated/packaged/images/threat/" },
+  { key: "poster_keyart", asset_type: "poster", folder: "poster", file: "poster_keyart.md", ratio: "4:5", sync_target_path: "private/generated/packaged/images/poster/" },
+  { key: "teaser_frame_01", asset_type: "teaser", folder: "teaser", file: "teaser_frame_01.md", ratio: "16:9", sync_target_path: "private/generated/packaged/images/teaser/" },
+  { key: "teaser_frame_02", asset_type: "teaser", folder: "teaser", file: "teaser_frame_02.md", ratio: "16:9", sync_target_path: "private/generated/packaged/images/teaser/" },
+  { key: "teaser_frame_03", asset_type: "teaser", folder: "teaser", file: "teaser_frame_03.md", ratio: "16:9", sync_target_path: "private/generated/packaged/images/teaser/" }
 ];
 
 const PART_CONFIG = {
@@ -44,35 +55,35 @@ const PART_CONFIG = {
   },
   P2: {
     name: "Southern Checkpoint Descent",
-    tone: "checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors",
+    tone: "civil pressure thriller, checkpoint pursuit, diesel smoke, forged route cards, crowd compression, manifest barter",
     palette: "red warning lane, sodium orange, damp concrete gray, dirty white",
-    materials: "barricade plastic, diesel grime, wet asphalt, queue cards",
-    camera: "medium lens, forward pressure, linear escape framing",
-    must_include: ["checkpoint corridor", "red warning lane", "diesel smoke", "crowd pressure"],
-    avoid: ["spacious heroic skyline", "fashion editorial posing"],
-    composition: "narrow route, converging lines, survival bottleneck",
+    materials: "barricade plastic, diesel grime, wet asphalt, queue cards, police tape",
+    camera: "medium lens, forward pressure, linear escape framing, shoulder-height urgency",
+    must_include: ["checkpoint corridor", "red warning lane", "diesel smoke", "crowd pressure", "manifest cards"],
+    avoid: ["spacious heroic skyline", "fashion editorial posing", "clean sci-fi staging"],
+    composition: "narrow route, converging lines, survival bottleneck, visible route control hardware",
     negative_prompt: NEGATIVE_PROMPT
   },
   P3: {
     name: "Cold Quarantine Line",
-    tone: "radio mast, cold storage, sea fog, archival realism, delayed guilt",
+    tone: "civil pressure thriller, cold storage fog, exposed checkpoint logs, rescue versus concealment, delayed guilt",
     palette: "cold blue, frosted white, oxidized steel, low-saturation navy",
     materials: "frost, salt film, rail steel, paper records, emergency tarp",
-    camera: "wider negative space, slower pans, distance before impact",
-    must_include: ["radio mast", "cold storage", "sea fog", "archival realism", "wider negative space"],
-    avoid: ["warm blockbuster palette", "glossy futuristic tech"],
-    composition: "breathing room, isolated figures, frozen infrastructure",
+    camera: "wider negative space, frozen pauses before impact, slow push-ins toward moral pressure",
+    must_include: ["radio mast", "cold storage", "sea fog", "paper records", "triage residue"],
+    avoid: ["warm blockbuster palette", "glossy futuristic tech", "stylized action posing"],
+    composition: "isolated figures inside hard infrastructure, cold depth, pressure accumulating off-screen",
     negative_prompt: NEGATIVE_PROMPT
   },
   P4: {
     name: "Outer Sea Moral Gate",
-    tone: "salt station, public allocation hall, broadcast equipment, handwritten boarding lists, moral pressure",
+    tone: "civil pressure thriller, boarding triage, broadcast equipment, public judgment, handwritten allocation lists, final gate pressure",
     palette: "salt gray, dawn blue, weathered cream paper, signal green LED",
-    materials: "salt-stained concrete, rope fiber, queue boards, old speakers",
-    camera: "public-facing staging, heavier symmetry, final-decision weight",
-    must_include: ["salt station", "public allocation hall", "broadcast equipment", "handwritten boarding lists", "moral pressure"],
-    avoid: ["victory poster energy", "flashy neon spectacle"],
-    composition: "public judgement, one dominant silhouette, civic ritual tension",
+    materials: "salt-stained concrete, rope fiber, queue boards, old speakers, stamped boarding slips",
+    camera: "public-facing staging, heavier symmetry, ritualized decision weight, close reaction coverage",
+    must_include: ["salt station", "public allocation hall", "broadcast equipment", "handwritten boarding lists", "moral pressure", "waiting queue"],
+    avoid: ["victory poster energy", "flashy neon spectacle", "clean utopian architecture"],
+    composition: "public judgement, one dominant silhouette, civic ritual tension, visible human surplus",
     negative_prompt: NEGATIVE_PROMPT
   }
 };
@@ -84,7 +95,7 @@ const SAFE_FALLBACK_NPCS = {
   P4: ["npc_yoon_haein", "npc_kim_ara"]
 };
 
-const readJson = async (file) => JSON.parse(await fs.readFile(file, "utf8"));
+const readJson = async (file) => JSON.parse((await fs.readFile(file, "utf8")).replace(/^\uFEFF/u, ""));
 const writeJson = async (file, value) => {
   await fs.mkdir(path.dirname(file), { recursive: true });
   await fs.writeFile(file, `${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -108,6 +119,82 @@ const partFromChapter = (chapterId) => {
   if (no <= 15) return "P3";
   return "P4";
 };
+const normalizeDataFile = (value) => {
+  const normalized = String(value ?? "").replace(/\\/g, "/").replace(/^\.?\//u, "");
+  if (!normalized) {
+    return normalized;
+  }
+  if (normalized.startsWith("private/content/data/")) {
+    return normalized.replace(/^private\/content\/data\//u, "");
+  }
+  if (normalized.startsWith("codex_webgame_pack/data/")) {
+    return normalized.replace(/^codex_webgame_pack\/data\//u, "");
+  }
+  if (normalized.startsWith("data/")) {
+    return normalized.replace(/^data\//u, "");
+  }
+  return normalized;
+};
+
+function parseArgs(argv) {
+  const parsed = {};
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index];
+    if (!token.startsWith("--")) {
+      continue;
+    }
+    const trimmed = token.slice(2);
+    if (!trimmed) {
+      continue;
+    }
+    if (trimmed.includes("=")) {
+      const [key, ...rest] = trimmed.split("=");
+      parsed[key] = rest.join("=");
+      continue;
+    }
+    const next = argv[index + 1];
+    if (!next || next.startsWith("--")) {
+      parsed[trimmed] = "true";
+      continue;
+    }
+    parsed[trimmed] = next;
+    index += 1;
+  }
+  return parsed;
+}
+
+function resolveSelectedParts(partArg) {
+  if (!partArg) {
+    return null;
+  }
+  const partIds = String(partArg)
+    .split(",")
+    .map((entry) => entry.trim().toUpperCase())
+    .filter(Boolean);
+  const invalid = partIds.filter((partId) => !(partId in PART_CONFIG));
+  if (invalid.length > 0) {
+    throw new Error(`unsupported --part value: ${invalid.join(", ")}`);
+  }
+  return new Set(partIds);
+}
+
+function shouldWritePart(selectedParts, partId) {
+  return !selectedParts || selectedParts.has(partId);
+}
+
+function looksSuspiciousText(value) {
+  return ["\uFFFD", "??", "諛곌꼍", "吏꾩엯", "紐낅떒", "怨듭떇", "媛덈벑", "遺됱?", "利앷굅"].some((pattern) =>
+    String(value ?? "").includes(pattern)
+  );
+}
+
+function safeText(value, fallback) {
+  const text = String(value ?? "").trim();
+  if (!text || looksSuspiciousText(text)) {
+    return fallback;
+  }
+  return text;
+}
 const VIDEO_PROMPT_PARTS = ["P2", "P3", "P4"];
 const VIDEO_PROMPT_DIR_BY_PART = {
   P2: "part2-video-prompts",
@@ -118,16 +205,41 @@ const POSTER_PROMPT_DIR_BY_PART = PRESENTATION_POSTER_DIR_BY_PART;
 
 const partNo = (partId) => partId.replace("P", "");
 
+function extractCinematicBeats(chapter) {
+  const beats =
+    chapter.chapter_cinematic?.beats ??
+    chapter.chapter_cinematic?.scenes ??
+    chapter.chapter_cinematic?.scene_beats ??
+    [];
+  if (!Array.isArray(beats) || beats.length === 0) {
+    return [
+      `${chapter.title} opening pressure`,
+      `${chapter.title} middle reversal`,
+      `${chapter.title} moral choice`,
+      `${chapter.title} physical threat`,
+      `${chapter.title} lingering cost`
+    ];
+  }
+  return beats
+    .map((beat, index) =>
+      typeof beat === "string"
+        ? beat
+        : safeText(beat?.summary ?? beat?.label ?? beat?.description ?? beat?.beat, `Beat ${index + 1}`)
+    )
+    .filter(Boolean);
+}
+
 function createOpeningVideoPrompt(chapter, enemyMap) {
   const partId = partFromChapter(chapter.chapter_id);
-  const chapterNo = chapterNumber(chapter.chapter_id);
   const firstEvent = chapter.events[0];
   const firstMusic = firstEvent?.presentation?.music_key ?? `${partId.toLowerCase()}_opening`;
   const sourceArtKey =
+    chapter.chapter_cinematic?.still_art_key ??
     collectRuntimeArtKeys(chapter).find((key) => key.includes("_entry")) ??
     firstEvent?.presentation?.art_key ??
     `pending_${chapter.chapter_id.toLowerCase()}_opening`;
   const boss = pickBoss(chapter, enemyMap);
+  const beats = extractCinematicBeats(chapter);
   const file = `P${partNo(partId)}_${chapter.chapter_id}_OPENING.json`;
   const videoId = `P${partNo(partId)}_${chapter.chapter_id}_OPENING`;
   const sceneId = `${chapter.chapter_id}_OPENING_${slug(chapter.ui_profile.theme).toUpperCase()}`;
@@ -137,7 +249,8 @@ function createOpeningVideoPrompt(chapter, enemyMap) {
     `Cinematic Korean apocalypse opening for ${chapter.chapter_id} ${chapter.title}.`,
     `${PART_CONFIG[partId].tone}.`,
     `Location mood: ${chapter.nodes.map((node) => node.name).slice(0, 3).join(", ")}.`,
-    `Show route pressure, practical survival gear, and incoming threat ${boss.bossName}.`,
+    `Beat ladder: ${beats.join("; ")}.`,
+    `Show route pressure, practical survival gear, crowd exclusion, and incoming threat ${boss.bossName}.`,
     `Grounded realism, no fantasy.`
   ].join(" ");
 
@@ -151,10 +264,9 @@ function createOpeningVideoPrompt(chapter, enemyMap) {
     duration: 15,
     aspect_ratio: "16:9",
     prompt_en: promptEn,
-    prompt_ko_context:
-      firstEvent?.text?.summary ?? `${chapter.chapter_id} 오프닝. ${chapter.role}.`,
-    camera_notes: `${PART_CONFIG[partId].camera}. Start wide, move into corridor pressure, end on route decision beat.`,
-    audio_notes: `Base cue ${firstMusic}. Layer alarm pulses, crowd pressure ambience, and metallic reverb.`,
+    prompt_ko_context: safeText(firstEvent?.text?.summary, `${chapter.chapter_id} opening pressure.`),
+    camera_notes: `${PART_CONFIG[partId].camera}. Start wide, move into bodies and paperwork, end on route decision pressure.`,
+    audio_notes: `Base cue ${firstMusic}. Layer alarms, crowd pressure, clipped radio, and metallic reverb.`,
     source_art_key: sourceArtKey,
     target_video_path: targetVideoPath,
     target_poster_path: targetPosterPath,
@@ -194,9 +306,9 @@ function createEndingVideoPrompt(partId, ending) {
     duration: ending.duration,
     aspect_ratio: "16:9",
     prompt_en: `${ending.prompt_en} ${PART_CONFIG[partId].tone}. ${ending.visual_anchor}. Grounded Korean apocalypse cinematic realism.`,
-    prompt_ko_context: ending.prompt_ko_context,
-    camera_notes: ending.camera_notes,
-    audio_notes: ending.audio_notes,
+    prompt_ko_context: safeText(ending.prompt_ko_context, ending.summary ?? ending.title),
+    camera_notes: safeText(ending.camera_notes, `Keep the cost of ${ending.title} visible in every shot.`),
+    audio_notes: safeText(ending.audio_notes, "Use restrained impact, civic ambience, and one unresolved cue."),
     source_art_key: ending.source_art_key,
     target_video_path: `public/generated/videos/${ending.ending_id}.mp4`,
     target_poster_path: `public/generated/images/${ending.source_art_key}.webp`,
@@ -216,9 +328,9 @@ function createTrailerVideoPrompt(partId, trailer) {
     duration: trailer.duration,
     aspect_ratio: "16:9",
     prompt_en: trailer.prompt_en,
-    prompt_ko_context: trailer.prompt_ko_context,
-    camera_notes: trailer.camera_notes,
-    audio_notes: trailer.audio_notes,
+    prompt_ko_context: safeText(trailer.prompt_ko_context, `${partId} trailer context`),
+    camera_notes: safeText(trailer.camera_notes, `Use escalating public pressure beats for ${partId}.`),
+    audio_notes: safeText(trailer.audio_notes, "Build from civic ambience into restrained impact percussion."),
     source_art_key: trailer.source_art_key,
     target_video_path: `public/generated/videos/${trailer.video_id}.mp4`,
     target_poster_path: `public/generated/images/${trailer.source_art_key}.webp`,
@@ -237,14 +349,20 @@ function buildPosterPromptMarkdown(partId, poster) {
 - ratio: 4:5
 - target_path: ${poster.target_path}
 - source_art_key_hint: ${poster.source_art_key_hint}
+- filename_target: ${path.basename(poster.target_path)}
+- art_key_final: ${poster.source_art_key_hint}
+- runtime_art_keys: ${JSON.stringify([poster.source_art_key_hint])}
+- sync_target_path: ${path.dirname(poster.target_path).replace(/\\/g, "/")}/
+- drop_inbox_path: ${PART_DROP_DIR_BY_PART[partId]}
+- sync_mode: filename_target
 
 ## English Prompt
 \`\`\`text
 ${poster.prompt_en}
 \`\`\`
 
-## Korean Context
-${poster.prompt_ko_context}
+## Narrative Lens
+${safeText(poster.prompt_ko_context, PART_CONFIG[partId].tone)}
 
 ## Negative Prompt
 \`\`\`text
@@ -252,7 +370,7 @@ ${PART_CONFIG[partId].negative_prompt}
 \`\`\`
 
 ## Composition Notes
-${poster.composition_notes}
+${safeText(poster.composition_notes, PART_CONFIG[partId].composition)}
 `;
 }
 
@@ -280,7 +398,7 @@ function buildPresentationManifest(videoPromptsByPart, posterPromptsByPart) {
         part_id: partId,
         type: prompt.kind,
         id: prompt.video_id,
-        file: `docs/asset-prompt-pack/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
+        file: `private/prompts/antigravity/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
         target_path: prompt.target_video_path
       });
     }
@@ -289,7 +407,7 @@ function buildPresentationManifest(videoPromptsByPart, posterPromptsByPart) {
         part_id: partId,
         type: "poster",
         id: poster.poster_id,
-        file: `docs/asset-prompt-pack/${POSTER_PROMPT_DIR_BY_PART[partId]}/${poster.file}`,
+        file: `private/prompts/antigravity/${POSTER_PROMPT_DIR_BY_PART[partId]}/${poster.file}`,
         target_path: poster.target_path
       });
     }
@@ -309,7 +427,7 @@ function buildPresentationRenderQueue(videoPromptsByPart, posterPromptsByPart) {
         task_id: `presentation-video:${prompt.video_id}`,
         kind: "video",
         part_id: partId,
-        prompt_file: `docs/asset-prompt-pack/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
+        prompt_file: `private/prompts/antigravity/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
         target_path: prompt.target_video_path
       });
     }
@@ -318,7 +436,7 @@ function buildPresentationRenderQueue(videoPromptsByPart, posterPromptsByPart) {
         task_id: `presentation-poster:${poster.poster_id}`,
         kind: "image",
         part_id: partId,
-        prompt_file: `docs/asset-prompt-pack/${POSTER_PROMPT_DIR_BY_PART[partId]}/${poster.file}`,
+        prompt_file: `private/prompts/antigravity/${POSTER_PROMPT_DIR_BY_PART[partId]}/${poster.file}`,
         target_path: poster.target_path
       });
     }
@@ -343,14 +461,15 @@ function buildPresentationPosterObjects() {
 
 function buildStitchRenderQueue(masterAssets, videoPromptsByPart) {
   const imageTasks = masterAssets
-    .filter((asset) => VIDEO_PROMPT_PARTS.includes(asset.part_id))
     .map((asset) => ({
       task_id: `img:${asset.art_key_final}`,
       kind: "image",
       part_id: asset.part_id,
       chapter_id: asset.chapter_id,
       prompt_file: asset.prompt_file,
-      target_path: `${asset.sync_target_path}${asset.filename_target}`,
+      target_path: `${asset.drop_inbox_path}/${asset.filename_target}`,
+      publish_target_path: `${asset.sync_target_path}${asset.filename_target}`,
+      public_runtime_target: `${GENERATED_IMAGE_ROOT}/${asset.art_key_final}.webp`,
       stitch_space: `donggrol_${asset.part_id.toLowerCase()}_images`
     }));
   const videoTasks = Object.entries(videoPromptsByPart).flatMap(([partId, prompts]) =>
@@ -359,14 +478,14 @@ function buildStitchRenderQueue(masterAssets, videoPromptsByPart) {
       kind: "video",
       part_id: partId,
       chapter_id: prompt.chapter_id,
-      prompt_file: `docs/asset-prompt-pack/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
+      prompt_file: `private/prompts/antigravity/${VIDEO_PROMPT_DIR_BY_PART[partId]}/${prompt.file}`,
       target_path: prompt.target_video_path,
       stitch_space: `donggrol_${partId.toLowerCase()}_videos`
     }))
   );
 
   return {
-    version: "1.0.0",
+    version: PRESENTATION_PROMPT_VERSION,
     image_task_count: imageTasks.length,
     video_task_count: videoTasks.length,
     tasks: [...imageTasks, ...videoTasks]
@@ -374,7 +493,15 @@ function buildStitchRenderQueue(masterAssets, videoPromptsByPart) {
 }
 
 function collectRuntimeArtKeys(chapter) {
-  return unique(chapter.events.map((event) => event.presentation?.art_key));
+  return unique([
+    ...chapter.events.map((event) => event.presentation?.art_key),
+    chapter.chapter_cinematic?.still_art_key,
+    chapter.chapter_cinematic?.world_map_art_key,
+    chapter.chapter_cinematic?.anchor_portrait_key,
+    chapter.chapter_cinematic?.support_portrait_key,
+    chapter.chapter_cinematic?.boss_splash_key,
+    chapter.chapter_cinematic?.result_card_art_key
+  ]);
 }
 
 function collectNpcIds(chapter, partId) {
@@ -416,10 +543,10 @@ function pickBoss(chapter, enemyMap) {
 
 function buildSourceRefs(chapter, partId) {
   return [
-    `codex_webgame_pack/data/chapters/${slug(chapter.chapter_id)}.json`,
-    `ui/${slug(chapter.chapter_id)}.ui_flow.json`,
-    `docs/world/story-bible/chapters/CHAPTER_BLUEPRINT_${chapter.chapter_id}.md`,
-    `docs/world/story-bible/PART_BIBLE_${partId}.md`
+    `private/content/data/chapters/${slug(chapter.chapter_id)}.json`,
+    `private/content/ui/${slug(chapter.chapter_id)}.ui_flow.json`,
+    `private/story/world/story-bible/chapters/CHAPTER_BLUEPRINT_${chapter.chapter_id}.md`,
+    `private/story/world/story-bible/PART_BIBLE_${partId}.md`
   ];
 }
 
@@ -440,12 +567,11 @@ function buildAssetKeys(chapter, portraits, boss) {
 }
 
 function buildRuntimeBinding(chapter, portraits) {
-  const arts = collectRuntimeArtKeys(chapter);
+  const arts = unique(chapter.events.map((event) => event.presentation?.art_key));
   const backgrounds = arts.filter((key) => key.startsWith("bg_") || /_(entry|route|anchor|side_a|side_b)$/.test(key));
   const portraitsRuntime = arts.filter((key) => key.startsWith("portrait_") || key === portraits.anchorId || key === portraits.supportId);
   const threat = arts.find((key) => key.startsWith("boss_") || key.endsWith("_boss")) ?? arts.at(-1);
   return {
-    all: arts,
     bgPrimary: backgrounds[0] ?? arts[0] ?? `pending:${chapter.chapter_id}:bg_primary`,
     bgSecondary: backgrounds[1] ?? backgrounds[0] ?? arts[0] ?? `pending:${chapter.chapter_id}:bg_secondary`,
     portraitAnchor: portraitsRuntime[0] ?? `pending:${portraits.anchorId}`,
@@ -533,8 +659,11 @@ function buildPromptMarkdown(asset, ctx) {
 - ratio: ${asset.ratio}
 - art_key_runtime: ${asset.art_key_runtime}
 - art_key_final: ${asset.art_key_final}
+- runtime_art_keys: ${JSON.stringify(ctx.runtimeKeysByAsset?.get(asset.asset_id) ?? [asset.art_key_runtime])}
 - filename_target: ${asset.filename_target}
 - sync_target_path: ${asset.sync_target_path}
+- drop_inbox_path: ${asset.drop_inbox_path}
+- sync_mode: ${asset.sync_mode}
 
 ## English Prompt
 \`\`\`text
@@ -569,6 +698,7 @@ function buildAssets(chapter, npcMap, enemyMap) {
   const artKeys = buildAssetKeys(chapter, portraits, boss);
   const refs = buildSourceRefs(chapter, partId);
   const dir = chapterSlug(chapter);
+  const cinematic = chapter.chapter_cinematic ?? {};
   const subjectMap = {
     bg_primary: chapter.nodes[0]?.name ?? chapter.title,
     bg_secondary: chapter.nodes[2]?.name ?? chapter.nodes[1]?.name ?? chapter.title,
@@ -581,12 +711,12 @@ function buildAssets(chapter, npcMap, enemyMap) {
     teaser_frame_03: `${chapter.title} preclimax beat`
   };
   const runtimeMap = {
-    bg_primary: runtime.bgPrimary,
-    bg_secondary: runtime.bgSecondary,
-    portrait_anchor: runtime.portraitAnchor,
-    portrait_support: runtime.portraitSupport,
-    threat_signature: runtime.threat,
-    poster_keyart: `pending:${artKeys.poster_keyart}`,
+    bg_primary: cinematic.still_art_key ?? runtime.bgPrimary,
+    bg_secondary: cinematic.world_map_art_key ?? runtime.bgSecondary,
+    portrait_anchor: cinematic.anchor_portrait_key ?? runtime.portraitAnchor,
+    portrait_support: cinematic.support_portrait_key ?? runtime.portraitSupport,
+    threat_signature: cinematic.boss_splash_key ?? runtime.threat,
+    poster_keyart: cinematic.result_card_art_key ?? `pending:${artKeys.poster_keyart}`,
     teaser_frame_01: `pending:${artKeys.teaser_frame_01}`,
     teaser_frame_02: `pending:${artKeys.teaser_frame_02}`,
     teaser_frame_03: `pending:${artKeys.teaser_frame_03}`
@@ -604,9 +734,11 @@ function buildAssets(chapter, npcMap, enemyMap) {
       art_key_final: artKeys[layout.key],
       filename_target: filename,
       ratio: layout.ratio,
-      prompt_path: `docs/asset-prompt-pack/chapters/${dir}/${layout.folder}/${layout.file}`,
-      prompt_file: `docs/asset-prompt-pack/chapters/${dir}/${layout.folder}/${layout.file}`,
+      prompt_path: `private/prompts/antigravity/chapters/${dir}/${layout.folder}/${layout.file}`,
+      prompt_file: `private/prompts/antigravity/chapters/${dir}/${layout.folder}/${layout.file}`,
       sync_target_path: layout.sync_target_path,
+      drop_inbox_path: PART_DROP_DIR_BY_PART[partId],
+      sync_mode: "filename_target",
       status: "prompt_ready",
       source_refs: refs,
       style_pack: `${partId}.${chapter.ui_profile.theme}`
@@ -616,12 +748,20 @@ function buildAssets(chapter, npcMap, enemyMap) {
 
 function buildAliasMappings(chapter, assets) {
   const assetByKind = Object.fromEntries(assets.map((asset) => [asset.kind, asset]));
-  return collectRuntimeArtKeys(chapter).map((runtimeArtKey) => {
+  const mappings = collectRuntimeArtKeys(chapter).map((runtimeArtKey) => {
     let target = assetByKind.bg_primary;
     if (runtimeArtKey.startsWith("portrait_") || runtimeArtKey.startsWith("npc_")) {
-      target = runtimeArtKey === assetByKind.portrait_anchor.art_key_runtime ? assetByKind.portrait_anchor : assetByKind.portrait_support;
+      const cinematic = chapter.chapter_cinematic ?? {};
+      target =
+        runtimeArtKey === cinematic.anchor_portrait_key || runtimeArtKey === assetByKind.portrait_anchor.art_key_runtime
+          ? assetByKind.portrait_anchor
+          : assetByKind.portrait_support;
     } else if (runtimeArtKey.startsWith("boss_") || runtimeArtKey.endsWith("_boss")) {
       target = assetByKind.threat_signature;
+    } else if (runtimeArtKey === chapter.chapter_cinematic?.world_map_art_key) {
+      target = assetByKind.bg_secondary;
+    } else if (runtimeArtKey === chapter.chapter_cinematic?.result_card_art_key) {
+      target = assetByKind.poster_keyart;
     } else if (/route|side_a|side_b|security|sorting|server|market|pier|sluice|cooling|sky|rooftop|secondary/.test(runtimeArtKey)) {
       target = assetByKind.bg_secondary;
     }
@@ -633,9 +773,32 @@ function buildAliasMappings(chapter, assets) {
       filename_target: target.filename_target
     };
   });
+  const seen = new Set();
+  return mappings.filter((entry) => {
+    const key = `${entry.chapter_id}|${entry.runtime_art_key}`;
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
 }
 
-function buildChapterManifest(chapter, assets) {
+function buildRuntimeKeysByAsset(aliasMappings) {
+  const map = new Map();
+  for (const mapping of aliasMappings) {
+    if (!map.has(mapping.asset_id)) {
+      map.set(mapping.asset_id, []);
+    }
+    map.get(mapping.asset_id).push(mapping.runtime_art_key);
+  }
+  for (const [assetId, values] of map.entries()) {
+    map.set(assetId, unique(values));
+  }
+  return map;
+}
+
+function buildChapterManifest(chapter, assets, runtimeKeysByAsset) {
   return {
     chapter_id: chapter.chapter_id,
     title: chapter.title,
@@ -648,11 +811,14 @@ function buildChapterManifest(chapter, assets) {
       subject: asset.subject,
       art_key_runtime: asset.art_key_runtime,
       art_key_final: asset.art_key_final,
+      runtime_art_keys: runtimeKeysByAsset.get(asset.asset_id) ?? [asset.art_key_runtime],
       filename_target: asset.filename_target,
       ratio: asset.ratio,
       prompt_path: asset.prompt_path,
       source_doc_refs: asset.source_refs,
-      sync_target_path: asset.sync_target_path
+      sync_target_path: asset.sync_target_path,
+      drop_inbox_path: asset.drop_inbox_path,
+      sync_mode: asset.sync_mode
     }))
   };
 }
@@ -660,65 +826,17 @@ function buildChapterManifest(chapter, assets) {
 function buildReadme() {
   return `# Asset Prompt Pack
 
-## 목적
-- ` + "`CH01~CH20`" + ` 전체 이미지를 웹 GPT에서 바로 생성할 수 있게 프롬프트를 챕터 단위로 정리한다.
-- 실제 산출물은 나중에 ` + "`codex_webgame_pack/img/*`" + `로 동기화하고, 이 폴더는 프롬프트와 매니페스트만 관리한다.
+## Purpose
+- Provide render-ready prompts for CH01~CH20 image, poster, teaser, and presentation video assets.
+- Use filename-driven sync so web-generated files can be dropped into the inbox and published with one command.
 
-## 구조
-\`\`\`text
-docs/asset-prompt-pack/
-  README.md
-  master/
-    MASTER_ASSET_MANIFEST.json
-    RUNTIME_ART_KEY_ALIAS.json
-    STITCH_RENDER_QUEUE.json
-    SYNC_CHECKLIST.md
-  part-guides/
-    P1.md
-    P2.md
-    P3.md
-    P4.md
-  chapters/
-    CH01_*/
-      chapter_manifest.json
-      background/
-      portrait/
-      threat/
-      poster/
-      teaser/
-  part2-video-prompts/
-    manifest.json
-    P2_CH06_OPENING.json ... P2_CH10_OPENING.json
-  part3-video-prompts/
-    manifest.json
-    P3_CH11_OPENING.json ... P3_CH15_OPENING.json
-  part4-video-prompts/
-    manifest.json
-    P4_CH16_OPENING.json ... P4_CH20_OPENING.json
-\`\`\`
-
-## 생성 순서
-1. part guide를 읽고 파트 분위기를 잠근다.
-2. chapter manifest를 보고 챕터별 9개 자산을 확인한다.
-3. 각 프롬프트 파일의 English Prompt를 웹 GPT에 넣어 이미지를 생성한다.
-4. 결과 파일명을 ` + "`filename_target`" + `에 맞춰 저장한다.
-5. 검수 후 ` + "`codex_webgame_pack/img/*`" + `로 동기화한다.
-
-## 동기화 규칙
-- 배경: ` + "`codex_webgame_pack/img/bg/`" + `
-- 인물: ` + "`codex_webgame_pack/img/portrait/`" + `
-- 위협: ` + "`codex_webgame_pack/img/threat/`" + `
-- 포스터: ` + "`codex_webgame_pack/img/poster/`" + `
-- 티저 프레임: ` + "`codex_webgame_pack/img/teaser/`" + `
-- ` + "`art_key_final`" + `과 ` + "`filename_target`" + `을 임의로 바꾸지 않는다.
-
-## 비율 규칙
-- background: ` + "`16:10`" + `
-- portrait: ` + "`4:5`" + `
-- threat: ` + "`4:5`" + `
-- poster: ` + "`4:5`" + `
-- teaser: ` + "`16:9`" + `
-- opening video: ` + "`16:9`" + `
+## Workflow
+1. Run the prompt generator.
+2. Open the relevant chapter prompt markdown and generate the image on the web.
+3. Save the file with the exact \`filename_target\`.
+4. Drop the file into the documented \`drop_inbox_path\`.
+5. Run \`npm run assets:sync -- --dry-run\`.
+6. If the report is clean, run \`npm run assets:sync\`.
 `;
 }
 
@@ -732,6 +850,7 @@ function buildPartGuide(partId) {
 - Palette: ${part.palette}
 - Materials: ${part.materials}
 - Camera: ${part.camera}
+- Drop Inbox: ${PART_DROP_DIR_BY_PART[partId]}
 
 ## Must Include
 ${part.must_include.map((item) => `- ${item}`).join("\n")}
@@ -741,11 +860,9 @@ ${part.avoid.map((item) => `- ${item}`).join("\n")}
 
 ## Composition
 - ${part.composition}
-- 배경은 인프라와 생존 행정 흔적을 같이 보여준다.
-- 인물은 옷과 표정으로 역할이 먼저 읽혀야 한다.
-- 위협은 장소 적응형 감염체라는 사실이 보여야 한다.
-- 포스터는 갈등 + 장소 + 주 실루엣을 한 프레임에 넣는다.
-- 티저 프레임은 진입 -> 압박 -> 클라이맥스 직전 순서로 간다.
+- Make route control or allocation pressure legible in the frame.
+- Keep background behavior active enough to show who is excluded.
+- Preserve one grounded visual language across briefing, map, result, teaser, and poster surfaces.
 
 ## Common Negative Prompt
 \`\`\`text
@@ -754,32 +871,43 @@ ${part.negative_prompt}
 `;
 }
 
-function buildSyncChecklist() {
-  return `# Sync Checklist
+function buildAutoSyncGuide() {
+  return `# Auto Sync Guide
 
-- [ ] 프롬프트 파일 180개 생성 완료
-- [ ] 웹 GPT 생성 완료
-- [ ] 1차 검수 완료
-- [ ] 비율/크롭 보정 완료
-- [ ] 파일명 ` + "`filename_target`" + ` 기준으로 확정
-- [ ] ` + "`codex_webgame_pack/img/bg`" + ` 복사 완료
-- [ ] ` + "`codex_webgame_pack/img/portrait`" + ` 복사 완료
-- [ ] ` + "`codex_webgame_pack/img/threat`" + ` 복사 완료
-- [ ] ` + "`codex_webgame_pack/img/poster`" + ` 복사 완료
-- [ ] ` + "`codex_webgame_pack/img/teaser`" + ` 복사 완료
-- [ ] 런타임 매핑 반영 전 ` + "`RUNTIME_ART_KEY_ALIAS.json`" + ` 재검토 완료
+## Inbox Folders
+- P1: ${PART_DROP_DIR_BY_PART.P1}
+- P2: ${PART_DROP_DIR_BY_PART.P2}
+- P3: ${PART_DROP_DIR_BY_PART.P3}
+- P4: ${PART_DROP_DIR_BY_PART.P4}
+
+## Allowed Extensions
+- .webp
+- .png
+- .jpg
+- .jpeg
+- .svg
+
+## PowerShell Commands
+\`\`\`powershell
+npm run asset-prompts:generate:part2
+npm run assets:sync -- --dry-run
+npm run assets:sync
+\`\`\`
 `;
 }
 
 async function main() {
-  const index = await readJson(path.join(ROOT, "codex_webgame_pack", "data", "chapters.index.json"));
-  const npcRegistry = await readJson(path.join(ROOT, "codex_webgame_pack", "data", "npc.registry.json"));
-  const enemyRegistry = await readJson(path.join(ROOT, "codex_webgame_pack", "data", "enemy.registry.json"));
+  const args = parseArgs(process.argv.slice(2));
+  const selectedParts = resolveSelectedParts(args.part);
+  const isFullRun = !selectedParts;
+  const index = await readJson(path.join(ROOT, "private", "content", "data", "chapters.index.json"));
+  const npcRegistry = await readJson(path.join(ROOT, "private", "content", "data", "npc.registry.json"));
+  const enemyRegistry = await readJson(path.join(ROOT, "private", "content", "data", "enemy.registry.json"));
   const npcMap = Object.fromEntries(npcRegistry.npcs.map((npc) => [npc.npc_id, npc]));
   const enemyMap = Object.fromEntries(enemyRegistry.enemies.map((enemy) => [enemy.enemy_id, enemy]));
   const chapters = [];
   for (const entry of index.chapters) {
-    const chapter = await readJson(path.join(ROOT, "codex_webgame_pack", entry.file));
+    const chapter = await readJson(path.join(ROOT, "private", "content", "data", normalizeDataFile(entry.file)));
     chapters.push(chapter);
   }
 
@@ -789,17 +917,27 @@ async function main() {
   const aliasMappings = [];
   const videoPromptsByPart = { P2: [], P3: [], P4: [] };
   const posterPromptsByPart = buildPresentationPosterObjects();
+  const writtenPromptFiles = [];
+  const writtenChapterManifestFiles = [];
   for (const chapter of chapters) {
     const assets = buildAssets(chapter, npcMap, enemyMap);
+    const chapterAliases = buildAliasMappings(chapter, assets);
+    const runtimeKeysByAsset = buildRuntimeKeysByAsset(chapterAliases);
+    const chapterPart = partFromChapter(chapter.chapter_id);
     const ctx = {
       chapter,
-      partId: partFromChapter(chapter.chapter_id),
-      part: PART_CONFIG[partFromChapter(chapter.chapter_id)],
-      portraits: pickPortraits(chapter, npcMap, partFromChapter(chapter.chapter_id)),
-      boss: pickBoss(chapter, enemyMap)
+      partId: chapterPart,
+      part: PART_CONFIG[chapterPart],
+      portraits: pickPortraits(chapter, npcMap, chapterPart),
+      boss: pickBoss(chapter, enemyMap),
+      runtimeKeysByAsset
     };
     const dir = path.join(OUT_ROOT, "chapters", chapterSlug(chapter));
-    await writeJson(path.join(dir, "chapter_manifest.json"), buildChapterManifest(chapter, assets));
+    if (shouldWritePart(selectedParts, chapterPart)) {
+      const chapterManifestPath = path.join(dir, "chapter_manifest.json");
+      await writeJson(chapterManifestPath, buildChapterManifest(chapter, assets, runtimeKeysByAsset));
+      writtenChapterManifestFiles.push(chapterManifestPath);
+    }
     for (const asset of assets) {
       masterAssets.push({
         asset_id: asset.asset_id,
@@ -808,19 +946,25 @@ async function main() {
         asset_type: asset.asset_type,
         art_key_runtime: asset.art_key_runtime,
         art_key_final: asset.art_key_final,
+        runtime_art_keys: runtimeKeysByAsset.get(asset.asset_id) ?? [asset.art_key_runtime],
         filename_target: asset.filename_target,
         ratio: asset.ratio,
         prompt_file: asset.prompt_file,
         sync_target_path: asset.sync_target_path,
+        drop_inbox_path: asset.drop_inbox_path,
+        sync_mode: asset.sync_mode,
         status: asset.status,
         source_refs: asset.source_refs,
         style_pack: asset.style_pack
       });
-      await writeText(path.join(ROOT, asset.prompt_path), buildPromptMarkdown(asset, ctx));
+      if (shouldWritePart(selectedParts, chapterPart)) {
+        const promptPath = path.join(ROOT, asset.prompt_path);
+        await writeText(promptPath, buildPromptMarkdown(asset, ctx));
+        writtenPromptFiles.push(promptPath);
+      }
     }
-    aliasMappings.push(...buildAliasMappings(chapter, assets));
+    aliasMappings.push(...chapterAliases);
 
-    const chapterPart = partFromChapter(chapter.chapter_id);
     if (VIDEO_PROMPT_PARTS.includes(chapterPart)) {
       videoPromptsByPart[chapterPart].push(createOpeningVideoPrompt(chapter, enemyMap));
     }
@@ -832,14 +976,21 @@ async function main() {
     videoPromptsByPart[partId].push(createTrailerVideoPrompt(partId, pkg.trailer));
   }
 
-  await writeText(path.join(OUT_ROOT, "README.md"), buildReadme());
-  await writeText(path.join(OUT_ROOT, "master", "SYNC_CHECKLIST.md"), buildSyncChecklist());
-  await Promise.all(Object.keys(PART_CONFIG).map((partId) => writeText(path.join(OUT_ROOT, "part-guides", `${partId}.md`), buildPartGuide(partId))));
+  if (isFullRun) {
+    await writeText(path.join(OUT_ROOT, "README.md"), buildReadme());
+  }
+  await writeText(path.join(OUT_ROOT, "master", "AUTO_SYNC_GUIDE.md"), buildAutoSyncGuide());
+  await fs.rm(path.join(OUT_ROOT, "master", "SYNC_CHECKLIST.md"), { force: true });
+  const partGuideParts = isFullRun ? Object.keys(PART_CONFIG) : [...selectedParts];
+  await Promise.all(partGuideParts.map((partId) => writeText(path.join(OUT_ROOT, "part-guides", `${partId}.md`), buildPartGuide(partId))));
   await writeJson(path.join(OUT_ROOT, "master", "MASTER_ASSET_MANIFEST.json"), { version: PRESENTATION_PROMPT_VERSION, asset_count: masterAssets.length, assets: masterAssets });
   await writeJson(path.join(OUT_ROOT, "master", "RUNTIME_ART_KEY_ALIAS.json"), { version: PRESENTATION_PROMPT_VERSION, mapping_count: aliasMappings.length, mappings: aliasMappings });
   await writeJson(path.join(OUT_ROOT, "master", "STITCH_RENDER_QUEUE.json"), buildStitchRenderQueue(masterAssets, videoPromptsByPart));
 
   for (const partId of VIDEO_PROMPT_PARTS) {
+    if (!shouldWritePart(selectedParts, partId)) {
+      continue;
+    }
     const dir = path.join(OUT_ROOT, VIDEO_PROMPT_DIR_BY_PART[partId]);
     const prompts = videoPromptsByPart[partId];
     await writeJson(path.join(dir, "manifest.json"), buildVideoManifest(partId, prompts));
@@ -849,6 +1000,9 @@ async function main() {
   }
 
   for (const partId of PRESENTATION_PARTS) {
+    if (!shouldWritePart(selectedParts, partId)) {
+      continue;
+    }
     const dir = path.join(OUT_ROOT, POSTER_PROMPT_DIR_BY_PART[partId]);
     const posters = posterPromptsByPart[partId];
     await writeJson(path.join(dir, "manifest.json"), buildPosterManifest(partId, posters));
@@ -857,14 +1011,16 @@ async function main() {
     }
   }
 
-  await writeJson(
-    path.join(OUT_ROOT, "master", "PRESENTATION_PROMPT_MANIFEST.json"),
-    buildPresentationManifest(videoPromptsByPart, posterPromptsByPart)
-  );
-  await writeJson(
-    path.join(OUT_ROOT, "master", "PRESENTATION_RENDER_QUEUE.json"),
-    buildPresentationRenderQueue(videoPromptsByPart, posterPromptsByPart)
-  );
+  if (isFullRun) {
+    await writeJson(
+      path.join(OUT_ROOT, "master", "PRESENTATION_PROMPT_MANIFEST.json"),
+      buildPresentationManifest(videoPromptsByPart, posterPromptsByPart)
+    );
+    await writeJson(
+      path.join(OUT_ROOT, "master", "PRESENTATION_RENDER_QUEUE.json"),
+      buildPresentationRenderQueue(videoPromptsByPart, posterPromptsByPart)
+    );
+  }
 
   const artKeySet = new Set(masterAssets.map((asset) => asset.art_key_final));
   const fileSet = new Set(masterAssets.map((asset) => asset.filename_target));
@@ -872,20 +1028,24 @@ async function main() {
   if (artKeySet.size !== masterAssets.length) throw new Error("art_key_final contains duplicates");
   if (fileSet.size !== masterAssets.length) throw new Error("filename_target contains duplicates");
 
-  const promptFiles = [];
-  for (const chapter of chapters) {
-    const folder = path.join(OUT_ROOT, "chapters", chapterSlug(chapter));
-    for (const asset of ASSET_LAYOUT) {
-      const file = path.join(folder, asset.folder, asset.file);
-      await fs.access(file);
-      promptFiles.push(file);
-    }
+  const expectedChapterCount = isFullRun
+    ? chapters.length
+    : chapters.filter((chapter) => shouldWritePart(selectedParts, partFromChapter(chapter.chapter_id))).length;
+  for (const promptFile of writtenPromptFiles) {
+    await fs.access(promptFile);
   }
-  if (promptFiles.length !== 180) throw new Error(`expected 180 prompt files, got ${promptFiles.length}`);
-  const videoPromptFiles = Object.values(videoPromptsByPart).reduce((count, entries) => count + entries.length, 0);
-  if (videoPromptFiles !== 31) throw new Error(`expected 31 video prompts for P2~P4, got ${videoPromptFiles}`);
-  const posterPromptFiles = Object.values(posterPromptsByPart).reduce((count, entries) => count + entries.length, 0);
-  if (posterPromptFiles !== 9) throw new Error(`expected 9 poster prompts for P2~P4, got ${posterPromptFiles}`);
+  if (writtenPromptFiles.length !== expectedChapterCount * ASSET_LAYOUT.length) {
+    throw new Error(`expected ${expectedChapterCount * ASSET_LAYOUT.length} prompt files, got ${writtenPromptFiles.length}`);
+  }
+  if (writtenChapterManifestFiles.length !== expectedChapterCount) {
+    throw new Error(`chapter manifest count mismatch: ${writtenChapterManifestFiles.length}`);
+  }
+  if (isFullRun) {
+    const videoPromptFiles = Object.values(videoPromptsByPart).reduce((count, entries) => count + entries.length, 0);
+    if (videoPromptFiles !== 31) throw new Error(`expected 31 video prompts for P2~P4, got ${videoPromptFiles}`);
+    const posterPromptFiles = Object.values(posterPromptsByPart).reduce((count, entries) => count + entries.length, 0);
+    if (posterPromptFiles !== 9) throw new Error(`expected 9 poster prompts for P2~P4, got ${posterPromptFiles}`);
+  }
 
   const runtimeCh0620 = chapters
     .filter((chapter) => Number(chapterNumber(chapter.chapter_id)) >= 6)
@@ -896,7 +1056,7 @@ async function main() {
   }
 
   console.log(
-    `generated asset prompt pack: ${masterAssets.length} assets, ${promptFiles.length} image prompts, ${videoPromptFiles} video prompts, ${posterPromptFiles} poster prompts`
+    `generated asset prompt pack: scope=${isFullRun ? "ALL" : [...selectedParts].join(",")} assets=${masterAssets.length} prompts_written=${writtenPromptFiles.length}`
   );
 }
 
@@ -904,3 +1064,4 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+

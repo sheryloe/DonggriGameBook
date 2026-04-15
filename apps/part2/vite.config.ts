@@ -1,26 +1,8 @@
-import { fileURLToPath } from "node:url";
-import { resolve } from "node:path";
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { createGameViteConfig } from "../shared/createGameViteConfig";
 
-const appRoot = fileURLToPath(new URL(".", import.meta.url));
-const workspaceRoot = resolve(appRoot, "../..");
-
-export default defineConfig({
-  root: appRoot,
-  plugins: [react()],
-  define: {
-    "import.meta.env.VITE_PART_ID": JSON.stringify("P2"),
-    "import.meta.env.VITE_APP_ID": JSON.stringify("donggrolgamebook-p2"),
-    "import.meta.env.VITE_SAVE_SLOT": JSON.stringify("main")
-  },
-  server: {
-    fs: {
-      allow: [workspaceRoot]
-    }
-  },
-  build: {
-    outDir: resolve(workspaceRoot, "dist/part2"),
-    emptyOutDir: true
-  }
+export default createGameViteConfig({
+  appUrl: import.meta.url,
+  partId: "P2",
+  appId: "donggrolgamebook-p2",
+  outDirName: "part2"
 });

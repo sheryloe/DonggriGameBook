@@ -1,6 +1,10 @@
 {
-  "name": "@donggrol/ui-kit",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module"
+    "name":  "@donggrol/ui-kit",
+    "private":  true,
+    "version":  "0.1.0",
+    "type":  "module",
+    "exports":  {
+                    ".":  "./src/index.ts"
+                }
 }
+

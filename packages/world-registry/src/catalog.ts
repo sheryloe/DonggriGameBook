@@ -1,4 +1,4 @@
-export type PartId = "P1" | "P2" | "P3" | "P4";
+﻿export type PartId = "P1" | "P2" | "P3" | "P4";
 
 export type AppId =
   | "donggrolgamebook-p1"
@@ -58,45 +58,45 @@ export const PART_MANIFESTS: Record<PartId, PartManifest> = {
   P1: {
     part_id: "P1",
     app_id: "donggrolgamebook-p1",
-    title: "Part 1: 서울 북서 기록선",
-    summary: "여의도에서 판교까지 신호의 실체를 추적하는 1차 아크",
+    title: "Part 1: Ash Ledger",
+    summary: "Yeouido to Pangyo opening arc.",
     chapter_range: ["CH01", "CH05"],
     start_chapter_id: "CH01",
     end_chapter_id: "CH05",
-    docs_root: "docs/concept_arc_01_05_md",
+    docs_root: "private/story/concept_arc_01_05",
     implemented: true
   },
   P2: {
     part_id: "P2",
     app_id: "donggrolgamebook-p2",
-    title: "Part 2: 남하 회랑",
-    summary: "판교 이후 남하 회랑을 관통하며 봉쇄선 남단 구조를 확인하는 아크",
+    title: "Part 2: Southern Collapse",
+    summary: "Southern corridor survival arc after the school district escape.",
     chapter_range: ["CH06", "CH10"],
     start_chapter_id: "CH06",
     end_chapter_id: "CH10",
-    docs_root: "docs/world",
+    docs_root: "private/story/world",
     implemented: true
   },
   P3: {
     part_id: "P3",
     app_id: "donggrolgamebook-p3",
-    title: "Part 3: 동해 접근선",
-    summary: "내륙 우회와 동해 접근을 통해 외해 전초까지 도달하는 아크",
+    title: "Part 3: Frozen Relay",
+    summary: "Relay, archive, and quarantine arc across the eastern line.",
     chapter_range: ["CH11", "CH15"],
     start_chapter_id: "CH11",
     end_chapter_id: "CH15",
-    docs_root: "docs/world",
+    docs_root: "private/story/world",
     implemented: true
   },
   P4: {
     part_id: "P4",
     app_id: "donggrolgamebook-p4",
-    title: "Part 4: 독도 관문",
-    summary: "외해 전초에서 독도 진입까지 이어지는 최종 생존선 아크",
+    title: "Part 4: Dokdo Gate",
+    summary: "Final survival arc from the fractured harbor to Dokdo Gate.",
     chapter_range: ["CH16", "CH20"],
     start_chapter_id: "CH16",
     end_chapter_id: "CH20",
-    docs_root: "docs/world",
+    docs_root: "private/story/world",
     implemented: true
   }
 };
@@ -109,7 +109,7 @@ export const CHAPTER_CATALOG: Record<string, ChapterCatalogEntry> = {
     order_in_part: 1,
     order_global: 1,
     next_chapter_id: "CH02",
-    synopsis_doc_path: "docs/concept_arc_01_05_md/CHAPTER_01_잿빛_개장.md",
+    synopsis_doc_path: "private/story/concept_arc_01_05/CHAPTER_01_잿빛_개장.md",
     runtime_status: "implemented"
   },
   CH02: {
@@ -119,7 +119,7 @@ export const CHAPTER_CATALOG: Record<string, ChapterCatalogEntry> = {
     order_in_part: 2,
     order_global: 2,
     next_chapter_id: "CH03",
-    synopsis_doc_path: "docs/concept_arc_01_05_md/CHAPTER_02_검은_수로.md",
+    synopsis_doc_path: "private/story/concept_arc_01_05/CHAPTER_02_검은_수로.md",
     runtime_status: "implemented"
   },
   CH03: {
@@ -129,7 +129,7 @@ export const CHAPTER_CATALOG: Record<string, ChapterCatalogEntry> = {
     order_in_part: 3,
     order_global: 3,
     next_chapter_id: "CH04",
-    synopsis_doc_path: "docs/concept_arc_01_05_md/CHAPTER_03_유리정원.md",
+    synopsis_doc_path: "private/story/concept_arc_01_05/CHAPTER_03_유리정원.md",
     runtime_status: "implemented"
   },
   CH04: {
@@ -139,7 +139,7 @@ export const CHAPTER_CATALOG: Record<string, ChapterCatalogEntry> = {
     order_in_part: 4,
     order_global: 4,
     next_chapter_id: "CH05",
-    synopsis_doc_path: "docs/concept_arc_01_05_md/CHAPTER_04_상자들의_도시.md",
+    synopsis_doc_path: "private/story/concept_arc_01_05/CHAPTER_04_상자들의_도시.md",
     runtime_status: "implemented"
   },
   CH05: {
@@ -149,156 +149,156 @@ export const CHAPTER_CATALOG: Record<string, ChapterCatalogEntry> = {
     order_in_part: 5,
     order_global: 5,
     next_chapter_id: "CH06",
-    synopsis_doc_path: "docs/concept_arc_01_05_md/CHAPTER_05_미러센터.md",
+    synopsis_doc_path: "private/story/concept_arc_01_05/CHAPTER_05_미러센터.md",
     runtime_status: "implemented"
   },
   CH06: {
     chapter_id: "CH06",
     part_id: "P2",
-    title: "하강 관문",
+    title: "Southern Gate Collapse",
     order_in_part: 1,
     order_global: 6,
     next_chapter_id: "CH07",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch06-하강-관문",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch06",
     runtime_status: "implemented"
   },
   CH07: {
     chapter_id: "CH07",
     part_id: "P2",
-    title: "적색 회랑",
+    title: "Red Corridor Pursuit",
     order_in_part: 2,
     order_global: 7,
     next_chapter_id: "CH08",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch07-적색-회랑",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch07",
     runtime_status: "implemented"
   },
   CH08: {
     chapter_id: "CH08",
     part_id: "P2",
-    title: "봉쇄선의 방",
+    title: "Blockade Bureau",
     order_in_part: 3,
     order_global: 8,
     next_chapter_id: "CH09",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch08-봉쇄선의-방",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch08",
     runtime_status: "implemented"
   },
   CH09: {
     chapter_id: "CH09",
     part_id: "P2",
-    title: "연기 저장고",
+    title: "Mooring Warehouse",
     order_in_part: 4,
     order_global: 9,
     next_chapter_id: "CH10",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch09-연기-저장고",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch09",
     runtime_status: "implemented"
   },
   CH10: {
     chapter_id: "CH10",
     part_id: "P2",
-    title: "침하 항만",
+    title: "Sunken Harbor Contract",
     order_in_part: 5,
     order_global: 10,
     next_chapter_id: "CH11",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch10-침하-항만",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch10",
     runtime_status: "implemented"
   },
   CH11: {
     chapter_id: "CH11",
     part_id: "P3",
-    title: "철의 우회",
+    title: "Thousand Lane Relay",
     order_in_part: 1,
     order_global: 11,
     next_chapter_id: "CH12",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch11-철의-우회",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch11",
     runtime_status: "implemented"
   },
   CH12: {
     chapter_id: "CH12",
     part_id: "P3",
-    title: "잔향 기지",
+    title: "Bias Station",
     order_in_part: 2,
     order_global: 12,
     next_chapter_id: "CH13",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch12-잔향-기지",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch12",
     runtime_status: "implemented"
   },
   CH13: {
     chapter_id: "CH13",
     part_id: "P3",
-    title: "백색 야적장",
+    title: "White Log Archive",
     order_in_part: 3,
     order_global: 13,
     next_chapter_id: "CH14",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch13-백색-야적장",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch13",
     runtime_status: "implemented"
   },
   CH14: {
     chapter_id: "CH14",
     part_id: "P3",
-    title: "해무 변전소",
+    title: "Medical Substation",
     order_in_part: 4,
     order_global: 14,
     next_chapter_id: "CH15",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch14-해무-변전소",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch14",
     runtime_status: "implemented"
   },
   CH15: {
     chapter_id: "CH15",
     part_id: "P3",
-    title: "격리 파수",
+    title: "Quarantine Watch",
     order_in_part: 5,
     order_global: 15,
     next_chapter_id: "CH16",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch15-격리-파수",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch15",
     runtime_status: "implemented"
   },
   CH16: {
     chapter_id: "CH16",
     part_id: "P4",
-    title: "균열 사구",
+    title: "Fracture Harbor",
     order_in_part: 1,
     order_global: 16,
     next_chapter_id: "CH17",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch16-균열-사구",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch16",
     runtime_status: "implemented"
   },
   CH17: {
     chapter_id: "CH17",
     part_id: "P4",
-    title: "파편 수문",
+    title: "Fragment Gate",
     order_in_part: 2,
     order_global: 17,
     next_chapter_id: "CH18",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch17-파편-수문",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch17",
     runtime_status: "implemented"
   },
   CH18: {
     chapter_id: "CH18",
     part_id: "P4",
-    title: "소금 정거장",
+    title: "Salt Station Judgement",
     order_in_part: 3,
     order_global: 18,
     next_chapter_id: "CH19",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch18-소금-정거장",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch18",
     runtime_status: "implemented"
   },
   CH19: {
     chapter_id: "CH19",
     part_id: "P4",
-    title: "외해 전초",
+    title: "East Sea Outpost",
     order_in_part: 4,
     order_global: 19,
     next_chapter_id: "CH20",
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch19-외해-전초",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch19",
     runtime_status: "implemented"
   },
   CH20: {
     chapter_id: "CH20",
     part_id: "P4",
-    title: "독도의 문",
+    title: "Dokdo Gate Core",
     order_in_part: 5,
     order_global: 20,
-    synopsis_doc_path: "docs/world/chapter-synopsis-ch06-ch20.md#ch20-독도의-문",
+    synopsis_doc_path: "private/story/world/chapter-synopsis-ch06-ch20.md#ch20",
     runtime_status: "implemented"
   }
 };
@@ -307,7 +307,6 @@ export const IMPLEMENTED_CHAPTER_IDS = Object.values(CHAPTER_CATALOG)
   .filter((entry) => entry.runtime_status === "implemented")
   .sort((left, right) => left.order_global - right.order_global)
   .map((entry) => entry.chapter_id);
-
 export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfig>> = {
   CH01: {
     chapter_id: "CH01",
@@ -363,7 +362,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH06_N02",
     deploy_node_id: "CH06_N03",
     respawn_node_id: "CH06_N01",
-    default_art_key: "ch06_southern_gate_collapse_entry",
+    default_art_key: "ch06_entry",
     legacy_fallback_slots: ["start_background", "inspection_background", "gate_background"]
   },
   CH07: {
@@ -372,7 +371,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH07_N02",
     deploy_node_id: "CH07_N03",
     respawn_node_id: "CH07_N01",
-    default_art_key: "ch07_red_corridor_pursuit_entry",
+    default_art_key: "ch07_entry",
     legacy_fallback_slots: ["start_background", "inspection_background", "gate_background"]
   },
   CH08: {
@@ -381,7 +380,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH08_N02",
     deploy_node_id: "CH08_N03",
     respawn_node_id: "CH08_N01",
-    default_art_key: "ch08_blockade_bureau_autopsy_entry",
+    default_art_key: "ch08_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "inventory_board"]
   },
   CH09: {
@@ -390,7 +389,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH09_N02",
     deploy_node_id: "CH09_N03",
     respawn_node_id: "CH09_N01",
-    default_art_key: "ch09_smoke_depot_toxic_entry",
+    default_art_key: "ch09_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "inventory_board"]
   },
   CH10: {
@@ -399,7 +398,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH10_N02",
     deploy_node_id: "CH10_N03",
     respawn_node_id: "CH10_N01",
-    default_art_key: "ch10_sinking_harbor_contract_entry",
+    default_art_key: "ch10_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "transmitter_background"]
   },
   CH11: {
@@ -408,7 +407,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH11_N02",
     deploy_node_id: "CH11_N03",
     respawn_node_id: "CH11_N01",
-    default_art_key: "ch11_iron_detour_frost_entry",
+    default_art_key: "ch11_entry",
     legacy_fallback_slots: ["inspection_background", "transmitter_background", "gate_background"]
   },
   CH12: {
@@ -417,7 +416,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH12_N02",
     deploy_node_id: "CH12_N03",
     respawn_node_id: "CH12_N01",
-    default_art_key: "ch12_echo_base_signal_entry",
+    default_art_key: "ch12_entry",
     legacy_fallback_slots: ["inspection_background", "transmitter_background", "gate_background"]
   },
   CH13: {
@@ -426,7 +425,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH13_N02",
     deploy_node_id: "CH13_N03",
     respawn_node_id: "CH13_N01",
-    default_art_key: "ch13_white_yard_ethics_entry",
+    default_art_key: "ch13_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "inventory_board"]
   },
   CH14: {
@@ -435,7 +434,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH14_N02",
     deploy_node_id: "CH14_N03",
     respawn_node_id: "CH14_N01",
-    default_art_key: "ch14_sea_fog_grid_entry",
+    default_art_key: "ch14_entry",
     legacy_fallback_slots: ["inspection_background", "transmitter_background", "gate_background"]
   },
   CH15: {
@@ -444,7 +443,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH15_N02",
     deploy_node_id: "CH15_N03",
     respawn_node_id: "CH15_N01",
-    default_art_key: "ch15_quarantine_watch_cliff_entry",
+    default_art_key: "ch15_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "transmitter_background"]
   },
   CH16: {
@@ -453,7 +452,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH16_N02",
     deploy_node_id: "CH16_N03",
     respawn_node_id: "CH16_N01",
-    default_art_key: "ch16_fractured_dune_loss_entry",
+    default_art_key: "ch16_entry",
     legacy_fallback_slots: ["start_background", "inspection_background", "gate_background"]
   },
   CH17: {
@@ -462,7 +461,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH17_N02",
     deploy_node_id: "CH17_N03",
     respawn_node_id: "CH17_N01",
-    default_art_key: "ch17_fragment_gate_corrosion_entry",
+    default_art_key: "ch17_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "transmitter_background"]
   },
   CH18: {
@@ -471,7 +470,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH18_N02",
     deploy_node_id: "CH18_N03",
     respawn_node_id: "CH18_N01",
-    default_art_key: "ch18_salt_station_judgement_entry",
+    default_art_key: "ch18_entry",
     legacy_fallback_slots: ["inspection_background", "inventory_board", "gate_background"]
   },
   CH19: {
@@ -480,7 +479,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH19_N02",
     deploy_node_id: "CH19_N03",
     respawn_node_id: "CH19_N01",
-    default_art_key: "ch19_outer_sea_platform_politics_entry",
+    default_art_key: "ch19_entry",
     legacy_fallback_slots: ["inspection_background", "transmitter_background", "gate_background"]
   },
   CH20: {
@@ -489,7 +488,7 @@ export const CHAPTER_RUNTIME_CONFIGS: Partial<Record<string, ChapterRuntimeConfi
     hub_node_id: "CH20_N02",
     deploy_node_id: "CH20_N03",
     respawn_node_id: "CH20_N01",
-    default_art_key: "ch20_dokdo_gate_core_entry",
+    default_art_key: "ch20_entry",
     legacy_fallback_slots: ["inspection_background", "gate_background", "transmitter_background"]
   }
 };
@@ -554,3 +553,6 @@ export function createSaveNamespace(appId: AppId, slotKey: string): SaveNamespac
     slot_key: slotKey
   };
 }
+
+
+

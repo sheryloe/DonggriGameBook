@@ -1,12 +1,34 @@
-node_modules
-dist
-.DS_Store
-.env
-.env.local
-.playwright-cli
+﻿node_modules/
+dist/
+output/
+logs/
+test-results/
+.playwright-cli/
 .codex/*.log
 .codex/*.pid
 *.tsbuildinfo
+.DS_Store
+.env
+.env.local
 
-# Codex optimization gate (2026-04-10)
-logs/
+# Source-only repository boundary
+private/
+public/generated/
+public/runtime-content/
+media-sync-dashboard.html
+modern-ops-dashboard.html
+public/modern-parts-dashboard.html
+
+# Temporary local artifacts
+.tmp/
+tmp-*.png
+tmp-*.jpg
+tmp-*.jpeg
+tmp-*.webp
+server/dist/
+
+
+# Local Codex state
+$CODEX_HOME/
+.codex/automations/
+tmp-qa.spec.cjs
