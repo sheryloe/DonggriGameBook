@@ -1,4 +1,4 @@
-﻿import type { ChapterId } from "../types/game";
+import type { ChapterId } from "../types/game";
 
 export interface DocumentDrivenNote {
   id: string;
@@ -69,7 +69,7 @@ export const DOCUMENT_DRIVEN_NOTES: DocumentDrivenNote[] = [
     chapter_id: "CH03",
     subject_id: "vista_amalgam_glassgarden",
     source_path: "private/story/concept_arc_01_05/CHAPTER_03_?좊━?뺤썝.md",
-    headline: "CH03??怨듯룷 異뺤? ?섑룊 ?꾪닾蹂대떎 ?섏쭅 遺뺢눼??,
+    headline: "CH03??怨듯룷 異뺤? ?섑룊 ?꾪닾蹂대떎 ?섏쭅 遺뺢눼??",
     summary:
       "李쎄?泥? ?숉븯, ?ㅼ뭅?대툕由ъ? ?띿븬, ?≫뭾湲곗? 愿??諛몃툕瑜?議곗옉?섎뒗 怨듦컙 ?꾪닾媛 ?듭떖 ?ㅺ퀎濡??≫? ?덈떎.",
     runtime_links: ["windowling", "bg_skybridge", "bg_rooftop_escape", "boss_glassgarden"]
@@ -90,7 +90,7 @@ export const DOCUMENT_DRIVEN_NOTES: DocumentDrivenNote[] = [
     chapter_id: "CH04",
     subject_id: "CH04",
     source_path: "private/story/concept_arc_01_05/CHAPTER_04_?곸옄?ㅼ쓽_?꾩떆.md",
-    headline: "遺꾨쪟?쇳꽣???쇳쉶???섏쟾???꾨땲??諛섎났 ?뚮컢 ?덈툕 ?대챸??怨좊Ⅴ???μ씠??,
+    headline: "遺꾨쪟?쇳꽣???쇳쉶???섏쟾???꾨땲??諛섎났 ?뚮컢 ?덈툕 ?대챸??怨좊Ⅴ???μ씠??",
     summary:
       "?쇱씤 ?ш????щ?媛 ?댄썑 ?덈툕 媛移? ?뚯쓬, ?꾪닾 ?⑦꽩???④퍡 諛붽씀??寃껋씠 臾몄꽌???듭떖 ?ъ씤?몃떎.",
     runtime_links: ["boss_picker_prime", "bg_sorting_hall", "flag:ch04_line_restarted", "flag:ch04_line_shutdown"]
@@ -100,7 +100,7 @@ export const DOCUMENT_DRIVEN_NOTES: DocumentDrivenNote[] = [
     chapter_id: "CH05",
     subject_id: "CH05",
     source_path: "private/story/concept_arc_01_05/CHAPTER_05_誘몃윭?쇳꽣.md",
-    headline: "CH05???뺣낫 ?띾뱷蹂대떎 ?좊퀎 泥닿퀎瑜??쒕윭?대뒗 ?ㅻ━ ?μ씠??,
+    headline: "CH05???뺣낫 ?띾뱷蹂대떎 ?좊퀎 泥닿퀎瑜??쒕윭?대뒗 ?ㅻ━ ?μ씠??",
     summary:
       "?낅룄 ?좏샇媛 吏꾩쭨?몄? ?뺤씤?섎뒗 ?숈떆?? 洹??덉쟾吏?媛 紐⑤몢???쇰궃泥섍? ?꾨땺 ???덈떎???먯쓣 ?쒕윭?대뒗 寃껋씠 蹂명렪 ?뚮쭏??",
     runtime_links: ["itm_southern_corridor_data", "itm_dokdo_signal_auth", "npc_kim_ara", "mirror_core_lines"]

@@ -7,8 +7,7 @@ import type {
   ChapterId,
   ContentAlias,
   RuntimeArtAliasEntry,
-  RuntimeAssetManifest,
-  RuntimeStitchRenderTask
+  RuntimeAssetManifest
 } from "../types/game";
 
 const GENERATED_EXTENSIONS = ["png", "webp", "jpg", "jpeg", "svg"] as const;

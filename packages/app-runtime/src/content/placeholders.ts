@@ -1,4 +1,4 @@
-﻿export type PlaceholderKind = "npc" | "enemy" | "item" | "doc" | "route";
+export type PlaceholderKind = "npc" | "enemy" | "item" | "doc" | "route";
 
 export interface ContentPlaceholder {
   id: string;
@@ -28,12 +28,12 @@ export const CONTENT_PLACEHOLDERS: Record<string, ContentPlaceholder> = {
   text_only_oh_taesik: {
     id: "text_only_oh_taesik",
     kind: "npc",
-    display_name: "?ㅽ깭??,
+    display_name: "오태식",
     source_path: "private/story/concept_arc_01_05/CHAPTER_01_?용튆_媛쒖옣.md",
     summary: "湲곕줉援?쓽 ?몄옣 寃쎈퉬濡?CH01 釉뚮━???ㅼ쓣 蹂닿컯?섎뒗 ?띿뒪???꾩슜 ?몃Ъ.",
     body: [
       "泥??꾨Т硫?紐?二쇱슫 嫄?踰꾨┛ 嫄곌퀬, 紐??뚯븘??嫄?二쎌? 嫄곕씪???앹쓽 ?됲샊???꾩옣 洹쒖쑉???곸쭠?쒕떎.",
-      "?꾩옱 runtime?먮뒗 吏곸젒 ?깆옣?섏? ?딆쑝誘濡?釉뚮━??濡쒓렇???쇰뵒??硫섑듃??移대뱶 ?뺣룄濡쒕쭔 ?곕뒗 寃??덉쟾?섎떎."
+      "?꾩옱 runtime?먮뒗 吏곸젒 ?깆옣?섏? ?딆쑝誘€濡?釉뚮━??濡쒓렇???쇰뵒??硫섑듃??移대뱶 ?뺣룄濡쒕쭔 ?곕뒗 寃??덉쟾?섎떎."
     ],
     related_ids: ["CH01", "YD-01"],
     suggested_art_key: "portrait_yoon_haein"
@@ -41,7 +41,7 @@ export const CONTENT_PLACEHOLDERS: Record<string, ContentPlaceholder> = {
   text_only_choi_mugyeol: {
     id: "text_only_choi_mugyeol",
     kind: "npc",
-    display_name: "理쒕Т寃?,
+    display_name: "理쒕Т寃?",
     source_path: "private/story/concept_arc_01_05/NPC_BIBLE_01_05.md",
     summary: "泥좊룄/諛곗닔臾??꾨젰 ?ㅻ퉬 蹂듦뎄瑜?留〓뒗 ?꾩옣???몃Ъ.",
     body: [
@@ -54,7 +54,7 @@ export const CONTENT_PLACEHOLDERS: Record<string, ContentPlaceholder> = {
   text_only_cha_munsik: {
     id: "text_only_cha_munsik",
     kind: "npc",
-    display_name: "李⑤Ц??,
+    display_name: "李⑤Ц??",
     source_path: "private/story/concept_arc_01_05/NPC_BIBLE_01_05.md",
     summary: "?숈썝 ?명봽???붾떦 ?듭떖?쇰줈 ?붿떆?섎뒗 ?κ린 鍮뚮윴.",
     body: [
@@ -80,7 +80,7 @@ export const CONTENT_PLACEHOLDERS: Record<string, ContentPlaceholder> = {
   text_only_ambusher: {
     id: "text_only_ambusher",
     kind: "enemy",
-    display_name: "留ㅻ났泥?,
+    display_name: "留ㅻ났泥?",
     source_path: "private/story/concept_arc_01_05/INFECTED_BIBLE_01_05.md",
     summary: "踰쎄낵 泥쒖옣??遺李⑸맂 梨??먯?瑜??쇳븯??媛먯뿼泥??꾪궎???",
     body: [
