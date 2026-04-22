@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="P2 CH06 Threat: Korean disaster setting infected, fused with Field Window">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#363636"/>
+      <stop offset="52%" stop-color="#7A7A7A"/>
+      <stop offset="100%" stop-color="#AFAFAF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="34%" r="54%">
+      <stop offset="0%" stop-color="#C48440" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#C48440" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect width="1200" height="1500" fill="#040506" opacity="0.26"/>
+  <g opacity="0.25">
+    <path d="M0 1210 L180 1130 L410 1158 L600 1060 L835 1120 L1200 1010 L1200 1500 L0 1500 Z" fill="#AFAFAF"/>
+  </g>
+  <g opacity="0.9">
+    <ellipse cx="604" cy="430" rx="230" ry="210" fill="url(#glow)"/>
+    <path d="M555 226 C694 184 825 344 786 510 C760 622 704 706 706 832 C708 974 776 1146 704 1240 C656 1306 518 1322 428 1242 C344 1164 406 998 392 844 C378 692 296 608 292 484 C286 326 406 224 555 226 Z" fill="#090b0d"/>
+    <path d="M466 392 C520 320 638 296 700 364 C744 410 760 480 720 560 C670 658 532 694 450 616 C390 560 396 484 466 392 Z" fill="#7A7A7A" opacity="0.62"/>
+    <circle cx="520" cy="478" r="26" fill="#C48440"/>
+    <circle cx="662" cy="468" r="22" fill="#C48440" opacity="0.92"/>
+    <path d="M474 738 L720 620 L760 672 L564 854 Z" fill="#6B3F2E" opacity="0.44"/>
+    <path d="M350 1024 L576 876 L604 930 L422 1146 Z" fill="#6B3F2E" opacity="0.36"/>
+  </g>
+  <g opacity="0.74">
+    <rect x="124" y="106" width="264" height="34" rx="17" fill="#C48440" opacity="0.18"/>
+    <text x="146" y="129" fill="#C48440" font-family="Segoe UI, Arial, sans-serif" font-size="18" letter-spacing="2">P2 // CH06</text>
+    <text x="140" y="220" fill="#f4eee2" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700">P2 CH06 Threat: Korean disaster setting infected, fused with Field Window</text>
+    <text x="142" y="270" fill="#C48440" font-family="Segoe UI, Arial, sans-serif" font-size="24">Korean disaster setting infected, fused with Field Window, 寃臾몄옣 援ъ“臾쨠낵 ?듯합???뺣컯??媛먯뿼泥? checkpoint pursuit, diesel smoke, official line versus detour line, compressing corridors, industrial body horror, realistic anatomy distortion, cinematic threat portrait, grounded horror</text>
+    <text x="142" y="1364" fill="#f4eee2" font-family="Consolas, monospace" font-size="22">corrosive green glow, flickering red emergency lights, dark oily sheen</text>
+    <text x="142" y="1398" fill="#d6d0c3" font-family="Consolas, monospace" font-size="18">thick diesel smoke, warped digital interference, structural degradation effects</text>
+  </g>
+</svg>

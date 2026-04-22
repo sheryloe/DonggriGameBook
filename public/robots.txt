@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://antigravity-game.pages.dev/sitemap.xml

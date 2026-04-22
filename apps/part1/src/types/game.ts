@@ -202,6 +202,60 @@ export interface Item {
   description: string;
 }
 
+// --- Enemy & Combat Types ---
+
+export interface Enemy {
+  enemy_id: string;
+  name_ko: string;
+  name_en?: string;
+  level?: number;
+  hp?: number;
+  max_hp?: number;
+  attack?: number;
+  defense?: number;
+  speed?: number;
+  archetype?: string;
+  base_stats?: {
+    hp?: number;
+    attack?: number;
+    speed?: number;
+    noise_response?: number;
+    contamination_hit?: number;
+  };
+  abilities?: any[];
+  loot_table_id?: string;
+  art_key?: string;
+  description?: string;
+}
+
+export interface EnemySpawn {
+  enemy_id: string;
+  weight: number;
+  level_range: [number, number];
+}
+
+export interface Encounter {
+  encounter_table_id: string;
+  threat_level?: string;
+  units?: Array<{ enemy_id: string; count: number }>;
+  enemies?: EnemySpawn[];
+  max_enemies?: number;
+  min_enemies?: number;
+}
+
+export interface LootTableEntry {
+  item_id: string;
+  weight: number;
+  qty_min?: number;
+  qty_max?: number;
+}
+
+export interface LootTable {
+  loot_table_id: string;
+  rolls: number;
+  entries: LootTableEntry[];
+}
+
 // --- UI Flow Types ---
 
 export interface Screen {
@@ -250,7 +304,7 @@ export interface GameState {
   currentScreenId: string | null;
 
   // Stats & Progress
-  stats: Record<string, number>;
+  stats: Record<string, any>;
   flags: Record<string, boolean>;
   inventory: InventoryItem[];
   
@@ -261,12 +315,7 @@ export interface GameState {
   fieldActionBudget: number;
 
   // Battle State
-  battleState: {
-    active: boolean;
-    enemyGroupId?: string;
-    turn: number;
-    log: string[];
-  } | null;
+  battleState: BattleState | null;
 
   // Save Slots
   saveSlots: Record<number, any>;
@@ -274,4 +323,14 @@ export interface GameState {
   // UI State
   isInventoryOpen: boolean;
   isStatsOpen: boolean;
+}
+
+export interface BattleState {
+  active: boolean;
+  enemyGroupId: string;
+  primaryEnemyId?: string;
+  turn: number;
+  log: string[];
+  enemyHp: number;
+  maxEnemyHp: number;
 }

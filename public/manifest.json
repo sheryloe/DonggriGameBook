@@ -1,0 +1,16 @@
+{
+  "short_name": "Antigravity",
+  "name": "Antigravity: Record vs Survival",
+  "description": "한국형 아포칼립스 텍스트 웹게임",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#050708",
+  "background_color": "#050708"
+}
