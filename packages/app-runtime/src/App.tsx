@@ -10,6 +10,8 @@ import type { ChapterId, EventDefinition, EventSceneBlock, GameContentPack, Runt
 type ChapterResultView = {
   objective_summary: Array<{ objective_id: string; text: string; completed: boolean }>;
   quest_summary: Array<{ quest_track_id: string; title: string; status: string }>;
+  notes?: string[];
+  epilogue_card_ids?: string[];
 };
 
 type ExtendedRuntimeSnapshot = Omit<RuntimeSnapshot, "chapter_result_payload" | "ending_gallery" | "chapter_widgets_state"> & {
@@ -44,6 +46,118 @@ type GenericEndingCard = {
   unlocked_at?: string;
   priority: number;
   chapter_order: number;
+};
+
+type NarrativeStress = "calm" | "warning" | "critical" | "combat";
+type NarrativeTone = "default" | "memory" | "terminal" | "cinematic" | "panic" | "aftershock";
+
+type EpilogueCardDefinition = {
+  eyebrow: string;
+  title: string;
+  body: string;
+};
+
+const EPILOGUE_CARD_LIBRARY: Record<string, EpilogueCardDefinition> = {
+  p1_writer_log: {
+    eyebrow: "기록 잔향",
+    title: "젖은 원고의 이름",
+    body: "편집실에서 건져 올린 한 장의 원고가 다음 장 검문선에서도 끝내 지워지지 않는 이름이 된다."
+  },
+  p1_blackwater_child: {
+    eyebrow: "생존 비용",
+    title: "수로 난간의 아이",
+    body: "한 칸의 배와 한 줌의 식량 때문에 난간 바깥에 남겨진 아이의 얼굴이 이후 모든 거래를 더럽힌다."
+  },
+  p1_crate_city_manifest: {
+    eyebrow: "분류 기억",
+    title: "상자와 사람의 명단",
+    body: "사람보다 상자를 먼저 살린 기록, 혹은 상자를 버리고 사람을 끌어낸 기록이 이후 데이터 공개의 기준선으로 남는다."
+  },
+  p1_kim_ara_confession: {
+    eyebrow: "고백 잔향",
+    title: "김아라의 문장",
+    body: "희망과 위험을 동시에 여는 문장을 김아라가 끝내 입 밖으로 꺼낸 순간부터, 모든 검문은 그 말을 기준으로 흔들린다."
+  },
+  p2_queue_17: {
+    eyebrow: "대기열 기억",
+    title: "17번 손목띠",
+    body: "승선권보다 먼저 손목띠 번호가 기억나는 순간, 질서는 더 이상 중립적인 절차가 아니게 된다."
+  },
+  p2_red_corridor_wall: {
+    eyebrow: "회랑 잔상",
+    title: "벽에 적힌 이름",
+    body: "지나간 사람보다 벽에 남은 이름이 더 오래 눈에 밟히는 회랑에서는 탈출도 죄책감의 형식이 된다."
+  },
+  p2_dead_office_stamp: {
+    eyebrow: "행정 공포",
+    title: "죽은 인장기",
+    body: "통과, 반송, 폐기를 찍던 죽은 인장기가 살아 있는 얼굴을 마지막까지 사물처럼 다룬다."
+  },
+  p2_smoke_hold_child: {
+    eyebrow: "적재 대가",
+    title: "연기 속 보호자",
+    body: "좌석 하나와 배터리 한 칸 때문에 끝내 같이 타지 못한 보호자와 아이의 표정이 침하 항만의 진짜 결과가 된다."
+  },
+  p2_sunken_list: {
+    eyebrow: "부두 후일담",
+    title: "가라앉은 명단",
+    body: "젖은 명단에 남은 잉크와 사라진 이름의 간격이 북상 작전 전체를 불신의 문장으로 바꾼다."
+  },
+  p3_fog_rail_band: {
+    eyebrow: "격리 표식",
+    title: "안개 속 밴드",
+    body: "누가 어느 차선으로 먼저 밀려 들어갔는지보다, 어떤 밴드가 끝내 닫힌 문 앞에 남았는지가 기억된다."
+  },
+  p3_bias_station_missing: {
+    eyebrow: "장부 훼손",
+    title: "지워진 실종자",
+    body: "편향 기지의 조작 장부는 숫자보다 먼저 특정 실종자 한 명의 부재를 드러내며 제도 전체를 무너뜨린다."
+  },
+  p3_white_record_child: {
+    eyebrow: "냉동 기록",
+    title: "백색 보관 슬롯",
+    body: "약품보다 먼저 이름표가 보이던 냉동 선반에서는 누구를 살릴지보다 누구를 기록할지가 더 잔인한 질문이 된다."
+  },
+  p3_switch_chair: {
+    eyebrow: "희생 최고점",
+    title: "스위치 옆 빈 의자",
+    body: "불이 꺼지지 않게 만들기 위해 끝내 비워진 그 자리 하나가 3부 전체의 감정 결산으로 남는다."
+  },
+  p3_relay_last_lamp: {
+    eyebrow: "중계 잔광",
+    title: "마지막 램프",
+    body: "끝까지 깜빡이던 중계 램프 하나가 누가 버텼고 누가 뒤로 밀렸는지보다 더 오랫동안 눈에 남는다."
+  },
+  p4_tool_bag: {
+    eyebrow: "상실 잔향",
+    title: "안보경의 공구 가방",
+    body: "주인을 잃은 공구 가방은 4부 내내 누가 역할을 대신 떠맡았는지 조용히 증명하는 유품이 된다."
+  },
+  p4_hearing_back_row: {
+    eyebrow: "청문 잔상",
+    title: "불리지 않은 뒤줄",
+    body: "질문을 받지 못한 사람들의 뒤줄이 가장 또렷한 얼굴로 남을 때, 공개 심판은 제도보다 군중의 상처가 된다."
+  },
+  p4_verdict_band: {
+    eyebrow: "판결 초안",
+    title: "손목 밴드 묶음",
+    body: "외해 전초에서 한데 묶인 손목 밴드들은 누가 남겨지고 무엇이 지워질지를 이미 문장처럼 잠가 버린다."
+  },
+  p4_last_recipient: {
+    eyebrow: "마지막 수신자",
+    title: "끝내 닿은 한 사람",
+    body: "모든 사람을 태우진 못했어도, 마지막 메시지를 끝내 받아 든 한 사람의 표정이 판결의 인간적 잔여물이 된다."
+  },
+  p4_sealed_record: {
+    eyebrow: "봉인 기록",
+    title: "열리지 않은 보관실",
+    body: "밖으로 꺼내지 못한 기록은 죄가 아니라 무게로 남고, 모두는 그 무게를 알고도 다음 공동체를 시작해야 한다."
+  },
+  p4_gate_outer_names: {
+    eyebrow: "게이트 바깥",
+    title: "문턱 밖 이름들",
+    body: "최종 게이트는 버텼거나 무너졌어도, 끝내 번호를 받지 못한 이름들이야말로 결말의 진짜 얼굴로 남는다."
+  }
 };
 
 function formatDateTime(input?: string): string {
@@ -146,14 +260,14 @@ function buildFallbackEndingCard(
   priority = 0,
   chapterOrder = Number.MAX_SAFE_INTEGER
 ): GenericEndingCard {
-  const defaultTitle = "?뺣━ 以묒씤 寃곕쭚";
+  const defaultTitle = "정리 중인 결말";
 
   return {
     ending_id: endingId,
     chapter_id: chapterId,
     title: title ?? defaultTitle,
-    summary: summary ?? "?닿툑??寃곕쭚 湲곕줉???꾩쭅 ?뺣━ 以묒씠??",
-    hint: hint ?? "??寃곕쭚 寃쎈줈???몃? 湲곕줉? ?꾩냽 ?뺣━ 以묒씠??",
+    summary: summary ?? "해금된 결말 기록을 아직 정리 중입니다.",
+    hint: hint ?? "이 결말 경로는 추가 기록과 함께 순차적으로 정리됩니다.",
     art_key: artKey ?? buildEndingArtKey(endingId),
     thumb_key: thumbKey ?? buildEndingThumbKey(endingId),
     video_id: videoId ?? buildEndingVideoId(endingId),
@@ -287,43 +401,43 @@ function StatBar({ label, value, maxValue, tone }: { label: string; value: numbe
 }
 
 const WIDGET_LABELS: Record<string, string> = {
-  objective_panel: "Objective Progress",
-  party_summary: "Party Status",
-  noise_meter: "Noise",
-  contamination_meter: "Contamination",
-  water_depth: "Water Depth",
-  water_level: "Water Level",
-  route_compare: "Route Compare",
-  route_summary: "Route Summary",
-  route_hint: "Route Hint",
-  reputation_change: "Reputation Change",
-  trust_summary: "Trust Summary",
-  loot_summary: "Loot Summary",
-  faction_summary: "Faction Summary",
-  ending_matrix: "Ending Matrix",
-  field_actions_remaining: "Field Actions",
-  warning_count: "Warnings",
-  card_auth_state: "Card Auth",
-  access_key_state: "Access Key",
-  heat_meter: "Heat",
-  queue_pressure: "Queue Pressure",
-  pursuit_meter: "Pursuit",
-  smoke_density: "Smoke Density",
-  boarding_capacity: "Boarding Capacity",
-  stamp_auth: "Stamp Auth",
-  checkpoint_auth: "Checkpoint Auth",
-  signal_decoder: "Signal Decoder",
-  evidence_balance: "Evidence Balance",
-  power_router: "Power Router",
-  sacrifice_state: "Sacrifice State",
-  core_state: "Core State",
-  boss_hp: "Boss HP",
-  chapter_result: "Chapter Result",
-  public_queue: "Public Queue",
-  broadcast_prep: "Broadcast Prep",
-  platform_vote: "Platform Vote",
-  next_part_hook: "Next Part Hook",
-  closing_hook: "Closing Hook"
+  objective_panel: "목표 진행",
+  party_summary: "파티 상태",
+  noise_meter: "소음",
+  contamination_meter: "오염도",
+  water_depth: "수심",
+  water_level: "수위",
+  route_compare: "노선 비교",
+  route_summary: "노선 요약",
+  route_hint: "노선 힌트",
+  reputation_change: "평판 변화",
+  trust_summary: "신뢰 요약",
+  loot_summary: "루팅 요약",
+  faction_summary: "세력 요약",
+  ending_matrix: "결말 매트릭스",
+  field_actions_remaining: "현장 행동",
+  warning_count: "경고",
+  card_auth_state: "카드 인증",
+  access_key_state: "접근 키",
+  heat_meter: "열지수",
+  queue_pressure: "대기열 압력",
+  pursuit_meter: "추적 지수",
+  smoke_density: "연기 농도",
+  boarding_capacity: "승선 여력",
+  stamp_auth: "도장 인증",
+  checkpoint_auth: "검문 인증",
+  signal_decoder: "신호 해독",
+  evidence_balance: "증거 균형",
+  power_router: "전력 라우터",
+  sacrifice_state: "희생 상태",
+  core_state: "핵심 상태",
+  boss_hp: "보스 체력",
+  chapter_result: "챕터 결과",
+  public_queue: "공개 대기열",
+  broadcast_prep: "방송 준비",
+  platform_vote: "플랫폼 표결",
+  next_part_hook: "다음 파트 연결",
+  closing_hook: "마무리 연결"
 };
 
 const PRESENTATION_ONLY_WIDGETS = new Set([
@@ -345,54 +459,54 @@ const PRESENTATION_ONLY_WIDGETS = new Set([
 ]);
 
 const NODE_TYPE_LABELS: Record<string, string> = {
-  travel: "Travel",
-  safehouse: "Safehouse",
-  exploration: "Exploration",
-  branch: "Branch",
-  boss: "Boss",
-  route_select: "Route Select"
+  travel: "이동",
+  safehouse: "은신처",
+  exploration: "탐색",
+  branch: "분기",
+  boss: "보스",
+  route_select: "노선 선택"
 };
 
 const EVENT_TYPE_LABELS: Record<string, string> = {
-  briefing: "Briefing",
-  choice: "Choice",
-  combat: "Combat",
-  result: "Result"
+  briefing: "브리핑",
+  choice: "선택",
+  combat: "전투",
+  result: "결과"
 };
 
 const SCREEN_TYPE_LABELS: Record<string, string> = {
-  chapter_briefing: "Chapter Briefing",
-  world_map: "World Map",
-  event_dialogue: "Event Dialogue",
-  loot_resolution: "Loot Resolution",
-  boss_intro: "Boss Intro",
-  combat_arena: "Combat Arena",
-  result_summary: "Result Summary",
-  route_select: "Route Select",
-  safehouse: "Safehouse",
-  ending_gallery: "Ending Gallery"
+  chapter_briefing: "챕터 브리핑",
+  world_map: "월드 맵",
+  event_dialogue: "이벤트 대화",
+  loot_resolution: "루팅 정산",
+  boss_intro: "보스 인트로",
+  combat_arena: "전투 구역",
+  result_summary: "결과 요약",
+  route_select: "노선 선택",
+  safehouse: "은신처",
+  ending_gallery: "엔딩 갤러리"
 };
 
 const VALUE_LABELS: Record<string, string> = {
-  on: "On",
-  off: "Off",
-  unassigned: "Unassigned",
-  silence: "Silence",
-  witness: "Witness",
-  witness_score: "Witness",
-  public: "Public",
-  pragmatic: "Pragmatic",
-  rescue: "Rescue",
-  lock: "Lock",
-  release: "Release",
-  clean: "Clean",
-  broker: "Broker",
-  log: "Log",
-  order_score: "Order",
-  solidarity_score: "Solidarity",
-  locked: "Locked",
-  active: "Active",
-  completed: "Completed"
+  on: "켜짐",
+  off: "꺼짐",
+  unassigned: "미지정",
+  silence: "침묵",
+  witness: "증언",
+  witness_score: "증언",
+  public: "공개",
+  pragmatic: "실리",
+  rescue: "구조",
+  lock: "봉쇄",
+  release: "개방",
+  clean: "비개입",
+  broker: "브로커",
+  log: "기록",
+  order_score: "질서",
+  solidarity_score: "연대",
+  locked: "잠김",
+  active: "활성",
+  completed: "완료"
 };
 
 function formatWidgetLabel(widgetId: string): string {
@@ -408,7 +522,7 @@ function formatWidgetLabel(widgetId: string): string {
 
 function stringifyWidgetValue(value: unknown): string {
   if (typeof value === "boolean") {
-    return value ? "耳쒖쭚" : "爰쇱쭚";
+    return value ? "켜짐" : "꺼짐";
   }
   if (typeof value === "number") {
     return Number.isInteger(value) ? String(value) : value.toFixed(1);
@@ -438,47 +552,47 @@ function formatEyebrowLabel(eventType?: string, screenType?: string): string {
     return SCREEN_TYPE_LABELS[screenType] ?? screenType;
   }
 
-  return "?꾩옣";
+  return "현장";
 }
 
 const UI_WIDGET_LABELS: Record<string, string> = {
-  objective_panel: "Objective Progress",
-  party_summary: "Party Status",
-  noise_meter: "Noise",
-  contamination_meter: "Contamination",
-  water_depth: "Water Depth",
-  water_level: "Water Level",
-  route_compare: "Route Compare",
-  route_summary: "Route Summary",
-  route_hint: "Route Hint",
-  reputation_change: "Reputation Change",
-  trust_summary: "Trust Summary",
-  loot_summary: "Loot Summary",
-  faction_summary: "Faction Summary",
-  ending_matrix: "Ending Matrix",
-  field_actions_remaining: "Field Actions",
-  warning_count: "Warnings",
-  card_auth_state: "Card Auth",
-  access_key_state: "Access Key",
-  heat_meter: "Heat",
-  queue_pressure: "Queue Pressure",
-  pursuit_meter: "Pursuit",
-  smoke_density: "Smoke Density",
-  boarding_capacity: "Boarding Capacity",
-  stamp_auth: "Stamp Auth",
-  checkpoint_auth: "Checkpoint Auth",
-  signal_decoder: "Signal Decoder",
-  evidence_balance: "Evidence Balance",
-  power_router: "Power Router",
-  sacrifice_state: "Sacrifice State",
-  core_state: "Core State",
-  boss_hp: "Boss HP",
-  chapter_result: "Chapter Result",
-  public_queue: "Public Queue",
-  broadcast_prep: "Broadcast Prep",
-  platform_vote: "Platform Vote",
-  next_part_hook: "Next Part Hook",
-  closing_hook: "Closing Hook"
+  objective_panel: "목표 진행",
+  party_summary: "파티 상태",
+  noise_meter: "소음",
+  contamination_meter: "오염도",
+  water_depth: "수심",
+  water_level: "수위",
+  route_compare: "노선 비교",
+  route_summary: "노선 요약",
+  route_hint: "노선 힌트",
+  reputation_change: "평판 변화",
+  trust_summary: "신뢰 요약",
+  loot_summary: "루팅 요약",
+  faction_summary: "세력 요약",
+  ending_matrix: "결말 매트릭스",
+  field_actions_remaining: "현장 행동",
+  warning_count: "경고",
+  card_auth_state: "카드 인증",
+  access_key_state: "접근 키",
+  heat_meter: "열지수",
+  queue_pressure: "대기열 압력",
+  pursuit_meter: "추적 지수",
+  smoke_density: "연기 농도",
+  boarding_capacity: "승선 여력",
+  stamp_auth: "도장 인증",
+  checkpoint_auth: "검문 인증",
+  signal_decoder: "신호 해독",
+  evidence_balance: "증거 균형",
+  power_router: "전력 라우터",
+  sacrifice_state: "희생 상태",
+  core_state: "핵심 상태",
+  boss_hp: "보스 체력",
+  chapter_result: "챕터 결과",
+  public_queue: "공개 대기열",
+  broadcast_prep: "방송 준비",
+  platform_vote: "플랫폼 표결",
+  next_part_hook: "다음 파트 연결",
+  closing_hook: "마무리 연결"
 };
 
 const UI_PRESENTATION_ONLY_WIDGETS = new Set([
@@ -502,63 +616,63 @@ const UI_PRESENTATION_ONLY_WIDGETS = new Set([
 ]);
 
 const UI_NODE_TYPE_LABELS: Record<string, string> = {
-  travel: "Travel",
-  safehouse: "Safehouse",
-  exploration: "Exploration",
-  branch: "Branch",
-  boss: "Boss",
-  route_select: "Route Select"
+  travel: "이동",
+  safehouse: "은신처",
+  exploration: "탐색",
+  branch: "분기",
+  boss: "보스",
+  route_select: "노선 선택"
 };
 
 const UI_EVENT_TYPE_LABELS: Record<string, string> = {
-  briefing: "Briefing",
-  choice: "Choice",
-  combat: "Combat",
-  result: "Result",
-  exploration: "Exploration",
-  dialogue: "Dialogue",
-  danger: "Danger",
-  scene: "Scene",
-  boss: "Boss",
-  extraction: "Extraction"
+  briefing: "브리핑",
+  choice: "선택",
+  combat: "전투",
+  result: "결과",
+  exploration: "탐색",
+  dialogue: "대화",
+  danger: "위험",
+  scene: "장면",
+  boss: "보스",
+  extraction: "이탈"
 };
 
 const UI_SCREEN_TYPE_LABELS: Record<string, string> = {
-  chapter_briefing: "Chapter Briefing",
-  world_map: "World Map",
-  event_dialogue: "Event Dialogue",
-  loot_resolution: "Loot Resolution",
-  boss_intro: "Boss Intro",
-  combat_arena: "Combat Arena",
-  result_summary: "Result Summary",
-  route_select: "Route Select",
-  safehouse: "Safehouse",
-  ending_gallery: "Ending Gallery"
+  chapter_briefing: "챕터 브리핑",
+  world_map: "월드 맵",
+  event_dialogue: "이벤트 대화",
+  loot_resolution: "루팅 정산",
+  boss_intro: "보스 인트로",
+  combat_arena: "전투 구역",
+  result_summary: "결과 요약",
+  route_select: "노선 선택",
+  safehouse: "은신처",
+  ending_gallery: "엔딩 갤러리"
 };
 
 const UI_VALUE_LABELS: Record<string, string> = {
-  on: "On",
-  off: "Off",
-  unassigned: "Unassigned",
-  silence: "Silence",
-  witness: "Witness",
-  witness_score: "Witness",
-  public: "Public",
-  pragmatic: "Pragmatic",
-  rescue: "Rescue",
-  lock: "Lock",
-  release: "Release",
-  clean: "Clean",
-  broker: "Broker",
-  log: "Log",
-  order_score: "Order",
-  solidarity_score: "Solidarity",
-  official: "Official",
-  certified: "Certified",
-  medical: "Medical",
-  locked: "Locked",
-  active: "Active",
-  completed: "Completed"
+  on: "켜짐",
+  off: "꺼짐",
+  unassigned: "미지정",
+  silence: "침묵",
+  witness: "증언",
+  witness_score: "증언",
+  public: "공개",
+  pragmatic: "실리",
+  rescue: "구조",
+  lock: "봉쇄",
+  release: "개방",
+  clean: "비개입",
+  broker: "브로커",
+  log: "기록",
+  order_score: "질서",
+  solidarity_score: "연대",
+  official: "공식",
+  certified: "인증됨",
+  medical: "의료",
+  locked: "잠김",
+  active: "활성",
+  completed: "완료"
 };
 
 function formatUiWidgetLabel(widgetId: string): string {
@@ -571,7 +685,7 @@ function formatUiWidgetLabel(widgetId: string): string {
 
 function stringifyUiWidgetValue(value: unknown): string {
   if (typeof value === "boolean") {
-    return value ? "On" : "Off";
+    return value ? "켜짐" : "꺼짐";
   }
   if (typeof value === "number") {
     return Number.isInteger(value) ? String(value) : value.toFixed(1);
@@ -599,7 +713,7 @@ function formatUiEyebrowLabel(eventType?: string, screenType?: string): string {
   if (screenType) {
     return UI_SCREEN_TYPE_LABELS[screenType] ?? screenType;
   }
-  return "?꾩옣";
+  return "현장";
 }
 
 function formatUiRouteStateValue(value: string): string {
@@ -608,11 +722,11 @@ function formatUiRouteStateValue(value: string): string {
 
 function buildUiRouteSummary(runtime: RuntimeSnapshot): string {
   return [
-    `利앹뼵 ?몄꽑: ${formatUiRouteStateValue(String(runtime.stats["route.truth"] ?? "silence"))}`,
-    `?먮떒 ?깊뼢: ${formatUiRouteStateValue(String(runtime.stats["route.compassion"] ?? "pragmatic"))}`,
-    `?듭젣 ?곹깭: ${formatUiRouteStateValue(String(runtime.stats["route.control"] ?? "lock"))}`,
-    `鍮꾧났??媛쒖엯: ${formatUiRouteStateValue(String(runtime.stats["route.underworld"] ?? "clean"))}`,
-    `?꾩쟻 遺?? ${Number(runtime.stats["route.strain"] ?? 0)}`
+    `증언 노선: ${formatUiRouteStateValue(String(runtime.stats["route.truth"] ?? "silence"))}`,
+    `판단 성향: ${formatUiRouteStateValue(String(runtime.stats["route.compassion"] ?? "pragmatic"))}`,
+    `통제 상태: ${formatUiRouteStateValue(String(runtime.stats["route.control"] ?? "lock"))}`,
+    `비공식 개입: ${formatUiRouteStateValue(String(runtime.stats["route.underworld"] ?? "clean"))}`,
+    `누적 부담: ${Number(runtime.stats["route.strain"] ?? 0)}`
   ].join(" | ");
 }
 
@@ -785,17 +899,17 @@ function resolveWidgetValue(
     case "field_actions_remaining":
       return resolveFieldActionsValue(runtime, chapterId) ?? 0;
     case "warning_count":
-      return "湲곕줉 湲곗?";
+      return "기록 기준";
     case "next_part_hook": {
       const nextPartHooks: Partial<Record<ChapterId, string>> = {
-        CH05: "?⑤? 寃臾몄꽑 遺뺢눼",
-        CH10: "遺곸긽?섎뒗 寃臾?湲곕줉",
-        CH15: "?명빐 愿臾??좊퀎"
+        CH05: "다음 검문선 붕괴",
+        CH10: "북상 작전 검문 기록",
+        CH15: "외해 관문 잔류계"
       };
       return nextPartHooks[chapterId] ?? undefined;
     }
     case "closing_hook":
-      return chapterId === "CH20" ? "理쒖쥌 寃곕쭚 湲곕줉 蹂닿린" : undefined;
+      return chapterId === "CH20" ? "최종 결말 기록 보기" : undefined;
     default:
       break;
   }
@@ -879,42 +993,184 @@ function buildOutcomeSceneBlocks(runtime: RuntimeSnapshot): EventSceneBlock[] {
   return getStoryLogEntries(runtime, 3).map((entry, index) => ({
     block_id: `${entry.entry_id}:${index}`,
     kind: index === 0 ? "dialogue" : "narration",
-    speaker_label: entry.speaker_labels[0] ?? "湲곕줉",
+    speaker_label: entry.speaker_labels[0] ?? "기록",
     lines: [entry.summary].filter(Boolean)
   }));
+}
+
+function usePrefersReducedMotion(): boolean {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    syncPreference();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", syncPreference);
+      return () => mediaQuery.removeEventListener("change", syncPreference);
+    }
+
+    mediaQuery.addListener(syncPreference);
+    return () => mediaQuery.removeListener(syncPreference);
+  }, []);
+
+  return prefersReducedMotion;
+}
+
+function deriveNarrativeStress(runtime: RuntimeSnapshot): NarrativeStress {
+  if (runtime.battle_state.status === "active") {
+    return "combat";
+  }
+
+  if (runtime.fail_state) {
+    return "critical";
+  }
+
+  const noise = Number(runtime.stats.noise ?? 0);
+  const contamination = Number(runtime.stats.contamination ?? 0);
+
+  if (noise >= 12 || contamination >= 10) {
+    return "critical";
+  }
+
+  if (noise >= 8 || contamination >= 6) {
+    return "warning";
+  }
+
+  return "calm";
+}
+
+function deriveNarrativeTone(event: EventDefinition | null, screen: RuntimeSnapshot["ui_screen"]): NarrativeTone {
+  if (screen === "boss_intro") {
+    return "cinematic";
+  }
+
+  if (screen === "result_summary") {
+    return "aftershock";
+  }
+
+  if (!event) {
+    return "default";
+  }
+
+  if ((event.text.scene_blocks ?? []).some((block) => block.kind === "system")) {
+    return "terminal";
+  }
+
+  if ((event.text.scene_blocks ?? []).some((block) => block.kind === "memory")) {
+    return "memory";
+  }
+
+  if (event.event_type === "boss" || event.event_type === "combat") {
+    return "panic";
+  }
+
+  if (event.presentation.layout?.includes("cinematic")) {
+    return "cinematic";
+  }
+
+  return "default";
+}
+
+function shouldAnimateNarrative(runtime: RuntimeSnapshot, event: EventDefinition | null, prefersReducedMotion: boolean): boolean {
+  if (prefersReducedMotion || !event) {
+    return false;
+  }
+
+  const visitState = runtime.visited_events[runtime.current_chapter_id]?.[event.event_id];
+  return !visitState || visitState.seen_count <= 1;
 }
 
 function StorySceneStack({
   title,
   summary,
   blocks,
-  carryLine
+  carryLine,
+  animate = false,
+  revealKey = title,
+  onRevealStateChange
 }: {
   title: string;
   summary?: string;
   blocks: EventSceneBlock[];
   carryLine?: string;
+  animate?: boolean;
+  revealKey?: string;
+  onRevealStateChange?: (complete: boolean) => void;
 }) {
   const hasNarrativeContent = Boolean(summary) || blocks.length > 0;
+  const totalLineCount = blocks.reduce((sum, block) => sum + block.lines.length, 0);
+  const [visibleLineCount, setVisibleLineCount] = useState(animate ? 0 : totalLineCount);
+  const [carryVisible, setCarryVisible] = useState(!animate || !carryLine);
+
+  useEffect(() => {
+    setVisibleLineCount(animate ? 0 : totalLineCount);
+    setCarryVisible(!animate || !carryLine);
+    onRevealStateChange?.(!animate);
+  }, [animate, carryLine, onRevealStateChange, revealKey, totalLineCount]);
+
+  useEffect(() => {
+    if (!animate) {
+      onRevealStateChange?.(true);
+      return undefined;
+    }
+
+    if (visibleLineCount < totalLineCount) {
+      onRevealStateChange?.(false);
+      const timer = window.setTimeout(() => {
+        setVisibleLineCount((current) => Math.min(totalLineCount, current + 1));
+      }, 130);
+      return () => window.clearTimeout(timer);
+    }
+
+    if (carryLine && !carryVisible) {
+      onRevealStateChange?.(false);
+      const timer = window.setTimeout(() => {
+        setCarryVisible(true);
+      }, 340);
+      return () => window.clearTimeout(timer);
+    }
+
+    onRevealStateChange?.(true);
+    return undefined;
+  }, [animate, carryLine, carryVisible, onRevealStateChange, totalLineCount, visibleLineCount]);
+
+  let revealedLineBudget = visibleLineCount;
 
   return (
-    <div className="story-scene-stack" aria-label={title}>
+    <div className={`story-scene-stack ${animate && (visibleLineCount < totalLineCount || (carryLine && !carryVisible)) ? "is-animating" : ""}`} aria-label={title}>
       {summary ? <div className="storybook-summary">{summary}</div> : null}
-      {blocks.map((block) => (
-        <article key={block.block_id} className={`scene-block-card scene-block-${block.kind}`}>
-          {block.speaker_label ? <p className="scene-speaker">{block.speaker_label}</p> : null}
-          <div className="scene-lines">
-            {block.lines.map((line, index) => (
-              <p key={`${block.block_id}:${index}`} className="scene-line">
-                {line}
-              </p>
-            ))}
-          </div>
-          {block.emphasis ? <p className="scene-emphasis">{block.emphasis}</p> : null}
-        </article>
-      ))}
-      {carryLine ? <p className="carry-line">"{carryLine}"</p> : null}
-      {!hasNarrativeContent ? <p className="muted-copy">?꾩쭅 ?댁뼱吏???λ㈃???녿떎. ?대쾲 ?좏깮遺??湲곕줉???댁뼱吏꾨떎.</p> : null}
+      {blocks.map((block) => {
+        const visibleLines = animate ? block.lines.slice(0, Math.max(0, revealedLineBudget)) : block.lines;
+        revealedLineBudget = animate ? Math.max(0, revealedLineBudget - block.lines.length) : revealedLineBudget;
+
+        if (animate && visibleLines.length === 0) {
+          return null;
+        }
+
+        const blockComplete = visibleLines.length === block.lines.length;
+
+        return (
+          <article key={block.block_id} className={`scene-block-card scene-block-${block.kind}`} data-kind={block.kind}>
+            {block.speaker_label ? <p className="scene-speaker">{block.speaker_label}</p> : null}
+            <div className="scene-lines">
+              {visibleLines.map((line, index) => (
+                <p key={`${block.block_id}:${index}`} className="scene-line">
+                  {line}
+                </p>
+              ))}
+            </div>
+            {block.emphasis && blockComplete ? <p className="scene-emphasis">{block.emphasis}</p> : null}
+          </article>
+        );
+      })}
+      {carryLine && carryVisible ? <p className={`carry-line ${animate ? "is-reveal" : ""}`}>"{carryLine}"</p> : null}
+      {!hasNarrativeContent ? <p className="muted-copy">아직 이어지는 장면이 없습니다. 이번 선택부터 기록이 이어집니다.</p> : null}
     </div>
   );
 }
@@ -923,19 +1179,19 @@ function StoryLogPanel({ entries }: { entries: StoryLogEntry[] }) {
   if (entries.length === 0) {
     return (
       <div className="story-log-panel card">
-        <p className="eyebrow">吏곸쟾 湲곕줉</p>
-        <p className="muted-copy">?꾩쭅 ?볦씤 湲곕줉???녿떎. ?대쾲 ?좏깮??泥?湲곕줉?쇰줈 ?⑤뒗??</p>
+        <p className="eyebrow">직전 기록</p>
+        <p className="muted-copy">아직 열린 기록이 없습니다. 이번 선택이 첫 기록으로 남습니다.</p>
       </div>
     );
   }
 
   return (
     <div className="story-log-panel card">
-      <p className="eyebrow">吏곸쟾 湲곕줉</p>
+      <p className="eyebrow">직전 기록</p>
       <div className="story-log-list">
         {entries.map((entry) => (
           <article key={entry.entry_id} className="story-log-card">
-            <span>{entry.speaker_labels[0] ?? "湲곕줉"}</span>
+            <span>{entry.speaker_labels[0] ?? "기록"}</span>
             <strong>{entry.title}</strong>
             <p>{entry.summary}</p>
             {entry.carry_line ? <span>{entry.carry_line}</span> : null}
@@ -950,19 +1206,19 @@ function StoryLogPanelClean({ entries }: { entries: StoryLogEntry[] }) {
   if (entries.length === 0) {
     return (
       <div className="story-log-panel card">
-        <p className="eyebrow">吏곸쟾 湲곕줉</p>
-        <p className="muted-copy">?꾩쭅 ?볦씤 湲곕줉???녿떎. ?대쾲 ?좏깮??泥?湲곕줉?쇰줈 ?⑤뒗??</p>
+        <p className="eyebrow">직전 기록</p>
+        <p className="muted-copy">아직 열린 기록이 없습니다. 이번 선택이 첫 기록으로 남습니다.</p>
       </div>
     );
   }
 
   return (
     <div className="story-log-panel card">
-      <p className="eyebrow">吏곸쟾 湲곕줉</p>
+      <p className="eyebrow">직전 기록</p>
       <div className="story-log-list">
         {entries.map((entry) => (
           <article key={entry.entry_id} className="story-log-card">
-            <span>{entry.speaker_labels[0] ?? "湲곕줉"}</span>
+            <span>{entry.speaker_labels[0] ?? "기록"}</span>
             <strong>{entry.title}</strong>
             <p>{entry.summary}</p>
             {entry.carry_line ? <span>{entry.carry_line}</span> : null}
@@ -971,6 +1227,15 @@ function StoryLogPanelClean({ entries }: { entries: StoryLogEntry[] }) {
       </div>
     </div>
   );
+}
+
+function resolveEpilogueCards(cardIds?: string[]): Array<EpilogueCardDefinition & { cardId: string }> {
+  return (cardIds ?? [])
+    .map((cardId) => {
+      const card = EPILOGUE_CARD_LIBRARY[cardId];
+      return card ? { cardId, ...card } : null;
+    })
+    .filter((card): card is EpilogueCardDefinition & { cardId: string } => Boolean(card));
 }
 
 function WidgetRail({
@@ -1020,11 +1285,11 @@ function formatRouteStateValue(value: string): string {
 
 function buildRouteSummary(runtime: RuntimeSnapshot): string {
   const summary = [
-    `利앹뼵 ?몄꽑: ${formatRouteStateValue(String(runtime.stats["route.truth"] ?? "silence"))}`,
-    `?먮떒 ?깊뼢: ${formatRouteStateValue(String(runtime.stats["route.compassion"] ?? "pragmatic"))}`,
-    `?듭젣 ?곹깭: ${formatRouteStateValue(String(runtime.stats["route.control"] ?? "lock"))}`,
-    `鍮꾧났??媛쒖엯: ${formatRouteStateValue(String(runtime.stats["route.underworld"] ?? "clean"))}`,
-    `?꾩쟻 遺?? ${Number(runtime.stats["route.strain"] ?? 0)}`
+    `증언 노선: ${formatRouteStateValue(String(runtime.stats["route.truth"] ?? "silence"))}`,
+    `판단 성향: ${formatRouteStateValue(String(runtime.stats["route.compassion"] ?? "pragmatic"))}`,
+    `통제 상태: ${formatRouteStateValue(String(runtime.stats["route.control"] ?? "lock"))}`,
+    `비공식 개입: ${formatRouteStateValue(String(runtime.stats["route.underworld"] ?? "clean"))}`,
+    `누적 부담: ${Number(runtime.stats["route.strain"] ?? 0)}`
   ];
 
   return summary.join(" | ");
@@ -1131,7 +1396,7 @@ void buildEndingGalleryHeading;
 void buildEndingGallerySummary;
 
 function App() {
-  const partLabel = `?뚰듃 ${CURRENT_PART_ID.replace("P", "")}`;
+  const partLabel = `파트 ${CURRENT_PART_ID.replace("P", "")}`;
   const {
     bootState,
     bootError,
@@ -1154,6 +1419,8 @@ function App() {
     resetRun
   } = useGameStore();
   const [selectedGalleryEndingId, setSelectedGalleryEndingId] = useState<string | null>(null);
+  const [narrativeRevealComplete, setNarrativeRevealComplete] = useState(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
   const currentEndingId = runtime?.chapter_outcome?.ending_id;
   const partEndingCards = useMemo(
     () => (content && runtime ? collectPartEndingCards(content, CURRENT_PART_ID, runtime.unlocked_endings, runtime) : []),
@@ -1181,6 +1448,24 @@ function App() {
 
     setSelectedGalleryEndingId((previous) => previous ?? unlockedEndingIds[0] ?? partEndingCards[0]?.ending_id ?? null);
   }, [currentEndingId, runtime, unlockedEndingIds, partEndingCards]);
+
+  const chapterForReveal = content && runtime ? content.chapters[runtime.current_chapter_id] : null;
+  const currentEventForReveal =
+    chapterForReveal && runtime?.current_event_id ? chapterForReveal.events_by_id[runtime.current_event_id] : null;
+  const shouldAnimateSceneReset = runtime
+    ? runtime.ui_screen === "result_summary"
+      ? !prefersReducedMotion
+      : shouldAnimateNarrative(runtime, currentEventForReveal, prefersReducedMotion)
+    : false;
+  const narrativeRevealResetKey = runtime
+    ? runtime.ui_screen === "result_summary"
+      ? `result:${runtime.current_chapter_id}:${runtime.chapter_outcome?.ending_id ?? "none"}`
+      : `${runtime.ui_screen}:${runtime.current_event_id ?? runtime.current_screen_id ?? "none"}`
+    : "boot";
+
+  useEffect(() => {
+    setNarrativeRevealComplete(!shouldAnimateSceneReset);
+  }, [narrativeRevealResetKey, shouldAnimateSceneReset]);
 
   if (bootState === "idle" || bootState === "loading" || !content || !runtime) {
     return (
@@ -1225,10 +1510,21 @@ function App() {
   const maxHp = Number(runtime.stats.max_hp ?? 100);
   const contamination = Number(runtime.stats.contamination ?? 0);
   const noise = Number(runtime.stats.noise ?? 0);
+  const narrativeStress = deriveNarrativeStress(runtime);
+  const narrativeTone = deriveNarrativeTone(currentEvent, runtime.ui_screen);
+  const shouldAnimateScene =
+    runtime.ui_screen === "result_summary"
+      ? !prefersReducedMotion
+      : shouldAnimateNarrative(runtime, currentEvent, prefersReducedMotion);
+  const narrativeRevealKey =
+    runtime.ui_screen === "result_summary"
+      ? `result:${runtime.current_chapter_id}:${runtime.chapter_outcome?.ending_id ?? "none"}`
+      : `${runtime.ui_screen}:${runtime.current_event_id ?? runtime.current_screen_id ?? "none"}`;
   const routeSummary = buildUiRouteSummary(runtime);
   const screenWidgetIds = [...new Set([...(screen?.widgets ?? []), ...(currentEvent?.presentation.widget_overrides ?? [])])];
   const resultPayload = (toExtendedRuntime(runtime).chapter_result_payload ??
     ((runtime.chapter_outcome as { chapter_result_payload?: ChapterResultView } | null)?.chapter_result_payload ?? null)) as ChapterResultView | null;
+  const epilogueCards = resolveEpilogueCards(resultPayload?.epilogue_card_ids);
   const canOpenEndingGallery = Boolean(uiFlow?.screens.some((entry) => entry.screen_type === "ending_gallery"));
   const canAdvanceToNextChapter = Boolean(
     runtime.chapter_outcome?.next_chapter_id && content.chapters[runtime.chapter_outcome.next_chapter_id]
@@ -1251,7 +1547,12 @@ function App() {
     !resultPrimaryOpensGallery &&
     !resultSecondaryGalleryActionVisible &&
     unlockedEndingCount > 0;
-  const headerGalleryActionLabel = runtime.current_chapter_id === "CH20" ? "理쒖쥌 寃곕쭚 湲곕줉 蹂닿린" : "?붾뵫 湲곕줉 蹂닿린";
+  const headerGalleryActionLabel = runtime.current_chapter_id === "CH20" ? "최종 결말 기록 보기" : "엔딩 기록 보기";
+  const narrativeChoiceLocked =
+    shouldAnimateScene &&
+    !narrativeRevealComplete &&
+    (runtime.ui_screen === "event_dialogue" || runtime.ui_screen === "safehouse" || runtime.ui_screen === "route_select" || runtime.ui_screen === "boss_intro");
+
   const dashboardTitle =
     runtime.ui_screen === "ending_gallery"
       ? buildUiEndingGalleryHeading(runtime.current_chapter_id, screen?.title)
@@ -1267,7 +1568,11 @@ function App() {
 
   const backdropKey =
     runtime.ui_screen === "chapter_briefing"
-      ? chapterMedia?.briefing_art_key ?? chapter.chapter_cinematic?.still_art_key ?? chapterRuntimeConfig?.default_art_key
+      ? chapterMedia?.result_art_key ??
+        chapter.chapter_cinematic?.result_card_art_key ??
+        chapterMedia?.briefing_art_key ??
+        chapter.chapter_cinematic?.still_art_key ??
+        chapterRuntimeConfig?.default_art_key
       : runtime.ui_screen === "world_map"
         ? chapterMedia?.map_art_key ?? chapter.chapter_cinematic?.world_map_art_key ?? chapterRuntimeConfig?.default_art_key
         : runtime.ui_screen === "boss_intro" || runtime.ui_screen === "combat_arena"
@@ -1290,6 +1595,10 @@ function App() {
       data-part={CURRENT_PART_ID}
       data-screen={runtime.ui_screen}
       data-chapter={runtime.current_chapter_id}
+      data-stress={narrativeStress}
+      data-tone={narrativeTone}
+      data-layout={currentEvent?.presentation.layout ?? runtime.ui_screen}
+      data-event-type={currentEvent?.event_type ?? runtime.ui_screen}
     >
       <div className="runtime-backdrop">
         <ArtFrame
@@ -1341,7 +1650,7 @@ function App() {
               <div>
                 <div className="briefing-track-groups">
                   <div className="briefing-track-group">
-                    <h3>紐⑺몴</h3>
+                    <h3>목표</h3>
                     <ul className="objective-list">
                       {chapter.objectives.map((objective) => (
                         <li
@@ -1349,7 +1658,7 @@ function App() {
                           className={runtime.chapter_progress[runtime.current_chapter_id]?.objective_completion[objective.objective_id] ? "is-complete" : ""}
                         >
                           <strong>{objective.text}</strong>
-                          <span>{objective.required ? "二?紐⑺몴" : "蹂댁“ 紐⑺몴"}</span>
+                          <span>{objective.required ? "주 목표" : "보조 목표"}</span>
                         </li>
                       ))}
                     </ul>
@@ -1358,7 +1667,7 @@ function App() {
 
                 <div className="choice-actions">
                   <button className="primary-button" onClick={startMission}>
-                    ?묒쟾 ?쒖옉
+                    작전 시작
                   </button>
                 </div>
               </div>
@@ -1369,25 +1678,27 @@ function App() {
                   <div className="briefing-visual-large">
                     <ArtFrame
                       artKey={
+                        chapterMedia?.result_art_key ??
+                        chapter.chapter_cinematic?.result_card_art_key ??
                         chapterMedia?.briefing_art_key ??
                         chapter.chapter_cinematic?.still_art_key ??
                         chapterRuntimeConfig?.default_art_key
                       }
                       chapterId={runtime.current_chapter_id}
-                  caption="梨뺥꽣 釉뚮━???ㅽ떥"
+                      caption="챕터 포스터"
                       screenLabel="chapter_briefing"
                     />
                   </div>
                   <ArtFrame
                     artKey={chapter.chapter_cinematic?.anchor_portrait_key}
                     chapterId={runtime.current_chapter_id}
-                caption="?듭떖 ?몃Ъ"
+                    caption="주역 초상"
                     screenLabel="anchor_portrait"
                   />
                   <ArtFrame
                     artKey={chapter.chapter_cinematic?.support_portrait_key}
                     chapterId={runtime.current_chapter_id}
-                caption="吏???몃Ъ"
+                    caption="지원 초상"
                     screenLabel="support_portrait"
                   />
                 </div>
@@ -1448,7 +1759,7 @@ function App() {
                   <h4>인벤토리</h4>
                   <ul className="intel-list">
                     {Object.entries(runtime.inventory.quantities).length === 0 ? (
-                      <li>?꾩옱 ?ㅺ퀬 ?덈뒗 臾쇳뭹???녿떎.</li>
+                      <li>현재 들고 있는 물품이 없습니다.</li>
                     ) : (
                       Object.entries(runtime.inventory.quantities).map(([itemId, quantity]) => (
                         <li key={itemId} className="inventory-entry">
@@ -1464,7 +1775,7 @@ function App() {
                 </div>
 
                 <div className="card intel-section">
-                  <h4>?꾩옣 ?쒖빞</h4>
+                  <h4>현장 시야</h4>
                   <ArtFrame
                     artKey={
                       chapterMedia?.map_art_key ??
@@ -1472,7 +1783,7 @@ function App() {
                       chapterRuntimeConfig?.default_art_key
                     }
                     chapterId={runtime.current_chapter_id}
-                    caption="?꾩옣 ?쒖빞"
+                    caption="현장 시야"
                     screenLabel="world_map"
                   />
                 </div>
@@ -1488,27 +1799,37 @@ function App() {
                 {currentEvent ? (
                   <>
                     <StorySceneStack
+                      key={narrativeRevealKey}
                       title={currentEvent.title}
                       summary={currentEvent.text.summary}
                       blocks={currentNarrativeBlocks}
                       carryLine={currentEvent.text.carry_line}
+                      animate={shouldAnimateScene}
+                      revealKey={narrativeRevealKey}
+                      onRevealStateChange={setNarrativeRevealComplete}
                     />
-                    <div className="choice-list">
+                    {narrativeChoiceLocked ? <p className="muted-copy narrative-lock-copy">장면을 읽는 동안 선택이 잠깐 잠깁니다.</p> : null}
+                    <div className={`choice-list ${narrativeChoiceLocked ? "is-locked" : ""}`}>
                       {currentEvent.choices.map((choice) => (
-                        <button key={choice.choice_id} className="choice-card" onClick={() => selectChoice(choice.choice_id)}>
+                        <button
+                          key={choice.choice_id}
+                          className={`choice-card ${narrativeChoiceLocked ? "is-locked" : ""}`}
+                          onClick={() => selectChoice(choice.choice_id)}
+                          disabled={narrativeChoiceLocked}
+                        >
                           <strong>{choice.label}</strong>
-                          <span>{choice.preview ?? "???좏깮 吏곹썑 ?꾩옣 遺꾩쐞湲곗? ?뺣컯???щ씪吏꾨떎."}</span>
+                          <span>{choice.preview ?? "선택 직후 현장 분위기와 대응 방식이 달라집니다."}</span>
                         </button>
                       ))}
                     </div>
                   </>
                 ) : (
                   <>
-              <div className="event-summary">{screen?.purpose ?? "寃쎈줈 ?덈툕 媛쒖슂瑜??뺤씤?쒕떎."}</div>
+                    <div className="event-summary">{screen?.purpose ?? "경로 허브 개요를 확인합니다."}</div>
                     <p>{chapter.role}</p>
                     <div className="choice-actions">
                       <button className="primary-button" onClick={proceedHub}>
-                    吏?꾨줈 ?대룞
+                        지도로 이동
                       </button>
                     </div>
                   </>
@@ -1524,7 +1845,7 @@ function App() {
                 />
                 {portraitRailItems.length > 0 ? (
                   <div className="portrait-rail card">
-                    <p className="eyebrow">?깆옣 ?몃Ъ</p>
+                    <p className="eyebrow">등장 인물</p>
                     <div className="portrait-rail-list">
                       {portraitRailItems.map((item) => (
                         <div key={item.key} className="portrait-rail-item">
@@ -1548,8 +1869,8 @@ function App() {
           {runtime.ui_screen === "loot_resolution" && runtime.loot_session ? (
             <div className="screen-card split-layout">
               <div>
-                <h2>猷⑦똿 ?뺤궛</h2>
-                <p>{runtime.loot_session.source_event_id}?먯꽌 ?뺣낫??臾쇳뭹???뺣━?쒕떎.</p>
+                <h2>루팅 정산</h2>
+                <p>{runtime.loot_session.source_event_id}에서 확보한 물품을 정리합니다.</p>
                 <div className="choice-list">
                   {runtime.loot_session.drops.map((drop) => (
                     <button
@@ -1569,7 +1890,7 @@ function App() {
                 </div>
                 <div className="choice-actions">
                   <button className="primary-button" onClick={confirmLoot}>
-                    猷⑦똿 ?뺤젙
+                    루팅 확정
                   </button>
                 </div>
               </div>
@@ -1578,7 +1899,7 @@ function App() {
                 <ArtFrame
                   artKey={chapterMedia?.result_art_key ?? chapter.chapter_cinematic?.result_card_art_key}
                   chapterId={runtime.current_chapter_id}
-              caption="寃곌낵 移대뱶"
+                  caption="결과 카드"
                   screenLabel="loot_resolution"
                 />
               </div>
@@ -1588,21 +1909,27 @@ function App() {
           {runtime.ui_screen === "boss_intro" && currentEvent ? (
             <div className="screen-card storybook-layout boss-screen">
               <div className="story-main-panel">
-                <p className="eyebrow">寃곗쟾 吏곸쟾</p>
+                <p className="eyebrow">결전 직전</p>
                 <h2>{screen?.title ?? currentEvent.title}</h2>
                 {screen?.purpose ? <p className="muted-copy">{screen.purpose}</p> : null}
                 <StorySceneStack
+                  key={narrativeRevealKey}
                   title={currentEvent.title}
                   summary={currentEvent.text.summary}
                   blocks={currentNarrativeBlocks}
                   carryLine={currentEvent.text.carry_line}
+                  animate={shouldAnimateScene}
+                  revealKey={narrativeRevealKey}
+                  onRevealStateChange={setNarrativeRevealComplete}
                 />
-                <div className="choice-list">
+                {narrativeChoiceLocked ? <p className="muted-copy narrative-lock-copy">장면을 읽는 동안 선택이 잠깐 잠깁니다.</p> : null}
+                <div className={`choice-list ${narrativeChoiceLocked ? "is-locked" : ""}`}>
                   {currentEvent.choices.map((choice) => (
                     <button
                       key={choice.choice_id}
-                      className={`choice-card ${selectedChoiceId === choice.choice_id ? "is-selected" : ""}`}
+                      className={`choice-card ${selectedChoiceId === choice.choice_id ? "is-selected" : ""} ${narrativeChoiceLocked ? "is-locked" : ""}`}
                       onClick={() => selectChoice(choice.choice_id)}
+                      disabled={narrativeChoiceLocked}
                     >
                       <strong>{choice.label}</strong>
                       <span>{choice.preview}</span>
@@ -1610,8 +1937,8 @@ function App() {
                   ))}
                 </div>
                 <div className="choice-actions">
-                  <button className="primary-button" onClick={startBossCombat} disabled={!selectedChoiceId}>
-                    寃곗쟾 ?쒖옉
+                  <button className="primary-button" onClick={startBossCombat} disabled={!selectedChoiceId || narrativeChoiceLocked}>
+                    {narrativeChoiceLocked ? "장면 재생 중" : "결전 시작"}
                   </button>
                 </div>
               </div>
@@ -1620,12 +1947,12 @@ function App() {
                 <ArtFrame
                   artKey={currentEvent.presentation.cinematic_still_key ?? chapter.chapter_cinematic?.boss_splash_key}
                   chapterId={runtime.current_chapter_id}
-                  caption={screen?.title ?? "蹂댁뒪 議곗슦"}
+                  caption={screen?.title ?? "보스 조우"}
                   screenLabel="boss_intro"
                 />
                 {portraitRailItems.length > 0 ? (
                   <div className="portrait-rail card">
-                    <p className="eyebrow">?깆옣 ?몃Ъ</p>
+                    <p className="eyebrow">등장 인물</p>
                     <div className="portrait-rail-list">
                       {portraitRailItems.map((item) => (
                         <div key={item.key} className="portrait-rail-item">
@@ -1649,7 +1976,7 @@ function App() {
           {runtime.ui_screen === "combat_arena" ? (
             <div className="screen-card split-layout">
               <div>
-                <p className="eyebrow">?꾪닾</p>
+                <p className="eyebrow">전투</p>
                 <h2>{currentEvent?.title ?? "전투 구역"}</h2>
                 <div className="choice-list">
                   {runtime.battle_state.units.map((unit, index) => (
@@ -1663,16 +1990,16 @@ function App() {
                 </div>
                 <div className="choice-actions">
                   <button className="primary-button" onClick={() => resolveBattleAction("attack")}>
-                    怨듦꺽
+                    공격
                   </button>
                   <button className="ghost-button" onClick={() => resolveBattleAction("skill")}>
-                    ?ㅽ궗
+                    스킬
                   </button>
                   <button className="ghost-button" onClick={() => resolveBattleAction("item")}>
-                    ?꾩씠??
+                    아이템
                   </button>
                   <button className="ghost-button" onClick={() => resolveBattleAction("move")}>
-                    ?대룞
+                    이동
                   </button>
                 </div>
               </div>
@@ -1681,12 +2008,12 @@ function App() {
                 <ArtFrame
                   artKey={currentEvent?.presentation.art_key ?? chapter.chapter_cinematic?.boss_splash_key}
                   chapterId={runtime.current_chapter_id}
-                  caption="?꾪닾 援ъ뿭"
+                  caption="전투 구역"
                   screenLabel="combat_arena"
                 />
                 {portraitRailItems.length > 0 ? (
                   <div className="portrait-rail card">
-                    <p className="eyebrow">?깆옣 ?몃Ъ</p>
+                    <p className="eyebrow">등장 인물</p>
                     <div className="portrait-rail-list">
                       {portraitRailItems.slice(0, 1).map((item) => (
                         <div key={item.key} className="portrait-rail-item">
@@ -1716,10 +2043,14 @@ function App() {
                 <h2>{runtime.chapter_outcome.ending_title ?? screen?.title ?? runtime.chapter_outcome.title}</h2>
                 {screen?.purpose ? <p className="muted-copy">{screen.purpose}</p> : null}
                 <StorySceneStack
+                  key={narrativeRevealKey}
                   title={runtime.chapter_outcome.ending_title ?? runtime.chapter_outcome.title}
                   summary={runtime.chapter_outcome.summary}
                   blocks={resultSceneBlocks}
                   carryLine={recentStoryEntries[0]?.carry_line}
+                  animate={shouldAnimateScene}
+                  revealKey={narrativeRevealKey}
+                  onRevealStateChange={setNarrativeRevealComplete}
                 />
                 <p className="muted-copy">
                   {buildUiNextStageCopy(runtime.current_chapter_id, runtime.chapter_outcome.next_chapter_id, canAdvanceToNextChapter)}
@@ -1753,6 +2084,29 @@ function App() {
                         ))}
                       </ul>
                     </div>
+                  </div>
+                ) : null}
+                {resultPayload?.notes?.length ? (
+                  <div className="card result-notes-card">
+                    <p className="eyebrow">이어지는 기억</p>
+                    <ul className="intel-list">
+                      {resultPayload.notes.map((note, index) => (
+                        <li key={`result-note:${index}`}>
+                          <span>{note}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                {epilogueCards.length ? (
+                  <div className="epilogue-grid">
+                    {epilogueCards.map((card) => (
+                      <article key={card.cardId} className="card epilogue-card">
+                        <p className="eyebrow">{card.eyebrow}</p>
+                        <strong>{card.title}</strong>
+                        <p>{card.body}</p>
+                      </article>
+                    ))}
                   </div>
                 ) : null}
                 <div className="choice-actions">

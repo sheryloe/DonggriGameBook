@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에이전트 오피스 대시보드 | Claw-Empire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #08090a;
+            --bg-sidebar: #0c0d0e;
+            --bg-card: #151618;
+            --bg-card-hover: #1c1d1f;
+            --border: #26282b;
+            --text-main: #f0f1f2;
+            --text-muted: #8a8f98;
+            --primary: #5e6ad2;
+            --primary-glow: rgba(94, 106, 210, 0.3);
+            --accent-green: #2eb886;
+            --accent-yellow: #e2b93b;
+            --accent-red: #e05a47;
+            --glass: rgba(255, 255, 255, 0.03);
+            --sidebar-width: 240px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Pretendard', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            overflow: hidden;
+            letter-spacing: -0.01em;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+
+        .logo-section {
+            padding: 0 24px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary), #8e99ee);
+            border-radius: 6px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .nav-group {
+            margin-bottom: 24px;
+        }
+
+        .nav-label {
+            padding: 12px 24px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-item {
+            padding: 8px 16px;
+            margin: 2px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .nav-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: radial-gradient(circle at top right, rgba(94, 106, 210, 0.05), transparent 40%);
+        }
+
+        header {
+            height: 64px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            background-color: rgba(8, 9, 10, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .view-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .conn-status {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(224, 90, 71, 0.1);
+            color: var(--accent-red);
+            border: 1px solid rgba(224, 90, 71, 0.3);
+        }
+
+        .conn-status.online {
+            background: rgba(46, 184, 134, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(46, 184, 134, 0.3);
+        }
+
+        .view-container {
+            flex-grow: 1;
+            padding: 24px 32px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .kanban-board {
+            display: flex;
+            gap: 24px;
+            height: fit-content;
+            min-height: 100%;
+        }
+
+        .kanban-column {
+            width: 280px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 8px;
+            position: sticky;
+            top: 0;
+            background: var(--bg-page);
+            z-index: 5;
+        }
+
+        .column-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .column-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 100px;
+        }
+
+        .task-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            animation: cardEnter 0.3s ease-out;
+        }
+
+        @keyframes cardEnter {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .task-card:hover {
+            background-color: var(--bg-card-hover);
+            border-color: #3e4044;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .task-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        .task-title {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .task-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .priority-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.6;
+        }
+
+        .agent-avatar {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 800;
+            border: 1px solid var(--border);
+        }
+
+        .terminal-section {
+            height: 200px;
+            background-color: #050505;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 20;
+        }
+
+        .terminal-header {
+            padding: 6px 16px;
+            background: #0c0d0e;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .terminal-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .term-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            box-shadow: 0 0 5px var(--accent-green);
+        }
+
+        .terminal-body {
+            flex-grow: 1;
+            padding: 12px 16px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #d1d1d1;
+            scroll-behavior: smooth;
+        }
+
+        .log-entry {
+            margin-bottom: 4px;
+            animation: logFadeIn 0.2s ease-out;
+        }
+
+        @keyframes logFadeIn {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .log-ts { color: #555; margin-right: 8px; }
+        .log-type { color: var(--primary); font-weight: 600; margin-right: 8px; }
+        .log-msg { white-space: pre-wrap; word-break: break-all; }
+
+        #view-gantt, #view-waterfall {
+            display: none;
+            padding: 40px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .view-container.active { display: block; }
+
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-circle"></div>
+                <span class="logo-text">CLAW EMPIRE</span>
+            </div>
+
+            <nav class="nav-group">
+                <div class="nav-label">프로젝트</div>
+                <div id="project-list">
+                    <div class="nav-item active" data-project-id="all">
+                        <div class="logo-circle" style="width:10px; height:10px; background:var(--primary)"></div>
+                        모든 프로젝트
+                    </div>
+                </div>
+            </nav>
+
+            <nav class="nav-group">
+                <div class="nav-label">보기</div>
+                <div class="nav-item active" data-view="kanban">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    칸반 보드
+                </div>
+                <div class="nav-item" data-view="gantt">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    간트 타임라인
+                </div>
+                <div class="nav-item" data-view="waterfall">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    워터폴 동기화
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="header-left">
+                    <span class="view-title" id="view-title">칸반 보드</span>
+                    <div id="connection-status" class="conn-status">연결 중...</div>
+                </div>
+                <div class="header-right">
+                    <button class="nav-item" onclick="location.reload()" style="margin:0; padding:4px 8px; font-size:11px;">새로고침</button>
+                    <div class="agent-avatar" style="background:var(--bg-card)">A</div>
+                </div>
+            </header>
+
+            <div id="view-kanban" class="view-container active">
+                <div class="kanban-board">
+                    <div class="kanban-column" data-status="inbox">
+                        <div class="column-header">
+                            <div class="column-info">
+                                <div class="status-dot" style="background:#8a8f98"></div>
+                                <span class="column-name">백로그</span>
+                            </div>
+                        </div>
+                        <div class="task-list"></div>
+                    </div>
+                    <div class="kanban-column" data-status="todo">
+                        <div class="column-header">
+                            <div class="column-info">
+                                <div class="status-dot" style="background:var(--accent-yellow)"></div>
+                                <span class="column-name">할 일</span>
+                            </div>
+                        </div>
+                        <div class="task-list"></div>
+                    </div>
+                    <div class="kanban-column" data-status="in_progress">
+                        <div class="column-header">
+                            <div class="column-info">
+                                <div class="status-dot" style="background:var(--primary)"></div>
+                                <span class="column-name">진행 중</span>
+                            </div>
+                        </div>
+                        <div class="task-list"></div>
+                    </div>
+                    <div class="kanban-column" data-status="review">
+                        <div class="column-header">
+                            <div class="column-info">
+                                <div class="status-dot" style="background:var(--accent-red)"></div>
+                                <span class="column-name">검토</span>
+                            </div>
+                        </div>
+                        <div class="task-list"></div>
+                    </div>
+                    <div class="kanban-column" data-status="done">
+                        <div class="column-header">
+                            <div class="column-info">
+                                <div class="status-dot" style="background:var(--accent-green)"></div>
+                                <span class="column-name">완료</span>
+                            </div>
+                        </div>
+                        <div class="task-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-gantt" class="view-container">간트 뷰 준비 중...</div>
+            <div id="view-waterfall" class="view-container">워터폴 뷰 준비 중...</div>
+
+            <section class="terminal-section">
+                <div class="terminal-header">
+                    <div class="terminal-title">
+                        <div class="term-dot"></div>
+                        에이전트 라이브 터미널
+                    </div>
+                    <div style="font-size:10px; color:#555; display:flex; align-items:center; gap:8px;">
+                        ws://127.0.0.1:8790
+                        <button onclick="document.getElementById('terminal-body').innerHTML='<div class=\'log-entry\'><span class=\'log-type\'>시스템</span> <span class=\'log-msg\'>터미널 로그를 비웠습니다.</span></div>'" style="background:none; border:1px solid var(--border); color:var(--text-muted); padding:2px 8px; border-radius:4px; font-size:10px; cursor:pointer;" title="로그 화면 지우기">지우기</button>
+                    </div>
+                </div>
+                <div id="terminal-body" class="terminal-body">
+                    <div class="log-entry"><span class="log-ts">[00:00:00]</span> <span class="log-type">시스템</span> <span class="log-msg">에이전트 오피스 대시보드를 초기화하는 중...</span></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const API_BASE = "http://127.0.0.1:8790";
+        const WS_BASE = "ws://127.0.0.1:8790";
+        
+        class ClawDashboard {
+            constructor() {
+                this.tasks = [];
+                this.csrfToken = null;
+                this.ws = null;
+                this.statusEl = document.getElementById('connection-status');
+                this.terminalEl = document.getElementById('terminal-body');
+                
+                this.init();
+            }
+
+            async init() {
+                this.log("시스템", "세션 연결 중...");
+                try {
+                    const authResp = await fetch(`${API_BASE}/api/auth/session`, { credentials: 'include' });
+                    const authData = await authResp.json();
+                    if (authData.ok) {
+                        this.csrfToken = authData.csrf_token;
+                        this.log("시스템", "세션 인증 성공. CSRF 토큰 확보.");
+                    } else {
+                        this.log("오류", "인증 실패. 로컬호스트 루프백 설정을 확인하세요.");
+                    }
+                } catch (e) {
+                    this.log("오류", "8790 포트에서 서버를 찾을 수 없습니다. Claw-Empire 서버가 실행 중인지 확인하세요.");
+                    this.statusEl.innerText = "오프라인";
+                    return;
+                }
+
+                await this.refreshTasks();
+                this.connectWS();
+                this.bindEvents();
+            }
+
+            async refreshTasks() {
+                try {
+                    const resp = await fetch(`${API_BASE}/api/tasks`, { credentials: 'include' });
+                    const data = await resp.json();
+                    this.tasks = data.tasks || [];
+                    this.renderBoard();
+                    this.log("시스템", `서버에서 ${this.tasks.length}개의 작업을 가져왔습니다.`);
+                } catch (e) {
+                    this.log("오류", "태스크 정보를 가져오지 못했습니다.");
+                }
+            }
+
+            connectWS() {
+                this.ws = new WebSocket(WS_BASE);
+                
+                this.ws.onopen = () => {
+                    this.statusEl.innerText = "온라인";
+                    this.statusEl.classList.add('online');
+                    this.log("시스템", "WebSocket 연결됨. 실시간 업데이트 수신 중.");
+                };
+
+                this.ws.onclose = () => {
+                    this.statusEl.innerText = "재연결 중...";
+                    this.statusEl.classList.remove('online');
+                    setTimeout(() => this.connectWS(), 3000);
+                };
+
+                this.ws.onmessage = (event) => {
+                    const msg = JSON.parse(event.data);
+                    this.handleWSMessage(msg);
+                };
+            }
+
+            handleWSMessage(msg) {
+                const { type, payload, ts } = msg;
+                const timeStr = new Date(ts).toLocaleTimeString();
+
+                switch (type) {
+                    case 'task_update':
+                        this.log("태스크", `[${payload.id.slice(0,6)}] ${payload.title} -> ${payload.status}`);
+                        this.updateTaskLocally(payload);
+                        break;
+                    case 'cli_output':
+                        const items = Array.isArray(payload) ? payload : [payload];
+                        items.forEach(item => {
+                            if (item.text) {
+                                this.log("에이전트", item.text, timeStr);
+                            }
+                        });
+                        break;
+                    case 'subtask_update':
+                        this.log("서브", `${payload.title} 업데이트됨.`);
+                        break;
+                }
+            }
+
+            updateTaskLocally(task) {
+                const idx = this.tasks.findIndex(t => t.id === task.id);
+                if (idx !== -1) {
+                    this.tasks[idx] = task;
+                } else {
+                    this.tasks.push(task);
+                }
+                this.renderBoard();
+            }
+
+            renderBoard() {
+                const columns = document.querySelectorAll('.kanban-column');
+                columns.forEach(col => {
+                    const status = col.getAttribute('data-status');
+                    const list = col.querySelector('.task-list');
+
+                    const filtered = this.tasks.filter(t => {
+                        if (status === 'inbox') return t.status === 'inbox' || t.status === 'pending';
+                        return t.status === status;
+                    });
+
+                    const header = col.querySelector('.column-name');
+                    if (!header.dataset.basename) header.dataset.basename = header.innerText;
+                    header.innerText = `${header.dataset.basename} (${filtered.length})`;
+
+                    // DOM Patching logic to optimize Rendering
+                    if (filtered.length === 0) {
+                        list.innerHTML = `<div class="empty-placeholder" style="text-align:center; padding:24px 0; color:var(--text-muted); font-size:12px; border:1px dashed var(--border); border-radius:8px;">작업 없음</div>`;
+                        return;
+                    }
+
+                    // Remove empty placeholder
+                    const placeholder = list.querySelector('.empty-placeholder');
+                    if (placeholder) placeholder.remove();
+
+                    const currentIds = new Set(filtered.map(t => String(t.id)));
+
+                    // 1. Remove elements no longer in this column
+                    Array.from(list.children).forEach(child => {
+                        if (child.classList.contains('task-card')) {
+                            const id = child.getAttribute('data-task-id');
+                            if (!currentIds.has(id)) {
+                                child.remove();
+                            }
+                        }
+                    });
+
+                    // 2. Add or Update remaining elements
+                    filtered.forEach((task, index) => {
+                        let card = list.querySelector(`.task-card[data-task-id="${task.id}"]`);
+                        const updatedStr = new Date(task.updated_at || Date.now()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                        
+                        const innerHTML = `
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span class="task-id">${task.id.slice(0, 8)}</span>
+                                <span style="font-size:10px; color:var(--text-muted);">${updatedStr}</span>
+                            </div>
+                            <div class="task-title">${this.escape(task.title)}</div>
+                            <div class="task-meta">
+                                <span class="priority-icon">${this.getPrioIcon(task.priority)}</span>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    ${task.status !== 'done' ? `<button class="run-task-btn" title="Run Agent" style="background:none; border:none; cursor:pointer; font-size:14px; opacity:0.6; transition:opacity 0.2s;">▶️</button>` : ''}
+                                    <div class="agent-avatar" title="${task.agent_name || '미배정'}">
+                                        ${task.agent_name ? task.agent_name[0] : '?'}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        if (!card) {
+                            card = document.createElement('div');
+                            card.className = "task-card";
+                            card.setAttribute('data-task-id', task.id);
+                            card.innerHTML = innerHTML;
+                            
+                            // Bind Run API event
+                            const runBtn = card.querySelector('.run-task-btn');
+                            if (runBtn) {
+                                runBtn.addEventListener('click', (e) => {
+                                    e.stopPropagation();
+                                    this.runTask(task.id);
+                                });
+                            }
+
+                            const sibling = list.children[index] || null;
+                            list.insertBefore(card, sibling);
+                        } else {
+                            if (card.innerHTML !== innerHTML) {
+                                card.innerHTML = innerHTML;
+                                // Re-bind event on innerHTML change
+                                const runBtn = card.querySelector('.run-task-btn');
+                                if (runBtn) {
+                                    runBtn.addEventListener('click', (e) => {
+                                        e.stopPropagation();
+                                        this.runTask(task.id);
+                                    });
+                                }
+                            }
+                            
+                            const sibling = list.children[index];
+                            if (sibling !== card) {
+                                list.insertBefore(card, sibling);
+                            }
+                        }
+                    });
+                });
+            }
+
+            async runTask(id) {
+                this.log("시스템", `태스크 ${id.slice(0,6)} 실행 시작...`);
+                try {
+                    await fetch(\`\${API_BASE}/api/tasks/\${id}/run\`, {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                } catch (e) {
+                    this.log("오류", \`태스크 \${id.slice(0,6)} 실행 호출 실패.\`);
+                }
+            }
+
+            getPrioIcon(p) {
+                if (p >= 2) return "🔴";
+                if (p === 1) return "🟡";
+                return "🔵";
+            }
+
+            log(type, msg, time) {
+                const entry = document.createElement('div');
+                entry.className = "log-entry";
+                const ts = time || new Date().toLocaleTimeString();
+                entry.innerHTML = `<span class="log-ts">[${ts}]</span> <span class="log-type">${type}</span> <span class="log-msg">${this.escape(msg)}</span>`;
+                this.terminalEl.appendChild(entry);
+                this.terminalEl.scrollTop = this.terminalEl.scrollHeight;
+                
+                if (this.terminalEl.children.length > 200) {
+                    this.terminalEl.removeChild(this.terminalEl.firstChild);
+                }
+            }
+
+            escape(str) {
+                if (!str) return "";
+                return str.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+            }
+
+            bindEvents() {
+                const navItems = document.querySelectorAll('.nav-item[data-view]');
+                navItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const target = item.getAttribute('data-view');
+                        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                        document.querySelectorAll('.view-container').forEach(v => v.classList.remove('active'));
+                        document.getElementById(`view-${target}`).classList.add('active');
+                        document.getElementById('view-title').innerText = item.innerText;
+                    });
+                });
+            }
+        }
+
+        window.dashboard = new ClawDashboard();
+    </script>
+</body>
+</html>

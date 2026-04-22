@@ -1,140 +1,99 @@
-# Antigravity
+# Antigravity 운영 가이드 (현재 기준)
 
-## 목적
-- 이 문서는 Antigravity 이미지 작업의 canonical 실행 문서다.
-- 기준 경로는 `private/prompts/antigravity`다.
-- 구경로 `docs/asset-prompt-pack`는 더 이상 기준으로 쓰지 않는다.
+기준일: 2026-04-19
+목표: 이미지 생성/동기화/검수, 포스터 우선 브리핑, 영상 프롬프트 경로를 한 번에 관리
 
-## 기준 경로
-```text
-D:\Donggri_Platform\DonggrolGameBook\private\prompts\antigravity
-├─ chapters\CHxx_*\
-├─ master\
-├─ item-icons\
-├─ part-guides\
-├─ part1-video-prompts\
-├─ part2-video-prompts\
-├─ part3-video-prompts\
-├─ part4-video-prompts\
-├─ part1-poster-prompts\
-├─ part2-poster-prompts\
-├─ part3-poster-prompts\
-└─ part4-poster-prompts\
-```
+## 1) Canonical 루트
+- 프롬프트 루트: `private/prompts/antigravity`
+- 이미지 inbox: `public/generated/images/inbox/P1`, `P2`, `P3`, `P4`
+- 이미지 생성 결과: `public/generated/images`
+- 패키징 결과: `private/generated/packaged/images`
+- 영상 생성 결과: `public/generated/videos`
 
-## 핵심 파일
-- 마스터 manifest: `private/prompts/antigravity/master/MASTER_ASSET_MANIFEST.json`
-- runtime art alias: `private/prompts/antigravity/master/RUNTIME_ART_KEY_ALIAS.json`
-- stitch render queue: `private/prompts/antigravity/master/STITCH_RENDER_QUEUE.json`
-- stitch item icon queue: `private/prompts/antigravity/master/STITCH_ITEM_ICON_QUEUE.json`
-- 파트 가이드:
-  - `private/prompts/antigravity/part-guides/P1.md`
-  - `private/prompts/antigravity/part-guides/P2.md`
-  - `private/prompts/antigravity/part-guides/P3.md`
-  - `private/prompts/antigravity/part-guides/P4.md`
+## 2) 영상 프롬프트/manifest 경로
+아래 manifest를 기준으로 영상 프롬프트 JSON을 찾는다.
 
-## 결과물 경로
-- 이미지 inbox:
-  - `public/generated/images/inbox/P1`
-  - `public/generated/images/inbox/P2`
-  - `public/generated/images/inbox/P3`
-  - `public/generated/images/inbox/P4`
-- 아이콘 inbox: `public/generated/icons/inbox`
-- sync 결과:
-  - `public/generated/images`
-  - `private/generated/packaged/images`
+- `private/prompts/antigravity/part1-video-prompts/manifest.json`
+- `private/prompts/antigravity/part2-video-prompts/manifest.json`
+- `private/prompts/antigravity/part3-video-prompts/manifest.json`
+- `private/prompts/antigravity/part4-video-prompts/manifest.json`
 
-## 작업 규칙
-1. 파일명은 반드시 `filename_target` 그대로 사용한다.
-2. `asset_id`, `art_key_final`, `filename_target`, `target_path`는 임의로 바꾸지 않는다.
-3. 결과물은 항상 `inbox`에 먼저 넣는다.
-4. `--dry-run` 확인 없이 바로 sync 하지 않는다.
-5. 먼저 파트 가이드를 읽고 챕터 프롬프트로 내려간다.
-6. 이 문서에는 실행 규칙만 둔다.
-7. 스토리 설계와 장면 의미는 `private/story/world/design` 문서를 기준으로 본다.
+로딩 규칙
+- 실제 프롬프트 파일은 manifest의 `file` 필드를 기준으로 로드한다.
 
-## 상태 판정
-- `Completed`: `public/generated` 또는 `private/generated/packaged`에 실제 결과 파일이 있다.
-- `Ready`: `inbox`에는 파일이 있지만 sync 결과가 아직 없다.
-- `Missing`: manifest/prompt는 있는데 실제 파일이 없다.
+출력 규칙
+- 영상: `public/generated/videos/<video_id>.mp4`
+- 포스터: `public/generated/images/<source_art_key>.webp`
+- `target_poster_path`가 있는 경우 해당 경로를 우선 사용한다.
 
-## 기본 명령
+## 3) 브리핑 시작 화면 비주얼 규칙
+`chapter_briefing`의 대표 비주얼은 아래 우선순위로 선택한다.
+
+1. `result_card_art_key` (포스터)
+2. `still_art_key`
+3. `background_art_key`
+
+즉, 포스터가 있으면 항상 포스터부터 보여준다.
+
+## 4) 실행 명령 (PowerShell)
 ```powershell
 Set-Location D:\Donggri_Platform\DonggrolGameBook
-```
 
-## 프롬프트 생성
-```powershell
-npm run asset-prompts:generate
-npm run asset-prompts:generate:part1
-npm run asset-prompts:generate:part2
-npm run asset-prompts:generate:part3
-npm run asset-prompts:generate:part4
-npm run asset-prompts:item-icons
-npm run audio-prompts:boss
-```
-
-## 챕터 프롬프트 열기
-```powershell
-ii .\private\prompts\antigravity\chapters\CH16_fracture_harbor
-Get-Content .\private\prompts\antigravity\chapters\CH16_fracture_harbor\background\bg_primary.md -Raw | Set-Clipboard
-```
-
-## 렌더 큐 확인
-```powershell
-$Queue = Get-Content .\private\prompts\antigravity\master\STITCH_RENDER_QUEUE.json -Raw | ConvertFrom-Json
-$Queue.tasks |
-  Where-Object { $_.kind -eq 'image' -and $_.part_id -eq 'P4' } |
-  Select-Object task_id, chapter_id, prompt_file, target_path |
-  Format-Table -AutoSize
-```
-
-## 이미지 sync
-```powershell
-npm run assets:sync -- --part P4 --dry-run
-npm run assets:sync -- --part P4
-npm run assets:sync -- --dry-run
-npm run assets:sync
-```
-
-## 아이콘 처리
-```powershell
-ii .\public\generated\icons\inbox
-npm run assets:item-icons:crop
-```
-
-## 콘텐츠 반영
-```powershell
+# 1) private 콘텐츠 검증
 npm run private:check
+
+# 2) runtime 산출물 생성
 npm run private:export
+
+# 3) 앱 빌드 검증
+npm run build:apps
+
+# 4) Part1 실행
+npm run dev:part1 -- --host 127.0.0.1 --port 4171
 ```
 
-## 대시보드
-```powershell
-npm run dashboard:media-sync
-ii .\media-sync-dashboard.html
+## 5) UI 한글 깨짐 점검 기준
+플레이어 노출 문자열 기준으로 아래가 0건이어야 통과.
 
-npm run dashboard:modern
-ii .\modern-ops-dashboard.html
-```
+- placeholder: `??`, `???`
+- 깨짐 문자: ``
+- mojibake 패턴(한자+한글 혼합 비정상 시퀀스)
 
-## inbox 열기
-```powershell
-ii .\public\generated\images\inbox\P1
-ii .\public\generated\images\inbox\P2
-ii .\public\generated\images\inbox\P3
-ii .\public\generated\images\inbox\P4
-```
+검사 대상
+- `private/content/ui/ch01~ch20.ui_flow.json`
+- `packages/app-runtime/src/App.tsx`
+- `public/runtime-content` 산출물
 
-## 체크리스트
-- 파트 가이드를 먼저 읽었는가
-- 프롬프트 경로가 `private/prompts/antigravity` 기준인가
-- 파일명을 `filename_target`에 맞췄는가
-- 올바른 Part inbox에 넣었는가
-- `assets:sync -- --dry-run` 결과가 깨끗한가
-- `private:check`, `private:export`가 통과하는가
+## 이미지 가이드
+이미지 생성이 필요한 가이드 문서는 다음과 같다.
+- `private/prompts/antigravity/part-guides/P1.md`
+- `private/prompts/antigravity/part-guides/P2.md`
+- `private/prompts/antigravity/part-guides/P3.md`
+- `private/prompts/antigravity/part-guides/P4.md`
 
-## 금지
-- `private/`, `public/generated/`, `public/runtime-content/`를 Git에 올리지 않는다.
-- 프롬프트 결과물을 publish 경로로 직접 복사하지 않는다.
-- 구경로 문서를 기준으로 작업하지 않는다.
+## 현재 만든 것
+- [x] P1 이미지 `45 / 45`
+- [x] P2 이미지 `45 / 45`
+- [x] P3 이미지 `45 / 45`
+- [ ] P4 이미지 `25 / 45`
+
+현재 기준
+- 전체 등록 이미지: `180`
+- 현재 생성 완료 이미지: `144`
+- 현재 남은 이미지: `36`
+
+## 현재 남은 것
+### P2
+- [x] P2 이미지 전량 생성 완료 (Done)
+
+### P3
+- [x] P3 이미지 전량 생성 완료 (Done)
+
+### P4
+- [ ] 이미지 `20`개 추가 생성 (CH18 남수련 초상화부터 재개 예정)
+
+## 6) 운영 체크 포인트
+- 포스터가 시작 브리핑(챕터 첫 화면)에서 노출되는지 확인
+- CH01/CH06/CH10/CH16/CH20 진입 시 한글 깨짐이 없는지 확인
+- 영상 생성 전에는 manifest 경로와 `file` 필드만 먼저 확정
+- 이미지 생성 시 폴더 추측 금지, `MASTER_ASSET_MANIFEST.json` 기준으로 정렬

@@ -1,0 +1,1 @@
+Concept art, oppressive and hazardous sewer pump station. Greenish, toxic water covers the floor, with thick corrosive mist hanging in the air. Massive, rust-covered pipes and machinery dominate the scene. A single, flickering yellow warning light casts long, distorted shadows. The air looks thick and unbreathable. Highly detailed, atmospheric dread, Metro 2033 style environment.

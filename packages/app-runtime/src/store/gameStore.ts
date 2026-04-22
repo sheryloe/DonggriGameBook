@@ -39,6 +39,9 @@ interface ChapterResultPayload {
   chapter_id: ChapterId;
   ended_by: string;
   selected_route?: string;
+  title?: string;
+  summary?: string;
+  carry_line?: string;
   chapter_minutes: number;
   total_minutes: number;
   objective_summary: Array<{
@@ -55,6 +58,8 @@ interface ChapterResultPayload {
   }>;
   widget_state: Record<string, string | number | boolean>;
   active_flags: string[];
+  notes?: string[];
+  epilogue_card_ids?: string[];
 }
 
 interface EndingGalleryRuntimeEntry {
@@ -93,6 +98,14 @@ type ExtendedChapterOutcome = NonNullable<RuntimeSnapshot["chapter_outcome"]> & 
   gallery_chapter_id?: ChapterId;
   result_variant?: string;
 };
+
+interface AuthoredOutcomeSource {
+  title?: string;
+  summary?: string;
+  carryLine?: string;
+  speakerLabels: string[];
+  resultVariant?: string;
+}
 
 interface FlowTarget {
   nextEventId?: string | null;
@@ -251,6 +264,50 @@ function getEventSpeakerLabels(event: EventDefinition): string[] {
   );
 
   return [...labels];
+}
+
+function isOutcomeBoundaryEvent(event: EventDefinition, endToken: string): boolean {
+  return (
+    typeof event.presentation?.result_variant === "string" ||
+    (typeof event.next_event_id === "string" && (event.next_event_id === endToken || event.next_event_id.startsWith("END_"))) ||
+    (event.choices ?? []).some(
+      (choice) => typeof choice.next_event_id === "string" && (choice.next_event_id === endToken || choice.next_event_id.startsWith("END_"))
+    ) ||
+    /(?:RESULT|EXTRACTION|BOSS|RESOLVED)/u.test(event.event_id)
+  );
+}
+
+function getAuthoredOutcomeSummary(event: EventDefinition): string {
+  const authoredSummary = compactNarrativeText(event.text.summary);
+  if (authoredSummary) {
+    return summarizeNarrative(authoredSummary, event.title);
+  }
+
+  return getEventStorySummary(event, event.title);
+}
+
+function resolveAuthoredOutcomeSource(
+  chapter: ChapterDefinition,
+  runtime: RuntimeSnapshot,
+  endToken: string
+): AuthoredOutcomeSource | null {
+  if (!runtime.current_event_id) {
+    return null;
+  }
+
+  const currentEvent = chapter.events_by_id[runtime.current_event_id];
+  if (!currentEvent || !isOutcomeBoundaryEvent(currentEvent, endToken)) {
+    return null;
+  }
+
+  const speakerLabels = getEventSpeakerLabels(currentEvent);
+  return {
+    title: compactNarrativeText(currentEvent.title) || undefined,
+    summary: getAuthoredOutcomeSummary(currentEvent),
+    carryLine: compactNarrativeText(currentEvent.text.carry_line) || undefined,
+    speakerLabels,
+    resultVariant: currentEvent.presentation?.result_variant ?? undefined
+  };
 }
 
 function appendStoryLogEntry(runtime: RuntimeSnapshot, entry: StoryLogEntry): void {
@@ -799,12 +856,178 @@ function openEvent(
   return nextRuntime;
 }
 
+const ROUTE_COPY_LABELS: Record<string, string> = {
+  official_lane: "공식선 유지",
+  broker_lane: "브로커 우회",
+  witness_chain: "증언 연결",
+  audit_lane: "감사 차선",
+  evidence_lane: "증거 인계",
+  reserve_lane: "예비 퇴로",
+  order_score: "질서 선별",
+  witness_score: "기록 재설계",
+  solidarity_score: "게이트 연대"
+};
+
+const ROUTE_EPILOGUE_IDS: Partial<Record<ChapterId, Partial<Record<string, string[]>>>> = {
+  CH05: {
+    official_lane: ["p1_crate_city_manifest", "p1_kim_ara_confession"],
+    broker_lane: ["p1_blackwater_child", "p1_kim_ara_confession"],
+    witness_chain: ["p1_writer_log", "p1_kim_ara_confession"]
+  },
+  CH10: {
+    official_lane: ["p2_queue_17", "p2_red_corridor_wall"],
+    broker_lane: ["p2_dead_office_stamp", "p2_sunken_list"],
+    witness_chain: ["p2_smoke_hold_child", "p2_sunken_list"]
+  },
+  CH15: {
+    audit_lane: ["p3_fog_rail_band", "p3_switch_chair"],
+    evidence_lane: ["p3_bias_station_missing", "p3_relay_last_lamp"],
+    reserve_lane: ["p3_white_record_child", "p3_switch_chair"]
+  },
+  CH20: {
+    order_score: ["p4_tool_bag", "p4_gate_outer_names"],
+    witness_score: ["p4_hearing_back_row", "p4_last_recipient"],
+    solidarity_score: ["p4_verdict_band", "p4_sealed_record"]
+  }
+};
+
+const ENDING_EPILOGUE_IDS: Record<string, string[]> = {
+  P2_END_CONTROLLED_CONVOY: ["p2_queue_17", "p2_red_corridor_wall"],
+  P2_END_WITNESS_FERRY: ["p2_smoke_hold_child", "p2_sunken_list"],
+  P2_END_RED_CORRIDOR: ["p2_dead_office_stamp", "p2_red_corridor_wall"],
+  P2_END_HARBOR_SEIZURE: ["p2_dead_office_stamp", "p2_sunken_list"],
+  P2_END_SUNKEN_LIST: ["p2_smoke_hold_child", "p2_sunken_list"],
+  P3_END_CERTIFIED_PASSAGE: ["p3_fog_rail_band", "p3_switch_chair"],
+  P3_END_PUBLIC_BREACH: ["p3_bias_station_missing", "p3_relay_last_lamp"],
+  P3_END_COLD_MERCY: ["p3_white_record_child", "p3_switch_chair"],
+  P3_END_SEALED_RELAY: ["p3_relay_last_lamp", "p3_switch_chair"],
+  P3_END_SACRIFICE_CORRIDOR: ["p3_switch_chair", "p3_relay_last_lamp"],
+  P4_END_ORDERED_SELECTION: ["p4_tool_bag", "p4_gate_outer_names"],
+  P4_END_GATE_BROKEN: ["p4_verdict_band", "p4_gate_outer_names"],
+  P4_END_WITNESSED_REDESIGN: ["p4_hearing_back_row", "p4_last_recipient", "p4_sealed_record"]
+};
+
+function uniqueStrings(values: Array<string | null | undefined>): string[] {
+  return [...new Set(values.filter((value): value is string => typeof value === "string" && value.trim().length > 0))];
+}
+
+function formatSelectedRoute(selectedRoute?: string): string {
+  if (!selectedRoute) {
+    return "미기록";
+  }
+
+  return ROUTE_COPY_LABELS[selectedRoute] ?? selectedRoute.replace(/[_-]/gu, " ");
+}
+
+function buildOutcomeNotes(
+  runtime: RuntimeSnapshot,
+  chapterId: ChapterId,
+  selectedRoute?: string,
+  endingId?: string,
+  endingTitle?: string
+): string[] {
+  const routeLabel = formatSelectedRoute(selectedRoute);
+  const notes: string[] = [];
+
+  if (endingTitle && selectedRoute) {
+    notes.push(`${routeLabel} 경로는 ${endingTitle} 결말로 수렴했고, 그 여파가 바로 다음 기록에 남는다.`);
+  } else if (endingTitle) {
+    notes.push(`${endingTitle} 결말의 비용과 잔향이 결과 카드 바깥까지 이어진다.`);
+  } else if (selectedRoute) {
+    notes.push(`${routeLabel} 경로에서 남긴 선택의 여파가 다음 장 판단문으로 넘어간다.`);
+  }
+
+  switch (chapterId) {
+    case "CH01":
+      notes.push("젖은 방송 로그와 편집실 잔류자 기록이 검은 수로 거래선의 첫 기준으로 넘어간다.");
+      notes.push(`${routeLabel}의 기조가 아직 작지만 이후 검문과 명단의 판단문으로 쌓이기 시작한다.`);
+      break;
+    case "CH02":
+      notes.push("검은 수로에서 본 위조 패스와 거래선의 얼굴이 유리정원 계층선별의 기억으로 남는다.");
+      notes.push("누가 물 위에서 값을 치렀는지가 이후 상층 협상과 구조 우선권에 그림자를 남긴다.");
+      break;
+    case "CH03":
+      notes.push("유리정원에서 고른 전력 분배와 구조 우선권이 상자들의 도시 물류 윤리로 이어진다.");
+      notes.push("안보경과 류세온 사이에서 어느 쪽 말을 더 오래 붙잡았는지가 다음 장 판단에 스민다.");
+      break;
+    case "CH04":
+      notes.push("의료 상자와 진입 분류에서 무엇을 먼저 살렸는지가 미러센터 데이터 공개 기준으로 이어진다.");
+      notes.push("사람보다 상자를 먼저 살린 장면, 혹은 상자를 버리고 사람을 건진 장면이 그대로 남는다.");
+      break;
+    case "CH05":
+      notes.push("김아라의 고백과 데이터 공개 범위가 Part 2 검문선에서 누구를 먼저 믿을지의 기준이 된다.");
+      notes.push(`${routeLabel}로 굳은 1부의 판단이 이후 검문, 명단, 증언선의 말투를 바꾼다.`);
+      break;
+    case "CH10":
+      notes.push("침하 항만에서 고른 우선순위가 다음 파트 선별 윤리의 첫 문장으로 넘어간다.");
+      notes.push(`${routeLabel}의 결과가 북상 구간에서 누가 기록되고 누가 밀리는지의 기준이 된다.`);
+      break;
+    case "CH15":
+      notes.push("스위치 앞에 남은 빈자리와 마지막 램프의 잔광이 4부 공개 심판의 질문문으로 넘어간다.");
+      notes.push(`${routeLabel}로 남긴 중계선 결론이 이후 판결 씨앗과 잠금 문장에 그대로 스민다.`);
+      break;
+    case "CH18":
+      notes.push(`판결 씨앗: ${routeLabel}의 문장이 소금 정거장에서 살아남아 외해 전초 초안으로 넘겨진다.`);
+      notes.push("청문에서 이름이 불리지 않은 사람들과 끝까지 화면에 남은 얼굴이 다음 장 초안의 근거가 된다.");
+      break;
+    case "CH19":
+      if (runtime.flags["p4.execution_lock_order"] === true) {
+        notes.push("잠금: 질서의 선별 문장이 외해 전초에서 최종 초안으로 잠겼다.");
+      }
+      if (runtime.flags["p4.execution_lock_solidarity"] === true) {
+        notes.push("잠금: 더 많은 사람을 안쪽으로 밀어 넣는 판결문이 외해 전초에서 잠겼다.");
+      }
+      if (runtime.flags["p4.execution_lock_witness"] === true) {
+        notes.push("잠금: 배제까지 함께 기록하는 판결문이 외해 전초에서 잠겼다.");
+      }
+      notes.push("이제 독도의 문에서는 새 판단이 아니라 잠긴 초안을 어떤 상처와 함께 집행할지만 남는다.");
+      break;
+    case "CH20":
+      if (endingId === "P4_END_ORDERED_SELECTION") {
+        notes.push("집행: 처리량은 지켰지만 문턱 밖에 남겨진 이름도 최종 기록으로 굳었다.");
+      }
+      if (endingId === "P4_END_GATE_BROKEN") {
+        notes.push("집행: 더 많은 사람을 안쪽으로 밀어 넣었지만 게이트 전체의 균열도 함께 결말이 되었다.");
+      }
+      if (endingId === "P4_END_WITNESSED_REDESIGN") {
+        notes.push("집행: 기준은 새로 써졌지만 누구를 끝내 못 태웠는지도 모두가 보게 되었다.");
+      }
+      notes.push("결말은 승리문이 아니라 남겨진 사람, 지워진 흔적, 기록된 장면의 배열로 남는다.");
+      break;
+    default:
+      break;
+  }
+
+  return uniqueStrings(notes).slice(0, 3);
+}
+
+function buildResultEpilogueCardIds(chapterId: ChapterId, selectedRoute?: string, endingId?: string): string[] {
+  return uniqueStrings([
+    ...(ROUTE_EPILOGUE_IDS[chapterId]?.[selectedRoute ?? ""] ?? []),
+    ...(endingId ? ENDING_EPILOGUE_IDS[endingId] ?? [] : [])
+  ]);
+}
+
+function enrichChapterResultPayload(
+  payload: ChapterResultPayload,
+  runtime: RuntimeSnapshot,
+  chapterId: ChapterId,
+  endingId?: string,
+  endingTitle?: string,
+  outcomeSource?: AuthoredOutcomeSource | null
+): void {
+  payload.title = outcomeSource?.title ?? endingTitle ?? payload.title;
+  payload.summary = outcomeSource?.summary ?? payload.summary;
+  payload.carry_line = outcomeSource?.carryLine ?? payload.carry_line;
+  payload.notes = buildOutcomeNotes(runtime, chapterId, payload.selected_route, endingId, endingTitle);
+  payload.epilogue_card_ids = buildResultEpilogueCardIds(chapterId, payload.selected_route, endingId);
+}
+
 function summarizeChapter(runtime: RuntimeSnapshot, chapterId: ChapterId): string {
-  const truth = String(runtime.stats["route.truth"] ?? "silence");
-  const compassion = String(runtime.stats["route.compassion"] ?? "pragmatic");
-  const control = String(runtime.stats["route.control"] ?? "lock");
-  const strain = Number(runtime.stats["route.strain"] ?? 0);
-  return `${chapterId} 醫낅즺. truth=${truth}, compassion=${compassion}, control=${control}, strain=${strain}.`;
+  const route = formatSelectedRoute(typeof runtime.stats["route.current"] === "string" ? runtime.stats["route.current"] : undefined);
+  const strain = Number(runtime.stats["route.strain"] ?? runtime.stats["sacrifice_load"] ?? 0);
+  const queue = Number(runtime.stats["queue_pressure"] ?? runtime.stats["capacity_pressure"] ?? 0);
+  return `${chapterId} 종료. ${route} 기준이 남았고, 누적 부담 ${strain}와 현장 압력 ${queue}가 다음 장 기억으로 넘어간다.`;
 }
 
 function buildWidgetStateSnapshot(
@@ -940,6 +1163,11 @@ function resolveEndingId(content: GameContentPack, runtime: RuntimeSnapshot, war
     }
   }
 
+  warnings.push({
+    message: `No ending rule matched for ${chapter.chapter_id}; defaulting to P1_END_ASHEN_ESCAPE for carry flags.`,
+    source: `ending:${chapter.chapter_id}`,
+    severity: "warning"
+  });
   return "P1_END_ASHEN_ESCAPE";
 }
 
@@ -963,7 +1191,12 @@ function resolveGenericEndingRule(
     }
   }
 
-  return orderedRules[orderedRules.length - 1] ?? null;
+  warnings.push({
+    message: `No ending rule matched for ${chapter.chapter_id}; using authored result summary without gallery unlock.`,
+    source: `ending:${chapter.chapter_id}`,
+    severity: "warning"
+  });
+  return null;
 }
 
 function registerEndingGalleryEntry(
@@ -1013,6 +1246,7 @@ function finalizeChapterOutcome(
     progress.ended_by = endToken;
   }
   syncSelectedRoute(nextRuntime, chapterId);
+  const authoredOutcome = resolveAuthoredOutcomeSource(chapter, nextRuntime, endToken);
 
   const chapterResultPayload = buildChapterResultPayload(content, nextRuntime, chapterId, endToken);
   extendedRuntime.chapter_result_payload = chapterResultPayload;
@@ -1051,8 +1285,8 @@ function finalizeChapterOutcome(
     );
     nextRuntime.chapter_outcome = {
       chapter_id: chapterId,
-      title: chapter.title,
-      summary: endingDef.summary,
+      title: authoredOutcome?.title ?? chapter.title,
+      summary: authoredOutcome?.summary ?? endingDef.summary,
       next_chapter_id: nextChapterId,
       campaign_complete: true,
       ending_id: endingDef.ending_id,
@@ -1061,10 +1295,11 @@ function finalizeChapterOutcome(
     } as ExtendedChapterOutcome;
     (nextRuntime.chapter_outcome as ExtendedChapterOutcome).chapter_result_payload = chapterResultPayload;
     (nextRuntime.chapter_outcome as ExtendedChapterOutcome).gallery_chapter_id = chapterId;
-    (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = "ending";
+    (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = authoredOutcome?.resultVariant ?? "ending";
     nextRuntime.campaign_complete = true;
     markMediaSeen(nextRuntime, endingDef.art_key);
     markMediaSeen(nextRuntime, endingDef.thumb_key);
+    enrichChapterResultPayload(chapterResultPayload, nextRuntime, chapterId, endingDef.ending_id, endingDef.title, authoredOutcome);
   } else {
     const resolvedEndingRule = resolveGenericEndingRule(content, nextRuntime, warnings);
     if (resolvedEndingRule) {
@@ -1082,8 +1317,8 @@ function finalizeChapterOutcome(
       );
       nextRuntime.chapter_outcome = {
         chapter_id: chapterId,
-        title: chapter.title,
-        summary: resolvedEndingRule.summary,
+        title: authoredOutcome?.title ?? chapter.title,
+        summary: authoredOutcome?.summary ?? resolvedEndingRule.summary,
         next_chapter_id: nextChapterId,
         campaign_complete: !nextChapterInCurrentPart,
         ending_id: endingId as EndingId,
@@ -1091,18 +1326,20 @@ function finalizeChapterOutcome(
       } as ExtendedChapterOutcome;
       (nextRuntime.chapter_outcome as ExtendedChapterOutcome).chapter_result_payload = chapterResultPayload;
       (nextRuntime.chapter_outcome as ExtendedChapterOutcome).gallery_chapter_id = chapterId;
-      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = "ending";
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = authoredOutcome?.resultVariant ?? "ending";
+      enrichChapterResultPayload(chapterResultPayload, nextRuntime, chapterId, resolvedEndingRule.ending_id, resolvedEndingRule.title, authoredOutcome);
     } else {
       nextRuntime.chapter_outcome = {
         chapter_id: chapterId,
-        title: chapter.title,
-        summary: summarizeChapter(nextRuntime, chapterId),
+        title: authoredOutcome?.title ?? chapter.title,
+        summary: authoredOutcome?.summary ?? summarizeChapter(nextRuntime, chapterId),
         next_chapter_id: nextChapterId,
         campaign_complete: !nextChapterInCurrentPart
       } as ExtendedChapterOutcome;
       (nextRuntime.chapter_outcome as ExtendedChapterOutcome).chapter_result_payload = chapterResultPayload;
       (nextRuntime.chapter_outcome as ExtendedChapterOutcome).gallery_chapter_id = chapterId;
-      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = "chapter";
+      (nextRuntime.chapter_outcome as ExtendedChapterOutcome).result_variant = authoredOutcome?.resultVariant ?? "chapter";
+      enrichChapterResultPayload(chapterResultPayload, nextRuntime, chapterId, undefined, undefined, authoredOutcome);
     }
   }
 
@@ -1112,9 +1349,12 @@ function finalizeChapterOutcome(
     node_id: nextRuntime.current_node_id,
     event_id: nextRuntime.current_event_id,
     title: nextRuntime.chapter_outcome?.ending_title ?? nextRuntime.chapter_outcome?.title ?? chapter.title,
-    summary: nextRuntime.chapter_outcome?.summary ?? summarizeChapter(nextRuntime, chapterId),
-    carry_line: getChapterOutcomeCarryLine(chapterId, nextChapterId),
-    speaker_labels: [nextRuntime.chapter_outcome?.ending_id ? "寃곕쭚 湲곕줉" : "寃곌낵 湲곕줉"],
+    summary: authoredOutcome?.summary ?? nextRuntime.chapter_outcome?.summary ?? summarizeChapter(nextRuntime, chapterId),
+    carry_line: authoredOutcome?.carryLine ?? getChapterOutcomeCarryLine(chapterId, nextChapterId),
+    speaker_labels:
+      authoredOutcome?.speakerLabels.length
+        ? authoredOutcome.speakerLabels
+        : [nextRuntime.chapter_outcome?.ending_id ? "결말 기록" : "결과 기록"],
     created_at: nowIso(),
     screen_type: "result_summary"
   });

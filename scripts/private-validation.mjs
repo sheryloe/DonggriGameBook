@@ -174,6 +174,240 @@ function collectEffectStatRefs(effects) {
   return refs;
 }
 
+const PLACEHOLDER_PATTERN = /\?{3,}/u;
+const PLACEHOLDER_MARKERS = [
+  /\b(?:todo|tbd|fixme|placeholder|rewrite)\b/iu,
+  /\[(?:todo|tbd|placeholder|fill[- ]?in)\]/iu,
+  /<placeholder>/iu
+];
+const RUNTIME_COMPUTED_FLAGS = new Set([
+  "part1_evidence_bundle_complete"
+]);
+const CARRYOVER_SKIP_KEYS = new Set([
+  "order_score",
+  "witness_score",
+  "solidarity_score"
+]);
+const GENERIC_RESULT_MARKERS = [
+  "장면 전체가 한 번 더 꺾이기 직전이었다",
+  "장면은 닫혔지만 선택의 후유증은 남아 있다",
+  "여기서의 결단은 장면 하나가 아니라 파트 전체의 결말을 바꾼다",
+  "구조 신호와 기록 보관이 동시에 무너지는 북서 기록 거점의 초입"
+];
+
+function collectStringLeaves(value, bucket = []) {
+  if (typeof value === "string") {
+    bucket.push(value);
+    return bucket;
+  }
+
+  if (Array.isArray(value)) {
+    for (const entry of value) {
+      collectStringLeaves(entry, bucket);
+    }
+    return bucket;
+  }
+
+  if (value && typeof value === "object") {
+    for (const entry of Object.values(value)) {
+      collectStringLeaves(entry, bucket);
+    }
+  }
+
+  return bucket;
+}
+
+function containsPlaceholderText(value) {
+  return typeof value === "string" && (PLACEHOLDER_PATTERN.test(value) || PLACEHOLDER_MARKERS.some((pattern) => pattern.test(value)));
+}
+
+function containsMojibakeText(value) {
+  if (typeof value !== "string") {
+    return false;
+  }
+
+  if (/\?{2,}/u.test(value) || /[�]/u.test(value)) {
+    return true;
+  }
+
+  const hasHan = /[\p{Script=Han}]/u.test(value);
+  const hasHangul = /[\p{Script=Hangul}]/u.test(value);
+  return hasHan && hasHangul;
+}
+
+function collectUiDisplayStrings(uiFlow) {
+  const strings = [];
+
+  if (typeof uiFlow.title === "string") {
+    strings.push(uiFlow.title);
+  }
+
+  for (const note of uiFlow.notes ?? []) {
+    if (typeof note === "string") {
+      strings.push(note);
+    }
+  }
+
+  for (const screen of uiFlow.screens ?? []) {
+    if (typeof screen.title === "string") {
+      strings.push(screen.title);
+    }
+    if (typeof screen.purpose === "string") {
+      strings.push(screen.purpose);
+    }
+    for (const note of screen.notes ?? []) {
+      if (typeof note === "string") {
+        strings.push(note);
+      }
+    }
+  }
+
+  for (const transition of uiFlow.transitions ?? []) {
+    if (typeof transition.notes === "string" && transition.notes.trim()) {
+      strings.push(transition.notes);
+    }
+  }
+
+  return strings;
+}
+
+function collectEffectContractWrites(effects) {
+  const writes = {
+    flags: new Set(),
+    routeValues: new Set()
+  };
+
+  for (const effect of effects ?? []) {
+    if (effect.op === "set_flag") {
+      writes.flags.add(normalizeRefTarget(effect.target, "flag:"));
+    }
+
+    if (
+      (effect.op === "set_route" && typeof effect.value === "string") ||
+      (effect.op === "set_value" && effect.target === "route.current" && typeof effect.value === "string")
+    ) {
+      writes.routeValues.add(String(effect.value));
+    }
+  }
+
+  return writes;
+}
+
+function collectConditionContractRefs(conditions) {
+  return (conditions ?? [])
+    .filter((condition) => typeof condition === "string")
+    .map((condition) =>
+      condition
+        .split("|")
+        .map((clause) => clause.trim())
+        .filter(Boolean)
+        .map((clause) => {
+          const refs = {
+            flags: [],
+            routeValues: []
+          };
+
+          const flagTokens = clause.match(/flag:[a-z0-9_.:-]+/giu) ?? [];
+          for (const token of flagTokens) {
+            refs.flags.push(normalizeRefTarget(token, "flag:"));
+          }
+
+          const routeMatch = /^route\.current\s*=\s*([a-zA-Z0-9_.:-]+)$/u.exec(clause);
+          if (routeMatch?.[1]) {
+            refs.routeValues.push(routeMatch[1]);
+          }
+
+          return refs;
+        })
+    );
+}
+
+function containsGenericResultCopy(textBlock) {
+  const strings = collectStringLeaves(textBlock);
+  return strings.some((value) => GENERIC_RESULT_MARKERS.some((marker) => value.includes(marker)));
+}
+
+function isResultBoundaryEvent(event) {
+  return (
+    typeof event.presentation?.result_variant === "string" ||
+    (typeof event.next_event_id === "string" && event.next_event_id.startsWith("END_")) ||
+    (event.choices ?? []).some((choice) => typeof choice.next_event_id === "string" && choice.next_event_id.startsWith("END_")) ||
+    /(?:RESULT|EXTRACTION|BOSS|RESOLVED)/u.test(event.event_id)
+  );
+}
+
+function collectCarryoverContractRefs(chapter) {
+  const refs = {
+    carryoverKeys: new Set(chapter.carryover_keys ?? []),
+    flags: new Set(),
+    routeValues: new Set(),
+    stats: new Set()
+  };
+
+  for (const event of chapter.events ?? []) {
+    const conditionGroups = [
+      ...(event.conditions ?? []),
+      ...(event.choices ?? []).flatMap((choice) => choice.conditions ?? [])
+    ];
+    const conditionRefs = collectConditionRefs(conditionGroups);
+    conditionRefs.flags.forEach((flag) => refs.flags.add(normalizeRefTarget(flag, "flag:")));
+    conditionRefs.stats.forEach((stat) => refs.stats.add(stat));
+
+    const contractRefs = collectConditionContractRefs(conditionGroups);
+    for (const alternatives of contractRefs) {
+      for (const alternative of alternatives) {
+        alternative.flags.forEach((flag) => refs.flags.add(flag));
+        alternative.routeValues.forEach((routeValue) => refs.routeValues.add(routeValue));
+      }
+    }
+
+    const effectGroups = [
+      ...(event.on_enter_effects ?? []),
+      ...(event.on_complete_effects ?? []),
+      ...(event.choices ?? []).flatMap((choice) => choice.effects ?? [])
+    ];
+
+    for (const effect of effectGroups) {
+      if (
+        (effect.op === "add_stat" || effect.op === "sub_stat") &&
+        effect.target !== "field_actions_remaining" &&
+        effect.target !== "field_actions.remaining"
+      ) {
+        refs.stats.add(effect.target);
+      }
+
+      if (
+        (effect.op === "set_route" && typeof effect.value === "string") ||
+        (effect.op === "set_value" && effect.target === "route.current" && typeof effect.value === "string")
+      ) {
+        refs.routeValues.add(String(effect.value));
+      }
+    }
+  }
+
+  return refs;
+}
+
+function collectChapterContractWrites(chapter) {
+  const writes = {
+    flags: new Set(),
+    routeValues: new Set()
+  };
+
+  for (const event of chapter.events ?? []) {
+    const effectGroups = [
+      ...(event.on_enter_effects ?? []),
+      ...(event.on_complete_effects ?? []),
+      ...(event.choices ?? []).flatMap((choice) => choice.effects ?? [])
+    ];
+    const eventWrites = collectEffectContractWrites(effectGroups);
+    eventWrites.flags.forEach((flag) => writes.flags.add(flag));
+    eventWrites.routeValues.forEach((routeValue) => writes.routeValues.add(routeValue));
+  }
+
+  return writes;
+}
+
 function validateChapterGraph(chapter, entry, diagnostics, knownItems, knownLootTables, knownStats) {
   const source = `private/content/data/chapters/${String(entry.chapter_id ?? "").toLowerCase()}.json`;
   const objectiveIds = new Set((chapter.objectives ?? []).map((objective) => objective.objective_id));
@@ -202,6 +436,20 @@ function validateChapterGraph(chapter, entry, diagnostics, knownItems, knownLoot
   if (!isCanonicalText(chapter.title)) {
     diagnostics.contract_violations.push(createIssue("Chapter title contains invalid or broken text.", source, {
       chapter_id: chapter.chapter_id
+    }));
+  }
+
+  const placeholderStrings = collectStringLeaves({
+    objectives: chapter.objectives,
+    quest_tracks: chapter.quest_tracks,
+    events: chapter.events
+  }).filter(containsPlaceholderText);
+
+  if (placeholderStrings.length > 0) {
+    diagnostics.contract_violations.push(createIssue("Chapter contains placeholder text.", source, {
+      chapter_id: chapter.chapter_id,
+      placeholder_count: placeholderStrings.length,
+      sample: placeholderStrings.slice(0, 3)
     }));
   }
 
@@ -360,6 +608,22 @@ function validateChapterGraph(chapter, entry, diagnostics, knownItems, knownLoot
       ...(event.choices ?? []).flatMap((choice) => choice.effects ?? [])
     ];
 
+    if (
+      isResultBoundaryEvent(event) &&
+      containsGenericResultCopy({
+        summary: event.text?.summary,
+        body: event.text?.body,
+        scene_blocks: event.text?.scene_blocks,
+        carry_line: event.text?.carry_line
+      })
+    ) {
+      diagnostics.warnings.push(createIssue("Event still uses generic bridge/result copy.", source, {
+        chapter_id: chapter.chapter_id,
+        event_id: event.event_id,
+        result_variant: event.presentation?.result_variant ?? null
+      }));
+    }
+
     for (const effect of effectGroups) {
       if (effect.op === "grant_item" || effect.op === "remove_item") {
         const itemId = normalizeRefTarget(effect.target, "item:");
@@ -455,6 +719,121 @@ function validateChapterGraph(chapter, entry, diagnostics, knownItems, knownLoot
   }
 }
 
+function validateCrossChapterContracts(chapterRecords, diagnostics) {
+  const chapterWrites = chapterRecords.map((record) => collectChapterContractWrites(record.chapter));
+  const writtenFlags = new Set();
+  const writtenRouteValues = new Set();
+
+  for (let index = 0; index < chapterRecords.length; index += 1) {
+    const record = chapterRecords[index];
+    const source = record.source;
+    chapterWrites[index].flags.forEach((flag) => writtenFlags.add(flag));
+    chapterWrites[index].routeValues.forEach((routeValue) => writtenRouteValues.add(routeValue));
+
+    const futureRefs = chapterRecords.slice(index + 1).reduce(
+      (refs, futureRecord) => {
+        const chapterRefs = collectCarryoverContractRefs(futureRecord.chapter);
+        chapterRefs.carryoverKeys.forEach((key) => refs.carryoverKeys.add(key));
+        chapterRefs.flags.forEach((flag) => refs.flags.add(flag));
+        chapterRefs.routeValues.forEach((routeValue) => refs.routeValues.add(routeValue));
+        chapterRefs.stats.forEach((stat) => refs.stats.add(stat));
+        return refs;
+      },
+      {
+        carryoverKeys: new Set(),
+        flags: new Set(),
+        routeValues: new Set(),
+        stats: new Set()
+      }
+    );
+
+    for (const carryKey of record.chapter.carryover_keys ?? []) {
+      if (
+        carryKey.startsWith("route.") ||
+        carryKey.startsWith("p3.") ||
+        CARRYOVER_SKIP_KEYS.has(carryKey)
+      ) {
+        continue;
+      }
+
+      const isReferencedByFuture =
+        futureRefs.carryoverKeys.has(carryKey) ||
+        futureRefs.flags.has(carryKey) ||
+        futureRefs.routeValues.has(carryKey) ||
+        futureRefs.stats.has(carryKey);
+
+      if (!isReferencedByFuture) {
+        diagnostics.warnings.push(createIssue(
+          index === chapterRecords.length - 1
+            ? "Terminal chapter defines a carryover key with no later consumer."
+            : "Carryover key is never referenced by later chapters.",
+          source,
+          {
+            chapter_id: record.chapter.chapter_id,
+            carryover_key: carryKey
+          }
+        ));
+      }
+    }
+
+    let hasReachableEndingRule = false;
+    for (const endingRule of record.chapter.ending_matrix ?? []) {
+      const conditionAlternatives = collectConditionContractRefs(endingRule.conditions ?? []);
+      const missingFlags = new Set();
+      const missingRouteValues = new Set();
+      let ruleReachable = true;
+
+      for (const alternatives of conditionAlternatives) {
+        const satisfiableAlternative = alternatives.some((alternative) => {
+          const unresolvedFlags = alternative.flags.filter((flag) => !writtenFlags.has(flag) && !RUNTIME_COMPUTED_FLAGS.has(flag));
+          const unresolvedRouteValues = alternative.routeValues.filter((routeValue) => !writtenRouteValues.has(routeValue));
+          return unresolvedFlags.length === 0 && unresolvedRouteValues.length === 0;
+        });
+
+        if (satisfiableAlternative) {
+          continue;
+        }
+
+        ruleReachable = false;
+        for (const alternative of alternatives) {
+          alternative.flags
+            .filter((flag) => !writtenFlags.has(flag) && !RUNTIME_COMPUTED_FLAGS.has(flag))
+            .forEach((flag) => missingFlags.add(flag));
+          alternative.routeValues
+            .filter((routeValue) => !writtenRouteValues.has(routeValue))
+            .forEach((routeValue) => missingRouteValues.add(routeValue));
+        }
+      }
+
+      if (missingFlags.size > 0) {
+        diagnostics.contract_violations.push(createIssue("Ending rule uses a flag that is never written.", source, {
+          chapter_id: record.chapter.chapter_id,
+          ending_id: endingRule.ending_id,
+          missing_flags: [...missingFlags]
+        }));
+      }
+
+      if (missingRouteValues.size > 0) {
+        diagnostics.contract_violations.push(createIssue("Ending rule uses a route.current value that is never set.", source, {
+          chapter_id: record.chapter.chapter_id,
+          ending_id: endingRule.ending_id,
+          missing_route_values: [...missingRouteValues]
+        }));
+      }
+
+      if (ruleReachable) {
+        hasReachableEndingRule = true;
+      }
+    }
+
+    if ((record.chapter.ending_matrix ?? []).length > 0 && !hasReachableEndingRule) {
+      diagnostics.contract_violations.push(createIssue("No ending rule can match from the current write set.", source, {
+        chapter_id: record.chapter.chapter_id
+      }));
+    }
+  }
+}
+
 export async function validatePrivateContent() {
   const diagnostics = {
     warnings: [],
@@ -492,6 +871,7 @@ export async function validatePrivateContent() {
   const knownLootTables = new Set((lootTables.loot_tables ?? []).map((table) => table.loot_table_id));
   const knownStats = new Set((statsRegistry.stats ?? []).map((stat) => stat.key));
   const seenChapterIds = new Set();
+  const chapterRecords = [];
 
   for (const [indexPosition, entry] of (chaptersIndex.chapters ?? []).entries()) {
     validateIndexEntry(entry, indexPosition, diagnostics.contract_violations);
@@ -527,6 +907,11 @@ export async function validatePrivateContent() {
     }
 
     validateChapterGraph(chapter, entry, diagnostics, knownItems, knownLootTables, knownStats);
+    chapterRecords.push({
+      chapter,
+      entry,
+      source: relFromRoot(chapterPath)
+    });
 
     try {
       const uiFlow = await readJsonWithBom(uiPath);
@@ -540,6 +925,26 @@ export async function validatePrivateContent() {
           chapter_id: entry.chapter_id,
           ui_chapter_id: uiFlow.chapter_id
         }));
+      } else {
+        const uiDisplayStrings = collectUiDisplayStrings(uiFlow);
+        const uiPlaceholderStrings = uiDisplayStrings.filter(containsPlaceholderText);
+        const uiMojibakeStrings = uiDisplayStrings.filter(containsMojibakeText);
+
+        if (uiPlaceholderStrings.length > 0) {
+          diagnostics.contract_violations.push(createIssue("UI flow contains placeholder text.", relFromRoot(uiPath), {
+            chapter_id: entry.chapter_id,
+            placeholder_count: uiPlaceholderStrings.length,
+            sample: uiPlaceholderStrings.slice(0, 3)
+          }));
+        }
+
+        if (uiMojibakeStrings.length > 0) {
+          diagnostics.contract_violations.push(createIssue("UI flow contains broken mojibake text.", relFromRoot(uiPath), {
+            chapter_id: entry.chapter_id,
+            mojibake_count: uiMojibakeStrings.length,
+            sample: uiMojibakeStrings.slice(0, 3)
+          }));
+        }
       }
     } catch (error) {
       diagnostics.errors.push(createIssue("UI flow file is missing or unreadable.", relFromRoot(uiPath), {
@@ -548,6 +953,8 @@ export async function validatePrivateContent() {
       }));
     }
   }
+
+  validateCrossChapterContracts(chapterRecords, diagnostics);
 
   return {
     ok: diagnostics.errors.length === 0 && diagnostics.contract_violations.length === 0 && diagnostics.missing_references.length === 0,
