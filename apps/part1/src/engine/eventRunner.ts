@@ -137,7 +137,11 @@ class EventRunner {
     choice.effects.forEach(effect => this.applyEffect(effect));
 
     if (choice.next_event_id) {
-      this.triggerEvent(choice.next_event_id);
+      if (choice.next_event_id.startsWith('END_')) {
+        this.completeChapter();
+      } else {
+        this.triggerEvent(choice.next_event_id);
+      }
     } else {
       // Event sequence complete
       store.setEvent(null);
