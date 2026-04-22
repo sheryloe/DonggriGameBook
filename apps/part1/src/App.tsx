@@ -8,6 +8,8 @@ import { ChapterMapScreen } from './screens/ChapterMapScreen';
 import { EventScreen } from './screens/EventScreen';
 import { BattleScreen } from './screens/BattleScreen';
 import { ResultScreen } from './screens/ResultScreen';
+import { InventoryModal } from './components/InventoryModal';
+import { StatsModal } from './components/StatsModal';
 
 import './index.css';
 
@@ -56,6 +58,8 @@ const App: React.FC = () => {
     <div style={{ height: '100%' }}>
       <HUD />
       {renderScreen()}
+      <InventoryModal />
+      <StatsModal />
     </div>
   );
 };

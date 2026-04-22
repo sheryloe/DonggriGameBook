@@ -23,6 +23,9 @@ interface GameStore extends GameState {
   startBattle: (enemyGroupId: string) => void;
   endBattle: () => void;
   addBattleLog: (message: string) => void;
+
+  toggleInventory: () => void;
+  toggleStats: () => void;
 }
 
 const initialState: GameState = {
@@ -52,7 +55,10 @@ const initialState: GameState = {
   fieldActionBudget: 100,
   
   battleState: null,
-  saveSlots: {}
+  saveSlots: {},
+  
+  isInventoryOpen: false,
+  isStatsOpen: false
 };
 
 export const useGameStore = create<GameStore>((set) => ({
@@ -125,5 +131,8 @@ export const useGameStore = create<GameStore>((set) => ({
     battleState: state.battleState 
       ? { ...state.battleState, log: [...state.battleState.log, message] }
       : null
-  }))
+  })),
+
+  toggleInventory: () => set((state) => ({ isInventoryOpen: !state.isInventoryOpen, isStatsOpen: false })),
+  toggleStats: () => set((state) => ({ isStatsOpen: !state.isStatsOpen, isInventoryOpen: false }))
 }));

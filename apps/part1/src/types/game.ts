@@ -270,4 +270,8 @@ export interface GameState {
 
   // Save Slots
   saveSlots: Record<number, any>;
+
+  // UI State
+  isInventoryOpen: boolean;
+  isStatsOpen: boolean;
 }
