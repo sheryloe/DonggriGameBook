@@ -7,10 +7,10 @@
 - 대상: 144개
 - MP3 존재: 144개
 - 누락: 0개
-- 기술 OK: 82개
-- 기술 검토 필요: 62개
-- 전체 용량: 19.9MB
-- 총 재생 길이: 40.58분
+- 기술 OK: 144개
+- 기술 검토 필요: 0개
+- 전체 용량: 27.41MB
+- 총 재생 길이: 38.93분
 
 기술 기준으로는 런타임 배포 가능한 상태다. 다만 이 평가는 자동 기술 검사이며, 감정 연기 품질은 144개 모두 청음 평가가 필요하다.
 
@@ -24,56 +24,56 @@
 
 | 챕터 | 개수 | 기술 OK | 검토 필요 | 총 길이 | 용량 |
 |---|---:|---:|---:|---:|---:|
-| CH01 | 38 | 0 | 38 | 9.97분 | 4.01MB |
-| CH02 | 33 | 32 | 1 | 9.59분 | 5.35MB |
+| CH01 | 38 | 38 | 0 | 9.64분 | 8.81MB |
+| CH02 | 33 | 33 | 0 | 9.27분 | 5.3MB |
 | CH03 | 30 | 30 | 0 | 8.46분 | 4.73MB |
 | CH04 | 20 | 20 | 0 | 5.27분 | 2.79MB |
-| CH05 | 23 | 0 | 23 | 7.29분 | 3.02MB |
+| CH05 | 23 | 23 | 0 | 6.29분 | 5.78MB |
 
 ## 144개 평가 목록
 
 | # | 우선순위 | 챕터 | 이벤트 | 제목 | 기술상태 | 길이 | 비트레이트 | 용량 | 조치 |
 |---:|---|---|---|---|---|---:|---:|---:|---|
-| 1 | P0 | CH01 | EV_CH01_BRIEFING | 죽은 주파수 | review | 14.18s | 57kbps | 0.1MB | check_low_bitrate |
-| 2 | P2 | CH01 | EV_CH01_APPROACH | 잿길 위 초입 안내 | review | 54.19s | 51.3kbps | 0.33MB | split_or_tighten_line |
-| 3 | P2 | CH01 | EV_CH01_LOBBY_SEARCH | 멈춘 로비 | review | 15.00s | 57.2kbps | 0.1MB | check_low_bitrate |
-| 4 | P1 | CH01 | EV_CH01_ARCHIVE_DECISION | 침수 자료실 | review | 14.86s | 56.7kbps | 0.1MB | check_low_bitrate |
-| 5 | P2 | CH01 | EV_CH01_WRITER_RESCUE | 복도 끝의 생존자 | review | 14.06s | 55.7kbps | 0.09MB | check_low_bitrate |
-| 6 | P1 | CH01 | EV_CH01_ROOFTOP_SIGNAL | 옥상 송신기 | review | 14.45s | 55.5kbps | 0.1MB | check_low_bitrate |
-| 7 | P0 | CH01 | EV_CH01_BOSS_BROADCAST | 편집괴 | review | 12.34s | 56.3kbps | 0.08MB | check_low_bitrate |
-| 8 | P0 | CH01 | EV_CH01_EXTRACTION | 첫 귀환 | review | 9.38s | 57.6kbps | 0.06MB | check_low_bitrate |
-| 9 | P2 | CH01 | EV_CH01_SECURITY_OFFICE | 보안실 잔광 | review | 13.92s | 58.6kbps | 0.1MB | check_low_bitrate |
-| 10 | P1 | CH01 | EV_CH01_SIGNAL_CALIBRATION | 주파수 보정 | review | 16.73s | 57kbps | 0.11MB | check_low_bitrate |
-| 11 | P1 | CH01 | EV_CH01_SIGNAL_RELAY_DEFENSE | 중계기 방어 | review | 16.58s | 57.2kbps | 0.11MB | check_low_bitrate |
-| 12 | P1 | CH01 | EV_CH01_LOCKDOWN | 비상 봉쇄 | review | 16.99s | 58.2kbps | 0.12MB | check_low_bitrate |
-| 13 | P1 | CH01 | EV_CH01_ARCHIVE_AMBUSH | 기록 보관함 매복 | review | 16.85s | 53.9kbps | 0.11MB | check_low_bitrate |
-| 14 | P2 | CH01 | EV_CH01_CORRIDOR_TRAP | 복도 함정 | review | 15.26s | 56.4kbps | 0.1MB | check_low_bitrate |
-| 15 | P2 | CH01 | EV_CH01_CONTROL_RESTORE | 제어실 복구 | review | 14.45s | 58kbps | 0.1MB | check_low_bitrate |
-| 16 | P2 | CH01 | EV_CH01_STUDIO_APPROACH | 스튜디오 접근 | review | 12.34s | 57.5kbps | 0.08MB | check_low_bitrate |
-| 17 | P1 | CH01 | EV_CH01_ESCAPE_RUN | 탈출 돌파 | review | 14.06s | 56.9kbps | 0.1MB | check_low_bitrate |
-| 18 | P2 | CH01 | EV_CH01_SERVICE_TUNNEL | 정비 터널 | review | 14.33s | 55.9kbps | 0.1MB | check_low_bitrate |
-| 19 | P1 | CH01 | EV_CH01_PATROL_AMBUSH | 순찰 감염체 | review | 13.92s | 57.3kbps | 0.1MB | check_low_bitrate |
-| 20 | P2 | CH01 | EV_CH01_POWER_RESET | 전력 리셋 | review | 14.74s | 57.4kbps | 0.1MB | check_low_bitrate |
-| 21 | P0 | CH01 | EV_CH01_EXTRACTION_PREP | 철수 준비 | review | 8.45s | 57.4kbps | 0.06MB | check_low_bitrate |
-| 22 | P2 | CH01 | EV_CH01_CONCOURSE_SKIRMISH | 회랑 교전 | review | 14.45s | 57.6kbps | 0.1MB | check_low_bitrate |
-| 23 | P2 | CH01 | EV_CH01_ARCHIVE_VAULT | 기록 보관함 | review | 14.86s | 57.4kbps | 0.1MB | check_low_bitrate |
-| 24 | P1 | CH01 | EV_CH01_LOBBY_LOCKDOWN | 로비 봉쇄 | review | 13.66s | 57.6kbps | 0.09MB | check_low_bitrate |
-| 25 | P2 | CH01 | EV_CH01_ARCHIVE_KEYPAD | 침수 자료실 키패드 | review | 14.86s | 55.9kbps | 0.1MB | check_low_bitrate |
-| 26 | P1 | CH01 | EV_CH01_STAIRWELL_AMBUSH | 계단실 매복 | review | 14.59s | 57.7kbps | 0.1MB | check_low_bitrate |
-| 27 | P2 | CH01 | EV_CH01_ROOFTOP_CALIBRATION | 송신기 안정화 | review | 13.80s | 57kbps | 0.09MB | check_low_bitrate |
-| 28 | P1 | CH01 | EV_CH01_EXIT_CHECK | 철수 점검 | review | 16.85s | 54.6kbps | 0.11MB | check_low_bitrate |
-| 29 | P2 | CH01 | EV_CH01_SECURITY_CLEAR | 편집실 복도 매복 | review | 13.92s | 57.8kbps | 0.1MB | check_low_bitrate |
-| 30 | P2 | CH01 | EV_CH01_CACHE_SEARCH | 침수 은닉 물자 조사 | review | 13.54s | 59kbps | 0.1MB | check_low_bitrate |
-| 31 | P2 | CH01 | EV_CH01_POWER_RELAY | 송신기 릴레이 복구 | review | 14.06s | 57.1kbps | 0.1MB | check_low_bitrate |
-| 32 | P2 | CH01 | EV_CH01_CONCOURSE_SCAVENGE | 회랑 잔해 수색 | review | 14.18s | 56.2kbps | 0.1MB | check_low_bitrate |
-| 33 | P2 | CH01 | EV_CH01_CONCOURSE_CACHE | 회랑 물자 더미 | review | 15.00s | 57.1kbps | 0.1MB | check_low_bitrate |
-| 34 | P2 | CH01 | EV_CH01_SECURITY_LOCKER | 보안실 락커 | review | 17.52s | 57.7kbps | 0.12MB | check_low_bitrate |
-| 35 | P2 | CH01 | EV_CH01_ARCHIVE_RUINS | 침수 통로 잔해 | review | 14.06s | 57kbps | 0.1MB | check_low_bitrate |
-| 36 | P2 | CH01 | EV_CH01_WRITER_SAFEHOUSE | 편집실 임시 대피처 | review | 25.54s | 50.6kbps | 0.15MB | check_low_bitrate |
-| 37 | P2 | CH01 | EV_CH01_ROOFTOP_SWEEP | 옥상 주변 정리 | review | 13.80s | 57.1kbps | 0.09MB | check_low_bitrate |
-| 38 | P1 | CH01 | EV_CH01_ESCAPE_BACKTRACK | 샛강 잔해 회수 | review | 16.32s | 55.7kbps | 0.11MB | check_low_bitrate |
+| 1 | P0 | CH01 | EV_CH01_BRIEFING | 죽은 주파수 | ok | 15.96s | 128kbps | 0.24MB | manual_emotion_review |
+| 2 | P2 | CH01 | EV_CH01_APPROACH | 잿길 위 초입 안내 | ok | 14.69s | 128kbps | 0.22MB | manual_emotion_review |
+| 3 | P2 | CH01 | EV_CH01_LOBBY_SEARCH | 멈춘 로비 | ok | 16.44s | 128kbps | 0.25MB | manual_emotion_review |
+| 4 | P1 | CH01 | EV_CH01_ARCHIVE_DECISION | 침수 자료실 | ok | 15.00s | 128kbps | 0.23MB | manual_emotion_review |
+| 5 | P2 | CH01 | EV_CH01_WRITER_RESCUE | 복도 끝의 생존자 | ok | 15.05s | 128kbps | 0.23MB | manual_emotion_review |
+| 6 | P1 | CH01 | EV_CH01_ROOFTOP_SIGNAL | 옥상 송신기 | ok | 16.54s | 128kbps | 0.25MB | manual_emotion_review |
+| 7 | P0 | CH01 | EV_CH01_BOSS_BROADCAST | 편집괴 | ok | 10.54s | 128kbps | 0.16MB | manual_emotion_review |
+| 8 | P0 | CH01 | EV_CH01_EXTRACTION | 첫 귀환 | ok | 9.10s | 128kbps | 0.14MB | manual_emotion_review |
+| 9 | P2 | CH01 | EV_CH01_SECURITY_OFFICE | 보안실 잔광 | ok | 14.42s | 128kbps | 0.22MB | manual_emotion_review |
+| 10 | P1 | CH01 | EV_CH01_SIGNAL_CALIBRATION | 주파수 보정 | ok | 14.78s | 128kbps | 0.23MB | manual_emotion_review |
+| 11 | P1 | CH01 | EV_CH01_SIGNAL_RELAY_DEFENSE | 중계기 방어 | ok | 15.74s | 128kbps | 0.24MB | manual_emotion_review |
+| 12 | P1 | CH01 | EV_CH01_LOCKDOWN | 비상 봉쇄 | ok | 16.44s | 128kbps | 0.25MB | manual_emotion_review |
+| 13 | P1 | CH01 | EV_CH01_ARCHIVE_AMBUSH | 기록 보관함 매복 | ok | 14.26s | 128kbps | 0.22MB | manual_emotion_review |
+| 14 | P2 | CH01 | EV_CH01_CORRIDOR_TRAP | 복도 함정 | ok | 15.22s | 128kbps | 0.23MB | manual_emotion_review |
+| 15 | P2 | CH01 | EV_CH01_CONTROL_RESTORE | 제어실 복구 | ok | 16.54s | 128kbps | 0.25MB | manual_emotion_review |
+| 16 | P2 | CH01 | EV_CH01_STUDIO_APPROACH | 스튜디오 접근 | ok | 15.96s | 128kbps | 0.24MB | manual_emotion_review |
+| 17 | P1 | CH01 | EV_CH01_ESCAPE_RUN | 탈출 돌파 | ok | 14.95s | 128kbps | 0.23MB | manual_emotion_review |
+| 18 | P2 | CH01 | EV_CH01_SERVICE_TUNNEL | 정비 터널 | ok | 15.65s | 128kbps | 0.24MB | manual_emotion_review |
+| 19 | P1 | CH01 | EV_CH01_PATROL_AMBUSH | 순찰 감염체 | ok | 16.82s | 128kbps | 0.26MB | manual_emotion_review |
+| 20 | P2 | CH01 | EV_CH01_POWER_RESET | 전력 리셋 | ok | 16.92s | 128kbps | 0.26MB | manual_emotion_review |
+| 21 | P0 | CH01 | EV_CH01_EXTRACTION_PREP | 철수 준비 | ok | 12.34s | 128kbps | 0.19MB | manual_emotion_review |
+| 22 | P2 | CH01 | EV_CH01_CONCOURSE_SKIRMISH | 회랑 교전 | ok | 14.69s | 128kbps | 0.22MB | manual_emotion_review |
+| 23 | P2 | CH01 | EV_CH01_ARCHIVE_VAULT | 기록 보관함 | ok | 16.70s | 128kbps | 0.25MB | manual_emotion_review |
+| 24 | P1 | CH01 | EV_CH01_LOBBY_LOCKDOWN | 로비 봉쇄 | ok | 16.08s | 128kbps | 0.25MB | manual_emotion_review |
+| 25 | P2 | CH01 | EV_CH01_ARCHIVE_KEYPAD | 침수 자료실 키패드 | ok | 15.91s | 128kbps | 0.24MB | manual_emotion_review |
+| 26 | P1 | CH01 | EV_CH01_STAIRWELL_AMBUSH | 계단실 매복 | ok | 14.95s | 128kbps | 0.23MB | manual_emotion_review |
+| 27 | P2 | CH01 | EV_CH01_ROOFTOP_CALIBRATION | 송신기 안정화 | ok | 15.14s | 128kbps | 0.23MB | manual_emotion_review |
+| 28 | P1 | CH01 | EV_CH01_EXIT_CHECK | 철수 점검 | ok | 16.66s | 128kbps | 0.25MB | manual_emotion_review |
+| 29 | P2 | CH01 | EV_CH01_SECURITY_CLEAR | 편집실 복도 매복 | ok | 16.22s | 128kbps | 0.25MB | manual_emotion_review |
+| 30 | P2 | CH01 | EV_CH01_CACHE_SEARCH | 침수 은닉 물자 조사 | ok | 17.02s | 128kbps | 0.26MB | manual_emotion_review |
+| 31 | P2 | CH01 | EV_CH01_POWER_RELAY | 송신기 릴레이 복구 | ok | 17.45s | 128kbps | 0.27MB | manual_emotion_review |
+| 32 | P2 | CH01 | EV_CH01_CONCOURSE_SCAVENGE | 회랑 잔해 수색 | ok | 12.12s | 128kbps | 0.18MB | manual_emotion_review |
+| 33 | P2 | CH01 | EV_CH01_CONCOURSE_CACHE | 회랑 물자 더미 | ok | 14.38s | 128kbps | 0.22MB | manual_emotion_review |
+| 34 | P2 | CH01 | EV_CH01_SECURITY_LOCKER | 보안실 락커 | ok | 15.79s | 128kbps | 0.24MB | manual_emotion_review |
+| 35 | P2 | CH01 | EV_CH01_ARCHIVE_RUINS | 침수 통로 잔해 | ok | 15.79s | 128kbps | 0.24MB | manual_emotion_review |
+| 36 | P2 | CH01 | EV_CH01_WRITER_SAFEHOUSE | 편집실 임시 대피처 | ok | 14.52s | 128kbps | 0.22MB | manual_emotion_review |
+| 37 | P2 | CH01 | EV_CH01_ROOFTOP_SWEEP | 옥상 주변 정리 | ok | 14.69s | 128kbps | 0.22MB | manual_emotion_review |
+| 38 | P1 | CH01 | EV_CH01_ESCAPE_BACKTRACK | 샛강 잔해 회수 | ok | 16.75s | 128kbps | 0.26MB | manual_emotion_review |
 | 39 | P0 | CH02 | EV_CH02_ENTRY | 검은 수로 진입 | ok | 9.60s | 80.8kbps | 0.09MB | manual_emotion_review |
-| 40 | P2 | CH02 | EV_CH02_MARKET_SWEEP | 썩은 시장 | review | 39.19s | 74.8kbps | 0.35MB | split_or_tighten_line |
+| 40 | P2 | CH02 | EV_CH02_MARKET_SWEEP | 썩은 시장 | ok | 19.63s | 128kbps | 0.3MB | manual_emotion_review |
 | 41 | P2 | CH02 | EV_CH02_COLD_STORAGE | 차갑게 남은 창고 | ok | 16.54s | 77.6kbps | 0.15MB | manual_emotion_review |
 | 42 | P2 | CH02 | EV_CH02_BLACKMARKET | 물 위의 거래 | ok | 16.92s | 83.9kbps | 0.17MB | manual_emotion_review |
 | 43 | P2 | CH02 | EV_CH02_PIER_BARGAIN | 선착장의 거래 | ok | 19.06s | 78.8kbps | 0.18MB | manual_emotion_review |
@@ -155,29 +155,29 @@
 | 119 | P1 | CH04 | EV_CH04_EXIT_CHECK | 철수 점검 | ok | 19.54s | 68.4kbps | 0.16MB | manual_emotion_review |
 | 120 | P2 | CH04 | EV_CH04_LINE_REPAIR | 라인 전원 복구 | ok | 21.00s | 68.2kbps | 0.17MB | manual_emotion_review |
 | 121 | P2 | CH04 | EV_CH04_TUNNEL_CACHE | 판교 진입 분류표 | ok | 21.38s | 68.9kbps | 0.18MB | manual_emotion_review |
-| 122 | P0 | CH05 | EV_CH05_ENTRY | 미러센터 접근 | review | 10.58s | 60kbps | 0.08MB | check_low_bitrate |
-| 123 | P2 | CH05 | EV_CH05_LOBBY_MAPPING | 죽은 캠퍼스 로비 | review | 12.72s | 58.6kbps | 0.09MB | check_low_bitrate |
-| 124 | P2 | CH05 | EV_CH05_SKYWALK | 공중 보행로 가든 | review | 16.46s | 61.2kbps | 0.12MB | check_low_bitrate |
-| 125 | P2 | CH05 | EV_CH05_COOLING_ROUTE | 냉각 루프 제어 | review | 12.34s | 58.9kbps | 0.09MB | check_low_bitrate |
-| 126 | P2 | CH05 | EV_CH05_KIM_ARA | 김아라 | review | 16.73s | 57.6kbps | 0.11MB | check_low_bitrate |
-| 127 | P2 | CH05 | EV_CH05_DATA_ACCESS | 공개 자료 접속 | review | 17.93s | 56.8kbps | 0.12MB | check_low_bitrate |
-| 128 | P0 | CH05 | EV_CH05_BOSS_LINES | 미러 회선 결전 | review | 8.86s | 61kbps | 0.06MB | check_low_bitrate |
-| 129 | P0 | CH05 | EV_CH05_EXTRACTION | 남하 결정 | review | 9.53s | 57.8kbps | 0.07MB | check_low_bitrate |
-| 130 | P1 | CH05 | EV_CH05_SIGNAL_RELAY | 독도 신호 정체 | review | 18.98s | 59.3kbps | 0.13MB | check_low_bitrate |
-| 131 | P2 | CH05 | EV_CH05_CONTAINMENT_BREACH | 공개 범위 | review | 87.26s | 54.5kbps | 0.57MB | split_or_tighten_line |
-| 132 | P1 | CH05 | EV_CH05_PREP_FINAL | 최종 준비 | review | 14.18s | 58.2kbps | 0.1MB | check_low_bitrate |
-| 133 | P2 | CH05 | EV_CH05_RAMP_SWARM | 진입 경사로 난전 | review | 18.72s | 60.4kbps | 0.13MB | check_low_bitrate |
-| 134 | P2 | CH05 | EV_CH05_SECURITY_CONSOLE | 보안 제어 단말 | review | 17.40s | 58.7kbps | 0.12MB | check_low_bitrate |
-| 135 | P2 | CH05 | EV_CH05_SERVER_PURGE | 서버 정리 | review | 20.06s | 57.4kbps | 0.14MB | check_low_bitrate |
-| 136 | P2 | CH05 | EV_CH05_EXIT_PRESSURE | 출구 압박 | review | 18.98s | 59.5kbps | 0.13MB | check_low_bitrate |
-| 137 | P2 | CH05 | EV_CH05_LOBBY_SCAN | 로비 스캔 | review | 16.32s | 58.3kbps | 0.11MB | check_low_bitrate |
-| 138 | P1 | CH05 | EV_CH05_COOLING_AMBUSH | 냉각실 매복 | review | 18.19s | 57.8kbps | 0.13MB | check_low_bitrate |
-| 139 | P1 | CH05 | EV_CH05_LOBBY_CHECKPOINT | 로비 검문 | review | 20.45s | 55kbps | 0.13MB | check_low_bitrate |
-| 140 | P2 | CH05 | EV_CH05_COOLING_BREACH | 냉각설비 과열 | review | 17.14s | 62.1kbps | 0.13MB | check_low_bitrate |
-| 141 | P2 | CH05 | EV_CH05_DATA_SANITIZE | 자료 정리 | review | 15.26s | 60.3kbps | 0.11MB | check_low_bitrate |
-| 142 | P2 | CH05 | EV_CH05_COOLING_BREAK | 냉각 구간 폭주 | review | 16.20s | 61kbps | 0.12MB | check_low_bitrate |
-| 143 | P2 | CH05 | EV_CH05_ARC_RELAY | 릴레이 정리 | review | 18.34s | 60.4kbps | 0.13MB | check_low_bitrate |
-| 144 | P1 | CH05 | EV_CH05_CORE_PREP | 코어 방호 준비 | review | 14.59s | 56.7kbps | 0.1MB | check_low_bitrate |
+| 122 | P0 | CH05 | EV_CH05_ENTRY | 미러센터 접근 | ok | 10.32s | 128kbps | 0.16MB | manual_emotion_review |
+| 123 | P2 | CH05 | EV_CH05_LOBBY_MAPPING | 죽은 캠퍼스 로비 | ok | 11.23s | 128kbps | 0.17MB | manual_emotion_review |
+| 124 | P2 | CH05 | EV_CH05_SKYWALK | 공중 보행로 가든 | ok | 16.75s | 128kbps | 0.26MB | manual_emotion_review |
+| 125 | P2 | CH05 | EV_CH05_COOLING_ROUTE | 냉각 루프 제어 | ok | 12.98s | 128kbps | 0.2MB | manual_emotion_review |
+| 126 | P2 | CH05 | EV_CH05_KIM_ARA | 김아라 | ok | 16.92s | 128kbps | 0.26MB | manual_emotion_review |
+| 127 | P2 | CH05 | EV_CH05_DATA_ACCESS | 공개 자료 접속 | ok | 19.42s | 128kbps | 0.3MB | manual_emotion_review |
+| 128 | P0 | CH05 | EV_CH05_BOSS_LINES | 미러 회선 결전 | ok | 10.22s | 128kbps | 0.16MB | manual_emotion_review |
+| 129 | P0 | CH05 | EV_CH05_EXTRACTION | 남하 결정 | ok | 8.09s | 128kbps | 0.12MB | manual_emotion_review |
+| 130 | P1 | CH05 | EV_CH05_SIGNAL_RELAY | 독도 신호 정체 | ok | 16.54s | 128kbps | 0.25MB | manual_emotion_review |
+| 131 | P2 | CH05 | EV_CH05_CONTAINMENT_BREACH | 공개 범위 | ok | 17.50s | 128kbps | 0.27MB | manual_emotion_review |
+| 132 | P1 | CH05 | EV_CH05_PREP_FINAL | 최종 준비 | ok | 14.88s | 128kbps | 0.23MB | manual_emotion_review |
+| 133 | P2 | CH05 | EV_CH05_RAMP_SWARM | 진입 경사로 난전 | ok | 18.24s | 128kbps | 0.28MB | manual_emotion_review |
+| 134 | P2 | CH05 | EV_CH05_SECURITY_CONSOLE | 보안 제어 단말 | ok | 21.48s | 128kbps | 0.33MB | manual_emotion_review |
+| 135 | P2 | CH05 | EV_CH05_SERVER_PURGE | 서버 정리 | ok | 18.46s | 128kbps | 0.28MB | manual_emotion_review |
+| 136 | P2 | CH05 | EV_CH05_EXIT_PRESSURE | 출구 압박 | ok | 18.82s | 128kbps | 0.29MB | manual_emotion_review |
+| 137 | P2 | CH05 | EV_CH05_LOBBY_SCAN | 로비 스캔 | ok | 19.03s | 128kbps | 0.29MB | manual_emotion_review |
+| 138 | P1 | CH05 | EV_CH05_COOLING_AMBUSH | 냉각실 매복 | ok | 18.10s | 128kbps | 0.28MB | manual_emotion_review |
+| 139 | P1 | CH05 | EV_CH05_LOBBY_CHECKPOINT | 로비 검문 | ok | 18.58s | 128kbps | 0.28MB | manual_emotion_review |
+| 140 | P2 | CH05 | EV_CH05_COOLING_BREACH | 냉각설비 과열 | ok | 19.46s | 128kbps | 0.3MB | manual_emotion_review |
+| 141 | P2 | CH05 | EV_CH05_DATA_SANITIZE | 자료 정리 | ok | 17.81s | 128kbps | 0.27MB | manual_emotion_review |
+| 142 | P2 | CH05 | EV_CH05_COOLING_BREAK | 냉각 구간 폭주 | ok | 18.58s | 128kbps | 0.28MB | manual_emotion_review |
+| 143 | P2 | CH05 | EV_CH05_ARC_RELAY | 릴레이 정리 | ok | 19.58s | 128kbps | 0.3MB | manual_emotion_review |
+| 144 | P1 | CH05 | EV_CH05_CORE_PREP | 코어 방호 준비 | ok | 14.69s | 128kbps | 0.22MB | manual_emotion_review |
 
 ## 다음 실행
 
