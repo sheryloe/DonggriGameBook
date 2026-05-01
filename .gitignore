@@ -16,11 +16,15 @@ private/
 public/generated/
 public/runtime-content/
 media-sync-dashboard.html
+media-catalog-dashboard.html
+media-catalog.md
 modern-ops-dashboard.html
 public/modern-parts-dashboard.html
 
 # Temporary local artifacts
 .tmp/
+.cache/
+__pycache__/
 tmp-*.png
 tmp-*.jpg
 tmp-*.jpeg

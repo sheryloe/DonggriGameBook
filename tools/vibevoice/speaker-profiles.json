@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "default": {
+    "speaker_name": "Narrator",
+    "gender": "female",
+    "realtime_voice_preset": "kr-Spk0_woman",
+    "style": "restrained Korean apocalypse narration"
+  },
+  "speakers": {
+    "narrator": {
+      "speaker_name": "Narrator",
+      "gender": "female",
+      "realtime_voice_preset": "kr-Spk0_woman",
+      "style": "restrained Korean apocalypse narration"
+    },
+    "npc_yoon_haein": {
+      "speaker_name": "윤해인",
+      "gender": "female",
+      "realtime_voice_preset": "kr-Spk0_woman",
+      "style": "controlled emergency radio operator"
+    },
+    "npc_han_somyeong": {
+      "speaker_name": "한소명",
+      "gender": "male",
+      "realtime_voice_preset": "kr-Spk1_man",
+      "style": "calm field commander"
+    },
+    "npc_jung_noah": {
+      "speaker_name": "정노아",
+      "gender": "male",
+      "realtime_voice_preset": "kr-Spk1_man",
+      "style": "dry survivor broker"
+    },
+    "npc_ryu_seon": {
+      "speaker_name": "류세온",
+      "gender": "female",
+      "realtime_voice_preset": "kr-Spk0_woman",
+      "style": "sharp strategist"
+    },
+    "npc_ahn_bogyeong": {
+      "speaker_name": "안보경",
+      "gender": "female",
+      "realtime_voice_preset": "kr-Spk0_woman",
+      "style": "exhausted engineer"
+    },
+    "npc_kim_ara": {
+      "speaker_name": "김아라",
+      "gender": "female",
+      "realtime_voice_preset": "kr-Spk0_woman",
+      "style": "tense analyst"
+    },
+    "npc_seo_jinseo": {
+      "speaker_name": "서진서",
+      "gender": "female",
+      "realtime_voice_preset": "kr-Spk0_woman",
+      "style": "cautious field survivor"
+    }
+  }
+}
