@@ -296,6 +296,19 @@ export interface InventoryItem {
   meta?: Record<string, any>;
 }
 
+export type TimeBlock = "새벽" | "오전" | "오후" | "밤";
+export type DeadlineFlagStatus = "active" | "expired" | "resolved";
+export type RestKind = "short" | "medical" | "overnight";
+
+export interface DeadlineConsequenceEvent {
+  questId: string;
+  chapterId: string;
+  title: string;
+  body: string;
+  radioLine: string;
+  lostOpportunity: string;
+}
+
 export interface GameState {
   // Metadata
   currentChapterId: string | null;
@@ -307,6 +320,18 @@ export interface GameState {
   stats: Record<string, any>;
   flags: Record<string, boolean>;
   inventory: InventoryItem[];
+
+  // Survival Loop
+  day: number;
+  timeBlock: TimeBlock;
+  elapsedHours: number;
+  deadlineFlags: Record<string, DeadlineFlagStatus>;
+  failedQuestIds: string[];
+  restCount: number;
+  survivalLog: string[];
+  pendingDeadlineEvent: DeadlineConsequenceEvent | null;
+  deadlineReturnScreen: string | null;
+  deadlineReturnEventId: string | null;
   
   // Chapter Specific
   visitedNodes: string[];
@@ -316,6 +341,7 @@ export interface GameState {
 
   // Battle State
   battleState: BattleState | null;
+  failureState: FailureState | null;
 
   // Save Slots
   saveSlots: Record<number, any>;
@@ -325,12 +351,22 @@ export interface GameState {
   isStatsOpen: boolean;
 }
 
+export interface FailureState {
+  kind: "turned" | "killed" | "collapsed";
+  title: string;
+  body: string;
+  chapterId: string | null;
+  eventId: string | null;
+  nodeId: string | null;
+}
+
 export interface BattleState {
   active: boolean;
   enemyGroupId: string;
   primaryEnemyId?: string;
   turn: number;
   log: string[];
-  enemyHp: number;
-  maxEnemyHp: number;
+  threatPressure: number;
+  maxThreatPressure: number;
+  encounterKind: "infected" | "human" | "environment";
 }

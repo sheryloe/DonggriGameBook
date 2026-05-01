@@ -53,8 +53,17 @@ function normalizeKey(value: string | null | undefined): string | null {
   return trimmed.replace(/^(flag|item|loot):/u, "");
 }
 
+function resolveLocalProductionImage(key: string): string | null {
+  if (/^p\d+_ch\d+_/u.test(key)) {
+    return `/generated/images/${key}.png`;
+  }
+
+  return null;
+}
+
 class ContentLoader {
   private bundle: GameContentBundle | null = null;
+  private loadPromise: Promise<GameContentBundle> | null = null;
   private artAliasByChapter = new Map<string, string>();
   private artAliasGlobal = new Map<string, string>();
   private knownArtKeys = new Set<string>();
@@ -62,14 +71,24 @@ class ContentLoader {
 
   async loadAll(): Promise<GameContentBundle> {
     if (this.bundle) return this.bundle;
+    if (this.loadPromise) return this.loadPromise;
 
+    this.loadPromise = this.loadAllInternal();
+    try {
+      return await this.loadPromise;
+    } finally {
+      this.loadPromise = null;
+    }
+  }
+
+  private async loadAllInternal(): Promise<GameContentBundle> {
     const [contentResponse, assetResponse] = await Promise.all([
       fetch("/runtime-content/game-content-pack.json"),
       fetch("/runtime-content/runtime-asset-manifest.json"),
     ]);
 
     if (!contentResponse.ok) {
-      throw new Error("게임 콘텐츠를 불러오지 못했습니다.");
+      throw new Error("런타임 콘텐츠를 불러오지 못했습니다.");
     }
 
     const rawData = await contentResponse.json();
@@ -138,6 +157,11 @@ class ContentLoader {
     return lootId ? this.bundle?.registry.loot_tables[lootId] : undefined;
   }
 
+  getNpc(id: string): Record<string, unknown> | undefined {
+    const npcId = normalizeKey(id);
+    return npcId ? (this.bundle?.registry.npcs[npcId] as Record<string, unknown> | undefined) : undefined;
+  }
+
   getPrimaryEnemy(enemyGroupId: string): { enemyId: string; enemy?: Enemy; encounter?: Encounter } {
     const encounter = this.getEncounter(enemyGroupId);
     const enemyId = encounter?.units?.[0]?.enemy_id ?? encounter?.enemies?.[0]?.enemy_id ?? enemyGroupId;
@@ -152,6 +176,11 @@ class ContentLoader {
 
     if (key.startsWith("/") || key.startsWith("http://") || key.startsWith("https://")) {
       return key;
+    }
+
+    const localProductionImage = resolveLocalProductionImage(key);
+    if (localProductionImage) {
+      return localProductionImage;
     }
 
     // Try chapter-specific alias, then global alias, then direct key
@@ -217,7 +246,6 @@ class ContentLoader {
     });
 
     this.preloadedChapters.add(chapterId);
-    console.log(`[CONTENT_LOADER] Preloaded ${urlsToPreload.size} assets for ${chapterId}`);
   }
 }
 
