@@ -1,0 +1,5240 @@
+{
+  "generated_at": "2026-05-01T07:27:04.967Z",
+  "scope": "Part 1 TTS 144 full audit",
+  "runtime_format": "mp3",
+  "summary": {
+    "total": 144,
+    "completed": 144,
+    "missing": 0,
+    "technical_ok": 82,
+    "technical_review": 62,
+    "total_mb": 19.9,
+    "total_minutes": 40.58,
+    "p0_count": 20,
+    "p1_count": 39,
+    "p2_count": 85
+  },
+  "by_chapter": {
+    "CH01": {
+      "total": 38,
+      "technical_ok": 0,
+      "technical_review": 38,
+      "total_mb": 4.01,
+      "total_minutes": 9.97
+    },
+    "CH02": {
+      "total": 33,
+      "technical_ok": 32,
+      "technical_review": 1,
+      "total_mb": 5.35,
+      "total_minutes": 9.59
+    },
+    "CH03": {
+      "total": 30,
+      "technical_ok": 30,
+      "technical_review": 0,
+      "total_mb": 4.73,
+      "total_minutes": 8.46
+    },
+    "CH04": {
+      "total": 20,
+      "technical_ok": 20,
+      "technical_review": 0,
+      "total_mb": 2.79,
+      "total_minutes": 5.27
+    },
+    "CH05": {
+      "total": 23,
+      "technical_ok": 0,
+      "technical_review": 23,
+      "total_mb": 3.02,
+      "total_minutes": 7.29
+    }
+  },
+  "items": [
+    {
+      "id": "P1-CH01-EV_CH01_BRIEFING",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_BRIEFING",
+      "event_title": "죽은 주파수",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_BRIEFING.mp3",
+      "exists": true,
+      "bytes": 101157,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 591,
+      "duration_seconds": 14.18,
+      "avg_bitrate_kbps": 57,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_APPROACH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_APPROACH",
+      "event_title": "잿길 위 초입 안내",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_APPROACH.mp3",
+      "exists": true,
+      "bytes": 347397,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 2258,
+      "duration_seconds": 54.19,
+      "avg_bitrate_kbps": 51.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.33,
+      "technical": {
+        "status": "review",
+        "action": "split_or_tighten_line"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_LOBBY_SEARCH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_LOBBY_SEARCH",
+      "event_title": "멈춘 로비",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_LOBBY_SEARCH.mp3",
+      "exists": true,
+      "bytes": 107277,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 625,
+      "duration_seconds": 15,
+      "avg_bitrate_kbps": 57.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ARCHIVE_DECISION",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ARCHIVE_DECISION",
+      "event_title": "침수 자료실",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ARCHIVE_DECISION.mp3",
+      "exists": true,
+      "bytes": 105429,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 619,
+      "duration_seconds": 14.86,
+      "avg_bitrate_kbps": 56.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_WRITER_RESCUE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_WRITER_RESCUE",
+      "event_title": "복도 끝의 생존자",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_WRITER_RESCUE.mp3",
+      "exists": true,
+      "bytes": 97893,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 586,
+      "duration_seconds": 14.06,
+      "avg_bitrate_kbps": 55.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ROOFTOP_SIGNAL",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ROOFTOP_SIGNAL",
+      "event_title": "옥상 송신기",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ROOFTOP_SIGNAL.mp3",
+      "exists": true,
+      "bytes": 100245,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 602,
+      "duration_seconds": 14.45,
+      "avg_bitrate_kbps": 55.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_BOSS_BROADCAST",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_BOSS_BROADCAST",
+      "event_title": "편집괴",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_BOSS_BROADCAST.mp3",
+      "exists": true,
+      "bytes": 86901,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 514,
+      "duration_seconds": 12.34,
+      "avg_bitrate_kbps": 56.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.08,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_EXTRACTION",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_EXTRACTION",
+      "event_title": "첫 귀환",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_EXTRACTION.mp3",
+      "exists": true,
+      "bytes": 67653,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 391,
+      "duration_seconds": 9.38,
+      "avg_bitrate_kbps": 57.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.06,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_SECURITY_OFFICE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_SECURITY_OFFICE",
+      "event_title": "보안실 잔광",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_SECURITY_OFFICE.mp3",
+      "exists": true,
+      "bytes": 102021,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 580,
+      "duration_seconds": 13.92,
+      "avg_bitrate_kbps": 58.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_SIGNAL_CALIBRATION",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_SIGNAL_CALIBRATION",
+      "event_title": "주파수 보정",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_SIGNAL_CALIBRATION.mp3",
+      "exists": true,
+      "bytes": 119181,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 697,
+      "duration_seconds": 16.73,
+      "avg_bitrate_kbps": 57,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_SIGNAL_RELAY_DEFENSE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_SIGNAL_RELAY_DEFENSE",
+      "event_title": "중계기 방어",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_SIGNAL_RELAY_DEFENSE.mp3",
+      "exists": true,
+      "bytes": 118557,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 691,
+      "duration_seconds": 16.58,
+      "avg_bitrate_kbps": 57.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_LOCKDOWN",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_LOCKDOWN",
+      "event_title": "비상 봉쇄",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_LOCKDOWN.mp3",
+      "exists": true,
+      "bytes": 123645,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 708,
+      "duration_seconds": 16.99,
+      "avg_bitrate_kbps": 58.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ARCHIVE_AMBUSH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ARCHIVE_AMBUSH",
+      "event_title": "기록 보관함 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ARCHIVE_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 113469,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 702,
+      "duration_seconds": 16.85,
+      "avg_bitrate_kbps": 53.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_CORRIDOR_TRAP",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_CORRIDOR_TRAP",
+      "event_title": "복도 함정",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_CORRIDOR_TRAP.mp3",
+      "exists": true,
+      "bytes": 107733,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 636,
+      "duration_seconds": 15.26,
+      "avg_bitrate_kbps": 56.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_CONTROL_RESTORE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_CONTROL_RESTORE",
+      "event_title": "제어실 복구",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONTROL_RESTORE.mp3",
+      "exists": true,
+      "bytes": 104877,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 602,
+      "duration_seconds": 14.45,
+      "avg_bitrate_kbps": 58,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_STUDIO_APPROACH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_STUDIO_APPROACH",
+      "event_title": "스튜디오 접근",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_STUDIO_APPROACH.mp3",
+      "exists": true,
+      "bytes": 88773,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 514,
+      "duration_seconds": 12.34,
+      "avg_bitrate_kbps": 57.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.08,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ESCAPE_RUN",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ESCAPE_RUN",
+      "event_title": "탈출 돌파",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ESCAPE_RUN.mp3",
+      "exists": true,
+      "bytes": 100053,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 586,
+      "duration_seconds": 14.06,
+      "avg_bitrate_kbps": 56.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_SERVICE_TUNNEL",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_SERVICE_TUNNEL",
+      "event_title": "정비 터널",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_SERVICE_TUNNEL.mp3",
+      "exists": true,
+      "bytes": 100125,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 597,
+      "duration_seconds": 14.33,
+      "avg_bitrate_kbps": 55.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_PATROL_AMBUSH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_PATROL_AMBUSH",
+      "event_title": "순찰 감염체",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_PATROL_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 99669,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 580,
+      "duration_seconds": 13.92,
+      "avg_bitrate_kbps": 57.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_POWER_RESET",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_POWER_RESET",
+      "event_title": "전력 리셋",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_POWER_RESET.mp3",
+      "exists": true,
+      "bytes": 105789,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 614,
+      "duration_seconds": 14.74,
+      "avg_bitrate_kbps": 57.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_EXTRACTION_PREP",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_EXTRACTION_PREP",
+      "event_title": "철수 준비",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_EXTRACTION_PREP.mp3",
+      "exists": true,
+      "bytes": 60645,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 352,
+      "duration_seconds": 8.45,
+      "avg_bitrate_kbps": 57.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.06,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_CONCOURSE_SKIRMISH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_CONCOURSE_SKIRMISH",
+      "event_title": "회랑 교전",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONCOURSE_SKIRMISH.mp3",
+      "exists": true,
+      "bytes": 104109,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 602,
+      "duration_seconds": 14.45,
+      "avg_bitrate_kbps": 57.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ARCHIVE_VAULT",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ARCHIVE_VAULT",
+      "event_title": "기록 보관함",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ARCHIVE_VAULT.mp3",
+      "exists": true,
+      "bytes": 106581,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 619,
+      "duration_seconds": 14.86,
+      "avg_bitrate_kbps": 57.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_LOBBY_LOCKDOWN",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_LOBBY_LOCKDOWN",
+      "event_title": "로비 봉쇄",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_LOBBY_LOCKDOWN.mp3",
+      "exists": true,
+      "bytes": 98397,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 569,
+      "duration_seconds": 13.66,
+      "avg_bitrate_kbps": 57.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ARCHIVE_KEYPAD",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ARCHIVE_KEYPAD",
+      "event_title": "침수 자료실 키패드",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ARCHIVE_KEYPAD.mp3",
+      "exists": true,
+      "bytes": 103773,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 619,
+      "duration_seconds": 14.86,
+      "avg_bitrate_kbps": 55.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_STAIRWELL_AMBUSH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_STAIRWELL_AMBUSH",
+      "event_title": "계단실 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_STAIRWELL_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 105357,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 608,
+      "duration_seconds": 14.59,
+      "avg_bitrate_kbps": 57.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ROOFTOP_CALIBRATION",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ROOFTOP_CALIBRATION",
+      "event_title": "송신기 안정화",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ROOFTOP_CALIBRATION.mp3",
+      "exists": true,
+      "bytes": 98349,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 575,
+      "duration_seconds": 13.8,
+      "avg_bitrate_kbps": 57,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_EXIT_CHECK",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_EXIT_CHECK",
+      "event_title": "철수 점검",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_EXIT_CHECK.mp3",
+      "exists": true,
+      "bytes": 114981,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 702,
+      "duration_seconds": 16.85,
+      "avg_bitrate_kbps": 54.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_SECURITY_CLEAR",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_SECURITY_CLEAR",
+      "event_title": "편집실 복도 매복",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_SECURITY_CLEAR.mp3",
+      "exists": true,
+      "bytes": 100629,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 580,
+      "duration_seconds": 13.92,
+      "avg_bitrate_kbps": 57.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_CACHE_SEARCH",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_CACHE_SEARCH",
+      "event_title": "침수 은닉 물자 조사",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_CACHE_SEARCH.mp3",
+      "exists": true,
+      "bytes": 99933,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 564,
+      "duration_seconds": 13.54,
+      "avg_bitrate_kbps": 59,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_POWER_RELAY",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_POWER_RELAY",
+      "event_title": "송신기 릴레이 복구",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_POWER_RELAY.mp3",
+      "exists": true,
+      "bytes": 100365,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 586,
+      "duration_seconds": 14.06,
+      "avg_bitrate_kbps": 57.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_CONCOURSE_SCAVENGE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_CONCOURSE_SCAVENGE",
+      "event_title": "회랑 잔해 수색",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONCOURSE_SCAVENGE.mp3",
+      "exists": true,
+      "bytes": 99693,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 591,
+      "duration_seconds": 14.18,
+      "avg_bitrate_kbps": 56.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_CONCOURSE_CACHE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_CONCOURSE_CACHE",
+      "event_title": "회랑 물자 더미",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONCOURSE_CACHE.mp3",
+      "exists": true,
+      "bytes": 107061,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 625,
+      "duration_seconds": 15,
+      "avg_bitrate_kbps": 57.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_SECURITY_LOCKER",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_SECURITY_LOCKER",
+      "event_title": "보안실 락커",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_SECURITY_LOCKER.mp3",
+      "exists": true,
+      "bytes": 126477,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 730,
+      "duration_seconds": 17.52,
+      "avg_bitrate_kbps": 57.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ARCHIVE_RUINS",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ARCHIVE_RUINS",
+      "event_title": "침수 통로 잔해",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ARCHIVE_RUINS.mp3",
+      "exists": true,
+      "bytes": 100293,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 586,
+      "duration_seconds": 14.06,
+      "avg_bitrate_kbps": 57,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_WRITER_SAFEHOUSE",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_WRITER_SAFEHOUSE",
+      "event_title": "편집실 임시 대피처",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_WRITER_SAFEHOUSE.mp3",
+      "exists": true,
+      "bytes": 161421,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 1064,
+      "duration_seconds": 25.54,
+      "avg_bitrate_kbps": 50.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ROOFTOP_SWEEP",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ROOFTOP_SWEEP",
+      "event_title": "옥상 주변 정리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ROOFTOP_SWEEP.mp3",
+      "exists": true,
+      "bytes": 98493,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 575,
+      "duration_seconds": 13.8,
+      "avg_bitrate_kbps": 57.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH01-EV_CH01_ESCAPE_BACKTRACK",
+      "chapter_id": "CH01",
+      "chapter_title": "잿빛 개장",
+      "event_id": "EV_CH01_ESCAPE_BACKTRACK",
+      "event_title": "샛강 잔해 회수",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH01/EV_CH01_ESCAPE_BACKTRACK.mp3",
+      "exists": true,
+      "bytes": 113637,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 680,
+      "duration_seconds": 16.32,
+      "avg_bitrate_kbps": 55.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_ENTRY",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_ENTRY",
+      "event_title": "검은 수로 진입",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_ENTRY.mp3",
+      "exists": true,
+      "bytes": 96957,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 400,
+      "duration_seconds": 9.6,
+      "avg_bitrate_kbps": 80.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_MARKET_SWEEP",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_MARKET_SWEEP",
+      "event_title": "썩은 시장",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_MARKET_SWEEP.mp3",
+      "exists": true,
+      "bytes": 366717,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 1633,
+      "duration_seconds": 39.19,
+      "avg_bitrate_kbps": 74.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.35,
+      "technical": {
+        "status": "review",
+        "action": "split_or_tighten_line"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_COLD_STORAGE",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_COLD_STORAGE",
+      "event_title": "차갑게 남은 창고",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_COLD_STORAGE.mp3",
+      "exists": true,
+      "bytes": 160389,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 689,
+      "duration_seconds": 16.54,
+      "avg_bitrate_kbps": 77.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_BLACKMARKET",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_BLACKMARKET",
+      "event_title": "물 위의 거래",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_BLACKMARKET.mp3",
+      "exists": true,
+      "bytes": 177573,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 705,
+      "duration_seconds": 16.92,
+      "avg_bitrate_kbps": 83.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_PIER_BARGAIN",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_PIER_BARGAIN",
+      "event_title": "선착장의 거래",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_PIER_BARGAIN.mp3",
+      "exists": true,
+      "bytes": 187821,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 794,
+      "duration_seconds": 19.06,
+      "avg_bitrate_kbps": 78.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.18,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_SLUICE_BOSS",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_SLUICE_BOSS",
+      "event_title": "청음",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLUICE_BOSS.mp3",
+      "exists": true,
+      "bytes": 84141,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 333,
+      "duration_seconds": 7.99,
+      "avg_bitrate_kbps": 84.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.08,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_EXTRACTION",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_EXTRACTION",
+      "event_title": "동작 접근선 확보",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_EXTRACTION.mp3",
+      "exists": true,
+      "bytes": 77613,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 317,
+      "duration_seconds": 7.61,
+      "avg_bitrate_kbps": 81.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.07,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_ALLEY_SCOUT",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_ALLEY_SCOUT",
+      "event_title": "수로 정찰",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_ALLEY_SCOUT.mp3",
+      "exists": true,
+      "bytes": 185445,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 794,
+      "duration_seconds": 19.06,
+      "avg_bitrate_kbps": 77.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.18,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_WATERLOGGED_AMBUSH",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_WATERLOGGED_AMBUSH",
+      "event_title": "수몰 골목 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_WATERLOGGED_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 164733,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 689,
+      "duration_seconds": 16.54,
+      "avg_bitrate_kbps": 79.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_SLUICE_DIAGNOSTIC",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_SLUICE_DIAGNOSTIC",
+      "event_title": "배수문 점검",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLUICE_DIAGNOSTIC.mp3",
+      "exists": true,
+      "bytes": 181485,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 767,
+      "duration_seconds": 18.41,
+      "avg_bitrate_kbps": 78.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_WATERLOCK",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_WATERLOCK",
+      "event_title": "수문 잠금",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_WATERLOCK.mp3",
+      "exists": true,
+      "bytes": 151581,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 644,
+      "duration_seconds": 15.46,
+      "avg_bitrate_kbps": 78.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_CHANNEL_CLEAR",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_CHANNEL_CLEAR",
+      "event_title": "수로 정리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_CHANNEL_CLEAR.mp3",
+      "exists": true,
+      "bytes": 169173,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 711,
+      "duration_seconds": 17.06,
+      "avg_bitrate_kbps": 79.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_SUBMERGED_AMBUSH",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_SUBMERGED_AMBUSH",
+      "event_title": "수중 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_SUBMERGED_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 179445,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 744,
+      "duration_seconds": 17.86,
+      "avg_bitrate_kbps": 80.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_PIER_SIGNAL",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_PIER_SIGNAL",
+      "event_title": "부두 신호 재정비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_PIER_SIGNAL.mp3",
+      "exists": true,
+      "bytes": 173469,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 750,
+      "duration_seconds": 18,
+      "avg_bitrate_kbps": 77.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_SLICE_ESCAPE",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_SLICE_ESCAPE",
+      "event_title": "수문 탈출",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLICE_ESCAPE.mp3",
+      "exists": true,
+      "bytes": 152853,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 650,
+      "duration_seconds": 15.6,
+      "avg_bitrate_kbps": 78.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_FLOOD_AMBUSH",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_FLOOD_AMBUSH",
+      "event_title": "침수 순찰",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_FLOOD_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 197421,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 850,
+      "duration_seconds": 20.4,
+      "avg_bitrate_kbps": 77.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.19,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_DRAINAGE_CTRL",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_DRAINAGE_CTRL",
+      "event_title": "배수 제어",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_DRAINAGE_CTRL.mp3",
+      "exists": true,
+      "bytes": 169437,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 733,
+      "duration_seconds": 17.59,
+      "avg_bitrate_kbps": 77,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_BARGE_REPAIR",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_BARGE_REPAIR",
+      "event_title": "바지선 응급수리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_BARGE_REPAIR.mp3",
+      "exists": true,
+      "bytes": 165909,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 728,
+      "duration_seconds": 17.47,
+      "avg_bitrate_kbps": 75.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_EXTRACTION_PREP",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_EXTRACTION_PREP",
+      "event_title": "수로 정리",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_EXTRACTION_PREP.mp3",
+      "exists": true,
+      "bytes": 90165,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 372,
+      "duration_seconds": 8.93,
+      "avg_bitrate_kbps": 80.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_WATERWAY_CHECK",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_WATERWAY_CHECK",
+      "event_title": "수로 점검",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_WATERWAY_CHECK.mp3",
+      "exists": true,
+      "bytes": 202653,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 855,
+      "duration_seconds": 20.52,
+      "avg_bitrate_kbps": 79,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.19,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_GATE_ASSAULT",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_GATE_ASSAULT",
+      "event_title": "수문 통제실 돌파",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_GATE_ASSAULT.mp3",
+      "exists": true,
+      "bytes": 206877,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 928,
+      "duration_seconds": 22.27,
+      "avg_bitrate_kbps": 74.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.2,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_MARKET_LOCKDOWN",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_MARKET_LOCKDOWN",
+      "event_title": "수몰시장 잔해",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_MARKET_LOCKDOWN.mp3",
+      "exists": true,
+      "bytes": 149949,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 633,
+      "duration_seconds": 15.19,
+      "avg_bitrate_kbps": 78.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_COLD_SEAL",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_COLD_SEAL",
+      "event_title": "냉동창고 봉인",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_COLD_SEAL.mp3",
+      "exists": true,
+      "bytes": 162045,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 705,
+      "duration_seconds": 16.92,
+      "avg_bitrate_kbps": 76.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_PIER_AMBUSH",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_PIER_AMBUSH",
+      "event_title": "폐선착장 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_PIER_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 170901,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 722,
+      "duration_seconds": 17.33,
+      "avg_bitrate_kbps": 78.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_SLUICE_OVERRIDE",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_SLUICE_OVERRIDE",
+      "event_title": "배수문 키 재설정",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLUICE_OVERRIDE.mp3",
+      "exists": true,
+      "bytes": 178413,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 755,
+      "duration_seconds": 18.12,
+      "avg_bitrate_kbps": 78.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_TIDE_SCAN",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_TIDE_SCAN",
+      "event_title": "수위 스캔",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_TIDE_SCAN.mp3",
+      "exists": true,
+      "bytes": 239781,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 1022,
+      "duration_seconds": 24.53,
+      "avg_bitrate_kbps": 78.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.23,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_DROWNED_AMBUSH",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_DROWNED_AMBUSH",
+      "event_title": "침수 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_DROWNED_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 171885,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 739,
+      "duration_seconds": 17.74,
+      "avg_bitrate_kbps": 77.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_MARKET_BACKALLEY",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_MARKET_BACKALLEY",
+      "event_title": "수몰시장 뒤편",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_MARKET_BACKALLEY.mp3",
+      "exists": true,
+      "bytes": 151749,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 650,
+      "duration_seconds": 15.6,
+      "avg_bitrate_kbps": 77.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_MARKET_BACKALLEY_LOOP",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP",
+      "event_title": "시장 반복 수색",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_MARKET_BACKALLEY_LOOP.mp3",
+      "exists": true,
+      "bytes": 194085,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 844,
+      "duration_seconds": 20.26,
+      "avg_bitrate_kbps": 76.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.19,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_COLD_CRAWL",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_COLD_CRAWL",
+      "event_title": "냉각로 탐색",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_COLD_CRAWL.mp3",
+      "exists": true,
+      "bytes": 177669,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 767,
+      "duration_seconds": 18.41,
+      "avg_bitrate_kbps": 77.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_BLACKMARKET_LEDGER",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_BLACKMARKET_LEDGER",
+      "event_title": "암시장 장부",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_BLACKMARKET_LEDGER.mp3",
+      "exists": true,
+      "bytes": 171933,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 689,
+      "duration_seconds": 16.54,
+      "avg_bitrate_kbps": 83.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_PIER_ENGINE",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_PIER_ENGINE",
+      "event_title": "부두 엔진 점검",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_PIER_ENGINE.mp3",
+      "exists": true,
+      "bytes": 183933,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 783,
+      "duration_seconds": 18.79,
+      "avg_bitrate_kbps": 78.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.18,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH02-EV_CH02_SLUICE_PREP",
+      "chapter_id": "CH02",
+      "chapter_title": "검은 수로",
+      "event_id": "EV_CH02_SLUICE_PREP",
+      "event_title": "배수문 방벽 정비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLUICE_PREP.mp3",
+      "exists": true,
+      "bytes": 130437,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 589,
+      "duration_seconds": 14.14,
+      "avg_bitrate_kbps": 73.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_ENTRY",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_ENTRY",
+      "event_title": "유리정원 진입",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_ENTRY.mp3",
+      "exists": true,
+      "bytes": 115557,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 493,
+      "duration_seconds": 11.83,
+      "avg_bitrate_kbps": 78.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_BASEMENT_MEET",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_BASEMENT_MEET",
+      "event_title": "안보경의 지하",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_BASEMENT_MEET.mp3",
+      "exists": true,
+      "bytes": 178485,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 754,
+      "duration_seconds": 18.1,
+      "avg_bitrate_kbps": 78.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_VERTICAL_ROUTE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_VERTICAL_ROUTE",
+      "event_title": "수직 이동 선택",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_VERTICAL_ROUTE.mp3",
+      "exists": true,
+      "bytes": 127749,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 560,
+      "duration_seconds": 13.44,
+      "avg_bitrate_kbps": 76,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SHOWROOM_SWEEP",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SHOWROOM_SWEEP",
+      "event_title": "모델하우스 잔해",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_SWEEP.mp3",
+      "exists": true,
+      "bytes": 209709,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 915,
+      "duration_seconds": 21.96,
+      "avg_bitrate_kbps": 76.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.2,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_POWER_ROUTING",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_POWER_ROUTING",
+      "event_title": "전력 분배",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_POWER_ROUTING.mp3",
+      "exists": true,
+      "bytes": 166101,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 710,
+      "duration_seconds": 17.04,
+      "avg_bitrate_kbps": 78,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_UPPER_NEGOTIATION",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_UPPER_NEGOTIATION",
+      "event_title": "류세온의 상층",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_UPPER_NEGOTIATION.mp3",
+      "exists": true,
+      "bytes": 202797,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 832,
+      "duration_seconds": 19.97,
+      "avg_bitrate_kbps": 81.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.19,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SKYBRIDGE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SKYBRIDGE",
+      "event_title": "유리 위를 걷다",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SKYBRIDGE.mp3",
+      "exists": true,
+      "bytes": 184941,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 771,
+      "duration_seconds": 18.5,
+      "avg_bitrate_kbps": 79.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.18,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_BOSS_GARDEN",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_BOSS_GARDEN",
+      "event_title": "유리정원",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_BOSS_GARDEN.mp3",
+      "exists": true,
+      "bytes": 104901,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 438,
+      "duration_seconds": 10.51,
+      "avg_bitrate_kbps": 79.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_EXTRACTION",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_EXTRACTION",
+      "event_title": "잠실권 이탈",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_EXTRACTION.mp3",
+      "exists": true,
+      "bytes": 103125,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 449,
+      "duration_seconds": 10.78,
+      "avg_bitrate_kbps": 76.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_STAIR_AMBUSH",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_STAIR_AMBUSH",
+      "event_title": "계단실 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_STAIR_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 182829,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 771,
+      "duration_seconds": 18.5,
+      "avg_bitrate_kbps": 79,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_BLACKOUT_REPAIR",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_BLACKOUT_REPAIR",
+      "event_title": "정전 복구",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_BLACKOUT_REPAIR.mp3",
+      "exists": true,
+      "bytes": 167637,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 688,
+      "duration_seconds": 16.51,
+      "avg_bitrate_kbps": 81.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_RESCUE_DETOUR",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_RESCUE_DETOUR",
+      "event_title": "구조 신호 응답",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_RESCUE_DETOUR.mp3",
+      "exists": true,
+      "bytes": 201477,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 865,
+      "duration_seconds": 20.76,
+      "avg_bitrate_kbps": 77.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.19,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_PREP_GLASS",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_PREP_GLASS",
+      "event_title": "유리정원 준비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_PREP_GLASS.mp3",
+      "exists": true,
+      "bytes": 147141,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 649,
+      "duration_seconds": 15.58,
+      "avg_bitrate_kbps": 75.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_EXTRACTION_PRESSURE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE",
+      "event_title": "추출 압박",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_EXTRACTION_PRESSURE.mp3",
+      "exists": true,
+      "bytes": 84477,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 349,
+      "duration_seconds": 8.38,
+      "avg_bitrate_kbps": 80.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.08,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SERVICE_AMBUSH",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SERVICE_AMBUSH",
+      "event_title": "서비스 계단 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SERVICE_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 182997,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 771,
+      "duration_seconds": 18.5,
+      "avg_bitrate_kbps": 79.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SHOWROOM_CACHE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SHOWROOM_CACHE",
+      "event_title": "쇼룸 보급품",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_CACHE.mp3",
+      "exists": true,
+      "bytes": 172437,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 743,
+      "duration_seconds": 17.83,
+      "avg_bitrate_kbps": 77.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SHOWROOM_AMBUSH",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SHOWROOM_AMBUSH",
+      "event_title": "쇼룸 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 160701,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 665,
+      "duration_seconds": 15.96,
+      "avg_bitrate_kbps": 80.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SKYBRIDGE_ACCESS",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SKYBRIDGE_ACCESS",
+      "event_title": "하늘다리 접근",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SKYBRIDGE_ACCESS.mp3",
+      "exists": true,
+      "bytes": 180981,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 760,
+      "duration_seconds": 18.24,
+      "avg_bitrate_kbps": 79.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_BASEMENT_CACHE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_BASEMENT_CACHE",
+      "event_title": "지하 은닉 물자",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_BASEMENT_CACHE.mp3",
+      "exists": true,
+      "bytes": 176493,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 749,
+      "duration_seconds": 17.98,
+      "avg_bitrate_kbps": 78.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_GLASS_PREP",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_GLASS_PREP",
+      "event_title": "결전 준비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_GLASS_PREP.mp3",
+      "exists": true,
+      "bytes": 132549,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 543,
+      "duration_seconds": 13.03,
+      "avg_bitrate_kbps": 81.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_BASEMENT_SURVEY",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_BASEMENT_SURVEY",
+      "event_title": "지하 구역 정찰",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_BASEMENT_SURVEY.mp3",
+      "exists": true,
+      "bytes": 169869,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 726,
+      "duration_seconds": 17.42,
+      "avg_bitrate_kbps": 78,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SERVICE_SPIRAL",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SERVICE_SPIRAL",
+      "event_title": "서비스 계단 교전",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SERVICE_SPIRAL.mp3",
+      "exists": true,
+      "bytes": 181077,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 782,
+      "duration_seconds": 18.77,
+      "avg_bitrate_kbps": 77.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SHOWROOM_STORAGE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SHOWROOM_STORAGE",
+      "event_title": "쇼룸 보급 라인",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_STORAGE.mp3",
+      "exists": true,
+      "bytes": 170133,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 732,
+      "duration_seconds": 17.57,
+      "avg_bitrate_kbps": 77.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_LUXURY_SCAVENGE",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE",
+      "event_title": "상층 반복 수색",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_LUXURY_SCAVENGE.mp3",
+      "exists": true,
+      "bytes": 141189,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 621,
+      "duration_seconds": 14.9,
+      "avg_bitrate_kbps": 75.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_POWER_OVERRUN",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_POWER_OVERRUN",
+      "event_title": "전력 과부하 조치",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_POWER_OVERRUN.mp3",
+      "exists": true,
+      "bytes": 160389,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 671,
+      "duration_seconds": 16.1,
+      "avg_bitrate_kbps": 79.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_UPPER_SECURITY_SWEEP",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_UPPER_SECURITY_SWEEP",
+      "event_title": "상층 경계 정리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_UPPER_SECURITY_SWEEP.mp3",
+      "exists": true,
+      "bytes": 179853,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 754,
+      "duration_seconds": 18.1,
+      "avg_bitrate_kbps": 79.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_UPPER_SUPPLY",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_UPPER_SUPPLY",
+      "event_title": "상층 보급 라운지",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_UPPER_SUPPLY.mp3",
+      "exists": true,
+      "bytes": 236253,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 954,
+      "duration_seconds": 22.9,
+      "avg_bitrate_kbps": 82.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.23,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_SKYBRIDGE_WIND",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_SKYBRIDGE_WIND",
+      "event_title": "하늘다리 돌풍",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_SKYBRIDGE_WIND.mp3",
+      "exists": true,
+      "bytes": 191421,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 788,
+      "duration_seconds": 18.91,
+      "avg_bitrate_kbps": 81,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.18,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_GLASS_ARMORY",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_GLASS_ARMORY",
+      "event_title": "유리정원 전초 정비",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_GLASS_ARMORY.mp3",
+      "exists": true,
+      "bytes": 250053,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 1104,
+      "duration_seconds": 26.5,
+      "avg_bitrate_kbps": 75.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.24,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH03-EV_CH03_GARDEN_APPROACH",
+      "chapter_id": "CH03",
+      "chapter_title": "유리정원",
+      "event_id": "EV_CH03_GARDEN_APPROACH",
+      "event_title": "유리정원 접근",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH03/EV_CH03_GARDEN_APPROACH.mp3",
+      "exists": true,
+      "bytes": 127605,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 543,
+      "duration_seconds": 13.03,
+      "avg_bitrate_kbps": 78.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_ENTRY",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_ENTRY",
+      "event_title": "상자들의 도시",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_ENTRY.mp3",
+      "exists": true,
+      "bytes": 90957,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 330,
+      "duration_seconds": 7.92,
+      "avg_bitrate_kbps": 91.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_COLD_ALLOC",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_COLD_ALLOC",
+      "event_title": "의료 상자 분배",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_COLD_ALLOC.mp3",
+      "exists": true,
+      "bytes": 155157,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 714,
+      "duration_seconds": 17.14,
+      "avg_bitrate_kbps": 72.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_LOBBY_MEET",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_LOBBY_MEET",
+      "event_title": "한소명의 안내",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_LOBBY_MEET.mp3",
+      "exists": true,
+      "bytes": 156141,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 669,
+      "duration_seconds": 16.06,
+      "avg_bitrate_kbps": 77.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_ROUTE_SELECTION",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_ROUTE_SELECTION",
+      "event_title": "판교 진입 분류",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_ROUTE_SELECTION.mp3",
+      "exists": true,
+      "bytes": 101685,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 475,
+      "duration_seconds": 11.4,
+      "avg_bitrate_kbps": 71.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_SECURITY_BADGES",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_SECURITY_BADGES",
+      "event_title": "보안 사무실 탈취",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_SECURITY_BADGES.mp3",
+      "exists": true,
+      "bytes": 140997,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 702,
+      "duration_seconds": 16.85,
+      "avg_bitrate_kbps": 66.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_LINE_DECISION",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_LINE_DECISION",
+      "event_title": "라인을 살릴 것인가",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_LINE_DECISION.mp3",
+      "exists": true,
+      "bytes": 146133,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 669,
+      "duration_seconds": 16.06,
+      "avg_bitrate_kbps": 72.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_BOSS_PICKER",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_BOSS_PICKER",
+      "event_title": "피커",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_BOSS_PICKER.mp3",
+      "exists": true,
+      "bytes": 122901,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 469,
+      "duration_seconds": 11.26,
+      "avg_bitrate_kbps": 87.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_EXTRACTION",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_EXTRACTION",
+      "event_title": "판교 진입권",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_EXTRACTION.mp3",
+      "exists": true,
+      "bytes": 94317,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 375,
+      "duration_seconds": 9,
+      "avg_bitrate_kbps": 83.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_RAIL_JAM",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_RAIL_JAM",
+      "event_title": "의료 상자 선로",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_RAIL_JAM.mp3",
+      "exists": true,
+      "bytes": 176277,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 797,
+      "duration_seconds": 19.13,
+      "avg_bitrate_kbps": 73.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_SECURITY_SWEEP",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_SECURITY_SWEEP",
+      "event_title": "한소명 기록",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_SECURITY_SWEEP.mp3",
+      "exists": true,
+      "bytes": 167661,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 736,
+      "duration_seconds": 17.66,
+      "avg_bitrate_kbps": 75.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_PRE_BOSS_CHECK",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_PRE_BOSS_CHECK",
+      "event_title": "라인 재가동 점검",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_PRE_BOSS_CHECK.mp3",
+      "exists": true,
+      "bytes": 80925,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 375,
+      "duration_seconds": 9,
+      "avg_bitrate_kbps": 71.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.08,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_TUNNEL_AMBUSH",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_TUNNEL_AMBUSH",
+      "event_title": "물류 터널 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_TUNNEL_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 197085,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 864,
+      "duration_seconds": 20.74,
+      "avg_bitrate_kbps": 76,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.19,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_VENDOR_BARTER",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_VENDOR_BARTER",
+      "event_title": "현장 거래",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_VENDOR_BARTER.mp3",
+      "exists": true,
+      "bytes": 156261,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 636,
+      "duration_seconds": 15.26,
+      "avg_bitrate_kbps": 81.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.15,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_EXTRACTION_PREP",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_EXTRACTION_PREP",
+      "event_title": "추출 정리",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_EXTRACTION_PREP.mp3",
+      "exists": true,
+      "bytes": 96165,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 458,
+      "duration_seconds": 10.99,
+      "avg_bitrate_kbps": 70,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_LOADING_AMBUSH",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_LOADING_AMBUSH",
+      "event_title": "하역 구역 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_LOADING_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 151725,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 675,
+      "duration_seconds": 16.2,
+      "avg_bitrate_kbps": 74.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_COLD_AUDIT",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_COLD_AUDIT",
+      "event_title": "냉장창고 점검",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_COLD_AUDIT.mp3",
+      "exists": true,
+      "bytes": 166389,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 769,
+      "duration_seconds": 18.46,
+      "avg_bitrate_kbps": 72.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_LINE_PREP",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_LINE_PREP",
+      "event_title": "라인 준비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_LINE_PREP.mp3",
+      "exists": true,
+      "bytes": 183213,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 875,
+      "duration_seconds": 21,
+      "avg_bitrate_kbps": 69.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_EXIT_CHECK",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_EXIT_CHECK",
+      "event_title": "철수 점검",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_EXIT_CHECK.mp3",
+      "exists": true,
+      "bytes": 167181,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 814,
+      "duration_seconds": 19.54,
+      "avg_bitrate_kbps": 68.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.16,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_LINE_REPAIR",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_LINE_REPAIR",
+      "event_title": "라인 전원 복구",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_LINE_REPAIR.mp3",
+      "exists": true,
+      "bytes": 178965,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 875,
+      "duration_seconds": 21,
+      "avg_bitrate_kbps": 68.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.17,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH04-EV_CH04_TUNNEL_CACHE",
+      "chapter_id": "CH04",
+      "chapter_title": "상자들의 도시",
+      "event_id": "EV_CH04_TUNNEL_CACHE",
+      "event_title": "판교 진입 분류표",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH04/EV_CH04_TUNNEL_CACHE.mp3",
+      "exists": true,
+      "bytes": 184125,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 891,
+      "duration_seconds": 21.38,
+      "avg_bitrate_kbps": 68.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.18,
+      "technical": {
+        "status": "ok",
+        "action": "manual_emotion_review"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_ENTRY",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_ENTRY",
+      "event_title": "미러센터 접근",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_ENTRY.mp3",
+      "exists": true,
+      "bytes": 79365,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 441,
+      "duration_seconds": 10.58,
+      "avg_bitrate_kbps": 60,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.08,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_LOBBY_MAPPING",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_LOBBY_MAPPING",
+      "event_title": "죽은 캠퍼스 로비",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_LOBBY_MAPPING.mp3",
+      "exists": true,
+      "bytes": 93165,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 530,
+      "duration_seconds": 12.72,
+      "avg_bitrate_kbps": 58.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_SKYWALK",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_SKYWALK",
+      "event_title": "공중 보행로 가든",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_SKYWALK.mp3",
+      "exists": true,
+      "bytes": 126069,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 686,
+      "duration_seconds": 16.46,
+      "avg_bitrate_kbps": 61.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_COOLING_ROUTE",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_COOLING_ROUTE",
+      "event_title": "냉각 루프 제어",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_COOLING_ROUTE.mp3",
+      "exists": true,
+      "bytes": 90885,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 514,
+      "duration_seconds": 12.34,
+      "avg_bitrate_kbps": 58.9,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.09,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_KIM_ARA",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_KIM_ARA",
+      "event_title": "김아라",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_KIM_ARA.mp3",
+      "exists": true,
+      "bytes": 120453,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 697,
+      "duration_seconds": 16.73,
+      "avg_bitrate_kbps": 57.6,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_DATA_ACCESS",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_DATA_ACCESS",
+      "event_title": "공개 자료 접속",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_DATA_ACCESS.mp3",
+      "exists": true,
+      "bytes": 127245,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 747,
+      "duration_seconds": 17.93,
+      "avg_bitrate_kbps": 56.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_BOSS_LINES",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_BOSS_LINES",
+      "event_title": "미러 회선 결전",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_BOSS_LINES.mp3",
+      "exists": true,
+      "bytes": 67581,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 369,
+      "duration_seconds": 8.86,
+      "avg_bitrate_kbps": 61,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.06,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_EXTRACTION",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_EXTRACTION",
+      "event_title": "남하 결정",
+      "priority": "P0",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_EXTRACTION.mp3",
+      "exists": true,
+      "bytes": 68829,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 397,
+      "duration_seconds": 9.53,
+      "avg_bitrate_kbps": 57.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.07,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8.8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_SIGNAL_RELAY",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_SIGNAL_RELAY",
+      "event_title": "독도 신호 정체",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_SIGNAL_RELAY.mp3",
+      "exists": true,
+      "bytes": 140757,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 791,
+      "duration_seconds": 18.98,
+      "avg_bitrate_kbps": 59.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_CONTAINMENT_BREACH",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_CONTAINMENT_BREACH",
+      "event_title": "공개 범위",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_CONTAINMENT_BREACH.mp3",
+      "exists": true,
+      "bytes": 594885,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 3636,
+      "duration_seconds": 87.26,
+      "avg_bitrate_kbps": 54.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.57,
+      "technical": {
+        "status": "review",
+        "action": "split_or_tighten_line"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_PREP_FINAL",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_PREP_FINAL",
+      "event_title": "최종 준비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_PREP_FINAL.mp3",
+      "exists": true,
+      "bytes": 103269,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 591,
+      "duration_seconds": 14.18,
+      "avg_bitrate_kbps": 58.2,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_RAMP_SWARM",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_RAMP_SWARM",
+      "event_title": "진입 경사로 난전",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_RAMP_SWARM.mp3",
+      "exists": true,
+      "bytes": 141309,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 780,
+      "duration_seconds": 18.72,
+      "avg_bitrate_kbps": 60.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_SECURITY_CONSOLE",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_SECURITY_CONSOLE",
+      "event_title": "보안 제어 단말",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_SECURITY_CONSOLE.mp3",
+      "exists": true,
+      "bytes": 127629,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 725,
+      "duration_seconds": 17.4,
+      "avg_bitrate_kbps": 58.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_SERVER_PURGE",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_SERVER_PURGE",
+      "event_title": "서버 정리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_SERVER_PURGE.mp3",
+      "exists": true,
+      "bytes": 144045,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 836,
+      "duration_seconds": 20.06,
+      "avg_bitrate_kbps": 57.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.14,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_EXIT_PRESSURE",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_EXIT_PRESSURE",
+      "event_title": "출구 압박",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_EXIT_PRESSURE.mp3",
+      "exists": true,
+      "bytes": 141165,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 791,
+      "duration_seconds": 18.98,
+      "avg_bitrate_kbps": 59.5,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_LOBBY_SCAN",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_LOBBY_SCAN",
+      "event_title": "로비 스캔",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_LOBBY_SCAN.mp3",
+      "exists": true,
+      "bytes": 118917,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 680,
+      "duration_seconds": 16.32,
+      "avg_bitrate_kbps": 58.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_COOLING_AMBUSH",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_COOLING_AMBUSH",
+      "event_title": "냉각실 매복",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_COOLING_AMBUSH.mp3",
+      "exists": true,
+      "bytes": 131541,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 758,
+      "duration_seconds": 18.19,
+      "avg_bitrate_kbps": 57.8,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_LOBBY_CHECKPOINT",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT",
+      "event_title": "로비 검문",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_LOBBY_CHECKPOINT.mp3",
+      "exists": true,
+      "bytes": 140637,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 852,
+      "duration_seconds": 20.45,
+      "avg_bitrate_kbps": 55,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_COOLING_BREACH",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_COOLING_BREACH",
+      "event_title": "냉각설비 과열",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_COOLING_BREACH.mp3",
+      "exists": true,
+      "bytes": 133125,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 714,
+      "duration_seconds": 17.14,
+      "avg_bitrate_kbps": 62.1,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_DATA_SANITIZE",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_DATA_SANITIZE",
+      "event_title": "자료 정리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_DATA_SANITIZE.mp3",
+      "exists": true,
+      "bytes": 115173,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 636,
+      "duration_seconds": 15.26,
+      "avg_bitrate_kbps": 60.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.11,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_COOLING_BREAK",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_COOLING_BREAK",
+      "event_title": "냉각 구간 폭주",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_COOLING_BREAK.mp3",
+      "exists": true,
+      "bytes": 123477,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 675,
+      "duration_seconds": 16.2,
+      "avg_bitrate_kbps": 61,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.12,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_ARC_RELAY",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_ARC_RELAY",
+      "event_title": "릴레이 정리",
+      "priority": "P2",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_ARC_RELAY.mp3",
+      "exists": true,
+      "bytes": 138381,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 764,
+      "duration_seconds": 18.34,
+      "avg_bitrate_kbps": 60.4,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.13,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 7.5,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    },
+    {
+      "id": "P1-CH05-EV_CH05_CORE_PREP",
+      "chapter_id": "CH05",
+      "chapter_title": "미러센터",
+      "event_id": "EV_CH05_CORE_PREP",
+      "event_title": "코어 방호 준비",
+      "priority": "P1",
+      "path": "public/generated/audio/tts/P1/CH05/EV_CH05_CORE_PREP.mp3",
+      "exists": true,
+      "bytes": 103389,
+      "id3_bytes": 45,
+      "parse_ok": true,
+      "frame_count": 608,
+      "duration_seconds": 14.59,
+      "avg_bitrate_kbps": 56.7,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "vbr": true,
+      "mb": 0.1,
+      "technical": {
+        "status": "review",
+        "action": "check_low_bitrate"
+      },
+      "emotion_review": {
+        "required": true,
+        "score": null,
+        "threshold": 8,
+        "rubric": {
+          "acting_emotion": 0.35,
+          "korean_naturalness": 0.25,
+          "scene_fit": 0.2,
+          "technical_quality": 0.1,
+          "runtime_fit": 0.1
+        }
+      }
+    }
+  ]
+}

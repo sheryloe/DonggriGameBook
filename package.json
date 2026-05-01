@@ -33,6 +33,7 @@
     "tts:part1:hume:audition": "node scripts/generate-hume-part1-tts-audition.mjs",
     "tts:part1:elevenlabs:sync": "node scripts/sync-elevenlabs-v3-tts.mjs",
     "tts:part1:sync": "node scripts/sync-part1-tts-assets.mjs",
+    "tts:part1:audit": "node scripts/audit-part1-tts-144.mjs",
     "vibevoice:setup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-vibevoice-local.ps1",
     "vibevoice:queue:part1": "node scripts/generate-vibevoice-part1-queue.mjs",
     "vibevoice:generate:part1": "node scripts/generate-vibevoice-part1.mjs",
