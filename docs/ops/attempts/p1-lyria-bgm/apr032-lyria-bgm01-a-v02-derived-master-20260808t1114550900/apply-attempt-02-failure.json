@@ -1,0 +1,50 @@
+{
+  "schema": "donggrol.apr032.part1_lyria_derived_master_apply_failure.v1",
+  "attempt_id": "apr032-lyria-bgm01-a-v02-derived-master-20260808t1114550900",
+  "apply_attempt": 2,
+  "observed_at": "2026-08-08T11:40:12.34+09:00",
+  "phase": "pre_output_failed_closed",
+  "classification": "deterministic_relative_cwd_pre_normalization_path_length",
+  "command_digest": "APR032-P1-BGM01-A-V02-DERIVED-MASTER-MINUS-2P800DB-V1",
+  "gain_db": -2.8,
+  "error": {
+    "type": "soundfile.LibsndfileError",
+    "operation": "relative_parent_decode",
+    "execution_cwd": "F:\\DonggriPlatform_Asset\\staging\\DonggrolGameBook\\13810d39aa5e2a0eff2e99b64d0bd179a69edbbe0eacdb6225458779e72bb5e7\\p1-audio\\attempts\\apr032-lyria-bgm01-a-v02-derived-master-20260808t1114550900",
+    "source_argument": "..\\apr031-lyria-bgm01-a-v02-20260808t1056400900\\raw\\Under_The_Concrete_Wind.mp3",
+    "message": "The relative path resolved to the correct 209-character absolute parent, but the long cwd plus unnormalized relative argument failed before libsndfile opened the file."
+  },
+  "read_only_diagnosis": {
+    "common_attempts_cwd": "F:\\DonggriPlatform_Asset\\staging\\DonggrolGameBook\\13810d39aa5e2a0eff2e99b64d0bd179a69edbbe0eacdb6225458779e72bb5e7\\p1-audio\\attempts",
+    "source_argument": "apr031-lyria-bgm01-a-v02-20260808t1056400900\\raw\\Under_The_Concrete_Wind.mp3",
+    "relative_exists": true,
+    "python_open_pass": true,
+    "id3_header_hex": "494433",
+    "soundfile_open_pass": true,
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "decoded_frames": 4675706
+  },
+  "preservation": {
+    "derived_output_created": false,
+    "temporary_output_created": false,
+    "e_raw_bytes": 2540792,
+    "e_raw_sha256": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c",
+    "f_raw_bytes": 2540792,
+    "f_raw_sha256": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c",
+    "candidate_manifest_sha256": "7145d7904388a905c121841360aeba76f27723ff54303c096e9605ae73da76b6",
+    "bgm_mapping_sha256": "10407554b9e64b1d2a1c24f49fc8dd7ec816ca2d1122f22f454642f51a280fc1"
+  },
+  "protected_status": {
+    "imported_candidate": false,
+    "human_listened": false,
+    "human_approved": false,
+    "runtime_promoted": false,
+    "candidate_count_delta": 0,
+    "selected_master_count_delta": 0,
+    "score_delta": 0,
+    "release_go": false
+  },
+  "automatic_retry_allowed": false,
+  "next_safe_action": "Use the verified common attempts directory as cwd so both source and destination arguments remain relative and below the pre-normalization path limit, rerun all static and negative gates, then request explicit apply attempt 3 approval."
+}

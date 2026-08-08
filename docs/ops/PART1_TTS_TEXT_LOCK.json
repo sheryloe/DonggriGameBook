@@ -1,0 +1,3213 @@
+{
+  "generated_at": "2026-08-08T09:28:11.484Z",
+  "part_id": "P1",
+  "source": "private/content/data/chapters/ch01~ch05.json",
+  "event_count": 355,
+  "total_chars": 53559,
+  "content_sha256": "8eee3517f0d3bb2a60c4c95226daadfc99899bdc4b9652ebd6d037f15d03f9d6",
+  "policy": {
+    "local_roots": [
+      "F:\\DonggriPlatform_Asset\\tools\\voice\\ChatterboxLocal",
+      "F:\\DonggriPlatform_Asset\\tools\\voice\\VibeVoiceLocal"
+    ],
+    "queue_refresh": "npm run chatterbox:queue:part1 -- --force",
+    "sample_probe": "npm run chatterbox:generate:part1 -- --chapter=CH01 --limit=1 --allow-missing-reference"
+  },
+  "entries": [
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_BRIEFING",
+      "event_type": "briefing",
+      "title": "죽은 주파수",
+      "chars": 184,
+      "sha256": "d20f33a28f6d4a6fe7d6ec206d6b92da457ab85d2147880f66579ab79ba198d5",
+      "text": "꺼진 스피커에서 숨 한 번이 새어 나온다. 윤해인은 잡음을 낮추고 송신 위치를 여의도 방송동으로 좁힌다. 들었지? 살아 있어. 기록을 건질지 사람부터 찾을지, 안에 들어가면 바로 정해야 해. 죽은 주파수: 기록과 구조가 갈라지는 순간 첫 의미 있는 선택은 다음 장면에서 바로 열린다. 윤해인의 손가락이 주파수 눈금 위에서 멈춘다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_APPROACH",
+      "event_type": "exploration",
+      "title": "잿길 위 초입 안내",
+      "chars": 228,
+      "sha256": "1f3da2594acc5f21c79d97253888f2ef529f9b7b9d010b1dc1d3d882e1c83011",
+      "text": "재가 쌓인 입구에 두 길이 남아 있다. 왼쪽 사무실에는 물자 흔적이, 정면 셔터 뒤에는 구조 신호가 있다. 조용히 가면 흔적을 더 볼 수 있어. 정면을 뚫으면 빠르지만 네 탄과 우리 위치를 같이 내줘야 해. 잿길 위 초입 안내의 불빛이 두 갈래로 갈라진다. 한쪽은 사람의 숨이고, 다른 한쪽은 사라질 기록이다. 선택 직후 소음·탄약 변화가 영수증에 기록된다. 첫 선택부터 얻는 것과 잃는 것이 숫자로 보인다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_LOBBY_SEARCH",
+      "event_type": "exploration",
+      "title": "멈춘 로비",
+      "chars": 216,
+      "sha256": "e93c96319e49e3c7063d129dba7d1291bbd183612a5df1b96d0ab71ebd455e5c",
+      "text": "방송동 로비에는 아직 손대지 않은 흔적이 남아 있다. 멈춘 로비 너머에서 무전기의 낮은 잡음이 희미하게 답했다. 멈춘 로비의 남은 선택은 빠르게 작아지고 있었다. 노이즈를 먼저 눌러 둔다. 사람의 목소리는 한 번 묻히면 다시 같은 높이로 돌아오지 않는다. 멈춘 로비: 기록과 구조가 갈라지는 순간 멈춘 로비의 먼지 낀 문장을 주머니에 넣는다. 가져가지 못한 줄은 어둠 쪽으로 가라앉는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ARCHIVE_DECISION",
+      "event_type": "choice",
+      "title": "침수 자료실",
+      "chars": 192,
+      "sha256": "5723b8bc26aae2b7e7da5c819e3d8529775fe2391f00027021e3d5441a0f37ef",
+      "text": "서가 아래 물이 허리까지 차오르고 있다. 붉은 보관함 안에서 방송 로그의 마지막 페이지가 떠오른다. 들어가면 오염을 피할 수 없어. 그래도 저 기록을 놓치면 누가 구조 신호를 지웠는지 영영 모르게 돼. 침수 자료실: 기록과 구조가 갈라지는 순간 회수 여부와 진실 기록이 선택 영수증에 고정된다. 기록 1건과 오염 8이 같은 선택 카드에 놓인다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_WRITER_RESCUE",
+      "event_type": "dialogue",
+      "title": "복도 끝의 생존자",
+      "chars": 179,
+      "sha256": "22d5377a37527c5a664dd55810027ab90e86cdc1b9e3166f9f4199696601b274",
+      "text": "편집실 책상 아래에서 마른기침이 들린다. 필자는 걷지 못하고 원고 가방만 품에 안고 있다. 업으면 이동이 느려져. 그래도 여기 두고 가면 그 사람이 쓴 이름도 같이 사라져. 복도 끝의 생존자: 이름 하나가 시간을 늦춘다 구조 여부와 신뢰 변화가 재진입 영수증에 남는다. 사람 한 명과 적재 무게 2가 같은 카드에 오른다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ROOFTOP_SIGNAL",
+      "event_type": "dialogue",
+      "title": "옥상 송신기",
+      "chars": 190,
+      "sha256": "6a71d0dfb341099ca2e3dbfb8533257e8fd21f4d93343889a79c21756f4e7f69",
+      "text": "옥상 안테나가 빗물 속에서 한 번 회전한다. 아래 거리의 수신기들이 동시에 켜지며 위치를 드러낸다. 계속 보내면 구조선은 우리를 찾아. 대신 저 아래 있는 것들도 똑같이 이 위치를 듣게 돼. 옥상 송신기: 길과 소음이 함께 열린다 증폭기·방송 여부·소음 변화가 같은 영수증에 기록된다. 길을 밝히는 신호와 위치를 파는 소음이 동시에 열린다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_BOSS_BROADCAST",
+      "event_type": "boss",
+      "title": "편집괴",
+      "chars": 223,
+      "sha256": "12d30f77432d89231c12b4ab8bd9fd32eda8f65d060dd5ae5fb7acb6d7c835b7",
+      "text": "스튜디오 스피커마다 잘린 문장이 겹쳐 울린다. 편집괴는 소리를 따라 몸을 세우고 송출 콘솔 앞을 막아선다. 괴물보다 스피커부터 봐. 우리가 살린 목소리를 저 소음 속에 다시 묻히게 두면 안 돼. 편집괴의 회선은 구조 신호와 증거 기록을 동시에 요구한다. 둘 다 붙잡기엔 손이 모자라다. 승리하면 방송 기록 1건과 탈출 준비 상태가 확정된다. 전투가 끝나기 전까지 방송과 결과 영수증은 끊기지 않는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_EXTRACTION",
+      "event_type": "extraction",
+      "title": "첫 귀환",
+      "chars": 230,
+      "sha256": "d46b6aa08a73c7beab363001cfa6ac4ba75a6320e229008e977027a46f863c48",
+      "text": "비상계단 문이 닫히자 스튜디오 잡음이 한 겹 멀어진다. 윤해인은 방송 기록 1건과 증폭기 1개를 방수포 위에 나란히 놓는다. 살린 목소리는 여기 있고, 놓친 이름도 여기 있어. 다음 수로에서는 이 기록이 누구를 먼저 통과시킬지 바꿀 거야. 첫 귀환: 빠른 탈출 뒤에 남는 밤 CH01 완료와 CH02 이동이 저장된 뒤에만 다음 행동이 열린다. 첫 귀환은 승리 화면이 아니라 다음 선택의 근거를 정리하는 시간이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SECURITY_OFFICE",
+      "event_type": "choice",
+      "title": "보안실 잔광",
+      "chars": 306,
+      "sha256": "e419e611309a8802ddf60cc86a7f57d718b83ca22a94125a5d1179a9a35ec613",
+      "text": "보안실 잔광 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 다음 흔적은 꺼진 스피커 옆에 남았다. 보안실 잔광의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 보안실 잔광의 공기가 잠깐 얇아졌다. 무전기의 낮은 잡음이 흔들리는 사이, 서지훈은 발끝의 재를 털며 남은 시간을 쟀다. 재 묻은 케이블이 잠깐 멎었다. 서지훈은 보안실 잔광 앞에서 꺼진 스피커 아래로 몸을 낮추고 손에 든 것을 다시 세었다. 보안실 잔광: 기록과 구조가 갈라지는 순간 보안실 잔광에 남은 이름을 접어 넣는다. 누락된 이름은 다음 송출에서 더 작게 들릴 것이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SIGNAL_CALIBRATION",
+      "event_type": "scene",
+      "title": "주파수 보정",
+      "chars": 224,
+      "sha256": "e8786096106239b726d97bddd23be2ee806bc1dc444e33422d0aea0f535cf3cf",
+      "text": "옥상 송신기의 정적 사이로 주파수 보정의 짧은 틈이 열린다. 재 묻은 케이블이 잠깐 멎었다. 서지훈은 주파수 보정 앞에서 꺼진 스피커 아래로 몸을 낮추고 손에 든 것을 다시 세었다. 다음 흔적은 꺼진 스피커 옆에 남았다. 주파수 보정의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 주파수 보정: 길과 소음이 함께 열린다 주파수 보정의 작은 신호가 바닥을 훑는다. 따라오는 귀도 그 빛을 놓치지 않는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SIGNAL_RELAY_DEFENSE",
+      "event_type": "danger",
+      "title": "중계기 방어",
+      "chars": 194,
+      "sha256": "bd2d4458a8da1ae9729e1f38de25c104cf167c686e8f0a3a252a783992fecb65",
+      "text": "옥상 송신기의 공기가 낮게 눌리고, 중계기 방어가 발밑으로 다가온다. 중계기 방어 너머에서 젖은 송출표가 희미하게 답했다. 중계기 방어의 남은 선택은 빠르게 작아지고 있었다. 숨을 한 박자 늦춘다. 길이 보일 때까지 몸을 먼저 내밀지 않는다. 중계기 방어: 길과 소음이 함께 열린다 중계기 방어의 신호는 길을 밝히지만, 동시에 가까운 귀를 깨운다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_LOCKDOWN",
+      "event_type": "choice",
+      "title": "비상 봉쇄",
+      "chars": 306,
+      "sha256": "2d0b565e75fae50b5cdaddcdca326afb56aa345835d1bed62dcb3821a87eda04",
+      "text": "비상 봉쇄 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 비상 봉쇄의 가장자리로 숨이 모였다. 서지훈은 발끝의 재를 털며 비상 봉쇄에서 아직 닫히지 않은 길을 찾았다. 비상 봉쇄 너머에서 젖은 송출표가 희미하게 답했다. 비상 봉쇄의 남은 선택은 빠르게 작아지고 있었다. 비상 봉쇄 앞의 표식이 서로 다른 방향을 가리켰다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 비상 봉쇄 앞의 길은 둘로 갈라졌다. 젖은 전선이 그 결정을 낮게 되받았다. 비상 봉쇄에서 건진 조각이 다음 회선을 버티게 한다. 손대지 못한 조각은 여기 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ARCHIVE_AMBUSH",
+      "event_type": "danger",
+      "title": "기록 보관함 매복",
+      "chars": 297,
+      "sha256": "a44842d9b7424614d1660a02bf29c1cd730937b8ff521e7f46060ddd29d6b94f",
+      "text": "침수 자료실의 공기가 낮게 눌리고, 기록 보관함 매복이 발밑으로 다가온다. 무전기의 낮은 잡음이 세번째 신호처럼 스쳤다. 기록 보관함 매복에서 놓친 것은 다음 방의 위험으로 남았다. 발끝을 세우고 벽의 그림자를 따라간다. 살아남는 쪽이 다음 문장을 쓴다. 기록 보관함 앞의 표식이 서로 다른 방향을 가리켰다. 주파수의 빈칸이 손끝에 남았다. 기록 보관함 매복 앞의 길은 둘로 갈라졌다. 재가 묻은 바닥이 다음 발자국을 먼저 기억했다. 기록 보관함 매복의 작은 기록 하나가 다음 사람의 위치표가 된다. 비워 둔 칸은 침묵으로 굳는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CORRIDOR_TRAP",
+      "event_type": "choice",
+      "title": "복도 함정",
+      "chars": 261,
+      "sha256": "f4e946ae0dd62bcdaf421ba9b645bd945286c622cff1efb8905d71bcf4805f07",
+      "text": "복도 함정 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 복도는 조용해졌고, 윤해인의 무전만 얇게 살아 남았다. 무전기의 낮은 잡음이 세번째 신호처럼 스쳤다. 복도 함정에서 놓친 것은 다음 방의 위험으로 남았다. 복도 함정의 잡음 뒤에서 구조와 기록이 서로를 밀어낸다. 먼저 손댄 쪽만 다음 장면에 남는다. 복도 함정의 회선은 구조 신호와 증거 기록을 동시에 요구한다. 둘 다 붙잡기엔 손이 모자라다. 복도 함정 뒤쪽에서 꺼진 스피커가 짧게 숨을 삼켰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CONTROL_RESTORE",
+      "event_type": "choice",
+      "title": "제어실 복구",
+      "chars": 260,
+      "sha256": "e8951487c010859c998a9dda3b7c9a910084865619a19fdeb26ce1fa1460042d",
+      "text": "제어실 복구 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 재 묻은 케이블이 낮게 흔들렸다. 제어실 복구에서 서지훈은 잡음을 낮추고 다음 퇴로를 먼저 가늠했다. 제어실 복구의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 꺼진 스피커만 뒤에 남았다. 제어실 복구에서는 늦은 판단도 소리로 남는다. 어느 쪽을 먼저 살릴지 지금 정해야 한다. 제어실 복구의 시간은 넉넉하지 않다. 회선 하나를 살리면 다른 문장은 더 멀어진다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_STUDIO_APPROACH",
+      "event_type": "exploration",
+      "title": "스튜디오 접근",
+      "chars": 230,
+      "sha256": "f2e99aaf32eebe5c3444804d7fc38f98a0a38ec89c90ca490902244dd31aa22d",
+      "text": "메인 스튜디오에는 아직 손대지 않은 흔적이 남아 있다. 스튜디오 접근 뒤쪽에서 꺼진 스피커가 짧게 숨을 삼켰다. 재 묻은 케이블이 낮게 흔들렸다. 스튜디오 접근에서 서지훈은 잡음을 낮추고 다음 퇴로를 먼저 가늠했다. 스튜디오 접근의 잡음 뒤에서 구조와 기록이 서로를 밀어낸다. 먼저 손댄 쪽만 다음 장면에 남는다. 스튜디오 접근의 회선은 구조 신호와 증거 기록을 동시에 요구한다. 둘 다 붙잡기엔 손이 모자라다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ESCAPE_RUN",
+      "event_type": "danger",
+      "title": "탈출 돌파",
+      "chars": 203,
+      "sha256": "29bcb3f4661738a05f028622e63387e70d06f8a804cb5ecf359e481307dd891f",
+      "text": "샛강 비상계단의 공기가 낮게 눌리고, 탈출 돌파가 발밑으로 다가온다. 크게 이기는 것보다 조용히 길을 여는 쪽이 오래 산다. 손목의 힘을 뺀다. 크게 이기는 대신 조용히 사라지는 길을 고른다. 탄을 아껴도 다치면 끝이야. 빠르게 열고 조용히 빠져. 탈출 돌파: 조용한 개방과 몸의 한계 탈출 돌파의 문턱을 조용히 접는다. 소리가 커질수록 다음 통로는 더 좁아진다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SERVICE_TUNNEL",
+      "event_type": "scene",
+      "title": "정비 터널",
+      "chars": 221,
+      "sha256": "b247e31cf526a966978f75f6beb33bc8ee5d96af1ab7342e5e91ba8a6f19efb5",
+      "text": "국회 앞 잿길의 정적 사이로 정비 터널의 짧은 틈이 열린다. 정비 터널 뒤쪽에서 꺼진 스피커가 짧게 숨을 삼켰다. 첫 흔적은 갈라진 로비 유리 옆에 남았다. 정비 터널의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 정비 터널의 불빛이 두 갈래로 갈라진다. 한쪽은 사람의 숨이고, 다른 한쪽은 사라질 기록이다. 정비 터널에서는 늦은 판단도 소리로 남는다. 어느 쪽을 먼저 살릴지 지금 정해야 한다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_PATROL_AMBUSH",
+      "event_type": "combat",
+      "title": "순찰 감염체",
+      "chars": 193,
+      "sha256": "92258ae0772f5c1b8188981628faef46a225194454811a14cda0be125fd7a75c",
+      "text": "순찰 감염체가 시야 가장자리에서 몸을 일으킨다. 순찰 감염체 너머에서 꺼진 스피커가 희미하게 답했다. 순찰 감염체의 남은 선택은 빠르게 작아지고 있었다. 무릎을 낮춘다. 길을 열기 전까지 누구도 영웅처럼 서 있지 않는다. 순찰 감염체: 조용한 개방과 몸의 한계 순찰 감염체를 소리 없이 지나치면 뒤편이 비어 있다. 대신 놓친 흔적은 오래 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_POWER_RESET",
+      "event_type": "scene",
+      "title": "전력 리셋",
+      "chars": 302,
+      "sha256": "abb21beae14f946514bb6259679bb77ddb2d88285f62e7fe665d1c33393e7f9b",
+      "text": "침수 자료실의 정적 사이로 전력 리셋의 짧은 틈이 열린다. 전력 리셋의 가장자리로 숨이 모였다. 서지훈은 발끝의 재를 털며 전력 리셋에서 아직 닫히지 않은 길을 찾았다. 전력 리셋 너머에서 꺼진 스피커가 희미하게 답했다. 전력 리셋의 남은 선택은 빠르게 작아지고 있었다. 전력 리셋 앞의 표식이 서로 다른 방향을 가리켰다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 전력 리셋 앞의 길은 둘로 갈라졌다. 젖은 전선이 그 결정을 낮게 되받았다. 전력 리셋의 먼지 낀 문장을 주머니에 넣는다. 가져가지 못한 줄은 어둠 쪽으로 가라앉는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_EXTRACTION_PREP",
+      "event_type": "scene",
+      "title": "철수 준비",
+      "chars": 252,
+      "sha256": "b0d1fdac799e02a44403770469c2c5d2c63b68f046f507091858bf217954fc00",
+      "text": "샛강 비상계단의 정적 사이로 철수 준비의 짧은 틈이 열린다. 젖은 송출표가 다음 신호처럼 스쳤다. 철수 준비에서 놓친 것은 다음 방의 위험으로 남았다. 하층 사람들은 숫자가 아니야. 불이 꺼지면 먼저 무너지는 건 여기야. 철수 준비의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 갈라진 로비 유리만 뒤에 남았다. 철수 준비: 빠른 탈출 뒤에 남는 밤 철수 준비: 빠져나가는 순간에도 무엇을 남겼는지는 기록국이 기억한다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CONCOURSE_SKIRMISH",
+      "event_type": "danger",
+      "title": "회랑 교전",
+      "chars": 284,
+      "sha256": "07d8de5e9541045e365be0aec0b5aa3e8e82ef66e098644113d6cac9def2df21",
+      "text": "국회 앞 잿길의 공기가 낮게 눌리고, 회랑 교전이 발밑으로 다가온다. 회랑 교전의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 갈라진 로비 유리만 뒤에 남았다. 젖은 송출표가 다음 신호처럼 스쳤다. 회랑 교전에서 놓친 것은 다음 방의 위험으로 남았다. 무전기의 낮은 잡음이 낮게 흔들렸다. 회랑 교전에서 서지훈은 잡음을 낮추고 첫 퇴로를 먼저 가늠했다. 회랑 교전: 조용한 개방과 몸의 한계 회랑 교전을 낮게 넘기면 길이 남는다. 크게 흔들면 뒤따르는 발소리가 먼저 늘어난다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ARCHIVE_VAULT",
+      "event_type": "choice",
+      "title": "기록 보관함",
+      "chars": 316,
+      "sha256": "be04f5380905eb3031c37661e0fa289dc2c9e39219f73a33339912fd34f91679",
+      "text": "기록 보관함 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 무전기의 낮은 잡음이 낮게 흔들렸다. 기록 보관함에서 서지훈은 잡음을 낮추고 첫 퇴로를 먼저 가늠했다. 기록 보관함의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 갈라진 로비 유리만 뒤에 남았다. 기록 보관함 앞의 표식이 서로 다른 방향을 가리켰다. 주파수의 빈칸이 손끝에 남았다. 기록 보관함 앞의 길은 둘로 갈라졌다. 재가 묻은 바닥이 다음 발자국을 먼저 기억했다. 기록 보관함에서 챙긴 증거는 다음 회선의 문을 두드린다. 놓친 것은 벽 속 잡음으로 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_LOBBY_LOCKDOWN",
+      "event_type": "exploration",
+      "title": "로비 봉쇄",
+      "chars": 281,
+      "sha256": "dd94b5784402f0b7ebc0f383ca05090805fcd96e58037826134318b8f8fbb48a",
+      "text": "방송동 로비에는 아직 손대지 않은 흔적이 남아 있다. 로비 봉쇄의 숨결이 한 박자 낮아졌다. 젖은 전선이 그 결정을 낮게 되받았다. 무전기의 낮은 잡음이 낮게 흔들렸다. 로비 봉쇄에서 서지훈은 잡음을 낮추고 첫 퇴로를 먼저 가늠했다. 로비 봉쇄 앞의 표식이 서로 다른 방향을 가리켰다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 로비 봉쇄 앞의 길은 둘로 갈라졌다. 젖은 전선이 그 결정을 낮게 되받았다. 로비 봉쇄에 남은 이름을 접어 넣는다. 누락된 이름은 다음 송출에서 더 작게 들릴 것이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ARCHIVE_KEYPAD",
+      "event_type": "choice",
+      "title": "침수 자료실 키패드",
+      "chars": 317,
+      "sha256": "f259e91f38b25873094fac7c2225542461ad0eb7be475926f30bec99f4d15c06",
+      "text": "침수 자료실 키패드 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 침수 자료실의 기척이 한 박자 낮아졌다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 침수 자료실 키패드의 공기가 잠깐 얇아졌다. 꺼진 스피커가 흔들리는 사이, 서지훈은 발끝의 재를 털며 남은 시간을 쟀다. 침수 자료실 앞의 표식이 서로 다른 방향을 가리켰다. 주파수의 빈칸이 손끝에 남았다. 침수 자료실 키패드 앞의 길은 둘로 갈라졌다. 재가 묻은 바닥이 다음 발자국을 먼저 기억했다. 침수 자료실 키패드에서 건진 조각이 다음 회선을 버티게 한다. 손대지 못한 조각은 여기 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_STAIRWELL_AMBUSH",
+      "event_type": "combat",
+      "title": "계단실 매복",
+      "chars": 215,
+      "sha256": "ce0ac80187b708a6334a1fcd35ff2851fede6a8d854c492f4e2140f948a5f478",
+      "text": "계단실 매복이 시야 가장자리에서 몸을 일으킨다. 젖은 송출표가 잠깐 멎었다. 서지훈은 계단실 매복 앞에서 꺼진 스피커 아래로 몸을 낮추고 손에 든 것을 다시 세었다. 세번째 흔적은 재 묻은 케이블 옆에 남았다. 계단실 매복의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 계단실 매복: 조용한 개방과 몸의 한계 계단실 매복에서 불빛을 죽인다. 길은 남지만, 손끝에는 식은 먼지가 묻는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ROOFTOP_CALIBRATION",
+      "event_type": "dialogue",
+      "title": "송신기 안정화",
+      "chars": 224,
+      "sha256": "9fb1a803132b0e27fb32d286d871f6647f8ec3aedc4bd7d49d27252ff59ec715",
+      "text": "옥상 송신기에서 건네진 말은 설명보다 먼저 상처를 건드린다. 송신기 안정화 너머에서 갈라진 로비 유리가 희미하게 답했다. 송신기 안정화의 남은 선택은 빠르게 작아지고 있었다. 젖은 송출표가 잠깐 멎었다. 서지훈은 송신기 안정화 앞에서 꺼진 스피커 아래로 몸을 낮추고 손에 든 것을 다시 세었다. 송신기 안정화: 길과 소음이 함께 열린다 송신기 안정화의 회선이 켜진다. 길은 또렷해지고 침묵은 얇아진다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_EXIT_CHECK",
+      "event_type": "scene",
+      "title": "철수 점검",
+      "chars": 226,
+      "sha256": "58915da0ae327968c40c9014d76400ba3ab1ceaa3579a8315bdcb418f9b64aa9",
+      "text": "샛강 비상계단의 정적 사이로 철수 점검의 짧은 틈이 열린다. 철수 점검의 가장자리로 숨이 모였다. 서지훈은 발끝의 재를 털며 철수 점검에서 아직 닫히지 않은 길을 찾았다. 철수 점검 너머에서 갈라진 로비 유리가 희미하게 답했다. 철수 점검의 남은 선택은 빠르게 작아지고 있었다. 꺼진 스피커가 첫 신호처럼 스쳤다. 철수 점검에서 놓친 것은 다음 방의 위험으로 남았다. 철수 점검: 빠른 탈출 뒤에 남는 밤"
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SECURITY_CLEAR",
+      "event_type": "combat",
+      "title": "편집실 복도 매복",
+      "chars": 298,
+      "sha256": "576812933d49916c15e9fc80cdaf518f1818da21fc7214ae4e2f4824a8c896a3",
+      "text": "편집실 복도 매복이 시야 가장자리에서 몸을 일으킨다. 꺼진 스피커가 첫 신호처럼 스쳤다. 편집실 복도 매복에서 놓친 것은 다음 방의 위험으로 남았다. 편집실 복도 매복의 가장자리로 숨이 모였다. 서지훈은 발끝의 재를 털며 편집실 복도 매복에서 아직 닫히지 않은 길을 찾았다. 편집실 복도 매복의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 재 묻은 케이블만 뒤에 남았다. 편집실 복도 매복: 조용한 개방과 몸의 한계 편집실 복도 매복의 끝을 작게 마무리한다. 살아남은 길은 늘 조용한 쪽에 붙어 있다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CACHE_SEARCH",
+      "event_type": "exploration",
+      "title": "침수 은닉 물자 조사",
+      "chars": 297,
+      "sha256": "fd4751462b475f799cc63276972aecacbea540fa87eb1483d1cc0fabd608ccc0",
+      "text": "침수 자료실에는 아직 손대지 않은 흔적이 남아 있다. 침수 은닉의 기척이 한 박자 낮아졌다. 재가 묻은 바닥이 다음 발자국을 먼저 기억했다. 꺼진 스피커가 첫 신호처럼 스쳤다. 침수 은닉 물자 조사에서 놓친 것은 다음 방의 위험으로 남았다. 침수 은닉 앞의 표식이 서로 다른 방향을 가리켰다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 침수 은닉 물자 조사 앞의 길은 둘로 갈라졌다. 젖은 전선이 그 결정을 낮게 되받았다. 침수 은닉 물자 조사의 작은 기록 하나가 다음 사람의 위치표가 된다. 비워 둔 칸은 침묵으로 굳는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_POWER_RELAY",
+      "event_type": "choice",
+      "title": "송신기 릴레이 복구",
+      "chars": 316,
+      "sha256": "ecc34b0a215213a2bb9455e303d362524e916d88fa6ecc32a257159c0119c6a8",
+      "text": "송신기 릴레이 복구 앞에서 손이 멈춘다. 한쪽을 열면 다른 쪽은 더 늦어진다. 송신기 릴레이의 기척이 한 박자 낮아졌다. 주파수의 빈칸이 손끝에 남았다. 송신기 릴레이 복구의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 재 묻은 케이블만 뒤에 남았다. 송신기 릴레이 앞의 표식이 서로 다른 방향을 가리켰다. 주파수의 빈칸이 손끝에 남았다. 송신기 릴레이 복구 앞의 길은 둘로 갈라졌다. 재가 묻은 바닥이 다음 발자국을 먼저 기억했다. 송신기 릴레이 복구의 먼지 낀 문장을 주머니에 넣는다. 가져가지 못한 줄은 어둠 쪽으로 가라앉는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CONCOURSE_SCAVENGE",
+      "event_type": "exploration",
+      "title": "회랑 잔해 수색",
+      "chars": 209,
+      "sha256": "9f84618e9371d01f6e0cbdeda2eef72722cae6668df57a8c412d4f24e9a29e67",
+      "text": "젖은 송출표가 낮게 흔들렸다. 회랑 잔해 수색에서 서지훈은 잡음을 낮추고 세번째 퇴로를 먼저 가늠했다. 쓸 수 있는 물자는 대개 가장 위험한 곳에 남아 있다. 챙긴 만큼 숨은 길어지지만, 머문 자리는 유리 위에 남는다. 물자는 등을 받쳐 주지만, 지체한 시간은 빛을 불러온다. 회랑 잔해 수색의 물자를 품 안으로 당긴다. 가방은 무거워지고, 지나온 바닥은 더 오래 기억한다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CONCOURSE_CACHE",
+      "event_type": "exploration",
+      "title": "회랑 물자 더미",
+      "chars": 261,
+      "sha256": "4b2e0280b7d70cd27cea5b06cec197ac3daf747d6b5ad6d4f6681f056528515c",
+      "text": "회랑 물자 더미의 공기가 잠깐 얇아졌다. 갈라진 로비 유리가 흔들리는 사이, 서지훈은 발끝의 재를 털며 남은 시간을 쟀다. 다음 흔적은 무전기의 낮은 잡음 옆에 남았다. 회랑 물자 더미의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 손에 넣은 것은 다음 문을 버티게 하고, 늦어진 발은 반사면에 걸린다. 가져간 만큼 버틸 수 있어도, 남은 시간은 더는 숨겨 주지 않는다. 회랑 물자 더미의 쓸 만한 것들을 묶는다. 오래 버틸 수 있지만, 빠져나갈 몸은 조금 늦어진다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SECURITY_LOCKER",
+      "event_type": "exploration",
+      "title": "보안실 락커",
+      "chars": 223,
+      "sha256": "fb72eef7287ce3dd8d5d7cce20dbdb83e33e6033c65e0c4dcc0a8b6b593db187",
+      "text": "편집실 복도에는 아직 손대지 않은 흔적이 남아 있다. 보안실 락커 뒤쪽에서 꺼진 스피커가 짧게 숨을 삼켰다. 다음 흔적은 무전기의 낮은 잡음 옆에 남았다. 보안실 락커의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 보안실 락커의 불빛이 두 갈래로 갈라진다. 한쪽은 사람의 숨이고, 다른 한쪽은 사라질 기록이다. 보안실 락커에서는 늦은 판단도 소리로 남는다. 어느 쪽을 먼저 살릴지 지금 정해야 한다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ARCHIVE_RUINS",
+      "event_type": "exploration",
+      "title": "침수 통로 잔해",
+      "chars": 298,
+      "sha256": "7f69e135b6a86657fc5524e18883b93115819c376cde61f9af2ce977590926a3",
+      "text": "침수 자료실에는 아직 손대지 않은 흔적이 남아 있다. 침수 통로의 기척이 한 박자 낮아졌다. 젖은 전선이 그 결정을 낮게 되받았다. 꺼진 스피커가 잠깐 멎었다. 서지훈은 침수 통로 잔해 앞에서 꺼진 스피커 아래로 몸을 낮추고 손에 든 것을 다시 세었다. 침수 통로 앞의 표식이 서로 다른 방향을 가리켰다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 침수 통로 잔해 앞의 길은 둘로 갈라졌다. 젖은 전선이 그 결정을 낮게 되받았다. 침수 통로 잔해에서 챙긴 증거는 다음 회선의 문을 두드린다. 놓친 것은 벽 속 잡음으로 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_WRITER_SAFEHOUSE",
+      "event_type": "dialogue",
+      "title": "편집실 임시 대피처",
+      "chars": 261,
+      "sha256": "8c1b31363d7d5a0a3c153a3e5c66e2f2553f7df543f17ac88eaf48d55271465f",
+      "text": "편집실 복도에서 건네진 말은 설명보다 먼저 상처를 건드린다. 편집실 임시 대피처의 가장자리로 숨이 모였다. 서지훈은 발끝의 재를 털며 편집실 임시 대피처에서 아직 닫히지 않은 길을 찾았다. 편집실 임시 대피처 너머에서 재 묻은 케이블이 희미하게 답했다. 편집실 임시 대피처의 남은 선택은 빠르게 작아지고 있었다. 갈라진 로비 유리가 세번째 신호처럼 스쳤다. 편집실 임시 대피처에서 놓친 것은 다음 방의 위험으로 남았다. 편집실 임시 대피처: 이름 하나가 시간을 늦춘다"
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ROOFTOP_SWEEP",
+      "event_type": "exploration",
+      "title": "옥상 주변 정리",
+      "chars": 261,
+      "sha256": "621a9ad9a0780b6de88168f4d1fc3998d2b9cdea7885f01c88ba6fc6f9af7550",
+      "text": "옥상 송신기에는 아직 손대지 않은 흔적이 남아 있다. 갈라진 로비 유리가 세번째 신호처럼 스쳤다. 옥상 주변 정리에서 놓친 것은 다음 방의 위험으로 남았다. 옥상 주변 앞의 표식이 서로 다른 방향을 가리켰다. 꺼진 스피커 아래에서 숨이 한 박자 늦게 붙었다. 옥상 주변 정리 앞의 길은 둘로 갈라졌다. 옥상 주변 정리의 공기가 무거워지며 젖은 전선이 그 결정을 낮게 되받았다. 옥상 주변 정리에서 켜 둔 표식이 다음 문을 찾게 한다. 대신 어둠도 그 위치를 기억한다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ESCAPE_BACKTRACK",
+      "event_type": "exploration",
+      "title": "샛강 잔해 회수",
+      "chars": 296,
+      "sha256": "a05991d6433563c5fae09bd9f59d8325b84a3ca176d23f2b85ace6ec8d15c450",
+      "text": "샛강 비상계단에는 아직 손대지 않은 흔적이 남아 있다. 샛강 잔해 회수의 소음이 낮아지는 틈에 서지훈은 꺼진 스피커 아래로 몸을 낮추고 발을 옮겼다. 무전기의 낮은 잡음만 뒤에 남았다. 갈라진 로비 유리가 세번째 신호처럼 스쳤다. 샛강 잔해 회수에서 놓친 것은 다음 방의 위험으로 남았다. 샛강 잔해 회수의 시간은 넉넉하지 않다. 회선 하나를 살리면 다른 문장은 더 멀어진다. 샛강 잔해 회수의 잡음 뒤에서 구조와 기록이 서로를 밀어낸다. 먼저 손댄 쪽만 다음 장면에 남는다. 샛강 잔해 뒤쪽에서 꺼진 스피커가 짧게 숨을 삼켰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_APPROACH_CAREFUL",
+      "event_type": "outcome",
+      "title": "신중 접근 결과",
+      "chars": 63,
+      "sha256": "f9b496c16945961768111e7423290c04b44661bb1fb74d226f630bab795ae138",
+      "text": "이번 선택으로 소음 1 감소·물자 수색을 얻었다. 치른 값은 진입 시간 증가다. 남은 위험은 구조 신호 지연이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_APPROACH_FORCE",
+      "event_type": "outcome",
+      "title": "강행 돌파 결과",
+      "chars": 62,
+      "sha256": "0d83e4d4b5f664fccc188530d191f91401c00e9cfafad37a37e3d77cd2c350ed",
+      "text": "손에 남은 것은 즉시 돌파다. 대가로 9mm 탄 4발 소모를 내줬고, 소음 4 상승은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_LOBBY_ARCHIVE",
+      "event_type": "outcome",
+      "title": "기록 회수 결과",
+      "chars": 50,
+      "sha256": "279a1d2ac5926f4cfc34fd1c7cb16515ce5d76139d3db494880c02878e7bbf06",
+      "text": "시야 확보를 챙기고 자리를 떴다. 위치 노출을 값으로 치렀다. 뒤에는 감염 노출이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_LOBBY_CORRIDOR",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 49,
+      "sha256": "b0acbc3a29536ee696f555f9bb3672501d4b4f9b684ad9d337aafbe3b1944e64",
+      "text": "확보한 것은 기록 복원이다. 내준 것은 회수 지연이다. 그 자리에 퇴로 축소가 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ARCHIVE_OPEN",
+      "event_type": "outcome",
+      "title": "기록 회수 개방 확인 결과",
+      "chars": 57,
+      "sha256": "cc419654fe447247c355b7f5107229f5dbe102b704677f706dab5da371cb40ef",
+      "text": "이번 선택으로 방송 로그 1건을 얻었다. 치른 값은 오염 8 상승이다. 남은 위험은 긴장 1 상승이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ARCHIVE_SKIP",
+      "event_type": "outcome",
+      "title": "기록 회수 보류 판단 결과",
+      "chars": 62,
+      "sha256": "8d68c7bea4aaa315833650e895cb8a16bec665cf430384f42cff989fd36a151c",
+      "text": "손에 남은 것은 소음 1 감소다. 대가로 방송 로그 포기를 내줬고, 진실 루트 침묵은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_WRITER_RESCUE",
+      "event_type": "outcome",
+      "title": "생존자 확인 결과",
+      "chars": 64,
+      "sha256": "6063ebbdbffb5fe94d476483bbd07586272d18460a3fbeb9a0caea5f6bf88823",
+      "text": "생존자 1명·신뢰 1 상승을 챙기고 자리를 떴다. 적재 무게 2 상승을 값으로 치렀다. 뒤에는 이동 지연이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_WRITER_LEAVE",
+      "event_type": "outcome",
+      "title": "생존자 확인 결과",
+      "chars": 59,
+      "sha256": "febdf438b90a96f4088208177024a9bf7c33f734af4a175757ba97670ebe54c5",
+      "text": "확보한 것은 퇴로 속도 유지다. 내준 것은 기록국 평판 1 하락이다. 그 자리에 긴장 1 상승이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_KEEP_BROADCAST",
+      "event_type": "outcome",
+      "title": "신호 확인 송출 결과",
+      "chars": 65,
+      "sha256": "9166607883d816b3fb877c7c51a372a143de5fae1f666439a6335ad8a815ab4b",
+      "text": "이번 선택으로 증폭기 1개·원본 테이프 1개를 얻었다. 치른 값은 소음 8 상승이다. 남은 위험은 긴장 2 상승이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_CUT_BROADCAST",
+      "event_type": "outcome",
+      "title": "신호 확인 송출 결과",
+      "chars": 63,
+      "sha256": "b4e63a84a82730cd5ed0e027ad8567c8026a61913a37a1aabcf241363f69b40a",
+      "text": "손에 남은 것은 증폭기 1개다. 대가로 구조 방송 포기를 내줬고, 진실 점수 1 하락은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SECURITY_CARD",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 54,
+      "sha256": "331c6cd9912139cfae7474e1ef00d049cd718f6fc6a4aced46408df97f51671b",
+      "text": "장비 보호를 챙기고 자리를 떴다. 동선 증가를 값으로 치렀다. 뒤에는 다음 레이드 부담이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SECURITY_LOGS",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 48,
+      "sha256": "935cf3b99dbb040e08d82f245a973ce81292e9d82228e154384938f2129a69fb",
+      "text": "확보한 것은 구조 신호다. 내준 것은 우회 비용이다. 그 자리에 부상 위험이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_PRECISE",
+      "event_type": "outcome",
+      "title": "신호 확인 결과",
+      "chars": 51,
+      "sha256": "91db9d247d95adb4c4dbfd002296e566e5ebef06e707037622b1c9e34a5afa3b",
+      "text": "이번 선택으로 안전거리 확보를 얻었다. 치른 값은 물자 소모다. 남은 위험은 단서 손실이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_FORCE",
+      "event_type": "outcome",
+      "title": "신호 확인 강행 돌파 결과",
+      "chars": 54,
+      "sha256": "97fbe921cad91372eb8abf94e72107b1dcc714a30e4ea9de39309057d784c8f8",
+      "text": "손에 남은 것은 퇴로 표시다. 대가로 우회 비용을 내줬고, 시야 손실은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_CORRIDOR_CUT",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 50,
+      "sha256": "72c8fae862a1e398498998c161a99fb940b3028cb07aa1eabe5f1ece8890f38b",
+      "text": "구조 신호를 챙기고 자리를 떴다. 가방 압박을 값으로 치렀다. 뒤에는 부상 위험이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_CORRIDOR_DASH",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 53,
+      "sha256": "9d90cda3654d5fcb9d8eab0b4519fc68aa42fd83d58f56172f7f850d0e007694",
+      "text": "확보한 것은 위협 위치 확인이다. 내준 것은 소음 부담이다. 그 자리에 적응체 접근이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_CONTROL_REPAIR",
+      "event_type": "outcome",
+      "title": "통제 확인 복구 결과",
+      "chars": 50,
+      "sha256": "1729cf0549a221d88c95666d77657a00113f92d24f8b59d3897192a0bf66c7eb",
+      "text": "이번 선택으로 단서 확보를 얻었다. 치른 값은 교신 노출이다. 남은 위험은 전투 조기화다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_CONTROL_BYPASS",
+      "event_type": "outcome",
+      "title": "통제 확인 우회 통과 결과",
+      "chars": 58,
+      "sha256": "b0bf4465465ec5f432b1287ff79b4cb1f888edb9d5c0df47dd2fb3759c1a3529",
+      "text": "손에 남은 것은 다음 레이드 힌트다. 대가로 우회 비용을 내줬고, 무전 감청은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_STUDIO_WAIT",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 51,
+      "sha256": "bb3a00f8ac1d794dce076bfab51583083ad91c5e9a06dd650314cbd65f677256",
+      "text": "단서 확보를 챙기고 자리를 떴다. 손실 감수를 값으로 치렀다. 뒤에는 전투 조기화가 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_STUDIO_PUSH",
+      "event_type": "outcome",
+      "title": "정면 압박 결과",
+      "chars": 47,
+      "sha256": "7ceb83a1de05cd48fba69d2a5411f581f6d67a9c2e842d52d1750f2989b48c58",
+      "text": "확보한 것은 문턱 정보다. 내준 것은 동선 증가다. 그 자리에 추격 상승이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ESCAPE_FAST",
+      "event_type": "outcome",
+      "title": "탈출 빠른 돌파 결과",
+      "chars": 54,
+      "sha256": "b9011844f8caa2a68eb757c8f4a205ae587e677b926cd0624fd4ec7dcb409cd0",
+      "text": "이번 선택으로 장비 보호를 얻었다. 치른 값은 교신 노출이다. 남은 위험은 다음 레이드 부담이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ESCAPE_SAFE",
+      "event_type": "outcome",
+      "title": "탈출 안전 확보 결과",
+      "chars": 58,
+      "sha256": "55333abcf836ca5388cebb7333828bc143393b3fc628d77c758f098bf15b02ea",
+      "text": "손에 남은 것은 장비 보호다. 대가로 손실 감수를 내줬고, 다음 레이드 부담은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_TUNNEL_SILENT",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 52,
+      "sha256": "bbf5bb890a675f54e589bc1787de0e11f5ed493e537b592d604a8409bd323c7d",
+      "text": "철수선 확인을 챙기고 자리를 떴다. 위치 노출을 값으로 치렀다. 뒤에는 동행자 고립이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_TUNNEL_RUSH",
+      "event_type": "outcome",
+      "title": "압박 돌파 결과",
+      "chars": 52,
+      "sha256": "c118b587be16bbd93942228f53ae9e3c33ca7cd4f6d03d569477492838a80f36",
+      "text": "확보한 것은 장비 보호다. 내준 것은 교신 노출이다. 그 자리에 다음 레이드 부담이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_POWER_MAIN",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 49,
+      "sha256": "eae020f6a3cfe90f456514b9daa1af2af3398bde5047727a4a8a5c79fb3bcf61",
+      "text": "이번 선택으로 단서 확보를 얻었다. 치른 값은 손실 감수다. 남은 위험은 전투 조기화다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_POWER_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 54,
+      "sha256": "9565e764f6da31559e375126f78694bfb16a7590a059523868d3fdbb417ac032",
+      "text": "손에 남은 것은 감염 회피다. 대가로 추가 확인을 내줬고, 오염 확산은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_EXTRACT_SALVAGE",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 51,
+      "sha256": "5e2fc76f74ab020dbd637c1e6e30b2b4321cd20273d8aa21259930c24ebd8b2b",
+      "text": "우회로 표시를 챙기고 자리를 떴다. 우회 비용을 값으로 치렀다. 뒤에는 기록 훼손이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_EXTRACT_IMMEDIATE",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 51,
+      "sha256": "591e82c01ecb3de27840ec6d102f1ca9cb8ee0cb303ae6ec61dc934086a755e6",
+      "text": "확보한 것은 철수선 확인이다. 내준 것은 위치 노출이다. 그 자리에 동행자 고립이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_VAULT_OPEN",
+      "event_type": "outcome",
+      "title": "기록 회수 개방 확인 결과",
+      "chars": 54,
+      "sha256": "6456b2b1f8a23def32fc7d5aa784839aaaece41ce6c61ac124a0f21f60746b7b",
+      "text": "이번 선택으로 가방 정리를 얻었다. 치른 값은 철수 지연이다. 남은 위험은 돌아가는 길 잠김이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_VAULT_SKIP",
+      "event_type": "outcome",
+      "title": "기록 회수 보류 판단 결과",
+      "chars": 54,
+      "sha256": "d2e46e037ac74ce14109f36fe96594d1036dcf54bbaa8a62570ecd2e3497248e",
+      "text": "손에 남은 것은 전투 여유다. 대가로 물자 소모를 내줬고, 잠복 위협은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOBBY_MANUAL",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 50,
+      "sha256": "93312fe7037cc83c17e72b838fd0db702cb9bb28ed46d2a4fd335aab4b7c74fb",
+      "text": "소음 감소를 챙기고 자리를 떴다. 철수 지연을 값으로 치렀다. 뒤에는 경로 붕괴가 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOBBY_FORCE",
+      "event_type": "outcome",
+      "title": "강행 돌파 결과",
+      "chars": 49,
+      "sha256": "dd9c7916cb80a0fbbfb282900b7a936991d2e00173e1b41c52f1e8c824344158",
+      "text": "확보한 것은 단서 확보다. 내준 것은 대기 시간이다. 그 자리에 전투 조기화가 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_EMERGENCY",
+      "event_type": "outcome",
+      "title": "기록 회수 결과",
+      "chars": 52,
+      "sha256": "7d6c2c34553d383b15d77af74734666bd045b1550f608783f93ca4b6a40609bd",
+      "text": "이번 선택으로 구조 신호를 얻었다. 치른 값은 몸 상태 부담이다. 남은 위험은 부상 위험이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_BYPASS",
+      "event_type": "outcome",
+      "title": "기록 회수 우회 통과 결과",
+      "chars": 54,
+      "sha256": "72a5836de07bdfb1fb37822bea2d1fddabc428d0dc5212f3b17d19d448bd04eb",
+      "text": "손에 남은 것은 문턱 정보다. 대가로 대기 시간을 내줬고, 추격 상승은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SIGNAL_FAST",
+      "event_type": "outcome",
+      "title": "신호 확인 빠른 돌파 결과",
+      "chars": 54,
+      "sha256": "c54072c335dfaf47d540b092f409c5e2e956b2fdf253ea9f5ff0a9c3e167a459",
+      "text": "위협 위치 확인을 챙기고 자리를 떴다. 주의 분산을 값으로 치렀다. 뒤에는 적응체 접근이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SIGNAL_SPARE",
+      "event_type": "outcome",
+      "title": "신호 확인 결과",
+      "chars": 48,
+      "sha256": "3ba1c5c20f18ef75cfc07011ccbca7e543f2a6f2b36e5363451512383e068b0e",
+      "text": "확보한 것은 경보 지연이다. 내준 것은 시간 소모다. 그 자리에 경보 압박이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_EXIT_CHECK",
+      "event_type": "outcome",
+      "title": "이탈 준비 결과",
+      "chars": 50,
+      "sha256": "6aea1b9de5fec6a449a2cc75869ffe0099c83b829dd79b1b8ee0dd509c198cd5",
+      "text": "이번 선택으로 단서 확보를 얻었다. 치른 값은 회수 지연이다. 남은 위험은 전투 조기화다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_EXIT_SKIP",
+      "event_type": "outcome",
+      "title": "이탈 준비 보류 판단 결과",
+      "chars": 54,
+      "sha256": "4d3dce55f4884a20a3d7166685ee560ff83a547c8325161edb9a380b54c8befc",
+      "text": "손에 남은 것은 퇴로 표시다. 대가로 가방 압박을 내줬고, 시야 손실은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SECURITY_TO_ARCHIVE",
+      "event_type": "outcome",
+      "title": "기록 회수 결과",
+      "chars": 52,
+      "sha256": "bbf5bb890a675f54e589bc1787de0e11f5ed493e537b592d604a8409bd323c7d",
+      "text": "철수선 확인을 챙기고 자리를 떴다. 위치 노출을 값으로 치렀다. 뒤에는 동행자 고립이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SECURITY_TO_WRITER",
+      "event_type": "outcome",
+      "title": "생존자 확인 결과",
+      "chars": 48,
+      "sha256": "798563fe9e6e342c6807c73aebdc8324b241c52af69ecac04f6b25a798869c5b",
+      "text": "확보한 것은 소음 감소다. 내준 것은 소음 부담이다. 그 자리에 경로 붕괴가 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_CACHE_OPEN",
+      "event_type": "outcome",
+      "title": "보관함 개방 확인 결과",
+      "chars": 50,
+      "sha256": "c86fd6a096ff8a7050fb42fe2c2aed1b884db022644c8b4b77947136fe46a7da",
+      "text": "이번 선택으로 정찰 근거를 얻었다. 치른 값은 판단 지연이다. 남은 위험은 철수 압박이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_CACHE_SKIP",
+      "event_type": "outcome",
+      "title": "보관함 보류 판단 결과",
+      "chars": 55,
+      "sha256": "0698a9c5606c51bc57ad11539e8f3dd1d004ccadca4d752d1d54e3a1922d382a",
+      "text": "손에 남은 것은 회수품 확보다. 대가로 소음 부담을 내줬고, 소음 반향은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_RELAY_REPAIR",
+      "event_type": "outcome",
+      "title": "복구 결과",
+      "chars": 51,
+      "sha256": "744221b298844803c71726c091f41904fad9b74c74237851329241e935e2d1b6",
+      "text": "정리를 챙기고 자리를 떴다. 철수 지연을 값으로 치렀다. 뒤에는 돌아가는 길 잠김이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_RELAY_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 53,
+      "sha256": "9d90cda3654d5fcb9d8eab0b4519fc68aa42fd83d58f56172f7f850d0e007694",
+      "text": "확보한 것은 위협 위치 확인이다. 내준 것은 소음 부담이다. 그 자리에 적응체 접근이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_MORE",
+      "event_type": "outcome",
+      "title": "잔해 수색 추가 탐색 결과",
+      "chars": 49,
+      "sha256": "93db5c6d01f0c33f6a874e973266fa871155f3c54af65658cda13a6ef798cd5c",
+      "text": "이번 선택으로 소음 감소를 얻었다. 치른 값은 소음 부담이다. 남은 위험은 경로 붕괴다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_EXIT",
+      "event_type": "outcome",
+      "title": "잔해 수색 이탈 준비 결과",
+      "chars": 57,
+      "sha256": "556a930334de49c816ee674829b3ca6657d0db1e30e2c5d5636ee2acf9e2e96c",
+      "text": "손에 남은 것은 철수선 확인이다. 대가로 판단 지연을 내줬고, 동행자 고립은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_FILTERED",
+      "event_type": "outcome",
+      "title": "잔해 수색 결과",
+      "chars": 54,
+      "sha256": "13ec18a5a7c576988385a4147cf728fddc1403e52cd9a55e1b141c9b994ec91b",
+      "text": "위협 위치 확인을 챙기고 자리를 떴다. 시간 소모를 값으로 치렀다. 뒤에는 적응체 접근이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_DESPERATE",
+      "event_type": "outcome",
+      "title": "잔해 수색 결과",
+      "chars": 49,
+      "sha256": "f51aff0afcdadf564ccca1f9c19ac5faf7383cba9c894af0c3c564d453d908f7",
+      "text": "확보한 것은 교신 단축이다. 내준 것은 기력 소모다. 그 자리에 신뢰 흔들림이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_REPURPOSE",
+      "event_type": "outcome",
+      "title": "잔해 수색 결과",
+      "chars": 48,
+      "sha256": "beb85636d422472eab01d1ed6fc09358f1b210204400bd15ecd8d3c681287bf0",
+      "text": "이번 선택으로 기록 복원을 얻었다. 치른 값은 손실 감수다. 남은 위험은 퇴로 축소다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_ARCHIVE_OPEN",
+      "event_type": "outcome",
+      "title": "락커 확인 기록 회수 개방 결과",
+      "chars": 57,
+      "sha256": "14b301401eb9a7d237dee81c9d83e95ea3ed4dd48d344e735269e3ba301093af",
+      "text": "손에 남은 것은 우회로 표시다. 대가로 몸 상태 부담을 내줬고, 기록 훼손은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_ARCHIVE_SKIP",
+      "event_type": "outcome",
+      "title": "락커 확인 기록 회수 보류 결과",
+      "chars": 51,
+      "sha256": "6eaed12b456ca25f472de36ffbc13f16a205d2a71c0831758d62187d3fc7921d",
+      "text": "우회로 표시를 챙기고 자리를 떴다. 추가 확인을 값으로 치렀다. 뒤에는 기록 훼손이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_WRITER_OPEN",
+      "event_type": "outcome",
+      "title": "락커 확인 생존자 개방 결과",
+      "chars": 49,
+      "sha256": "34b1e843199a68ef07eac2385af103d632a7e6f231e65698c8638232cf57acb1",
+      "text": "확보한 것은 보급 보존이다. 내준 것은 주의 분산이다. 그 자리에 문턱 봉쇄가 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_WRITER_SKIP",
+      "event_type": "outcome",
+      "title": "락커 확인 생존자 보류 판단 결과",
+      "chars": 49,
+      "sha256": "7188540cd0f17eb21e682ee5a71368d0615c2fb3ba25b94f3f771932701e511e",
+      "text": "이번 선택으로 소음 감소를 얻었다. 치른 값은 주의 분산이다. 남은 위험은 경로 붕괴다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_CLEAR",
+      "event_type": "outcome",
+      "title": "기록 회수 장애물 정리 결과",
+      "chars": 54,
+      "sha256": "2a3a4b6e8b5b66e94bf8ce3de46ee791fc6f5b7b7086f8852e1595b2c098fe2e",
+      "text": "손에 남은 것은 전투 여유다. 대가로 장비 마모를 내줬고, 잠복 위협은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_DETOUR",
+      "event_type": "outcome",
+      "title": "기록 회수 결과",
+      "chars": 51,
+      "sha256": "75dbf27e38c5539443ece04baf3faca3340fafed16c15e0b027dc8d2003a9982",
+      "text": "우회로 표시를 챙기고 자리를 떴다. 기력 소모를 값으로 치렀다. 뒤에는 기록 훼손이 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_WRITER_SAFE_LOOT",
+      "event_type": "outcome",
+      "title": "생존자 확인 안전 확보 결과",
+      "chars": 51,
+      "sha256": "5c812e4956d519f54bb047ab3f455cecf0c52a23c12298f77fc45f4ea3a6061b",
+      "text": "확보한 것은 장비 보호다. 내준 것은 동선 증가다. 그 자리에 다음 레이드 부담이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_WRITER_SAFE_SKIP",
+      "event_type": "outcome",
+      "title": "생존자 확인 안전 확보 보류 결과",
+      "chars": 54,
+      "sha256": "50b937a331f1b230b51846917fe3326c5afc074d4393a3737919eae0eaea7ba1",
+      "text": "이번 선택으로 다음 레이드 힌트를 얻었다. 치른 값은 추가 확인이다. 남은 위험은 무전 감청이다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ROOFTOP_SWEEP",
+      "event_type": "outcome",
+      "title": "잿빛 개장 결과",
+      "chars": 54,
+      "sha256": "879d92c6845af816104655d3088724c798f23fcd61b06ea16bcc616f32823b48",
+      "text": "손에 남은 것은 시야 확보다. 대가로 장비 마모를 내줬고, 감염 노출은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ROOFTOP_SKIP",
+      "event_type": "outcome",
+      "title": "보류 판단 결과",
+      "chars": 51,
+      "sha256": "bb3a00f8ac1d794dce076bfab51583083ad91c5e9a06dd650314cbd65f677256",
+      "text": "단서 확보를 챙기고 자리를 떴다. 손실 감수를 값으로 치렀다. 뒤에는 전투 조기화가 남는다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ESCAPE_LOOT",
+      "event_type": "outcome",
+      "title": "탈출 결과",
+      "chars": 47,
+      "sha256": "90d87e253c4599771ab36186e8973fe22cbb53c8e6c8d3ead7b0aa2e362fb201",
+      "text": "확보한 것은 퇴로 표시다. 내준 것은 기력 소모다. 그 자리에 시야 손실이 들어섰다."
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ESCAPE_SKIP",
+      "event_type": "outcome",
+      "title": "탈출 보류 판단 결과",
+      "chars": 49,
+      "sha256": "d8635475c44077f0cb6b58f24a75227ab3d90c11b50488be61701607b50349e8",
+      "text": "이번 선택으로 기록 복원을 얻었다. 치른 값은 교신 노출이다. 남은 위험은 퇴로 축소다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_ENTRY",
+      "event_type": "briefing",
+      "title": "검은 수로 진입",
+      "chars": 335,
+      "sha256": "79ff1024506c61761ffe5a9c0313d5075ab2ba01d18d6950ced5f0a05150d670",
+      "text": "샛강 물이 무릎까지 차오르고 검문 표지판이 물속에서 흔들린다. 방송동의 증폭기에서는 아직 윤해인의 구조 주파수가 새어 나온다. 여기선 번호보다 얼굴을 먼저 봐. 순찰만 넘기면 물자 창고와 사람 천막 중 하나부터 확인할 수 있어. 상자 하나를 더 붙잡는 동안 배는 한 칸씩 멀어진다. 다음 냉각음이 올라오기 전까지 결정은 한 번뿐이다. 진입 전투 뒤 첫 두 갈래 선택이 열린다. CH01 철수 영수증을 확인한 뒤에야 진입 전투와 첫 두 갈래 선택이 열린다. 이전 장의 기록이 이번 장의 통행 근거로 바로 읽힌다. 방송동의 마지막 철수 방식과 기록·증폭기가 노선 요약에서 이번 통행 근거로 함께 읽힌다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_SWEEP",
+      "event_type": "exploration",
+      "title": "썩은 시장",
+      "chars": 227,
+      "sha256": "386519a28f4e9b63c358ccbc3dc48a6b6adb94f7a8e6ee83fe8cbb5ad7ce6bff",
+      "text": "시장 통로가 냉동창고와 천막촌으로 갈라진다. 수위 표시는 다음 경보까지 시간이 많지 않다고 깜박인다. 창고부터 가면 보급은 건져. 천막부터 가면 사람들이 우리가 누구 편인지 먼저 보게 돼. 수로가 닫히기 전에 버릴 것과 데려갈 것을 나눠야 한다. 손이 닿는 쪽부터 살리고, 나머지는 흔적으로 접는다. 선택 직후 오염 또는 암시장 평판 변화가 저장된다. 첫 의미 있는 선택은 물자와 사람의 우선순위를 묻는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_STORAGE",
+      "event_type": "exploration",
+      "title": "차갑게 남은 창고",
+      "chars": 316,
+      "sha256": "3fef1a5a5c7497bd182d238bef3eb654e4bc677cae8ac02e7845c582ba8a3088",
+      "text": "냉동창고에는 아직 손대지 않은 흔적이 남아 있다. 차갑게 남은 창고 너머에서 물비린내 나는 통로가 희미하게 답했다. 차갑게 남은 창고의 남은 선택은 빠르게 작아지고 있었다. 차갑게 남은 창고 아래 물결이 잠깐 편을 드는 척한다. 하지만 바닥은 지나간 몸을 오래 붙든다. 차갑게 남은 창고의 가장자리로 숨이 모였다. 서지훈은 젖은 천막 사이로 숨을 고르며 차갑게 남은 창고에서 아직 닫히지 않은 길을 찾았다. 물자는 등을 받쳐 주지만, 지체한 시간은 빛을 불러온다. 차갑게 남은 창고에서 챙긴 물자는 밤을 길게 버티게 한다. 대신 현장에 남은 발자국도 더 선명해진다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BLACKMARKET",
+      "event_type": "dialogue",
+      "title": "물 위의 거래",
+      "chars": 224,
+      "sha256": "2e821189ed3a10917aafe02f3b6d8fafcc5700392dde0c7b630d82e82d445ebe",
+      "text": "정노아는 젖은 장부 위에 검역패스를 올려놓는다. 천막 뒤 보급 상자는 잠겨 있지 않지만 모두가 보고 있다. 돈보다 약속이 오래가. 훔쳐 가도 돼. 대신 다음 물길에서 네 얼굴값을 치르게 될 거야. 챙긴 상자의 무게만큼 뒤따르는 발소리도 가까워진다. 숨을 고를 시간은 없고, 선택만 바닥에 남았다. 거래 방식과 평판 변화가 재진입 영수증으로 남는다. 통행권 1장과 신뢰 수치가 같은 선택 카드에 놓인다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_BARGAIN",
+      "event_type": "dialogue",
+      "title": "선착장의 거래",
+      "chars": 207,
+      "sha256": "bc0e55a382776794505823a1cea37a850b38626974dba88158be05bd9b9111f7",
+      "text": "폐선착장에 작은 보트 한 척만 떠 있다. 육로 표지판은 물속으로 반쯤 잠겼다. 보트는 공짜가 아니야. 육로는 돈 대신 네 몸으로 값을 치르게 돼. 물자 냄새가 짙어질수록 숨어 있던 시선도 한 걸음 다가온다. 다음 냉각음이 올라오기 전까지 결정은 한 번뿐이다. 어느 길이든 수로 지도 1장을 얻고 선택 비용이 저장된다. 연료 1통과 오염 5가 명확한 이동 비용으로 보인다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_BOSS",
+      "event_type": "boss",
+      "title": "청음",
+      "chars": 194,
+      "sha256": "49595bb53fb333d2b4a1035b026b2d807d9760cf774dcdaa7df13c62a81265bc",
+      "text": "물속 진동을 읽은 청음이 제어반 앞에 몸을 세운다. 열린 수문과 잠긴 수문이 서로 다른 소리로 울린다. 저건 물소리로 우리 위치를 읽어. 싸움이 끝나면 문을 열지 닫을지도 바로 확정해야 해. 청음: 열린 문 뒤에서 경보가 깨어난다 승리 뒤 선택한 접근선과 탈출 준비 상태가 저장된다. 전투가 끝나기 전까지 수문 결정과 결과 영수증은 끊기지 않는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_EXTRACTION",
+      "event_type": "extraction",
+      "title": "동작 접근선 확보",
+      "chars": 261,
+      "sha256": "334ae0860c1e1a722471750c323fd63a82650eb4f918d332ab7946cec9f8ae11",
+      "text": "동작 암거에 도착하자 검은 물이 발목 아래로 내려간다. 정노아는 중계 배터리 1개를, 서진서는 수로 지도 1장을 방수포 위에 놓는다. 누구와 거래했는지는 다음 시장에서도 따라와. 어느 문을 닫았는지는 그 뒤에 남은 사람이 기억할 거야. 배에 실을 것과 등에 남길 것을 지금 나눠야 한다. 손이 닿는 쪽부터 살리고, 나머지는 흔적으로 접는다. CH02 완료와 CH03 이동이 저장된 뒤 다음 행동이 열린다. 젖은 발자국은 CH03의 층별 통행과 전력 협상으로 이어진다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_ALLEY_SCOUT",
+      "event_type": "choice",
+      "title": "수로 정찰",
+      "chars": 356,
+      "sha256": "60b134e9fc68e86709c4ae6e31b3d88bc81ebb7dee37cec9d613e9c530bb95ca",
+      "text": "수로 정찰 앞에서 손이 멈춘다. 수로 정찰의 숨결이 한 박자 낮아졌다. 검은 물이 발목 아래에서 답을 재촉했다. 수로 정찰의 공기가 잠깐 얇아졌다. 물비린내 나는 통로가 흔들리는 사이, 서지훈은 젖은 천막 사이로 숨을 고르며 남은 시간을 쟀다. 수로 정찰의 물살에 소리를 맡긴다. 덮인 소리만큼 젖은 냄새가 남는다. 젖은 상자 하나가 목숨 하나의 자리를 밀어낼 수 있다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 검은 물길은 친절하지 않아, 늦은 결정을 다시 태워 주지 않는다. 숨을 고를 시간은 없고, 선택만 바닥에 남았다. 수문 아래 울림이 낮게 흔들렸다. 수로 정찰에서 서지훈은 수면의 흔들림을 읽고 세번째 퇴로를 먼저 가늠했다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERLOGGED_AMBUSH",
+      "event_type": "danger",
+      "title": "수몰 골목 매복",
+      "chars": 306,
+      "sha256": "5a403d8e618b6def30913fd7c942ccb7050648ba2ac0af058ccd249945f5748c",
+      "text": "암시장 천막촌의 공기가 낮게 눌리고, 수몰 골목 매복이 발밑으로 다가온다. 다음 흔적은 검은 수면 옆에 남았다. 수몰 골목 매복의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 수몰 골목 매복의 공기가 잠깐 얇아졌다. 물비린내 나는 통로가 흔들리는 사이, 서지훈은 젖은 천막 사이로 숨을 고르며 남은 시간을 쟀다. 젖은 천막이 잠깐 멎었다. 서지훈은 수몰 골목 매복 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다. 수몰 골목 매복: 조용한 개방과 몸의 한계 수몰 골목 매복의 문턱을 조용히 접는다. 소리가 커질수록 다음 통로는 더 좁아진다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_DIAGNOSTIC",
+      "event_type": "choice",
+      "title": "배수문 점검",
+      "chars": 225,
+      "sha256": "e597c93830b0e1162a7ccb0f7be9eb6b651f236cc189188272fee71ef5dbfa7c",
+      "text": "배수문 점검 앞에서 손이 멈춘다. 배수문 점검의 숨결이 한 박자 낮아졌다. 젖은 천막이 늦은 숨을 낮게 눌렀다. 젖은 천막이 잠깐 멎었다. 서지훈은 배수문 점검 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다. 배수문 점검에서 물소리를 빌린다. 너무 믿으면 따라오는 시선도 물길을 탄다. 배수문 점검: 열린 문 뒤에서 경보가 깨어난다 살린 설비는 문을 열고, 그 소리는 닫혀 있던 위협도 깨운다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERLOCK",
+      "event_type": "choice",
+      "title": "수문 잠금",
+      "chars": 252,
+      "sha256": "cb44f19465ca5e277cdc002cf5610b5ab1ac047146c19cd81c7a8597ab0084af",
+      "text": "수문 잠금 앞에서 손이 멈춘다. 수문 잠금의 숨결이 한 박자 낮아졌다. 수문 쪽 울림이 남은 시간을 작게 쪼갰다. 수문 잠금 너머에서 부표의 붉은 점멸이 희미하게 답했다. 수문 잠금의 남은 선택은 빠르게 작아지고 있었다. 수문 잠금의 검은 물은 조용하다. 조용한 만큼 무엇을 삼켰는지도 늦게 알려 준다. 수문 잠금: 열린 문 뒤에서 경보가 깨어난다 젖은 천막이 잠깐 멎었다. 서지훈은 수문 잠금 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_CHANNEL_CLEAR_OUTCOME_CH02_CHANNEL_CLEAR",
+      "event_type": "outcome",
+      "title": "장애물 정리 결과",
+      "chars": 53,
+      "sha256": "458cea490e208e49f34b9d69e3a55bc5a01bf2fb80c5fad98f76ebc97e3824f1",
+      "text": "이번 선택으로 다음 레이드 힌트를 얻었다. 치른 값은 기력 소모다. 남은 위험은 무전 감청이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_CHANNEL_CLEAR_OUTCOME_CH02_CHANNEL_BYPASS",
+      "event_type": "outcome",
+      "title": "장애물 정리 우회 통과 결과",
+      "chars": 54,
+      "sha256": "35a2b967b9b82b6b86b38f6eb13c15b0f45ee75dd3d30bc9ec33aa28c24c64fe",
+      "text": "손에 남은 것은 구조 신호다. 대가로 추가 확인을 내줬고, 부상 위험은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_CHANNEL_CLEAR",
+      "event_type": "exploration",
+      "title": "수로 정리",
+      "chars": 244,
+      "sha256": "1bb7b9f9585fa7b6b4831b3e548302fcd557bdd29c7a8f3377271889804147e1",
+      "text": "물비린내 나는 통로가 세번째 신호처럼 스쳤다. 수로 정리에서 놓친 것은 다음 방의 위험으로 남았다. 수로 정리의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 검은 수면만 뒤에 남았다. 수로 정리의 물소리는 발자국을 덮지만, 젖은 흔적까지 지우지는 못한다. 가져간 만큼 버틸 수 있어도, 남은 시간은 더는 숨겨 주지 않는다. 수로 정리에서 건진 보급은 다음 문 앞의 숨을 늘린다. 그만큼 머문 시간도 흔적으로 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SUBMERGED_AMBUSH",
+      "event_type": "danger",
+      "title": "수중 매복",
+      "chars": 295,
+      "sha256": "ecd750478a3423caab901d1d4a899a068e396c01341d22362463c1f07cd86d88",
+      "text": "암시장 천막촌의 공기가 낮게 눌리고, 수중 매복이 발밑으로 다가온다. 젖은 천막이 낮게 흔들렸다. 수중 매복에서 서지훈은 수면의 흔들림을 읽고 다음 퇴로를 먼저 가늠했다. 수중 매복의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 검은 수면만 뒤에 남았다. 수중 매복의 공기가 잠깐 얇아졌다. 부표의 붉은 점멸이 흔들리는 사이, 서지훈은 젖은 천막 사이로 숨을 고르며 남은 시간을 쟀다. 수중 매복: 조용한 개방과 몸의 한계 수중 매복을 소리 없이 지나치면 뒤편이 비어 있다. 대신 놓친 흔적은 오래 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_SIGNAL_OUTCOME_CH02_PIER_SIGNAL_FIX",
+      "event_type": "outcome",
+      "title": "신호 확인 수리 결과",
+      "chars": 51,
+      "sha256": "1a69a6021a655955b92b3b47a13c03c208e38d885a2fd99339992f761534339e",
+      "text": "교신 단축을 챙기고 자리를 떴다. 기력 소모를 값으로 치렀다. 뒤에는 신뢰 흔들림이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_SIGNAL_OUTCOME_CH02_PIER_SIGNAL_SKIP",
+      "event_type": "outcome",
+      "title": "신호 확인 보류 판단 결과",
+      "chars": 47,
+      "sha256": "16785e13114dab2f0ad175445c704f30ce52b7559a2b1797013f8f0145faf2e1",
+      "text": "확보한 것은 전투 여유다. 내준 것은 장비 마모다. 그 자리에 잠복 위협이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_SIGNAL",
+      "event_type": "dialogue",
+      "title": "부두 신호 재정비",
+      "chars": 305,
+      "sha256": "96645b1d1f1ff8765daea7781e08fc20dfa9ad38cad2024a8fb798e042f35d31",
+      "text": "폐선착장에서 건네진 말은 설명보다 먼저 상처를 건드린다. 물비린내 나는 통로가 잠깐 멎었다. 서지훈은 부두 신호 재정비 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다. 부두 신호 재정비 아래 물결이 잠깐 편을 드는 척한다. 하지만 바닥은 지나간 몸을 오래 붙든다. 부두 신호 앞의 표식이 서로 다른 방향을 가리켰다. 물비린내 속에서 선택의 무게가 다시 기울었다. 부두 신호 재정비 앞의 길은 둘로 갈라졌다. 수문 쪽 울림이 남은 시간을 작게 쪼갰다. 부두 신호 재정비에서 불빛 하나를 살린다. 통로는 보이고, 주변의 시선도 함께 열린다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLICE_ESCAPE_OUTCOME_CH02_ESCAPE_BOAT",
+      "event_type": "outcome",
+      "title": "탈출 보트 이동 결과",
+      "chars": 53,
+      "sha256": "3630708fb699098da281efd42ee2331fe6b6d927e6949988ba7d2e190157ebf8",
+      "text": "이번 선택으로 우회로 표시를 얻었다. 치른 값은 몸 상태 부담이다. 남은 위험은 기록 훼손이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLICE_ESCAPE_OUTCOME_CH02_ESCAPE_LAND",
+      "event_type": "outcome",
+      "title": "탈출 육로 이동 결과",
+      "chars": 54,
+      "sha256": "650bd9318b69bbd33d25515627ddc8f7cd9ad49aa1a67aafa1fc48d452d3a2ae",
+      "text": "손에 남은 것은 구조 신호다. 대가로 기력 소모를 내줬고, 부상 위험은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLICE_ESCAPE",
+      "event_type": "danger",
+      "title": "수문 탈출",
+      "chars": 249,
+      "sha256": "8fffa4890b9bc06ccc5bdd57003d551c7d5f79c0565f6dd27065c68e08c31eba",
+      "text": "동작 접근 암거의 공기가 낮게 눌리고, 수문 탈출이 발밑으로 다가온다. 부표의 붉은 점멸이 다음 신호처럼 스쳤다. 수문 탈출에서 놓친 것은 다음 방의 위험으로 남았다. 수문 탈출의 가장자리로 숨이 모였다. 서지훈은 젖은 천막 사이로 숨을 고르며 수문 탈출에서 아직 닫히지 않은 길을 찾았다. 수문 탈출의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 수문 아래 울림만 뒤에 남았다. 수문 탈출: 열린 문 뒤에서 경보가 깨어난다"
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_FLOOD_AMBUSH",
+      "event_type": "combat",
+      "title": "침수 순찰",
+      "chars": 203,
+      "sha256": "ae81029912e899256c1df718ae6174409339917596ef72cecf94cec4e30e8d1a",
+      "text": "검은 수면 아래에서 순찰체의 어깨가 솟는다. 발목이 잠긴 채 첫 교전이 시작된다. 길게 싸우지 마. 밀어내고 시장 안쪽에서 누구를 먼저 볼지 정하자. 한 손은 사람을 붙잡고, 다른 손은 젖은 상자를 놓아야 한다. 다음 냉각음이 올라오기 전까지 결정은 한 번뿐이다. 승리 뒤 썩은 시장으로 즉시 이어진다. 첫 전투는 60초 안의 첫 분기로 가는 짧은 압박 구간이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_DRAINAGE_CTRL_OUTCOME_CH02_DRAINAGE_OPEN",
+      "event_type": "outcome",
+      "title": "개방 확인 결과",
+      "chars": 63,
+      "sha256": "4fb26a21b6159182a2eabfe314249f3d51f4e3b921a8b41981d7129e471ad62b",
+      "text": "통로 개방을 챙기고 자리를 떴다. 오염 2 상승·통제 점수 1 하락을 값으로 치렀다. 뒤에는 수위 변동이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_DRAINAGE_CTRL_OUTCOME_CH02_DRAINAGE_LOCK",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 63,
+      "sha256": "b6394d101bed21804ed833c96082c0258735ee7856a24170f9969a89ec393a9d",
+      "text": "확보한 것은 수위 안정·통제 점수 1 상승이다. 내준 것은 소음 2 상승이다. 그 자리에 대기열 지연이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_DRAINAGE_CTRL",
+      "event_type": "scene",
+      "title": "배수 제어",
+      "chars": 208,
+      "sha256": "6af9190377ffe8e85bcb8d7f83c9727856ca57722c725045115315d29e054315",
+      "text": "제어반에는 개방과 잠금 두 개의 레버만 남아 있다. 수위계 바늘이 붉은 구간을 오간다. 열면 길은 넓어지고 물살도 세져. 잠그면 안전해지지만 뒤쪽 사람들은 더 기다려야 해. 가벼운 몸으로 나갈지, 무거운 후회로 남을지 정해야 한다. 손이 닿는 쪽부터 살리고, 나머지는 흔적으로 접는다. 선택한 통제 기록과 현장 수치가 저장된다. 통로 확보와 통제 책임이 한 번에 결정된다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BARGE_REPAIR_OUTCOME_CH02_BARGE_PATCH",
+      "event_type": "outcome",
+      "title": "복구 결과",
+      "chars": 49,
+      "sha256": "cbf07597d27f8ca0e267d4dc08435a894887ab6d08a89798b62a526f6a3f4ef6",
+      "text": "이번 선택으로 감염 회피를 얻었다. 치른 값은 기력 소모다. 남은 위험은 오염 확산이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BARGE_REPAIR_OUTCOME_CH02_BARGE_REBUILD",
+      "event_type": "outcome",
+      "title": "복구 결과",
+      "chars": 54,
+      "sha256": "650bd9318b69bbd33d25515627ddc8f7cd9ad49aa1a67aafa1fc48d452d3a2ae",
+      "text": "손에 남은 것은 구조 신호다. 대가로 기력 소모를 내줬고, 부상 위험은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BARGE_REPAIR",
+      "event_type": "scene",
+      "title": "바지선 응급수리",
+      "chars": 334,
+      "sha256": "bf4a139c6c1989629219ca6a48c56453ee609b80d2348c4d6355d66e9819dfa6",
+      "text": "폐선착장의 정적 사이로 바지선 응급수리의 짧은 틈이 열린다. 바지선 응급수리의 가장자리로 숨이 모였다. 서지훈은 젖은 천막 사이로 숨을 고르며 바지선 응급수리에서 아직 닫히지 않은 길을 찾았다. 바지선 응급수리에서 물소리를 빌린다. 너무 믿으면 따라오는 시선도 물길을 탄다. 젖은 골목은 챙긴 것보다 놓친 것을 더 오래 기억한다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 표식 하나를 더 확인하는 동안 물밑의 울림은 이름을 배운다. 숨을 고를 시간은 없고, 선택만 바닥에 남았다. 바지선 응급수리 너머에서 수문 아래 울림이 희미하게 답했다. 바지선 응급수리의 남은 선택은 빠르게 작아지고 있었다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_EXTRACTION_PREP_OUTCOME_CH02_EXTRACT_SORT",
+      "event_type": "outcome",
+      "title": "준비 물자 분류 결과",
+      "chars": 54,
+      "sha256": "10ef4efd692472cf05f7f878e4f1d5fd836733a1485116d2474668f074647258",
+      "text": "장비 보호를 챙기고 자리를 떴다. 대기 시간을 값으로 치렀다. 뒤에는 다음 레이드 부담이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_EXTRACTION_PREP_OUTCOME_CH02_EXTRACT_RUN",
+      "event_type": "outcome",
+      "title": "준비 결과",
+      "chars": 48,
+      "sha256": "cdc75b6bb677ae6e4b1dc7a67b2cc9580f873be9b6d2f67d0b42ba7a78b13e3b",
+      "text": "확보한 것은 구조 신호다. 내준 것은 추가 확인이다. 그 자리에 부상 위험이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_EXTRACTION_PREP",
+      "event_type": "scene",
+      "title": "수로 정리",
+      "chars": 339,
+      "sha256": "4e08ce334bc63e25b680c2a8020a556aeb30aec5d7604eff361f0bf87332e2bb",
+      "text": "동작 접근 암거의 정적 사이로 수로 정리의 짧은 틈이 열린다. 수로 정리의 공기가 잠깐 얇아졌다. 수문 아래 울림이 흔들리는 사이, 서지훈은 젖은 천막 사이로 숨을 고르며 남은 시간을 쟀다. 수로 정리의 검은 물은 조용하다. 조용한 만큼 무엇을 삼켰는지도 늦게 알려 준다. 탈출선의 금속 난간은 필요한 만큼만 손을 받아 준다. 수로 정리의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다. 짐을 덜수록 길은 좁아지고, 짐을 늘릴수록 숨은 짧아진다. 다음 냉각음이 올라오기 전까지 결정은 한 번뿐이다. 부표의 붉은 점멸이 낮게 흔들렸다. 수로 정리에서 서지훈은 수면의 흔들림을 읽고 세번째 퇴로를 먼저 가늠했다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERWAY_CHECK_OUTCOME_CH02_WATERWAY_COLD",
+      "event_type": "outcome",
+      "title": "냉각로 확인 결과",
+      "chars": 51,
+      "sha256": "56a585f16431c78f585dac6ca458d9d8ebf4958a4779e7ca036dc1b994e5e027",
+      "text": "이번 선택으로 우회로 표시를 얻었다. 치른 값은 우회 비용이다. 남은 위험은 기록 훼손이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERWAY_CHECK_OUTCOME_CH02_WATERWAY_MARKET",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 55,
+      "sha256": "16c5ec842ec6afd49e7fdd74431e9db45e7a1d33e79a5aa8282401a1554db4eb",
+      "text": "손에 남은 것은 경보 지연이다. 대가로 주의 분산을 내줬고, 경보 압박은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERWAY_CHECK",
+      "event_type": "choice",
+      "title": "수로 점검",
+      "chars": 349,
+      "sha256": "b55535814a0b7261e4926e41f81002fba046a2894e1a500c57ca03097879117f",
+      "text": "수로 점검 앞에서 손이 멈춘다. 수로 점검의 숨결이 한 박자 낮아졌다. 물비린내 속에서 선택의 무게가 다시 기울었다. 검은 수면이 잠깐 멎었다. 서지훈은 수로 점검 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다. 수로 점검의 물소리는 발자국을 덮지만, 젖은 흔적까지 지우지는 못한다. 살아남을 몫은 넓지 않다. 남길 것부터 정해야 한다. 머뭇거리면 남는 것은 기록이 아니라 빈자리다. 젖은 바닥은 결정을 미루는 발자국을 가장 또렷하게 남긴다. 손이 닿는 쪽부터 살리고, 나머지는 흔적으로 접는다. 천막은 다시 흔들렸다. 수로 점검에서는 작은 소리도 다음 문까지 길게 번졌다. 검은 물이 발목 아래에서 답을 재촉했다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_GATE_ASSAULT",
+      "event_type": "danger",
+      "title": "수문 통제실 돌파",
+      "chars": 270,
+      "sha256": "f3acaa63041648458bbab8733d4c7519f824a92212265672580e4baf407462a8",
+      "text": "샛강 배수문 통제실의 공기가 낮게 눌리고, 수문 통제실 돌파가 발밑으로 다가온다. 수문 통제실 돌파 너머에서 젖은 천막이 희미하게 답했다. 수문 통제실 돌파의 남은 선택은 빠르게 작아지고 있었다. 검은 수면이 잠깐 멎었다. 서지훈은 수문 통제실 돌파 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다. 수문 통제실 앞의 표식이 서로 다른 방향을 가리켰다. 젖은 천막이 늦은 숨을 낮게 눌렀다. 수문 통제실 돌파 앞의 길은 둘로 갈라졌다. 검은 물이 발목 아래에서 답을 재촉했다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_LOCKDOWN_OUTCOME_CH02_MARKET_CLEAR",
+      "event_type": "outcome",
+      "title": "장애물 정리 결과",
+      "chars": 50,
+      "sha256": "4df26b784db7b094baa635d65c90fbbc0ef3776a2e2694994e754ce9ec46576d",
+      "text": "보급 보존을 챙기고 자리를 떴다. 철수 지연을 값으로 치렀다. 뒤에는 문턱 봉쇄가 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_LOCKDOWN_OUTCOME_CH02_MARKET_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 47,
+      "sha256": "04e8310e73b0ed375b2751a71a29be3502c63f3376b3db24822ba51a55ced697",
+      "text": "확보한 것은 전투 여유다. 내준 것은 보상 축소다. 그 자리에 잠복 위협이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_LOCKDOWN",
+      "event_type": "exploration",
+      "title": "수몰시장 잔해",
+      "chars": 289,
+      "sha256": "97892b8c19b89b65fbbaff78ea8c973ec5d726f72fd9d05c8b66ac7d6c2949fb",
+      "text": "수문 아래 울림이 세번째 신호처럼 스쳤다. 수몰시장 잔해에서 놓친 것은 다음 방의 위험으로 남았다. 수몰시장 잔해의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 물비린내 나는 통로만 뒤에 남았다. 수몰시장 잔해 아래 물결이 잠깐 편을 드는 척한다. 하지만 바닥은 지나간 몸을 오래 붙든다. 상자를 안은 팔이 굳을수록 배를 잡을 손은 늦어진다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 손에 남길 짐과 등에 업을 사람을 같은 저울에 올릴 수 없다. 숨을 고를 시간은 없고, 선택만 바닥에 남았다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_SEAL_OUTCOME_CH02_COLD_THAW",
+      "event_type": "outcome",
+      "title": "냉각로 확인 결과",
+      "chars": 50,
+      "sha256": "82aed0f085914b533ceda5ee155172841b5285016a989414f83b3ac80200b663",
+      "text": "이번 선택으로 문턱 정보를 얻었다. 치른 값은 회수 지연이다. 남은 위험은 추격 상승이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_SEAL_OUTCOME_CH02_COLD_MANUAL",
+      "event_type": "outcome",
+      "title": "냉각로 확인 결과",
+      "chars": 54,
+      "sha256": "7cd2d571cdda9cdbf37e760ec5d1e0d84eb4ee55cb047640241afa3662d185bd",
+      "text": "손에 남은 것은 감염 회피다. 대가로 우회 비용을 내줬고, 오염 확산은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_SEAL",
+      "event_type": "choice",
+      "title": "냉동창고 봉인",
+      "chars": 279,
+      "sha256": "23b4c1bc674f0c1ba8937f2cb1cee0f506e29688ef8e29a62529b7747903a34a",
+      "text": "냉동창고 봉인 앞에서 손이 멈춘다. 냉동창고 봉인의 숨결이 한 박자 낮아졌다. 검은 물이 발목 아래에서 답을 재촉했다. 첫 흔적은 부표의 붉은 점멸 옆에 남았다. 냉동창고 봉인의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 냉동창고 봉인의 물살에 소리를 맡긴다. 덮인 소리만큼 젖은 냄새가 남는다. 보급품은 숨을 늘리지만, 쇼룸의 유리는 머문 자리를 외운다. 가방이 무거워질수록 발소리는 유리벽에 더 오래 남는다. 냉동창고 봉인의 보급을 나눈다. 손은 든든해지고, 주변의 침묵은 한 겹 더 얇아진다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_AMBUSH",
+      "event_type": "combat",
+      "title": "폐선착장 매복",
+      "chars": 221,
+      "sha256": "0de76d5d937664d82592e3b363e6004d0650272153eaca6309f2accc030dffc5",
+      "text": "폐선착장 매복이 시야 가장자리에서 몸을 일으킨다. 수문 아래 울림이 잠깐 멎었다. 서지훈은 폐선착장 매복 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다. 첫 흔적은 부표의 붉은 점멸 옆에 남았다. 폐선착장 매복의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 폐선착장 매복: 조용한 개방과 몸의 한계 폐선착장 매복을 낮게 넘기면 길이 남는다. 크게 흔들면 뒤따르는 발소리가 먼저 늘어난다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_OVERRIDE_OUTCOME_CH02_SLUICE_RESET",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 50,
+      "sha256": "a3334645141cb46fb62855c673ab55523090e1f43619a1780a8c9bf9ef1ad312",
+      "text": "감염 회피를 챙기고 자리를 떴다. 기력 소모를 값으로 치렀다. 뒤에는 오염 확산이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_OVERRIDE_OUTCOME_CH02_SLUICE_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 52,
+      "sha256": "39e9c1ac24dc677dbe2c092d5764c05f7619167bcaed24447b2097629e376b4f",
+      "text": "확보한 것은 교신 단축이다. 내준 것은 몸 상태 부담이다. 그 자리에 신뢰 흔들림이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_OVERRIDE",
+      "event_type": "dialogue",
+      "title": "배수문 키 재설정",
+      "chars": 318,
+      "sha256": "2f3b3ffcf421408207c63b3706fbf0f3a6c305c9fb803039abb3e09617ffbfa2",
+      "text": "샛강 배수문 통제실에서 건네진 말은 설명보다 먼저 상처를 건드린다. 젖은 천막이 다음 신호처럼 스쳤다. 배수문 키 재설정에서 놓친 것은 다음 방의 위험으로 남았다. 배수문 키 재설정에서 물소리를 빌린다. 너무 믿으면 따라오는 시선도 물길을 탄다. 배수문 키 앞의 표식이 서로 다른 방향을 가리켰다. 물비린내 속에서 선택의 무게가 다시 기울었다. 배수문 키 재설정 앞의 길은 둘로 갈라졌다. 수문 쪽 울림이 남은 시간을 작게 쪼갰다. 배수문 키 재설정의 가장자리로 숨이 모였다. 서지훈은 젖은 천막 사이로 숨을 고르며 배수문 키 재설정에서 아직 닫히지 않은 길을 찾았다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_TIDE_SCAN",
+      "event_type": "exploration",
+      "title": "수위 스캔",
+      "chars": 287,
+      "sha256": "2dcffc76f7d6783b94ae47868760ccd3f6b8146d404489088ae25a8ba085532e",
+      "text": "젖은 천막이 다음 신호처럼 스쳤다. 수위 스캔에서 놓친 것은 다음 방의 위험으로 남았다. 수위 스캔의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 부표의 붉은 점멸만 뒤에 남았다. 수위 스캔의 검은 물은 조용하다. 조용한 만큼 무엇을 삼켰는지도 늦게 알려 준다. 살릴 물자와 살릴 사람은 같은 손아귀에 오래 들어오지 않는다. 수위 스캔의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다. 수로가 닫히기 전에 버릴 것과 데려갈 것을 나눠야 한다. 다음 냉각음이 올라오기 전까지 결정은 한 번뿐이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_DROWNED_AMBUSH",
+      "event_type": "combat",
+      "title": "침수 매복",
+      "chars": 255,
+      "sha256": "7455fb4d8ce826359919538e8b862a73db75fbc0121a7fd3aeebb2f0f2033866",
+      "text": "침수 매복이 시야 가장자리에서 몸을 일으킨다. 침수 매복의 숨결이 한 박자 낮아졌다. 검은 물이 발목 아래에서 답을 재촉했다. 침수 매복의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 부표의 붉은 점멸만 뒤에 남았다. 수문 아래 울림이 낮게 흔들렸다. 침수 매복에서 서지훈은 수면의 흔들림을 읽고 첫 퇴로를 먼저 가늠했다. 침수 매복: 조용한 개방과 몸의 한계 침수 매복에서 불빛을 죽인다. 길은 남지만, 손끝에는 식은 먼지가 묻는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_BACKALLEY",
+      "event_type": "exploration",
+      "title": "수몰시장 뒤편",
+      "chars": 332,
+      "sha256": "235f4a4cb86471a861aa2f26800220504bf850609568916e233e04339a7fb5d8",
+      "text": "수문 아래 울림이 낮게 흔들렸다. 수몰시장 뒤편에서 서지훈은 수면의 흔들림을 읽고 첫 퇴로를 먼저 가늠했다. 수몰시장 뒤편의 숨결이 한 박자 낮아졌다. 검은 물이 발목 아래에서 답을 재촉했다. 수몰시장 뒤편의 물소리는 발자국을 덮지만, 젖은 흔적까지 지우지는 못한다. 남길 짐을 고르는 동안 출구의 물소리가 조금씩 낮아진다. 머뭇거리면 남는 것은 기록이 아니라 빈자리다. 챙긴 상자의 무게만큼 뒤따르는 발소리도 가까워진다. 손이 닿는 쪽부터 살리고, 나머지는 흔적으로 접는다. 수몰시장 뒤편의 숨결이 한 박자 낮아졌다. 수몰시장 뒤편의 공기가 무거워지며 검은 물이 발목 아래에서 답을 재촉했다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP_OUTCOME_CH02_BACKALLEY_MORE",
+      "event_type": "outcome",
+      "title": "반복 확인 추가 탐색 결과",
+      "chars": 52,
+      "sha256": "65544acd1025623c0b195f898352c10bee9338d1a09515c3712ad7e0da0f3eea",
+      "text": "이번 선택으로 철수선 확인을 얻었다. 치른 값은 판단 지연이다. 남은 위험은 동행자 고립이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP_OUTCOME_CH02_BACKALLEY_EXIT",
+      "event_type": "outcome",
+      "title": "반복 확인 이탈 준비 결과",
+      "chars": 54,
+      "sha256": "879d92c6845af816104655d3088724c798f23fcd61b06ea16bcc616f32823b48",
+      "text": "손에 남은 것은 시야 확보다. 대가로 장비 마모를 내줬고, 감염 노출은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP_OUTCOME_CH02_MARKET_LOOP_SIGNAL",
+      "event_type": "outcome",
+      "title": "반복 확인 신호 결과",
+      "chars": 52,
+      "sha256": "995811281cdbd043eec78eda8d8009cdb96ba33c7f499a2db05dde73ec406159",
+      "text": "안전거리 확보를 챙기고 자리를 떴다. 위치 노출을 값으로 치렀다. 뒤에는 단서 손실이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP",
+      "event_type": "exploration",
+      "title": "시장 반복 수색",
+      "chars": 291,
+      "sha256": "4facc7ab61ad6e80d23900f281b93674c8a59f01611889a0b3b35d6cf34126b4",
+      "text": "시장 반복의 기척이 한 박자 낮아졌다. 젖은 천막이 늦은 숨을 낮게 눌렀다. 시장 반복 수색의 가장자리로 숨이 모였다. 서지훈은 젖은 천막 사이로 숨을 고르며 시장 반복 수색에서 아직 닫히지 않은 길을 찾았다. 시장 반복 수색 아래 물결이 잠깐 편을 드는 척한다. 하지만 바닥은 지나간 몸을 오래 붙든다. 필요한 것을 접어 넣는 동안 반사체의 고개가 조금씩 돌아온다. 챙긴 물건은 뒤를 받치지만, 늦은 걸음은 먼저 들킨다. 시장 반복 수색의 물자를 품 안으로 당긴다. 가방은 무거워지고, 지나온 바닥은 더 오래 기억한다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_CRAWL_OUTCOME_CH02_COLD_CRAWL_MORE",
+      "event_type": "outcome",
+      "title": "냉각로 확인 추가 탐색 결과",
+      "chars": 49,
+      "sha256": "8c6c3d74193ad6f4ab7f48df65ee45d0ecb66759f8771331b6fb809dd55e8ea7",
+      "text": "확보한 것은 지도 갱신이다. 내준 것은 대기 시간이다. 그 자리에 시간 초과가 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_CRAWL_OUTCOME_CH02_COLD_CRAWL_EXIT",
+      "event_type": "outcome",
+      "title": "냉각로 확인 이탈 준비 결과",
+      "chars": 51,
+      "sha256": "e0d5686d365d585a12fdf55605581d98d767b6ebc1e1db5c2a59eee0585cfa34",
+      "text": "이번 선택으로 교신 단축을 얻었다. 치른 값은 우회 비용이다. 남은 위험은 신뢰 흔들림이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_CRAWL_OUTCOME_CH02_COLD_LOOP_STABILIZE",
+      "event_type": "outcome",
+      "title": "냉각로 확인 반복 흔들림 안정 결과",
+      "chars": 55,
+      "sha256": "f3b18be421e10273d19d007e242db656a6aa2a5f08a359f7901b8778f8dfb5b5",
+      "text": "손에 남은 것은 경보 지연이다. 대가로 시간 소모를 내줬고, 경보 압박은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_CRAWL",
+      "event_type": "exploration",
+      "title": "냉각로 탐색",
+      "chars": 288,
+      "sha256": "01fc1e7286f8113f40b3513df010b7aef973fdeeccae4e14ac0c5b31bba4989a",
+      "text": "젖은 천막이 낮게 흔들렸다. 냉각로 탐색에서 서지훈은 수면의 흔들림을 읽고 세번째 퇴로를 먼저 가늠했다. 냉각로 탐색의 공기가 잠깐 얇아졌다. 부표의 붉은 점멸이 흔들리는 사이, 서지훈은 젖은 천막 사이로 숨을 고르며 남은 시간을 쟀다. 냉각로 탐색의 물살에 소리를 맡긴다. 덮인 소리만큼 젖은 냄새가 남는다. 냉각로 탐색 앞의 표식이 서로 다른 방향을 가리켰다. 젖은 천막이 늦은 숨을 낮게 눌렀다. 냉각로 탐색 앞의 길은 둘로 갈라졌다. 냉각로 탐색의 공기가 무거워지며 수문 쪽 울림이 남은 시간을 작게 쪼갰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BLACKMARKET_LEDGER_OUTCOME_CH02_LEDGER_TAKE",
+      "event_type": "outcome",
+      "title": "장부 확인 회수 결과",
+      "chars": 50,
+      "sha256": "ea10bcb09aa5a19a4402b1c4084ef2395790f2c1e13913e4263c1c6f753e184d",
+      "text": "보급 보존을 챙기고 자리를 떴다. 소음 부담을 값으로 치렀다. 뒤에는 문턱 봉쇄가 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BLACKMARKET_LEDGER_OUTCOME_CH02_LEDGER_SKIP",
+      "event_type": "outcome",
+      "title": "장부 확인 보류 판단 결과",
+      "chars": 48,
+      "sha256": "e87fb2c0ccdd426214efdd9cc51519332306c3f1441695a211382df50cae2d64",
+      "text": "확보한 것은 퇴로 표시다. 내준 것은 가방 압박이다. 그 자리에 시야 손실이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BLACKMARKET_LEDGER",
+      "event_type": "dialogue",
+      "title": "암시장 장부",
+      "chars": 294,
+      "sha256": "21af53f55d01244e56b1516e9d6f8ccc925bbfb46cc1d2121c8b62319dc4197a",
+      "text": "암시장 천막촌에서 건네진 말은 설명보다 먼저 상처를 건드린다. 암시장 장부의 숨결이 한 박자 낮아졌다. 젖은 천막이 늦은 숨을 낮게 눌렀다. 거래는 말보다 빠르게 새어 나가. 발자국부터 지워. 탈출선의 자리는 넓지 않고, 망설임은 언제나 제 몫을 요구한다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 물자 냄새가 짙어질수록 숨어 있던 시선도 한 걸음 다가온다. 숨을 고를 시간은 없고, 선택만 바닥에 남았다. 천막은 다시 흔들렸다. 암시장 장부에서는 작은 소리도 다음 문까지 길게 번졌다. 젖은 천막이 늦은 숨을 낮게 눌렀다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_ENGINE_OUTCOME_CH02_PIER_ENGINE_FIX",
+      "event_type": "outcome",
+      "title": "수리 결과",
+      "chars": 52,
+      "sha256": "d8a6008b86d346c0072c5dd0720543039731f49a1114d448585110b58248cf76",
+      "text": "이번 선택으로 철수선 확인을 얻었다. 치른 값은 위치 노출이다. 남은 위험은 동행자 고립이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_ENGINE_OUTCOME_CH02_PIER_ENGINE_SKIP",
+      "event_type": "outcome",
+      "title": "보류 판단 결과",
+      "chars": 54,
+      "sha256": "7b8aa96c5b1e48980df4cac05616573684e9568b4415eab04928d2c3c52e6b57",
+      "text": "손에 남은 것은 정찰 근거다. 대가로 장비 마모를 내줬고, 철수 압박은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_ENGINE",
+      "event_type": "exploration",
+      "title": "부두 엔진 점검",
+      "chars": 324,
+      "sha256": "489c483153944eb0cc0c5a741b327bb53523378035c5b0db430e74ba9c009c71",
+      "text": "폐선착장에는 아직 손대지 않은 흔적이 남아 있다. 부두 엔진 점검의 소음이 낮아지는 틈에 서지훈은 발목의 물살을 견디며 발을 옮겼다. 수문 아래 울림만 뒤에 남았다. 부두 엔진 점검에서 물소리를 빌린다. 너무 믿으면 따라오는 시선도 물길을 탄다. 부두 엔진 앞의 표식이 서로 다른 방향을 가리켰다. 부두 엔진 점검의 공기가 무거워지며 검은 물이 발목 아래에서 답을 재촉했다. 부두 엔진 점검 앞의 길은 둘로 갈라졌다. 부두 엔진 점검의 공기가 무거워지며 검은 물이 발목 아래에서 답을 재촉했다. 부두 엔진 점검의 작은 신호가 바닥을 훑는다. 따라오는 귀도 그 빛을 놓치지 않는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_PREP_OUTCOME_CH02_SLUICE_PREP",
+      "event_type": "outcome",
+      "title": "준비 결과",
+      "chars": 50,
+      "sha256": "6f9dd2e19d29ee8778872f5677dec86f759909c2d99b7a6d2448c4098aafd04b",
+      "text": "지도 갱신을 챙기고 자리를 떴다. 동선 증가를 값으로 치렀다. 뒤에는 시간 초과가 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_PREP_OUTCOME_CH02_SLUICE_RUSH",
+      "event_type": "outcome",
+      "title": "준비 압박 돌파 결과",
+      "chars": 49,
+      "sha256": "cdcb3667de92d56d24816445b5bc801a1320a1b0c648da610e1f2a73715612a6",
+      "text": "확보한 것은 기록 복원이다. 내준 것은 교신 노출이다. 그 자리에 퇴로 축소가 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_PREP",
+      "event_type": "exploration",
+      "title": "배수문 방벽 정비",
+      "chars": 317,
+      "sha256": "b5186925d5d2e87daef6b82a6950f96dad981641f193220588c23c2cc6b3f2b1",
+      "text": "샛강 배수문 통제실에는 아직 손대지 않은 흔적이 남아 있다. 첫 흔적은 젖은 천막 옆에 남았다. 배수문 방벽 정비의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 배수문 방벽 정비의 검은 물은 조용하다. 조용한 만큼 무엇을 삼켰는지도 늦게 알려 준다. 배수문 방벽 앞의 표식이 서로 다른 방향을 가리켰다. 물비린내 속에서 선택의 무게가 다시 기울었다. 배수문 방벽 정비 앞의 길은 둘로 갈라졌다. 수문 쪽 울림이 남은 시간을 작게 쪼갰다. 배수문 방벽 정비의 공기가 잠깐 얇아졌다. 검은 수면이 흔들리는 사이, 서지훈은 젖은 천막 사이로 숨을 고르며 남은 시간을 쟀다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_MARKET_STORAGE",
+      "event_type": "outcome",
+      "title": "창고 수색 결과",
+      "chars": 58,
+      "sha256": "25f974dbd22477304b62f176f78c26ba86d9c6ec7db5135ab3d7b627a1161f18",
+      "text": "이번 선택으로 보급 수색 1회를 얻었다. 치른 값은 오염 4 상승이다. 남은 위험은 천막 구조 지연이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_MARKET_TENTS",
+      "event_type": "outcome",
+      "title": "천막 확인 결과",
+      "chars": 66,
+      "sha256": "7e802a4d3154acc8d1b6a9285db7fa9d46fab7f9a0293d09da12c36c0e068b97",
+      "text": "손에 남은 것은 암시장 평판 1 상승이다. 대가로 냉동창고 지연을 내줬고, 보급 손실 가능은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_COLD_ON",
+      "event_type": "outcome",
+      "title": "냉각로 확인 가동 결과",
+      "chars": 50,
+      "sha256": "d19c3802e9e22eaf6badad7feca7f7b200c71bb4e15d396bc30270808ba241cb",
+      "text": "감염 회피를 챙기고 자리를 떴다. 가방 압박을 값으로 치렀다. 뒤에는 오염 확산이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_COLD_OFF",
+      "event_type": "outcome",
+      "title": "냉각로 확인 차단 결과",
+      "chars": 47,
+      "sha256": "0367fa429f752d7088c33a307e7bab65798feb28ce783f7865532f0e5648cce8",
+      "text": "확보한 것은 시야 확보다. 내준 것은 보상 축소다. 그 자리에 감염 노출이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_MARKET_TRADE",
+      "event_type": "outcome",
+      "title": "거래 성사 결과",
+      "chars": 55,
+      "sha256": "4c7e56094fb99a7c42de3982f5f6c2697763b055fbf616b22f05bbf5fcbaba88",
+      "text": "이번 선택으로 검역패스 1장을 얻었다. 치른 값은 거래 약속이다. 남은 위험은 통행 기록 노출이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_MARKET_ROB",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 72,
+      "sha256": "8d13b4010d2e62e8f00b324993f2718049a38108171f80573c9ec8e810662c89",
+      "text": "손에 남은 것은 시장 물자 1회다. 대가로 신뢰·평판 2 하락을 내줬고, 소음 5 상승·긴장 1 상승은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_PIER_BOAT",
+      "event_type": "outcome",
+      "title": "보트 이동 결과",
+      "chars": 66,
+      "sha256": "726603591ee3b83198c16995fb3d7c957b8d8490f6399e206f866420eb62d761",
+      "text": "수로 지도 1장·신뢰 1 상승을 챙기고 자리를 떴다. 보트 연료 1 감소를 값으로 치렀다. 뒤에는 선착장 빚이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_PIER_LAND",
+      "event_type": "outcome",
+      "title": "육로 이동 결과",
+      "chars": 54,
+      "sha256": "fc733d34226960041b1d16712917cd082c178cc8be57b7ca9f04942766f76839",
+      "text": "확보한 것은 수로 지도 1장이다. 내준 것은 오염 5 상승이다. 그 자리에 육로 매복이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_SLUICE_OPEN",
+      "event_type": "outcome",
+      "title": "개방 확인 결과",
+      "chars": 60,
+      "sha256": "16d2de79e355caaaea7e73fcd176a05582894173b89a3e7e9d3ffa1d47447813",
+      "text": "이번 선택으로 빠른 동작 접근선을 얻었다. 치른 값은 수문 개방 책임이다. 남은 위험은 물살·추적 부담이다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_SLUICE_CLOSE",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 63,
+      "sha256": "e23b830d2f80768e47ebfc51c4cad3e4a24ba78c10f99f4cbabcee5c7245f8e2",
+      "text": "손에 남은 것은 안전 동작 접근선이다. 대가로 뒤쪽 통로 폐쇄를 내줬고, 대기열 고립은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_ALLEY_COLD",
+      "event_type": "outcome",
+      "title": "냉각로 확인 결과",
+      "chars": 50,
+      "sha256": "b887c15afea4786e97def76c3f9cd12ed3d4e58fc416583d125f545b6dd5e3f7",
+      "text": "동행 신뢰를 챙기고 자리를 떴다. 손실 감수를 값으로 치렀다. 뒤에는 물자 손상이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_ALLEY_MARKET",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 47,
+      "sha256": "361e20b8981a9e80efa3a881c47356af5bf41b8a15fe076d298da16982d47759",
+      "text": "확보한 것은 시야 확보다. 내준 것은 장비 마모다. 그 자리에 감염 노출이 들어섰다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_SLUICE_RESET",
+      "event_type": "outcome",
+      "title": "검은 수로 결과",
+      "chars": 49,
+      "sha256": "93db5c6d01f0c33f6a874e973266fa871155f3c54af65658cda13a6ef798cd5c",
+      "text": "이번 선택으로 소음 감소를 얻었다. 치른 값은 소음 부담이다. 남은 위험은 경로 붕괴다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_SLUICE_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 54,
+      "sha256": "9565e764f6da31559e375126f78694bfb16a7590a059523868d3fdbb417ac032",
+      "text": "손에 남은 것은 감염 회피다. 대가로 추가 확인을 내줬고, 오염 확산은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_WATERLOCK_STORAGE",
+      "event_type": "outcome",
+      "title": "창고 수색 결과",
+      "chars": 50,
+      "sha256": "d71edc464053dc4853badaa0ec25c5b00085341f3bec1e0f4a946d3318f6606e",
+      "text": "감염 회피를 챙기고 자리를 떴다. 우회 비용을 값으로 치렀다. 뒤에는 오염 확산이 남는다."
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_WATERLOCK_TENTS",
+      "event_type": "outcome",
+      "title": "천막 확인 결과",
+      "chars": 48,
+      "sha256": "2ddb6c18bfdc60e7b887e5d0c22ce943d6f1f543dc1b99b623e85c23bdd2974a",
+      "text": "확보한 것은 단서 확보다. 내준 것은 손실 감수다. 그 자리에 전투 조기화가 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_ENTRY",
+      "event_type": "briefing",
+      "title": "유리정원 진입",
+      "chars": 363,
+      "sha256": "a1639c9c477817ba869c5c427eb501cfdda8339498b3e4ca7e64ad74e6472812",
+      "text": "깨진 외벽 너머로 상층의 재배등과 지하의 손전등이 번갈아 깜박인다. 승강기 층수 표시는 0에서 멈춘 채 경고음만 반복한다. 한 건물인데도 위와 아래가 서로를 외부인처럼 취급해. 첫마디를 잘못 고르면 축전기를 구해도 둘을 함께 움직일 수 없어. 하층의 생존, 상층의 협상, 전력 통제가 한 회로에서 충돌한다. 다음 냉각음이 올라오기 전까지 결정은 한 번뿐이다. 안보경의 지하에서 첫 신뢰 선택이 열린다. CH02 철수 영수증을 확인한 뒤 안보경의 지하의 첫 신뢰 선택이 열린다. 첫 선택은 자원보다 어느 대피소의 규칙을 먼저 인정할지 묻는다. 수로의 마지막 철수 방식이 노선 요약에 남고, 그 대가를 안은 채 어느 대피소 규칙을 먼저 인정할지 정한다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_MEET_OUTCOME_CH03_BASEMENT_SUPPORT",
+      "event_type": "outcome",
+      "title": "접선 지하 지원 결과",
+      "chars": 74,
+      "sha256": "1e2a6d3f329dfa6b668ec58d417d734e6a2e44d68f2193c2f47d00d4fe01887b",
+      "text": "이번 선택으로 안보경 신뢰 2 상승·지하 평판 2 상승을 얻었다. 치른 값은 상층 협상 부담이다. 남은 위험은 공개 지지의 책임이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_MEET_OUTCOME_CH03_BASEMENT_NEUTRAL",
+      "event_type": "outcome",
+      "title": "지하 접선 결과",
+      "chars": 62,
+      "sha256": "98112a4ac8f936eea633aca680260e602bb4f743da0181b598c021751ba8eb55",
+      "text": "손에 남은 것은 양쪽 협상 여지다. 대가로 즉시 신뢰 없음을 내줬고, 우유부단 평가는 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_MEET",
+      "event_type": "dialogue",
+      "title": "안보경의 지하",
+      "chars": 232,
+      "sha256": "5cc34c7d70be96b779552960f180cb1c07a856ae822b09846519246f1ecf0189",
+      "text": "계단참에는 물 배급표와 환자 이름이 같은 테이프로 붙어 있다. 안보경은 빈 물통 두 개를 세워 남은 몫을 보여 준다. 우리가 원하는 건 충성이 아니라 오늘 밤까지 버틸 순서예요. 다만 아무 편도 들지 않겠다는 말도 누군가에게는 거절로 들려요. 데려갈 이름을 정하면 이동은 늦어진다. 그래도 버린 이름은 돌아와 묻는다. 선택 직후 신뢰·평판 영수증을 저장한다. 첫 선택부터 안보경 신뢰와 지하층 평판이 숫자로 보인다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_VERTICAL_ROUTE_OUTCOME_CH03_VERTICAL_STAIRS",
+      "event_type": "outcome",
+      "title": "계단 이동 결과",
+      "chars": 57,
+      "sha256": "55655de507234337e4cfc4d782be6124c93ed48520df6be010ead76b68afe3fe",
+      "text": "안정적인 수직 이동을 챙기고 자리를 떴다. 소음 2 상승을 값으로 치렀다. 뒤에는 계단 매복이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_VERTICAL_ROUTE_OUTCOME_CH03_VERTICAL_ELEVATOR",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 57,
+      "sha256": "530568ef088455f8d084a3762fcb89085760fb5fa9c251974eeb0390c329f3b9",
+      "text": "확보한 것은 빠른 상층 진입이다. 내준 것은 소음 6 상승이다. 그 자리에 강제 가동 흔적이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_VERTICAL_ROUTE_OUTCOME_CH03_VERTICAL_OUTER",
+      "event_type": "outcome",
+      "title": "결과",
+      "chars": 52,
+      "sha256": "287191fce88e3634e9d651167c20b76f3ca4849e3ee0c603a640603c9c49b03a",
+      "text": "이번 선택으로 소음 1 감소를 얻었다. 치른 값은 갈고리 필요다. 남은 위험은 추락 위험이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_VERTICAL_ROUTE",
+      "event_type": "choice",
+      "title": "수직 이동 선택",
+      "chars": 262,
+      "sha256": "fe70f1813ae753fc064d7fb8a915404aec87f6042cf3636ff0040ad3d5be2dd0",
+      "text": "비상계단에는 유리 파편이 깔렸고 승강기 문은 손가락 하나 들어갈 만큼 벌어져 있다. 외벽 난간은 온전하지만 갈고리를 걸 지점이 멀다. 계단은 버틸 만하지만 조용하진 않아. 갈고리가 있다면 밖으로 돌아갈 수 있어. 없으면 승강기를 깨워야 해. 하층의 생존, 상층의 협상, 전력 통제가 한 회로에서 충돌한다. 손이 닿는 쪽부터 살리고, 나머지는 흔적으로 접는다. 경로 선택 영수증은 다음 전력 배분 장면까지 유지된다. 경로마다 소음 변화와 장비 조건을 선택 전에 확인한다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_SWEEP_OUTCOME_CH03_SHOWROOM_LOOT",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 54,
+      "sha256": "bcf7c0a270c0d1cb8c277361daa414ff096138be37af1e0dc1c596cb4451343a",
+      "text": "손에 남은 것은 전투 여유다. 대가로 판단 지연을 내줬고, 잠복 위협은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_SWEEP_OUTCOME_CH03_SHOWROOM_RUSH",
+      "event_type": "outcome",
+      "title": "압박 돌파 결과",
+      "chars": 54,
+      "sha256": "3fb1e65843dfd7264bedf84a8ad396c1d649791b76da7c672c69200fcbbde897",
+      "text": "다음 레이드 힌트를 챙기고 자리를 떴다. 우회 비용을 값으로 치렀다. 뒤에는 무전 감청이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_SWEEP",
+      "event_type": "exploration",
+      "title": "모델하우스 잔해",
+      "chars": 285,
+      "sha256": "a4aa3bfa63d52274e06c144433c3257857f9a104a74f3780d0d97fc8a008a1a3",
+      "text": "중층 쇼룸 존에는 아직 손대지 않은 흔적이 남아 있다. 모델하우스 잔해 너머에서 유리 난간의 균열이 희미하게 답했다. 모델하우스 잔해의 남은 선택은 빠르게 작아지고 있었다. 멈춘 에스컬레이터가 잠깐 멎었다. 서지훈은 모델하우스 잔해 앞에서 정전된 층계를 가늠하고 손에 든 것을 다시 세었다. 하층의 생존, 상층의 협상, 전력 통제가 한 회로에서 충돌한다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 하층의 생존, 상층의 협상, 전력 통제가 한 회로에서 충돌한다. 숨을 고를 시간은 없고, 선택만 바닥에 남았다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_ROUTING_OUTCOME_CH03_POWER_ELEVATOR",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 59,
+      "sha256": "e4909770d149ed5342e2881b885b77c91218605eff46e8abc71dc9656c563340",
+      "text": "확보한 것은 승강기 이동선이다. 내준 것은 소음 7 상승이다. 그 자리에 양쪽 생활 전력 중단이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_ROUTING_OUTCOME_CH03_POWER_LOWER",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 71,
+      "sha256": "cc585efefc42981d5d0a839f7ace2cfed75d7eeedf8a77caff887452ef5b7740",
+      "text": "이번 선택으로 안보경 신뢰 2 상승·지하 평판 2 상승을 얻었다. 치른 값은 상층 설비 중단이다. 남은 위험은 류세온 반발이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_ROUTING_OUTCOME_CH03_POWER_UPPER",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 76,
+      "sha256": "e9c77032d0c52ff22ee3684db5e97122fe2353c7e58812672e237700514c1a3a",
+      "text": "손에 남은 것은 류세온 신뢰 2 상승·상층 평판 2 상승이다. 대가로 지하 급수 중단을 내줬고, 안보경 반발은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_ROUTING",
+      "event_type": "choice",
+      "title": "전력 분배",
+      "chars": 227,
+      "sha256": "0dafd2d23dc82719a2299e76ae9f0ae6c16f0e59439163bf66f6f760d3bbf2fc",
+      "text": "제어반의 세 레버 아래에 승강기, 지하 급수, 상층 재배등이 손글씨로 적혀 있다. 축전기 잔량 표시가 세 칸 중 한 칸만 켜진다. 한 번 올리면 다른 두 선은 바로 죽어. 누구에게 전력을 보냈는지 둘 다 알게 될 거야. 전력 분배 앞의 길은 둘로 갈라졌다. 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 배분 직후 소음 또는 신뢰·평판 영수증을 고정한다. 한 선택의 이득과 잃는 공급선을 같은 화면에서 확인한다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_NEGOTIATION_OUTCOME_CH03_UPPER_SIDE",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 64,
+      "sha256": "1f519e8805c982d2747fe088024b1020f6d420ef8ee6506c0fe3966b3def6ef4",
+      "text": "축전기 1개·류세온 신뢰 2 상승을 챙기고 자리를 떴다. 지하층 반발을 값으로 치렀다. 뒤에는 상층 독점이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_NEGOTIATION_OUTCOME_CH03_LOWER_SIDE",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 65,
+      "sha256": "db0ab423331ee081c57e7f818260565fdb2bf779f72866913071b36dd0bdb49a",
+      "text": "확보한 것은 축전기 1개·안보경 신뢰 2 상승이다. 내준 것은 상층 반발이다. 그 자리에 지하 우선 배분이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_NEGOTIATION_OUTCOME_CH03_NEGOTIATE_BOTH",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 69,
+      "sha256": "e10459f6d89b4dc3e507a8401abfcc768d84bddb862bf183cda78e372f49b9e9",
+      "text": "이번 선택으로 축전기 1개·양쪽 신뢰 1 상승을 얻었다. 치른 값은 공동 관리 부담이다. 남은 위험은 합의 파기 가능성이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_NEGOTIATION",
+      "event_type": "dialogue",
+      "title": "류세온의 상층",
+      "chars": 269,
+      "sha256": "3a9885b14a1094ad674b8909adc21c5d804954e85959cd0784e12a0597df6859",
+      "text": "축전기 단자에는 상층과 지하층의 봉인 스티커가 겹쳐 붙어 있다. 류세온과 안보경은 같은 장비를 두고 서로 다른 사용 명단을 펼친다. 전력을 만든 쪽과 필요한 쪽이 다르다고 소유권까지 둘로 갈리진 않아. 어느 쪽에 서든 오늘 얻은 숫자를 기억해 둬. 류세온의 상층 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 협상 영수증에는 축전기 수량과 신뢰 변화가 함께 기록된다. 모든 선택은 고용량 축전기 1개를 확보하지만 신뢰의 방향이 달라진다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE",
+      "event_type": "danger",
+      "title": "유리 위를 걷다",
+      "chars": 264,
+      "sha256": "429f2296c44b0862d74b93c35ef2cb241840630a9bcf54947e325e728c0f3f67",
+      "text": "금이 간 유리다리 아래로 지하층과 상층의 불빛이 동시에 보인다. 반대편 손전등이 짧고 길게 구조 신호를 반복한다. 신호를 올리면 저 사람들은 우리를 볼 거야. 다른 것들도 같이 보겠지. 지금 지나치면 조용히 갈 수 있지만 그 신호는 끊길 거야. 유리 위를 걷다 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 신호 선택은 진실 경로와 긴장 수치에 즉시 기록된다. 구조 기회와 위치 노출을 숫자와 경로로 함께 보여 준다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BOSS_GARDEN",
+      "event_type": "boss",
+      "title": "유리정원",
+      "chars": 249,
+      "sha256": "b51f62277d56b9db4ab9b2cecdbaae647d8ff984686ec9c1fadb14455364d872",
+      "text": "관수관이 박동할 때마다 군락체의 뿌리가 유리 바닥 아래에서 솟는다. 중계 렌즈는 덩굴 한가운데서 희미한 송신광을 되쏜다. 렌즈를 깨뜨리면 길은 빨리 열려도 다음 도시와 연결할 방법이 없어. 전력선을 살렸다면 지금 그 선택값을 받아낼 때야. 유리정원 앞의 길은 둘로 갈라졌다. 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 승리 시 중계 렌즈 1개와 데이터 키 파편 1개가 확정된다. 전투가 끝나기 전까지 회수품과 관계 결산은 끊기지 않는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION",
+      "event_type": "extraction",
+      "title": "잠실권 이탈",
+      "chars": 253,
+      "sha256": "cc59f7c436c54a56429453f42e99da3cd63b7fa3b3c43050d81241a31560a3c4",
+      "text": "유리정원 출구의 불빛이 지하와 상층으로 절반씩 갈라진다. 안보경은 배급표를, 류세온은 전력표를 축전기 옆에 내려놓는다. 누구에게 전력을 줬는지는 숫자로 남았어. 상자들의 도시에서는 이 렌즈가 어느 문을 열지, 두 사람 모두 보게 될 거야. 잠실권 이탈 앞의 길은 둘로 갈라졌다. 유리벽은 망설인 얼굴을 먼저 돌려보냈다. CH03 완료와 CH04 이동이 저장된 뒤 다음 행동이 열린다. CH03 결산은 관계와 자원을 CH04의 통행 근거로 바꾸는 단계다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_STAIR_AMBUSH",
+      "event_type": "combat",
+      "title": "계단실 매복",
+      "chars": 260,
+      "sha256": "4d0f0a7ac5e4cf93247ff4920547af7ad17e20b2987fd6fb2367e0ec4462b58f",
+      "text": "계단실 매복이 시야 가장자리에서 몸을 일으킨다. 계단실 매복의 숨결이 한 박자 낮아졌다. 반사광이 몸보다 늦게 따라붙었다. 계단실 매복의 소음이 낮아지는 틈에 서지훈은 정전된 층계를 가늠하고 발을 옮겼다. 정전된 쇼윈도만 뒤에 남았다. 상층 바람이 낮게 흔들렸다. 계단실 매복에서 서지훈은 반사광을 피해 첫 퇴로를 먼저 가늠했다. 탄을 아껴도 다치면 끝이야. 빠르게 열고 조용히 빠져. 계단실 매복의 끝을 작게 마무리한다. 살아남은 길은 늘 조용한 쪽에 붙어 있다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BLACKOUT_REPAIR_OUTCOME_CH03_BLACKOUT_FIX",
+      "event_type": "outcome",
+      "title": "복구 수리 결과",
+      "chars": 57,
+      "sha256": "556a930334de49c816ee674829b3ca6657d0db1e30e2c5d5636ee2acf9e2e96c",
+      "text": "손에 남은 것은 철수선 확인이다. 대가로 판단 지연을 내줬고, 동행자 고립은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BLACKOUT_REPAIR_OUTCOME_CH03_BLACKOUT_BYPASS",
+      "event_type": "outcome",
+      "title": "복구 우회 통과 결과",
+      "chars": 50,
+      "sha256": "6c38a539ac10b8a759b70b72c3568c7b01c346ead699c1df7661ff166b467635",
+      "text": "전투 여유를 챙기고 자리를 떴다. 보상 축소를 값으로 치렀다. 뒤에는 잠복 위협이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BLACKOUT_REPAIR_OUTCOME_CH03_BLACKOUT_SKIP",
+      "event_type": "outcome",
+      "title": "복구 보류 판단 결과",
+      "chars": 49,
+      "sha256": "8b81a75f4154e318acb3981bca9bd8250d6acd8fd77c68a0b9c8f5382cbd3ff4",
+      "text": "확보한 것은 생존자 정보다. 내준 것은 물자 소모다. 그 자리에 선택지 축소가 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BLACKOUT_REPAIR",
+      "event_type": "choice",
+      "title": "정전 복구",
+      "chars": 335,
+      "sha256": "6a3364585ed8ef0df88bac026149c6be67a3f68f1458bef5fd67505ce8583480",
+      "text": "정전 복구 앞에서 손이 멈춘다. 정전 복구의 숨결이 한 박자 낮아졌다. 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 정전 복구 너머에서 정전된 쇼윈도가 희미하게 답했다. 정전 복구의 남은 선택은 빠르게 작아지고 있었다. 유리 난간의 균열이 잠깐 멎었다. 서지훈은 정전 복구 앞에서 정전된 층계를 가늠하고 손에 든 것을 다시 세었다. 정전 복구 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 정전 복구 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_RESCUE_DETOUR_OUTCOME_CH03_RESCUE_HELP",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 51,
+      "sha256": "96a323c71efa8f67341d7e8d6815b6f33c006cf998b7fe50e68c9c2ff57afa4d",
+      "text": "이번 선택으로 회수품 확보를 얻었다. 치른 값은 철수 지연이다. 남은 위험은 소음 반향이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_RESCUE_DETOUR_OUTCOME_CH03_RESCUE_MARK",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 54,
+      "sha256": "e24c0bc5e1a30ab4a2ecb71e3fc98b5dc5c125fa47851be325f92a46b23c8101",
+      "text": "손에 남은 것은 동행 신뢰다. 대가로 회수 지연을 내줬고, 물자 손상은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_RESCUE_DETOUR",
+      "event_type": "exploration",
+      "title": "구조 신호 응답",
+      "chars": 252,
+      "sha256": "85b94a1507c096632a4b6d0bc4cd79488b4d84222eb9059a64b3f943b3f7a3bf",
+      "text": "스카이브리지에는 아직 손대지 않은 흔적이 남아 있다. 구조 신호 응답의 소음이 낮아지는 틈에 서지훈은 정전된 층계를 가늠하고 발을 옮겼다. 멈춘 에스컬레이터만 뒤에 남았다. 깨진 반사광이 첫 신호처럼 스쳤다. 구조 신호 응답에서 놓친 것은 다음 방의 위험으로 남았다. 유리 난간의 균열이 낮게 흔들렸다. 구조 신호 응답에서 서지훈은 반사광을 피해 세번째 퇴로를 먼저 가늠했다. 데려갈 이름을 정하면 이동은 늦어진다. 그래도 버린 이름은 돌아와 묻는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_PREP_GLASS_OUTCOME_CH03_PREP_READY",
+      "event_type": "outcome",
+      "title": "준비 결과",
+      "chars": 51,
+      "sha256": "1b6971284466228634424298d21fee208a3627020a5ffff474495ecea049b699",
+      "text": "단서 확보를 챙기고 자리를 떴다. 회수 지연을 값으로 치렀다. 뒤에는 전투 조기화가 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_PREP_GLASS_OUTCOME_CH03_PREP_RUSH",
+      "event_type": "outcome",
+      "title": "준비 압박 돌파 결과",
+      "chars": 50,
+      "sha256": "d4b263e347f9fe92d4fb506b0fb622a665deb4ed5d223e94650bfca02e15be3a",
+      "text": "확보한 것은 교신 단축이다. 내준 것은 가방 압박이다. 그 자리에 신뢰 흔들림이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_PREP_GLASS",
+      "event_type": "dialogue",
+      "title": "유리정원 준비",
+      "chars": 304,
+      "sha256": "20dea49fd9b8b234f2bbaf33436d68d73577441c68f5d264f72888d3001de89d",
+      "text": "스카이브리지에서 건네진 말은 설명보다 먼저 상처를 건드린다. 다음 흔적은 상층 바람 옆에 남았다. 유리정원 준비의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 유리정원 준비 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 반사광이 몸보다 늦게 따라붙었다. 유리정원 준비의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다. 유리정원 준비 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 유리정원 준비의 공기가 잠깐 얇아졌다. 정전된 쇼윈도가 흔들리는 사이, 서지훈은 계단 난간을 붙잡고 남은 시간을 쟀다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE_OUTCOME_CH03_EXTRACT_SMOKE",
+      "event_type": "outcome",
+      "title": "연막 이탈 결과",
+      "chars": 50,
+      "sha256": "86115db74f48469d2be428fa6e6447139906bbce1c4bbb9f16278b9dc45a1642",
+      "text": "이번 선택으로 정찰 근거를 얻었다. 치른 값은 위치 노출이다. 남은 위험은 철수 압박이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE_OUTCOME_CH03_EXTRACT_PUSH",
+      "event_type": "outcome",
+      "title": "정면 압박 결과",
+      "chars": 56,
+      "sha256": "2491e738aa471559c490de34507cf3020526b98bd4d5affcdd2c921369fa99be",
+      "text": "손에 남은 것은 교신 단축이다. 대가로 추가 확인을 내줬고, 신뢰 흔들림은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE",
+      "event_type": "scene",
+      "title": "추출 압박",
+      "chars": 283,
+      "sha256": "8866bf4ec96aabc5c10dbc518eb85a701ceab325f26a26d4f22671e03747dda1",
+      "text": "옥상 송신정원의 정적 사이로 추출 압박의 짧은 틈이 열린다. 추출 압박 앞의 표식이 서로 다른 방향을 가리켰다. 반사광이 몸보다 늦게 따라붙었다. 추출 압박 너머에서 멈춘 에스컬레이터가 희미하게 답했다. 추출 압박의 남은 선택은 빠르게 작아지고 있었다. 추출 압박 앞의 표식이 서로 다른 방향을 가리켰다. 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 추출 압박 앞의 길은 둘로 갈라졌다. 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 추출 압박의 신호는 길을 밝히지만, 동시에 가까운 귀를 깨운다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SERVICE_AMBUSH",
+      "event_type": "combat",
+      "title": "서비스 계단 매복",
+      "chars": 445,
+      "sha256": "d80d1fa8d0a1f0735dae9e9c0f4e638697d9c255b892fb7e7fdff9d028b49c6d",
+      "text": "서비스 계단 매복이 시야 가장자리에서 몸을 일으킨다. 정전된 쇼윈도가 세번째 신호처럼 스쳤다. 서비스 계단 매복에서 놓친 것은 다음 방의 위험으로 남았다. 서비스 계단 매복의 가장자리로 숨이 모였다. 서지훈은 계단 난간을 붙잡고 서비스 계단 매복에서 아직 닫히지 않은 길을 찾았다. 서비스 계단 매복 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 서비스 계단 매복의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 서비스 계단 매복의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 서비스 계단 매복 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 서비스 계단 매복의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 서비스 계단 매복 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 서비스 계단 매복의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_CACHE_OUTCOME_CH03_SHOWROOM_SEARCH",
+      "event_type": "outcome",
+      "title": "보관함 결과",
+      "chars": 52,
+      "sha256": "947d09d61f52d950c5f5c542bf2395f5c1cade03ae4be311839905b7a9ebad4c",
+      "text": "구조 신호를 챙기고 자리를 떴다. 몸 상태 부담을 값으로 치렀다. 뒤에는 부상 위험이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_CACHE_OUTCOME_CH03_SHOWROOM_PASS",
+      "event_type": "outcome",
+      "title": "보관함 결과",
+      "chars": 52,
+      "sha256": "c118b587be16bbd93942228f53ae9e3c33ca7cd4f6d03d569477492838a80f36",
+      "text": "확보한 것은 장비 보호다. 내준 것은 교신 노출이다. 그 자리에 다음 레이드 부담이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_CACHE",
+      "event_type": "scene",
+      "title": "쇼룸 보급품",
+      "chars": 242,
+      "sha256": "7953ed33f1d54af86a549231d871c4914d4fac8ccc93f1bce160841b8ba62abe",
+      "text": "중층 쇼룸 존의 정적 사이로 쇼룸 보급품의 짧은 틈이 열린다. 쇼룸 보급품의 공기가 잠깐 얇아졌다. 멈춘 에스컬레이터가 흔들리는 사이, 서지훈은 계단 난간을 붙잡고 남은 시간을 쟀다. 다음 흔적은 정전된 쇼윈도 옆에 남았다. 쇼룸 보급품의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 물자는 등을 받쳐 주지만, 지체한 시간은 빛을 불러온다. 쇼룸 보급품의 쓸 만한 것들을 묶는다. 오래 버틸 수 있지만, 빠져나갈 몸은 조금 늦어진다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_AMBUSH",
+      "event_type": "danger",
+      "title": "쇼룸 매복",
+      "chars": 287,
+      "sha256": "e37d781251007afb3d8873113ed7a0e4506465c3247d8c742f115b47f537a499",
+      "text": "중층 쇼룸 존의 공기가 낮게 눌리고, 쇼룸 매복이 발밑으로 다가온다. 쇼룸 매복의 숨결이 한 박자 낮아졌다. 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 쇼룸 매복의 공기가 잠깐 얇아졌다. 멈춘 에스컬레이터가 흔들리는 사이, 서지훈은 계단 난간을 붙잡고 남은 시간을 쟀다. 첫 흔적은 유리 난간의 균열 옆에 남았다. 쇼룸 매복의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 탄을 아껴도 다치면 끝이야. 빠르게 열고 조용히 빠져. 쇼룸 매복의 문턱을 조용히 접는다. 소리가 커질수록 다음 통로는 더 좁아진다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_ACCESS_OUTCOME_CH03_BRIDGE_DIRECT",
+      "event_type": "outcome",
+      "title": "정면 돌입 결과",
+      "chars": 49,
+      "sha256": "7188540cd0f17eb21e682ee5a71368d0615c2fb3ba25b94f3f771932701e511e",
+      "text": "이번 선택으로 소음 감소를 얻었다. 치른 값은 주의 분산이다. 남은 위험은 경로 붕괴다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_ACCESS_OUTCOME_CH03_BRIDGE_DETOUR",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 55,
+      "sha256": "7d3803a47ec3d9ebacc72f4b026cefd50b9b6f0d0343a18eddcba0c049448fd4",
+      "text": "손에 남은 것은 우회로 표시다. 대가로 추가 확인을 내줬고, 기록 훼손은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_ACCESS",
+      "event_type": "choice",
+      "title": "하늘다리 접근",
+      "chars": 455,
+      "sha256": "6959f787af3c06c621fbe2679c8d69bfe83d4b2ed62fe82a91e4e5c9a4f863b9",
+      "text": "하늘다리 접근 앞에서 손이 멈춘다. 하늘다리 접근의 숨결이 한 박자 낮아졌다. 하늘다리 접근의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 하늘다리 접근의 가장자리로 숨이 모였다. 서지훈은 계단 난간을 붙잡고 하늘다리 접근에서 아직 닫히지 않은 길을 찾았다. 하늘다리 접근의 숨결이 한 박자 낮아졌다. 하늘다리 접근의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 하늘다리 접근 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 하늘다리 접근의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 머뭇거리면 남는 것은 기록이 아니라 빈자리다. 하늘다리 접근 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 하늘다리 접근 너머에서 상층 바람이 희미하게 답했다. 하늘다리 접근의 남은 선택은 빠르게 작아지고 있었다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_CACHE_OUTCOME_CH03_CACHE_OPEN",
+      "event_type": "outcome",
+      "title": "지하 보관함 개방 확인 결과",
+      "chars": 50,
+      "sha256": "ebf2e76a65c4e74ddcf360bc2c8a724648ea6f8bf8ac127c18f87682e70270d7",
+      "text": "문턱 정보를 챙기고 자리를 떴다. 대기 시간을 값으로 치렀다. 뒤에는 추격 상승이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_CACHE_OUTCOME_CH03_CACHE_SKIP",
+      "event_type": "outcome",
+      "title": "지하 보관함 보류 판단 결과",
+      "chars": 48,
+      "sha256": "1ad049f3e7d384fa07e24c9620d90616511d19a77179302880fb3ec88e4da63b",
+      "text": "확보한 것은 감염 회피다. 내준 것은 가방 압박이다. 그 자리에 오염 확산이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_CACHE",
+      "event_type": "exploration",
+      "title": "지하 은닉 물자",
+      "chars": 384,
+      "sha256": "4127316bb48c89c70b5cf7baa64b740c8488110e6affba89d75e01d059975a03",
+      "text": "B2 주차장 난민구역에는 아직 손대지 않은 흔적이 남아 있다. 정전된 쇼윈도가 낮게 흔들렸다. 지하 은닉 물자에서 서지훈은 반사광을 피해 첫 퇴로를 먼저 가늠했다. 지하 은닉의 기척이 한 박자 낮아졌다. 지하 은닉 물자의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 지하 은닉 물자 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 지하 은닉 물자 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 지하 은닉 물자의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 지하 은닉 물자 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 지하 은닉 물자의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_PREP_OUTCOME_CH03_PREP_DONE",
+      "event_type": "outcome",
+      "title": "준비 완료 확인 결과",
+      "chars": 50,
+      "sha256": "86115db74f48469d2be428fa6e6447139906bbce1c4bbb9f16278b9dc45a1642",
+      "text": "이번 선택으로 정찰 근거를 얻었다. 치른 값은 위치 노출이다. 남은 위험은 철수 압박이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_PREP_OUTCOME_CH03_PREP_RUSH",
+      "event_type": "outcome",
+      "title": "준비 압박 돌파 결과",
+      "chars": 58,
+      "sha256": "f646d5f6a9085243c53ee439030f49b70988e0f26291fc3ebc7bc094f0dc65f2",
+      "text": "손에 남은 것은 다음 레이드 힌트다. 대가로 기력 소모를 내줬고, 무전 감청은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_PREP",
+      "event_type": "dialogue",
+      "title": "결전 준비",
+      "chars": 336,
+      "sha256": "2f4b868efc1bed9abcf675e68c2b80c4a9e7a725787085ecfabee4141c268c9a",
+      "text": "옥상 송신정원에서 건네진 말은 설명보다 먼저 상처를 건드린다. 결전 준비 앞의 표식이 서로 다른 방향을 가리켰다. 결전 준비의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 결전 준비의 숨결이 한 박자 낮아졌다. 결전 준비의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 결전 준비 앞의 표식이 서로 다른 방향을 가리켰다. 결전 준비의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 결전 준비 앞의 길은 둘로 갈라졌다. 결전 준비의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 결전 준비의 회선이 켜진다. 길은 또렷해지고 침묵은 얇아진다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_SURVEY",
+      "event_type": "dialogue",
+      "title": "지하 구역 정찰",
+      "chars": 462,
+      "sha256": "630f6e6c7d4c10f8c9e8383ac0f93ef1308dada54c94caf355cc7ee4b2e82773",
+      "text": "B2 주차장 난민구역에서 건네진 말은 설명보다 먼저 상처를 건드린다. 지하 구역 정찰 너머에서 유리 난간의 균열이 희미하게 답했다. 지하 구역 정찰의 남은 선택은 빠르게 작아지고 있었다. 지하 구역의 기척이 한 박자 낮아졌다. 지하 구역 정찰의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 지하 구역 정찰 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 지하 구역 정찰의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 지하 구역 정찰의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 지하 구역 정찰 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 지하 구역 정찰의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 지하 구역 정찰 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 지하 구역 정찰의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SERVICE_SPIRAL",
+      "event_type": "danger",
+      "title": "서비스 계단 교전",
+      "chars": 481,
+      "sha256": "9aeff6d97973d9dd6164cd53446a88fb6cd1d5c0017f35dde7c259b0e318c900",
+      "text": "B2 주차장 난민구역의 공기가 낮게 눌리고, 서비스 계단 교전이 발밑으로 다가온다. 서비스 계단 교전의 가장자리로 숨이 모였다. 서지훈은 계단 난간을 붙잡고 서비스 계단 교전에서 아직 닫히지 않은 길을 찾았다. 서비스 계단 교전 너머에서 유리 난간의 균열이 희미하게 답했다. 서비스 계단 교전의 남은 선택은 빠르게 작아지고 있었다. 서비스 계단 교전 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 서비스 계단 교전의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 서비스 계단 교전의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 서비스 계단 교전 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 서비스 계단 교전의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 서비스 계단 교전 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 서비스 계단 교전의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_STORAGE",
+      "event_type": "exploration",
+      "title": "쇼룸 보급 라인",
+      "chars": 275,
+      "sha256": "c063cd3dbd975a6aba9db0f695caf040a22cb8a1c91e620d31c22708c6a9ac2a",
+      "text": "쇼룸 보급 라인의 가장자리로 숨이 모였다. 서지훈은 계단 난간을 붙잡고 쇼룸 보급 라인에서 아직 닫히지 않은 길을 찾았다. 상층 바람이 첫 신호처럼 스쳤다. 쇼룸 보급 라인에서 놓친 것은 다음 방의 위험으로 남았다. 쇼룸 보급의 기척이 한 박자 낮아졌다. 쇼룸 보급 라인의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 가져간 만큼 버틸 수 있어도, 남은 시간은 더는 숨겨 주지 않는다. 쇼룸 보급 라인에서 챙긴 물자는 밤을 길게 버티게 한다. 대신 현장에 남은 발자국도 더 선명해진다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE_OUTCOME_CH03_LUXURY_MORE",
+      "event_type": "outcome",
+      "title": "잔해 수색 추가 탐색 결과",
+      "chars": 50,
+      "sha256": "b887c15afea4786e97def76c3f9cd12ed3d4e58fc416583d125f545b6dd5e3f7",
+      "text": "동행 신뢰를 챙기고 자리를 떴다. 손실 감수를 값으로 치렀다. 뒤에는 물자 손상이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE_OUTCOME_CH03_LUXURY_EXIT",
+      "event_type": "outcome",
+      "title": "잔해 수색 이탈 준비 결과",
+      "chars": 50,
+      "sha256": "c9956de07b09014b760647db4b87cd773f244a66fe7d72acab4525a2d3b4e1e8",
+      "text": "확보한 것은 퇴로 표시다. 내준 것은 몸 상태 부담이다. 그 자리에 시야 손실이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE_OUTCOME_CH03_LUXURY_RECON",
+      "event_type": "outcome",
+      "title": "잔해 수색 결과",
+      "chars": 45,
+      "sha256": "35e01a6af229d0de67308934f237e30b1bc3215c634d06c73974d81801d8aac8",
+      "text": "이번 선택으로 기록 복원을 얻었다. 치른 값은 손실 감수다. 남은 위험은 축소다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE",
+      "event_type": "exploration",
+      "title": "상층 반복 수색",
+      "chars": 364,
+      "sha256": "320a4a308ca0daa0270938b2021a520686abc5372ec9ca8e92b53e99677ccba6",
+      "text": "상층 반복 수색의 공기가 잠깐 얇아졌다. 유리 난간의 균열이 흔들리는 사이, 서지훈은 계단 난간을 붙잡고 남은 시간을 쟀다. 상층 반복 수색의 남은 칸은 물건보다 먼저 숨을 요구했다. 상층 반복 수색의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 상층 반복의 기척이 한 박자 낮아졌다. 상층 반복 수색의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 상층 바람이 잠깐 멎었다. 서지훈은 상층 반복 수색 앞에서 정전된 층계를 가늠하고 손에 든 것을 다시 세었다. 가방이 무거워질수록 발소리는 유리벽에 더 오래 남는다. 상층 반복 수색에서 건진 보급은 다음 문 앞의 숨을 늘린다. 그만큼 머문 시간도 흔적으로 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_OVERRUN_OUTCOME_CH03_OVERRUN_FIX",
+      "event_type": "outcome",
+      "title": "과부하 수리 결과",
+      "chars": 57,
+      "sha256": "a3d77f491059ca2c1945db3ecfefe8d685d6f792c36a3c4b86315c00bceecf62",
+      "text": "손에 남은 것은 철수선 확인이다. 대가로 위치 노출을 내줬고, 동행자 고립은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_OVERRUN_OUTCOME_CH03_OVERRUN_SKIP",
+      "event_type": "outcome",
+      "title": "과부하 보류 판단 결과",
+      "chars": 51,
+      "sha256": "92f11d64042549d7291729fa5b228cacd28fe220cb9e9da3ba78310f95e1f636",
+      "text": "교신 단축을 챙기고 자리를 떴다. 가방 압박을 값으로 치렀다. 뒤에는 신뢰 흔들림이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_OVERRUN",
+      "event_type": "choice",
+      "title": "전력 과부하 조치",
+      "chars": 465,
+      "sha256": "10c57b4988b105690e249f64f2ac7ba764e922292cea2388d1636a13ced70290",
+      "text": "전력 과부하 조치 앞에서 손이 멈춘다. 전력 과부하의 기척이 한 박자 낮아졌다. 전력 과부하 조치의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 전력 과부하 앞의 표식이 서로 다른 방향을 가리켰다. 전력 과부하 조치의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 전력 과부하의 기척이 한 박자 낮아졌다. 전력 과부하 조치의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 전력 과부하 앞의 표식이 서로 다른 방향을 가리켰다. 전력 과부하 조치의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 전력 과부하 조치 앞의 길은 둘로 갈라졌다. 전력 과부하 조치의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 전력 과부하 조치에서는 작은 소리도 다음 문까지 길게 번졌다. 전력 과부하 조치의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_SECURITY_SWEEP",
+      "event_type": "combat",
+      "title": "상층 경계 정리",
+      "chars": 341,
+      "sha256": "9dcb990220a2b0d2faefa3facf735afcc3e60ac15c193b8c3131665b67c42eac",
+      "text": "상층 경계 정리가 시야 가장자리에서 몸을 일으킨다. 유리 난간의 균열이 세번째 신호처럼 스쳤다. 상층 경계 정리에서 놓친 것은 다음 방의 위험으로 남았다. 상층 경계 정리의 가장자리로 숨이 모였다. 서지훈은 계단 난간을 붙잡고 상층 경계 정리에서 아직 닫히지 않은 길을 찾았다. 상층 경계 정리 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 상층 경계 정리의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 지금 멈추면 통로보다 후회가 먼저 닫힌다. 상층 경계 정리 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 상층 경계 정리의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_SUPPLY_OUTCOME_CH03_UPPER_SUPPLY_TAKE",
+      "event_type": "outcome",
+      "title": "회수 결과",
+      "chars": 52,
+      "sha256": "39e9c1ac24dc677dbe2c092d5764c05f7619167bcaed24447b2097629e376b4f",
+      "text": "확보한 것은 교신 단축이다. 내준 것은 몸 상태 부담이다. 그 자리에 신뢰 흔들림이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_SUPPLY_OUTCOME_CH03_UPPER_SUPPLY_SKIP",
+      "event_type": "outcome",
+      "title": "보류 판단 결과",
+      "chars": 49,
+      "sha256": "5b3e96b4e41f77adf40ba52b423e14c511e6f13817c5849892e787b278dd8aa7",
+      "text": "이번 선택으로 소음 감소를 얻었다. 치른 값은 감시 노출이다. 남은 위험은 경로 붕괴다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_SUPPLY",
+      "event_type": "exploration",
+      "title": "라운지",
+      "chars": 296,
+      "sha256": "5aecd496c50bf86d802a2ca585f61706f81d49e5b855c78505c7a7eb8d20d586",
+      "text": "상층 라운지에는 아직 손대지 않은 흔적이 남아 있다. 라운지의 남은 칸은 물건보다 먼저 숨을 요구했다. 라운지의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 상층 보급의 기척이 한 박자 낮아졌다. 라운지의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 라운지의 공기가 잠깐 얇아졌다. 깨진 반사광이 흔들리는 사이, 서지훈은 계단 난간을 붙잡고 남은 시간을 쟀다. 챙긴 물건은 뒤를 받치지만, 늦은 걸음은 먼저 들킨다. 라운지의 보급을 나눈다. 손은 든든해지고, 주변의 침묵은 한 겹 더 얇아진다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_WIND_OUTCOME_CH03_BRIDGE_SECURE",
+      "event_type": "outcome",
+      "title": "고정 확보 결과",
+      "chars": 55,
+      "sha256": "8386dbcd409dd2aae3ba0c26417ebabad2ff2e3b46cd1ce82ec16f41274a1a89",
+      "text": "손에 남은 것은 지도 갱신이다. 대가로 회수 지연을 내줬고, 시간 초과는 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_WIND_OUTCOME_CH03_BRIDGE_RUSH",
+      "event_type": "outcome",
+      "title": "압박 돌파 결과",
+      "chars": 51,
+      "sha256": "f373e62db905b51627e6537eba6e20ec4cedf79c82eb1a982318d4cee4204fcf",
+      "text": "회수품 확보를 챙기고 자리를 떴다. 감시 노출을 값으로 치렀다. 뒤에는 소음 반향이 남는다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_WIND",
+      "event_type": "exploration",
+      "title": "하늘다리 돌풍",
+      "chars": 425,
+      "sha256": "b0655784cc7c6191642eb74e94693f36d78728d9848ba0f5887c858ff9b92a9b",
+      "text": "스카이브리지에는 아직 손대지 않은 흔적이 남아 있다. 하늘다리 돌풍 너머에서 정전된 쇼윈도가 희미하게 답했다. 하늘다리 돌풍의 남은 선택은 빠르게 작아지고 있었다. 하늘다리 돌풍의 숨결이 한 박자 낮아졌다. 하늘다리 돌풍의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 하늘다리 돌풍 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 하늘다리 돌풍의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 하늘다리 돌풍의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다. 하늘다리 돌풍 앞에서 데려갈 이름과 놓을 이름이 다시 갈라졌다. 하늘다리 돌풍의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 유리 난간의 균열이 잠깐 멎었다. 서지훈은 하늘다리 돌풍 앞에서 정전된 층계를 가늠하고 손에 든 것을 다시 세었다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_ARMORY_OUTCOME_CH03_GLASS_ARMORY",
+      "event_type": "outcome",
+      "title": "유리정원 결과",
+      "chars": 51,
+      "sha256": "a30b90ac55fa35e15579c0736e6cc33d156cf8372af1c1160981280371a063ac",
+      "text": "확보한 것은 가방 정리다. 내준 것은 시간 소모다. 그 자리에 돌아가는 길 잠김이 들어섰다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_ARMORY_OUTCOME_CH03_GLASS_RUSH",
+      "event_type": "outcome",
+      "title": "압박 돌파 결과",
+      "chars": 56,
+      "sha256": "cf4f107333a0c837c7076d7e15903bbc6c474a9c906b84e84f67403e5c424398",
+      "text": "이번 선택으로 다음 레이드 힌트를 얻었다. 치른 값은 몸 상태 부담이다. 남은 위험은 무전 감청이다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_ARMORY",
+      "event_type": "exploration",
+      "title": "유리정원 전초 정비",
+      "chars": 381,
+      "sha256": "e0ea3471f631028ce42020a314ab25e5e8364edc879db6fa082a8b351b55fc19",
+      "text": "옥상 송신정원에는 아직 손대지 않은 흔적이 남아 있다. 유리정원 전초 앞의 표식이 서로 다른 방향을 가리켰다. 유리정원 전초 정비의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 유리정원 전초의 기척이 한 박자 낮아졌다. 유리정원 전초 정비의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 유리정원 전초 앞의 표식이 서로 다른 방향을 가리켰다. 유리정원 전초 정비의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 유리정원 전초 정비 앞의 길은 둘로 갈라졌다. 유리정원 전초 정비의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 유리정원 전초 정비에서 켜 둔 표식이 다음 문을 찾게 한다. 대신 어둠도 그 위치를 기억한다."
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GARDEN_APPROACH",
+      "event_type": "dialogue",
+      "title": "유리정원 접근",
+      "chars": 364,
+      "sha256": "54e7a483ce5680b4d46bfb41d3c2c5679775f806fc290d8926bf9ab3f109d263",
+      "text": "옥상 송신정원에서 건네진 말은 설명보다 먼저 상처를 건드린다. 유리정원 접근 앞의 표식이 서로 다른 방향을 가리켰다. 유리정원 접근의 공기가 무거워지며 반사광이 몸보다 늦게 따라붙었다. 유리정원 접근의 숨결이 한 박자 낮아졌다. 유리정원 접근의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다. 유리정원 접근 앞의 표식이 서로 다른 방향을 가리켰다. 유리정원 접근의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다. 유리정원 접근 앞의 길은 둘로 갈라졌다. 유리정원 접근의 공기가 무거워지며 비어 있는 쇼룸의 빛이 다음 각도를 가늘게 열었다. 유리정원 접근에서 불빛 하나를 살린다. 통로는 보이고, 주변의 시선도 함께 열린다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_ENTRY",
+      "event_type": "briefing",
+      "title": "상자들의 도시",
+      "chars": 307,
+      "sha256": "55892efc50ea37951a412683f23954305ca243a0892c2b37acaffbc43a99b8f5",
+      "text": "컨테이너 벽마다 지워진 배송 번호와 새로 적힌 생존자 이름이 겹친다. 냉장 상자의 온도 경고등이 붉게 깜박인다. 약은 차갑게 남았는데 받을 사람의 순서만 뜨거워졌어요. 매복을 넘기면 누구 이름부터 적을지 바로 정해야 해요. 물자는 등을 받쳐 주지만, 지체한 시간은 빛을 불러온다. 의료 상자 분배에서 첫 배분 영수증이 열린다. CH03 철수 영수증을 확인한 뒤 의료 상자 분배의 첫 배분이 열린다. 첫 결정을 늦출수록 냉장 약품의 가치가 사라진다. 유리정원 이탈 방식의 소음 -1 또는 부상 +4가 노선 요약에 남고 냉장 약품 운반 여유에 반영된다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_ALLOC_OUTCOME_CH04_COLD_RECORD",
+      "event_type": "outcome",
+      "title": "냉각로 확인 기록 결과",
+      "chars": 69,
+      "sha256": "8986f28c24cb23fab7283dc8363d65918becac279a30ba5e2132f8940f08c4b9",
+      "text": "이번 선택으로 보급 1회·기록국 평판 2 상승을 얻었다. 치른 값은 현장 약품 부족이다. 남은 위험은 문정 생존자 반발이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_ALLOC_OUTCOME_CH04_COLD_LOCALS",
+      "event_type": "outcome",
+      "title": "냉각로 확인 결과",
+      "chars": 84,
+      "sha256": "39946f3b1a6c8cb6f75daa80dd927832a0ffca03aead3232dd66ce57865b02f8",
+      "text": "손에 남은 것은 문정 평판 2 상승·한소명 신뢰 1 상승이다. 대가로 공식 수령 기록 없음을 내줬고, 다음 배급 증명 약화는 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_ALLOC",
+      "event_type": "choice",
+      "title": "의료 상자 분배",
+      "chars": 205,
+      "sha256": "663e9d09577a89125bc78a991181bf977975a6896e853cab2316f59b131aefd3",
+      "text": "기록국 수령표와 문정 생존자 명단이 냉장 상자 위에 나란히 놓인다. 온도 표시가 한 칸씩 내려간다. 기록을 남기면 다음 배급을 증명할 수 있어. 하지만 지금 기다리는 사람에게는 다음 배급이 없을 수도 있어. 가져간 만큼 버틸 수 있어도, 남은 시간은 더는 숨겨 주지 않는다. 선택 직후 첫 배분 영수증을 저장한다. 평판과 신뢰, 진실·연민 경로를 선택 전에 확인한다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LOBBY_MEET_OUTCOME_CH04_LOBBY_HELP",
+      "event_type": "outcome",
+      "title": "접선 결과",
+      "chars": 51,
+      "sha256": "b36223615883fbc8c445fec5e8afe226b3770de9910bff36f4749c70218cbda7",
+      "text": "회수품 확보를 챙기고 자리를 떴다. 소음 부담을 값으로 치렀다. 뒤에는 소음 반향이 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LOBBY_MEET_OUTCOME_CH04_LOBBY_SOLO",
+      "event_type": "outcome",
+      "title": "접선 결과",
+      "chars": 49,
+      "sha256": "19222120d29ec12a9e58241934f6cc4d9a2a7bfc18c9da3678d86177d00a99b5",
+      "text": "확보한 것은 우회로 표시다. 내준 것은 우회 비용이다. 그 자리에 기록 훼손이 들어섰다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LOBBY_MEET",
+      "event_type": "dialogue",
+      "title": "한소명의 안내",
+      "chars": 315,
+      "sha256": "e4b74b441cf707d45e1d5e60bfc32a849fe00d14dfae70336408bb540bc2037f",
+      "text": "자동분류센터 로비에서 건네진 말은 설명보다 먼저 상처를 건드린다. 분류표는 젖지 않았다. 그래서 더 차갑게 사람을 나누고 있었다. 한소명의 안내의 소음이 낮아지는 틈에 서지훈은 집게선의 간격을 재며 발을 옮겼다. 레일 아래 금속음만 뒤에 남았다. 상자를 살리는 동선과 사람을 보내는 동선이 같은 레일을 쓴다. 한소명의 안내의 숨결이 한 박자 낮아졌다. 레일 아래의 금속음이 남은 숨을 세었다. 상자를 살리는 동선과 사람을 보내는 동선이 같은 레일을 쓴다. 한소명의 안내 앞의 길은 둘로 갈라졌다. 컨베이어는 멈췄지만, 상자는 아직 누가 먼저 빠져나갔는지 기억했다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_ROUTE_SELECTION_OUTCOME_CH04_ROUTE_RAIL",
+      "event_type": "outcome",
+      "title": "상자들의 도시 결과",
+      "chars": 56,
+      "sha256": "fe58e9266ae70d0926929f8dba6366af75937c443d438f10ab639c4a06b7e79f",
+      "text": "이번 선택으로 예측 가능한 철로를 얻었다. 치른 값은 긴 이동 시간이다. 남은 위험은 철로 매복이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_ROUTE_SELECTION_OUTCOME_CH04_ROUTE_DELIVERY",
+      "event_type": "outcome",
+      "title": "상자들의 도시 결과",
+      "chars": 60,
+      "sha256": "f69fc9ef418c5028ebf41750fa3c7655713de7e76b87333f46ca466029c12639",
+      "text": "손에 남은 것은 빠른 배송 터널이다. 대가로 오염 4 상승을 내줬고, 침수 구간은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_ROUTE_SELECTION",
+      "event_type": "choice",
+      "title": "판교 진입 분류",
+      "chars": 229,
+      "sha256": "a4f3174503b6e30d3b04b1994d6b64573e2451ece22156a9eef911c194363bd0",
+      "text": "철로 표지판은 반쯤 남았고 배송 터널 바닥에는 탁한 물이 무릎 높이로 찼다. 두 길 모두 같은 검문소 뒤편에서 다시 만난다. 철로는 늦어도 예측할 수 있어. 배송 터널은 빠르지만 오염 4를 몸으로 받아야 해. 상자를 살리는 동선과 사람을 보내는 동선이 같은 레일을 쓴다. 판교 진입 분류의 공기는 조금 더 무거워졌다. 경로 선택 영수증은 배지 획득 장면까지 유지된다. 경로와 오염 비용을 한 화면에서 비교한다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_SECURITY_BADGES_OUTCOME_CH04_BADGE_ORIGINAL",
+      "event_type": "outcome",
+      "title": "상자들의 도시 결과",
+      "chars": 62,
+      "sha256": "673bbf669e68241e034da05bebec62156d0fc069c03724bc752c6f2cc18a670b",
+      "text": "배지 2개·보급 1회를 챙기고 자리를 떴다. 원본 회수 시간을 값으로 치렀다. 뒤에는 공식 기록 노출이 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_SECURITY_BADGES_OUTCOME_CH04_BADGE_FORGE",
+      "event_type": "outcome",
+      "title": "상자들의 도시 결과",
+      "chars": 60,
+      "sha256": "4de5b93f87fd599ff7a983c6a4d0cd506a706adf0ad247e7b3414487bd70f912",
+      "text": "확보한 것은 위조 배지 2개다. 내준 것은 소음 3 상승·긴장 1 상승이다. 그 자리에 1 감소가 들어섰다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_SECURITY_BADGES",
+      "event_type": "exploration",
+      "title": "보안 사무실 탈취",
+      "chars": 240,
+      "sha256": "7c093ad8b67bce5292612ed2a07099d01f1cb711cec09c26325707029ddb7b98",
+      "text": "배송 배지와 보안 배지가 서로 다른 잠금함에 들어 있다. 옆 단말기에는 원본 회수 기록과 위조 장치가 동시에 켜져 있다. 둘 다 있어야 판교 문이 열려. 원본은 느리고 기록이 남고, 위조는 빠르지만 소리와 빚이 남아. 상자를 살리는 동선과 사람을 보내는 동선이 같은 레일을 쓴다. 보안 사무실 탈취의 공기는 조금 더 무거워졌다. 배지 출처와 수치 변화를 영수증으로 저장한다. 두 선택 모두 배지 2개를 얻지만 후속 비용이 다르다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_DECISION_OUTCOME_CH04_LINE_ON",
+      "event_type": "outcome",
+      "title": "선로 가동 결과",
+      "chars": 77,
+      "sha256": "7ca7f894c6f9735eda5893fdbe0e66b15b5570591d79913a458a0a4ec687a00e",
+      "text": "이번 선택으로 의료 우선·통제 점수 1 상승을 얻었다. 치른 값은 소음 8 상승·긴장 1 상승이다. 남은 위험은 한소명 신뢰 1 하락이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_DECISION_OUTCOME_CH04_LINE_OFF",
+      "event_type": "outcome",
+      "title": "선로 차단 결과",
+      "chars": 78,
+      "sha256": "07169328f3e4e53a9e6fadf3d22cd60c51a6959ebaecfe52b6ca95265e661e77",
+      "text": "손에 남은 것은 소음 1 감소·한소명 신뢰 1 상승이다. 대가로 의료품 운송 중단을 내줬고, 통제 점수 1 하락은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_DECISION",
+      "event_type": "choice",
+      "title": "분류 라인의 선택",
+      "chars": 236,
+      "sha256": "5c1be0a9b21307eb5ccbc37ef9d1551dffdb7b0c3679ac607d7956e43815bbfc",
+      "text": "분류 벨트 위로 의료 상자와 피난 표찰이 서로 다른 방향을 가리킨다. 주 전원 스위치가 켜질 때마다 터널 전체가 울린다. 선을 켜면 약이 먼저 가요. 대신 여기 있는 사람들은 그 소리를 견뎌야 해요. 끄면 사람부터 보낼 수 있지만 의료품은 멈춥니다. 한소명의 목소리는 낮았지만 손끝은 분류표 모서리를 찢을 만큼 떨렸다. 선택 직후 통제 경로와 신뢰 영수증을 고정한다. 소음과 한소명 신뢰가 반대 방향으로 움직이는 선택이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_BOSS_PICKER",
+      "event_type": "boss",
+      "title": "분류 라인 '피커'",
+      "chars": 277,
+      "sha256": "21465b3b75afdc9216f3c45470eda86abac5ed14594e910326e4d9f1fae45e9e",
+      "text": "패키지 분류 메인홀 안쪽에서 칼날보다 먼저 스캐너 빛이 도착했다. 집게선은 서지훈을 노리기 전에 의료 상자와 생존자 팔찌를 같은 칸에 밀어 넣었다. 피커의 약점은 철판이 아니라 순서표였다. 때려 부수면 길은 열려. 그런데 어느 칸을 먼저 살렸는지는 기록에 남아. 저 라인은 사람을 죽이는 게 아니라, 사람이 서로를 뒤로 미루게 만들어. 한소명은 총구를 들었지만 조준점은 피커의 머리가 아니라 분류 라인의 순서 센서였다. 컨베이어의 마지막 금속음은 보급품의 무게와 놓친 명단의 무게를 같이 세었다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXTRACTION",
+      "event_type": "extraction",
+      "title": "판교 진입권",
+      "chars": 246,
+      "sha256": "8d8de4487476c8a5c68f7e247672764a6168d684aa56990963a82a0173e4dc21",
+      "text": "판교 방면 차단문이 배지 두 장을 차례로 읽고 열린다. 한소명은 물류선 기록과 생존자 명단을 같은 봉투에 넣는다. 어느 상자를 먼저 보냈는지보다 누가 기다렸는지가 오래 남아요. 미러센터는 배지 출처까지 읽을 겁니다. 여기서 한 선택을 숨길 수 없어요. 한소명은 진입권을 건네면서도 바코드를 끝까지 보지 못했다. CH04 완료와 CH05 이동이 저장된 뒤 다음 행동이 열린다. CH04 결산은 물류 우선순위를 CH05의 출입 자격으로 바꾼다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_RAIL_JAM",
+      "event_type": "combat",
+      "title": "의료 상자 선로",
+      "chars": 298,
+      "sha256": "eb87f705a605f1c99e9976317ee7d5a1205d4f198accf6ce34b65a3b48f46302",
+      "text": "의료 상자 선로가 시야 가장자리에서 몸을 일으킨다. 의료 상자 선로의 남은 칸은 물건보다 먼저 숨을 요구했다. 레일 아래의 금속음이 남은 숨을 세었다. 피커의 집게선이 잠깐 멎었다. 서지훈은 의료 상자 선로 앞에서 집게선의 간격을 재며 손에 든 것을 다시 세었다. 의료 상자 선로 너머에서 멈춘 컨베이어가 희미하게 답했다. 의료 상자 선로의 남은 선택은 빠르게 작아지고 있었다. 가방이 무거워질수록 발소리는 유리벽에 더 오래 남는다. 의료 상자 선로에서 챙긴 물자는 밤을 길게 버티게 한다. 대신 현장에 남은 발자국도 더 선명해진다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_SECURITY_SWEEP",
+      "event_type": "danger",
+      "title": "한소명 기록",
+      "chars": 315,
+      "sha256": "fac3c95fa3b5067dbe1961cd40a5cd834069f95ee6e80570e4e4dc2ab93a13eb",
+      "text": "보안 사무실의 공기가 낮게 눌리고, 한소명 기록이 발밑으로 다가온다. 한소명 기록의 숨결이 한 박자 낮아졌다. 한소명 기록의 공기가 무거워지며 레일 아래의 금속음이 남은 숨을 세었다. 한소명 기록 너머에서 멈춘 컨베이어가 희미하게 답했다. 한소명 기록의 남은 선택은 빠르게 작아지고 있었다. 한소명 기록 앞의 표식이 서로 다른 방향을 가리켰다. 집게선의 그림자가 팔꿈치 뒤를 스쳤다. 한소명 기록 앞의 길은 둘로 갈라졌다. 차가운 상자 그림자가 좁은 길을 한 칸 줄였다. 한소명 기록에 남은 이름을 접어 넣는다. 누락된 이름은 다음 송출에서 더 작게 들릴 것이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_PRE_BOSS_CHECK_OUTCOME_CH04_PREP_ON",
+      "event_type": "outcome",
+      "title": "준비 가동 결과",
+      "chars": 51,
+      "sha256": "bb3a00f8ac1d794dce076bfab51583083ad91c5e9a06dd650314cbd65f677256",
+      "text": "단서 확보를 챙기고 자리를 떴다. 손실 감수를 값으로 치렀다. 뒤에는 전투 조기화가 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_PRE_BOSS_CHECK_OUTCOME_CH04_PREP_HOLD",
+      "event_type": "outcome",
+      "title": "준비 결과",
+      "chars": 49,
+      "sha256": "9a88052521c9ee00664a0400bbb75e8df8460d73bab3a17267c49a826e6f143d",
+      "text": "확보한 것은 경보 지연이다. 내준 것은 철수 지연이다. 그 자리에 경보 압박이 들어섰다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_PRE_BOSS_CHECK",
+      "event_type": "dialogue",
+      "title": "라인 재가동 점검",
+      "chars": 360,
+      "sha256": "2a6354b24a480c91306fea5cacc21c35ee67792ea4c5d75bc82af9d8658f0700",
+      "text": "패키지 분류 메인홀에서 건네진 말은 설명보다 먼저 상처를 건드린다. 피커의 집게선이 낮게 흔들렸다. 라인 재가동 점검에서 서지훈은 레일의 잔진동을 밟고 첫 퇴로를 먼저 가늠했다. 라인 재가동 앞의 표식이 서로 다른 방향을 가리켰다. 라인 재가동 점검의 공기가 무거워지며 컨베이어의 멈춘 턱이 이동 순서를 다시 물었다. 라인 재가동의 기척이 한 박자 낮아졌다. 차가운 상자 그림자가 좁은 길을 한 칸 줄였다. 라인 재가동 점검 앞의 길은 둘로 갈라졌다. 라인 재가동 점검의 공기가 무거워지며 레일 아래의 금속음이 남은 숨을 세었다. 라인 재가동 점검의 소음이 낮아지는 틈에 서지훈은 집게선의 간격을 재며 발을 옮겼다. 상자 그림자만 뒤에 남았다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_AMBUSH",
+      "event_type": "combat",
+      "title": "물류 터널 매복",
+      "chars": 191,
+      "sha256": "c985c65e08b9fbb924198825282324341ceeaa1febb09fd2856941e261e5ba44",
+      "text": "바퀴 달린 냉장 상자가 충돌음과 함께 터널 중앙으로 밀려온다. 운반 감염체의 사슬이 상자 손잡이에 감겨 있다. 상자부터 떼어 내. 오래 싸우면 약이 먼저 죽어. 끝나면 누구에게 보낼지도 미루지 마. 탄을 아껴도 다치면 끝이야. 빠르게 열고 조용히 빠져. 승리 뒤 의료 상자 분배가 열린다. 짧은 전투 뒤 첫 의미 있는 선택으로 즉시 이어진다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_TRADE",
+      "event_type": "outcome",
+      "title": "거래 성사 결과",
+      "chars": 49,
+      "sha256": "39cccc619a5f5641534140d2cb1673911d03218711dc4c3c75266daecc844a32",
+      "text": "이번 선택으로 전투 여유를 얻었다. 치른 값은 보상 축소다. 남은 위험은 잠복 위협이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_SKIP",
+      "event_type": "outcome",
+      "title": "보류 판단 결과",
+      "chars": 55,
+      "sha256": "c14962406c6f873eded474f7cabef7f41ac88631eb76c728ebf758a68611271b",
+      "text": "손에 남은 것은 지도 갱신이다. 대가로 교신 노출을 내줬고, 시간 초과는 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_FARM",
+      "event_type": "outcome",
+      "title": "채집 결과",
+      "chars": 50,
+      "sha256": "8ec041c3dde94f354545616d63d99689a5cc02dbf44266ac808830bff7676b72",
+      "text": "지도 갱신을 챙기고 자리를 떴다. 회수 지연을 값으로 치렀다. 뒤에는 시간 초과가 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_REPAIR_TRADE",
+      "event_type": "outcome",
+      "title": "복구 거래 성사 결과",
+      "chars": 48,
+      "sha256": "c65c14a05e107463deb5517f5c6b282290cfdf18a86f24a01d7dc9b21b0f9b50",
+      "text": "확보한 것은 시야 확보다. 내준 것은 위치 노출이다. 그 자리에 감염 노출이 들어섰다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER",
+      "event_type": "dialogue",
+      "title": "현장 거래",
+      "chars": 355,
+      "sha256": "bdf614d071f0f2eac06c1bb7189c4c7d9b9d7e9eabf09be890437f9a911a4dae",
+      "text": "자동분류센터 로비에서 건네진 말은 설명보다 먼저 상처를 건드린다. 멈춘 컨베이어가 첫 신호처럼 스쳤다. 현장 거래에서 놓친 것은 다음 방의 위험으로 남았다. 현장 거래 앞의 표식이 서로 다른 방향을 가리켰다. 집게선의 그림자가 팔꿈치 뒤를 스쳤다. 현장 거래의 숨결이 한 박자 낮아졌다. 현장 거래의 남은 칸은 물건보다 먼저 숨을 요구했고, 집게선의 그림자가 팔꿈치 뒤를 스쳤다. 현장 거래 앞의 길은 둘로 갈라졌다. 현장 거래의 남은 칸은 물건보다 먼저 숨을 요구했고, 컨베이어의 멈춘 턱이 이동 순서를 다시 물었다. 현장 거래의 가장자리로 숨이 모였다. 서지훈은 분류표의 빈칸을 접으며 현장 거래에서 아직 닫히지 않은 길을 찾았다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXTRACTION_PREP_OUTCOME_CH04_EXTRACT_SORT",
+      "event_type": "outcome",
+      "title": "의료 상자 우선 결과",
+      "chars": 61,
+      "sha256": "98d491e97d497d55d01bf04ad48e9215fd5af0fda4ab6a2be4fd9f41c83fd58b",
+      "text": "이번 선택으로 치료 물자 확보를 얻었다. 치른 값은 생존자 대피 지연이다. 남은 위험은 한소명 신뢰 하락이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXTRACTION_PREP_OUTCOME_CH04_EXTRACT_RUN",
+      "event_type": "outcome",
+      "title": "생존자 명단 우선 결과",
+      "chars": 67,
+      "sha256": "3d286bd32f43dddc0e263fa92a9eb5e4b7992dee1480e64cfffdd1a2c316d229",
+      "text": "손에 남은 것은 대피 인원 확보다. 대가로 의료 상자 파손을 내줬고, 다음 레이드 회복 부족은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXTRACTION_PREP",
+      "event_type": "scene",
+      "title": "대피 순서 재분류",
+      "chars": 279,
+      "sha256": "304cba388e6ea707c3810d459f4213ee64953e318b7ad553e4f96cad06e87638",
+      "text": "멈춘 집게선 아래로 냉장 의료 상자의 물방울이 떨어졌다. 바닥에는 생존자 팔찌가 젖은 종이처럼 달라붙었다. 서지훈은 상자와 이름을 같은 손으로 잡을 수 없다는 사실을, 너무 늦게 이해했다. 약을 먼저 보내면 뒤쪽 사람들한테 오늘 밤이 생겨. 명단을 먼저 보내면 여기 남은 사람들이 내일 아침까지 이름으로 불릴 수 있어. 한소명은 어느 쪽도 선뜻 말하지 못했다. 선택지는 총알보다 무거웠다. 이 장면은 CH04의 마지막 결정을 단순 전투 보상이 아니라 보급과 사람 사이의 즉시 보이는 대가로 고정한다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LOADING_AMBUSH",
+      "event_type": "danger",
+      "title": "하역 구역 매복",
+      "chars": 321,
+      "sha256": "170f773a6d6260686e339748791f1e2f4088adb7aa007ba8173d49e9f9d19843",
+      "text": "자동분류센터 로비의 공기가 낮게 눌리고, 하역 구역 매복이 발밑으로 다가온다. 하역 구역의 기척이 한 박자 낮아졌다. 하역 구역 매복의 공기가 무거워지며 차가운 상자 그림자가 좁은 길을 한 칸 줄였다. 하역 구역 매복의 공기가 잠깐 얇아졌다. 상자 그림자가 흔들리는 사이, 서지훈은 분류표의 빈칸을 접으며 남은 시간을 쟀다. 다음 흔적은 피커의 집게선 옆에 남았다. 하역 구역 매복의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 탄을 아껴도 다치면 끝이야. 빠르게 열고 조용히 빠져. 하역 구역 매복을 낮게 넘기면 길이 남는다. 크게 흔들면 뒤따르는 발소리가 먼저 늘어난다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_AUDIT_OUTCOME_CH04_COLD_AUDIT",
+      "event_type": "outcome",
+      "title": "냉각로 확인 결과",
+      "chars": 50,
+      "sha256": "f9d9ed7ad7f3a1e6257eee9eeb0f1908a6e4bcdce5c42d525b5f2dc8403f29ef",
+      "text": "구조 신호를 챙기고 자리를 떴다. 기력 소모를 값으로 치렀다. 뒤에는 부상 위험이 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_AUDIT_OUTCOME_CH04_COLD_SKIP",
+      "event_type": "outcome",
+      "title": "냉각로 확인 보류 판단 결과",
+      "chars": 49,
+      "sha256": "2dd67dafcb51d7d6a509d181b17983d8b26fd895351adb5020d8c922d4ba253c",
+      "text": "확보한 것은 안전거리 확보다. 내준 것은 장비 마모다. 그 자리에 단서 손실이 들어섰다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_AUDIT",
+      "event_type": "exploration",
+      "title": "냉장창고 점검",
+      "chars": 319,
+      "sha256": "86a9d7a3f1335451189409e4aebf2ec9c29d7f9cb24951a829ef0608bdfbd967",
+      "text": "가락 냉장창고에는 아직 손대지 않은 흔적이 남아 있다. 냉장창고 점검의 남은 칸은 물건보다 먼저 숨을 요구했다. 냉장창고 점검의 공기가 무거워지며 집게선의 그림자가 팔꿈치 뒤를 스쳤다. 냉장창고 점검 너머에서 차가운 분류표가 희미하게 답했다. 냉장창고 점검의 남은 선택은 빠르게 작아지고 있었다. 냉장창고 점검의 가장자리로 숨이 모였다. 서지훈은 분류표의 빈칸을 접으며 냉장창고 점검에서 아직 닫히지 않은 길을 찾았다. 챙긴 물건은 뒤를 받치지만, 늦은 걸음은 먼저 들킨다. 냉장창고 점검에서 건진 보급은 다음 문 앞의 숨을 늘린다. 그만큼 머문 시간도 흔적으로 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_PREP",
+      "event_type": "dialogue",
+      "title": "라인 준비",
+      "chars": 436,
+      "sha256": "5c447e5832efface98e7ac284ddbd8f8d1a280c7f0fd4ed9e23042bf1859ca25",
+      "text": "패키지 분류 메인홀에서 건네진 말은 설명보다 먼저 상처를 건드린다. 라인 준비의 남은 칸은 물건보다 먼저 숨을 요구했다. 라인 준비의 공기가 무거워지며 집게선의 그림자가 팔꿈치 뒤를 스쳤다. 라인 준비의 가장자리로 숨이 모였다. 서지훈은 분류표의 빈칸을 접으며 라인 준비에서 아직 닫히지 않은 길을 찾았다. 라인 준비 앞의 표식이 서로 다른 방향을 가리켰다. 라인 준비의 공기가 무거워지며 컨베이어의 멈춘 턱이 이동 순서를 다시 물었다. 라인 준비의 숨결이 한 박자 낮아졌다. 라인 준비의 공기가 무거워지며 차가운 상자 그림자가 좁은 길을 한 칸 줄였다. 라인 준비 앞의 길은 둘로 갈라졌다. 라인 준비의 남은 칸은 물건보다 먼저 숨을 요구했고, 레일 아래의 금속음이 남은 숨을 세었다. 상자 그림자가 세번째 신호처럼 스쳤다. 라인 준비에서 놓친 것은 다음 방의 위험으로 남았다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXIT_CHECK_OUTCOME_CH04_EXIT_CHECK",
+      "event_type": "outcome",
+      "title": "이탈 준비 결과",
+      "chars": 49,
+      "sha256": "4ab4d8287cc7fb070c8c3b4fbcd2c3fde31927c48a115eb634b392969712cfb4",
+      "text": "이번 선택으로 보급 보존을 얻었다. 치른 값은 주의 분산이다. 남은 위험은 문턱 봉쇄다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXIT_CHECK_OUTCOME_CH04_EXIT_SKIP",
+      "event_type": "outcome",
+      "title": "이탈 준비 보류 판단 결과",
+      "chars": 58,
+      "sha256": "ef5ea8551b8b8e5a633fce41a27675c0f6477037d29311669ea219643f1579d2",
+      "text": "손에 남은 것은 가방 정리다. 대가로 시간 소모를 내줬고, 돌아가는 길 잠김은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXIT_CHECK",
+      "event_type": "scene",
+      "title": "철수 점검",
+      "chars": 248,
+      "sha256": "e5ce8dfdcc947296ed6573e24e3ae8c6c8a4839ca6956722ebdbc68434f77971",
+      "text": "배송 터널의 정적 사이로 철수 점검의 짧은 틈이 열린다. 철수 점검의 공기가 잠깐 얇아졌다. 차가운 분류표가 흔들리는 사이, 서지훈은 분류표의 빈칸을 접으며 남은 시간을 쟀다. 멈춘 컨베이어가 낮게 흔들렸다. 철수 점검에서 서지훈은 레일의 잔진동을 밟고 다음 퇴로를 먼저 가늠했다. 첫 흔적은 레일 아래 금속음 옆에 남았다. 철수 점검의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 빨리 나오면 산다. 다만 남겨 둔 것들이 다음 밤에 따라온다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_REPAIR_OUTCOME_CH04_LINE_REPAIR_ON",
+      "event_type": "outcome",
+      "title": "선로 복구 가동 결과",
+      "chars": 50,
+      "sha256": "1b2e0a0c119189691f62afe1ff9d5b48a8426b45789a14fd285520fcffee34e7",
+      "text": "정찰 근거를 챙기고 자리를 떴다. 판단 지연을 값으로 치렀다. 뒤에는 철수 압박이 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_REPAIR_OUTCOME_CH04_LINE_REPAIR_BYPASS",
+      "event_type": "outcome",
+      "title": "선로 복구 우회 통과 결과",
+      "chars": 48,
+      "sha256": "cbee428a936bc89fd3df24ac3f7a2e6a3765e90c7d276cb1c7ddd6db15339306",
+      "text": "확보한 것은 감염 회피다. 내준 것은 추가 확인이다. 그 자리에 오염 확산이 들어섰다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_REPAIR",
+      "event_type": "choice",
+      "title": "라인 전원 복구",
+      "chars": 464,
+      "sha256": "06003609bd0e20281cf580114d73e8171601028525b116cdfb931740d9097a67",
+      "text": "라인 전원 복구 앞에서 손이 멈춘다. 라인 전원의 기척이 한 박자 낮아졌다. 라인 전원 복구의 공기가 무거워지며 레일 아래의 금속음이 남은 숨을 세었다. 라인 전원 앞의 표식이 서로 다른 방향을 가리켰다. 라인 전원 복구의 남은 칸은 물건보다 먼저 숨을 요구했고, 컨베이어의 멈춘 턱이 이동 순서를 다시 물었다. 상자 그림자가 잠깐 멎었다. 서지훈은 라인 전원 복구 앞에서 집게선의 간격을 재며 손에 든 것을 다시 세었다. 라인 전원 앞의 표식이 서로 다른 방향을 가리켰다. 라인 전원 복구의 공기가 무거워지며 컨베이어의 멈춘 턱이 이동 순서를 다시 물었다. 라인 전원 복구 앞의 길은 둘로 갈라졌다. 라인 전원 복구의 공기가 무거워지며 컨베이어의 멈춘 턱이 이동 순서를 다시 물었다. 라인 전원 복구에서는 작은 소리도 다음 문까지 길게 번졌다. 라인 전원 복구의 공기가 무거워지며 차가운 상자 그림자가 좁은 길을 한 칸 줄였다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE_OUTCOME_CH04_CACHE_OPEN",
+      "event_type": "outcome",
+      "title": "보관함 개방 확인 결과",
+      "chars": 54,
+      "sha256": "85eec1a3b4a61800f9d99d898b227a38acd471cb3203861a6af702b80990fbb0",
+      "text": "이번 선택으로 위협 위치 확인을 얻었다. 치른 값은 소음 부담이다. 남은 위험은 적응체 접근이다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE_OUTCOME_CH04_CACHE_SKIP",
+      "event_type": "outcome",
+      "title": "보관함 보류 판단 결과",
+      "chars": 56,
+      "sha256": "005f59496479d0215ebeff6a18ca8f0d07c4e5fc68619e450d171ceb52f67ee4",
+      "text": "손에 남은 것은 안전거리 확보다. 대가로 보상 축소를 내줬고, 단서 손실은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE_OUTCOME_CH04_CACHE_FARM",
+      "event_type": "outcome",
+      "title": "보관함 채집 결과",
+      "chars": 44,
+      "sha256": "a29aeba182069fde18d9445a012178cc6c411382a502159bfa7be9a231bdbc42",
+      "text": "지연을 챙기고 자리를 떴다. 시간 소모를 값으로 치렀다. 뒤에는 압박이 남는다."
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE",
+      "event_type": "exploration",
+      "title": "판교 진입 분류표",
+      "chars": 458,
+      "sha256": "e6c6df273a340a30f30c1a53c18da0f2d6a903003af32614daebbad6ee34aaa3",
+      "text": "배송 터널에는 아직 손대지 않은 흔적이 남아 있다. 상자 그림자가 낮게 흔들렸다. 판교 진입 분류표에서 서지훈은 레일의 잔진동을 밟고 첫 퇴로를 먼저 가늠했다. 판교 진입 분류표의 소음이 낮아지는 틈에 서지훈은 집게선의 간격을 재며 발을 옮겼다. 레일 아래 금속음만 뒤에 남았다. 판교 진입 앞의 표식이 서로 다른 방향을 가리켰다. 판교 진입 분류표의 남은 칸은 물건보다 먼저 숨을 요구했고, 차가운 상자 그림자가 좁은 길을 한 칸 줄였다. 판교 진입의 기척이 한 박자 낮아졌다. 판교 진입 분류표의 공기가 무거워지며 레일 아래의 금속음이 남은 숨을 세었다. 판교 진입 분류표 앞의 길은 둘로 갈라졌다. 판교 진입 분류표의 공기가 무거워지며 집게선의 그림자가 팔꿈치 뒤를 스쳤다. 판교 진입 분류표의 남은 칸은 물건보다 먼저 숨을 요구했다. 판교 진입 분류표의 공기가 무거워지며 레일 아래의 금속음이 남은 숨을 세었다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_ENTRY",
+      "event_type": "briefing",
+      "title": "미러센터 접근",
+      "chars": 322,
+      "sha256": "51bf19ebeabb2c4c5787cf6b8fe9639cede915706ebe4e2392caf400ec7236c0",
+      "text": "외곽문 판독기가 배지 두 장과 진입권을 순서대로 삼킨다. 건물 안쪽에서 김아라의 호출 부호가 한 번 들리고 곧 잡음에 묻힌다. 문은 열렸어. 이제 안에서 무엇을 먼저 읽을지가 문제야. 지도는 길을 살리고, 로그는 여기서 무슨 일이 있었는지 남겨. 김아라의 무전 뒤로 누군가 마른 기침을 삼켰다. 죽은 캠퍼스 로비에서 첫 정보 선택이 열린다. CH04 대피 영수증을 확인한 뒤 진입 전투와 죽은 캠퍼스 로비가 열린다. 기존 CH04 회수품 조건을 통과해야 미러센터 진입이 시작된다. 배지와 진입권뿐 아니라 의료 상자와 생존자 명단 중 먼저 보낸 것이 노선 요약에 함께 판독된다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_MAPPING_OUTCOME_CH05_LOBBY_MAP",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 61,
+      "sha256": "6eca47bb8966cda97b06d9f9d5242c9bf21f358adcb0758aff86b59b34e21991",
+      "text": "이번 선택으로 안전 지도·소음 1 감소를 얻었다. 치른 값은 서버 로그 포기다. 남은 위험은 삭제된 기록이다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_MAPPING_OUTCOME_CH05_LOBBY_LOGS",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 59,
+      "sha256": "c3cc6938027b1bb40e71462750aceeccf0531ec7fce3ca5352501dcfd4d62a95",
+      "text": "손에 남은 것은 서버 물자 1회다. 대가로 소음 4 상승을 내줬고, 경비 추적은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_MAPPING",
+      "event_type": "exploration",
+      "title": "죽은 캠퍼스 로비",
+      "chars": 234,
+      "sha256": "2a3f355ecb3ba2bceb492b4f0667f82a208846a2ac360e20b40a7d11ac6d2581",
+      "text": "안내 단말의 지도는 점멸하고 경비 서버는 자동 삭제 카운트를 내린다. 복도 끝 두 문 위에 냉각실과 기록실 표지가 번갈아 켜진다. 지도는 소리를 줄이고 길을 보여 줘. 로그는 물자를 줄 수 있지만 경비 서버를 깨워야 해. 인증값, 공개 범위, 김아라 구조가 같은 냉각 시간에 묶인다. 죽은 캠퍼스 로비 앞의 길은 둘로 갈라졌다. 선택 직후 지도·로그 영수증을 저장한다. 첫 선택에서 소음과 정보 이득을 숫자로 비교한다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SKYWALK_OUTCOME_CH05_SKYWALK_FAST",
+      "event_type": "outcome",
+      "title": "하늘다리 빠른 돌파 결과",
+      "chars": 54,
+      "sha256": "13ec18a5a7c576988385a4147cf728fddc1403e52cd9a55e1b141c9b994ec91b",
+      "text": "위협 위치 확인을 챙기고 자리를 떴다. 시간 소모를 값으로 치렀다. 뒤에는 적응체 접근이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SKYWALK_OUTCOME_CH05_SKYWALK_DOWN",
+      "event_type": "outcome",
+      "title": "하늘다리 하강 결과",
+      "chars": 48,
+      "sha256": "ac3bc942371f683772d90ff0c591a23836c9f497ab3b42be013942b30113c004",
+      "text": "확보한 것은 동행 신뢰다. 내준 것은 대기 시간이다. 그 자리에 물자 손상이 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SKYWALK",
+      "event_type": "danger",
+      "title": "공중 보행로 가든",
+      "chars": 324,
+      "sha256": "a88e31842aae22d027661ffaa7a8171b2de1521986732b1ae0440009cfb91ae0",
+      "text": "판교 미러센터의 공기가 낮게 눌리고, 공중 보행로 가든이 발밑으로 다가온다. 미러 회선의 떨림이 낮게 흔들렸다. 공중 보행로 가든에서 서지훈은 냉각음 사이의 틈을 듣고 세번째 퇴로를 먼저 가늠했다. 공중 보행로 가든의 소음이 낮아지는 틈에 서지훈은 서버 랙 사이로 시선을 낮추며 발을 옮겼다. 빈 화면의 잔광만 뒤에 남았다. 인증값, 공개 범위, 김아라 구조가 같은 냉각 시간에 묶인다. 공중 보행로의 기척이 한 박자 낮아졌다. 냉각음이 서버랙 사이에서 대답을 늦췄다. 인증값, 공개 범위, 김아라 구조가 같은 냉각 시간에 묶인다. 공중 보행로 가든의 공기는 조금 더 무거워졌다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_ROUTE_OUTCOME_CH05_COOLING_STABLE",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 57,
+      "sha256": "cc9374a52f65051c181b02d4e853591b69317195b98b25de2593f0838818de1a",
+      "text": "이번 선택으로 냉각 젤 1개를 얻었다. 치른 값은 안정화 시간이다. 남은 위험은 김아라 도착 지연이다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_ROUTE_OUTCOME_CH05_COOLING_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 56,
+      "sha256": "e932f8bb02b2cd98bced299964255eb344c6ac6fd5ca96f24f024b62c534a1e8",
+      "text": "손에 남은 것은 빠른 우회다. 대가로 소음 3 상승을 내줬고, 코어 경보는 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_ROUTE",
+      "event_type": "choice",
+      "title": "냉각 루프 제어",
+      "chars": 219,
+      "sha256": "0cf460c6dacddf7e73df1667b8a65865ca664d2dfe74fa8c031c968d3769d113",
+      "text": "냉각관 표면에 서리가 번지고 우회 회로는 과열 경고를 띄운다. 수동 밸브 옆에는 냉각 젤 보관함이 하나 남아 있다. 안정화하면 젤을 챙길 수 있어. 우회하면 빠르지만 소음 3이 센터 아래까지 내려갈 거야. 냉각 루프 제어 앞의 길은 둘로 갈라졌다. 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 냉각 경로 영수증은 김아라 구조 장면까지 유지된다. 자원 확보와 소음 비용을 선택 전에 확인한다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_KIM_ARA_OUTCOME_CH05_ARA_FIRST",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 69,
+      "sha256": "7efb48951b7ddb5d2088195c315063526e6be0a6502e1350e86eb16d8c3e2705",
+      "text": "김아라 신뢰 2 상승·접근 키 1개를 챙기고 자리를 떴다. 데이터 삭제 시간을 값으로 치렀다. 뒤에는 격리문 개방이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_KIM_ARA_OUTCOME_CH05_ARA_WAIT",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 68,
+      "sha256": "7c527e66ff0c66c4244be8a928d3f79dfb6c836ebd43fb06d456c896caa40790",
+      "text": "확보한 것은 데이터 접근 시간이다. 내준 것은 김아라 신뢰 1 하락·긴장 2 상승이다. 그 자리에 생존 불확실이 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_KIM_ARA",
+      "event_type": "dialogue",
+      "title": "김아라",
+      "chars": 221,
+      "sha256": "085932313f210d89a311563488fca3bb8586a0adca01d003e8a8e0d49e42a4c4",
+      "text": "격리문 너머 김아라가 접근 키를 유리창에 들어 보인다. 데이터실 삭제 카운트와 격리문 압력 경고가 동시에 줄어든다. 나를 먼저 열면 접근 키는 바로 줄게요. 데이터부터 가도 돼요. 대신 그 선택을 없던 일로 하진 마요. 김아라는 침착하려 했지만, 마지막 문장 끝에서 숨이 갈라졌다. 구조 여부와 김아라 생존 플래그를 즉시 저장한다. 구조 이득과 데이터 시간의 충돌을 신뢰·긴장 수치로 보여 준다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS_OUTCOME_CH05_DATA_RECORD",
+      "event_type": "outcome",
+      "title": "자료 기록 결과",
+      "chars": 63,
+      "sha256": "4aa6957ff8d15169445da7fefb5652dd754653b0c937c6009f3ce422945180ba",
+      "text": "이번 선택으로 데이터 1건·인증값 1건을 얻었다. 치른 값은 진실 점수 1 하락이다. 남은 위험은 정보 독점이다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS_OUTCOME_CH05_DATA_LIMITED",
+      "event_type": "outcome",
+      "title": "자료 결과",
+      "chars": 73,
+      "sha256": "7ae5c8fdeb226cd85bcad8ff146343f9bea38a8ac39df3ab63df2a8b4e6740a2",
+      "text": "손에 남은 것은 데이터 2건·판교 평판 1 상승이다. 대가로 전면 공개 포기를 내줬고, 선별 공개 책임은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS_OUTCOME_CH05_DATA_BROADCAST",
+      "event_type": "outcome",
+      "title": "자료 송출 결과",
+      "chars": 68,
+      "sha256": "d50fbdb37b7722ec2c43b2714f6d8af15e41585e932a33fe36902ff2f211b5ea",
+      "text": "데이터 각 1건·진실 2 상승을 챙기고 자리를 떴다. 소음 7 상승을 값으로 치렀다. 뒤에는 미러센터 위치 노출이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS",
+      "event_type": "choice",
+      "title": "공개 자료 접속",
+      "chars": 276,
+      "sha256": "d7efbe92637be0cd5949e9e28f4840c6fba7313dde4adce4b8a6a4e07741aeec",
+      "text": "독도 인증 파형과 남부 회랑 지도가 같은 화면에 겹쳐 뜬다. 공개 범위 슬라이더가 기록 보관, 제한 공개, 전면 송출 세 칸에서 멈춘다. 데이터는 챙길 수 있어. 문제는 누가 지금 보게 하느냐야. 숨기면 조용하고, 모두에게 보내면 소음 7을 각오해야 해. 공개 자료 접속 앞의 길은 둘로 갈라졌다. 공개 자료 접속의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다. 선택 직후 데이터 수량과 진실·소음 영수증을 고정한다. 데이터 2건은 공통 보상이고 공개 범위의 비용만 달라진다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_BOSS_LINES_OUTCOME_CH05_CORE_PRESERVE",
+      "event_type": "outcome",
+      "title": "회선 보존 결과",
+      "chars": 58,
+      "sha256": "6c1f6e60b8bdc2a57b4f57535e228f72c71587c4a4ed0d1c210cfaca9c209a49",
+      "text": "확보한 것은 온전한 하강 코어다. 내준 것은 숨은 증거 포기다. 그 자리에 코어 재가동 위험이 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_BOSS_LINES_OUTCOME_CH05_CORE_BREAK",
+      "event_type": "outcome",
+      "title": "회선 파쇄 결과",
+      "chars": 56,
+      "sha256": "3150a4b64766b175c31c705bb8726b81d8be927dd6ab6120713b4472ce151f9d",
+      "text": "이번 선택으로 숨은 증거를 얻었다. 치른 값은 긴장 2 상승이다. 남은 위험은 손상된 하강 관문이다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_BOSS_LINES",
+      "event_type": "boss",
+      "title": "미러코어 접합체 '회선'",
+      "chars": 227,
+      "sha256": "a6c58b5e48d01c16311ebde5c433b0f625a3ac93149f54758e2ece1363bd9980",
+      "text": "코어를 감싼 광섬유가 라인 키퍼의 팔다리처럼 천장까지 뻗는다. 하강 관문 표시가 보존과 긴급 파괴 두 경로로 갈라진다. 코어를 살리면 다음 문을 읽을 수 있어요. 부수면 숨긴 증거는 나오겠지만 그 아래 길도 상처 입어요. 김아라는 선택지를 설명하다가 잠깐 입을 다물었다. 문 뒤에서 다시 기침 소리가 났다. 선택한 코어 상태와 탈출 준비 플래그를 저장한다. 보스 승리 직후 코어 결말을 끊지 않고 확정한다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_EXTRACTION",
+      "event_type": "extraction",
+      "title": "남하 결정",
+      "chars": 265,
+      "sha256": "5733e4044d6cdc57613dab4475b43a9afb909970ce0ee7bf9a4f814316ffc2ae",
+      "text": "미러센터 옥상 송신등이 꺼지자 지하로 내려가는 관문 표시만 남는다. 김아라의 무전 기록과 데이터 봉투가 코어 상태표 옆에 놓인다. 살아 있는 사람과 남은 기록을 따로 세면 또 같은 실수를 해. 하강 관문은 우리가 무엇을 공개했고 무엇을 부쉈는지부터 읽을 거야. 김아라는 웃지 않았다. 그래도 이번에는 무전기를 직접 꺼내 들었다. CH05 완료와 CH06 이동이 저장된 뒤 다음 행동이 열린다. CH05 결산은 파트 1의 사람·데이터·코어 선택을 CH06 초기 상태로 묶는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SIGNAL_RELAY_OUTCOME_CH05_SIGNAL_BOOST",
+      "event_type": "outcome",
+      "title": "신호 확인 결과",
+      "chars": 56,
+      "sha256": "f34a9e7c20855f07cfa785ba67f3b1a7e7e86bbfcdc6cb9eae42c7dc47098ed6",
+      "text": "손에 남은 것은 안전거리 확보다. 대가로 위치 노출을 내줬고, 단서 손실은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SIGNAL_RELAY_OUTCOME_CH05_SIGNAL_CUT",
+      "event_type": "outcome",
+      "title": "신호 확인 결과",
+      "chars": 52,
+      "sha256": "1bf08835418b22450d61086b78ae35ec8d8746edf06b14edaf4f35fa610a4073",
+      "text": "안전거리 확보를 챙기고 자리를 떴다. 장비 마모를 값으로 치렀다. 뒤에는 단서 손실이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SIGNAL_RELAY",
+      "event_type": "choice",
+      "title": "독도 신호 정체",
+      "chars": 355,
+      "sha256": "027f483ed059a2a06b85831d0afa6f62752eb41511cfd22817f4a2417138d4f2",
+      "text": "독도 신호 정체 앞에서 손이 멈춘다. 독도 신호의 기척이 한 박자 낮아졌다. 독도 신호 정체의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다. 독도 신호 앞의 표식이 서로 다른 방향을 가리켰다. 미러 회선의 빈 화면이 다음 이름을 기다렸다. 카드키의 푸른 점이 낮게 흔들렸다. 독도 신호 정체에서 서지훈은 냉각음 사이의 틈을 듣고 첫 퇴로를 먼저 가늠했다. 독도 신호 앞의 표식이 서로 다른 방향을 가리켰다. 서버실의 흰 소음이 선택의 끝을 가렸다. 독도 신호 정체 앞의 길은 둘로 갈라졌다. 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 독도 신호 정체의 작은 신호가 바닥을 훑는다. 따라오는 귀도 그 빛을 놓치지 않는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_CONTAINMENT_BREACH",
+      "event_type": "danger",
+      "title": "공개 범위",
+      "chars": 384,
+      "sha256": "cc8b2e135a6e4647f0eed8c30d26a592f023970edb1a45b7fe50ac0843b404ae",
+      "text": "아크-P 서버홀의 공기가 낮게 눌리고, 공개 범위가 발밑으로 다가온다. 공개 범위 앞의 표식이 서로 다른 방향을 가리켰다. 공개 범위의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다. 공개 범위의 공기가 잠깐 얇아졌다. 서버실 흰 소음이 흔들리는 사이, 서지훈은 빈 화면의 잔광을 확인하며 남은 시간을 쟀다. 공개 범위 앞의 표식이 서로 다른 방향을 가리켰다. 공개 범위 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 냉각음이 서버랙 사이에서 대답을 늦췄다. 공개 범위 앞의 길은 둘로 갈라졌다. 공개 범위의 공기가 무거워지며 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 공개 범위에서는 작은 소리도 다음 문까지 길게 번졌다. 서버실의 흰 소음이 선택의 끝을 가렸다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_PREP_FINAL_OUTCOME_CH05_PREP_READY",
+      "event_type": "outcome",
+      "title": "준비 결과",
+      "chars": 49,
+      "sha256": "7b752abde4892331bc82a20e9f45ab46c737bbf392a90a2b2f6d7004a9e100cb",
+      "text": "확보한 것은 지도 갱신이다. 내준 것은 회수 지연이다. 그 자리에 시간 초과가 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_PREP_FINAL_OUTCOME_CH05_PREP_RUSH",
+      "event_type": "outcome",
+      "title": "준비 압박 돌파 결과",
+      "chars": 50,
+      "sha256": "5e31c20d047d6e6af8f70344ae502baa8fde555e259d21b836ef9f8d830b5c19",
+      "text": "이번 선택으로 우회로 표시를 얻었다. 치른 값은 기력 소모다. 남은 위험은 기록 훼손이다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_PREP_FINAL",
+      "event_type": "dialogue",
+      "title": "최종 준비",
+      "chars": 293,
+      "sha256": "0e2980fefc032ec47ee9bf6e16b820f691439d75980431b12521c4701eae014c",
+      "text": "하부 비상벙커에서 건네진 말은 설명보다 먼저 상처를 건드린다. 최종 준비의 가장자리로 숨이 모였다. 서지훈은 빈 화면의 잔광을 확인하며 최종 준비에서 아직 닫히지 않은 길을 찾았다. 최종 준비 너머에서 미러 회선의 떨림이 희미하게 답했다. 최종 준비의 남은 선택은 빠르게 작아지고 있었다. 최종 준비 앞의 표식이 서로 다른 방향을 가리켰다. 서버실의 흰 소음이 선택의 끝을 가렸다. 최종 준비의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다. 최종 준비 앞의 길은 둘로 갈라졌다. 기록의 빛이 꺼지기 전에 손을 움직여야 했다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_RAMP_SWARM",
+      "event_type": "combat",
+      "title": "진입 경사로 난전",
+      "chars": 224,
+      "sha256": "c5fc64ec56bae2114cd732ff29833faad7e7dc82c967b0a4ae72b539edd8267c",
+      "text": "비상등 아래로 군집 감염체가 층마다 겹쳐 내려온다. 로비 안내판과 서버실 표지가 서로 반대 방향으로 깜박인다. 오래 끌면 센터 전체가 깨어나. 밀어내자마자 지도와 로그 중 하나부터 잡아. 진입 경사로 난전 앞의 길은 둘로 갈라졌다. 진입 경사로 난전의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다. 승리 뒤 죽은 캠퍼스 로비가 열린다. 짧은 전투 뒤 첫 의미 있는 선택으로 즉시 이어진다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SECURITY_CONSOLE_OUTCOME_CH05_CONSOLE_MANUAL",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 54,
+      "sha256": "03af57fdc4d99b66f4367ccdc4d8bca3a9feaed77bcb1aaf60b98a44b5967299",
+      "text": "손에 남은 것은 정찰 근거다. 대가로 물자 소모를 내줬고, 철수 압박은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SECURITY_CONSOLE_OUTCOME_CH05_CONSOLE_AUTO",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 52,
+      "sha256": "995811281cdbd043eec78eda8d8009cdb96ba33c7f499a2db05dde73ec406159",
+      "text": "안전거리 확보를 챙기고 자리를 떴다. 위치 노출을 값으로 치렀다. 뒤에는 단서 손실이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SECURITY_CONSOLE",
+      "event_type": "scene",
+      "title": "보안 제어 단말",
+      "chars": 362,
+      "sha256": "aa548a8436142a8759c581229017e87d136ebe3ef008bff3a47ba72311500a68",
+      "text": "캠퍼스 로비동의 정적 사이로 보안 제어 단말의 짧은 틈이 열린다. 보안 제어 단말의 공기가 잠깐 얇아졌다. 미러 회선의 떨림이 흔들리는 사이, 서지훈은 빈 화면의 잔광을 확인하며 남은 시간을 쟀다. 보안 제어 앞의 표식이 서로 다른 방향을 가리켰다. 서버실의 흰 소음이 선택의 끝을 가렸다. 보안 제어의 기척이 한 박자 낮아졌다. 보안 제어 단말 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 보안 제어 단말 앞의 길은 둘로 갈라졌다. 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 빈 화면의 잔광이 낮게 흔들렸다. 보안 제어 단말에서 서지훈은 냉각음 사이의 틈을 듣고 세번째 퇴로를 먼저 가늠했다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE_OUTCOME_CH05_SERVER_PURGE",
+      "event_type": "outcome",
+      "title": "자료 정리 결과",
+      "chars": 49,
+      "sha256": "3e8cc532f9cc96f4785317af7ac5ba3944faecdd8ff4b88899805c553267b162",
+      "text": "확보한 것은 단서 확보다. 내준 것은 교신 노출이다. 그 자리에 전투 조기화가 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE_OUTCOME_CH05_SERVER_GRAB",
+      "event_type": "outcome",
+      "title": "자료 정리 핵심 회수 결과",
+      "chars": 49,
+      "sha256": "a26220bb4d720dd03a7bc8284a5428032d5a277c4f3024061784b30e784e9a15",
+      "text": "이번 선택으로 지도 갱신을 얻었다. 치른 값은 교신 노출이다. 남은 위험은 시간 초과다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE_OUTCOME_CH05_SERVER_LOOP",
+      "event_type": "outcome",
+      "title": "자료 정리 반복 확인 결과",
+      "chars": 56,
+      "sha256": "85abae7b6708f4506a063b7aefcb6e3f9781d0c4e9e22f17c86b26c052db8ee2",
+      "text": "손에 남은 것은 안전거리 확보다. 대가로 판단 지연을 내줬고, 단서 손실은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE_OUTCOME_CH05_SERVER_DIAG_LOOP",
+      "event_type": "outcome",
+      "title": "자료 정리 반복 확인 결과",
+      "chars": 51,
+      "sha256": "bb3a00f8ac1d794dce076bfab51583083ad91c5e9a06dd650314cbd65f677256",
+      "text": "단서 확보를 챙기고 자리를 떴다. 손실 감수를 값으로 치렀다. 뒤에는 전투 조기화가 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE",
+      "event_type": "scene",
+      "title": "서버 정리",
+      "chars": 373,
+      "sha256": "de3610af14148ce5d0141cf3beb3f1559f7c0192d9ae5f4403c368116d5e2f5d",
+      "text": "아크-P 서버홀의 정적 사이로 서버 정리의 짧은 틈이 열린다. 서버 정리 앞의 표식이 서로 다른 방향을 가리켰다. 서버 정리 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 서버실의 흰 소음이 선택의 끝을 가렸다. 서버 정리의 가장자리로 숨이 모였다. 서지훈은 빈 화면의 잔광을 확인하며 서버 정리에서 아직 닫히지 않은 길을 찾았다. 서버 정리 앞의 표식이 서로 다른 방향을 가리켰다. 서버 정리의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다. 서버 정리 앞의 길은 둘로 갈라졌다. 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 서버 정리에서는 작은 소리도 다음 문까지 길게 번졌다. 서버 정리의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_EXIT_PRESSURE_OUTCOME_CH05_EXIT_SMOKE",
+      "event_type": "outcome",
+      "title": "이탈 준비 연막 결과",
+      "chars": 49,
+      "sha256": "859facbc12cf322b28eed5e3b9c2b3a39b2e5821239fa7293f78e25e82dab94d",
+      "text": "확보한 것은 우회로 표시다. 내준 것은 가방 압박이다. 그 자리에 기록 훼손이 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_EXIT_PRESSURE_OUTCOME_CH05_EXIT_PUSH",
+      "event_type": "outcome",
+      "title": "이탈 준비 정면 압박 결과",
+      "chars": 49,
+      "sha256": "83455b180417346dc5c18bfe25de79e45dd96ed977cbdb7e1b8060fd8a4f7ba3",
+      "text": "이번 선택으로 지도 갱신을 얻었다. 치른 값은 회수 지연이다. 남은 위험은 시간 초과다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_EXIT_PRESSURE",
+      "event_type": "scene",
+      "title": "출구 압박",
+      "chars": 348,
+      "sha256": "3a786d8794f8b6f8078a8169d02cd1a1a9a96e9bb9ca1776e41f4b58bbe7438b",
+      "text": "하부 비상벙커의 정적 사이로 출구 압박의 짧은 틈이 열린다. 출구 압박의 공기가 잠깐 얇아졌다. 냉각 라인의 서리가 흔들리는 사이, 서지훈은 빈 화면의 잔광을 확인하며 남은 시간을 쟀다. 서버실 흰 소음이 낮게 흔들렸다. 출구 압박에서 서지훈은 냉각음 사이의 틈을 듣고 다음 퇴로를 먼저 가늠했다. 출구 압박 앞의 표식이 서로 다른 방향을 가리켰다. 출구 압박 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 냉각음이 서버랙 사이에서 대답을 늦췄다. 출구 압박의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다. 출구 압박 앞의 길은 둘로 갈라졌다. 출구 압박의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_SCAN",
+      "event_type": "exploration",
+      "title": "로비 스캔",
+      "chars": 408,
+      "sha256": "dda4866ecdf5f7d1e5693decaa089cc1506acc399a14ea2ecb49cbca5e42c997",
+      "text": "로비 스캔의 공기가 잠깐 얇아졌다. 냉각 라인의 서리가 흔들리는 사이, 서지훈은 빈 화면의 잔광을 확인하며 남은 시간을 쟀다. 첫 흔적은 빈 화면의 잔광 옆에 남았다. 로비 스캔의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 로비 스캔 앞의 표식이 서로 다른 방향을 가리켰다. 로비 스캔의 공기가 무거워지며 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 공개할 방향부터 정해. 로비 스캔 앞의 표식이 서로 다른 방향을 가리켰다. 로비 스캔의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다. 로비 스캔의 숨결이 한 박자 낮아졌다. 로비 스캔의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다. 로비 스캔 앞의 길은 둘로 갈라졌다. 로비 스캔의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_AMBUSH",
+      "event_type": "danger",
+      "title": "냉각실 매복",
+      "chars": 409,
+      "sha256": "f1daf939151f40e19057229b18fc6fb86433b571dfeba1a19bffd6b6e97ad562",
+      "text": "냉각설비실의 공기가 낮게 눌리고, 냉각실 매복이 발밑으로 다가온다. 냉각실 매복 앞의 표식이 서로 다른 방향을 가리켰다. 냉각실 매복의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다. 첫 흔적은 빈 화면의 잔광 옆에 남았다. 냉각실 매복의 길은 열렸지만, 돌아갈 시간은 조금 줄었다. 냉각실 매복 앞의 표식이 서로 다른 방향을 가리켰다. 냉각실 매복 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 미러 회선의 빈 화면이 다음 이름을 기다렸다. 냉각실 매복 앞의 길은 둘로 갈라졌다. 냉각실 매복의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다. 냉각실 매복에서는 작은 소리도 다음 문까지 길게 번졌다. 냉각실 매복 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 기록의 빛이 꺼지기 전에 손을 움직여야 했다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT_OUTCOME_CH05_LOBBY_FORGE",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 55,
+      "sha256": "16c5ec842ec6afd49e7fdd74431e9db45e7a1d33e79a5aa8282401a1554db4eb",
+      "text": "손에 남은 것은 경보 지연이다. 대가로 주의 분산을 내줬고, 경보 압박은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT_OUTCOME_CH05_LOBBY_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 50,
+      "sha256": "3fbbf3681736a9271d19bc0e2e378dc76ca0f2586f375d3f8f7104d1bd938c6d",
+      "text": "전투 여유를 챙기고 자리를 떴다. 판단 지연을 값으로 치렀다. 뒤에는 잠복 위협이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT",
+      "event_type": "exploration",
+      "title": "로비 검문",
+      "chars": 432,
+      "sha256": "0cdeded1afb4e2fcd8774eca059116c9f8fe6679cdd7cc7b7b300901225098eb",
+      "text": "로비 검문의 가장자리로 숨이 모였다. 서지훈은 빈 화면의 잔광을 확인하며 로비 검문에서 아직 닫히지 않은 길을 찾았다. 냉각 라인의 서리가 다음 신호처럼 스쳤다. 로비 검문에서 놓친 것은 다음 방의 위험으로 남았다. 로비 검문 앞의 표식이 서로 다른 방향을 가리켰다. 로비 검문 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 서버실의 흰 소음이 선택의 끝을 가렸다. 공개할 방향부터 정해. 로비 검문 앞의 표식이 서로 다른 방향을 가리켰다. 로비 검문 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 냉각음이 서버랙 사이에서 대답을 늦췄다. 로비 검문의 숨결이 한 박자 낮아졌다. 로비 검문의 공기가 무거워지며 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 로비 검문 앞의 길은 둘로 갈라졌다. 로비 검문의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_BREACH",
+      "event_type": "combat",
+      "title": "냉각설비 과열",
+      "chars": 256,
+      "sha256": "aa1ed104c3c0889f594ab49a76fd6d06e7c0f0eb59a87e20b66eb85cb2f071b3",
+      "text": "밸브가 터지자 흰 증기가 무릎 높이로 깔렸다. 발밑 냉각수는 차가웠지만, 벽면 패널은 손을 대기 어려울 만큼 뜨거웠다. 서지훈은 총구를 낮추고 먼저 숨을 아꼈다. 젖은 바닥에서 한 번 미끄러지면 경보보다 몸이 먼저 무너진다. 왼쪽 밸브 잡지 마. 거긴 끓고 있어. 바닥 보고 와. 랙 밑에 전류 살아 있어. 김아라의 지시는 짧아졌다. 무서워서가 아니라 숨을 아껴야 해서였다. 냉각수, 열기, 젖은 금속, 짧은 호흡이 CH05의 위험을 숫자보다 먼저 설명한다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_SANITIZE",
+      "event_type": "dialogue",
+      "title": "자료 정리",
+      "chars": 279,
+      "sha256": "cbbd721f096e88b03733afb9b6edefea4c600ee7425b3edeb3e6f9fd9be16efc",
+      "text": "서버홀의 공기는 뜨거운 먼지와 소독약 냄새로 탁했다. 장갑 끝에 묻은 냉각수가 드라이브 슬롯 안으로 떨어졌다. 서지훈은 파일명을 읽기 전에 라벨 위의 사람 이름을 먼저 닦았다. 자료는 구조자 명단과 같은 무게로 젖어 있었다. 그 드라이브, 뜨거워. 천으로 감싸. 공개할 거면 이름부터 지워. 살아 있는 사람 위치가 그대로 있어. 김아라는 원칙을 말하지 않았다. 다친 사람 위치를 가리키며 바로 손을 뻗었다. 증거 하나를 챙길 때마다 누군가의 위치표가 같이 딸려 온다. 비워 둔 칸은 침묵으로 굳는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_BREAK",
+      "event_type": "combat",
+      "title": "냉각 구간 폭주",
+      "chars": 403,
+      "sha256": "51b40d7fc4303a092f0545070d3b8737bf8048ae2d645fbe14bab905c1178bfc",
+      "text": "냉각 구간 폭주가 시야 가장자리에서 몸을 일으킨다. 냉각 구간 앞의 표식이 서로 다른 방향을 가리켰다. 냉각 구간 폭주의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다. 미러 회선의 떨림이 낮게 흔들렸다. 냉각 구간 폭주에서 서지훈은 냉각음 사이의 틈을 듣고 첫 퇴로를 먼저 가늠했다. 냉각 구간 앞의 표식이 서로 다른 방향을 가리켰다. 냉각 구간 폭주 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 냉각 구간 폭주 앞의 길은 둘로 갈라졌다. 냉각 구간 폭주의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다. 냉각 구간 폭주에서는 작은 소리도 다음 문까지 길게 번졌다. 냉각 구간 폭주의 공기가 무거워지며 기록의 빛이 꺼지기 전에 손을 움직여야 했다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_ARC_RELAY_OUTCOME_CH05_RELAY_LOCK",
+      "event_type": "outcome",
+      "title": "미러센터 결과",
+      "chars": 48,
+      "sha256": "1b17342b51d9f82c88ab5af7b10ece0c709e27ed5fee34e5f3750d0c9134dc9b",
+      "text": "확보한 것은 전투 여유다. 내준 것은 위치 노출이다. 그 자리에 잠복 위협이 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_ARC_RELAY_OUTCOME_CH05_RELAY_BYPASS",
+      "event_type": "outcome",
+      "title": "우회 통과 결과",
+      "chars": 51,
+      "sha256": "fc1c07a71cb2f5da6c63349717c718b9e75a900b2f55f29897b070571b33bde4",
+      "text": "이번 선택으로 회수품 확보를 얻었다. 치른 값은 소음 부담이다. 남은 위험은 소음 반향이다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_ARC_RELAY",
+      "event_type": "choice",
+      "title": "릴레이 정리",
+      "chars": 454,
+      "sha256": "027259cc5a567560cfe213a3f8d60333257a631255568a74392997626e3cdc07",
+      "text": "릴레이 정리 앞에서 손이 멈춘다. 릴레이 정리의 숨결이 한 박자 낮아졌다. 릴레이 정리 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 서버실의 흰 소음이 선택의 끝을 가렸다. 릴레이 정리의 숨결이 한 박자 낮아졌다. 릴레이 정리의 공기가 무거워지며 미러 회선의 빈 화면이 다음 이름을 기다렸다. 릴레이 정리 앞의 표식이 서로 다른 방향을 가리켰다. 릴레이 정리의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다. 공개할 방향부터 정해. 릴레이 정리 앞의 표식이 서로 다른 방향을 가리켰다. 릴레이 정리 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 냉각음이 서버랙 사이에서 대답을 늦췄다. 릴레이 정리 앞의 길은 둘로 갈라졌다. 릴레이 정리의 공기가 무거워지며 기록의 빛이 꺼지기 전에 손을 움직여야 했다. 릴레이 정리의 먼지 낀 문장을 주머니에 넣는다. 가져가지 못한 줄은 어둠 쪽으로 가라앉는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_CORE_PREP_OUTCOME_CH05_CORE_PREP",
+      "event_type": "outcome",
+      "title": "준비 결과",
+      "chars": 58,
+      "sha256": "123498fbf5e4d9438884070baadbe27070feecd8f11e479e722e6ebd05fa83b2",
+      "text": "손에 남은 것은 장비 보호다. 대가로 회수 지연을 내줬고, 다음 레이드 부담은 다음 구간까지 따라붙는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_CORE_PREP_OUTCOME_CH05_CORE_RUSH",
+      "event_type": "outcome",
+      "title": "준비 압박 돌파 결과",
+      "chars": 50,
+      "sha256": "225ac3b7b21c48ca96da8f9800012f8d883944b1488b3dde1d0e21395cfb124a",
+      "text": "동행 신뢰를 챙기고 자리를 떴다. 회수 지연을 값으로 치렀다. 뒤에는 물자 손상이 남는다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_CORE_PREP",
+      "event_type": "dialogue",
+      "title": "코어 방호 준비",
+      "chars": 426,
+      "sha256": "919f61a7235ba71cfaff69dc6754190c81c506682044d409375c152569a337cb",
+      "text": "하부 비상벙커에서 건네진 말은 설명보다 먼저 상처를 건드린다. 코어 방호 앞의 표식이 서로 다른 방향을 가리켰다. 코어 방호 준비 앞에서 데려갈 이름과 놓을 이름이 갈라지는 동안 미러 회선의 빈 화면이 다음 이름을 기다렸다. 코어 방호 앞의 표식이 서로 다른 방향을 가리켰다. 코어 방호 준비의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다. 공개할 방향부터 정해. 코어 방호 앞의 표식이 서로 다른 방향을 가리켰다. 코어 방호 준비의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다. 코어 방호 준비 앞의 길은 둘로 갈라졌다. 코어 방호 준비의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다. 코어 방호 준비에서는 작은 소리도 다음 문까지 길게 번졌다. 코어 방호 준비의 공기가 무거워지며 냉각음이 서버랙 사이에서 대답을 늦췄다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_AGENCY_OUTCOME_CH05_SCAN_EXTEND",
+      "event_type": "outcome",
+      "title": "스캔 확대 결과",
+      "chars": 49,
+      "sha256": "5eb9aa5ec4e21939b40d89cd3aa00eed2ef43c30e3587fb0684530f3b806da88",
+      "text": "확보한 것은 경보 지연이다. 내준 것은 감시 노출이다. 그 자리에 경보 압박이 들어섰다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_AGENCY_OUTCOME_CH05_SCAN_SKIP",
+      "event_type": "outcome",
+      "title": "스캔 확대 보류 판단 결과",
+      "chars": 49,
+      "sha256": "b5f5a9b0439753cc19df957a935ff7fbf654f66c140866abc98169dc0fb556c8",
+      "text": "이번 선택으로 보급 보존을 얻었다. 치른 값은 감시 노출이다. 남은 위험은 문턱 봉쇄다."
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_AGENCY_OUTCOME_CH05_SCAN_LOOP",
+      "event_type": "outcome",
+      "title": "스캔 확대 반복 확인 결과",
+      "chars": 54,
+      "sha256": "b82041da9f78d293c0f405cdfab35107f82e38e0d603af752b30242602c0b663",
+      "text": "손에 남은 것은 정찰 근거다. 대가로 위치 노출을 내줬고, 철수 압박은 다음 구간까지 따라붙는다."
+    }
+  ]
+}

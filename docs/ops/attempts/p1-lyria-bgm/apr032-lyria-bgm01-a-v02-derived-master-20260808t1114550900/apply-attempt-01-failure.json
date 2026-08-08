@@ -1,0 +1,39 @@
+{
+  "schema": "donggrol.apr032.part1_lyria_derived_master_apply_failure.v1",
+  "attempt_id": "apr032-lyria-bgm01-a-v02-derived-master-20260808t1114550900",
+  "apply_attempt": 1,
+  "observed_at": "2026-08-08T11:27:35.32+09:00",
+  "phase": "pre_output_failed_closed",
+  "classification": "deterministic_windows_python_path_length",
+  "command_digest": "APR032-P1-BGM01-A-V02-DERIVED-MASTER-MINUS-2P800DB-V1",
+  "gain_db": -2.8,
+  "error": {
+    "type": "FileNotFoundError",
+    "errno": 2,
+    "operation": "exclusive_temp_destination_open",
+    "temporary_path_length": 275,
+    "message": "Python os.open could not create the long temporary destination path."
+  },
+  "preservation": {
+    "derived_output_created": false,
+    "temporary_output_created": false,
+    "e_raw_bytes": 2540792,
+    "e_raw_sha256": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c",
+    "f_raw_bytes": 2540792,
+    "f_raw_sha256": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c",
+    "candidate_manifest_sha256": "7145d7904388a905c121841360aeba76f27723ff54303c096e9605ae73da76b6",
+    "bgm_mapping_sha256": "10407554b9e64b1d2a1c24f49fc8dd7ec816ca2d1122f22f454642f51a280fc1"
+  },
+  "protected_status": {
+    "imported_candidate": false,
+    "human_listened": false,
+    "human_approved": false,
+    "runtime_promoted": false,
+    "candidate_count_delta": 0,
+    "selected_master_count_delta": 0,
+    "score_delta": 0,
+    "release_go": false
+  },
+  "automatic_retry_allowed": false,
+  "next_safe_action": "Shorten only the temporary filename and add long-path-safe acoustic reads, rerun static and negative verification, then request explicit retry approval before apply attempt 2."
+}

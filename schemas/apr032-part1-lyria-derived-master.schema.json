@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "donggrol.apr032.part1_lyria_derived_master.v1",
+  "title": "DonggrolGameBook APR-032 P1 Lyria V02 Derived Master Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "attempt_id",
+    "generated_at",
+    "part_id",
+    "slot_id",
+    "variant",
+    "source_fingerprint_sha256",
+    "parent",
+    "scratch",
+    "derivation",
+    "output",
+    "provider_provenance",
+    "verification",
+    "protected_status",
+    "eligible_for_human_listening",
+    "decision"
+  ],
+  "properties": {
+    "schema": { "const": "donggrol.apr032.part1_lyria_derived_master.v1" },
+    "attempt_id": { "const": "apr032-lyria-bgm01-a-v02-derived-master-20260808t1114550900" },
+    "generated_at": { "type": "string", "minLength": 20 },
+    "part_id": { "const": "P1" },
+    "slot_id": { "const": "bgm01" },
+    "variant": { "const": "A" },
+    "source_fingerprint_sha256": { "$ref": "#/$defs/sha256" },
+    "parent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_id",
+        "audit_path",
+        "audit_bytes",
+        "audit_sha256",
+        "raw_sha256",
+        "raw_bytes",
+        "e_raw_path",
+        "f_raw_path",
+        "e_hash_match",
+        "f_hash_match",
+        "immutable"
+      ],
+      "properties": {
+        "attempt_id": { "const": "apr031-lyria-bgm01-a-v02-20260808t1056400900" },
+        "audit_path": { "type": "string", "minLength": 20 },
+        "audit_bytes": { "type": "integer", "minimum": 1 },
+        "audit_sha256": { "const": "a5b4b14ca3ee6ade302f542f5e81b88276c091d2b64d537f45db58148101d45f" },
+        "raw_sha256": { "const": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c" },
+        "raw_bytes": { "const": 2540792 },
+        "e_raw_path": { "type": "string", "minLength": 20 },
+        "f_raw_path": { "type": "string", "minLength": 20 },
+        "e_hash_match": { "const": true },
+        "f_hash_match": { "const": true },
+        "immutable": { "const": true }
+      }
+    },
+    "scratch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "root_path_length", "input", "output", "retained", "deleted"],
+      "properties": {
+        "root": { "const": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3" },
+        "root_path_length": { "type": "integer", "minimum": 1, "maximum": 190 },
+        "input": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file", "path_length", "bytes", "sha256", "copied_from", "matches_parent_raw"],
+          "properties": {
+            "file": { "const": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\in.mp3" },
+            "path_length": { "type": "integer", "minimum": 1, "maximum": 199 },
+            "bytes": { "const": 2540792 },
+            "sha256": { "const": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c" },
+            "copied_from": { "type": "string", "minLength": 20 },
+            "matches_parent_raw": { "const": true }
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file", "path_length", "bytes", "sha256"],
+          "properties": {
+            "file": { "const": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\out.mp3" },
+            "path_length": { "type": "integer", "minimum": 1, "maximum": 199 },
+            "bytes": { "type": "integer", "minimum": 1 },
+            "sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "retained": { "const": true },
+        "deleted": { "const": false }
+      }
+    },
+    "derivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gain_db",
+        "linear_scalar",
+        "operations_applied",
+        "operations_not_applied",
+        "python_executable",
+        "python_executable_sha256",
+        "helper_path",
+        "helper_sha256",
+        "command_digest",
+        "node_version",
+        "path_mode",
+        "execution_cwd",
+        "source_argument",
+        "destination_argument",
+        "python_version",
+        "soundfile_version",
+        "libsndfile_version",
+        "numpy_version",
+        "encoder"
+      ],
+      "properties": {
+        "gain_db": { "const": -2.8 },
+        "linear_scalar": { "type": "number", "minimum": 0.7243, "maximum": 0.7245 },
+        "operations_applied": {
+          "type": "array",
+          "prefixItems": [{ "const": "constant_gain" }],
+          "items": false,
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "operations_not_applied": {
+          "const": ["trim", "fade", "limiter", "compressor", "denoise", "equalizer", "resample", "remix", "content_edit"]
+        },
+        "python_executable": { "type": "string", "minLength": 20 },
+        "python_executable_sha256": { "$ref": "#/$defs/sha256" },
+        "helper_path": { "type": "string", "minLength": 20 },
+        "helper_sha256": { "$ref": "#/$defs/sha256" },
+        "command_digest": { "const": "APR032-P1-BGM01-A-V02-DERIVED-MASTER-MINUS-2P800DB-V1" },
+        "node_version": { "type": "string", "minLength": 3 },
+        "path_mode": { "const": "g_devdrive_short_scratch" },
+        "execution_cwd": { "const": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3" },
+        "source_argument": { "const": "in.mp3" },
+        "destination_argument": { "const": "out.mp3" },
+        "python_version": { "type": "string", "minLength": 3 },
+        "soundfile_version": { "const": "0.14.0" },
+        "libsndfile_version": { "type": "string", "minLength": 3 },
+        "numpy_version": { "type": "string", "minLength": 3 },
+        "encoder": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["format", "subtype", "compression_level", "bitrate_mode"],
+          "properties": {
+            "format": { "const": "MP3" },
+            "subtype": { "const": "MPEG_LAYER_III" },
+            "compression_level": { "const": 0 },
+            "bitrate_mode": { "const": "CONSTANT" }
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "filename", "path_length", "bytes", "sha256", "copied_from", "copy_mode", "copy_hash_parity", "structural_audit", "acoustic_audit"],
+      "properties": {
+        "file": { "type": "string", "minLength": 20 },
+        "filename": { "const": "P1_BGM_01_BENEATH_THE_CONCRETE__A_V02_DERIVED_MASTER_V01.mp3" },
+        "path_length": { "type": "integer", "minimum": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "copied_from": { "const": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\out.mp3" },
+        "copy_mode": { "const": "exclusive_create_no_overwrite" },
+        "copy_hash_parity": { "const": true },
+        "structural_audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "frame_count", "sync_coverage", "duration_seconds", "sample_rates_hz", "channel_counts", "average_bitrate_kbps", "errors"],
+          "properties": {
+            "status": { "enum": ["passed", "failed"] },
+            "frame_count": { "type": "integer", "minimum": 1 },
+            "sync_coverage": { "type": "number", "minimum": 0, "maximum": 1 },
+            "duration_seconds": { "type": "number", "minimum": 0 },
+            "sample_rates_hz": { "type": "array", "items": { "type": "integer" }, "minItems": 1 },
+            "channel_counts": { "type": "array", "items": { "type": "integer" }, "minItems": 1 },
+            "average_bitrate_kbps": { "type": "number", "minimum": 1 },
+            "errors": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "acoustic_audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "source", "source_file", "source_sha256", "sample_rate_hz", "channels", "decoded_frames", "duration_seconds", "parent_duration_seconds", "duration_delta_seconds", "integrated_lufs", "parent_integrated_lufs", "loudness_delta_lu", "target_lufs", "target_lufs_error", "peak_dbfs", "maximum_silence_seconds", "silence_threshold_dbfs", "loop_seam_sample_delta", "loop_start_rms", "loop_end_rms", "loop_three_cycle_human_pass", "errors"],
+          "properties": {
+            "status": { "enum": ["passed", "failed"] },
+            "source": { "const": "g_scratch_byte_identical_copy" },
+            "source_file": { "const": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\out.mp3" },
+            "source_sha256": { "$ref": "#/$defs/sha256" },
+            "sample_rate_hz": { "type": "integer", "minimum": 1 },
+            "channels": { "type": "integer", "minimum": 1 },
+            "decoded_frames": { "type": "integer", "minimum": 1 },
+            "duration_seconds": { "type": "number", "minimum": 0 },
+            "parent_duration_seconds": { "const": 105.6131 },
+            "duration_delta_seconds": { "type": "number", "minimum": 0, "maximum": 0.1 },
+            "integrated_lufs": { "type": "number" },
+            "parent_integrated_lufs": { "const": -15.207 },
+            "loudness_delta_lu": { "type": "number", "minimum": -2.95, "maximum": -2.65 },
+            "target_lufs": { "const": -18 },
+            "target_lufs_error": { "type": "number", "minimum": 0, "maximum": 0.5 },
+            "peak_dbfs": { "type": "number" },
+            "maximum_silence_seconds": { "type": "number", "minimum": 0 },
+            "silence_threshold_dbfs": { "const": -60 },
+            "loop_seam_sample_delta": { "type": "number", "minimum": 0 },
+            "loop_start_rms": { "type": "number", "minimum": 0 },
+            "loop_end_rms": { "type": "number", "minimum": 0 },
+            "loop_three_cycle_human_pass": { "const": false },
+            "errors": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "provider_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parent_google_generative_ai_assertion_present", "parent_synthid_watermark_assertion_present", "exact_lyria_3_pro_marker_visible", "derived_c2pa_copied", "derived_signature_claimed", "authority"],
+      "properties": {
+        "parent_google_generative_ai_assertion_present": { "const": true },
+        "parent_synthid_watermark_assertion_present": { "const": true },
+        "exact_lyria_3_pro_marker_visible": { "const": false },
+        "derived_c2pa_copied": { "const": false },
+        "derived_signature_claimed": { "const": false },
+        "authority": { "const": "immutable_raw_parent_hash_lineage" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_valid", "parent_audit_hash_match", "parent_e_hash_match", "parent_f_hash_match", "g_input_hash_match", "helper_exit_zero", "output_hash_verified", "g_output_f_copy_hash_match", "f_final_overwrite", "g_scratch_retained", "structural_pass", "acoustic_pass", "report_copy_hash_match"],
+      "properties": {
+        "schema_valid": { "const": true },
+        "parent_audit_hash_match": { "const": true },
+        "parent_e_hash_match": { "const": true },
+        "parent_f_hash_match": { "const": true },
+        "g_input_hash_match": { "const": true },
+        "helper_exit_zero": { "const": true },
+        "output_hash_verified": { "const": true },
+        "g_output_f_copy_hash_match": { "const": true },
+        "f_final_overwrite": { "const": false },
+        "g_scratch_retained": { "const": true },
+        "structural_pass": { "type": "boolean" },
+        "acoustic_pass": { "type": "boolean" },
+        "report_copy_hash_match": { "const": true }
+      }
+    },
+    "protected_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_modified", "imported_candidate", "human_listened", "human_approved", "runtime_promoted", "candidate_count_delta", "selected_master_count_delta", "score_delta", "seal_changed", "bundle_created", "ait_created", "release_go", "candidate_manifest_sha256_before", "candidate_manifest_sha256_after", "candidate_manifest_unchanged", "bgm_mapping_sha256_before", "bgm_mapping_sha256_after", "bgm_mapping_unchanged"],
+      "properties": {
+        "raw_modified": { "const": false },
+        "imported_candidate": { "const": false },
+        "human_listened": { "const": false },
+        "human_approved": { "const": false },
+        "runtime_promoted": { "const": false },
+        "candidate_count_delta": { "const": 0 },
+        "selected_master_count_delta": { "const": 0 },
+        "score_delta": { "const": 0 },
+        "seal_changed": { "const": false },
+        "bundle_created": { "const": false },
+        "ait_created": { "const": false },
+        "release_go": { "const": false },
+        "candidate_manifest_sha256_before": { "$ref": "#/$defs/sha256" },
+        "candidate_manifest_sha256_after": { "$ref": "#/$defs/sha256" },
+        "candidate_manifest_unchanged": { "const": true },
+        "bgm_mapping_sha256_before": { "$ref": "#/$defs/sha256" },
+        "bgm_mapping_sha256_after": { "$ref": "#/$defs/sha256" },
+        "bgm_mapping_unchanged": { "const": true }
+      }
+    },
+    "eligible_for_human_listening": { "type": "boolean" },
+    "decision": { "enum": ["technical_pass_human_listening_pending", "failed_closed"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "decision": { "const": "technical_pass_human_listening_pending" } }, "required": ["decision"] },
+      "then": {
+        "properties": {
+          "eligible_for_human_listening": { "const": true },
+          "verification": { "type": "object", "properties": { "structural_pass": { "const": true }, "acoustic_pass": { "const": true } } },
+          "output": {
+            "type": "object",
+            "properties": {
+              "structural_audit": { "type": "object", "properties": { "status": { "const": "passed" }, "errors": { "type": "array", "maxItems": 0 } } },
+              "acoustic_audit": { "type": "object", "properties": { "status": { "const": "passed" }, "errors": { "type": "array", "maxItems": 0 } } }
+            }
+          }
+        }
+      },
+      "else": { "properties": { "eligible_for_human_listening": { "const": false } } }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

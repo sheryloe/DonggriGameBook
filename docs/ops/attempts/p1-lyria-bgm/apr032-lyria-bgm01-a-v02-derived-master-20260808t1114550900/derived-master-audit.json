@@ -1,0 +1,174 @@
+{
+  "schema": "donggrol.apr032.part1_lyria_derived_master.v1",
+  "attempt_id": "apr032-lyria-bgm01-a-v02-derived-master-20260808t1114550900",
+  "generated_at": "2026-08-08T05:53:11.503Z",
+  "part_id": "P1",
+  "slot_id": "bgm01",
+  "variant": "A",
+  "source_fingerprint_sha256": "13810d39aa5e2a0eff2e99b64d0bd179a69edbbe0eacdb6225458779e72bb5e7",
+  "parent": {
+    "attempt_id": "apr031-lyria-bgm01-a-v02-20260808t1056400900",
+    "audit_path": "G:\\Donggri_DevDrive\\repos\\DonggrolGameBook\\docs\\ops\\attempts\\p1-lyria-bgm\\apr031-lyria-bgm01-a-v02-20260808t1056400900\\download-audit.json",
+    "audit_bytes": 3573,
+    "audit_sha256": "a5b4b14ca3ee6ade302f542f5e81b88276c091d2b64d537f45db58148101d45f",
+    "raw_sha256": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c",
+    "raw_bytes": 2540792,
+    "e_raw_path": "E:\\DonggriPlatform_Asset\\generated-audio\\DonggrolGameBook\\p1-lyria3pro-202608\\unverified\\bgm01-A\\20260808T105640+0900\\Under_The_Concrete_Wind.mp3",
+    "f_raw_path": "F:\\DonggriPlatform_Asset\\staging\\DonggrolGameBook\\13810d39aa5e2a0eff2e99b64d0bd179a69edbbe0eacdb6225458779e72bb5e7\\p1-audio\\attempts\\apr031-lyria-bgm01-a-v02-20260808t1056400900\\raw\\Under_The_Concrete_Wind.mp3",
+    "e_hash_match": true,
+    "f_hash_match": true,
+    "immutable": true
+  },
+  "scratch": {
+    "root": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3",
+    "root_path_length": 87,
+    "input": {
+      "file": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\in.mp3",
+      "path_length": 94,
+      "bytes": 2540792,
+      "sha256": "80007b3f041eb6c6c60c3bbbed65cb05ab6ed9f27f0167e30bd4aa71cb76075c",
+      "copied_from": "F:\\DonggriPlatform_Asset\\staging\\DonggrolGameBook\\13810d39aa5e2a0eff2e99b64d0bd179a69edbbe0eacdb6225458779e72bb5e7\\p1-audio\\attempts\\apr031-lyria-bgm01-a-v02-20260808t1056400900\\raw\\Under_The_Concrete_Wind.mp3",
+      "matches_parent_raw": true
+    },
+    "output": {
+      "file": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\out.mp3",
+      "path_length": 95,
+      "bytes": 4226611,
+      "sha256": "7e71fd931f04be07251c7364ccff456b90cb00831683982ee315d274e7a27c48"
+    },
+    "retained": true,
+    "deleted": false
+  },
+  "derivation": {
+    "gain_db": -2.8,
+    "linear_scalar": 0.7244359600749901,
+    "operations_applied": [
+      "constant_gain"
+    ],
+    "operations_not_applied": [
+      "trim",
+      "fade",
+      "limiter",
+      "compressor",
+      "denoise",
+      "equalizer",
+      "resample",
+      "remix",
+      "content_edit"
+    ],
+    "python_executable": "F:\\DonggriPlatform_Asset\\tools\\voice\\Voicebox\\backend\\venv\\Scripts\\python.exe",
+    "python_executable_sha256": "0b471133e110cfb53a061cad528ce8e517d7b9ac41a0a396c39ad795a487fc14",
+    "helper_path": "G:\\Donggri_DevDrive\\repos\\DonggrolGameBook\\scripts\\lib\\apr032_derive_bgm_master.py",
+    "helper_sha256": "acbeb0d445ad60d4c891aceaf587e9228c5d1562b2c9cd028c4fd1000ac268e4",
+    "command_digest": "APR032-P1-BGM01-A-V02-DERIVED-MASTER-MINUS-2P800DB-V1",
+    "node_version": "v24.15.0",
+    "path_mode": "g_devdrive_short_scratch",
+    "execution_cwd": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3",
+    "source_argument": "in.mp3",
+    "destination_argument": "out.mp3",
+    "python_version": "3.12.10",
+    "soundfile_version": "0.14.0",
+    "libsndfile_version": "1.2.2",
+    "numpy_version": "1.26.4",
+    "encoder": {
+      "format": "MP3",
+      "subtype": "MPEG_LAYER_III",
+      "compression_level": 0,
+      "bitrate_mode": "CONSTANT"
+    }
+  },
+  "output": {
+    "file": "F:\\DonggriPlatform_Asset\\staging\\DonggrolGameBook\\13810d39aa5e2a0eff2e99b64d0bd179a69edbbe0eacdb6225458779e72bb5e7\\p1-audio\\attempts\\apr032-lyria-bgm01-a-v02-derived-master-20260808t1114550900\\derived\\P1_BGM_01_BENEATH_THE_CONCRETE__A_V02_DERIVED_MASTER_V01.mp3",
+    "filename": "P1_BGM_01_BENEATH_THE_CONCRETE__A_V02_DERIVED_MASTER_V01.mp3",
+    "path_length": 261,
+    "bytes": 4226611,
+    "sha256": "7e71fd931f04be07251c7364ccff456b90cb00831683982ee315d274e7a27c48",
+    "copied_from": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\out.mp3",
+    "copy_mode": "exclusive_create_no_overwrite",
+    "copy_hash_parity": true,
+    "structural_audit": {
+      "status": "passed",
+      "frame_count": 4045,
+      "sync_coverage": 1,
+      "duration_seconds": 105.67,
+      "sample_rates_hz": [
+        44100
+      ],
+      "channel_counts": [
+        2
+      ],
+      "average_bitrate_kbps": 320,
+      "errors": []
+    },
+    "acoustic_audit": {
+      "status": "passed",
+      "sample_rate_hz": 44100,
+      "channels": 2,
+      "decoded_frames": 4657536,
+      "duration_seconds": 105.6131,
+      "integrated_lufs": -18.007,
+      "peak_dbfs": -2.832,
+      "maximum_silence_seconds": 0.0438,
+      "silence_threshold_dbfs": -60,
+      "loop_seam_sample_delta": 0.000007,
+      "loop_start_rms": 0.000268,
+      "loop_end_rms": 0.000562,
+      "loop_three_cycle_human_pass": false,
+      "source": "g_scratch_byte_identical_copy",
+      "source_file": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\apr032-a3\\out.mp3",
+      "source_sha256": "7e71fd931f04be07251c7364ccff456b90cb00831683982ee315d274e7a27c48",
+      "parent_duration_seconds": 105.6131,
+      "duration_delta_seconds": 0,
+      "parent_integrated_lufs": -15.207,
+      "loudness_delta_lu": -2.8,
+      "target_lufs": -18,
+      "target_lufs_error": 0.007,
+      "errors": []
+    }
+  },
+  "provider_provenance": {
+    "parent_google_generative_ai_assertion_present": true,
+    "parent_synthid_watermark_assertion_present": true,
+    "exact_lyria_3_pro_marker_visible": false,
+    "derived_c2pa_copied": false,
+    "derived_signature_claimed": false,
+    "authority": "immutable_raw_parent_hash_lineage"
+  },
+  "verification": {
+    "schema_valid": true,
+    "parent_audit_hash_match": true,
+    "parent_e_hash_match": true,
+    "parent_f_hash_match": true,
+    "g_input_hash_match": true,
+    "helper_exit_zero": true,
+    "output_hash_verified": true,
+    "g_output_f_copy_hash_match": true,
+    "f_final_overwrite": false,
+    "g_scratch_retained": true,
+    "structural_pass": true,
+    "acoustic_pass": true,
+    "report_copy_hash_match": true
+  },
+  "protected_status": {
+    "raw_modified": false,
+    "imported_candidate": false,
+    "human_listened": false,
+    "human_approved": false,
+    "runtime_promoted": false,
+    "candidate_count_delta": 0,
+    "selected_master_count_delta": 0,
+    "score_delta": 0,
+    "seal_changed": false,
+    "bundle_created": false,
+    "ait_created": false,
+    "release_go": false,
+    "candidate_manifest_sha256_before": "7145d7904388a905c121841360aeba76f27723ff54303c096e9605ae73da76b6",
+    "candidate_manifest_sha256_after": "7145d7904388a905c121841360aeba76f27723ff54303c096e9605ae73da76b6",
+    "candidate_manifest_unchanged": true,
+    "bgm_mapping_sha256_before": "10407554b9e64b1d2a1c24f49fc8dd7ec816ca2d1122f22f454642f51a280fc1",
+    "bgm_mapping_sha256_after": "10407554b9e64b1d2a1c24f49fc8dd7ec816ca2d1122f22f454642f51a280fc1",
+    "bgm_mapping_unchanged": true
+  },
+  "eligible_for_human_listening": true,
+  "decision": "technical_pass_human_listening_pending"
+}

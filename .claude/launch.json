@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "part1",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:part1"],
+      "port": 5173
+    }
+  ]
+}
