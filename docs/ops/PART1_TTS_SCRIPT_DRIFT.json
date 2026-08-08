@@ -1,0 +1,811 @@
+{
+  "schema": "donggrol.part1_tts_script_drift.v1",
+  "generated_at": "2026-08-08T12:50:04.154Z",
+  "baseline": "G:\\Donggri_DevDrive\\storage\\codex-control\\reports\\DonggrolGameBook\\2026-08-08\\part1-korean-repair\\backup",
+  "audio_files_present": 144,
+  "regenerate_required": 51,
+  "still_valid": 93,
+  "note": "Drift comes from the APR-033 copy repair (duplicate-line removal, narration/dialogue separation, internal-id cleanup). No voiced line ever contained a debug code or a particle error: those defects were confined to outcome events, and no outcome event has audio.",
+  "regenerate": [
+    {
+      "event_id": "EV_CH05_SECURITY_CONSOLE",
+      "chapter_id": "CH05",
+      "event_type": "scene",
+      "title": "보안 제어 단말",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_SECURITY_CONSOLE.mp3",
+      "audio_seconds": 21.48,
+      "before_chars": 386,
+      "after_chars": 312,
+      "delta_chars": -74,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_WRITER_SAFEHOUSE",
+      "chapter_id": "CH01",
+      "event_type": "dialogue",
+      "title": "편집실 임시 대피처",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_WRITER_SAFEHOUSE.mp3",
+      "audio_seconds": 14.52,
+      "before_chars": 306,
+      "after_chars": 234,
+      "delta_chars": -72,
+      "removed_sentences": [
+        "편집실 임시 대피처에서 놓친 것은 다음 방의 위험으로 남았다",
+        "서지훈은 발끝의 재를 털며 편집실 임시 대피처에서 아직 닫히지 않은 길을 찾았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH05_SKYWALK",
+      "chapter_id": "CH05",
+      "event_type": "danger",
+      "title": "공중 보행로 가든",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_SKYWALK.mp3",
+      "audio_seconds": 16.75,
+      "before_chars": 333,
+      "after_chars": 262,
+      "delta_chars": -71,
+      "removed_sentences": [
+        "냉각음이 서버랙 사이에서 대답을 늦췄다",
+        "빈 화면의 잔광만 뒤에 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH05_LOBBY_SCAN",
+      "chapter_id": "CH05",
+      "event_type": "exploration",
+      "title": "로비 스캔",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_LOBBY_SCAN.mp3",
+      "audio_seconds": 19.03,
+      "before_chars": 415,
+      "after_chars": 344,
+      "delta_chars": -71,
+      "removed_sentences": [
+        "로비 스캔의 공기가 무거워지며 서버실의 흰 소음이 선택의 끝을 가렸다",
+        "냉각 라인의 서리가 흔들리는 사이, 서지훈은 빈 화면의 잔광을 확인하며 남은 시간을 쟀다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_CONCOURSE_CACHE",
+      "chapter_id": "CH01",
+      "event_type": "exploration",
+      "title": "회랑 물자 더미",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONCOURSE_CACHE.mp3",
+      "audio_seconds": 14.38,
+      "before_chars": 292,
+      "after_chars": 223,
+      "delta_chars": -69,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_SIGNAL_CALIBRATION",
+      "chapter_id": "CH01",
+      "event_type": "scene",
+      "title": "주파수 보정",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_SIGNAL_CALIBRATION.mp3",
+      "audio_seconds": 14.78,
+      "before_chars": 270,
+      "after_chars": 202,
+      "delta_chars": -68,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_CACHE",
+      "chapter_id": "CH03",
+      "event_type": "scene",
+      "title": "쇼룸 보급품",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_CACHE.mp3",
+      "audio_seconds": 17.83,
+      "before_chars": 278,
+      "after_chars": 210,
+      "delta_chars": -68,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_CONTROL_RESTORE",
+      "chapter_id": "CH01",
+      "event_type": "choice",
+      "title": "제어실 복구",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONTROL_RESTORE.mp3",
+      "audio_seconds": 16.54,
+      "before_chars": 280,
+      "after_chars": 213,
+      "delta_chars": -67,
+      "removed_sentences": [
+        "어느 쪽을 먼저 살릴지 지금 정해야 한다",
+        "꺼진 스피커만 뒤에 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH05_PREP_FINAL",
+      "chapter_id": "CH05",
+      "event_type": "dialogue",
+      "title": "최종 준비",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_PREP_FINAL.mp3",
+      "audio_seconds": 14.88,
+      "before_chars": 313,
+      "after_chars": 246,
+      "delta_chars": -67,
+      "removed_sentences": [
+        "최종 준비의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다",
+        "서지훈은 빈 화면의 잔광을 확인하며 최종 준비에서 아직 닫히지 않은 길을 찾았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_STAIRWELL_AMBUSH",
+      "chapter_id": "CH01",
+      "event_type": "combat",
+      "title": "계단실 매복",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_STAIRWELL_AMBUSH.mp3",
+      "audio_seconds": 14.95,
+      "before_chars": 259,
+      "after_chars": 193,
+      "delta_chars": -66,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_SWEEP",
+      "chapter_id": "CH03",
+      "event_type": "exploration",
+      "title": "모델하우스 잔해",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_SWEEP.mp3",
+      "audio_seconds": 21.96,
+      "before_chars": 288,
+      "after_chars": 222,
+      "delta_chars": -66,
+      "removed_sentences": [
+        "지금 멈추면 통로보다 후회가 먼저 닫힌다",
+        "모델하우스 잔해의 남은 선택은 빠르게 작아지고 있었다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_ROOFTOP_CALIBRATION",
+      "chapter_id": "CH01",
+      "event_type": "dialogue",
+      "title": "송신기 안정화",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_ROOFTOP_CALIBRATION.mp3",
+      "audio_seconds": 15.14,
+      "before_chars": 265,
+      "after_chars": 201,
+      "delta_chars": -64,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH02_PIER_AMBUSH",
+      "chapter_id": "CH02",
+      "event_type": "combat",
+      "title": "폐선착장 매복",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_PIER_AMBUSH.mp3",
+      "audio_seconds": 17.33,
+      "before_chars": 261,
+      "after_chars": 198,
+      "delta_chars": -63,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_EXIT_CHECK",
+      "chapter_id": "CH01",
+      "event_type": "scene",
+      "title": "철수 점검",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_EXIT_CHECK.mp3",
+      "audio_seconds": 16.66,
+      "before_chars": 267,
+      "after_chars": 205,
+      "delta_chars": -62,
+      "removed_sentences": [
+        "철수 점검에서 놓친 것은 다음 방의 위험으로 남았다",
+        "서지훈은 발끝의 재를 털며 철수 점검에서 아직 닫히지 않은 길을 찾았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH02_GATE_ASSAULT",
+      "chapter_id": "CH02",
+      "event_type": "danger",
+      "title": "수문 통제실 돌파",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_GATE_ASSAULT.mp3",
+      "audio_seconds": 22.27,
+      "before_chars": 284,
+      "after_chars": 222,
+      "delta_chars": -62,
+      "removed_sentences": [
+        "젖은 천막이 늦은 숨을 낮게 눌렀다",
+        "서지훈은 수문 통제실 돌파 앞에서 발목의 물살을 견디며 손에 든 것을 다시 세었다."
+      ]
+    },
+    {
+      "event_id": "EV_CH04_PRE_BOSS_CHECK",
+      "chapter_id": "CH04",
+      "event_type": "dialogue",
+      "title": "라인 재가동 점검",
+      "audio_path": "public/generated/audio/tts/P1/CH04/EV_CH04_PRE_BOSS_CHECK.mp3",
+      "audio_seconds": 9,
+      "before_chars": 353,
+      "after_chars": 291,
+      "delta_chars": -62,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH05_EXIT_PRESSURE",
+      "chapter_id": "CH05",
+      "event_type": "scene",
+      "title": "출구 압박",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_EXIT_PRESSURE.mp3",
+      "audio_seconds": 18.82,
+      "before_chars": 346,
+      "after_chars": 284,
+      "delta_chars": -62,
+      "removed_sentences": [
+        "출구 압박의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다",
+        "출구 압박에서 서지훈은 냉각음 사이의 틈을 듣고 다음 퇴로를 먼저 가늠했다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_LOBBY_SEARCH",
+      "chapter_id": "CH01",
+      "event_type": "exploration",
+      "title": "멈춘 로비",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_LOBBY_SEARCH.mp3",
+      "audio_seconds": 16.44,
+      "before_chars": 254,
+      "after_chars": 193,
+      "delta_chars": -61,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH02_WATERLOCK",
+      "chapter_id": "CH02",
+      "event_type": "choice",
+      "title": "수문 잠금",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_WATERLOCK.mp3",
+      "audio_seconds": 15.46,
+      "before_chars": 287,
+      "after_chars": 227,
+      "delta_chars": -60,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_SIGNAL_RELAY_DEFENSE",
+      "chapter_id": "CH01",
+      "event_type": "danger",
+      "title": "중계기 방어",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_SIGNAL_RELAY_DEFENSE.mp3",
+      "audio_seconds": 15.74,
+      "before_chars": 231,
+      "after_chars": 172,
+      "delta_chars": -59,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_PATROL_AMBUSH",
+      "chapter_id": "CH01",
+      "event_type": "combat",
+      "title": "순찰 감염체",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_PATROL_AMBUSH.mp3",
+      "audio_seconds": 16.82,
+      "before_chars": 230,
+      "after_chars": 171,
+      "delta_chars": -59,
+      "removed_sentences": [
+        "순찰 감염체을 소리 없이 지나치면 뒤편이 비어 있다"
+      ]
+    },
+    {
+      "event_id": "EV_CH01_SECURITY_LOCKER",
+      "chapter_id": "CH01",
+      "event_type": "exploration",
+      "title": "보안실 락커",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_SECURITY_LOCKER.mp3",
+      "audio_seconds": 15.79,
+      "before_chars": 232,
+      "after_chars": 173,
+      "delta_chars": -59,
+      "removed_sentences": [
+        "한쪽은 사람의 숨이고, 다른 한쪽은 사라질 기록이다",
+        "보안실 락커의 길은 열렸지만, 돌아갈 시간은 조금 줄었다."
+      ]
+    },
+    {
+      "event_id": "EV_CH02_SLUICE_DIAGNOSTIC",
+      "chapter_id": "CH02",
+      "event_type": "choice",
+      "title": "배수문 점검",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLUICE_DIAGNOSTIC.mp3",
+      "audio_seconds": 18.41,
+      "before_chars": 258,
+      "after_chars": 199,
+      "delta_chars": -59,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH02_CHANNEL_CLEAR",
+      "chapter_id": "CH02",
+      "event_type": "exploration",
+      "title": "수로 정리",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_CHANNEL_CLEAR.mp3",
+      "audio_seconds": 17.06,
+      "before_chars": 265,
+      "after_chars": 206,
+      "delta_chars": -59,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH02_COLD_CRAWL",
+      "chapter_id": "CH02",
+      "event_type": "exploration",
+      "title": "냉각로 탐색",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_COLD_CRAWL.mp3",
+      "audio_seconds": 18.41,
+      "before_chars": 283,
+      "after_chars": 224,
+      "delta_chars": -59,
+      "removed_sentences": [
+        "젖은 천막이 늦은 숨을 낮게 눌렀다",
+        "냉각로 탐색에서 서지훈은 수면의 흔들림을 읽고 세번째 퇴로를 먼저 가늠했다."
+      ]
+    },
+    {
+      "event_id": "EV_CH04_EXIT_CHECK",
+      "chapter_id": "CH04",
+      "event_type": "scene",
+      "title": "철수 점검",
+      "audio_path": "public/generated/audio/tts/P1/CH04/EV_CH04_EXIT_CHECK.mp3",
+      "audio_seconds": 19.54,
+      "before_chars": 272,
+      "after_chars": 213,
+      "delta_chars": -59,
+      "removed_sentences": [
+        "철수 점검의 길은 열렸지만, 돌아갈 시간은 조금 줄었다",
+        "철수 점검에서 서지훈은 레일의 잔진동을 밟고 다음 퇴로를 먼저 가늠했다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_STUDIO_APPROACH",
+      "chapter_id": "CH01",
+      "event_type": "exploration",
+      "title": "스튜디오 접근",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_STUDIO_APPROACH.mp3",
+      "audio_seconds": 15.96,
+      "before_chars": 233,
+      "after_chars": 175,
+      "delta_chars": -58,
+      "removed_sentences": [
+        "먼저 손댄 쪽만 다음 장면에 남는다",
+        "스튜디오 접근에서 서지훈은 잡음을 낮추고 다음 퇴로를 먼저 가늠했다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_CONCOURSE_SCAVENGE",
+      "chapter_id": "CH01",
+      "event_type": "exploration",
+      "title": "회랑 잔해 수색",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_CONCOURSE_SCAVENGE.mp3",
+      "audio_seconds": 12.12,
+      "before_chars": 235,
+      "after_chars": 177,
+      "delta_chars": -58,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH01_ROOFTOP_SWEEP",
+      "chapter_id": "CH01",
+      "event_type": "exploration",
+      "title": "옥상 주변 정리",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_ROOFTOP_SWEEP.mp3",
+      "audio_seconds": 14.69,
+      "before_chars": 253,
+      "after_chars": 195,
+      "delta_chars": -58,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH03_BLACKOUT_REPAIR",
+      "chapter_id": "CH03",
+      "event_type": "choice",
+      "title": "정전 복구",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_BLACKOUT_REPAIR.mp3",
+      "audio_seconds": 16.51,
+      "before_chars": 330,
+      "after_chars": 272,
+      "delta_chars": -58,
+      "removed_sentences": [
+        "지금 멈추면 통로보다 후회가 먼저 닫힌다",
+        "정전 복구의 남은 선택은 빠르게 작아지고 있었다."
+      ]
+    },
+    {
+      "event_id": "EV_CH03_UPPER_SECURITY_SWEEP",
+      "chapter_id": "CH03",
+      "event_type": "combat",
+      "title": "상층 경계 정리",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_UPPER_SECURITY_SWEEP.mp3",
+      "audio_seconds": 18.1,
+      "before_chars": 323,
+      "after_chars": 265,
+      "delta_chars": -58,
+      "removed_sentences": [
+        "지금 멈추면 통로보다 후회가 먼저 닫힌다",
+        "상층 경계 정리에서 놓친 것은 다음 방의 위험으로 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_SERVICE_TUNNEL",
+      "chapter_id": "CH01",
+      "event_type": "scene",
+      "title": "정비 터널",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_SERVICE_TUNNEL.mp3",
+      "audio_seconds": 15.65,
+      "before_chars": 228,
+      "after_chars": 172,
+      "delta_chars": -56,
+      "removed_sentences": [
+        "한쪽은 사람의 숨이고, 다른 한쪽은 사라질 기록이다",
+        "정비 터널의 길은 열렸지만, 돌아갈 시간은 조금 줄었다."
+      ]
+    },
+    {
+      "event_id": "EV_CH02_MARKET_LOCKDOWN",
+      "chapter_id": "CH02",
+      "event_type": "exploration",
+      "title": "수몰시장 잔해",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_MARKET_LOCKDOWN.mp3",
+      "audio_seconds": 15.19,
+      "before_chars": 283,
+      "after_chars": 227,
+      "delta_chars": -56,
+      "removed_sentences": [
+        "지금 멈추면 통로보다 후회가 먼저 닫힌다",
+        "수몰시장 잔해에서 놓친 것은 다음 방의 위험으로 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH03_PREP_GLASS",
+      "chapter_id": "CH03",
+      "event_type": "dialogue",
+      "title": "유리정원 준비",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_PREP_GLASS.mp3",
+      "audio_seconds": 15.58,
+      "before_chars": 300,
+      "after_chars": 245,
+      "delta_chars": -55,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH02_SLICE_ESCAPE",
+      "chapter_id": "CH02",
+      "event_type": "danger",
+      "title": "수문 탈출",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_SLICE_ESCAPE.mp3",
+      "audio_seconds": 15.6,
+      "before_chars": 278,
+      "after_chars": 224,
+      "delta_chars": -54,
+      "removed_sentences": [
+        "수문 아래 울림만 뒤에 남았다",
+        "수문 탈출에서 놓친 것은 다음 방의 위험으로 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT",
+      "chapter_id": "CH05",
+      "event_type": "exploration",
+      "title": "로비 검문",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_LOBBY_CHECKPOINT.mp3",
+      "audio_seconds": 18.58,
+      "before_chars": 422,
+      "after_chars": 368,
+      "delta_chars": -54,
+      "removed_sentences": [
+        "로비 검문의 공기가 무거워지며 기록의 빛이 꺼지기 전에 손을 움직여야 했다",
+        "로비 검문에서 놓친 것은 다음 방의 위험으로 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH03_RESCUE_DETOUR",
+      "chapter_id": "CH03",
+      "event_type": "exploration",
+      "title": "구조 신호 응답",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_RESCUE_DETOUR.mp3",
+      "audio_seconds": 20.76,
+      "before_chars": 263,
+      "after_chars": 210,
+      "delta_chars": -53,
+      "removed_sentences": [
+        "구조 신호 응답에서 서지훈은 반사광을 피해 세번째 퇴로를 먼저 가늠했다",
+        "구조 신호 응답에서 놓친 것은 다음 방의 위험으로 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH03_SHOWROOM_STORAGE",
+      "chapter_id": "CH03",
+      "event_type": "exploration",
+      "title": "쇼룸 보급 라인",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_SHOWROOM_STORAGE.mp3",
+      "audio_seconds": 17.57,
+      "before_chars": 289,
+      "after_chars": 237,
+      "delta_chars": -52,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH04_VENDOR_BARTER",
+      "chapter_id": "CH04",
+      "event_type": "dialogue",
+      "title": "현장 거래",
+      "audio_path": "public/generated/audio/tts/P1/CH04/EV_CH04_VENDOR_BARTER.mp3",
+      "audio_seconds": 15.26,
+      "before_chars": 328,
+      "after_chars": 277,
+      "delta_chars": -51,
+      "removed_sentences": []
+    },
+    {
+      "event_id": "EV_CH02_TIDE_SCAN",
+      "chapter_id": "CH02",
+      "event_type": "exploration",
+      "title": "수위 스캔",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_TIDE_SCAN.mp3",
+      "audio_seconds": 24.53,
+      "before_chars": 276,
+      "after_chars": 226,
+      "delta_chars": -50,
+      "removed_sentences": [
+        "수위 스캔의 불빛이 한 번 더 깜빡이기 전에 발을 옮긴다",
+        "수위 스캔에서 놓친 것은 다음 방의 위험으로 남았다."
+      ]
+    },
+    {
+      "event_id": "EV_CH03_UPPER_SUPPLY",
+      "chapter_id": "CH03",
+      "event_type": "exploration",
+      "title": "라운지",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_UPPER_SUPPLY.mp3",
+      "audio_seconds": 22.9,
+      "before_chars": 295,
+      "after_chars": 265,
+      "delta_chars": -30,
+      "removed_sentences": [
+        "상층 보급 라운지의 남은 칸은 물건보다 먼저 숨을 요구했다",
+        "상층 보급 라운지의 공기가 무거워지며 유리벽은 망설인 얼굴을 먼저 돌려보냈다",
+        "상층 보급 라운지의 공기가 무거워지며 깨진 창가가 같은 말을 다른 방향으로 되비췄다",
+        "상층 보급 라운지의 공기가 잠깐 얇아졌다"
+      ]
+    },
+    {
+      "event_id": "EV_CH03_ENTRY",
+      "chapter_id": "CH03",
+      "event_type": "briefing",
+      "title": "유리정원 진입",
+      "audio_path": "public/generated/audio/tts/P1/CH03/EV_CH03_ENTRY.mp3",
+      "audio_seconds": 11.83,
+      "before_chars": 229,
+      "after_chars": 201,
+      "delta_chars": -28,
+      "removed_sentences": [
+        "EV_CH03_BASEMENT_MEET에서 첫 신뢰 선택이 열린다",
+        "CH02 철수 영수증을 확인한 뒤 EV_CH03_BASEMENT_MEET의 첫 신뢰 선택이 열린다."
+      ]
+    },
+    {
+      "event_id": "EV_CH05_ENTRY",
+      "chapter_id": "CH05",
+      "event_type": "briefing",
+      "title": "미러센터 접근",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_ENTRY.mp3",
+      "audio_seconds": 10.32,
+      "before_chars": 229,
+      "after_chars": 205,
+      "delta_chars": -24,
+      "removed_sentences": [
+        "EV_CH05_LOBBY_MAPPING에서 첫 정보 선택이 열린다",
+        "CH04 대피 영수증을 확인한 뒤 진입 전투와 EV_CH05_LOBBY_MAPPING이 열린다."
+      ]
+    },
+    {
+      "event_id": "EV_CH04_ENTRY",
+      "chapter_id": "CH04",
+      "event_type": "briefing",
+      "title": "상자들의 도시",
+      "audio_path": "public/generated/audio/tts/P1/CH04/EV_CH04_ENTRY.mp3",
+      "audio_seconds": 7.92,
+      "before_chars": 210,
+      "after_chars": 190,
+      "delta_chars": -20,
+      "removed_sentences": [
+        "EV_CH04_COLD_ALLOC에서 첫 배분 영수증이 열린다",
+        "CH03 철수 영수증을 확인한 뒤 EV_CH04_COLD_ALLOC의 첫 배분이 열린다."
+      ]
+    },
+    {
+      "event_id": "EV_CH02_FLOOD_AMBUSH",
+      "chapter_id": "CH02",
+      "event_type": "combat",
+      "title": "침수 순찰",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_FLOOD_AMBUSH.mp3",
+      "audio_seconds": 20.4,
+      "before_chars": 120,
+      "after_chars": 105,
+      "delta_chars": -15,
+      "removed_sentences": [
+        "승리 뒤 EV_CH02_MARKET_SWEEP으로 즉시 이어진다."
+      ]
+    },
+    {
+      "event_id": "EV_CH05_RAMP_SWARM",
+      "chapter_id": "CH05",
+      "event_type": "combat",
+      "title": "진입 경사로 난전",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_RAMP_SWARM.mp3",
+      "audio_seconds": 18.24,
+      "before_chars": 137,
+      "after_chars": 125,
+      "delta_chars": -12,
+      "removed_sentences": [
+        "승리 뒤 EV_CH05_LOBBY_MAPPING이 열린다."
+      ]
+    },
+    {
+      "event_id": "EV_CH04_TUNNEL_AMBUSH",
+      "chapter_id": "CH04",
+      "event_type": "combat",
+      "title": "물류 터널 매복",
+      "audio_path": "public/generated/audio/tts/P1/CH04/EV_CH04_TUNNEL_AMBUSH.mp3",
+      "audio_seconds": 20.74,
+      "before_chars": 140,
+      "after_chars": 130,
+      "delta_chars": -10,
+      "removed_sentences": [
+        "승리 뒤 EV_CH04_COLD_ALLOC이 열린다."
+      ]
+    },
+    {
+      "event_id": "EV_CH02_DRAINAGE_CTRL",
+      "chapter_id": "CH02",
+      "event_type": "scene",
+      "title": "배수 제어",
+      "audio_path": "public/generated/audio/tts/P1/CH02/EV_CH02_DRAINAGE_CTRL.mp3",
+      "audio_seconds": 17.59,
+      "before_chars": 128,
+      "after_chars": 120,
+      "delta_chars": -8,
+      "removed_sentences": [
+        "선택한 route.control과 현장 수치가 저장된다."
+      ]
+    },
+    {
+      "event_id": "EV_CH01_ARCHIVE_DECISION",
+      "chapter_id": "CH01",
+      "event_type": "choice",
+      "title": "침수 자료실",
+      "audio_path": "public/generated/audio/tts/P1/CH01/EV_CH01_ARCHIVE_DECISION.mp3",
+      "audio_seconds": 15,
+      "before_chars": 146,
+      "after_chars": 140,
+      "delta_chars": -6,
+      "removed_sentences": [
+        "회수 여부와 route.truth가 선택 영수증에 고정된다."
+      ]
+    },
+    {
+      "event_id": "EV_CH04_RAIL_JAM",
+      "chapter_id": "CH04",
+      "event_type": "combat",
+      "title": "의료 상자 선로",
+      "audio_path": "public/generated/audio/tts/P1/CH04/EV_CH04_RAIL_JAM.mp3",
+      "audio_seconds": 19.13,
+      "before_chars": 267,
+      "after_chars": 267,
+      "delta_chars": 0,
+      "removed_sentences": [
+        "의료 상자 선로이 시야 가장자리에서 몸을 일으킨다"
+      ]
+    },
+    {
+      "event_id": "EV_CH05_COOLING_BREAK",
+      "chapter_id": "CH05",
+      "event_type": "combat",
+      "title": "냉각 구간 폭주",
+      "audio_path": "public/generated/audio/tts/P1/CH05/EV_CH05_COOLING_BREAK.mp3",
+      "audio_seconds": 18.58,
+      "before_chars": 336,
+      "after_chars": 336,
+      "delta_chars": 0,
+      "removed_sentences": [
+        "냉각 구간 폭주이 시야 가장자리에서 몸을 일으킨다"
+      ]
+    }
+  ],
+  "still_valid_event_ids": [
+    "EV_CH01_BRIEFING",
+    "EV_CH01_APPROACH",
+    "EV_CH01_WRITER_RESCUE",
+    "EV_CH01_ROOFTOP_SIGNAL",
+    "EV_CH01_BOSS_BROADCAST",
+    "EV_CH01_EXTRACTION",
+    "EV_CH01_SECURITY_OFFICE",
+    "EV_CH01_LOCKDOWN",
+    "EV_CH01_ARCHIVE_AMBUSH",
+    "EV_CH01_CORRIDOR_TRAP",
+    "EV_CH01_ESCAPE_RUN",
+    "EV_CH01_POWER_RESET",
+    "EV_CH01_EXTRACTION_PREP",
+    "EV_CH01_CONCOURSE_SKIRMISH",
+    "EV_CH01_ARCHIVE_VAULT",
+    "EV_CH01_LOBBY_LOCKDOWN",
+    "EV_CH01_ARCHIVE_KEYPAD",
+    "EV_CH01_SECURITY_CLEAR",
+    "EV_CH01_CACHE_SEARCH",
+    "EV_CH01_POWER_RELAY",
+    "EV_CH01_ARCHIVE_RUINS",
+    "EV_CH01_ESCAPE_BACKTRACK",
+    "EV_CH02_ENTRY",
+    "EV_CH02_MARKET_SWEEP",
+    "EV_CH02_COLD_STORAGE",
+    "EV_CH02_BLACKMARKET",
+    "EV_CH02_PIER_BARGAIN",
+    "EV_CH02_SLUICE_BOSS",
+    "EV_CH02_EXTRACTION",
+    "EV_CH02_ALLEY_SCOUT",
+    "EV_CH02_WATERLOGGED_AMBUSH",
+    "EV_CH02_SUBMERGED_AMBUSH",
+    "EV_CH02_PIER_SIGNAL",
+    "EV_CH02_BARGE_REPAIR",
+    "EV_CH02_EXTRACTION_PREP",
+    "EV_CH02_WATERWAY_CHECK",
+    "EV_CH02_COLD_SEAL",
+    "EV_CH02_SLUICE_OVERRIDE",
+    "EV_CH02_DROWNED_AMBUSH",
+    "EV_CH02_MARKET_BACKALLEY",
+    "EV_CH02_MARKET_BACKALLEY_LOOP",
+    "EV_CH02_BLACKMARKET_LEDGER",
+    "EV_CH02_PIER_ENGINE",
+    "EV_CH02_SLUICE_PREP",
+    "EV_CH03_BASEMENT_MEET",
+    "EV_CH03_VERTICAL_ROUTE",
+    "EV_CH03_POWER_ROUTING",
+    "EV_CH03_UPPER_NEGOTIATION",
+    "EV_CH03_SKYBRIDGE",
+    "EV_CH03_BOSS_GARDEN",
+    "EV_CH03_EXTRACTION",
+    "EV_CH03_STAIR_AMBUSH",
+    "EV_CH03_EXTRACTION_PRESSURE",
+    "EV_CH03_SERVICE_AMBUSH",
+    "EV_CH03_SHOWROOM_AMBUSH",
+    "EV_CH03_SKYBRIDGE_ACCESS",
+    "EV_CH03_BASEMENT_CACHE",
+    "EV_CH03_GLASS_PREP",
+    "EV_CH03_BASEMENT_SURVEY",
+    "EV_CH03_SERVICE_SPIRAL",
+    "EV_CH03_LUXURY_SCAVENGE",
+    "EV_CH03_POWER_OVERRUN",
+    "EV_CH03_SKYBRIDGE_WIND",
+    "EV_CH03_GLASS_ARMORY",
+    "EV_CH03_GARDEN_APPROACH",
+    "EV_CH04_COLD_ALLOC",
+    "EV_CH04_LOBBY_MEET",
+    "EV_CH04_ROUTE_SELECTION",
+    "EV_CH04_SECURITY_BADGES",
+    "EV_CH04_LINE_DECISION",
+    "EV_CH04_BOSS_PICKER",
+    "EV_CH04_EXTRACTION",
+    "EV_CH04_SECURITY_SWEEP",
+    "EV_CH04_EXTRACTION_PREP",
+    "EV_CH04_LOADING_AMBUSH",
+    "EV_CH04_COLD_AUDIT",
+    "EV_CH04_LINE_PREP",
+    "EV_CH04_LINE_REPAIR",
+    "EV_CH04_TUNNEL_CACHE",
+    "EV_CH05_LOBBY_MAPPING",
+    "EV_CH05_COOLING_ROUTE",
+    "EV_CH05_KIM_ARA",
+    "EV_CH05_DATA_ACCESS",
+    "EV_CH05_BOSS_LINES",
+    "EV_CH05_EXTRACTION",
+    "EV_CH05_SIGNAL_RELAY",
+    "EV_CH05_CONTAINMENT_BREACH",
+    "EV_CH05_SERVER_PURGE",
+    "EV_CH05_COOLING_AMBUSH",
+    "EV_CH05_COOLING_BREACH",
+    "EV_CH05_DATA_SANITIZE",
+    "EV_CH05_ARC_RELAY",
+    "EV_CH05_CORE_PREP"
+  ]
+}

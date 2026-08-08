@@ -4,10 +4,14 @@
  * Regression guard for the damage classes found in the 2026-08-08 review. Run it
  * after any script touches chapter copy; a non-zero exit means player-facing text
  * regressed. `--json` prints the machine-readable report.
+ *
+ * Also importable: `private-export.mjs` calls `lintPart1Korean()` so contaminated
+ * copy cannot reach the runtime pack, which is the only path to the app.
  */
 
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { repairJosa, withJosa } from "./lib/korean-josa.mjs";
 import { INTERNAL_TERMS, SLOT_MODIFIERS, SLOT_NOUNS } from "./lib/part1-korean-copy.mjs";
@@ -54,8 +58,13 @@ const DEBUG_CODE = /\bCH0\d-\d{3}\b/u;
 const INTERNAL_ID = /\broute\.[a-z_]+|\bEV_[A-Z0-9_]+\b|\bflag[:.][a-z0-9_]+|widget_state\./u;
 const DANGLING_END = /(을|를|이|가|은|는|와|과|의|로|고|며|서|만 남)$/u;
 
-const findings = [];
+let findings = [];
+let seenFindings = new Set();
 function report(rule, chapter, eventId, detail, sample) {
+  // repairJosa and knownNounJosaErrors can both flag the same word; report once.
+  const key = `${rule}|${chapter}|${eventId}|${detail}`;
+  if (seenFindings.has(key)) return;
+  seenFindings.add(key);
   findings.push({ rule, chapter, event_id: eventId, detail, sample: sample?.slice(0, 160) });
 }
 
@@ -98,7 +107,14 @@ const overrides = fs.existsSync(overridePath)
     )
   : new Map();
 
-for (const chapter of CHAPTERS) {
+/**
+ * Run every Part 1 copy rule.
+ * @returns {{pass: boolean, total: number, by_rule: Record<string, number>, findings: object[]}}
+ */
+export function lintPart1Korean() {
+  findings = [];
+  seenFindings = new Set();
+  for (const chapter of CHAPTERS) {
   const chapterId = chapter.toUpperCase();
   const data = JSON.parse(fs.readFileSync(path.join(chapterDir, `${chapter}.json`), "utf8"));
   const events = data.events ?? [];
@@ -188,18 +204,26 @@ for (const chapter of CHAPTERS) {
   if (worst && worst[1] > 3) {
     report("identical-outcome", chapter, "-", `동일 결과문 ${worst[1]}건 (선택이 결과에 반영되지 않음)`, worst[0]);
   }
+  }
+
+  const byRule = {};
+  for (const f of findings) byRule[f.rule] = (byRule[f.rule] ?? 0) + 1;
+  return { pass: findings.length === 0, total: findings.length, by_rule: byRule, findings: [...findings] };
 }
 
-const byRule = {};
-for (const f of findings) byRule[f.rule] = (byRule[f.rule] ?? 0) + 1;
-
-if (process.argv.includes("--json")) {
-  console.log(JSON.stringify({ pass: findings.length === 0, total: findings.length, by_rule: byRule, findings }, null, 2));
-} else {
-  console.log(`Part 1 한국어 린트: ${findings.length === 0 ? "PASS" : `FAIL (${findings.length}건)`}`);
-  for (const [rule, n] of Object.entries(byRule).sort((a, b) => b[1] - a[1])) console.log(`  ${String(n).padStart(4)}  ${rule}`);
-  for (const f of findings.slice(0, 25)) console.log(`   - [${f.rule}] ${f.chapter}/${f.event_id} ${f.detail}\n       ${f.sample}`);
-  if (findings.length > 25) console.log(`   … 외 ${findings.length - 25}건`);
+function main() {
+  const result = lintPart1Korean();
+  if (process.argv.includes("--json")) {
+    console.log(JSON.stringify(result, null, 2));
+  } else {
+    console.log(`Part 1 한국어 린트: ${result.pass ? "PASS" : `FAIL (${result.total}건)`}`);
+    for (const [rule, n] of Object.entries(result.by_rule).sort((a, b) => b[1] - a[1])) console.log(`  ${String(n).padStart(4)}  ${rule}`);
+    for (const f of result.findings.slice(0, 25)) console.log(`   - [${f.rule}] ${f.chapter}/${f.event_id} ${f.detail}\n       ${f.sample}`);
+    if (result.total > 25) console.log(`   … 외 ${result.total - 25}건`);
+  }
+  process.exit(result.pass ? 0 : 1);
 }
 
-process.exit(findings.length === 0 ? 0 : 1);
+if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
+  main();
+}

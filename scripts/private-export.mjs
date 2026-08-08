@@ -17,6 +17,7 @@ import {
   toPosix
 } from "./private-paths.mjs";
 import { validatePrivateContent } from "./private-validation.mjs";
+import { lintPart1Korean } from "./lint-part1-korean.mjs";
 
 function createWarning(message, source, severity = "warning") {
   return { message, source, severity };
@@ -312,6 +313,29 @@ async function exportRuntimeAssetManifest() {
 
 async function main() {
   await ensureDir(PUBLIC_RUNTIME_CONTENT_ROOT);
+  const skipKoreanLint = process.argv.includes("--skip-part1-korean-lint");
+
+  if (process.argv.includes("--content-pack-only")) {
+    const { pack, warnings } = await exportRuntimeContent();
+    await fs.writeFile(
+      path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "game-content-pack.json"),
+      `${JSON.stringify(pack, null, 2)}\n`,
+      "utf8"
+    );
+    const validation = await validatePrivateContent();
+    console.log(JSON.stringify({
+      output: {
+        pack: relFromRoot(path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "game-content-pack.json"))
+      },
+      content_pack_only: true,
+      chapter_count: pack.chapter_order.length,
+      ui_flow_count: Object.keys(pack.ui_flows).length,
+      warnings: warnings.length,
+      validation_ok: validation.ok
+    }, null, 2));
+    if (!validation.ok) process.exitCode = 1;
+    return;
+  }
 
   const [{ pack, warnings: contentWarnings }, { manifest: runtimeAssetManifest, warnings: assetWarnings }] = await Promise.all([
     exportRuntimeContent(),
@@ -340,6 +364,12 @@ async function main() {
     "utf8"
   );
 
+  // The runtime pack is the only path from private content to the app, so this is
+  // where contaminated CH01-CH05 copy has to be stopped. Roughly two dozen legacy
+  // polish/upgrade scripts can still rewrite chapter text; the 2026-08-08 review
+  // found 4,020 defects that had shipped this way unnoticed.
+  const koreanLint = skipKoreanLint ? { pass: true, total: 0, by_rule: {}, findings: [], skipped: true } : lintPart1Korean();
+
   const result = {
     output: {
       pack: relFromRoot(path.join(PUBLIC_RUNTIME_CONTENT_ROOT, "game-content-pack.json")),
@@ -349,10 +379,28 @@ async function main() {
     chapter_count: pack.chapter_order.length,
     ui_flow_count: Object.keys(pack.ui_flows).length,
     warnings: [...contentWarnings, ...assetWarnings].length,
-    validation_ok: validation.ok
+    validation_ok: validation.ok,
+    part1_korean_lint: {
+      pass: koreanLint.pass,
+      skipped: Boolean(koreanLint.skipped),
+      findings: koreanLint.total,
+      by_rule: koreanLint.by_rule
+    }
   };
 
   console.log(JSON.stringify(result, null, 2));
+  if (!koreanLint.pass) {
+    console.error(
+      `\nPart 1 Korean lint failed with ${koreanLint.total} finding(s). The pack was written, but this copy must not ship.\n` +
+      "Inspect: npm run qa:part1:korean-lint\n" +
+      "Repair : npm run ops:part1:korean-repair:plan  then  npm run ops:part1:korean-repair:apply\n" +
+      "Override (only for non-Part-1 work): npm run private:export -- --skip-part1-korean-lint\n"
+    );
+    for (const finding of koreanLint.findings.slice(0, 10)) {
+      console.error(`  [${finding.rule}] ${finding.chapter}/${finding.event_id} ${finding.detail}`);
+    }
+    process.exitCode = 1;
+  }
   if (!validation.ok) {
     process.exitCode = 1;
   }

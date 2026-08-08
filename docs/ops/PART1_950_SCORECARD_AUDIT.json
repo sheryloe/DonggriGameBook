@@ -1,0 +1,533 @@
+{
+  "schema": "donggrol.part1.scorecard_950_audit.v1",
+  "generated_at": "2026-08-08T12:51:25.437Z",
+  "self_test_mode": null,
+  "pass": true,
+  "scorecard_tracking_pass": true,
+  "manual_action_routing_pass": true,
+  "manual_action_routing_checks": [
+    {
+      "id": "SCORECARD-ACTION-BGM-LAUNCHER",
+      "status": true,
+      "evidence": "BGM STEP-01 must start from the operator packet and finish through the BGM closeout runner, not direct importer guidance"
+    },
+    {
+      "id": "SCORECARD-ACTION-950-05",
+      "status": true,
+      "evidence": "post-manual lane routes through canonical manual evidence import before post-manual 98+ audit"
+    },
+    {
+      "id": "SCORECARD-ACTION-950-14",
+      "status": true,
+      "evidence": "TTS lane starts from the TTS closeout runner before the listening/import/audit/apply path"
+    },
+    {
+      "id": "SCORECARD-ACTION-950-17",
+      "status": true,
+      "evidence": "Mobile/Toss lane starts from the closeout runner and requires asset hash/proof binding before confirmed capture import"
+    },
+    {
+      "id": "SCORECARD-ACTION-950-20",
+      "status": true,
+      "evidence": "completion lane reruns scorecard, completion path, manifest, and release freshness before any done claim"
+    },
+    {
+      "id": "SCORECARD-ACTION-DOWNLOAD-GUARD",
+      "status": true,
+      "evidence": "BGM/TTS/Mobile default import guidance must not pass the canonical Downloads path through --input because that bypasses duplicate-download inspection"
+    }
+  ],
+  "manual_action_routing_errors": [],
+  "score_assumption_guard_pass": true,
+  "score_assumption_guard_checks": [
+    {
+      "id": "SCORE-SEMANTICS-001",
+      "status": true,
+      "evidence": "unverified manual scores must not make the release evidence score meet the 950 target"
+    },
+    {
+      "id": "SCORE-SEMANTICS-002",
+      "status": true,
+      "evidence": "headline must show Release Blocked while any manual evidence lane is pending"
+    },
+    {
+      "id": "SCORE-SEMANTICS-003",
+      "status": true,
+      "evidence": "conservative_total is product-value tracking only until all items are floor-proven"
+    },
+    {
+      "id": "SCORE-SEMANTICS-004",
+      "status": true,
+      "evidence": "pending_manual_ids=950-05,950-14,950-17,950-20"
+    },
+    {
+      "id": "SCORE-SEMANTICS-005",
+      "status": true,
+      "evidence": "score_max_total=1000, target_total=950, item_count=20, item_max=50"
+    }
+  ],
+  "score_assumption_guard_errors": [],
+  "score_semantics": {
+    "status_headline": "RELEASE BLOCKED: 4 manual evidence lanes pending (950-05, 950-14, 950-17, 950-20)",
+    "release_evidence_score": 787,
+    "release_evidence_meets_950": false,
+    "proven_score": 787,
+    "proven_score_max": 800,
+    "proven_items": 16,
+    "unverified_pending_score": 167,
+    "unverified_pending_score_max": 200,
+    "unverified_pending_items": 4,
+    "pending_manual_ids": [
+      "950-05",
+      "950-14",
+      "950-17",
+      "950-20"
+    ],
+    "conservative_total_usage": "product_value_tracking_not_release_readiness",
+    "conservative_total_not_release_ready": true
+  },
+  "target_total": 950,
+  "score_max_total": 1000,
+  "target_item_floor": 48,
+  "item_count": 20,
+  "conservative_total": 954,
+  "conservative_total_meets_950": true,
+  "agy_followup_reported_total": 972,
+  "agy_followup_note": "AGY Pro follow-up timed out after partial output, but the readable partial response assessed the Wave B state as 972/1000 with no remaining Codex-fixable automatic blocker.",
+  "items_at_or_above_floor_by_score": 16,
+  "items_floor_proven": 16,
+  "all_items_48_plus_proven": false,
+  "automatic_items_below_floor": 0,
+  "manual_only_items_below_floor": 4,
+  "public_go_allowed": false,
+  "completion_proven": false,
+  "missing_artifacts": [],
+  "items": [
+    {
+      "id": "950-01",
+      "title": "First 30-second hook",
+      "lens": "early retention",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 48,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "CH01 first10=true, choices=17, mobileAudio=true",
+      "source_artifacts": [
+        "docs/ops/PART1_CH01_FIRST10_AUDIT.json",
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-02",
+      "title": "First 3-minute retention",
+      "lens": "early retention",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "mobileCdp=true, width=390, blockingAudio=0",
+      "source_artifacts": [
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-03",
+      "title": "Choice clarity",
+      "lens": "choice UX",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 50,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "first10=true, splitChoices=211, extraction=true",
+      "source_artifacts": [
+        "docs/ops/PART1_CH01_FIRST10_AUDIT.json",
+        "docs/ops/PART1_AGENCY_OUTCOME_AUDIT.json",
+        "docs/ops/PART1_EXTRACTION_QUALITY_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-04",
+      "title": "Felt agency",
+      "lens": "systems narrative",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "splitChoices=211, outcomeEvents=211, sameNext=0",
+      "source_artifacts": [
+        "docs/ops/PART1_AGENCY_OUTCOME_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-05",
+      "title": "Fairness and trust parity",
+      "lens": "player trust",
+      "proof_class": "manual_required",
+      "max_score": 50,
+      "floor": 48,
+      "score": 40,
+      "status": "pending_manual",
+      "floor_met_by_score": false,
+      "floor_proven": false,
+      "evidence": "postManual98=false, manualPass=false, gateReady=false",
+      "source_artifacts": [
+        "docs/ops/PART1_POST_MANUAL_98_STATUS_AUDIT.json",
+        "docs/ops/PART1_PUBLIC_TEST_GATE_AUDIT.json"
+      ],
+      "next_action": "After BGM, TTS, and Mobile/Toss exports are imported/applied, run npm run ops:part1:import-evidence -- --input docs/ops/PART1_MANUAL_EVIDENCE_FILLED.json, then npm run qa:part1:post-manual-98 -- --require-ready, then npm run qa:part1:950-scorecard."
+    },
+    {
+      "id": "950-06",
+      "title": "Chapter variety",
+      "lens": "story structure",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 50,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "narrative950=true, splitSourceEvents=96",
+      "source_artifacts": [
+        "docs/ops/PART1_NARRATIVE_FORMULA_950_AUDIT.json",
+        "docs/ops/PART1_AGENCY_OUTCOME_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-07",
+      "title": "Boss and climax freshness",
+      "lens": "climax design",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 50,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "narrative950=true, bossLock=true",
+      "source_artifacts": [
+        "docs/ops/PART1_NARRATIVE_FORMULA_950_AUDIT.json",
+        "docs/ops/PART1_BOSS_LOCK_TEACHING_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-08",
+      "title": "Horror atmosphere",
+      "lens": "mood and sensory writing",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 50,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "ch05SensoryCount=undefined, ch05AbstractCount=56",
+      "source_artifacts": [
+        "docs/ops/PART1_NARRATIVE_FORMULA_950_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-09",
+      "title": "NPC voice and text cadence",
+      "lens": "app-game writing",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "narrativeChecks=8, narrativePass=true",
+      "source_artifacts": [
+        "docs/ops/PART1_NARRATIVE_FORMULA_950_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-10",
+      "title": "Replay motivation",
+      "lens": "replay value",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 48,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "splitChoices=211, rewrittenOutcomes=211, bossLock=true",
+      "source_artifacts": [
+        "docs/ops/PART1_AGENCY_OUTCOME_AUDIT.json",
+        "docs/ops/PART1_BOSS_LOCK_TEACHING_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-11",
+      "title": "BGM fit",
+      "lens": "audio direction",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "bgmPass=true, assets=8, unmapped=0",
+      "source_artifacts": [
+        "docs/ops/PART1_BGM_SYSTEM_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-12",
+      "title": "BGM variety and distribution",
+      "lens": "audio direction",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "usedTracks=8, maxShare=0.234375",
+      "source_artifacts": [
+        "docs/ops/PART1_BGM_SYSTEM_AUDIT.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-13",
+      "title": "SFX weight and responsiveness",
+      "lens": "audio feedback",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 48,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "textTicks=44, choiceSelects=2, blockingAudio=0",
+      "source_artifacts": [
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-14",
+      "title": "TTS human listening readiness",
+      "lens": "voice quality",
+      "proof_class": "manual_required",
+      "max_score": 50,
+      "floor": 48,
+      "score": 40,
+      "status": "pending_manual",
+      "floor_met_by_score": false,
+      "floor_proven": false,
+      "evidence": "ttsTechnical=true, scoredRows=0/20, average=pending, manualDecision=pending",
+      "source_artifacts": [
+        "docs/ops/PART1_TTS_20LINE_AUDIO_READINESS.json",
+        "docs/ops/PART1_MANUAL_PUBLIC_TEST_STATUS.json"
+      ],
+      "next_action": "After BGM closeout is valid, run npm run ops:part1:tts-evidence-closeout, open docs/ops/PART1_TTS_20LINE_LISTENING_CONSOLE.html, human-listen all 20 locked lines, download PART1_TTS_20LINE_COMPARISON_EXPORT.json, then run npm run ops:part1:tts-evidence-closeout -- --confirm-real-listening so the runner checks default download candidates and internally runs npm run ops:part1:import-tts-listening, npm run qa:part1:tts-human-listening-export, npm run ops:part1:apply-tts-comparison, and the real evidence doctor when the export is valid. Use an explicit --input only after intentionally selecting an exact numbered browser download."
+    },
+    {
+      "id": "950-15",
+      "title": "Audio controls",
+      "lens": "mobile audio UX",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "mixerAudit=true, cdpMixer=true, sliders=3",
+      "source_artifacts": [
+        "docs/ops/PART1_BGM_SYSTEM_AUDIT.json",
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-16",
+      "title": "Mobile layout",
+      "lens": "mobile UX",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 50,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "width=390, overflow=false, textOverflow=0, outOfBounds=0",
+      "source_artifacts": [
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-17",
+      "title": "Toss/WebView back behavior",
+      "lens": "Toss in-app feasibility",
+      "proof_class": "manual_required",
+      "max_score": 50,
+      "floor": 48,
+      "score": 47,
+      "status": "pending_manual",
+      "floor_met_by_score": false,
+      "floor_proven": false,
+      "evidence": "sourceBackGuard=true, manualMobile=false, manualDecision=pending",
+      "source_artifacts": [
+        "apps/part1/src/App.tsx",
+        "docs/ops/PART1_MANUAL_PUBLIC_TEST_STATUS.json"
+      ],
+      "next_action": "After TTS closeout is valid, run npm run ops:part1:mobile-toss-evidence-closeout, open docs/ops/PART1_MOBILE_TOSS_CAPTURE_CONSOLE.html, run a real 360-430px physical/Toss-like session, save screenshot/video assets, run npm run ops:part1:evidence-assets, run npm run ops:part1:evidence-asset-proof-bind with the exact asset/challenge transcript after real visual inspection, download PART1_MOBILE_TOSS_CAPTURE_EXPORT.json, then run npm run ops:part1:mobile-toss-evidence-closeout -- --confirm-real-capture so the runner checks default download candidates and internally runs npm run ops:part1:import-mobile-toss-capture, npm run qa:part1:mobile-toss-capture-export, npm run ops:part1:apply-mobile-toss-capture, and the real evidence doctor when TTS and Mobile/Toss evidence are valid. Use an explicit --input only after intentionally selecting an exact numbered browser download."
+    },
+    {
+      "id": "950-18",
+      "title": "Background lifecycle",
+      "lens": "Toss in-app feasibility",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 50,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "sourceLifecycle=true, lifecycleProbe=true, pauses=1, resumes=1",
+      "source_artifacts": [
+        "apps/part1/src/utils/audio.ts",
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-19",
+      "title": "Saved-session resume",
+      "lens": "Toss in-app feasibility",
+      "proof_class": "automatic",
+      "max_score": 50,
+      "floor": 48,
+      "score": 49,
+      "status": "proven",
+      "floor_met_by_score": true,
+      "floor_proven": true,
+      "evidence": "resumeGate=true, unlock=true, finalScreen=RESULT",
+      "source_artifacts": [
+        "apps/part1/src/App.tsx",
+        "output/part1-mobile-cdp/summary.json"
+      ],
+      "next_action": ""
+    },
+    {
+      "id": "950-20",
+      "title": "Release evidence and no-false-GO boundary",
+      "lens": "release readiness",
+      "proof_class": "manual_required",
+      "max_score": 50,
+      "floor": 48,
+      "score": 40,
+      "status": "pending_manual",
+      "floor_met_by_score": false,
+      "floor_proven": false,
+      "evidence": "finalClosurePass=false, completion=false, goal=false, publicGo=false, blockers=5",
+      "source_artifacts": [
+        "docs/ops/PART1_FINAL_EVIDENCE_CLOSURE_AUDIT.json",
+        "docs/ops/PART1_GOAL_BLOCKER_AUDIT.json"
+      ],
+      "next_action": "After all manual lanes are real-proof ready, run npm run qa:part1:950-scorecard, npm run qa:part1:completion-path, node scripts/write-part1-release-candidate-manifest.mjs, and npm run qa:part1:release-candidate before any completion claim."
+    }
+  ],
+  "items_below_floor_or_unproven": [
+    {
+      "id": "950-05",
+      "title": "Fairness and trust parity",
+      "proof_class": "manual_required",
+      "score": 40,
+      "status": "pending_manual",
+      "next_action": "After BGM, TTS, and Mobile/Toss exports are imported/applied, run npm run ops:part1:import-evidence -- --input docs/ops/PART1_MANUAL_EVIDENCE_FILLED.json, then npm run qa:part1:post-manual-98 -- --require-ready, then npm run qa:part1:950-scorecard."
+    },
+    {
+      "id": "950-14",
+      "title": "TTS human listening readiness",
+      "proof_class": "manual_required",
+      "score": 40,
+      "status": "pending_manual",
+      "next_action": "After BGM closeout is valid, run npm run ops:part1:tts-evidence-closeout, open docs/ops/PART1_TTS_20LINE_LISTENING_CONSOLE.html, human-listen all 20 locked lines, download PART1_TTS_20LINE_COMPARISON_EXPORT.json, then run npm run ops:part1:tts-evidence-closeout -- --confirm-real-listening so the runner checks default download candidates and internally runs npm run ops:part1:import-tts-listening, npm run qa:part1:tts-human-listening-export, npm run ops:part1:apply-tts-comparison, and the real evidence doctor when the export is valid. Use an explicit --input only after intentionally selecting an exact numbered browser download."
+    },
+    {
+      "id": "950-17",
+      "title": "Toss/WebView back behavior",
+      "proof_class": "manual_required",
+      "score": 47,
+      "status": "pending_manual",
+      "next_action": "After TTS closeout is valid, run npm run ops:part1:mobile-toss-evidence-closeout, open docs/ops/PART1_MOBILE_TOSS_CAPTURE_CONSOLE.html, run a real 360-430px physical/Toss-like session, save screenshot/video assets, run npm run ops:part1:evidence-assets, run npm run ops:part1:evidence-asset-proof-bind with the exact asset/challenge transcript after real visual inspection, download PART1_MOBILE_TOSS_CAPTURE_EXPORT.json, then run npm run ops:part1:mobile-toss-evidence-closeout -- --confirm-real-capture so the runner checks default download candidates and internally runs npm run ops:part1:import-mobile-toss-capture, npm run qa:part1:mobile-toss-capture-export, npm run ops:part1:apply-mobile-toss-capture, and the real evidence doctor when TTS and Mobile/Toss evidence are valid. Use an explicit --input only after intentionally selecting an exact numbered browser download."
+    },
+    {
+      "id": "950-20",
+      "title": "Release evidence and no-false-GO boundary",
+      "proof_class": "manual_required",
+      "score": 40,
+      "status": "pending_manual",
+      "next_action": "After all manual lanes are real-proof ready, run npm run qa:part1:950-scorecard, npm run qa:part1:completion-path, node scripts/write-part1-release-candidate-manifest.mjs, and npm run qa:part1:release-candidate before any completion claim."
+    }
+  ],
+  "remaining_blockers": [
+    {
+      "id": "MANUAL-001",
+      "status": "pending_external",
+      "tracked": true,
+      "required_action": "20개 라인 사람 청취 점수, 평균 90+, critical defect 0을 기록한다."
+    },
+    {
+      "id": "MANUAL-002",
+      "status": "pending_external",
+      "tracked": true,
+      "required_action": "청취 결과에 따른 재생성 후보를 확정하거나 waiver와 결정권자를 기록한다."
+    },
+    {
+      "id": "MANUAL-003",
+      "status": "pending_external",
+      "tracked": true,
+      "required_action": "실제 기기 360-430px에서 첫 3분 90+, audio unlock pass, timestamp, screenshot/video SHA-256을 기록한다."
+    },
+    {
+      "id": "RELEASE-001",
+      "status": "pending_external",
+      "tracked": true,
+      "required_action": "실제 수동 증거 입력 후 모든 렌즈 98+ 상태를 생성하고 qa:part1:post-manual-98로 검증한다."
+    },
+    {
+      "id": "GOAL-001",
+      "status": "pending_external",
+      "tracked": true,
+      "required_action": "MANUAL-001/002/003과 RELEASE-001이 닫힌 뒤 qa:part1:98-chain 및 qa:part1:completion-path를 재실행한다."
+    }
+  ],
+  "next_manual_actions": [
+    "STEP-01 BGM context: Run npm run ops:part1:bgm-operator-open-packet, run npm run qa:part1:bgm-operator-open-packet, open docs/ops/PART1_BGM_OPERATOR_OPEN_PACKET.html, run npm run ops:part1:bgm-evidence-session, open docs/ops/PART1_BGM_EVIDENCE_SESSION_LAUNCHER.html, run npm run qa:part1:bgm-evidence-session, open docs/ops/PART1_BGM_CONTEXT_RUN_SHEET.html, run npm run qa:part1:bgm-technical-preflight, open docs/ops/PART1_BGM_CHRONO_LISTENING_CONSOLE.html, download PART1_BGM_CHRONO_LISTENING_EXPORT.json, then run npm run ops:part1:bgm-evidence-closeout -- --confirm-real-listening so the closeout runner checks default download candidates, internally runs the BGM context importer, audits the export, and reruns the real evidence doctor when valid. Finally run npm run qa:part1:bgm-evidence-closeout. Use an explicit --input only after intentionally selecting an exact numbered browser download.",
+    "STEP-02 TTS human listening closeout: After BGM closeout is valid, run npm run ops:part1:tts-evidence-closeout, open docs/ops/PART1_TTS_20LINE_LISTENING_CONSOLE.html, human-listen all 20 locked lines, download PART1_TTS_20LINE_COMPARISON_EXPORT.json, then run npm run ops:part1:tts-evidence-closeout -- --confirm-real-listening so the runner checks default download candidates and internally runs npm run ops:part1:import-tts-listening, npm run qa:part1:tts-human-listening-export, npm run ops:part1:apply-tts-comparison, and the real evidence doctor when the export is valid. Use an explicit --input only after intentionally selecting an exact numbered browser download.",
+    "STEP-03 Mobile/Toss physical proof: After TTS closeout is valid, run npm run ops:part1:mobile-toss-evidence-closeout, open docs/ops/PART1_MOBILE_TOSS_CAPTURE_CONSOLE.html, run a real 360-430px physical/Toss-like session, save screenshot/video assets, run npm run ops:part1:evidence-assets, run npm run ops:part1:evidence-asset-proof-bind with the exact asset/challenge transcript after real visual inspection, download PART1_MOBILE_TOSS_CAPTURE_EXPORT.json, then run npm run ops:part1:mobile-toss-evidence-closeout -- --confirm-real-capture so the runner checks default download candidates and internally runs npm run ops:part1:import-mobile-toss-capture, npm run qa:part1:mobile-toss-capture-export, npm run ops:part1:apply-mobile-toss-capture, and the real evidence doctor when TTS and Mobile/Toss evidence are valid. Use an explicit --input only after intentionally selecting an exact numbered browser download.",
+    "STEP-04 Post-manual 98+ review: After BGM, TTS, and Mobile/Toss exports are imported/applied, run npm run ops:part1:import-evidence -- --input docs/ops/PART1_MANUAL_EVIDENCE_FILLED.json, then npm run qa:part1:post-manual-98 -- --require-ready, then npm run qa:part1:950-scorecard.",
+    "STEP-05 Completion boundary: After all manual lanes are real-proof ready, run npm run qa:part1:950-scorecard, npm run qa:part1:completion-path, node scripts/write-part1-release-candidate-manifest.mjs, and npm run qa:part1:release-candidate before any completion claim."
+  ]
+}
