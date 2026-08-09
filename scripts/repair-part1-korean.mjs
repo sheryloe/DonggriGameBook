@@ -24,6 +24,7 @@ import { repairJosa, withJosa } from "./lib/korean-josa.mjs";
 import {
   ACTION_LABELS,
   ACTION_NOUNS,
+  AUTHORED_DIALOGUE,
   CARRY_FRAMES,
   INTERNAL_TERMS,
   OUTCOME_COST_FRAMES,
@@ -37,6 +38,7 @@ import {
   SPEAKER_CORRECTIONS,
   TITLE_ECHO_RULES,
   humanizeStat,
+  isSpokenLine,
 } from "./lib/part1-korean-copy.mjs";
 
 const root = process.cwd();
@@ -546,27 +548,66 @@ function repairChapter(chapterKey, data) {
         }
       }
 
-      // A speaker must belong to this chapter.
-      const correction = SPEAKER_CORRECTIONS[event.event_id];
-      if (correction) {
-        for (const block of text.scene_blocks) {
-          if (block.kind === "dialogue" && block.speaker_id && block.speaker_id !== correction.speaker_id) {
-            block.speaker_id = correction.speaker_id;
-            block.speaker_label = correction.speaker_label;
-            bump(chapterKey, "화자_교정");
+      // Give the chapter's anchor NPC an actual voice where the asset set says
+      // they belong but the script left them silent.
+      const authored = AUTHORED_DIALOGUE[event.event_id];
+      if (authored) {
+        const existing = text.scene_blocks.find((b) => b.kind === "dialogue" && b.speaker_id === authored.speaker_id);
+        if (existing) {
+          const have = new Set(existing.lines ?? []);
+          const added = authored.lines.filter((l) => !have.has(l));
+          if (added.length) {
+            existing.lines = [...(existing.lines ?? []), ...added];
+            bump(chapterKey, "앵커_대사_보강", added.length);
           }
+        } else {
+          const at = text.scene_blocks.findIndex((b) => b.kind === "system");
+          const block = {
+            block_id: `${event.event_id}_${authored.speaker_id}`,
+            kind: "dialogue",
+            speaker_id: authored.speaker_id,
+            speaker_label: authored.speaker_label,
+            lines: [...authored.lines],
+          };
+          if (at >= 0) text.scene_blocks.splice(at, 0, block);
+          else text.scene_blocks.push(block);
+          event.npc_ids = [...new Set([...(event.npc_ids ?? []), authored.speaker_id])];
+          bump(chapterKey, "앵커_대사_신규", authored.lines.length);
         }
       }
 
-      // Third-person narration must not sit inside a dialogue block: 윤해인 was
-      // describing 서지훈 out loud.
+      // A speaker must belong to this chapter. Only the named speaker is touched,
+      // so dialogue deliberately added to this event is left alone.
+      const correction = SPEAKER_CORRECTIONS[event.event_id];
+      if (correction) {
+        if (correction.drop) {
+          const before = text.scene_blocks.length;
+          text.scene_blocks = text.scene_blocks.filter((b) => !(b.kind === "dialogue" && b.speaker_id === correction.from));
+          if (text.scene_blocks.length !== before) bump(chapterKey, "타챕터_대사_제거", before - text.scene_blocks.length);
+        } else {
+          for (const block of text.scene_blocks) {
+            if (block.kind === "dialogue" && block.speaker_id === correction.from) {
+              block.speaker_id = correction.speaker_id;
+              block.speaker_label = correction.speaker_label;
+              bump(chapterKey, "화자_교정");
+            }
+          }
+        }
+        event.npc_ids = (event.npc_ids ?? []).filter((id) => id !== correction.from);
+      }
+
+      // Narration must not sit inside a dialogue block. 131 of 221 lines were
+      // plain declaratives filed under a speaker, which is what made one
+      // operator look like she monopolised the script.
       const moved = [];
       for (const block of text.scene_blocks) {
         if (block.kind !== "dialogue" || !Array.isArray(block.lines)) continue;
         const spoken = [];
         for (const line of block.lines) {
-          if (isThirdPersonNarration(line)) { moved.push(line); bump(chapterKey, "대사→나레이션_이동"); }
-          else spoken.push(line);
+          if (isThirdPersonNarration(line) || !isSpokenLine(line)) {
+            moved.push(line);
+            bump(chapterKey, "대사→나레이션_이동");
+          } else spoken.push(line);
         }
         block.lines = spoken;
       }

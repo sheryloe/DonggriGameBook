@@ -51,7 +51,7 @@
         "bg_broadcast_corridor",
         "bg_sorting_hall"
       ],
-      "src": "/generated/images/bg_ch01_yeouido_ash_primary.webp"
+      "src": "/generated/images/bg_ch01_yeouido_ash_primary.svg"
     },
     {
       "chapter_id": "CH01",
@@ -60,7 +60,7 @@
         "bg_emergency_stairs",
         "map_p1_ch01"
       ],
-      "src": "/generated/images/bg_ch01_yeouido_ash_secondary.webp"
+      "src": "/generated/images/bg_ch01_yeouido_ash_secondary.svg"
     },
     {
       "chapter_id": "CH01",
@@ -72,7 +72,8 @@
     {
       "chapter_id": "CH01",
       "runtime_art_keys": [
-        "npc_support_writer"
+        "npc_support_writer",
+        "portrait_jung_noah"
       ],
       "src": "/generated/images/portrait_npc_jung_noah_ch01_support.webp"
     },
@@ -104,7 +105,7 @@
         "bg_noryangjin_market",
         "bg_flooded_market"
       ],
-      "src": "/generated/images/bg_ch02_flooded_market_primary.webp"
+      "src": "/generated/images/bg_ch02_flooded_market_primary.svg"
     },
     {
       "chapter_id": "CH02",
@@ -112,7 +113,7 @@
         "bg_cold_storage",
         "map_p1_ch02"
       ],
-      "src": "/generated/images/bg_ch02_flooded_market_secondary.webp"
+      "src": "/generated/images/bg_ch02_flooded_market_secondary.svg"
     },
     {
       "chapter_id": "CH02",
@@ -169,7 +170,7 @@
       "runtime_art_keys": [
         "bg_jamsil_showroom"
       ],
-      "src": "/generated/images/bg_ch03_jamsil_vertical_primary.webp"
+      "src": "/generated/images/bg_ch03_jamsil_vertical_primary.svg"
     },
     {
       "chapter_id": "CH03",
@@ -179,7 +180,7 @@
         "bg_power_room",
         "map_p1_ch03"
       ],
-      "src": "/generated/images/bg_ch03_jamsil_vertical_secondary.webp"
+      "src": "/generated/images/bg_ch03_jamsil_vertical_secondary.svg"
     },
     {
       "chapter_id": "CH03",
@@ -244,7 +245,7 @@
         "bg_delivery_tunnel",
         "map_p1_ch04"
       ],
-      "src": "/generated/images/bg_ch04_munjeong_logistics_secondary.webp"
+      "src": "/generated/images/bg_ch04_munjeong_logistics_secondary.svg"
     },
     {
       "chapter_id": "CH04",
@@ -253,7 +254,7 @@
         "bg_logistics_main",
         "bg_security_office"
       ],
-      "src": "/generated/images/bg_ch04_munjeong_logistics_primary.webp"
+      "src": "/generated/images/bg_ch04_munjeong_logistics_primary.svg"
     },
     {
       "chapter_id": "CH04",
@@ -313,7 +314,7 @@
         "bg_arkp_serverhall",
         "bg_server_hall"
       ],
-      "src": "/generated/images/bg_ch05_pangyo_server_primary.webp"
+      "src": "/generated/images/bg_ch05_pangyo_server_primary.svg"
     },
     {
       "chapter_id": "CH05",
@@ -321,7 +322,7 @@
         "bg_cooling_room",
         "map_p1_ch05"
       ],
-      "src": "/generated/images/bg_ch05_pangyo_server_secondary.webp"
+      "src": "/generated/images/bg_ch05_pangyo_server_secondary.svg"
     },
     {
       "chapter_id": "CH05",

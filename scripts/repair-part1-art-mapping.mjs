@@ -43,7 +43,11 @@ const MAPPING = {
     bg_security_office: "teaser_ch01_pressure",
     bg_sorting_hall: "bg_ch01_yeouido_ash_primary",
     npc_support_writer: "portrait_npc_jung_noah_ch01_support",
+    portrait_jung_noah: "portrait_npc_jung_noah_ch01_support",
     portrait_yoon_haein: "portrait_npc_yoon_haein_ch01_anchor",
+    // Delivered by the user; the entry is skipped until the file exists.
+    portrait_oh_taesik: "portrait_npc_oh_taesik_ch01_hub",
+    portrait_han_yeji: "portrait_npc_han_yeji_ch01_hub",
     boss_editing_aberration: "threat_editing_aberration",
     briefing_p1_ch01: "poster_ch01_yeouido_ash",
     map_p1_ch01: "bg_ch01_yeouido_ash_secondary",
@@ -59,6 +63,8 @@ const MAPPING = {
     bg_sluice_control: "teaser_ch02_preclimax",
     portrait_jung_noah: "portrait_npc_jung_noah_ch02_anchor",
     portrait_seo_jinseo: "portrait_npc_seo_jinseo_ch02_support",
+    // Delivered by the user; the entry is skipped until the file exists.
+    portrait_baek_dohyeong: "portrait_npc_baek_dohyeong_ch02_antagonist",
     boss_cheongeum: "threat_sluice_sac_cheongeum",
     briefing_p1_ch02: "poster_ch02_flooded_market",
     map_p1_ch02: "bg_ch02_flooded_market_secondary",
@@ -124,7 +130,15 @@ for (const dir of imageDirs) {
   }
 }
 
+/**
+ * art_keys whose portrait the user is generating from the prompt pack. They are
+ * skipped while the file is absent instead of failing the run, and bind
+ * automatically once the image lands in the images directory.
+ */
+const PENDING_ARTWORK = new Set(["portrait_oh_taesik", "portrait_han_yeji", "portrait_baek_dohyeong"]);
+
 const missing = [];
+const pending = [];
 const rebuilt = [];
 for (const [chapterId, table] of Object.entries(MAPPING)) {
   // one mapping entry per target image, carrying every art_key that points at it
@@ -132,6 +146,7 @@ for (const [chapterId, table] of Object.entries(MAPPING)) {
   for (const [artKey, stem] of Object.entries(table)) {
     const file = stemToFile.get(stem);
     if (!file) {
+      if (PENDING_ARTWORK.has(artKey)) { pending.push({ chapterId, artKey, stem }); continue; }
       missing.push({ chapterId, artKey, stem });
       continue;
     }
@@ -154,6 +169,7 @@ const summary = {
   part1_art_keys_bound: rebuilt.reduce((n, m) => n + m.runtime_art_keys.length, 0),
   other_chapter_mappings_preserved: preserved.length,
   missing_targets: missing,
+  awaiting_artwork: pending,
   distinct_images_used: new Set(rebuilt.map((m) => m.src)).size,
 };
 

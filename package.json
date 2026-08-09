@@ -534,10 +534,11 @@
     "ops:part1:korean-repair:apply": "node scripts/repair-part1-korean.mjs --apply --confirm-part1-korean-repair",
     "ops:part1:art-mapping:plan": "node scripts/repair-part1-art-mapping.mjs --plan",
     "ops:part1:art-mapping:apply": "node scripts/repair-part1-art-mapping.mjs --apply --confirm-part1-art-mapping",
-    "qa:part1:content-guard": "npm run qa:korean-josa && npm run qa:part1:korean-lint && npm run qa:part1:deadlines && npm run qa:part1:flow && npm run qa:part1:long",
+    "qa:part1:content-guard": "npm run qa:korean-josa && npm run qa:part1:speech && npm run qa:part1:korean-lint && npm run qa:part1:deadlines && npm run qa:part1:flow && npm run qa:part1:long",
     "qa:part1:tts-script-drift": "node scripts/audit-part1-tts-script-drift.mjs",
     "qa:part1:chapter-quality": "node scripts/audit-part1-chapter-quality.mjs",
-    "qa:part1:deadlines": "node scripts/test-part1-deadlines.mjs"
+    "qa:part1:deadlines": "node scripts/test-part1-deadlines.mjs",
+    "qa:part1:speech": "node scripts/test-part1-speech.mjs"
   },
   "dependencies": {
     "@apps-in-toss/web-framework": "2.10.8",

@@ -187,10 +187,103 @@ export const TITLE_ECHO_RULES = [
   { from: (t) => `${t}는 `, to: (s) => `${s}는 ` },
 ];
 
-/** Chapter-correct speaker for events that referenced an outsider. */
+/**
+ * Tell a spoken line from a narrative sentence that was filed under a speaker.
+ *
+ * 131 of 221 CH01-CH05 dialogue lines were narration ("바닥은 지나간 몸을 오래
+ * 붙든다"), which is why 윤해인 looked like she monopolised the script: the
+ * template filler was attributed to whoever the block belonged to. Polite speech
+ * (-습니다/-어요/-세요) is still speech, so it must not be swept out with it.
+ */
+/**
+ * Korean sentence endings split cleanly three ways:
+ *   - `…니다` / `…요`  → polite speech
+ *   - `…다` otherwise   → plain declarative, i.e. narration
+ *   - anything else     → casual speech, a question, or a command
+ * That is the whole rule; longer keyword lists only added ways to be wrong.
+ */
+export function isSpokenLine(line) {
+  const text = String(line ?? "").trim();
+  if (!text) return false;
+  // A block usually ends on the template filler, so judge the final sentence.
+  const last = text.split(/(?<=[.!?…])\s+/u).filter(Boolean).pop() ?? text;
+  const tail = last.replace(/[.!?…"'”』」\s]+$/u, "");
+  if (!tail) return false;
+  if (/(니다|요)$/u.test(tail)) return true;
+  if (/다$/u.test(tail)) return false;
+  return true;
+}
+
+/**
+ * Dialogue authored to close the gaps the asset set exposed.
+ *
+ * The portrait filenames already declare who anchors each chapter, and two of
+ * those anchors had almost nothing to say: 정노아 ships a `ch01_support`
+ * portrait but had zero CH01 lines, and 안보경 anchors CH03 with two. Voices
+ * follow `private/story/concept_arc_01_05/NPC_BIBLE_01_05.md`:
+ *
+ *   정노아 — 가벼운 입, 빠른 눈치, 애처럼 굴지만 누구보다 현실적
+ *   안보경 — 실무적, 과묵함, 사람 냄새 나는 책임감
+ *
+ * 정노아's CH01 appearance stays a brief hand-off that sets up his CH02 anchor
+ * role, matching how the bible seeds 백도형 in CH01 before CH02.
+ */
+export const AUTHORED_DIALOGUE = {
+  EV_CH01_EXTRACTION_PREP: {
+    speaker_id: "npc_jung_noah",
+    speaker_label: "정노아",
+    lines: [
+      "그쪽이 기록국 회수대지? 소문보다 늦게 왔네.",
+      "나가는 길은 하나 더 있어. 공짜는 아니고, 지금은 외상으로 해 둘게.",
+      "수로 쪽에서 다시 봐. 거기선 총보다 도장 찍힌 종이가 더 비싸거든.",
+    ],
+  },
+  EV_CH01_EXIT_CHECK: {
+    speaker_id: "npc_jung_noah",
+    speaker_label: "정노아",
+    lines: [
+      "물건은 안 훔쳐. 나는 그냥 먼저 줍는 거야.",
+      "대신 하나만 기억해. 여기서 뭘 두고 가는지는 나 말고도 다들 보고 있어.",
+    ],
+  },
+  EV_CH03_POWER_ROUTING: {
+    speaker_id: "npc_ahn_bogyeong",
+    speaker_label: "안보경",
+    lines: [
+      "회로는 정직해요. 위를 켜면 아래가 꺼집니다. 그 반대도 같고요.",
+      "엘리베이터를 살리면 편하겠죠. 대신 소리도 같이 살아납니다.",
+      "펜트하우스든 지하주차장이든, 불 나면 다 같이 탑니다.",
+    ],
+  },
+  EV_CH03_BLACKOUT_REPAIR: {
+    speaker_id: "npc_ahn_bogyeong",
+    speaker_label: "안보경",
+    lines: [
+      "여기 버틴 사람들은 돈 있는 쪽보다 렌치 쥔 쪽이 많았어요.",
+      "복구는 제가 합니다. 누구 층부터 켤지는 그쪽이 정하세요.",
+    ],
+  },
+  EV_CH03_BASEMENT_SURVEY: {
+    speaker_id: "npc_ahn_bogyeong",
+    speaker_label: "안보경",
+    lines: [
+      "지하는 창이 없어서 밤낮이 없습니다. 사람들이 시간을 잃으면 순서도 잃어요.",
+      "명단은 제가 쥐고 있지만, 그건 권한이 아니라 책임입니다.",
+    ],
+  },
+};
+
+/**
+ * Events that quoted an NPC from another chapter.
+ *
+ * `from` matters: without it the fix rewrites every speaker in the event,
+ * including one deliberately added there. `drop: true` removes the block outright
+ * when the line's content belongs to the other chapter too — CH01 had 안보경
+ * delivering her CH03 상층/하층 argument, which relabelling would not repair.
+ */
 export const SPEAKER_CORRECTIONS = {
-  EV_CH01_EXTRACTION_PREP: { speaker_id: "npc_yoon_haein", speaker_label: "윤해인" },
-  EV_CH04_PRE_BOSS_CHECK: { speaker_id: "npc_han_somyeong", speaker_label: "한소명" },
+  EV_CH01_EXTRACTION_PREP: { from: "npc_ahn_bogyeong", drop: true },
+  EV_CH04_PRE_BOSS_CHECK: { from: "npc_ahn_bogyeong", speaker_id: "npc_han_somyeong", speaker_label: "한소명" },
 };
 
 /** Continuation labels for outcome screens, so they stop repeating the last action. */
