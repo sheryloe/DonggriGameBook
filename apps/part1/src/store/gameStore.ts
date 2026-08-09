@@ -10,6 +10,7 @@ interface GameStore extends GameState {
   setNode: (nodeId: string | null) => void;
   setEvent: (eventId: string | null) => void;
   setScreen: (screenId: string) => void;
+  markPrologueSeen: () => void;
   addInventoryItem: (itemId: string, quantity: number) => void;
   removeInventoryItem: (itemId: string, quantity: number) => void;
   setFlag: (key: string, value: boolean) => void;
@@ -33,13 +34,15 @@ interface GameStore extends GameState {
   clearDeadlineEvent: () => void;
   toggleInventory: () => void;
   toggleStats: () => void;
+  resetRun: () => void;
 }
 
 const initialState: GameState = {
   currentChapterId: null,
   currentNodeId: null,
   currentEventId: null,
-  currentScreenId: "BRIEFING",
+  currentScreenId: "PROLOGUE",
+  prologueSeen: false,
   stats: {
     injury: 0,
     maxInjury: 100,
@@ -59,6 +62,7 @@ const initialState: GameState = {
   day: 1,
   timeBlock: "새벽",
   elapsedHours: 0,
+  chapterEnteredAt: {},
   deadlineFlags: {},
   failedQuestIds: [],
   restCount: 0,
@@ -90,6 +94,38 @@ function clampStat(key: string, value: number, state: GameState): number {
   return value;
 }
 
+function criticalFailurePatch(state: GameState, stats: GameState["stats"]): Partial<GameState> {
+  if (Number(stats.infection ?? 0) >= Number(stats.maxInfection ?? 100)) {
+    return {
+      battleState: null,
+      currentScreenId: "FAILURE",
+      failureState: {
+        kind: "turned",
+        title: "오염 전환",
+        body: "상처 안쪽의 열이 이름을 밀어냈다. 기록은 남았지만, 그 기록을 읽을 사람이 더는 같은 박자로 숨 쉬지 않는다.",
+        chapterId: state.currentChapterId,
+        eventId: state.currentEventId,
+        nodeId: state.currentNodeId,
+      },
+    };
+  }
+  if (Number(stats.injury ?? 0) >= Number(stats.maxInjury ?? 100)) {
+    return {
+      battleState: null,
+      currentScreenId: "FAILURE",
+      failureState: {
+        kind: "killed",
+        title: "움직임이 끊긴 기록",
+        body: "몸이 먼저 멈췄다. 마지막 신호는 벽과 물소리 사이에 걸려, 누군가의 회수만을 기다린다.",
+        chapterId: state.currentChapterId,
+        eventId: state.currentEventId,
+        nodeId: state.currentNodeId,
+      },
+    };
+  }
+  return {};
+}
+
 function applyDeadlineState(state: GameState): Pick<GameState, "deadlineFlags" | "failedQuestIds" | "flags" | "survivalLog" | "pendingDeadlineEvent"> {
   const expired = expireDeadlinesForState(state);
   return {
@@ -110,10 +146,18 @@ export const useGameStore = create<GameStore>()(
   persist(
     (set) => ({
       ...initialState,
-      setChapter: (chapterId) => set({ currentChapterId: chapterId }),
+      // Stamp the entry hour once per chapter so its deadlines start here and a
+      // later chapter's quest can never expire before the player reaches it.
+      setChapter: (chapterId) => set((state) => ({
+        currentChapterId: chapterId,
+        chapterEnteredAt: state.chapterEnteredAt?.[chapterId] === undefined
+          ? { ...(state.chapterEnteredAt ?? {}), [chapterId]: Number(state.elapsedHours ?? 0) }
+          : state.chapterEnteredAt,
+      })),
       setNode: (nodeId) => set({ currentNodeId: nodeId }),
       setEvent: (eventId) => set({ currentEventId: eventId }),
       setScreen: (screenId) => set({ currentScreenId: screenId }),
+      markPrologueSeen: () => set({ prologueSeen: true, currentScreenId: "BRIEFING" }),
       addInventoryItem: (itemId, quantity) => set((state) => {
         const normalizedItemId = normalizeKey(itemId);
         if (quantity > 0) playInventoryGain();
@@ -129,7 +173,8 @@ export const useGameStore = create<GameStore>()(
       setFlag: (key, value) => set((state) => ({ flags: { ...state.flags, [normalizeKey(key)]: value } })),
       updateStat: (key, delta) => set((state) => {
         const current = Number(state.stats[key] ?? 0);
-        return { stats: { ...state.stats, [key]: clampStat(key, current + delta, state) } };
+        const stats = { ...state.stats, [key]: clampStat(key, current + delta, state) };
+        return { stats, ...criticalFailurePatch(state, stats) };
       }),
       setValue: (key, value) => set((state) => ({ stats: { ...state.stats, [normalizeKey(key)]: value } })),
       markNodeVisited: (nodeId) => set((state) => ({ visitedNodes: state.visitedNodes.includes(nodeId) ? state.visitedNodes : [...state.visitedNodes, nodeId] })),
@@ -178,7 +223,7 @@ export const useGameStore = create<GameStore>()(
         const restCount = state.restCount + (kind === "overnight" ? 1 : 0);
         const survivalLog = [...state.survivalLog, `Day ${day} ${timeBlock}: ${restSpec.label}으로 몸을 추슬렀다. (+${restSpec.hours}시간)`].slice(-30);
         const nextState: GameState = { ...state, elapsedHours, day, timeBlock, stats, restCount, survivalLog };
-        return { elapsedHours, day, timeBlock, stats, restCount, ...applyDeadlineState(nextState) };
+        return { elapsedHours, day, timeBlock, stats, restCount, ...applyDeadlineState(nextState), ...criticalFailurePatch(nextState, stats) };
       }),
       useInventoryItem: (itemId) => {
         let used = false;
@@ -193,7 +238,8 @@ export const useGameStore = create<GameStore>()(
           const inventory = effect.consume ? state.inventory.map((item) => item.item_id === normalizedItemId ? { ...item, quantity: Math.max(0, item.quantity - 1) } : item).filter((item) => item.quantity > 0) : state.inventory;
           const survivalLog = [...state.survivalLog, `물자 사용: ${itemData?.name_ko ?? normalizedItemId} (${effect.label})`].slice(-30);
           if (effect.consume) playInventoryRemove();
-          return { stats, inventory, survivalLog };
+          const nextState: GameState = { ...state, stats, inventory, survivalLog };
+          return { stats, inventory, survivalLog, ...criticalFailurePatch(nextState, stats) };
         });
         return used;
       },
@@ -204,15 +250,17 @@ export const useGameStore = create<GameStore>()(
       clearDeadlineEvent: () => set({ pendingDeadlineEvent: null, deadlineReturnScreen: null, deadlineReturnEventId: null }),
       toggleInventory: () => set((state) => { const nextOpen = !state.isInventoryOpen; playPanelToggle(nextOpen); return { isInventoryOpen: nextOpen, isStatsOpen: false }; }),
       toggleStats: () => set((state) => { const nextOpen = !state.isStatsOpen; playPanelToggle(nextOpen); return { isStatsOpen: nextOpen, isInventoryOpen: false }; }),
+      resetRun: () => set({ ...initialState }),
     }),
     {
       name: "donggri-part1-survival-save-v1",
       version: 1,
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ currentChapterId: state.currentChapterId, currentNodeId: state.currentNodeId, currentEventId: state.currentEventId, currentScreenId: normalizeHydratedScreen(state.currentScreenId), stats: state.stats, flags: state.flags, inventory: state.inventory, day: state.day, timeBlock: state.timeBlock, elapsedHours: state.elapsedHours, deadlineFlags: state.deadlineFlags, failedQuestIds: state.failedQuestIds, restCount: state.restCount, survivalLog: state.survivalLog, pendingDeadlineEvent: state.pendingDeadlineEvent, deadlineReturnScreen: state.deadlineReturnScreen, deadlineReturnEventId: state.deadlineReturnEventId, visitedNodes: state.visitedNodes, completedEvents: state.completedEvents, chapterProgress: state.chapterProgress, fieldActionBudget: state.fieldActionBudget, failureState: state.failureState, saveSlots: state.saveSlots, battleState: null, isInventoryOpen: false, isStatsOpen: false }),
+      partialize: (state) => ({ currentChapterId: state.currentChapterId, currentNodeId: state.currentNodeId, currentEventId: state.currentEventId, currentScreenId: normalizeHydratedScreen(state.currentScreenId), prologueSeen: state.prologueSeen, stats: state.stats, flags: state.flags, inventory: state.inventory, day: state.day, timeBlock: state.timeBlock, elapsedHours: state.elapsedHours, deadlineFlags: state.deadlineFlags, failedQuestIds: state.failedQuestIds, restCount: state.restCount, survivalLog: state.survivalLog, pendingDeadlineEvent: state.pendingDeadlineEvent, deadlineReturnScreen: state.deadlineReturnScreen, deadlineReturnEventId: state.deadlineReturnEventId, visitedNodes: state.visitedNodes, completedEvents: state.completedEvents, chapterProgress: state.chapterProgress, fieldActionBudget: state.fieldActionBudget, failureState: state.failureState, saveSlots: state.saveSlots, battleState: null, isInventoryOpen: false, isStatsOpen: false }),
       merge: (persisted, current) => {
         const saved = persisted as Partial<GameState>;
-        return { ...current, ...saved, currentScreenId: normalizeHydratedScreen(saved.currentScreenId ?? current.currentScreenId), battleState: null, isInventoryOpen: false, isStatsOpen: false };
+        const prologueSeen = saved.prologueSeen === true;
+        return { ...current, ...saved, prologueSeen, currentScreenId: prologueSeen ? normalizeHydratedScreen(saved.currentScreenId ?? current.currentScreenId) : "PROLOGUE", battleState: null, isInventoryOpen: false, isStatsOpen: false };
       },
     },
   ),

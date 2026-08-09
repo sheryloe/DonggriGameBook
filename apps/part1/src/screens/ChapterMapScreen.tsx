@@ -3,8 +3,11 @@ import { useGameStore } from "../store/gameStore";
 import { contentLoader } from "../loaders/contentLoader";
 import { eventRunner } from "../engine/eventRunner";
 import { playChoiceSelect } from "../utils/audio";
+import { startPart1Bgm } from "../utils/bgm";
 import { applyFrameTone, runFrameCue, SIGNAL_CUT_MS } from "../utils/frameFx";
 import { describeDeadline, getDeadlineUrgency, isRestEligibleNode } from "../utils/survival";
+import { markInteraction } from "../utils/telemetry";
+import { checkConditions, describeConditions } from "../engine/conditions";
 
 const CH_BG: Record<string, string> = {
   CH01: "/generated/images/bg_ch01_yeouido_ash_secondary.webp",
@@ -21,6 +24,7 @@ export const ChapterMapScreen: React.FC = () => {
 
   useEffect(() => {
     applyFrameTone(currentChapterId);
+    void startPart1Bgm({ chapterId: currentChapterId, screen: "map" });
   }, [currentChapterId]);
 
   if (!chapter) {
@@ -28,7 +32,12 @@ export const ChapterMapScreen: React.FC = () => {
   }
 
   const currentNode = chapter.nodes.find((node) => node.node_id === currentNodeId);
-  const reachableIds = new Set<string>(currentNode?.connections.map((connection) => connection.to) ?? []);
+  const connectionByTarget = new Map((currentNode?.connections ?? []).map((connection) => [connection.to, connection]));
+  const reachableIds = new Set<string>(
+    (currentNode?.connections ?? [])
+      .filter((connection) => checkConditions(connection.requires, store))
+      .map((connection) => connection.to),
+  );
   if (!currentNodeId) reachableIds.add(chapter.entry_node_id);
   const bgImage = CH_BG[chapter.chapter_id];
   const deadline = getDeadlineUrgency(store);
@@ -59,7 +68,7 @@ export const ChapterMapScreen: React.FC = () => {
           <div className="map-meta" style={{ marginTop: "24px", display: "grid", gap: "8px" }}>
             <div className="status-chip tactical-frame" style={{ width: "100%", background: "rgba(156, 207, 214, 0.05)", justifyContent: "start" }}><span style={{ opacity: 0.5 }}>좌표:</span> {currentNode ? `X:${currentNode.coordinates.x} Y:${currentNode.coordinates.y}` : "미확인"}</div>
             <div className="status-chip tactical-frame" style={{ width: "100%", background: "rgba(156, 207, 214, 0.05)", justifyContent: "start" }}><span style={{ opacity: 0.5 }}>현재 시간:</span> Day {day} · {timeBlock} · {elapsedHours}시간 경과</div>
-            {deadline ? <div className="status-chip tactical-frame flicker-anim" style={{ width: "100%", background: "rgba(227,75,75,0.14)", color: "#ffb0a8", justifyContent: "start" }}>기한 임박: {describeDeadline(deadline, elapsedHours)}</div> : null}
+            {deadline ? <div className="status-chip tactical-frame flicker-anim" style={{ width: "100%", background: "rgba(227,75,75,0.14)", color: "#ffb0a8", justifyContent: "start" }}>기한 임박: {describeDeadline(deadline, elapsedHours, store.chapterEnteredAt)}</div> : null}
             {currentNode && isRestEligibleNode(chapter.chapter_id, currentNode) ? <div className="status-chip tactical-frame" style={{ width: "100%", background: "rgba(156, 207, 214, 0.12)", justifyContent: "start" }}>휴식 가능 구역</div> : null}
             {chapter.exit_node_ids?.includes(currentNodeId ?? "") ? <div className="status-chip tactical-frame flicker-anim" style={{ width: "100%", background: "var(--gold-color)", color: "#000", fontWeight: 900 }}>탈출 경로 준비 완료</div> : null}
           </div>
@@ -88,21 +97,33 @@ export const ChapterMapScreen: React.FC = () => {
             const isReachable = reachableIds.has(node.node_id);
             const isEntry = !currentNodeId && node.node_id === chapter.entry_node_id;
             const isEnabled = isCurrent || isReachable || isEntry;
+            const blockedConnection = connectionByTarget.get(node.node_id);
+            const blockedReason = !isEnabled && blockedConnection?.requires?.length
+              ? describeConditions(blockedConnection.requires, (itemId) => contentLoader.getItem(itemId)?.name_ko ?? itemId)
+              : null;
             const nodeType = getNodeType(node.node_id);
             return (
-              <button key={node.node_id} type="button" className={`map-node tactical-frame ${isCurrent ? "current" : ""} ${isVisited ? "visited" : ""} ${isEnabled ? "reachable" : ""} ${nodeType}`} style={{ left: `clamp(56px, ${node.coordinates.x}%, calc(100% - 56px))`, top: `clamp(40px, ${node.coordinates.y}%, calc(100% - 40px))`, background: isCurrent ? "var(--accent-color)" : isEnabled ? "rgba(156, 207, 214, 0.2)" : "rgba(5, 7, 8, 0.85)", borderColor: isCurrent ? "var(--accent-color)" : isEnabled ? "rgba(156, 207, 214, 0.5)" : "rgba(255, 255, 255, 0.15)", color: isCurrent ? "#08262a" : "inherit", boxShadow: isCurrent ? "0 0 20px var(--accent-glow)" : isEnabled ? "0 0 10px rgba(156, 207, 214, 0.1)" : "none", width: "clamp(72px, 18vw, 92px)", minHeight: "50px", padding: "8px" }} onClick={() => {
+              <button key={node.node_id} type="button" className={`map-node tactical-frame ${isCurrent ? "current" : ""} ${isVisited ? "visited" : ""} ${isEnabled ? "reachable" : ""} ${nodeType}`} title={blockedReason ? `필요 조건: ${blockedReason}` : node.name} aria-label={blockedReason ? `${node.name}, 잠긴 경로, 필요 조건: ${blockedReason}` : node.name} style={{ left: `clamp(56px, ${node.coordinates.x}%, calc(100% - 56px))`, top: `clamp(40px, ${node.coordinates.y}%, calc(100% - 40px))`, background: isCurrent ? "var(--accent-color)" : isEnabled ? "rgba(156, 207, 214, 0.2)" : "rgba(5, 7, 8, 0.85)", borderColor: isCurrent ? "var(--accent-color)" : isEnabled ? "rgba(156, 207, 214, 0.5)" : "rgba(255, 255, 255, 0.15)", color: isCurrent ? "#08262a" : "inherit", boxShadow: isCurrent ? "0 0 20px var(--accent-glow)" : isEnabled ? "0 0 10px rgba(156, 207, 214, 0.1)" : "none", width: "clamp(72px, 18vw, 100px)", minHeight: "56px", padding: "8px" }} onClick={() => {
                 if (!isEnabled) return;
+                const startedAt = performance.now();
                 playChoiceSelect();
                 runFrameCue("map-ripple", currentChapterId);
                 document.body.classList.add("signal-transition");
                 window.setTimeout(() => {
                   document.body.classList.remove("signal-transition");
                   eventRunner.enterNode(node.node_id);
+                  markInteraction("map_node_select", startedAt, {
+                    chapterId: currentChapterId,
+                    nodeId: node.node_id,
+                    nodeType,
+                    transitionMs: SIGNAL_CUT_MS,
+                  });
                 }, SIGNAL_CUT_MS);
               }} disabled={!isEnabled}>
                 <div className="map-node-icon" />
                 <span style={{ fontFamily: "var(--mono-family)", fontSize: "clamp(0.55rem, 1.8vw, 0.68rem)", fontWeight: 900, textTransform: "none", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{node.name}</span>
                 {nodeType === "safehouse" ? <small style={{ display: "block", opacity: 0.7 }}>은신처</small> : null}
+                {blockedReason ? <small style={{ display: "block", opacity: 0.72, fontSize: "0.55rem", lineHeight: 1.15, marginTop: "2px" }}>필요: {blockedReason}</small> : null}
               </button>
             );
           })}

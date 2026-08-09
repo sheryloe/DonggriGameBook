@@ -81,6 +81,13 @@ export interface Choice {
   label: string;
   conditions: string[];
   preview?: string;
+  intent_tags?: string[];
+  risk_label?: string;
+  gain_label?: string;
+  cost_label?: string;
+  condition_label?: string;
+  condition_hint?: string;
+  current_label?: string;
   effects: Effect[];
   next_event_id: string | null;
 }
@@ -315,6 +322,7 @@ export interface GameState {
   currentNodeId: string | null;
   currentEventId: string | null;
   currentScreenId: string | null;
+  prologueSeen: boolean;
 
   // Stats & Progress
   stats: Record<string, any>;
@@ -325,6 +333,8 @@ export interface GameState {
   day: number;
   timeBlock: TimeBlock;
   elapsedHours: number;
+  /** Elapsed hour at which each chapter was first entered; deadlines count from here. */
+  chapterEnteredAt: Record<string, number>;
   deadlineFlags: Record<string, DeadlineFlagStatus>;
   failedQuestIds: string[];
   restCount: number;

@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGameStore } from "../store/gameStore";
 import { contentLoader } from "../loaders/contentLoader";
 import { eventRunner } from "../engine/eventRunner";
 import { describeDeadline, getDeadlineUrgency, getItemUseEffect } from "../utils/survival";
 import { chapterLabel } from "../utils/koreanLabels";
 import { playChoiceSelect } from "../utils/audio";
+import { startPart1Bgm } from "../utils/bgm";
 
 export const SafehouseScreen: React.FC = () => {
-  const { currentChapterId, currentNodeId, stats, inventory, day, timeBlock, elapsedHours, survivalLog, restAtSafehouse, setScreen } = useGameStore();
+  const { currentChapterId, currentNodeId, stats, inventory, day, timeBlock, elapsedHours, chapterEnteredAt, survivalLog, restAtSafehouse, setScreen } = useGameStore();
   const chapter = contentLoader.getChapter(currentChapterId ?? "");
   const node = chapter?.nodes.find((entry) => entry.node_id === currentNodeId);
   const nodeEvents = (node?.event_ids ?? []).map((eventId) => chapter?.events.find((event) => event.event_id === eventId)).filter(Boolean);
@@ -17,6 +18,10 @@ export const SafehouseScreen: React.FC = () => {
   const infection = Number(stats.infection ?? stats.contamination ?? 0);
   const stamina = Number(stats.stamina ?? 0);
   const mental = Number(stats.mental ?? 0);
+
+  useEffect(() => {
+    void startPart1Bgm({ chapterId: currentChapterId, screen: "safehouse" });
+  }, [currentChapterId]);
 
   const showPendingDeadlineIfNeeded = () => {
     const latest = useGameStore.getState();
@@ -55,11 +60,11 @@ export const SafehouseScreen: React.FC = () => {
         <div className="result-stats" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px", marginTop: "28px" }}>
           <div className="tactical-frame" style={{ border: "none", background: "rgba(255,255,255,0.03)" }}><span className="eyebrow">부상 누적</span><strong>{injury}%</strong></div>
           <div className="tactical-frame" style={{ border: "none", background: "rgba(255,255,255,0.03)" }}><span className="eyebrow">감염 위험</span><strong>{infection}%</strong></div>
-          <div className="tactical-frame" style={{ border: "none", background: "rgba(255,255,255,0.03)" }}><span className="eyebrow">체력 여분</span><strong>{stamina}%</strong></div>
+          <div className="tactical-frame" style={{ border: "none", background: "rgba(255,255,255,0.03)" }}><span className="eyebrow">기력 여분</span><strong>{stamina}%</strong></div>
           <div className="tactical-frame" style={{ border: "none", background: "rgba(255,255,255,0.03)" }}><span className="eyebrow">정신 안정도</span><strong>{mental}%</strong></div>
         </div>
 
-        {deadline ? <div className="tactical-frame flicker-anim" style={{ marginTop: "20px", border: "none", background: "rgba(227, 75, 75, 0.13)", padding: "14px 16px", color: "#ffb0a8" }}>기한 임박: {describeDeadline(deadline, elapsedHours)}</div> : null}
+        {deadline ? <div className="tactical-frame flicker-anim" style={{ marginTop: "20px", border: "none", background: "rgba(227, 75, 75, 0.13)", padding: "14px 16px", color: "#ffb0a8" }}>기한 임박: {describeDeadline(deadline, elapsedHours, chapterEnteredAt)}</div> : null}
 
         <div className="choice-list" style={{ marginTop: "28px", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           <button className="choice-card tactical-frame is-available" type="button" onClick={() => runRest("short")}><span>짧은 휴식</span><small>2시간 소모. 부상과 피로를 조금 낮춘다.</small></button>

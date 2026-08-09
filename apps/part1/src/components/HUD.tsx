@@ -13,7 +13,7 @@ export const HUD: React.FC = () => {
   const store = useGameStore();
   const { stats, currentChapterId, currentNodeId, currentScreenId, day, timeBlock, elapsedHours, inventory, toggleInventory, toggleStats } = store;
 
-  if (currentScreenId === "BATTLE" || currentScreenId === "RESULT" || currentScreenId === "BRIEFING" || currentScreenId === "FAILURE") return null;
+  if (currentScreenId === "PROLOGUE" || currentScreenId === "BATTLE" || currentScreenId === "RESULT" || currentScreenId === "BRIEFING" || currentScreenId === "FAILURE") return null;
 
   const chapter = contentLoader.getChapter(currentChapterId ?? "");
   const node = chapter?.nodes.find((entry) => entry.node_id === currentNodeId);
@@ -65,7 +65,7 @@ export const HUD: React.FC = () => {
       </div>
 
       <div className="hud-actions" style={{ display: "flex", gap: "10px", marginLeft: "auto", marginRight: "16px", flexWrap: "wrap", alignItems: "center" }}>
-        {deadline ? <span className="status-chip tactical-frame flicker-anim" style={{ background: "rgba(227,75,75,0.14)", color: "#ffb0a8", border: "none" }}>{describeDeadline(deadline, elapsedHours)}</span> : null}
+        {deadline ? <span className="status-chip tactical-frame flicker-anim" style={{ background: "rgba(227,75,75,0.14)", color: "#ffb0a8", border: "none" }}>{describeDeadline(deadline, elapsedHours, store.chapterEnteredAt)}</span> : null}
         {canRest ? <span className="status-chip tactical-frame" style={{ background: "rgba(156,207,214,0.12)", border: "none" }}>휴식 가능</span> : null}
         {canHeal ? <span className="status-chip tactical-frame" style={{ background: "rgba(232,198,107,0.12)", border: "none" }}>치료 가능</span> : null}
         <button className="hud-btn tactical-frame" type="button" onClick={toggleInventory} style={{ border: "none", background: "rgba(156, 207, 214, 0.1)", fontFamily: "var(--heading-font)", fontSize: "0.85rem", padding: "10px 18px" }}>보관함</button>
