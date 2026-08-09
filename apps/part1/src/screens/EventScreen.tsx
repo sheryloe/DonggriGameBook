@@ -45,6 +45,19 @@ const NPC_PORTRAIT: Record<string, string> = {
   npc_kim_ara: "/generated/images/portrait_npc_kim_ara_ch05_anchor.webp",
 };
 
+/**
+ * Transparent bust cutouts, preferred over the scene portraits above.
+ *
+ * A scene portrait is a whole photograph, so the same picture repeated on every
+ * line that speaker has — 윤해인 alone appears in fifteen CH01 events. A cutout
+ * sits on the event's own background instead, so the same character reads
+ * differently in every location. Entries are added as artwork lands; anyone
+ * missing here simply falls back to their scene portrait.
+ */
+const NPC_BUST: Record<string, string> = {
+  npc_yoon_haein: "/generated/images/bust_npc_yoon_haein.png",
+};
+
 const RENEWED_PART1_VOICE_READY = false;
 const PLAYER_ROLE_LABEL = "기록국 현장 회수자";
 const PLAYER_CALLSIGN = "서지훈";
@@ -211,7 +224,9 @@ export const EventScreen: React.FC = () => {
   const bgImage = contentLoader.resolveImageUrl(currentChapterId, event.presentation?.art_key, fallbackBg);
   const firstNpcId = event.npc_ids?.[0] ?? null;
   const portraitKey = firstNpcId && currentChapterId ? `${firstNpcId}_${currentChapterId.toLowerCase()}` : firstNpcId;
-  const portrait = firstNpcId ? NPC_PORTRAIT[portraitKey ?? ""] ?? NPC_PORTRAIT[firstNpcId] ?? contentLoader.resolveImageUrl(currentChapterId, `portrait_${firstNpcId.replace(/^npc_/u, "")}`) : null;
+  const bust = firstNpcId ? NPC_BUST[firstNpcId] ?? null : null;
+  const scenePortrait = firstNpcId ? NPC_PORTRAIT[portraitKey ?? ""] ?? NPC_PORTRAIT[firstNpcId] ?? contentLoader.resolveImageUrl(currentChapterId, `portrait_${firstNpcId.replace(/^npc_/u, "")}`) : null;
+  const portrait = bust ?? scenePortrait;
   const trustValue = Number(stats[`trust.${firstNpcId}`] ?? stats[`trust_${firstNpcId}`] ?? 50);
   const npcName = firstNpcId ? String(contentLoader.getNpc(firstNpcId)?.name_ko ?? contentLoader.getNpc(firstNpcId)?.name ?? firstNpcId.replace(/^npc_/u, "").replace(/_/gu, " ")) : null;
   const npcRole = firstNpcId ? NPC_ROLE_LABEL[firstNpcId] ?? "현장 동행자" : null;
@@ -313,7 +328,7 @@ export const EventScreen: React.FC = () => {
           ) : null}
 
           {portrait ? (
-            <figure className="npc-portrait-container tactical-frame glass-split">
+            <figure className={`npc-portrait-container tactical-frame glass-split${bust ? " is-cutout" : ""}`}>
               <img className="npc-portrait" src={portrait} alt={`${npcName ?? "동행자"} 초상`} />
               <figcaption>{npcRole}: {npcName}</figcaption>
             </figure>
