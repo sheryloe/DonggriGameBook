@@ -42,7 +42,7 @@ using System.Runtime.InteropServices;
 
 public static class BustCutout
 {
-    public struct Result { public int Width, Height, R, G, B, Cleared, Islands; public long Bytes; }
+    public struct Result { public int Width, Height, R, G, B, Cleared, Islands, Despilled; public long Bytes; }
 
     public static Result Run(string inputPath, string outputPath, int maxWidth, int tolerance)
     {
@@ -133,12 +133,45 @@ public static class BustCutout
             islandsRemoved++;
         }
 
-        // One feather pass so the cutout does not read as a sticker on a dark scene.
         byte[] alpha = new byte[W * H];
         for (int y = 0; y < H; y++)
             for (int x = 0; x < W; x++)
                 alpha[y*W + x] = px[y*stride + x*4 + 3];
 
+        // A chroma-key backdrop bounces onto the subject, leaving a green rim that
+        // survives the fill because those pixels are part of the subject. Clamp the
+        // green channel back to the red/blue average, but only near the cutout edge
+        // where spill actually lives, so genuinely green pixels further in are safe.
+        // Only for a green backdrop; the grey-backdrop renders have no spill to fix.
+        int despilled = 0;
+        if (bgG > bgR + 60 && bgG > bgB + 60)
+        {
+            const int reach = 3;
+            for (int y = 0; y < H; y++)
+            {
+                for (int x = 0; x < W; x++)
+                {
+                    int p = y*W + x;
+                    if (alpha[p] == 0) continue;
+                    bool nearEdge = false;
+                    for (int dy = -reach; dy <= reach && !nearEdge; dy++)
+                    {
+                        int ny = y + dy; if (ny < 0 || ny >= H) continue;
+                        for (int dx = -reach; dx <= reach; dx++)
+                        {
+                            int nx = x + dx; if (nx < 0 || nx >= W) continue;
+                            if (alpha[ny*W + nx] == 0) { nearEdge = true; break; }
+                        }
+                    }
+                    if (!nearEdge) continue;
+                    int i = y*stride + x*4;
+                    int cap = (px[i] + px[i+2]) / 2;
+                    if (px[i+1] > cap) { px[i+1] = (byte)cap; despilled++; }
+                }
+            }
+        }
+
+        // One feather pass so the cutout does not read as a sticker on a dark scene.
         for (int y = 1; y < H-1; y++)
         {
             for (int x = 1; x < W-1; x++)
@@ -161,7 +194,8 @@ public static class BustCutout
 
         var res = new Result();
         res.Width = W; res.Height = H; res.R = bgR; res.G = bgG; res.B = bgB;
-        res.Cleared = cleared; res.Islands = islandsRemoved; res.Bytes = new System.IO.FileInfo(outputPath).Length;
+        res.Cleared = cleared; res.Islands = islandsRemoved; res.Despilled = despilled;
+        res.Bytes = new System.IO.FileInfo(outputPath).Length;
         return res;
     }
 }
@@ -174,7 +208,8 @@ if (-not ([System.Management.Automation.PSTypeName]'BustCutout').Type) {
 $inFull = (Resolve-Path -LiteralPath $InputPath).Path
 $outDir = Split-Path -Parent $OutputPath
 if ($outDir -and -not (Test-Path -LiteralPath $outDir)) { New-Item -ItemType Directory -Force -Path $outDir | Out-Null }
-$outFull = [System.IO.Path]::GetFullPath((Join-Path (Get-Location) $OutputPath))
+$outFull = if ([System.IO.Path]::IsPathRooted($OutputPath)) { [System.IO.Path]::GetFullPath($OutputPath) }
+           else { [System.IO.Path]::GetFullPath((Join-Path (Get-Location).ProviderPath $OutputPath)) }
 
 $r = [BustCutout]::Run($inFull, $outFull, $MaxWidth, $Tolerance)
 
@@ -185,6 +220,7 @@ $r = [BustCutout]::Run($inFull, $outFull, $MaxWidth, $Tolerance)
   cleared_pixels  = $r.Cleared
   cleared_percent = [math]::Round((($r.Cleared + $r.Islands) / ($r.Width * $r.Height)) * 100, 1)
   islands_removed = $r.Islands
+  despilled       = $r.Despilled
   bytes           = $r.Bytes
 } | Format-List
 

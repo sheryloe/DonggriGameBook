@@ -1,0 +1,1979 @@
+{
+  "schema": "donggrol.part1_choice_truth.v1",
+  "totals": {
+    "checked": 328,
+    "mismatched": 128
+  },
+  "per_chapter": {
+    "CH01": {
+      "checked": 98,
+      "mismatched": 39
+    },
+    "CH02": {
+      "checked": 73,
+      "mismatched": 28
+    },
+    "CH03": {
+      "checked": 64,
+      "mismatched": 24
+    },
+    "CH04": {
+      "checked": 39,
+      "mismatched": 16
+    },
+    "CH05": {
+      "checked": 54,
+      "mismatched": 21
+    }
+  },
+  "mismatches": [
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CACHE_SEARCH",
+      "event_type": "exploration",
+      "choice_id": "ch01_cache_skip",
+      "label": "보관함을 그대로 둔다",
+      "preview": "남측 기록의 회수품을 챙긴다. 소음 부담과 반향이 복도 끝까지 번진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_CONCOURSE_SCAVENGE",
+      "event_type": "exploration",
+      "choice_id": "ch01_scavenge_skip",
+      "label": "국회 앞 잿길에서 잔해를 수색한다",
+      "preview": "동행 신뢰를 먼저 잡고 빠진다. 다만 동선 증가와 물자 손상이 함께 남는다.",
+      "claimed": [
+        "noise",
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_SECURITY_LOCKER",
+      "event_type": "exploration",
+      "choice_id": "ch01_locker_writer_skip",
+      "label": "편집실 복도에서 생존자를 확인한다",
+      "preview": "경로 붕괴를 무릅쓰는 대신 소음 감소를 챙긴다. 주의 분산이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_ESCAPE_BACKTRACK",
+      "event_type": "exploration",
+      "choice_id": "ch01_escape_skip",
+      "label": "탈출을 보류한다",
+      "preview": "기록 복원이 필요하다면 교신 노출을 받아들인다. 그만큼 퇴로 축소가 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_APPROACH_CAREFUL",
+      "event_type": "outcome",
+      "choice_id": "ch01_approach_careful_continue",
+      "label": "감염 회피를 챙겨 다음으로 간다",
+      "preview": "기력 소모를 감수하고 감염 회피를 노린다. 실패하면 오염 확산이 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_LOBBY_ARCHIVE",
+      "event_type": "outcome",
+      "choice_id": "ch01_lobby_archive_continue",
+      "label": "동행 신뢰를 확인하고 자리를 옮긴다",
+      "preview": "동행 신뢰를 먼저 잡고 빠진다. 다만 대기 시간과 물자 손상이 함께 남는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ARCHIVE_OPEN",
+      "event_type": "outcome",
+      "choice_id": "ch01_archive_open_continue",
+      "label": "감염 회피를 손에 쥔 채 움직인다",
+      "preview": "감염 회피가 필요하다면 몸 상태 부담을 받아들인다. 그만큼 오염 확산이 따라온다.",
+      "claimed": [
+        "injury",
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury",
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ARCHIVE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_archive_skip_continue",
+      "label": "철수선 확인을 확인하고 자리를 옮긴다",
+      "preview": "위치 노출을 감수하고 철수선 확인을 노린다. 실패하면 동행자 고립이 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_KEEP_BROADCAST",
+      "event_type": "outcome",
+      "choice_id": "ch01_signal_keep_broadcast_continue",
+      "label": "경보 지연을 확인하고 자리를 옮긴다",
+      "preview": "경보 지연을 챙긴다. 대신 소음 부담이 생기고 경보 압박이 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_CUT_BROADCAST",
+      "event_type": "outcome",
+      "choice_id": "ch01_signal_cut_broadcast_continue",
+      "label": "장비 보호를 챙겨 다음으로 간다",
+      "preview": "장비 보호가 필요하다면 손실 감수를 받아들인다. 그만큼 다음 레이드 부담이 따라온다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SECURITY_LOGS",
+      "event_type": "outcome",
+      "choice_id": "ch01_security_logs_continue",
+      "label": "방송동 로비에서 다음 구역으로 이동한다",
+      "preview": "오염 확산을 무릅쓰는 대신 감염 회피를 챙긴다. 추가 확인이 발목을 잡는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_SIGNAL_FORCE",
+      "event_type": "outcome",
+      "choice_id": "ch01_signal_force_continue",
+      "label": "교신 단축을 손에 쥔 채 움직인다",
+      "preview": "교신 단축을 챙긴다. 대신 추가 확인이 생기고 신뢰 흔들림이 커진다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_CONTROL_REPAIR",
+      "event_type": "outcome",
+      "choice_id": "ch01_control_repair_continue",
+      "label": "정찰 근거를 손에 쥔 채 움직인다",
+      "preview": "철수 압박을 무릅쓰는 대신 정찰 근거를 챙긴다. 위치 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_STUDIO_WAIT",
+      "event_type": "outcome",
+      "choice_id": "ch01_studio_wait_continue",
+      "label": "메인 스튜디오에서 다음 구역으로 이동한다",
+      "preview": "감염 회피를 챙긴다. 대신 추가 확인이 생기고 오염 확산이 커진다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_ESCAPE_FAST",
+      "event_type": "outcome",
+      "choice_id": "ch01_escape_fast_continue",
+      "label": "장비 보호를 확인하고 자리를 옮긴다",
+      "preview": "교신 노출을 감수하고 장비 보호를 노린다. 실패하면 다음 레이드 부담이 남는다.",
+      "claimed": [
+        "noise",
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_TUNNEL_SILENT",
+      "event_type": "outcome",
+      "choice_id": "ch01_tunnel_silent_continue",
+      "label": "국회 앞 잿길에서 다음 구역으로 이동한다",
+      "preview": "교신 단축을 먼저 잡고 빠진다. 다만 몸 상태 부담과 신뢰 흔들림이 함께 남는다.",
+      "claimed": [
+        "injury",
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury",
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_POWER_MAIN",
+      "event_type": "outcome",
+      "choice_id": "ch01_power_main_continue",
+      "label": "침수 자료실에서 다음 구역으로 이동한다",
+      "preview": "장비 보호가 필요하다면 동선 증가를 받아들인다. 그만큼 다음 레이드 부담이 따라온다.",
+      "claimed": [
+        "noise",
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_AGENCY_OUTCOME_CH01_EXTRACT_IMMEDIATE",
+      "event_type": "outcome",
+      "choice_id": "ch01_extract_immediate_continue",
+      "label": "빈손으로 수로 검문선까지 달린다",
+      "preview": "즉시 이탈에 성공했다. 보급을 두고 왔고 소음 +1이 다음 장에 이월된다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_VAULT_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_archive_vault_skip_continue",
+      "label": "우회로 표시를 확인하고 자리를 옮긴다",
+      "preview": "우회로 표시가 필요하다면 몸 상태 부담을 받아들인다. 그만큼 기록 훼손이 따라온다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOBBY_MANUAL",
+      "event_type": "outcome",
+      "choice_id": "ch01_lobby_manual_continue",
+      "label": "방송동 로비에서 다음 구역으로 이동한다",
+      "preview": "소음 부담을 감수하고 보급 보존을 노린다. 실패하면 문턱 봉쇄가 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOBBY_FORCE",
+      "event_type": "outcome",
+      "choice_id": "ch01_lobby_force_continue",
+      "label": "기록 복원을 손에 쥔 채 움직인다",
+      "preview": "퇴로 축소를 무릅쓰는 대신 기록 복원을 챙긴다. 교신 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_EMERGENCY",
+      "event_type": "outcome",
+      "choice_id": "ch01_archive_emergency_continue",
+      "label": "철수선 확인을 확인하고 자리를 옮긴다",
+      "preview": "철수선 확인을 먼저 잡고 빠진다. 다만 위치 노출과 동행자 고립이 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_EXIT_CHECK",
+      "event_type": "outcome",
+      "choice_id": "ch01_exit_check_continue",
+      "label": "위협 위치 확인을 챙겨 다음으로 간다",
+      "preview": "적응체 접근을 무릅쓰는 대신 위협 위치 확인을 챙긴다. 소음 부담이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SECURITY_TO_ARCHIVE",
+      "event_type": "outcome",
+      "choice_id": "ch01_security_to_archive_continue",
+      "label": "장비 보호를 확인하고 자리를 옮긴다",
+      "preview": "장비 보호를 챙긴다. 대신 교신 노출이 생기고 다음 레이드 부담이 커진다.",
+      "claimed": [
+        "noise",
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_CACHE_OPEN",
+      "event_type": "outcome",
+      "choice_id": "ch01_cache_open_continue",
+      "label": "퇴로 표시를 손에 쥔 채 움직인다",
+      "preview": "몸 상태 부담을 감수하고 퇴로 표시를 노린다. 실패하면 시야 손실이 남는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_CACHE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_cache_skip_continue",
+      "label": "소음 감소를 확인하고 자리를 옮긴다",
+      "preview": "경로 붕괴를 무릅쓰는 대신 소음 감소를 챙긴다. 주의 분산이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_RELAY_REPAIR",
+      "event_type": "outcome",
+      "choice_id": "ch01_relay_repair_continue",
+      "label": "단서 확보를 챙겨 다음으로 간다",
+      "preview": "단서 확보를 먼저 잡고 빠진다. 다만 동선 증가와 전투 조기화가 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_RELAY_BYPASS",
+      "event_type": "outcome",
+      "choice_id": "ch01_relay_bypass_continue",
+      "label": "소음 감소를 손에 쥔 채 움직인다",
+      "preview": "소음 감소를 챙긴다. 대신 철수 지연이 생기고 경로 붕괴가 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_MORE",
+      "event_type": "outcome",
+      "choice_id": "ch01_scavenge_more_continue",
+      "label": "다음 레이드 힌트를 확인하고 자리를 옮긴다",
+      "preview": "다음 레이드 힌트가 필요하다면 몸 상태 부담을 받아들인다. 그만큼 무전 감청이 따라온다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_SCAVENGE_FILTERED",
+      "event_type": "outcome",
+      "choice_id": "ch01_scavenge_filtered_continue",
+      "label": "장비 보호를 손에 쥔 채 움직인다",
+      "preview": "다음 레이드 부담을 무릅쓰는 대신 장비 보호를 챙긴다. 회수 지연이 발목을 잡는다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_ARCHIVE_OPEN",
+      "event_type": "outcome",
+      "choice_id": "ch01_locker_archive_open_continue",
+      "label": "장비 보호를 손에 쥔 채 움직인다",
+      "preview": "장비 보호가 필요하다면 대기 시간을 받아들인다. 그만큼 다음 레이드 부담이 따라온다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_ARCHIVE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_locker_archive_skip_continue",
+      "label": "회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "소음 부담을 감수하고 회수품 확보를 노린다. 실패하면 소음 반향이 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_LOCKER_WRITER_OPEN",
+      "event_type": "outcome",
+      "choice_id": "ch01_locker_writer_open_continue",
+      "label": "우회로 표시를 챙겨 다음으로 간다",
+      "preview": "기록 훼손을 무릅쓰는 대신 우회로 표시를 챙긴다. 몸 상태 부담이 발목을 잡는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_CLEAR",
+      "event_type": "outcome",
+      "choice_id": "ch01_archive_clear_continue",
+      "label": "동행 신뢰를 확인하고 자리를 옮긴다",
+      "preview": "동행 신뢰를 챙긴다. 대신 회수 지연이 생기고 물자 손상이 커진다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ARCHIVE_DETOUR",
+      "event_type": "outcome",
+      "choice_id": "ch01_archive_detour_continue",
+      "label": "가방 정리를 챙겨 다음으로 간다",
+      "preview": "가방 정리가 필요하다면 소음 부담을 받아들인다. 그만큼 돌아가는 길 잠김이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_WRITER_SAFE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_writer_safe_skip_continue",
+      "label": "회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "지하 배관의 회수품을 조용히 빼낸다. 시간이 들고 소음 반향이 늦게 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ROOFTOP_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_rooftop_skip_continue",
+      "label": "구조 신호를 손에 쥔 채 움직인다",
+      "preview": "구조 신호를 챙긴다. 대신 추가 확인이 생기고 부상 위험이 커진다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ESCAPE_LOOT",
+      "event_type": "outcome",
+      "choice_id": "ch01_escape_loot_continue",
+      "label": "샛강 비상계단에서 회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "회수품 확보가 필요하다면 소음 부담을 받아들인다. 그만큼 소음 반향이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH01",
+      "event_id": "EV_CH01_DIRECTOR98_CH01_ESCAPE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch01_escape_skip_continue",
+      "label": "장비 보호를 챙겨 다음으로 간다",
+      "preview": "대기 시간을 감수하고 장비 보호를 노린다. 실패하면 다음 레이드 부담이 남는다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERLOCK",
+      "event_type": "choice",
+      "choice_id": "ch02_waterlock_storage",
+      "label": "창고를 수색한다",
+      "preview": "감염 회피가 필요하다면 우회 비용을 받아들인다. 그만큼 오염 확산이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_SIGNAL_OUTCOME_CH02_PIER_SIGNAL_FIX",
+      "event_type": "outcome",
+      "choice_id": "ch02_pier_signal_fix_continue",
+      "label": "퇴로 표시를 확인하고 자리를 옮긴다",
+      "preview": "시야 손실을 무릅쓰는 대신 퇴로 표시를 챙긴다. 몸 상태 부담이 발목을 잡는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_PIER_SIGNAL_OUTCOME_CH02_PIER_SIGNAL_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch02_pier_signal_skip_continue",
+      "label": "회수품 확보를 챙겨 다음으로 간다",
+      "preview": "회수품 확보를 먼저 잡고 빠진다. 다만 철수 지연과 소음 반향이 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLICE_ESCAPE_OUTCOME_CH02_ESCAPE_BOAT",
+      "event_type": "outcome",
+      "choice_id": "ch02_escape_boat_continue",
+      "label": "단서 확보를 손에 쥔 채 움직인다",
+      "preview": "동선 증가를 감수하고 단서 확보를 노린다. 실패하면 전투 조기화가 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_DRAINAGE_CTRL_OUTCOME_CH02_DRAINAGE_OPEN",
+      "event_type": "outcome",
+      "choice_id": "ch02_drainage_open_continue",
+      "label": "회수품 확보를 챙겨 다음으로 간다",
+      "preview": "회수품 확보가 필요하다면 철수 지연을 받아들인다. 그만큼 소음 반향이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BARGE_REPAIR_OUTCOME_CH02_BARGE_PATCH",
+      "event_type": "outcome",
+      "choice_id": "ch02_barge_patch_continue",
+      "label": "폐선착장에서 다음 구역으로 이동한다",
+      "preview": "단서 확보를 챙긴다. 대신 동선 증가가 생기고 전투 조기화가 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_EXTRACTION_PREP_OUTCOME_CH02_EXTRACT_RUN",
+      "event_type": "outcome",
+      "choice_id": "ch02_extract_run_continue",
+      "label": "구조 신호를 따라 빈손으로 이탈한다",
+      "preview": "보급을 포기하고 구조 신호를 우선했다. 소음 +1을 안고 유리정원에 도착한다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_WATERWAY_CHECK_OUTCOME_CH02_WATERWAY_COLD",
+      "event_type": "outcome",
+      "choice_id": "ch02_waterway_cold_continue",
+      "label": "교신 단축을 챙겨 다음으로 간다",
+      "preview": "신뢰 흔들림을 무릅쓰는 대신 교신 단축을 챙긴다. 가방 압박이 발목을 잡는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_LOCKDOWN_OUTCOME_CH02_MARKET_CLEAR",
+      "event_type": "outcome",
+      "choice_id": "ch02_market_clear_continue",
+      "label": "수몰시장 입구에서 회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "소음 반향을 무릅쓰는 대신 회수품 확보를 챙긴다. 주의 분산이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_SEAL_OUTCOME_CH02_COLD_THAW",
+      "event_type": "outcome",
+      "choice_id": "ch02_cold_thaw_continue",
+      "label": "시야 확보를 손에 쥔 채 움직인다",
+      "preview": "물자 소모를 감수하고 시야 확보를 노린다. 실패하면 감염 노출이 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_SEAL_OUTCOME_CH02_COLD_MANUAL",
+      "event_type": "outcome",
+      "choice_id": "ch02_cold_manual_continue",
+      "label": "냉동창고에서 동행 신뢰를 확인하고 자리를 옮긴다",
+      "preview": "물자 손상을 무릅쓰는 대신 동행 신뢰를 챙긴다. 회수 지연이 발목을 잡는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_OVERRIDE_OUTCOME_CH02_SLUICE_BYPASS",
+      "event_type": "outcome",
+      "choice_id": "ch02_sluice_bypass_continue",
+      "label": "교신 단축을 손에 쥔 채 움직인다",
+      "preview": "신뢰 흔들림을 무릅쓰는 대신 교신 단축을 챙긴다. 우회 비용이 발목을 잡는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_MARKET_BACKALLEY_LOOP",
+      "event_type": "exploration",
+      "choice_id": "ch02_backalley_exit",
+      "label": "수몰시장 입구에서 이탈을 준비한다",
+      "preview": "시야 확보를 챙긴다. 대신 장비 마모가 생기고 감염 노출이 커진다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_CRAWL_OUTCOME_CH02_COLD_LOOP_STABILIZE",
+      "event_type": "outcome",
+      "choice_id": "ch02_cold_loop_stabilize_continue",
+      "label": "냉동창고에서 장비 보호를 손에 쥔 채 움직인다",
+      "preview": "장비 보호를 먼저 잡고 빠진다. 다만 동선 증가와 다음 레이드 부담이 함께 남는다.",
+      "claimed": [
+        "noise",
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_COLD_CRAWL",
+      "event_type": "exploration",
+      "choice_id": "ch02_cold_crawl_exit",
+      "label": "교신 단축을 노리고 냉각로를 확인한다",
+      "preview": "교신 단축이 필요하다면 우회 비용을 받아들인다. 그만큼 신뢰 흔들림이 따라온다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_BLACKMARKET_LEDGER_OUTCOME_CH02_LEDGER_TAKE",
+      "event_type": "outcome",
+      "choice_id": "ch02_ledger_take_continue",
+      "label": "암시장 천막촌에서 장비 보호를 확인하고 자리를 옮긴다",
+      "preview": "다음 레이드 부담을 무릅쓰는 대신 장비 보호를 챙긴다. 동선 증가가 발목을 잡는다.",
+      "claimed": [
+        "noise",
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_PREP_OUTCOME_CH02_SLUICE_RUSH",
+      "event_type": "outcome",
+      "choice_id": "ch02_sluice_rush_continue",
+      "label": "지도 갱신을 손에 쥔 채 움직인다",
+      "preview": "교신 노출을 감수하고 지도 갱신을 노린다. 실패하면 시간 초과가 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_SLUICE_PREP",
+      "event_type": "exploration",
+      "choice_id": "ch02_sluice_rush",
+      "label": "샛강 배수문 통제실에서 밀어붙여 돌파한다",
+      "preview": "기록 복원을 먼저 잡고 빠진다. 다만 교신 노출과 퇴로 축소가 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_MARKET_STORAGE",
+      "event_type": "outcome",
+      "choice_id": "ch02_market_storage_continue",
+      "label": "가방 정리를 확인하고 자리를 옮긴다",
+      "preview": "가방 정리를 챙긴다. 대신 소음 부담이 생기고 돌아가는 길 잠김이 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_MARKET_TENTS",
+      "event_type": "outcome",
+      "choice_id": "ch02_market_tents_continue",
+      "label": "동행 신뢰를 챙겨 다음으로 간다",
+      "preview": "동행 신뢰가 필요하다면 대기 시간을 받아들인다. 그만큼 물자 손상이 따라온다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_COLD_ON",
+      "event_type": "outcome",
+      "choice_id": "ch02_cold_on_continue",
+      "label": "소음 감소를 손에 쥔 채 움직인다",
+      "preview": "소음 부담을 감수하고 소음 감소를 노린다. 실패하면 경로 붕괴가 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_COLD_OFF",
+      "event_type": "outcome",
+      "choice_id": "ch02_cold_off_continue",
+      "label": "단서 확보를 확인하고 자리를 옮긴다",
+      "preview": "전투 조기화를 무릅쓰는 대신 단서 확보를 챙긴다. 동선 증가가 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_PIER_BOAT",
+      "event_type": "outcome",
+      "choice_id": "ch02_pier_boat_continue",
+      "label": "폐선착장에서 동행 신뢰를 확인하고 자리를 옮긴다",
+      "preview": "동행 신뢰가 필요하다면 동선 증가를 받아들인다. 그만큼 물자 손상이 따라온다.",
+      "claimed": [
+        "noise",
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_SLUICE_CLOSE",
+      "event_type": "outcome",
+      "choice_id": "ch02_sluice_close_continue",
+      "label": "샛강 배수문 통제실에서 다음 구역으로 이동한다",
+      "preview": "중앙 차단선 너머 시야를 연다. 판단이 늦어지고 감염 노출이 커진다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_ALLEY_COLD",
+      "event_type": "outcome",
+      "choice_id": "ch02_alley_cold_continue",
+      "label": "수몰시장 입구에서 장비 보호를 챙겨 다음으로 간다",
+      "preview": "장비 보호를 챙긴다. 대신 회수 지연이 생기고 다음 레이드 부담이 커진다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_SLUICE_RESET",
+      "event_type": "outcome",
+      "choice_id": "ch02_sluice_reset_continue",
+      "label": "지도 갱신을 노리고 다음 구역으로 이동한다",
+      "preview": "동선 증가를 감수하고 지도 갱신을 노린다. 실패하면 시간 초과가 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_WATERLOCK_STORAGE",
+      "event_type": "outcome",
+      "choice_id": "ch02_waterlock_storage_continue",
+      "label": "문턱 정보를 손에 쥔 채 움직인다",
+      "preview": "문턱 정보를 먼저 잡고 빠진다. 다만 동선 증가와 추격 상승이 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH02",
+      "event_id": "EV_CH02_AGENCY_OUTCOME_CH02_WATERLOCK_TENTS",
+      "event_type": "outcome",
+      "choice_id": "ch02_waterlock_tents_continue",
+      "label": "구조 신호를 확인하고 자리를 옮긴다",
+      "preview": "구조 신호를 챙긴다. 대신 몸 상태 부담이 생기고 부상 위험이 커진다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_VERTICAL_ROUTE_OUTCOME_CH03_VERTICAL_ELEVATOR",
+      "event_type": "outcome",
+      "choice_id": "ch03_vertical_elevator_continue",
+      "label": "서비스 계단실에서 다음 구역으로 이동한다",
+      "preview": "장비 보호를 챙긴다. 대신 노출이 생기고 다음 레이드 부담이 커진다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_VERTICAL_ROUTE_OUTCOME_CH03_VERTICAL_OUTER",
+      "event_type": "outcome",
+      "choice_id": "ch03_vertical_outer_continue",
+      "label": "서비스 계단실에서 소음 감소를 손에 쥔 채 움직인다",
+      "preview": "소음 감소가 필요하다면 감시 노출을 받아들인다. 그만큼 경로 붕괴가 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_SWEEP_OUTCOME_CH03_SHOWROOM_RUSH",
+      "event_type": "outcome",
+      "choice_id": "ch03_showroom_rush_continue",
+      "label": "교신 단축을 챙겨 다음으로 간다",
+      "preview": "교신 단축이 필요하다면 가방 압박을 받아들인다. 그만큼 신뢰 흔들림이 따라온다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_NEGOTIATION_OUTCOME_CH03_UPPER_SIDE",
+      "event_type": "outcome",
+      "choice_id": "ch03_upper_side_continue",
+      "label": "상층 라운지에서 다음 구역으로 이동한다",
+      "preview": "생존자 정보를 챙긴다. 대신 위치 노출이 생기고 선택지 축소가 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION",
+      "event_type": "extraction",
+      "choice_id": "ch03_finish",
+      "label": "전력표와 중계 렌즈를 봉인한다",
+      "preview": "CH03을 완료하고 축전기 1개, 중계 렌즈 1개, 두 지도자의 신뢰를 CH04로 넘긴다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BLACKOUT_REPAIR_OUTCOME_CH03_BLACKOUT_BYPASS",
+      "event_type": "outcome",
+      "choice_id": "ch03_blackout_bypass_continue",
+      "label": "발전실에서 철수선 확인을 확인하고 자리를 옮긴다",
+      "preview": "철수선 확인을 챙긴다. 대신 위치 노출이 생기고 동행자 고립이 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_PREP_GLASS_OUTCOME_CH03_PREP_READY",
+      "event_type": "outcome",
+      "choice_id": "ch03_prep_ready_continue",
+      "label": "채비를 갖춘다",
+      "preview": "감염 회피가 필요하다면 기력 소모를 받아들인다. 그만큼 오염 확산이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE_OUTCOME_CH03_EXTRACT_SMOKE",
+      "event_type": "outcome",
+      "choice_id": "ch03_extract_smoke_continue",
+      "label": "소음 1 감소를 확인하고 자리를 옮긴다",
+      "preview": "연막 이탈로 소음 -1을 확보했다. 흐려진 표식을 다시 읽으며 CH04 배분선으로 이동한다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_EXTRACTION_PRESSURE_OUTCOME_CH03_EXTRACT_PUSH",
+      "event_type": "outcome",
+      "choice_id": "ch03_extract_push_continue",
+      "label": "부상한 팔을 고정하고 냉장창고로 간다",
+      "preview": "정면 압박으로 즉시 이탈했다. 부상 +4를 안고 CH04의 의료 상자와 생존자 배분에 들어간다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_CACHE_OUTCOME_CH03_SHOWROOM_SEARCH",
+      "event_type": "outcome",
+      "choice_id": "ch03_showroom_search_continue",
+      "label": "중층 쇼룸 존에서 다음 구역으로 이동한다",
+      "preview": "감염 회피를 먼저 잡고 빠진다. 다만 우회 비용과 오염 확산이 함께 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_CACHE_OUTCOME_CH03_SHOWROOM_PASS",
+      "event_type": "outcome",
+      "choice_id": "ch03_showroom_pass_continue",
+      "label": "철수선 확인을 노리고 다음 구역으로 이동한다",
+      "preview": "철수선 확인을 챙긴다. 대신 위치 노출이 생기고 동행자 고립이 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_CACHE_OUTCOME_CH03_CACHE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch03_cache_skip_continue",
+      "label": "시야 확보를 챙겨 다음으로 간다",
+      "preview": "시야 확보를 먼저 잡고 빠진다. 다만 보상 축소와 감염 노출이 함께 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_PREP_OUTCOME_CH03_PREP_DONE",
+      "event_type": "outcome",
+      "choice_id": "ch03_prep_done_continue",
+      "label": "옥상 송신정원에서 교신 단축을 손에 쥔 채 움직인다",
+      "preview": "몸 상태 부담을 감수하고 교신 단축을 노린다. 실패하면 신뢰 흔들림이 남는다.",
+      "claimed": [
+        "injury",
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury",
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_BASEMENT_SURVEY",
+      "event_type": "dialogue",
+      "choice_id": "ch03_basement_scout",
+      "label": "지하로 내려간다",
+      "preview": "시야 확보가 필요하다면 물자 소모를 받아들인다. 그만큼 감염 노출이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SHOWROOM_STORAGE",
+      "event_type": "exploration",
+      "choice_id": "ch03_showroom_route",
+      "label": "중층 쇼룸 존에서 손을 덜 쓰는 쪽을 고른다",
+      "preview": "부상 위험을 무릅쓰는 대신 구조 신호를 챙긴다. 기력 소모가 발목을 잡는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE_OUTCOME_CH03_LUXURY_EXIT",
+      "event_type": "outcome",
+      "choice_id": "ch03_luxury_exit_continue",
+      "label": "중층 쇼룸 존에서 장비 보호를 손에 쥔 채 움직인다",
+      "preview": "동선 증가를 감수하고 장비 보호를 노린다. 실패하면 다음 레이드 부담이 남는다.",
+      "claimed": [
+        "noise",
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE_OUTCOME_CH03_LUXURY_RECON",
+      "event_type": "outcome",
+      "choice_id": "ch03_luxury_recon_continue",
+      "label": "시야 확보를 노리고 다음 구역으로 이동한다",
+      "preview": "물자 소모를 감수하고 시야 확보를 노린다. 실패하면 감염 노출이 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_LUXURY_SCAVENGE",
+      "event_type": "exploration",
+      "choice_id": "ch03_luxury_exit",
+      "label": "중층 쇼룸 존에서 이탈을 준비한다",
+      "preview": "퇴로 표시를 먼저 잡고 빠진다. 다만 몸 상태 부담과 시야 손실이 함께 남는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_POWER_OVERRUN",
+      "event_type": "choice",
+      "choice_id": "ch03_overrun_skip",
+      "label": "과부하를 그대로 둔다",
+      "preview": "교신 단축을 먼저 잡고 빠진다. 다만 가방 압박과 신뢰 흔들림이 함께 남는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_UPPER_SUPPLY_OUTCOME_CH03_UPPER_SUPPLY_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch03_upper_supply_skip_continue",
+      "label": "문턱 정보를 챙겨 다음으로 간다",
+      "preview": "동선 증가를 감수하고 문턱 정보를 노린다. 실패하면 추격 상승이 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_WIND_OUTCOME_CH03_BRIDGE_SECURE",
+      "event_type": "outcome",
+      "choice_id": "ch03_bridge_secure_continue",
+      "label": "구조 신호를 손에 쥔 채 움직인다",
+      "preview": "구조 신호가 필요하다면 몸 상태 부담을 받아들인다. 그만큼 부상 위험이 따라온다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_SKYBRIDGE_WIND_OUTCOME_CH03_BRIDGE_RUSH",
+      "event_type": "outcome",
+      "choice_id": "ch03_bridge_rush_continue",
+      "label": "스카이브리지에서 회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "회수품 확보가 필요하다면 감시 노출을 받아들인다. 그만큼 소음 반향이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_ARMORY_OUTCOME_CH03_GLASS_RUSH",
+      "event_type": "outcome",
+      "choice_id": "ch03_glass_rush_continue",
+      "label": "옥상 송신정원에서 장비 보호를 손에 쥔 채 움직인다",
+      "preview": "장비 보호를 챙긴다. 대신 손실 감수가 생기고 다음 레이드 부담이 커진다.",
+      "claimed": [
+        "strain"
+      ],
+      "produced": [],
+      "unmet": [
+        "strain"
+      ]
+    },
+    {
+      "chapter_id": "CH03",
+      "event_id": "EV_CH03_GLASS_ARMORY",
+      "event_type": "exploration",
+      "choice_id": "ch03_glass_rush",
+      "label": "옥상 송신정원에서 밀어붙여 돌파한다",
+      "preview": "몸 상태 부담을 감수하고 다음 레이드 힌트를 노린다. 실패하면 무전 감청이 남는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_COLD_ALLOC_OUTCOME_CH04_COLD_RECORD",
+      "event_type": "outcome",
+      "choice_id": "ch04_cold_record_continue",
+      "label": "가락 냉장창고에서 퇴로 표시를 챙겨 다음으로 간다",
+      "preview": "퇴로 표시를 챙긴다. 대신 몸 상태 부담이 생기고 시야 손실이 커진다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_ROUTE_SELECTION_OUTCOME_CH04_ROUTE_RAIL",
+      "event_type": "outcome",
+      "choice_id": "ch04_route_rail_continue",
+      "label": "철도 인계장에서 다음 구역으로 이동한다",
+      "preview": "철도 인계장에서는 동행자 고립을 무릅쓰는 대신 철수선 확인을 챙긴다. 위치 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_ROUTE_SELECTION_OUTCOME_CH04_ROUTE_DELIVERY",
+      "event_type": "outcome",
+      "choice_id": "ch04_route_delivery_continue",
+      "label": "철도 인계장에서 다음 구역으로 이동한다",
+      "preview": "교신 단축을 먼저 잡고 빠진다. 다만 추가 확인과 신뢰 흔들림이 함께 남는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_SECURITY_BADGES_OUTCOME_CH04_BADGE_ORIGINAL",
+      "event_type": "outcome",
+      "choice_id": "ch04_badge_original_continue",
+      "label": "보안 사무실에서 다음 구역으로 이동한다",
+      "preview": "가방 압박을 감수하고 감염 회피를 노린다. 실패하면 오염 확산이 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_DECISION_OUTCOME_CH04_LINE_ON",
+      "event_type": "outcome",
+      "choice_id": "ch04_line_on_continue",
+      "label": "패키지 분류 메인홀에서 회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "회수품 확보가 필요하다면 주의 분산을 받아들인다. 그만큼 소음 반향이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_LINE_DECISION_OUTCOME_CH04_LINE_OFF",
+      "event_type": "outcome",
+      "choice_id": "ch04_line_off_continue",
+      "label": "다음 레이드 힌트를 챙겨 다음으로 간다",
+      "preview": "몸 상태 부담을 감수하고 다음 레이드 힌트를 노린다. 실패하면 무전 감청이 남는다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXTRACTION",
+      "event_type": "extraction",
+      "choice_id": "ch04_finish",
+      "label": "배지 2개와 판교 진입권을 봉인한다",
+      "preview": "CH04를 완료하고 배지 2개, 판교 진입권 1장, 한소명 신뢰와 통제 선택을 CH05로 넘긴다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_TRADE",
+      "event_type": "outcome",
+      "choice_id": "ch04_vendor_trade_continue",
+      "label": "자동분류센터 로비에서 교신 단축을 챙겨 다음으로 간다",
+      "preview": "신뢰 흔들림을 무릅쓰는 대신 교신 단축을 챙긴다. 추가 확인이 발목을 잡는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch04_vendor_skip_continue",
+      "label": "자동분류센터 로비에서 소음 감소를 손에 쥔 채 움직인다",
+      "preview": "소음 감소를 먼저 잡고 빠진다. 다만 감시 노출과 경로 붕괴가 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER_OUTCOME_CH04_VENDOR_FARM",
+      "event_type": "outcome",
+      "choice_id": "ch04_vendor_farm_continue",
+      "label": "감염 회피를 확인하고 자리를 옮긴다",
+      "preview": "감염 회피가 필요하다면 추가 확인을 받아들인다. 그만큼 오염 확산이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_VENDOR_BARTER",
+      "event_type": "dialogue",
+      "choice_id": "ch04_vendor_skip",
+      "label": "자동분류센터 로비에서 판단을 보류한다",
+      "preview": "시간 초과를 무릅쓰는 대신 지도 갱신을 챙긴다. 교신 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXIT_CHECK_OUTCOME_CH04_EXIT_CHECK",
+      "event_type": "outcome",
+      "choice_id": "ch04_exit_check_continue",
+      "label": "감염 회피를 확인하고 자리를 옮긴다",
+      "preview": "감염 회피가 필요하다면 기력 소모를 받아들인다. 그만큼 오염 확산이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_EXIT_CHECK_OUTCOME_CH04_EXIT_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch04_exit_skip_continue",
+      "label": "시야 확보를 챙겨 다음으로 간다",
+      "preview": "감염 노출을 무릅쓰는 대신 시야 확보를 챙긴다. 물자 소모가 발목을 잡는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE_OUTCOME_CH04_CACHE_OPEN",
+      "event_type": "outcome",
+      "choice_id": "ch04_cache_open_continue",
+      "label": "배송 터널에서 회수품 확보를 챙겨 다음으로 간다",
+      "preview": "회수품 확보를 챙긴다. 대신 철수 지연이 생기고 소음 반향이 커진다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE_OUTCOME_CH04_CACHE_SKIP",
+      "event_type": "outcome",
+      "choice_id": "ch04_cache_skip_continue",
+      "label": "다음 레이드 힌트를 손에 쥔 채 움직인다",
+      "preview": "다음 레이드 힌트를 챙긴다. 대신 몸 상태 부담이 생기고 무전 감청이 커진다.",
+      "claimed": [
+        "injury"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury"
+      ]
+    },
+    {
+      "chapter_id": "CH04",
+      "event_id": "EV_CH04_TUNNEL_CACHE_OUTCOME_CH04_CACHE_FARM",
+      "event_type": "outcome",
+      "choice_id": "ch04_cache_farm_continue",
+      "label": "배송 터널에서 회수품 확보를 확인하고 자리를 옮긴다",
+      "preview": "회수품 확보가 필요하다면 철수 지연을 받아들인다. 그만큼 소음 반향이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_MAPPING_OUTCOME_CH05_LOBBY_LOGS",
+      "event_type": "outcome",
+      "choice_id": "ch05_lobby_logs_continue",
+      "label": "캠퍼스 로비동에서 다음 구역으로 이동한다",
+      "preview": "시야 확보가 필요하다면 물자 소모를 받아들인다. 그만큼 감염 노출이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SKYWALK",
+      "event_type": "danger",
+      "choice_id": "ch05_skywalk_down",
+      "label": "하늘다리 아래로 돌아간다",
+      "preview": "대기 시간을 감수하고 동행 신뢰를 노린다. 실패하면 물자 손상이 남는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_ROUTE_OUTCOME_CH05_COOLING_STABLE",
+      "event_type": "outcome",
+      "choice_id": "ch05_cooling_stable_continue",
+      "label": "냉각설비실에서 다음 구역으로 이동한다",
+      "preview": "물자 손상을 무릅쓰는 대신 동행 신뢰를 챙긴다. 동선 증가가 발목을 잡는다.",
+      "claimed": [
+        "noise",
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_COOLING_ROUTE_OUTCOME_CH05_COOLING_BYPASS",
+      "event_type": "outcome",
+      "choice_id": "ch05_cooling_bypass_continue",
+      "label": "시야 확보를 확인하고 자리를 옮긴다",
+      "preview": "시야 확보를 먼저 잡고 빠진다. 다만 보상 축소와 감염 노출이 함께 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_KIM_ARA_OUTCOME_CH05_ARA_FIRST",
+      "event_type": "outcome",
+      "choice_id": "ch05_ara_first_continue",
+      "label": "연구 격리실에서 다음 구역으로 이동한다",
+      "preview": "시간 초과를 무릅쓰는 대신 지도 갱신을 챙긴다. 교신 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS_OUTCOME_CH05_DATA_RECORD",
+      "event_type": "outcome",
+      "choice_id": "ch05_data_record_continue",
+      "label": "정찰 근거를 확인하고 자리를 옮긴다",
+      "preview": "정찰 근거가 필요하다면 위치 노출을 받아들인다. 그만큼 철수 압박이 따라온다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS_OUTCOME_CH05_DATA_LIMITED",
+      "event_type": "outcome",
+      "choice_id": "ch05_data_limited_continue",
+      "label": "동행 신뢰를 챙겨 다음으로 간다",
+      "preview": "노출을 감수하고 동행 신뢰를 노린다. 실패하면 물자 손상이 남는다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_DATA_ACCESS_OUTCOME_CH05_DATA_BROADCAST",
+      "event_type": "outcome",
+      "choice_id": "ch05_data_broadcast_continue",
+      "label": "회수품 확보를 손에 쥔 채 움직인다",
+      "preview": "소음 반향을 무릅쓰는 대신 회수품 확보를 챙긴다. 소음 부담이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_BOSS_LINES_OUTCOME_CH05_CORE_PRESERVE",
+      "event_type": "outcome",
+      "choice_id": "ch05_core_preserve_continue",
+      "label": "젖은 좌표를 접는다",
+      "preview": "원본 증거를 들고 이동한다. 신뢰와 정보는 커지지만, 젖은 좌표 추적음이 다음 구역까지 따라온다.",
+      "claimed": [
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SIGNAL_RELAY_OUTCOME_CH05_SIGNAL_BOOST",
+      "event_type": "outcome",
+      "choice_id": "ch05_signal_boost_continue",
+      "label": "감염 회피를 손에 쥔 채 움직인다",
+      "preview": "몸 상태 부담을 감수하고 감염 회피를 노린다. 실패하면 오염 확산이 남는다.",
+      "claimed": [
+        "injury",
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "injury",
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_PREP_FINAL_OUTCOME_CH05_PREP_READY",
+      "event_type": "outcome",
+      "choice_id": "ch05_prep_ready_continue",
+      "label": "기록 복원을 챙겨 다음으로 간다",
+      "preview": "교신 노출을 감수하고 기록 복원을 노린다. 실패하면 퇴로 축소가 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SECURITY_CONSOLE_OUTCOME_CH05_CONSOLE_MANUAL",
+      "event_type": "outcome",
+      "choice_id": "ch05_console_manual_continue",
+      "label": "감염 회피를 노리고 다음 구역으로 이동한다",
+      "preview": "감염 회피가 필요하다면 가방 압박을 받아들인다. 그만큼 오염 확산이 따라온다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE_OUTCOME_CH05_SERVER_LOOP",
+      "event_type": "outcome",
+      "choice_id": "ch05_server_loop_continue",
+      "label": "지도 갱신을 챙겨 다음으로 간다",
+      "preview": "지도 갱신을 먼저 잡고 빠진다. 다만 교신 노출과 시간 초과가 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE_OUTCOME_CH05_SERVER_DIAG_LOOP",
+      "event_type": "outcome",
+      "choice_id": "ch05_server_diag_loop_continue",
+      "label": "철수선 확인을 손에 쥔 채 움직인다",
+      "preview": "아크-P 서버홀에서는 동행자 고립을 무릅쓰는 대신 철수선 확인을 챙긴다. 위치 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_SERVER_PURGE",
+      "event_type": "scene",
+      "choice_id": "ch05_server_purge",
+      "label": "자료를 정리한다",
+      "preview": "단서 확보를 먼저 잡고 빠진다. 다만 교신 노출과 전투 조기화가 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT_OUTCOME_CH05_LOBBY_FORGE",
+      "event_type": "outcome",
+      "choice_id": "ch05_lobby_forge_continue",
+      "label": "감염 회피를 노리고 다음 구역으로 이동한다",
+      "preview": "오염 확산을 무릅쓰는 대신 감염 회피를 챙긴다. 가방 압박이 발목을 잡는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_LOBBY_CHECKPOINT_OUTCOME_CH05_LOBBY_BYPASS",
+      "event_type": "outcome",
+      "choice_id": "ch05_lobby_bypass_continue",
+      "label": "소음 감소를 확인하고 자리를 옮긴다",
+      "preview": "소음 감소를 먼저 잡고 빠진다. 다만 주의 분산과 경로 붕괴가 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_ARC_RELAY_OUTCOME_CH05_RELAY_LOCK",
+      "event_type": "outcome",
+      "choice_id": "ch05_relay_lock_continue",
+      "label": "아크-P 서버홀에서 다음 구역으로 이동한다",
+      "preview": "회수품 확보를 먼저 잡고 빠진다. 다만 시간 소모와 소음 반향이 함께 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_CORE_PREP_OUTCOME_CH05_CORE_PREP",
+      "event_type": "outcome",
+      "choice_id": "ch05_core_prep_continue",
+      "label": "동행 신뢰를 노리고 채비를 갖춘다",
+      "preview": "물자 손상을 무릅쓰는 대신 동행 신뢰를 챙긴다. 교신 노출이 발목을 잡는다.",
+      "claimed": [
+        "noise",
+        "trust"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise",
+        "trust"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_CORE_PREP_OUTCOME_CH05_CORE_RUSH",
+      "event_type": "outcome",
+      "choice_id": "ch05_core_rush_continue",
+      "label": "하부 비상벙커에서 시야 확보를 챙겨 다음으로 간다",
+      "preview": "시야 확보를 먼저 잡고 빠진다. 다만 물자 소모와 감염 노출이 함께 남는다.",
+      "claimed": [
+        "contamination"
+      ],
+      "produced": [],
+      "unmet": [
+        "contamination"
+      ]
+    },
+    {
+      "chapter_id": "CH05",
+      "event_id": "EV_CH05_AGENCY_OUTCOME_CH05_SCAN_EXTEND",
+      "event_type": "outcome",
+      "choice_id": "ch05_scan_extend_continue",
+      "label": "캠퍼스 로비동에서 탐색 범위를 넓힌다",
+      "preview": "소음 부담을 감수하고 경보 지연을 노린다. 실패하면 경보 압박이 남는다.",
+      "claimed": [
+        "noise"
+      ],
+      "produced": [],
+      "unmet": [
+        "noise"
+      ]
+    }
+  ]
+}

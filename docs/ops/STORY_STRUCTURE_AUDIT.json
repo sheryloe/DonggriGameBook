@@ -1,0 +1,1820 @@
+{
+  "generated_for": "P1-P4 structural review",
+  "chapters": [
+    {
+      "chapter_id": "CH01",
+      "part": "P1",
+      "title": "잿빛 개장",
+      "nodes": 8,
+      "events": 99,
+      "choices": 134,
+      "prose_lines": 714,
+      "prose_chars": 25064,
+      "estimated_first_run_minutes": 18,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 11,
+      "boss_event_id": "EV_CH01_BOSS_BROADCAST",
+      "carryover_keys": [
+        "route.truth",
+        "route.strain"
+      ],
+      "event_types": {
+        "briefing": 1,
+        "exploration": 11,
+        "choice": 8,
+        "dialogue": 4,
+        "boss": 1,
+        "extraction": 1,
+        "scene": 5,
+        "danger": 4,
+        "combat": 3,
+        "outcome": 61
+      },
+      "effect_ops": {
+        "grant_item": 12,
+        "add_trust": 4,
+        "set_flag": 67,
+        "sub_stat": 7,
+        "grant_loot_table": 17,
+        "add_stat": 67,
+        "remove_item": 2,
+        "set_value": 9,
+        "add_reputation": 4,
+        "set_route": 5
+      },
+      "distinct_art_keys": 13,
+      "max_art_key_reuse": 19,
+      "distinct_music_keys": 7,
+      "npcs": [
+        "npc_yoon_haein",
+        "npc_jung_noah"
+      ],
+      "npc_event_count": {
+        "npc_yoon_haein": 7,
+        "npc_jung_noah": 2
+      },
+      "npc_spoken_lines": {
+        "npc_yoon_haein": 15,
+        "npc_jung_noah": 5
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [
+          "EV_CH01_PATROL_AMBUSH"
+        ],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [
+          "obj_ch01_side_security",
+          "obj_ch01_side_relay",
+          "obj_ch01_scavenge_route"
+        ],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 67
+      }
+    },
+    {
+      "chapter_id": "CH02",
+      "part": "P1",
+      "title": "검은 수로",
+      "nodes": 7,
+      "events": 81,
+      "choices": 107,
+      "prose_lines": 624,
+      "prose_chars": 22431,
+      "estimated_first_run_minutes": 19,
+      "quest_tracks": 6,
+      "quest_kinds": {
+        "main": 1,
+        "side": 5
+      },
+      "objectives": 10,
+      "boss_event_id": "EV_CH02_SLUICE_BOSS",
+      "carryover_keys": [
+        "route.compassion",
+        "route.underworld"
+      ],
+      "event_types": {
+        "briefing": 1,
+        "exploration": 10,
+        "dialogue": 5,
+        "boss": 1,
+        "extraction": 1,
+        "choice": 5,
+        "danger": 4,
+        "outcome": 48,
+        "combat": 3,
+        "scene": 3
+      },
+      "effect_ops": {
+        "set_flag": 58,
+        "add_stat": 51,
+        "set_value": 11,
+        "grant_loot_table": 15,
+        "add_reputation": 7,
+        "grant_item": 6,
+        "sub_stat": 2,
+        "add_trust": 3,
+        "remove_item": 1,
+        "set_route": 6
+      },
+      "distinct_art_keys": 10,
+      "max_art_key_reuse": 18,
+      "distinct_music_keys": 9,
+      "npcs": [
+        "npc_yoon_haein",
+        "npc_jung_noah",
+        "npc_seo_jinseo"
+      ],
+      "npc_event_count": {
+        "npc_jung_noah": 4,
+        "npc_seo_jinseo": 3,
+        "npc_yoon_haein": 1
+      },
+      "npc_spoken_lines": {
+        "npc_jung_noah": 9,
+        "npc_yoon_haein": 6,
+        "npc_seo_jinseo": 2
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [
+          "EV_CH02_FLOOD_AMBUSH"
+        ],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [
+          "obj_ch02_side_ambush"
+        ],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 55
+      }
+    },
+    {
+      "chapter_id": "CH03",
+      "part": "P1",
+      "title": "유리정원",
+      "nodes": 8,
+      "events": 71,
+      "choices": 95,
+      "prose_lines": 574,
+      "prose_chars": 22645,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 6,
+      "quest_kinds": {
+        "main": 1,
+        "side": 5
+      },
+      "objectives": 12,
+      "boss_event_id": "EV_CH03_BOSS_GARDEN",
+      "carryover_keys": [
+        "route.control",
+        "route.strain"
+      ],
+      "event_types": {
+        "briefing": 1,
+        "outcome": 41,
+        "dialogue": 6,
+        "choice": 5,
+        "exploration": 8,
+        "danger": 3,
+        "boss": 1,
+        "extraction": 1,
+        "combat": 3,
+        "scene": 2
+      },
+      "effect_ops": {
+        "set_flag": 49,
+        "set_value": 10,
+        "add_trust": 7,
+        "add_reputation": 8,
+        "add_stat": 43,
+        "sub_stat": 5,
+        "grant_loot_table": 8,
+        "grant_item": 5,
+        "set_route": 6
+      },
+      "distinct_art_keys": 10,
+      "max_art_key_reuse": 12,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_ahn_bogyeong",
+        "npc_ryu_seon"
+      ],
+      "npc_event_count": {
+        "npc_ahn_bogyeong": 4,
+        "npc_ryu_seon": 1
+      },
+      "npc_spoken_lines": {
+        "npc_ahn_bogyeong": 9,
+        "npc_ryu_seon": 8,
+        "npc_yoon_haein": 6
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [
+          "EV_CH03_SERVICE_AMBUSH"
+        ],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [
+          "obj_ch03_06",
+          "obj_ch03_07",
+          "obj_ch03_side_ambush",
+          "obj_ch03_side_prep"
+        ],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 50
+      }
+    },
+    {
+      "chapter_id": "CH04",
+      "part": "P1",
+      "title": "상자들의 도시",
+      "nodes": 7,
+      "events": 47,
+      "choices": 61,
+      "prose_lines": 376,
+      "prose_chars": 14485,
+      "estimated_first_run_minutes": 21,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 10,
+      "boss_event_id": "EV_CH04_BOSS_PICKER",
+      "carryover_keys": [
+        "route.truth",
+        "route.control",
+        "route.strain"
+      ],
+      "event_types": {
+        "briefing": 1,
+        "outcome": 27,
+        "choice": 4,
+        "dialogue": 4,
+        "exploration": 3,
+        "boss": 1,
+        "extraction": 1,
+        "combat": 2,
+        "danger": 2,
+        "scene": 2
+      },
+      "effect_ops": {
+        "set_flag": 34,
+        "set_value": 9,
+        "grant_loot_table": 8,
+        "add_reputation": 5,
+        "add_stat": 32,
+        "add_trust": 6,
+        "sub_stat": 2,
+        "set_route": 4,
+        "grant_item": 7,
+        "remove_item": 1
+      },
+      "distinct_art_keys": 10,
+      "max_art_key_reuse": 12,
+      "distinct_music_keys": 10,
+      "npcs": [
+        "npc_yoon_haein",
+        "npc_han_somyeong"
+      ],
+      "npc_event_count": {
+        "npc_han_somyeong": 2,
+        "npc_yoon_haein": 1
+      },
+      "npc_spoken_lines": {
+        "npc_han_somyeong": 10,
+        "npc_yoon_haein": 8
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [
+          "EV_CH04_TUNNEL_AMBUSH"
+        ],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [
+          "obj_ch04_06",
+          "obj_ch04_side_jam",
+          "obj_ch04_side_repair"
+        ],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 34
+      }
+    },
+    {
+      "chapter_id": "CH05",
+      "part": "P1",
+      "title": "미러센터",
+      "nodes": 7,
+      "events": 57,
+      "choices": 76,
+      "prose_lines": 450,
+      "prose_chars": 17391,
+      "estimated_first_run_minutes": 22,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 12,
+      "boss_event_id": "EV_CH05_BOSS_LINES",
+      "carryover_keys": [
+        "route.truth",
+        "route.compassion",
+        "route.control",
+        "route.underworld",
+        "route.strain"
+      ],
+      "event_types": {
+        "briefing": 1,
+        "outcome": 34,
+        "exploration": 3,
+        "danger": 3,
+        "choice": 4,
+        "dialogue": 4,
+        "boss": 1,
+        "extraction": 1,
+        "combat": 3,
+        "scene": 3
+      },
+      "effect_ops": {
+        "set_flag": 50,
+        "set_value": 12,
+        "sub_stat": 4,
+        "grant_loot_table": 6,
+        "add_stat": 37,
+        "grant_item": 8,
+        "add_trust": 3,
+        "add_reputation": 4,
+        "set_route": 3
+      },
+      "distinct_art_keys": 9,
+      "max_art_key_reuse": 16,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_yoon_haein",
+        "npc_kim_ara"
+      ],
+      "npc_event_count": {
+        "npc_yoon_haein": 1,
+        "npc_kim_ara": 1
+      },
+      "npc_spoken_lines": {
+        "npc_kim_ara": 12,
+        "npc_yoon_haein": 12
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [
+          "EV_CH05_RAMP_SWARM"
+        ],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [
+          "obj_ch05_06",
+          "obj_ch05_07",
+          "obj_ch05_08",
+          "obj_ch05_side_cooling",
+          "obj_ch05_side_prep"
+        ],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 41
+      }
+    },
+    {
+      "chapter_id": "CH06",
+      "part": "P2",
+      "title": "하강 관문",
+      "nodes": 5,
+      "events": 20,
+      "choices": 41,
+      "prose_lines": 259,
+      "prose_chars": 9855,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH06_BOSS",
+      "carryover_keys": [
+        "official_lane",
+        "broker_lane",
+        "witness_chain",
+        "capacity_ethics",
+        "harbor_force",
+        "flood_pressure",
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
+      ],
+      "event_types": {
+        "dialogue": 7,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "add_stat": 67,
+        "set_flag": 37,
+        "set_route": 5,
+        "sub_stat": 3,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_do_jaeyoon",
+        "npc_yoo_minha",
+        "npc_jung_noah"
+      ],
+      "npc_event_count": {
+        "npc_do_jaeyoon": 20,
+        "npc_yoo_minha": 20,
+        "npc_jung_noah": 20
+      },
+      "npc_spoken_lines": {
+        "npc_do_jaeyoon": 29,
+        "npc_han_somyeong": 8
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 10
+      }
+    },
+    {
+      "chapter_id": "CH07",
+      "part": "P2",
+      "title": "적색 회랑",
+      "nodes": 5,
+      "events": 17,
+      "choices": 32,
+      "prose_lines": 217,
+      "prose_chars": 8228,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 4,
+      "quest_kinds": {
+        "main": 1,
+        "side": 3
+      },
+      "objectives": 7,
+      "boss_event_id": "EV_CH07_BOSS",
+      "carryover_keys": [
+        "official_lane",
+        "broker_lane",
+        "witness_chain",
+        "capacity_ethics",
+        "harbor_force",
+        "flood_pressure",
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 32,
+        "add_stat": 47,
+        "set_route": 5,
+        "sub_stat": 2,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_jang_taehun",
+        "npc_jung_noah"
+      ],
+      "npc_event_count": {
+        "npc_jang_taehun": 17,
+        "npc_jung_noah": 17
+      },
+      "npc_spoken_lines": {
+        "npc_jung_noah": 20
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH08",
+      "part": "P2",
+      "title": "봉쇄선의 방",
+      "nodes": 5,
+      "events": 17,
+      "choices": 32,
+      "prose_lines": 219,
+      "prose_chars": 8547,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH08_BOSS",
+      "carryover_keys": [
+        "official_lane",
+        "broker_lane",
+        "witness_chain",
+        "capacity_ethics",
+        "harbor_force",
+        "flood_pressure",
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 34,
+        "add_stat": 48,
+        "set_route": 5,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5,
+        "sub_stat": 1
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_sim_gyuseok",
+        "npc_bae_suhyeon",
+        "npc_jung_noah"
+      ],
+      "npc_event_count": {
+        "npc_sim_gyuseok": 17,
+        "npc_bae_suhyeon": 17,
+        "npc_jung_noah": 17
+      },
+      "npc_spoken_lines": {
+        "npc_han_somyeong": 34
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH09",
+      "part": "P2",
+      "title": "연기 저장고",
+      "nodes": 5,
+      "events": 17,
+      "choices": 32,
+      "prose_lines": 219,
+      "prose_chars": 8371,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 4,
+      "quest_kinds": {
+        "main": 1,
+        "side": 3
+      },
+      "objectives": 7,
+      "boss_event_id": "EV_CH09_BOSS",
+      "carryover_keys": [
+        "official_lane",
+        "broker_lane",
+        "witness_chain",
+        "capacity_ethics",
+        "harbor_force",
+        "flood_pressure",
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 42,
+        "add_stat": 59,
+        "set_route": 5,
+        "sub_stat": 2,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_han_somyeong",
+        "npc_jang_taehun",
+        "npc_lee_soran"
+      ],
+      "npc_event_count": {
+        "npc_han_somyeong": 17,
+        "npc_jang_taehun": 17,
+        "npc_lee_soran": 17
+      },
+      "npc_spoken_lines": {
+        "npc_lee_soran": 34
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH10",
+      "part": "P2",
+      "title": "침하 항만",
+      "nodes": 5,
+      "events": 17,
+      "choices": 40,
+      "prose_lines": 233,
+      "prose_chars": 9151,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH10_BOSS",
+      "carryover_keys": [
+        "official_lane",
+        "broker_lane",
+        "witness_chain",
+        "capacity_ethics",
+        "harbor_force",
+        "flood_pressure",
+        "queue_pressure",
+        "pursuit_meter",
+        "stamp_auth"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 45,
+        "add_stat": 69,
+        "set_route": 5,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5,
+        "sub_stat": 1
+      },
+      "distinct_art_keys": 14,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 14,
+      "npcs": [
+        "npc_seo_jinseo",
+        "npc_nam_jaewook",
+        "npc_baek_dohyeong"
+      ],
+      "npc_event_count": {
+        "npc_seo_jinseo": 17,
+        "npc_nam_jaewook": 17,
+        "npc_baek_dohyeong": 17
+      },
+      "npc_spoken_lines": {
+        "npc_seo_jinseo": 34
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 4
+      }
+    },
+    {
+      "chapter_id": "CH11",
+      "part": "P3",
+      "title": "천 개의 차선",
+      "nodes": 5,
+      "events": 20,
+      "choices": 38,
+      "prose_lines": 253,
+      "prose_chars": 10023,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 4,
+      "quest_kinds": {
+        "main": 1,
+        "side": 3
+      },
+      "objectives": 7,
+      "boss_event_id": "EV_CH11_BOSS",
+      "carryover_keys": [
+        "p3.route_access",
+        "p3.public_evidence",
+        "p3.medical_reserve",
+        "p3.power_margin",
+        "p3.sacrifice_load"
+      ],
+      "event_types": {
+        "dialogue": 7,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "add_stat": 54,
+        "set_flag": 34,
+        "set_value": 1,
+        "set_route": 3,
+        "sub_stat": 8,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_park_isaac",
+        "npc_ryu_seon"
+      ],
+      "npc_event_count": {
+        "npc_park_isaac": 20,
+        "npc_ryu_seon": 20
+      },
+      "npc_spoken_lines": {
+        "npc_park_isaac": 17
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 10
+      }
+    },
+    {
+      "chapter_id": "CH12",
+      "part": "P3",
+      "title": "편향 기지",
+      "nodes": 5,
+      "events": 17,
+      "choices": 30,
+      "prose_lines": 212,
+      "prose_chars": 7776,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH12_BOSS",
+      "carryover_keys": [
+        "p3.route_access",
+        "p3.public_evidence",
+        "p3.medical_reserve",
+        "p3.power_margin",
+        "p3.sacrifice_load"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 31,
+        "set_value": 2,
+        "set_route": 3,
+        "add_stat": 40,
+        "sub_stat": 7,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_nam_suryeon",
+        "npc_park_isaac",
+        "npc_kim_ara"
+      ],
+      "npc_event_count": {
+        "npc_nam_suryeon": 17,
+        "npc_park_isaac": 17,
+        "npc_kim_ara": 17
+      },
+      "npc_spoken_lines": {
+        "npc_nam_suryeon": 27,
+        "npc_park_isaac": 6
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH13",
+      "part": "P3",
+      "title": "백색 기록",
+      "nodes": 5,
+      "events": 17,
+      "choices": 30,
+      "prose_lines": 213,
+      "prose_chars": 8013,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 6,
+      "quest_kinds": {
+        "main": 1,
+        "side": 5
+      },
+      "objectives": 9,
+      "boss_event_id": "EV_CH13_BOSS",
+      "carryover_keys": [
+        "p3.route_access",
+        "p3.public_evidence",
+        "p3.medical_reserve",
+        "p3.power_margin",
+        "p3.sacrifice_load"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 29,
+        "set_value": 2,
+        "set_route": 3,
+        "add_stat": 50,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5,
+        "sub_stat": 4
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_han_somyeong",
+        "npc_oh_gyeongtae",
+        "npc_ryu_seon"
+      ],
+      "npc_event_count": {
+        "npc_han_somyeong": 17,
+        "npc_oh_gyeongtae": 17,
+        "npc_ryu_seon": 17
+      },
+      "npc_spoken_lines": {
+        "npc_oh_gyeongtae": 28,
+        "npc_nam_suryeon": 6
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH14",
+      "part": "P3",
+      "title": "해무 변전소",
+      "nodes": 5,
+      "events": 17,
+      "choices": 30,
+      "prose_lines": 213,
+      "prose_chars": 8092,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH14_BOSS",
+      "carryover_keys": [
+        "p3.route_access",
+        "p3.public_evidence",
+        "p3.medical_reserve",
+        "p3.power_margin",
+        "p3.sacrifice_load"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 29,
+        "set_value": 1,
+        "set_route": 3,
+        "add_stat": 37,
+        "sub_stat": 5,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_ahn_bogyeong",
+        "npc_park_isaac"
+      ],
+      "npc_event_count": {
+        "npc_ahn_bogyeong": 17,
+        "npc_park_isaac": 17
+      },
+      "npc_spoken_lines": {
+        "npc_ahn_bogyeong": 34
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH15",
+      "part": "P3",
+      "title": "봉인 중계선",
+      "nodes": 5,
+      "events": 17,
+      "choices": 33,
+      "prose_lines": 219,
+      "prose_chars": 8077,
+      "estimated_first_run_minutes": 20,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH15_BOSS",
+      "carryover_keys": [
+        "p3.route_access",
+        "p3.public_evidence",
+        "p3.medical_reserve",
+        "p3.power_margin",
+        "p3.sacrifice_load"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 39,
+        "set_value": 1,
+        "set_route": 3,
+        "add_stat": 51,
+        "consume_slot": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5,
+        "sub_stat": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_ahn_bogyeong",
+        "npc_nam_suryeon",
+        "npc_ryu_seon"
+      ],
+      "npc_event_count": {
+        "npc_ahn_bogyeong": 17,
+        "npc_nam_suryeon": 17,
+        "npc_ryu_seon": 17
+      },
+      "npc_spoken_lines": {
+        "npc_nam_suryeon": 34
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 6
+      }
+    },
+    {
+      "chapter_id": "CH16",
+      "part": "P4",
+      "title": "균열 사구",
+      "nodes": 5,
+      "events": 17,
+      "choices": 33,
+      "prose_lines": 219,
+      "prose_chars": 8111,
+      "estimated_first_run_minutes": 22,
+      "quest_tracks": 4,
+      "quest_kinds": {
+        "main": 1,
+        "side": 3
+      },
+      "objectives": 7,
+      "boss_event_id": "EV_CH16_BOSS",
+      "carryover_keys": [
+        "order_score",
+        "witness_score",
+        "solidarity_score",
+        "public_support",
+        "broadcast_ready",
+        "capacity_pressure"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "add_stat": 32,
+        "set_flag": 33,
+        "set_value": 4,
+        "set_route": 3,
+        "sub_stat": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_seo_jinseo",
+        "npc_shin_dogyeom",
+        "npc_han_somyeong"
+      ],
+      "npc_event_count": {
+        "npc_seo_jinseo": 17,
+        "npc_shin_dogyeom": 17,
+        "npc_han_somyeong": 17
+      },
+      "npc_spoken_lines": {
+        "npc_seo_jinseo": 8,
+        "npc_shin_dogyeom": 8
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 7
+      }
+    },
+    {
+      "chapter_id": "CH17",
+      "part": "P4",
+      "title": "파편 수문",
+      "nodes": 5,
+      "events": 17,
+      "choices": 30,
+      "prose_lines": 213,
+      "prose_chars": 7950,
+      "estimated_first_run_minutes": 22,
+      "quest_tracks": 4,
+      "quest_kinds": {
+        "main": 1,
+        "side": 3
+      },
+      "objectives": 7,
+      "boss_event_id": "EV_CH17_BOSS",
+      "carryover_keys": [
+        "order_score",
+        "witness_score",
+        "solidarity_score",
+        "public_support",
+        "broadcast_ready",
+        "capacity_pressure"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 8,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 35,
+        "set_value": 11,
+        "set_route": 3,
+        "add_stat": 25,
+        "sub_stat": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_shin_dogyeom",
+        "npc_mo_eunjae",
+        "npc_moon_rahee"
+      ],
+      "npc_event_count": {
+        "npc_shin_dogyeom": 17,
+        "npc_mo_eunjae": 17,
+        "npc_moon_rahee": 17
+      },
+      "npc_spoken_lines": {
+        "npc_shin_dogyeom": 10,
+        "npc_mo_eunjae": 4,
+        "npc_moon_rahee": 2
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH18",
+      "part": "P4",
+      "title": "소금 정거장",
+      "nodes": 6,
+      "events": 19,
+      "choices": 35,
+      "prose_lines": 240,
+      "prose_chars": 8690,
+      "estimated_first_run_minutes": 22,
+      "quest_tracks": 6,
+      "quest_kinds": {
+        "main": 1,
+        "side": 5
+      },
+      "objectives": 9,
+      "boss_event_id": "EV_CH18_BOSS",
+      "carryover_keys": [
+        "order_score",
+        "witness_score",
+        "solidarity_score",
+        "public_support",
+        "broadcast_ready",
+        "capacity_pressure"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 10,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 39,
+        "set_value": 9,
+        "set_route": 3,
+        "add_stat": 33,
+        "sub_stat": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 13,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 13,
+      "npcs": [
+        "npc_yoon_haein",
+        "npc_nam_suryeon",
+        "npc_shin_dogyeom",
+        "npc_mo_eunjae"
+      ],
+      "npc_event_count": {
+        "npc_yoon_haein": 19,
+        "npc_nam_suryeon": 19,
+        "npc_shin_dogyeom": 19,
+        "npc_mo_eunjae": 19
+      },
+      "npc_spoken_lines": {
+        "npc_yoon_haein": 17,
+        "npc_shin_dogyeom": 2,
+        "npc_nam_suryeon": 2
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH19",
+      "part": "P4",
+      "title": "외해 전초",
+      "nodes": 5,
+      "events": 18,
+      "choices": 33,
+      "prose_lines": 227,
+      "prose_chars": 8520,
+      "estimated_first_run_minutes": 22,
+      "quest_tracks": 5,
+      "quest_kinds": {
+        "main": 1,
+        "side": 4
+      },
+      "objectives": 8,
+      "boss_event_id": "EV_CH19_BOSS",
+      "carryover_keys": [
+        "order_score",
+        "witness_score",
+        "solidarity_score",
+        "public_support",
+        "broadcast_ready",
+        "capacity_pressure"
+      ],
+      "event_types": {
+        "dialogue": 4,
+        "choice": 9,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 39,
+        "set_value": 4,
+        "set_route": 3,
+        "add_stat": 29,
+        "sub_stat": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 12,
+      "max_art_key_reuse": 4,
+      "distinct_music_keys": 11,
+      "npcs": [
+        "npc_cha_munsik",
+        "npc_yoon_haein",
+        "npc_kim_ara",
+        "npc_nam_suryeon"
+      ],
+      "npc_event_count": {
+        "npc_cha_munsik": 18,
+        "npc_yoon_haein": 18,
+        "npc_kim_ara": 18,
+        "npc_nam_suryeon": 18
+      },
+      "npc_spoken_lines": {
+        "npc_cha_munsik": 19,
+        "npc_yoon_haein": 2,
+        "npc_kim_ara": 2
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    },
+    {
+      "chapter_id": "CH20",
+      "part": "P4",
+      "title": "독도의 문",
+      "nodes": 5,
+      "events": 21,
+      "choices": 53,
+      "prose_lines": 291,
+      "prose_chars": 10890,
+      "estimated_first_run_minutes": 22,
+      "quest_tracks": 4,
+      "quest_kinds": {
+        "main": 1,
+        "side": 3
+      },
+      "objectives": 7,
+      "boss_event_id": "EV_CH20_BOSS",
+      "carryover_keys": [],
+      "event_types": {
+        "dialogue": 7,
+        "choice": 9,
+        "combat": 1,
+        "result": 4
+      },
+      "effect_ops": {
+        "set_flag": 55,
+        "set_value": 16,
+        "add_stat": 38,
+        "set_route": 3,
+        "sub_stat": 4,
+        "clear_flag": 4,
+        "grant_loot_table": 5
+      },
+      "distinct_art_keys": 21,
+      "max_art_key_reuse": 1,
+      "distinct_music_keys": 21,
+      "npcs": [
+        "npc_cha_munsik",
+        "npc_yoon_haein",
+        "npc_kim_ara",
+        "npc_nam_suryeon"
+      ],
+      "npc_event_count": {
+        "npc_cha_munsik": 21,
+        "npc_yoon_haein": 21,
+        "npc_kim_ara": 21,
+        "npc_nam_suryeon": 21
+      },
+      "npc_spoken_lines": {
+        "npc_cha_munsik": 21,
+        "npc_kim_ara": 1,
+        "npc_nam_suryeon": 1,
+        "npc_yoon_haein": 1
+      },
+      "problems": {
+        "orphan_events": [],
+        "dead_end_events": [],
+        "dangling_choice_links": [],
+        "unreachable_nodes": [],
+        "broken_connections": [],
+        "quest_problems": [],
+        "objectives_not_in_any_quest": [],
+        "choice_events_without_choices": 0,
+        "single_choice_events": 8
+      }
+    }
+  ],
+  "parts": {
+    "P1": {
+      "chapters": 5,
+      "events": 355,
+      "choices": 473,
+      "prose_chars": 102016,
+      "nodes": 37,
+      "quest_tracks": 27,
+      "objectives": 55,
+      "minutes": 100,
+      "distinct_art_keys": 52
+    },
+    "P2": {
+      "chapters": 5,
+      "events": 88,
+      "choices": 177,
+      "prose_chars": 44152,
+      "nodes": 25,
+      "quest_tracks": 23,
+      "objectives": 38,
+      "minutes": 100,
+      "distinct_art_keys": 58
+    },
+    "P3": {
+      "chapters": 5,
+      "events": 88,
+      "choices": 161,
+      "prose_chars": 41981,
+      "nodes": 25,
+      "quest_tracks": 25,
+      "objectives": 40,
+      "minutes": 100,
+      "distinct_art_keys": 55
+    },
+    "P4": {
+      "chapters": 5,
+      "events": 92,
+      "choices": 184,
+      "prose_chars": 44161,
+      "nodes": 26,
+      "quest_tracks": 23,
+      "objectives": 38,
+      "minutes": 110,
+      "distinct_art_keys": 68
+    }
+  },
+  "npc_arc": [
+    {
+      "npc_id": "npc_nam_suryeon",
+      "name": "남수련",
+      "chapters": [
+        "CH12",
+        "CH15",
+        "CH18",
+        "CH19",
+        "CH20"
+      ],
+      "parts": [
+        "P3",
+        "P4"
+      ],
+      "events": 92,
+      "chapter_count": 5
+    },
+    {
+      "npc_id": "npc_yoon_haein",
+      "name": "윤해인",
+      "chapters": [
+        "CH01",
+        "CH02",
+        "CH04",
+        "CH05",
+        "CH18",
+        "CH19",
+        "CH20"
+      ],
+      "parts": [
+        "P1",
+        "P4"
+      ],
+      "events": 68,
+      "chapter_count": 7
+    },
+    {
+      "npc_id": "npc_jung_noah",
+      "name": "정노아",
+      "chapters": [
+        "CH01",
+        "CH02",
+        "CH06",
+        "CH07",
+        "CH08"
+      ],
+      "parts": [
+        "P1",
+        "P2"
+      ],
+      "events": 60,
+      "chapter_count": 5
+    },
+    {
+      "npc_id": "npc_kim_ara",
+      "name": "김아라",
+      "chapters": [
+        "CH05",
+        "CH12",
+        "CH19",
+        "CH20"
+      ],
+      "parts": [
+        "P1",
+        "P3",
+        "P4"
+      ],
+      "events": 57,
+      "chapter_count": 4
+    },
+    {
+      "npc_id": "npc_ryu_seon",
+      "name": "류세온",
+      "chapters": [
+        "CH03",
+        "CH11",
+        "CH13",
+        "CH15"
+      ],
+      "parts": [
+        "P1",
+        "P3"
+      ],
+      "events": 55,
+      "chapter_count": 4
+    },
+    {
+      "npc_id": "npc_park_isaac",
+      "name": "박이삭",
+      "chapters": [
+        "CH11",
+        "CH12",
+        "CH14"
+      ],
+      "parts": [
+        "P3"
+      ],
+      "events": 54,
+      "chapter_count": 3
+    },
+    {
+      "npc_id": "npc_han_somyeong",
+      "name": "한소명",
+      "chapters": [
+        "CH04",
+        "CH09",
+        "CH13",
+        "CH16"
+      ],
+      "parts": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "events": 53,
+      "chapter_count": 4
+    },
+    {
+      "npc_id": "npc_shin_dogyeom",
+      "name": "신도겸",
+      "chapters": [
+        "CH16",
+        "CH17",
+        "CH18"
+      ],
+      "parts": [
+        "P4"
+      ],
+      "events": 53,
+      "chapter_count": 3
+    },
+    {
+      "npc_id": "npc_cha_munsik",
+      "name": "차문식",
+      "chapters": [
+        "CH19",
+        "CH20"
+      ],
+      "parts": [
+        "P4"
+      ],
+      "events": 39,
+      "chapter_count": 2
+    },
+    {
+      "npc_id": "npc_ahn_bogyeong",
+      "name": "안보경",
+      "chapters": [
+        "CH03",
+        "CH14",
+        "CH15"
+      ],
+      "parts": [
+        "P1",
+        "P3"
+      ],
+      "events": 38,
+      "chapter_count": 3
+    },
+    {
+      "npc_id": "npc_seo_jinseo",
+      "name": "서진서",
+      "chapters": [
+        "CH02",
+        "CH10",
+        "CH16"
+      ],
+      "parts": [
+        "P1",
+        "P2",
+        "P4"
+      ],
+      "events": 37,
+      "chapter_count": 3
+    },
+    {
+      "npc_id": "npc_mo_eunjae",
+      "name": "모은재",
+      "chapters": [
+        "CH17",
+        "CH18"
+      ],
+      "parts": [
+        "P4"
+      ],
+      "events": 36,
+      "chapter_count": 2
+    },
+    {
+      "npc_id": "npc_jang_taehun",
+      "name": "장태훈",
+      "chapters": [
+        "CH07",
+        "CH09"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 34,
+      "chapter_count": 2
+    },
+    {
+      "npc_id": "npc_do_jaeyoon",
+      "name": "도재윤",
+      "chapters": [
+        "CH06"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 20,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_yoo_minha",
+      "name": "유민하",
+      "chapters": [
+        "CH06"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 20,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_sim_gyuseok",
+      "name": "심규석",
+      "chapters": [
+        "CH08"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_bae_suhyeon",
+      "name": "배수현",
+      "chapters": [
+        "CH08"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_lee_soran",
+      "name": "이소란",
+      "chapters": [
+        "CH09"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_nam_jaewook",
+      "name": "남재욱",
+      "chapters": [
+        "CH10"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_baek_dohyeong",
+      "name": "백도형",
+      "chapters": [
+        "CH10"
+      ],
+      "parts": [
+        "P2"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_oh_gyeongtae",
+      "name": "오경태",
+      "chapters": [
+        "CH13"
+      ],
+      "parts": [
+        "P3"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_moon_rahee",
+      "name": "문라희",
+      "chapters": [
+        "CH17"
+      ],
+      "parts": [
+        "P4"
+      ],
+      "events": 17,
+      "chapter_count": 1
+    }
+  ],
+  "npc_registry": {
+    "registered": 24,
+    "registered_but_never_used": [
+      "npc_oh_taesik",
+      "npc_han_yeji"
+    ],
+    "used_but_unregistered": []
+  },
+  "carryover": {
+    "declared_keys": 25,
+    "single_chapter_keys": []
+  },
+  "totals": {
+    "chapters": 20,
+    "events": 623,
+    "choices": 995,
+    "prose_chars": 232310,
+    "problems": 5
+  }
+}

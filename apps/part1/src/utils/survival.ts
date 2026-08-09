@@ -292,71 +292,127 @@ export function getItemUseEffect(item: Item | undefined): ItemUseEffect | null {
   };
 }
 
+/**
+ * What each ending needs: the route the player steered, and the people who have
+ * to carry it out afterwards.
+ *
+ * A route on its own is only an intention. Publishing the archive means nothing
+ * if the record bureau will not take it; the smugglers' tide needs a market that
+ * still answers. So reputation is not a bonus here — it is half the score, and a
+ * player who chose a direction without ever earning anyone's backing ends up in
+ * the ashen escape no matter how cleanly they played.
+ *
+ * `max` is what that lane can actually reach in a single run (one choice per
+ * event), measured from the chapter data. Scores are compared as a fraction of
+ * their own maximum so lanes with narrower ranges — the smuggling route tops out
+ * at +2 where control reaches +6 — still compete on equal terms.
+ */
+const ENDING_LANES = [
+  {
+    endingId: "P1_END_MIRROR_WITNESS",
+    title: "거울의 증언",
+    summary: "미러센터 기록은 꺼지지 않았고, 사라진 이름들이 증언으로 이어졌다.",
+    route: "route.truth_score",
+    factions: ["reputation.record_bureau", "reputation.pangyo_survivors"],
+    max: 16,
+    backing: "기록국",
+    claim: "공개를 받아 줄 곳이 있어야 증언이 남는다.",
+  },
+  {
+    endingId: "P1_END_SIGNAL_KEEPERS",
+    title: "신호의 수호자",
+    summary: "모든 사람을 구하지는 못했지만, 끊긴 송출과 구조 신호가 다시 연결됐다.",
+    route: "route.compassion_score",
+    factions: ["reputation.jamsil_lower", "reputation.pangyo_survivors"],
+    max: 17,
+    backing: "아래층 사람들",
+    claim: "중계를 이어받을 사람이 있어야 신호가 살아남는다.",
+  },
+  {
+    endingId: "P1_END_SMUGGLER_TIDE",
+    title: "바깥 조류",
+    summary: "공식 경로는 닫혔고, 남은 물자와 사람들은 비공식 약속을 따라 살아남았다.",
+    route: "route.underworld_score",
+    factions: ["reputation.under_market"],
+    max: 8,
+    backing: "지하시장",
+    claim: "배를 내줄 시장이 있어야 바깥으로 나간다.",
+  },
+  {
+    endingId: "P1_END_CONTROLLED_PASSAGE",
+    title: "통제된 통로",
+    summary: "통로는 열렸지만 명단 밖의 이름들은 끝까지 문 앞에 남았다.",
+    route: "route.control_score",
+    factions: ["reputation.jamsil_upper", "reputation.munjeong_logistics"],
+    max: 16,
+    backing: "상층·물류",
+    claim: "명단을 집행할 조직이 있어야 통제가 선다.",
+  },
+] as const;
+
+/** Below this share of a lane's maximum, nobody is really behind the player. */
+const BACKING_FLOOR = 0.25;
+
 export function selectPart1Ending(state: GameState): EndingVerdict {
+  const stat = (key: string): number => Number(state.stats[key] ?? 0);
+
   const failedCount = state.failedQuestIds.length;
   const injury = Number(state.stats.injury ?? 0);
   const infection = Number(state.stats.infection ?? state.stats.contamination ?? 0);
+  const strain = stat("route.strain");
   const restCount = Number(state.restCount ?? 0);
   const evidenceReady = Boolean(state.flags.part1_evidence_bundle_complete || state.flags.part1_hidden_evidence_ch05);
   const kimAraAlive = Boolean(state.flags.ch05_kim_ara_alive);
-  const evidenceScore = Number(state.stats["p1.evidence"] ?? state.stats.evidence ?? 0) + (evidenceReady ? 2 : 0);
-  const controlScore = Number(state.stats["p1.control"] ?? state.stats.control ?? 0);
-  const smuggleScore = Number(state.stats["p1.smuggle"] ?? state.stats.underworld ?? 0);
-  const signalScore = Number(state.stats["p1.signal"] ?? state.stats.signal ?? 0);
+
   const commonReasons = [
     `휴식 ${restCount}회, 기한 실패 ${failedCount}건이 최종 판정에 반영됐다.`,
-    `최종 부상 ${injury}%, 감염 노출 ${infection}%가 생존 압박으로 계산됐다.`,
+    `최종 부상 ${injury}%, 감염 노출 ${infection}%, 누적 부담 ${strain}이 생존 압박으로 계산됐다.`,
   ];
 
-  if (failedCount >= 2 || injury >= 90 || infection >= 90) {
+  const scored = ENDING_LANES.map((lane) => {
+    const routeScore = stat(lane.route);
+    const factionScore = lane.factions.reduce((sum, key) => sum + stat(key), 0);
+    // The witness ending is the one that needs proof and a living witness, not
+    // just a direction; both are worth as much as a faction standing behind it.
+    const evidenceBonus = lane.endingId === "P1_END_MIRROR_WITNESS"
+      ? (evidenceReady ? 2 : 0) + (kimAraAlive ? 2 : 0)
+      : 0;
+    const total = routeScore + factionScore + evidenceBonus;
+    return { lane, routeScore, factionScore, total, share: total / lane.max };
+  }).sort((a, b) => b.share - a.share);
+
+  const leader = scored[0];
+
+  const collapsed = failedCount >= 2 || injury >= 90 || infection >= 90 || strain >= 18;
+  // A direction with nobody behind it is not an ending, however cleanly it was
+  // steered: the lane needs both enough weight overall and at least one faction
+  // that will actually act on it.
+  const unbacked = !leader || leader.share < BACKING_FLOOR || leader.factionScore <= 0;
+
+  if (collapsed || unbacked) {
     return {
       endingId: "P1_END_ASHEN_ESCAPE",
       title: "그을린 탈출",
       summary: "사람들은 빠져나왔지만 증거와 이름 일부가 그을린 구역에 남았다.",
-      reasons: [...commonReasons, "보급과 판단이 끊기며 여러 기한이 무너졌다.", "최종 기록은 공개보다 생존 우선으로 기울었다."],
+      reasons: [
+        ...commonReasons,
+        collapsed
+          ? "보급과 판단이 끊기며 기한과 몸이 함께 무너졌다."
+          : "어느 세력도 마지막에 뒤를 받쳐 주지 않았다.",
+        "최종 기록은 공개보다 생존 우선으로 기울었다.",
+      ],
     };
   }
 
-  if (evidenceScore >= 2 && kimAraAlive && failedCount === 0) {
-    return {
-      endingId: "P1_END_MIRROR_WITNESS",
-      title: "거울의 증언",
-      summary: "미러센터 기록은 꺼지지 않았고, 사라진 이름들이 증언으로 이어졌다.",
-      reasons: [...commonReasons, "증거 묶음과 김아라 생존이 진실 공개 조건을 채웠다.", "기한 실패 없이 핵심 기록을 보존했다."],
-    };
-  }
-
-  if (signalScore >= 2 || restCount <= 2) {
-    return {
-      endingId: "P1_END_SIGNAL_KEEPERS",
-      title: "신호의 수호자",
-      summary: "모든 사람을 구하지는 못했지만, 끊긴 송출과 구조 신호가 다시 연결됐다.",
-      reasons: [...commonReasons, "중계 신호와 구조 루트를 우선 보존했다.", "과도한 휴식 없이 구조 신호의 시간표를 지켰다."],
-    };
-  }
-
-  if (smuggleScore >= 2 || restCount >= 3) {
-    return {
-      endingId: "P1_END_SMUGGLER_TIDE",
-      title: "바깥 조류",
-      summary: "공식 경로는 닫혔고, 남은 물자와 사람들은 비공식 약속을 따라 살아남았다.",
-      reasons: [...commonReasons, "비공식 거래와 우회 경로가 생존을 떠받쳤다.", "여러 번 머문 탓에 다음 날의 지도와 사람 배치가 바뀌었다."],
-    };
-  }
-
-  if (controlScore >= 2 || state.flags.route_control_locked) {
-    return {
-      endingId: "P1_END_CONTROLLED_PASSAGE",
-      title: "통제된 통로",
-      summary: "통로는 열렸지만 명단 밖의 이름들은 끝까지 문 앞에 남았다.",
-      reasons: [...commonReasons, "질서와 통제 우선 판단이 최종 판정에 강하게 남았다.", "안정적인 생존 경로를 얻는 대신 공개 증언의 폭은 좁아졌다."],
-    };
-  }
-
+  const { lane, routeScore, factionScore } = leader;
   return {
-    endingId: "P1_END_SIGNAL_KEEPERS",
-    title: "신호의 수호자",
-    summary: "흩어진 기록과 생존자가 같은 주파수 앞에 다시 모였다.",
-    reasons: [...commonReasons, "치명적인 기한 실패 없이 Part 1을 통과했다.", "증거는 부족하지만 신호망은 살아남았다."],
+    endingId: lane.endingId,
+    title: lane.title,
+    summary: lane.summary,
+    reasons: [
+      ...commonReasons,
+      `${lane.backing}의 지지 ${factionScore}가 노선 점수 ${routeScore}를 받쳤다.`,
+      lane.claim,
+    ],
   };
 }

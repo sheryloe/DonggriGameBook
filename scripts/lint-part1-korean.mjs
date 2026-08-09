@@ -90,8 +90,17 @@ function textFields(event) {
   return out;
 }
 
+/**
+ * Real names that happen to read as a slot pair. Jamsil is split between the
+ * lower floors and the upper floors, so "잠실 상층 평판" is the faction's actual
+ * name even though "상층" is a slot modifier and "평판" a slot noun.
+ */
+const NOT_A_SLOT = [/잠실 (상층|아래층) 평판/u, /문정 물류 평판/u];
+
 function hasSlotPair(value) {
-  const tokens = String(value).split(/\s+/u);
+  const text = String(value);
+  if (NOT_A_SLOT.some((re) => re.test(text))) return null;
+  const tokens = text.split(/\s+/u);
   for (let i = 0; i < tokens.length - 1; i += 1) {
     if (SLOT_MODIFIERS.has(tokens[i]) && SLOT_NOUNS.has(tokens[i + 1])) return `${tokens[i]} ${tokens[i + 1]}`;
   }
