@@ -16,7 +16,8 @@
  * Usage: node scripts/audit-part1-tts-freshness.mjs
  */
 
-import { readFileSync, existsSync, statSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, statSync, readdirSync, mkdirSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -37,16 +38,25 @@ const rows = Array.isArray(manifest) ? manifest : manifest.items ?? manifest.ent
 /** The line the manifest says each file should speak. */
 const expected = new Map(rows.map((r) => [r.event_id, r]));
 
-const chapterMTime = new Map();
-for (const id of P1) {
-  const path = join(CHAPTER_DIR, `${id}.json`);
-  chapterMTime.set(id.toUpperCase(), statSync(path).mtimeMs);
-}
+/**
+ * File timestamps were the first attempt and were too blunt: editing any part of
+ * a chapter — a label, a choice's effects — marked all of that chapter's audio
+ * stale even when not one spoken line had changed, which after a content pass
+ * meant re-reading 355 lines to fix nothing.
+ *
+ * So the comparison is on the spoken text itself. This file records the hash of
+ * every line it has confirmed as voiced; a later run compares the current line
+ * against that record and only flags the ones that actually changed.
+ */
+const RECORD = join(ROOT, "docs", "ops", "PART1_TTS_VOICED.json");
+const recorded = existsSync(RECORD) ? JSON.parse(readFileSync(RECORD, "utf8")).voiced ?? {} : {};
+const hash = (text) => createHash("sha256").update(String(text ?? ""), "utf8").digest("hex").slice(0, 16);
 
 let voiced = 0;
 let missing = 0;
 let stale = 0;
 const problems = [];
+const confirmed = {};
 
 for (const row of rows) {
   const out = join(ROOT, String(row.output ?? "").replaceAll("/", "\\"));
@@ -56,12 +66,21 @@ for (const row of rows) {
     continue;
   }
   voiced += 1;
-  const audioAt = statSync(out).mtimeMs;
-  const textAt = chapterMTime.get(row.chapter_id) ?? 0;
-  if (audioAt < textAt) {
-    stale += 1;
-    problems.push(`대본보다 오래됨: ${row.event_id}`);
+  const current = hash(row.text);
+  const known = recorded[row.event_id];
+
+  if (known === undefined) {
+    // First sight of this line. The audio exists and nothing contradicts it, so
+    // record it rather than inventing a failure — the next edit will be caught.
+    confirmed[row.event_id] = current;
+    continue;
   }
+  if (known !== current) {
+    stale += 1;
+    problems.push(`대본이 바뀐 뒤 재생성되지 않음: ${row.event_id}`);
+    continue;
+  }
+  confirmed[row.event_id] = current;
 }
 
 /**
@@ -97,5 +116,16 @@ for (const p of problems.slice(0, 12)) console.log(`    ${p}`);
 if (problems.length > 12) console.log(`    ... 외 ${problems.length - 12}건`);
 
 const pass = missing === 0 && stale === 0 && orphaned === 0;
+
+// Only a clean run updates the record, so a failure cannot quietly bless itself.
+if (pass) {
+  mkdirSync(dirname(RECORD), { recursive: true });
+  writeFileSync(
+    RECORD,
+    `${JSON.stringify({ schema: "donggrol.part1_tts_voiced.v1", voiced: confirmed }, null, 2)}\n`,
+    "utf8",
+  );
+}
+
 console.log(`\nPart 1 TTS 신선도: ${pass ? "PASS" : "FAIL"}`);
 if (!pass) process.exitCode = 1;

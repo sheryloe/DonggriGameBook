@@ -1,6 +1,6 @@
 {
   "schema": "donggrol.part1_chapter_quality.v1",
-  "generated_at": "2026-08-09T17:01:49.681Z",
+  "generated_at": "2026-08-09T22:28:33.427Z",
   "method": "agent playthrough on 2026-08-08 plus static measurement; each lens is 10 points, 50 per chapter",
   "lenses": {
     "prose": "제목 메아리와 3회를 넘는 문장 반복",
@@ -94,10 +94,10 @@
     {
       "chapter": "CH04",
       "title": "상자들의 도시",
-      "events": 47,
+      "events": 55,
       "outcomes": 27,
-      "choices": 68,
-      "art_keys": 11,
+      "choices": 84,
+      "art_keys": 12,
       "speakers": 2,
       "defects": {
         "title_echo": 0,
@@ -113,18 +113,18 @@
         "prose": 10,
         "voice": 10,
         "agency": 10,
-        "art": 9.2,
-        "density": 10,
-        "total": 49.2
+        "art": 10,
+        "density": 9.3,
+        "total": 49.3
       }
     },
     {
       "chapter": "CH05",
       "title": "미러센터",
-      "events": 57,
+      "events": 64,
       "outcomes": 34,
-      "choices": 83,
-      "art_keys": 11,
+      "choices": 97,
+      "art_keys": 12,
       "speakers": 2,
       "defects": {
         "title_echo": 0,
@@ -140,11 +140,11 @@
         "prose": 10,
         "voice": 10,
         "agency": 10,
-        "art": 9.2,
-        "density": 10,
-        "total": 49.2
+        "art": 10,
+        "density": 9.5,
+        "total": 49.5
       }
     }
   ],
-  "part_average": 49
+  "part_average": 49.1
 }

@@ -1045,6 +1045,13 @@
         "p1_ch05_cold_aisle"
       ],
       "src": "/generated/images/p1_ch05_cold_aisle.jpg"
+    },
+    {
+      "chapter_id": "CH05",
+      "runtime_art_keys": [
+        "p1_ch05_isolation_window"
+      ],
+      "src": "/generated/images/p1_ch05_isolation_window.jpg"
     }
   ]
 }
