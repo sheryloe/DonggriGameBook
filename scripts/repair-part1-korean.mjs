@@ -28,11 +28,14 @@ import {
   INTERNAL_TERMS,
   OUTCOME_COST_FRAMES,
   OUTCOME_GAIN_FRAMES,
+  OUTCOME_CONTINUE_FRAMES,
   OUTCOME_SUMMARY_FRAMES,
   PREVIEW_EXTENSIONS,
   PREVIEW_FRAMES,
   SLOT_MODIFIERS,
   SLOT_NOUNS,
+  SPEAKER_CORRECTIONS,
+  TITLE_ECHO_RULES,
   humanizeStat,
 } from "./lib/part1-korean-copy.mjs";
 
@@ -63,6 +66,14 @@ const PREVIEW_MIN = 28;
 const GLOBAL_REPEAT_MAX = 2;
 const globalLabelCounts = new Map();
 const globalPreviewCounts = new Map();
+/**
+ * The flow audit allows a narrative line to repeat at most 8 times across Part 1.
+ * Stripping the event title from template narration removes the only token that
+ * made those lines differ, so a stripped line is only accepted while it stays
+ * under this margin; otherwise the original wording is kept.
+ */
+const NARRATIVE_REPEAT_MARGIN = 6;
+const globalNarrativeCounts = new Map();
 
 const sha256 = (buffer) => crypto.createHash("sha256").update(buffer).digest("hex");
 
@@ -294,6 +305,56 @@ function rebuildOutcomeText(choice, index) {
   };
 }
 
+/**
+ * Keep the first mention of the event title and rewrite the rest.
+ *
+ * "비상 봉쇄 앞에서 … 비상 봉쇄의 소음이 … 비상 봉쇄에서 서지훈은 …" reads like a
+ * machine filling a slot. The repeats are replaced with the real location name so
+ * the sentence stays specific; deleting the token outright made these lines
+ * collapse into one another and blew past the narrative repeat limit.
+ */
+function stripTitleEcho(lines, title, locationName) {
+  if (!title || title.length < 3) return { lines, removed: 0 };
+  const substitute = locationName && locationName !== title ? locationName : "그곳";
+  let seen = false;
+  let removed = 0;
+
+  const rewrite = (value) => {
+    let next = value;
+    for (const rule of TITLE_ECHO_RULES) {
+      next = next.split(rule.from(title)).join(rule.to(substitute));
+    }
+    // The substitute can itself repeat if the title and the node name overlap.
+    return next.replace(/\s{2,}/gu, " ").trim();
+  };
+
+  const out = lines.map((line) => {
+    if (typeof line !== "string" || !line.includes(title)) return line;
+    let candidate;
+    if (!seen) {
+      seen = true;
+      const firstAt = line.indexOf(title);
+      const head = line.slice(0, firstAt + title.length);
+      const tail = line.slice(firstAt + title.length);
+      if (!tail.includes(title)) return line;
+      candidate = `${head}${rewrite(tail)}`;
+    } else {
+      candidate = rewrite(line);
+    }
+    if (candidate === line) return line;
+    // Reject the rewrite if it would push this sentence past the repeat margin.
+    if ((globalNarrativeCounts.get(candidate) ?? 0) >= NARRATIVE_REPEAT_MARGIN) return line;
+    removed += 1;
+    return candidate;
+  });
+  return { lines: out, removed };
+}
+
+/** True when a line narrates the protagonist instead of being spoken aloud. */
+function isThirdPersonNarration(line) {
+  return /서지훈(은|이|의|을)/u.test(line);
+}
+
 function isFragmentCarry(value) {
   return typeof value === "string" && value.split(" / ").length >= 3 && !/[.!?]$/u.test(value.trim());
 }
@@ -363,6 +424,42 @@ function repairChapter(chapterKey, data) {
     event.text.summary = rebuilt.summary;
     event.text.body = rebuilt.body;
     bump(chapterKey, "결과문_재작성");
+
+    // An outcome screen must not offer the action the player just took, either
+    // literally ("탈출을 보류한다" under "탈출 보류 판단 결과") or by concept
+    // ("신중하게 접근한다" under "신중 접근 결과"). Both read as a broken loop.
+    const outcomeTitleStems = String(event.title ?? "")
+      .replace(/\s*결과$/u, "")
+      .split(/\s+/u)
+      .map((w) => w.replace(/[가-힣]{0,1}$/u, (m) => m))
+      .filter((w) => w.length >= 2);
+    const repeatsOutcome = (label) => {
+      if (label === source.choice.label) return true;
+      return outcomeTitleStems.some((stem) => label.includes(stem.slice(0, 2)));
+    };
+
+    for (const choice of event.choices ?? []) {
+      if (!repeatsOutcome(String(choice.label ?? ""))) continue;
+      const gain = humanizeStat(stripSlot(choice.gain_label));
+      if (!gain) continue;
+      const nodeName = nodeNameById.get(event.node_id) || null;
+      let next = null;
+      for (let step = 0; step < OUTCOME_CONTINUE_FRAMES.length && !next; step += 1) {
+        const frame = OUTCOME_CONTINUE_FRAMES[(outcomeIndex + step) % OUTCOME_CONTINUE_FRAMES.length];
+        for (const candidate of [frame({ g: joiner(gain) }), nodeName ? `${nodeName}에서 ${frame({ g: joiner(gain) })}` : null]) {
+          if (!candidate || candidate.length > LABEL_MAX) continue;
+          if ((globalLabelCounts.get(candidate) ?? 0) >= GLOBAL_REPEAT_MAX) continue;
+          next = candidate;
+          break;
+        }
+      }
+      if (next) {
+        globalLabelCounts.set(choice.label, Math.max(0, (globalLabelCounts.get(choice.label) ?? 1) - 1));
+        choice.label = next;
+        globalLabelCounts.set(next, (globalLabelCounts.get(next) ?? 0) + 1);
+        bump(chapterKey, "결과화면_행동중복_해소");
+      }
+    }
 
     const cleanTitle = dedupeWords(stripSlotEverywhere(String(event.title ?? "").replace(/\s*이후:.*$/u, "")), 5);
     const finalTitle = /결과$/u.test(cleanTitle) ? cleanTitle : `${cleanTitle} 결과`.trim();
@@ -447,6 +544,53 @@ function repairChapter(chapterKey, data) {
           if (merged !== block.emphasis) bump(chapterKey, "emphasis_중복정리");
           block.emphasis = merged;
         }
+      }
+
+      // A speaker must belong to this chapter.
+      const correction = SPEAKER_CORRECTIONS[event.event_id];
+      if (correction) {
+        for (const block of text.scene_blocks) {
+          if (block.kind === "dialogue" && block.speaker_id && block.speaker_id !== correction.speaker_id) {
+            block.speaker_id = correction.speaker_id;
+            block.speaker_label = correction.speaker_label;
+            bump(chapterKey, "화자_교정");
+          }
+        }
+      }
+
+      // Third-person narration must not sit inside a dialogue block: 윤해인 was
+      // describing 서지훈 out loud.
+      const moved = [];
+      for (const block of text.scene_blocks) {
+        if (block.kind !== "dialogue" || !Array.isArray(block.lines)) continue;
+        const spoken = [];
+        for (const line of block.lines) {
+          if (isThirdPersonNarration(line)) { moved.push(line); bump(chapterKey, "대사→나레이션_이동"); }
+          else spoken.push(line);
+        }
+        block.lines = spoken;
+      }
+      if (moved.length > 0) {
+        const narrationBlock = text.scene_blocks.find((b) => b.kind === "narration");
+        if (narrationBlock) narrationBlock.lines = [...(narrationBlock.lines ?? []), ...moved];
+        else text.scene_blocks.unshift({ block_id: `${event.event_id}_narration_moved`, kind: "narration", lines: moved });
+      }
+
+      // Strip repeated mentions of the event's own title.
+      const echoTitle = String(event.title ?? "").replace(/\s*결과$/u, "").trim();
+      const flat = text.scene_blocks.flatMap((b) => b.lines ?? []);
+      const echo = stripTitleEcho(flat, echoTitle, nodeNameById.get(event.node_id));
+      if (echo.removed > 0) {
+        bump(chapterKey, "제목_메아리_제거", echo.removed);
+        let cursor = 0;
+        for (const block of text.scene_blocks) {
+          const n = (block.lines ?? []).length;
+          block.lines = echo.lines.slice(cursor, cursor + n).filter(Boolean);
+          cursor += n;
+        }
+      }
+      for (const line of text.scene_blocks.flatMap((b) => b.lines ?? [])) {
+        globalNarrativeCounts.set(line, (globalNarrativeCounts.get(line) ?? 0) + 1);
       }
 
       // Never leave an event with no renderable line: the runtime would silently

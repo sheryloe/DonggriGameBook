@@ -154,6 +154,52 @@ export const PREVIEW_EXTENSIONS = Object.freeze({
     "냉각실을 빠르게 지나가지만 소음이 3 오른다. 우회 회로를 강제로 열었으니 코어 경보가 먼저 깨어날 수 있다.",
 });
 
+/**
+ * Playtest findings (2026-08-08 agent run through CH01-CH05).
+ *
+ * A. The event title was spliced into its own narration up to seven times
+ *    ("비상 봉쇄 앞에서 … 비상 봉쇄의 소음이 … 비상 봉쇄에서 서지훈은 …").
+ *    Keep the first mention, then strip the echo.
+ * B. Lines that narrate the protagonist in third person sat inside dialogue
+ *    blocks, so 윤해인 was describing 서지훈 out loud.
+ * C. Two events used an NPC from another chapter.
+ * D. An outcome screen offered the very action the player had just taken.
+ */
+
+/**
+ * Ordered rewrites applied to a repeated event-title mention.
+ *
+ * Both halves take the substitute noun, so the particle stays attached to it.
+ * Splitting "…에서" into "… 서" is exactly the breakage this shape prevents.
+ * Longest patterns first: "…에서는" must win before "…에서".
+ */
+export const TITLE_ECHO_RULES = [
+  { from: (t) => `${t} 너머에서`, to: (s) => `${s} 너머에서` },
+  { from: (t) => `${t} 뒤쪽에서`, to: (s) => `${s} 뒤쪽에서` },
+  { from: (t) => `${t} 앞에서`, to: (s) => `${s} 앞에서` },
+  { from: (t) => `${t} 앞의`, to: (s) => `${s} 앞의` },
+  { from: (t) => `${t}에서는`, to: (s) => `${s}에서는` },
+  { from: (t) => `${t}에서`, to: (s) => `${s}에서` },
+  { from: (t) => `${t}의 `, to: (s) => `${s}의 ` },
+  { from: (t) => `${t}이 `, to: (s) => `${s}이 ` },
+  { from: (t) => `${t}가 `, to: (s) => `${s}가 ` },
+  { from: (t) => `${t}은 `, to: (s) => `${s}은 ` },
+  { from: (t) => `${t}는 `, to: (s) => `${s}는 ` },
+];
+
+/** Chapter-correct speaker for events that referenced an outsider. */
+export const SPEAKER_CORRECTIONS = {
+  EV_CH01_EXTRACTION_PREP: { speaker_id: "npc_yoon_haein", speaker_label: "윤해인" },
+  EV_CH04_PRE_BOSS_CHECK: { speaker_id: "npc_han_somyeong", speaker_label: "한소명" },
+};
+
+/** Continuation labels for outcome screens, so they stop repeating the last action. */
+export const OUTCOME_CONTINUE_FRAMES = [
+  ({ g }) => `${g("을/를")} 챙겨 다음으로 간다`,
+  ({ g }) => `${g("을/를")} 손에 쥔 채 움직인다`,
+  ({ g }) => `${g("을/를")} 확인하고 자리를 옮긴다`,
+];
+
 /** Internal route/flag identifiers that leaked into player-facing system lines. */
 export const INTERNAL_TERMS = Object.freeze({
   "route.truth_score": "진실 점수",

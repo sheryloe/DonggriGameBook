@@ -55,6 +55,15 @@ const overridePath = path.join(root, "packages", "app-runtime", "src", "assets",
 const CHAPTERS = ["ch01", "ch02", "ch03", "ch04", "ch05"];
 
 const DEBUG_CODE = /\bCH0\d-\d{3}\b/u;
+/**
+ * A particle that got split from its noun, e.g. "침수 자료실 서 챙긴" instead of
+ * "침수 자료실에서 챙긴". A rewrite pass produced these once; the linter keeps it
+ * from happening again.
+ *
+ * The lookarounds keep real words out: "영웅처럼 서 있지 않는다" uses the verb 서다,
+ * and a comparative already ends with 처럼/같이/보다.
+ */
+const ORPHAN_PARTICLE = /(?<!처럼|같이|보다|만큼)\s(서|에서|에게|으로|부터|까지)\s(?!있|계시|서|가만)/u;
 const INTERNAL_ID = /\broute\.[a-z_]+|\bEV_[A-Z0-9_]+\b|\bflag[:.][a-z0-9_]+|widget_state\./u;
 const DANGLING_END = /(을|를|이|가|은|는|와|과|의|로|고|며|서|만 남)$/u;
 
@@ -132,6 +141,8 @@ export function lintPart1Korean() {
       if (fixes.length) report("josa", chapter, id, `${field} 조사 오류: ${fixes.map((f) => `${f.from}→${f.to}`).join(", ")}`, value);
       const known = knownNounJosaErrors(value);
       if (known.length) report("josa", chapter, id, `${field} 조사 오류: ${known.join(", ")}`, value);
+      const orphan = value.match(ORPHAN_PARTICLE);
+      if (orphan) report("orphan-particle", chapter, id, `${field} 조사가 명사에서 분리됨: "${orphan[0].trim()}"`, value);
     }
 
     if (typeof event.title === "string") {
