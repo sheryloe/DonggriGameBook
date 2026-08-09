@@ -534,7 +534,7 @@
     "ops:part1:korean-repair:apply": "node scripts/repair-part1-korean.mjs --apply --confirm-part1-korean-repair",
     "ops:part1:art-mapping:plan": "node scripts/repair-part1-art-mapping.mjs --plan",
     "ops:part1:art-mapping:apply": "node scripts/repair-part1-art-mapping.mjs --apply --confirm-part1-art-mapping",
-    "qa:part1:content-guard": "npm run qa:korean-josa && npm run qa:part1:speech && npm run qa:part1:korean-lint && npm run qa:part1:deadlines && npm run qa:part1:endings && npm run qa:part1:flow && npm run qa:part1:long",
+    "qa:part1:content-guard": "npm run qa:korean-josa && npm run qa:part1:speech && npm run qa:part1:korean-lint && npm run qa:part1:deadlines && npm run qa:part1:endings && npm run qa:part1:chapter-quality && npm run qa:part1:flow && npm run qa:part1:long",
     "qa:part1:tts-script-drift": "node scripts/audit-part1-tts-script-drift.mjs",
     "qa:part1:chapter-quality": "node scripts/audit-part1-chapter-quality.mjs",
     "qa:part1:deadlines": "node scripts/test-part1-deadlines.mjs",
@@ -545,7 +545,18 @@
     "ops:part1:orphan-repair": "node scripts/repair-part1-orphan-events.mjs",
     "ops:part1:orphan-repair:apply": "node scripts/repair-part1-orphan-events.mjs --apply --confirm-part1-orphan-repair",
     "ops:part1:stat-keys": "node scripts/repair-part1-stat-keys.mjs",
-    "ops:part1:stat-keys:apply": "node scripts/repair-part1-stat-keys.mjs --apply --confirm-part1-stat-keys"
+    "ops:part1:stat-keys:apply": "node scripts/repair-part1-stat-keys.mjs --apply --confirm-part1-stat-keys",
+    "qa:part1:boss-distance": "node scripts/audit-part1-boss-distance.mjs",
+    "qa:part1:deadline-reach": "node scripts/audit-part1-deadline-reach.mjs",
+    "ops:part1:second-choices": "node scripts/repair-part1-second-choices.mjs",
+    "ops:part1:shortcuts": "node scripts/repair-part1-shortcuts.mjs",
+    "ops:part1:quality-defects": "node scripts/repair-part1-quality-defects.mjs",
+    "ops:part1:label-dedup": "node scripts/repair-part1-label-dedup.mjs",
+    "ops:part1:faction-spread": "node scripts/repair-part1-faction-spread.mjs",
+    "ops:part1:late-weight": "node scripts/repair-part1-late-weight.mjs",
+    "ops:part1:art-variety": "node scripts/repair-part1-art-variety.mjs",
+    "ops:part1:new-backgrounds": "node scripts/repair-part1-new-backgrounds.mjs",
+    "ops:part1:previews": "node scripts/repair-part1-choice-previews.mjs"
   },
   "dependencies": {
     "@apps-in-toss/web-framework": "2.10.8",

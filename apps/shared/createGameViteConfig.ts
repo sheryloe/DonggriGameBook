@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
-import { createReadStream, existsSync, mkdirSync, readdirSync, rmSync, statSync, copyFileSync } from "node:fs";
-import { dirname, extname, join, relative, resolve, sep } from "node:path";
+import { createReadStream, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, copyFileSync } from "node:fs";
+import { basename, dirname, extname, join, relative, resolve, sep } from "node:path";
 import { defineConfig, type Plugin, type UserConfigExport } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -87,6 +87,11 @@ function mimeType(filePath: string): string {
     case ".wav": return "audio/wav";
     case ".webp": return "image/webp";
     case ".png": return "image/png";
+    // Painted backgrounds have no alpha and compress far better as JPEG; without
+    // this the dev middleware served them as octet-stream and the browser
+    // refused to decode them.
+    case ".jpg":
+    case ".jpeg": return "image/jpeg";
     case ".svg": return "image/svg+xml";
     case ".txt": return "text/plain; charset=utf-8";
     default: return "application/octet-stream";
@@ -129,8 +134,13 @@ function chapterIdsForPart(partId: PartConfigInput["partId"]): string[] {
   return Array.from({ length: 5 }, (_, index) => `ch${String(offset * 5 + index + 1).padStart(2, "0")}`);
 }
 
-function shouldCopyGeneratedImage(fileName: string, partId: PartConfigInput["partId"]): boolean {
+function shouldCopyGeneratedImage(
+  fileName: string,
+  partId: PartConfigInput["partId"],
+  manifestStems: ReadonlySet<string>
+): boolean {
   const lower = fileName.toLowerCase();
+  const stem = basename(lower, extname(lower)).replace(/_v01$/u, "");
   const chapterIds = chapterIdsForPart(partId);
   const partPrefix = partId.toLowerCase();
   const partOnePortraits = new Set([
@@ -161,7 +171,15 @@ function shouldCopyGeneratedImage(fileName: string, partId: PartConfigInput["par
     return false;
   }
 
+  if (manifestStems.has(stem)) {
+    return true;
+  }
+
   if (partId === "P1" && lower.startsWith("p1_survival_failure_")) {
+    return true;
+  }
+
+  if (lower.startsWith(`ending_${partPrefix}_`) || lower.startsWith(`ending_thumb_${partPrefix}_`)) {
     return true;
   }
 
@@ -186,6 +204,31 @@ function copyPartPublicAssets(workspaceRoot: string, outDirName: string, partId:
   const publicRoot = resolve(workspaceRoot, "public");
   const outRoot = resolve(workspaceRoot, `dist/${outDirName}`);
   const partNumber = partId.slice(1);
+  const partChapterIds = new Set(chapterIdsForPart(partId).map((chapterId) => chapterId.toUpperCase()));
+  const runtimeManifestPath = join(publicRoot, "runtime-content", "runtime-asset-manifest.json");
+  const manifestStems = new Set<string>();
+  if (existsSync(runtimeManifestPath)) {
+    const runtimeManifest = JSON.parse(readFileSync(runtimeManifestPath, "utf8")) as {
+      mappings?: Array<{ chapter_id?: string; runtime_art_key?: string; art_key_final?: string; filename_target?: string }>;
+    };
+    for (const mapping of runtimeManifest.mappings ?? []) {
+      if (!mapping.chapter_id || !partChapterIds.has(mapping.chapter_id.toUpperCase())) continue;
+      for (const value of [mapping.runtime_art_key, mapping.art_key_final, mapping.filename_target]) {
+        if (!value) continue;
+        manifestStems.add(basename(value.toLowerCase(), extname(value)).replace(/_v01$/u, ""));
+      }
+    }
+  }
+  const runtimeOverridesPath = resolve(workspaceRoot, "packages/app-runtime/src/assets/runtimeArtOverrides.json");
+  if (existsSync(runtimeOverridesPath)) {
+    const runtimeOverrides = JSON.parse(readFileSync(runtimeOverridesPath, "utf8")) as {
+      mappings?: Array<{ chapter_id?: string; src?: string }>;
+    };
+    for (const mapping of runtimeOverrides.mappings ?? []) {
+      if (!mapping.chapter_id || !mapping.src || !partChapterIds.has(mapping.chapter_id.toUpperCase())) continue;
+      manifestStems.add(basename(mapping.src.toLowerCase(), extname(mapping.src)));
+    }
+  }
 
   for (const fileName of ["manifest.json", "robots.txt", "_headers", "_redirects"]) {
     const source = join(publicRoot, fileName);
@@ -210,7 +253,7 @@ function copyPartPublicAssets(workspaceRoot: string, outDirName: string, partId:
   const targetImagesRoot = join(outRoot, "generated", "images");
   if (existsSync(imagesRoot)) {
     for (const entry of readdirSync(imagesRoot, { withFileTypes: true })) {
-      if (entry.isFile() && shouldCopyGeneratedImage(entry.name, partId)) {
+      if (entry.isFile() && shouldCopyGeneratedImage(entry.name, partId, manifestStems)) {
         copyFile(join(imagesRoot, entry.name), join(targetImagesRoot, entry.name));
       }
     }

@@ -1,6 +1,6 @@
 {
   "schema": "donggrol.part1_chapter_quality.v1",
-  "generated_at": "2026-08-09T02:42:09.289Z",
+  "generated_at": "2026-08-09T16:35:09.107Z",
   "method": "agent playthrough on 2026-08-08 plus static measurement; each lens is 10 points, 50 per chapter",
   "lenses": {
     "prose": "제목 메아리와 3회를 넘는 문장 반복",
@@ -15,26 +15,26 @@
       "title": "잿빛 개장",
       "events": 99,
       "outcomes": 61,
-      "choices": 134,
-      "art_keys": 13,
-      "speakers": 1,
+      "choices": 138,
+      "art_keys": 14,
+      "speakers": 2,
       "defects": {
-        "title_echo": 5,
+        "title_echo": 0,
         "third_person_in_dialogue": 0,
         "foreign_speaker": 0,
-        "outcome_repeats_action": 5,
-        "duplicate_line_types": 20,
+        "outcome_repeats_action": 0,
+        "duplicate_line_types": 21,
         "worst_line_repeat": 3,
         "excess_repeats_over_3": 0,
-        "choiceless_events": 1
+        "choiceless_events": 0
       },
       "score": {
-        "prose": 8,
+        "prose": 10,
         "voice": 10,
-        "agency": 8.9,
+        "agency": 10,
         "art": 10,
         "density": 8,
-        "total": 44.9
+        "total": 48
       }
     },
     {
@@ -42,26 +42,26 @@
       "title": "검은 수로",
       "events": 81,
       "outcomes": 48,
-      "choices": 107,
-      "art_keys": 10,
+      "choices": 112,
+      "art_keys": 12,
       "speakers": 3,
       "defects": {
-        "title_echo": 6,
+        "title_echo": 0,
         "third_person_in_dialogue": 0,
         "foreign_speaker": 0,
-        "outcome_repeats_action": 9,
-        "duplicate_line_types": 15,
-        "worst_line_repeat": 3,
-        "excess_repeats_over_3": 0,
-        "choiceless_events": 1
+        "outcome_repeats_action": 0,
+        "duplicate_line_types": 16,
+        "worst_line_repeat": 4,
+        "excess_repeats_over_3": 1,
+        "choiceless_events": 0
       },
       "score": {
-        "prose": 7,
+        "prose": 9.8,
         "voice": 10,
-        "agency": 7.6,
-        "art": 8.3,
+        "agency": 10,
+        "art": 10,
         "density": 8.8,
-        "total": 41.7
+        "total": 48.6
       }
     },
     {
@@ -69,26 +69,26 @@
       "title": "유리정원",
       "events": 71,
       "outcomes": 41,
-      "choices": 95,
-      "art_keys": 10,
+      "choices": 107,
+      "art_keys": 12,
       "speakers": 3,
       "defects": {
-        "title_echo": 1,
+        "title_echo": 0,
         "third_person_in_dialogue": 0,
         "foreign_speaker": 0,
-        "outcome_repeats_action": 1,
+        "outcome_repeats_action": 0,
         "duplicate_line_types": 14,
         "worst_line_repeat": 2,
         "excess_repeats_over_3": 0,
-        "choiceless_events": 1
+        "choiceless_events": 0
       },
       "score": {
-        "prose": 9.4,
+        "prose": 10,
         "voice": 10,
-        "agency": 9.6,
-        "art": 8.3,
+        "agency": 10,
+        "art": 10,
         "density": 10,
-        "total": 47.3
+        "total": 50
       }
     },
     {
@@ -96,26 +96,26 @@
       "title": "상자들의 도시",
       "events": 47,
       "outcomes": 27,
-      "choices": 61,
-      "art_keys": 10,
+      "choices": 68,
+      "art_keys": 11,
       "speakers": 2,
       "defects": {
-        "title_echo": 2,
+        "title_echo": 0,
         "third_person_in_dialogue": 0,
         "foreign_speaker": 0,
         "outcome_repeats_action": 0,
         "duplicate_line_types": 2,
         "worst_line_repeat": 2,
         "excess_repeats_over_3": 0,
-        "choiceless_events": 1
+        "choiceless_events": 0
       },
       "score": {
-        "prose": 8.3,
+        "prose": 10,
         "voice": 10,
-        "agency": 9.8,
-        "art": 8.3,
+        "agency": 10,
+        "art": 9.2,
         "density": 10,
-        "total": 46.4
+        "total": 49.2
       }
     },
     {
@@ -123,28 +123,28 @@
       "title": "미러센터",
       "events": 57,
       "outcomes": 34,
-      "choices": 76,
-      "art_keys": 9,
+      "choices": 83,
+      "art_keys": 11,
       "speakers": 2,
       "defects": {
-        "title_echo": 1,
+        "title_echo": 0,
         "third_person_in_dialogue": 0,
         "foreign_speaker": 0,
-        "outcome_repeats_action": 3,
+        "outcome_repeats_action": 0,
         "duplicate_line_types": 6,
         "worst_line_repeat": 2,
         "excess_repeats_over_3": 0,
-        "choiceless_events": 1
+        "choiceless_events": 0
       },
       "score": {
-        "prose": 9.3,
+        "prose": 10,
         "voice": 10,
-        "agency": 8.8,
-        "art": 7.5,
+        "agency": 10,
+        "art": 9.2,
         "density": 10,
-        "total": 45.6
+        "total": 49.2
       }
     }
   ],
-  "part_average": 45.2
+  "part_average": 49
 }

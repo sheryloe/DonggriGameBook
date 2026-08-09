@@ -1010,6 +1010,41 @@
         "ch10_result_witness"
       ],
       "src": "/generated/images/p2_apr027_ch10_harbor_result_witness_v01.png"
+    },
+    {
+      "chapter_id": "CH01",
+      "runtime_art_keys": [
+        "p1_ch01_archive_stacks_deep"
+      ],
+      "src": "/generated/images/p1_ch01_archive_stacks_deep.jpg"
+    },
+    {
+      "chapter_id": "CH02",
+      "runtime_art_keys": [
+        "p1_ch02_market_backlane"
+      ],
+      "src": "/generated/images/p1_ch02_market_backlane.jpg"
+    },
+    {
+      "chapter_id": "CH03",
+      "runtime_art_keys": [
+        "p1_ch03_atrium_upper_gallery"
+      ],
+      "src": "/generated/images/p1_ch03_atrium_upper_gallery.jpg"
+    },
+    {
+      "chapter_id": "CH04",
+      "runtime_art_keys": [
+        "p1_ch04_sorting_junction"
+      ],
+      "src": "/generated/images/p1_ch04_sorting_junction.jpg"
+    },
+    {
+      "chapter_id": "CH05",
+      "runtime_art_keys": [
+        "p1_ch05_cold_aisle"
+      ],
+      "src": "/generated/images/p1_ch05_cold_aisle.jpg"
     }
   ]
 }

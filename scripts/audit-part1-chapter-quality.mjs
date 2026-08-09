@@ -67,7 +67,12 @@ function measure(chapter) {
     }
     if (event.presentation?.art_key) m.artKeys.add(event.presentation.art_key);
     m.choices += (event.choices ?? []).length;
-    if ((event.choices ?? []).length === 0) m.choicelessEvents += 1;
+    // A combat handoff is choiceless on purpose: `eventRunner` sends an event
+    // carrying a `combat` payload straight to the battle screen and never draws
+    // the event card, so choices written on it would never be seen. The player's
+    // agency there lives in the battle, not in a list of options.
+    const handsOffToBattle = Boolean(event.combat) || event.event_type === "boss";
+    if (!handsOffToBattle && (event.choices ?? []).length === 0) m.choicelessEvents += 1;
     if (event.event_type === "outcome") {
       m.outcomes += 1;
       const from = incoming.get(event.event_id);
