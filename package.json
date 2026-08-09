@@ -556,7 +556,9 @@
     "ops:part1:late-weight": "node scripts/repair-part1-late-weight.mjs",
     "ops:part1:art-variety": "node scripts/repair-part1-art-variety.mjs",
     "ops:part1:new-backgrounds": "node scripts/repair-part1-new-backgrounds.mjs",
-    "ops:part1:previews": "node scripts/repair-part1-choice-previews.mjs"
+    "ops:part1:previews": "node scripts/repair-part1-choice-previews.mjs",
+    "qa:part1:tts-freshness": "node scripts/audit-part1-tts-freshness.mjs",
+    "ops:part1:hub-cast": "node scripts/repair-part1-hub-cast.mjs"
   },
   "dependencies": {
     "@apps-in-toss/web-framework": "2.10.8",

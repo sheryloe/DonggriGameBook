@@ -7,10 +7,10 @@
       "title": "잿빛 개장",
       "nodes": 8,
       "events": 99,
-      "choices": 134,
-      "prose_lines": 714,
-      "prose_chars": 25064,
-      "estimated_first_run_minutes": 18,
+      "choices": 138,
+      "prose_lines": 726,
+      "prose_chars": 25234,
+      "estimated_first_run_minutes": 10,
       "quest_tracks": 5,
       "quest_kinds": {
         "main": 1,
@@ -37,29 +37,35 @@
       "effect_ops": {
         "grant_item": 12,
         "add_trust": 4,
-        "set_flag": 67,
-        "sub_stat": 7,
-        "grant_loot_table": 17,
-        "add_stat": 67,
+        "set_flag": 69,
+        "sub_stat": 9,
+        "grant_loot_table": 18,
+        "add_stat": 72,
         "remove_item": 2,
-        "set_value": 9,
-        "add_reputation": 4,
+        "set_value": 12,
+        "add_reputation": 17,
         "set_route": 5
       },
-      "distinct_art_keys": 13,
-      "max_art_key_reuse": 19,
+      "distinct_art_keys": 14,
+      "max_art_key_reuse": 16,
       "distinct_music_keys": 7,
       "npcs": [
         "npc_yoon_haein",
+        "npc_oh_taesik",
+        "npc_han_yeji",
         "npc_jung_noah"
       ],
       "npc_event_count": {
         "npc_yoon_haein": 7,
-        "npc_jung_noah": 2
+        "npc_jung_noah": 2,
+        "npc_oh_taesik": 1,
+        "npc_han_yeji": 1
       },
       "npc_spoken_lines": {
         "npc_yoon_haein": 15,
-        "npc_jung_noah": 5
+        "npc_jung_noah": 5,
+        "npc_oh_taesik": 2,
+        "npc_han_yeji": 2
       },
       "problems": {
         "orphan_events": [],
@@ -76,7 +82,7 @@
           "obj_ch01_scavenge_route"
         ],
         "choice_events_without_choices": 0,
-        "single_choice_events": 67
+        "single_choice_events": 63
       }
     },
     {
@@ -85,10 +91,10 @@
       "title": "검은 수로",
       "nodes": 7,
       "events": 81,
-      "choices": 107,
-      "prose_lines": 624,
-      "prose_chars": 22431,
-      "estimated_first_run_minutes": 19,
+      "choices": 112,
+      "prose_lines": 634,
+      "prose_chars": 22558,
+      "estimated_first_run_minutes": 10,
       "quest_tracks": 6,
       "quest_kinds": {
         "main": 1,
@@ -113,19 +119,19 @@
         "scene": 3
       },
       "effect_ops": {
-        "set_flag": 58,
-        "add_stat": 51,
-        "set_value": 11,
-        "grant_loot_table": 15,
-        "add_reputation": 7,
+        "set_flag": 59,
+        "add_stat": 57,
+        "set_value": 15,
+        "grant_loot_table": 16,
+        "add_reputation": 20,
         "grant_item": 6,
-        "sub_stat": 2,
+        "sub_stat": 3,
         "add_trust": 3,
         "remove_item": 1,
         "set_route": 6
       },
-      "distinct_art_keys": 10,
-      "max_art_key_reuse": 18,
+      "distinct_art_keys": 12,
+      "max_art_key_reuse": 17,
       "distinct_music_keys": 9,
       "npcs": [
         "npc_yoon_haein",
@@ -155,7 +161,7 @@
           "obj_ch02_side_ambush"
         ],
         "choice_events_without_choices": 0,
-        "single_choice_events": 55
+        "single_choice_events": 50
       }
     },
     {
@@ -164,10 +170,10 @@
       "title": "유리정원",
       "nodes": 8,
       "events": 71,
-      "choices": 95,
-      "prose_lines": 574,
-      "prose_chars": 22645,
-      "estimated_first_run_minutes": 20,
+      "choices": 107,
+      "prose_lines": 598,
+      "prose_chars": 23396,
+      "estimated_first_run_minutes": 10,
       "quest_tracks": 6,
       "quest_kinds": {
         "main": 1,
@@ -192,18 +198,18 @@
         "scene": 2
       },
       "effect_ops": {
-        "set_flag": 49,
-        "set_value": 10,
+        "set_flag": 50,
+        "set_value": 17,
         "add_trust": 7,
-        "add_reputation": 8,
-        "add_stat": 43,
+        "add_reputation": 27,
+        "add_stat": 60,
         "sub_stat": 5,
         "grant_loot_table": 8,
         "grant_item": 5,
         "set_route": 6
       },
-      "distinct_art_keys": 10,
-      "max_art_key_reuse": 12,
+      "distinct_art_keys": 12,
+      "max_art_key_reuse": 11,
       "distinct_music_keys": 11,
       "npcs": [
         "npc_ahn_bogyeong",
@@ -234,7 +240,7 @@
           "obj_ch03_side_prep"
         ],
         "choice_events_without_choices": 0,
-        "single_choice_events": 50
+        "single_choice_events": 43
       }
     },
     {
@@ -243,10 +249,10 @@
       "title": "상자들의 도시",
       "nodes": 7,
       "events": 47,
-      "choices": 61,
-      "prose_lines": 376,
-      "prose_chars": 14485,
-      "estimated_first_run_minutes": 21,
+      "choices": 68,
+      "prose_lines": 390,
+      "prose_chars": 14942,
+      "estimated_first_run_minutes": 10,
       "quest_tracks": 5,
       "quest_kinds": {
         "main": 1,
@@ -272,19 +278,19 @@
         "scene": 2
       },
       "effect_ops": {
-        "set_flag": 34,
-        "set_value": 9,
+        "set_flag": 36,
+        "set_value": 14,
         "grant_loot_table": 8,
-        "add_reputation": 5,
-        "add_stat": 32,
+        "add_reputation": 15,
+        "add_stat": 46,
         "add_trust": 6,
         "sub_stat": 2,
         "set_route": 4,
         "grant_item": 7,
         "remove_item": 1
       },
-      "distinct_art_keys": 10,
-      "max_art_key_reuse": 12,
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 9,
       "distinct_music_keys": 10,
       "npcs": [
         "npc_yoon_haein",
@@ -313,7 +319,7 @@
           "obj_ch04_side_repair"
         ],
         "choice_events_without_choices": 0,
-        "single_choice_events": 34
+        "single_choice_events": 29
       }
     },
     {
@@ -322,10 +328,10 @@
       "title": "미러센터",
       "nodes": 7,
       "events": 57,
-      "choices": 76,
-      "prose_lines": 450,
-      "prose_chars": 17391,
-      "estimated_first_run_minutes": 22,
+      "choices": 83,
+      "prose_lines": 464,
+      "prose_chars": 17835,
+      "estimated_first_run_minutes": 12,
       "quest_tracks": 5,
       "quest_kinds": {
         "main": 1,
@@ -353,18 +359,18 @@
         "scene": 3
       },
       "effect_ops": {
-        "set_flag": 50,
-        "set_value": 12,
+        "set_flag": 53,
+        "set_value": 17,
         "sub_stat": 4,
         "grant_loot_table": 6,
-        "add_stat": 37,
+        "add_stat": 50,
         "grant_item": 8,
         "add_trust": 3,
-        "add_reputation": 4,
+        "add_reputation": 19,
         "set_route": 3
       },
-      "distinct_art_keys": 9,
-      "max_art_key_reuse": 16,
+      "distinct_art_keys": 11,
+      "max_art_key_reuse": 13,
       "distinct_music_keys": 11,
       "npcs": [
         "npc_yoon_haein",
@@ -395,7 +401,7 @@
           "obj_ch05_side_prep"
         ],
         "choice_events_without_choices": 0,
-        "single_choice_events": 41
+        "single_choice_events": 36
       }
     },
     {
@@ -1444,13 +1450,13 @@
     "P1": {
       "chapters": 5,
       "events": 355,
-      "choices": 473,
-      "prose_chars": 102016,
+      "choices": 508,
+      "prose_chars": 103965,
       "nodes": 37,
       "quest_tracks": 27,
       "objectives": 55,
-      "minutes": 100,
-      "distinct_art_keys": 52
+      "minutes": 52,
+      "distinct_art_keys": 60
     },
     "P2": {
       "chapters": 5,
@@ -1796,14 +1802,35 @@
       ],
       "events": 17,
       "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_oh_taesik",
+      "name": "오태식",
+      "chapters": [
+        "CH01"
+      ],
+      "parts": [
+        "P1"
+      ],
+      "events": 1,
+      "chapter_count": 1
+    },
+    {
+      "npc_id": "npc_han_yeji",
+      "name": "한예지",
+      "chapters": [
+        "CH01"
+      ],
+      "parts": [
+        "P1"
+      ],
+      "events": 1,
+      "chapter_count": 1
     }
   ],
   "npc_registry": {
     "registered": 24,
-    "registered_but_never_used": [
-      "npc_oh_taesik",
-      "npc_han_yeji"
-    ],
+    "registered_but_never_used": [],
     "used_but_unregistered": []
   },
   "carryover": {
@@ -1813,8 +1840,8 @@
   "totals": {
     "chapters": 20,
     "events": 623,
-    "choices": 995,
-    "prose_chars": 232310,
+    "choices": 1030,
+    "prose_chars": 234259,
     "problems": 5
   }
 }

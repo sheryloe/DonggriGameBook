@@ -19,7 +19,7 @@ const outputPath = path.join(root, "docs", "ops", "PART1_CHAPTER_QUALITY.json");
 
 /** Which NPCs belong to which chapter, taken from the anchor/support portrait set. */
 const CHAPTER_NPCS = {
-  ch01: ["npc_yoon_haein", "npc_jung_noah"],
+  ch01: ["npc_yoon_haein", "npc_jung_noah", "npc_oh_taesik", "npc_han_yeji"],
   ch02: ["npc_jung_noah", "npc_seo_jinseo", "npc_yoon_haein"],
   ch03: ["npc_ahn_bogyeong", "npc_ryu_seon", "npc_yoon_haein"],
   ch04: ["npc_han_somyeong", "npc_yoon_haein"],
