@@ -56,7 +56,7 @@ export const PART1_DEADLINES: SurvivalDeadline[] = [
     label: "편집자 구조 신호",
     chapterId: "CH01",
     completionEventId: "EV_CH01_WRITER_RESCUE",
-    hoursAfterChapterEntry: 8,
+    hoursAfterChapterEntry: 18,
     failFlag: "deadline_ch01_writer_missed",
     failText: "편집자의 구조 신호가 끊겼다.",
     consequence: {
@@ -73,7 +73,7 @@ export const PART1_DEADLINES: SurvivalDeadline[] = [
     label: "수몰시장 조류 기록",
     chapterId: "CH02",
     completionEventId: "EV_CH02_TIDE_SCAN",
-    hoursAfterChapterEntry: 10,
+    hoursAfterChapterEntry: 17,
     failFlag: "deadline_ch02_scan_missed",
     failText: "조류 기록이 검은 물에 잠겼다.",
     consequence: {
@@ -90,7 +90,7 @@ export const PART1_DEADLINES: SurvivalDeadline[] = [
     label: "배수문 진단",
     chapterId: "CH02",
     completionEventId: "EV_CH02_SLUICE_DIAGNOSTIC",
-    hoursAfterChapterEntry: 14,
+    hoursAfterChapterEntry: 30,
     failFlag: "deadline_ch02_sluice_missed",
     failText: "배수문 제어실의 예비 전원이 꺼졌다.",
     consequence: {
@@ -107,7 +107,7 @@ export const PART1_DEADLINES: SurvivalDeadline[] = [
     label: "유리정원 구조 대기",
     chapterId: "CH03",
     completionEventId: "EV_CH03_RESCUE_DETOUR",
-    hoursAfterChapterEntry: 12,
+    hoursAfterChapterEntry: 16,
     failFlag: "deadline_ch03_rescue_missed",
     failText: "유리정원 구조 대상이 다른 층으로 끌려갔다.",
     consequence: {
@@ -141,7 +141,7 @@ export const PART1_DEADLINES: SurvivalDeadline[] = [
     label: "ARC-P 중계 기록",
     chapterId: "CH05",
     completionEventId: "EV_CH05_ARC_RELAY",
-    hoursAfterChapterEntry: 12,
+    hoursAfterChapterEntry: 14,
     failFlag: "deadline_ch05_relay_missed",
     failText: "ARC-P 중계 기록이 봉인 절차에 들어갔다.",
     consequence: {
@@ -303,9 +303,15 @@ export function getItemUseEffect(item: Item | undefined): ItemUseEffect | null {
  * the ashen escape no matter how cleanly they played.
  *
  * `max` is what that lane can actually reach in a single run (one choice per
- * event), measured from the chapter data. Scores are compared as a fraction of
- * their own maximum so lanes with narrower ranges — the smuggling route tops out
- * at +2 where control reaches +6 — still compete on equal terms.
+ * event), measured from the chapter data by `audit-part1-boss-distance` and the
+ * lane simulation. Scores are compared as a fraction of their own maximum so
+ * lanes with narrower ranges still compete on equal terms — the smuggling route
+ * tops out well below the controlled passage.
+ *
+ * CH04 and CH05 grant double and triple, so a player can still change their mind
+ * after three chapters. Without that, every one of the twelve possible late
+ * switches was impossible: three early chapters outweigh two late ones no matter
+ * how the backing is distributed.
  */
 const ENDING_LANES = [
   {
@@ -314,7 +320,7 @@ const ENDING_LANES = [
     summary: "미러센터 기록은 꺼지지 않았고, 사라진 이름들이 증언으로 이어졌다.",
     route: "route.truth_score",
     factions: ["reputation.record_bureau", "reputation.pangyo_survivors"],
-    max: 16,
+    max: 44,
     backing: "기록국",
     claim: "공개를 받아 줄 곳이 있어야 증언이 남는다.",
   },
@@ -324,7 +330,7 @@ const ENDING_LANES = [
     summary: "모든 사람을 구하지는 못했지만, 끊긴 송출과 구조 신호가 다시 연결됐다.",
     route: "route.compassion_score",
     factions: ["reputation.jamsil_lower", "reputation.pangyo_survivors"],
-    max: 17,
+    max: 39,
     backing: "아래층 사람들",
     claim: "중계를 이어받을 사람이 있어야 신호가 살아남는다.",
   },
@@ -334,7 +340,7 @@ const ENDING_LANES = [
     summary: "공식 경로는 닫혔고, 남은 물자와 사람들은 비공식 약속을 따라 살아남았다.",
     route: "route.underworld_score",
     factions: ["reputation.under_market"],
-    max: 8,
+    max: 27,
     backing: "지하시장",
     claim: "배를 내줄 시장이 있어야 바깥으로 나간다.",
   },
@@ -344,7 +350,7 @@ const ENDING_LANES = [
     summary: "통로는 열렸지만 명단 밖의 이름들은 끝까지 문 앞에 남았다.",
     route: "route.control_score",
     factions: ["reputation.jamsil_upper", "reputation.munjeong_logistics"],
-    max: 16,
+    max: 49,
     backing: "상층·물류",
     claim: "명단을 집행할 조직이 있어야 통제가 선다.",
   },

@@ -103,6 +103,50 @@ for (const [label, fixture] of [
   check(`${label} 시 그을린 탈출로 떨어진다`, got === "P1_END_ASHEN_ESCAPE", `실제로는 ${got}`);
 }
 
+// --- a player can still change their mind after three chapters ---------------
+
+/**
+ * The point of weighting CH04 and CH05 is that three chapters of commitment can
+ * still be turned around. Before that weighting every one of these twelve
+ * switches failed: three early chapters outnumber two late ones no matter how
+ * the backing is spread.
+ *
+ * `early` is what three chapters of pursuing one lane leaves on the board, and
+ * `late` what two weighted chapters of pursuing another can still put there.
+ * Both are measured from the chapter data.
+ */
+const LANE_KEYS = {
+  P1_END_MIRROR_WITNESS: { route: "route.truth_score", faction: "reputation.record_bureau", early: 11, late: 11 },
+  P1_END_SIGNAL_KEEPERS: { route: "route.compassion_score", faction: "reputation.jamsil_lower", early: 12, late: 10 },
+  P1_END_SMUGGLER_TIDE: { route: "route.underworld_score", faction: "reputation.under_market", early: 14, late: 5 },
+  P1_END_CONTROLLED_PASSAGE: { route: "route.control_score", faction: "reputation.jamsil_upper", early: 23, late: 11 },
+} as const;
+
+type LaneId = keyof typeof LANE_KEYS;
+const laneIds = Object.keys(LANE_KEYS) as LaneId[];
+
+/** Half into the route axis, half into its backing — the shape real play makes. */
+function lane(id: LaneId, points: number, into: Record<string, number>): void {
+  const spec = LANE_KEYS[id];
+  into[spec.route] = (into[spec.route] ?? 0) + Math.ceil(points / 2);
+  into[spec.faction] = (into[spec.faction] ?? 0) + Math.floor(points / 2);
+}
+
+let pivots = 0;
+const pivotFailures: string[] = [];
+for (const from of laneIds) {
+  for (const to of laneIds) {
+    if (from === to) continue;
+    const stats: Record<string, number> = {};
+    lane(from, LANE_KEYS[from].early, stats);
+    lane(to, LANE_KEYS[to].late * 3, stats);
+    const got = selectPart1Ending(state({ stats, flags: { ch05_kim_ara_alive: true } })).endingId;
+    if (got === to) pivots += 1;
+    else pivotFailures.push(`${from}→${to}가 ${got}로 끝남`);
+  }
+}
+check(`CH01~03의 노선을 CH04~05에 뒤집을 수 있다 (${pivots}/12)`, pivots >= 10, pivotFailures.slice(0, 3).join(" · "));
+
 // --- the selector must be total ----------------------------------------------
 
 const VALID = new Set(REACH.map(([id]) => id));
@@ -131,29 +175,28 @@ check("아무 상태도 판정 없이 빠져나가지 않는다", (() => {
   return true;
 })());
 
-// --- and every ending must actually occur across that sweep ------------------
+// --- and every ending must actually occur across plausible play --------------
 
+/**
+ * Uniform random stats are not what a run looks like: players commit to a lane
+ * and push it. Sweeping lane-by-lane at every intensity, against every level of
+ * survival pressure, covers the space a player can actually occupy.
+ */
 const seen = new Set<string>();
-for (let i = 0; i < 400; i += 1) {
-  seen.add(selectPart1Ending(state({
-    stats: {
-      "route.truth_score": (i % 13) - 5,
-      "route.compassion_score": (i % 9) - 3,
-      "route.control_score": (i % 14) - 7,
-      "route.underworld_score": (i % 6) - 3,
-      "route.strain": i % 23,
-      "reputation.record_bureau": i % 6,
-      "reputation.under_market": (i * 3) % 7,
-      "reputation.jamsil_lower": (i * 5) % 9,
-      "reputation.jamsil_upper": (i * 7) % 6,
-      "reputation.munjeong_logistics": (i * 11) % 6,
-      "reputation.pangyo_survivors": (i * 13) % 5,
-    },
-    flags: i % 3 === 0 ? { ch05_kim_ara_alive: true, part1_hidden_evidence_ch05: true } : {},
-    restCount: i % 5,
-  })).endingId);
+for (const id of laneIds) {
+  for (let points = 0; points <= 40; points += 2) {
+    for (const strain of [0, 6, 12, 19]) {
+      const stats: Record<string, number> = { "route.strain": strain };
+      lane(id, points, stats);
+      seen.add(selectPart1Ending(state({
+        stats,
+        flags: points > 10 ? { ch05_kim_ara_alive: true, part1_hidden_evidence_ch05: true } : {},
+        restCount: points % 5,
+      })).endingId);
+    }
+  }
 }
-check(`무작위 상태 400개에서 엔딩 5종이 모두 나온다 (${seen.size}종)`, seen.size === 5, [...seen].join(", "));
+check(`노선별 강도 전 구간에서 엔딩 5종이 모두 나온다 (${seen.size}종)`, seen.size === 5, [...seen].join(", "));
 
 console.log(`Part 1 엔딩 테스트: ${passed}건 통과, ${failures.length}건 실패`);
 for (const f of failures) console.log(`  실패 — ${f}`);

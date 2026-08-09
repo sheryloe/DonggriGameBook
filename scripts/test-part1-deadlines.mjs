@@ -12,6 +12,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { readReach, MARGIN, MAX_SLACK } from "./audit-part1-deadline-reach.mjs";
 
 const root = process.cwd();
 const source = fs.readFileSync(path.join(root, "apps", "part1", "src", "utils", "survival.ts"), "utf8");
@@ -33,8 +34,32 @@ const entries = [...source.matchAll(/questId:\s*"([^"]+)",\s*\n\s*label:[^\n]*\n
 check("기한 6개를 모두 읽었다", entries.length === 6, `읽은 개수 ${entries.length}`);
 for (const e of entries) {
   check(`${e.questId} 예산이 양수`, e.hours > 0, `${e.hours}`);
-  check(`${e.questId} 예산이 과하지 않다`, e.hours <= 24, `${e.hours}시간`);
   check(`${e.questId} 완료 이벤트가 자기 챕터`, e.completionEventId.includes(e.chapterId), `${e.completionEventId}`);
+}
+
+// --- reachability ------------------------------------------------------------
+/**
+ * A flat cap said nothing useful: CH03 takes 36 in-game hours to cross, so a
+ * 24-hour ceiling there guaranteed the quest failed while a 24-hour ceiling in
+ * CH01 was generous. What matters is the gap between the deadline and the
+ * earliest the completion event can actually be reached, so the bound is
+ * measured from the chapter graph rather than picked.
+ */
+const reach = readReach();
+for (const e of entries) {
+  const earliest = reach.get(e.chapterId)?.dist.get(e.completionEventId);
+  check(`${e.questId} 완료 이벤트에 도달할 수 있다`, earliest !== undefined, "그래프상 닿지 않는다");
+  if (earliest === undefined) continue;
+  check(
+    `${e.questId} 기한 안에 도달 가능하다`,
+    e.hours >= earliest + MARGIN,
+    `최단 ${earliest}시간인데 기한이 ${e.hours}시간`,
+  );
+  check(
+    `${e.questId} 기한이 압박으로 남는다`,
+    e.hours <= earliest + MAX_SLACK,
+    `최단 ${earliest}시간 대비 여유 ${e.hours - earliest}시간`,
+  );
 }
 
 // --- gating rules ------------------------------------------------------------

@@ -37,13 +37,21 @@ const BACKUP_DIR = join(
   "2026-08-09", "part1-previews", "backup",
 );
 
-/** The five frames the old generator cycled through. */
+/**
+ * The five frames the old generator cycled through, plus this script's own
+ * output shape. Its numbers come from the effects, so when those change — the
+ * late-chapter weighting doubled and tripled them — the sentences have to be
+ * rebuilt or they go back to being wrong.
+ */
 const BOILERPLATE = [
   /감수하고 .*노린다.*실패하면.*남는다/u,
   /무릅쓰는 대신.*챙긴다.*발목을 잡는다/u,
   /먼저 잡고 빠진다.*다만.*함께 남는다/u,
   /필요하다면.*받아들인다.*그만큼.*따라온다/u,
   /챙긴다\. 대신.*생기고.*커진다/u,
+  /(을|를) 얻고 .*(을|를) 치른다\./u,
+  /(을|를) (얻는다|치른다)\.( 이어서 |$)/u,
+  /노선을 굳힌다\./u,
 ];
 
 const FACTION = {
@@ -286,7 +294,9 @@ for (const { id, path, chapter } of loaded) {
       if (!built) { noMaterialEffects += 1; continue; }
 
       const existingPreview = String(choice.preview ?? "");
-      const previewIsBoilerplate = BOILERPLATE.some((re) => re.test(existingPreview));
+      // A newly authored choice arrives with these blank on purpose, so that
+      // everything the player is told about consequences comes from one place.
+      const previewIsBoilerplate = !existingPreview || BOILERPLATE.some((re) => re.test(existingPreview));
       const nextPreview = fixJosa(qualify(
         built.preview,
         eventTitle[choice.next_event_id],
@@ -308,7 +318,7 @@ for (const { id, path, chapter } of loaded) {
       // corrected prose. Replace them from the same source.
       for (const [field, value] of [["gain_label", built.gain], ["cost_label", built.cost]]) {
         const current = String(choice[field] ?? "").trim();
-        if (!pool.has(current)) continue;
+        if (current && !pool.has(current)) continue;
         if (apply && confirmed) choice[field] = value;
         labelsRewritten += 1;
         touched += 1;
